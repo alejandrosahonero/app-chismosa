@@ -1,0 +1,34 @@
+node_modules/
+.git/
+dist/
+build/
+.flutter/
+.dart_tool/
+pubspec.lock
+*.apk
+*.ipa
+.env
+__pycache__/
+venv/
+.next/
+.cache/
+
+# --- Añadidos tras auditar el proyecto ---
+
+# Cachés de build de Gradle/Kotlin (se regeneran en cada build)
+.gradle/
+.kotlin/
+
+# Metadatos y cachés del IDE (IntelliJ / Android Studio)
+.idea/
+*.iml
+
+# Generados por `flutter pub get` / específicos de la máquina
+.flutter-plugins-dependencies
+local.properties
+
+# Artefactos de release y firma
+*.aab
+*.jks
+*.keystore
+key.properties

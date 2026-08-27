@@ -1,0 +1,1332 @@
+[
+  {
+    "id": "recuerdo-que-nunca-paso",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Puede tu cerebro fabricarte un recuerdo de infancia que jamás ocurrió?",
+      "en": "Can your brain hand you a full childhood memory of something that never happened?"
+    },
+    "answer": {
+      "es": "Sí: a una cuarta parte de los sujetos de un estudio se les implantó uno y lo creyeron real.",
+      "en": "Yes: a quarter of subjects in one study had one implanted and believed it was real."
+    },
+    "detail": {
+      "es": "En un experimento de Elizabeth Loftus, familiares contaron a 24 personas tres recuerdos verdaderos de su niñez y uno falso, perderse en un centro comercial. El 25 % terminó \"recordando\" con detalle el episodio inventado, y algunos defendieron el recuerdo falso incluso al saber cuál era el objetivo del estudio.",
+      "en": "In an Elizabeth Loftus experiment, relatives told 24 people three true childhood memories and one false one — getting lost in a mall. 25% ended up \"remembering\" the invented episode in detail, and some defended the false memory even after learning the study's real purpose."
+    },
+    "source": "Wikipedia — Lost in the mall technique",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lost_in_the_mall_technique",
+    "_evidence": "Elizabeth Loftus and Jacqueline Pickrell adapted the methods Coan had used on his brother in a formal study with 24 participants, about 25% of whom reported remembering the false event."
+  },
+  {
+    "id": "gorila-invisible-atencion",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Puedes no ver a alguien disfrazado de gorila cruzando delante de ti?",
+      "en": "Can you fail to see someone in a gorilla suit walk right in front of you?"
+    },
+    "answer": {
+      "es": "Sí: en un experimento famoso, más de la mitad de la gente no lo vio.",
+      "en": "Yes: in a famous experiment, more than half the people missed it."
+    },
+    "detail": {
+      "es": "A los sujetos se les pidió contar los pases de balón de un equipo de baloncesto en un vídeo. A mitad de la grabación, una persona con traje de gorila cruzaba la escena, se golpeaba el pecho y salía. El 56 % de los que contaban pases no lo notó: la atención puesta en una tarea bloquea literalmente lo evidente.",
+      "en": "Subjects were asked to count basketball passes made by one team in a video. Midway through, a person in a gorilla suit walked across the scene, thumped its chest, and left. 56% of pass-counters never noticed it — focused attention can literally block out the obvious."
+    },
+    "source": "Tutor2u — Simons and Chabris (1999)",
+    "sourceUrl": "https://www.tutor2u.net/psychology/reference/simons-and-chabris-1999",
+    "_evidence": "56% of participants failed to notice the gorilla overall."
+  },
+  {
+    "id": "deja-vu-glitch-cerebro",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué a veces sientes que ya has vivido este momento exacto?",
+      "en": "Why do you sometimes feel you've already lived this exact moment?"
+    },
+    "answer": {
+      "es": "El cerebro marca algo nuevo como \"familiar\" por un fallo pasajero, no porque lo hayas vivido.",
+      "en": "Your brain tags something new as \"familiar\" through a brief glitch, not because you lived it."
+    },
+    "detail": {
+      "es": "Investigadores lo describen como un cortocircuito: las neuronas de reconocimiento y familiaridad se disparan sin que exista un recuerdo real detrás. El lóbulo temporal, encargado de comparar lo que ves con lo ya vivido, emite la señal de \"esto ya pasó\" por error, y la sensación dura solo unos segundos.",
+      "en": "Researchers describe it as a short circuit: the neurons for recognition and familiarity fire without any real memory behind them. The temporal lobe, which compares what you're seeing against past experience, mistakenly signals \"this already happened,\" and the feeling lasts only seconds."
+    },
+    "source": "ScienceDaily / Texas A&M Health — What causes déjà vu?",
+    "sourceUrl": "https://www.sciencedaily.com/releases/2016/04/160413113530.htm",
+    "_evidence": "Some researchers describe it as a 'glitch' in the brain -- when the neurons for recognition and familiarity fire."
+  },
+  {
+    "id": "tiempo-lento-miedo-recuerdo",
+    "category": "cuerpo",
+    "question": {
+      "es": "En una caída libre real, ¿de verdad ves todo a cámara lenta mientras ocurre?",
+      "en": "During a real free-fall, do you actually see everything in slow motion as it happens?"
+    },
+    "answer": {
+      "es": "No: la mente no procesa más rápido en el momento, solo lo recuerda como si hubiera durado más.",
+      "en": "No: your mind doesn't process faster in the moment, it just remembers the event as longer."
+    },
+    "detail": {
+      "es": "En un experimento, voluntarios cayeron desde una torre y calcularon después que su caída había durado un 36 % más de lo real. Pero durante la caída no leían mejor un número parpadeante que alguien mirando desde el suelo: el \"tiempo lento\" se fabrica al recordar, no al percibir.",
+      "en": "In one experiment, volunteers fell from a tower and later estimated their fall had lasted 36% longer than it really did. Yet during the fall they read a flickering display no better than someone watching from the ground: \"slow motion\" gets built when you remember, not when you perceive."
+    },
+    "source": "PLOS ONE — Does Time Really Slow Down during a Frightening Event?",
+    "sourceUrl": "https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0001295",
+    "_evidence": "time-slowing is a function of recollection, not perception: a richer encoding of memory may cause a salient event to appear, retrospectively, as though it lasted longer."
+  },
+  {
+    "id": "sueños-se-borran-rem",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué la mayoría de tus sueños desaparecen minutos después de despertar?",
+      "en": "Why do most of your dreams vanish within minutes of waking up?"
+    },
+    "answer": {
+      "es": "Porque durante el sueño REM las zonas que graban en la memoria a largo plazo están casi apagadas.",
+      "en": "Because during REM sleep the brain regions that write to long-term memory are barely active."
+    },
+    "detail": {
+      "es": "La memoria a corto plazo solo retiene información unos 30 segundos, y hace falta despertarse directamente desde el sueño REM para que ese contenido llegue a fijarse. Si pasas a la siguiente fase de sueño sin despertar, ese sueño nunca llega a guardarse en ningún sitio.",
+      "en": "Short-term memory only holds information for about 30 seconds, and you need to wake directly from REM sleep for that content to get locked in. If you slide into the next sleep stage without waking, the dream never gets saved anywhere at all."
+    },
+    "source": "Scientific American — Why Do We Forget So Many of Our Dreams?",
+    "sourceUrl": "https://www.scientificamerican.com/article/why-do-we-forget-so-many-of-our-dreams1/",
+    "_evidence": "You have to wake up from REM sleep, generally, to recall a dream. If, instead, you pass into the next stage of sleep without rousing, that dream will never enter long-term memory."
+  },
+  {
+    "id": "lagrimas-emocion-quimica-distinta",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Son iguales las lágrimas que sueltas al pelar cebolla y las que sueltas llorando de pena?",
+      "en": "Are the tears from chopping onions chemically the same as tears from crying in grief?"
+    },
+    "answer": {
+      "es": "No: las lágrimas de emoción llevan más hormonas y un analgésico natural que las de irritación.",
+      "en": "No: emotional tears carry more hormones and a natural painkiller than irritation tears do."
+    },
+    "detail": {
+      "es": "El bioquímico William Frey comparó ambos tipos y encontró en las lágrimas emocionales más prolactina, más hormona del estrés (ACTH) y leucina-encefalina, un opioide natural que reduce el dolor. La idea que lanzó su hallazgo: llorar de pena podría servir para expulsar sustancias ligadas al estrés.",
+      "en": "Biochemist William Frey compared both types and found emotional tears carried more prolactin, more stress hormone (ACTH) and leucine enkephalin, a natural opioid that dulls pain. His finding fueled the idea that crying from grief may help flush out stress-linked chemicals."
+    },
+    "source": "News-Medical.net — What are Tears Made of? The Biochemistry of Emotion",
+    "sourceUrl": "https://www.news-medical.net/health/What-are-Tears-Made-of-The-Biochemistry-of-Emotion.aspx",
+    "_evidence": "According to Dr. Frey's research, emotional tears contain more prolactin, adrenocorticotropic hormone (ACTH), and leucine enkephalin—an endorphin that reduces pain."
+  },
+  {
+    "id": "nudo-en-la-garganta-globus",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué a veces sientes un nudo en la garganta sin tener nada atascado?",
+      "en": "Why do you sometimes feel a lump in your throat with nothing actually stuck there?"
+    },
+    "answer": {
+      "es": "Se llama sensación globus: es real, no imaginada, y casi nunca hay ningún objeto ahí.",
+      "en": "It's called globus sensation: it's real, not imagined, and almost never involves an actual object."
+    },
+    "detail": {
+      "es": "El reflujo ácido es la causa más común: irrita el esófago y hace que la garganta se sienta apretada. Pero también aparece con la tensión de contener una emoción fuerte, como el llanto que alguien se traga, así que el mismo \"nudo\" puede venir de un ácido o de un sentimiento.",
+      "en": "Acid reflux is the most common cause: it irritates the esophagus and makes the throat feel tight. But it also shows up from the tension of holding back a strong emotion, like swallowed-back tears, so the same \"lump\" can come from stomach acid or from a feeling."
+    },
+    "source": "Cleveland Clinic — Globus Sensation",
+    "sourceUrl": "https://my.clevelandclinic.org/health/symptoms/globus-sensation",
+    "_evidence": "feeling like you have a lump in your throat even when there's nothing there."
+  },
+  {
+    "id": "mariposas-estomago-sangre-desviada",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué te \"revuelve\" el estómago justo antes de algo emocionante o aterrador?",
+      "en": "Why does your stomach \"flutter\" right before something exciting or scary?"
+    },
+    "answer": {
+      "es": "Porque el cuerpo desvía la sangre del intestino hacia los músculos, y el estómago protesta.",
+      "en": "Because your body reroutes blood from the gut to your muscles, and the stomach protests."
+    },
+    "detail": {
+      "es": "Al detectar una amenaza, cortisol y adrenalina reducen el riego del estómago y frenan la digestión que normalmente lo mueve sin parar. El nervio vago avisa al cerebro de ese cambio brusco, y esa mezcla de menos sangre y contracciones irregulares es justo lo que sientes como mariposas.",
+      "en": "When it senses a threat, cortisol and adrenaline cut blood flow to the stomach and pause the digestion that normally keeps it moving. The vagus nerve reports that abrupt change back to the brain, and that mix of reduced blood flow and irregular contractions is exactly what you feel as butterflies."
+    },
+    "source": "The Conversation — Why do I get 'butterflies in my stomach'?",
+    "sourceUrl": "https://theconversation.com/why-do-i-get-butterflies-in-my-stomach-269489",
+    "_evidence": "your body reduces blood flow to your stomach and intestines, and pauses the constant digestive pulsing of the gut"
+  },
+  {
+    "id": "fiebre-arma-no-fallo",
+    "category": "cuerpo",
+    "question": {
+      "es": "Si la fiebre te hace sentir fatal, ¿por qué el cuerpo se molesta en generarla?",
+      "en": "If fever makes you feel awful, why does your body bother producing it at all?"
+    },
+    "answer": {
+      "es": "Porque el calor extra ayuda a tus defensas y frena el crecimiento de muchos microbios.",
+      "en": "Because the extra heat helps your defenses work and slows the growth of many microbes."
+    },
+    "detail": {
+      "es": "Con la temperatura elevada, células como los linfocitos T y las asesinas naturales trabajan mejor: circulan más rápido y producen más señales de alarma. A la vez, muchos microbios que solo crecen bien a 37 grados sufren ese calor extra, así que la fiebre no es un síntoma que sobra, es parte del ataque.",
+      "en": "At a raised temperature, cells like T lymphocytes and natural killer cells work better: they circulate faster and produce more alarm signals. At the same time, many microbes that only thrive at 37 degrees struggle with the extra heat — so fever isn't a leftover symptom, it's part of the attack."
+    },
+    "source": "NIH News in Health — How heat from fever and inflammation affects immune cells",
+    "sourceUrl": "https://www.nih.gov/news-events/nih-research-matters/how-heat-fever-inflammation-affects-immune-cells",
+    "_evidence": "An increase in core body temperature acts as an alert system to activate immune surveillance via different cell types, including natural killer cells, dendritic cells, macrophages, T and B lymphocytes, neutrophils, and vascular endothelial cells."
+  },
+  {
+    "id": "dolor-brazo-infarto-cables-cruzados",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué un infarto puede doler en el brazo izquierdo en vez de en el pecho?",
+      "en": "Why can a heart attack hurt in your left arm instead of your chest?"
+    },
+    "answer": {
+      "es": "Porque los nervios del corazón y del brazo entran juntos en la misma zona de la médula espinal.",
+      "en": "Because the nerves from the heart and the arm enter the spinal cord at the same point."
+    },
+    "detail": {
+      "es": "El cerebro recibe la señal de socorro del corazón por una vía que comparte entrada con los nervios del hombro, el brazo y la mandíbula. Como esa ruta está mucho más entrenada en localizar dolores de la piel que de las vísceras, a veces asigna el dolor al brazo en vez de al órgano que de verdad sufre.",
+      "en": "The brain receives the heart's distress signal through a pathway that shares its entry point with nerves from the shoulder, arm and jaw. Since that route is far better trained at locating skin pain than organ pain, it sometimes assigns the pain to the arm instead of the organ that's actually in trouble."
+    },
+    "source": "Cleveland Clinic — Referred Pain",
+    "sourceUrl": "https://my.clevelandclinic.org/health/symptoms/25238-referred-pain",
+    "_evidence": "Sometimes your nerves are like crossed wires. Even though the pain stimulus affects one area of your body, your brain might send pain signals to another area instead."
+  },
+  {
+    "id": "corazon-roto-sindrome-real",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Puede un corazón romperse de verdad tras una pérdida muy dolorosa?",
+      "en": "Can a heart actually break, medically, after a devastating loss?"
+    },
+    "answer": {
+      "es": "Sí: se llama síndrome del corazón roto y se ve igual que un infarto en el hospital.",
+      "en": "Yes: it's called broken heart syndrome, and in the ER it looks just like a heart attack."
+    },
+    "detail": {
+      "es": "Una oleada de adrenalina liberada por el estrés o el duelo aturde el músculo cardíaco y le impide contraerse bien, con dolor de pecho y falta de aire incluidos. La buena noticia es que, a diferencia de un infarto real, el corazón suele recuperarse por completo en días o semanas.",
+      "en": "A flood of adrenaline released by stress or grief stuns the heart muscle and stops it contracting properly, chest pain and shortness of breath included. The good news: unlike a real heart attack, the heart usually recovers completely within days or weeks."
+    },
+    "source": "Cleveland Clinic — Broken Heart Syndrome",
+    "sourceUrl": "https://my.clevelandclinic.org/health/diseases/17857-broken-heart-syndrome",
+    "_evidence": "Broken heart syndrome (Takotsubo cardiomyopathy) is a sudden weakness in your heart muscle. This happens right after a physically or emotionally stressful event."
+  },
+  {
+    "id": "vesicula-duele-en-hombro",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué un problema en la vesícula biliar puede doler en el omóplato?",
+      "en": "Why can a gallbladder problem cause pain in your shoulder blade?"
+    },
+    "answer": {
+      "es": "Porque irrita el diafragma, y el diafragma comparte nervio con el hombro.",
+      "en": "Because it irritates the diaphragm, and the diaphragm shares a nerve with the shoulder."
+    },
+    "detail": {
+      "es": "El nervio frénico, que recorre el diafragma, entra en la médula por el mismo tramo cervical que los nervios del hombro. Cuando la vesícula inflamada roza el diafragma, el cerebro confunde el origen de la señal y coloca el dolor arriba, en el omóplato derecho, en vez de en el abdomen.",
+      "en": "The phrenic nerve, which runs along the diaphragm, enters the spinal cord at the same cervical level as the shoulder's nerves. When an inflamed gallbladder brushes against the diaphragm, the brain confuses where the signal came from and places the pain up in the right shoulder blade instead of the abdomen."
+    },
+    "source": "Wikipedia — Kehr's sign",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kehr's_sign",
+    "_evidence": "irritation of the diaphragm is signaled by the phrenic nerve as pain in the area above the collarbone. This is because the supraclavicular nerves have the same cervical nerves origin as the phrenic nerve, C3, C4, and C5."
+  },
+  {
+    "id": "piedra-rinon-duele-ingle",
+    "category": "cuerpo",
+    "question": {
+      "es": "Un cálculo se forma en el riñón, entonces, ¿por qué el dolor más fuerte llega a la ingle?",
+      "en": "A stone forms in the kidney, so why does the worst pain hit your groin?"
+    },
+    "answer": {
+      "es": "Porque al bajar por el uréter, el dolor cambia de nervio y se traslada más abajo.",
+      "en": "Because as the stone travels down the ureter, the pain switches nerves and moves lower."
+    },
+    "detail": {
+      "es": "Mientras el cálculo viaja, activa distintos nervios esplácnicos según la altura a la que se encuentra. Cuando llega cerca de la vejiga, la señal pasa a compartir nervio con la ingle y los genitales, así que el dolor \"baja\" en el cuerpo aunque el cálculo real siga estando dentro del aparato urinario.",
+      "en": "As the stone travels, it activates different splanchnic nerves depending on how far down it is. Once it nears the bladder, the signal starts sharing a nerve with the groin and genitals, so the pain \"moves down\" the body even though the actual stone is still inside the urinary tract."
+    },
+    "source": "StatPearls / NIH — Acute Renal Colic",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK431091/",
+    "_evidence": "Distal ureteral stones cause pain that tends to radiate into the groin or testicle in the male or labia majora in the female because the pain is referred from the ilioinguinal or genitofemoral nerves."
+  },
+  {
+    "id": "apendicitis-dolor-viaja",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué un dolor de apendicitis empieza junto al ombligo y termina abajo a la derecha?",
+      "en": "Why does appendicitis pain start near the navel and end up in the lower right?"
+    },
+    "answer": {
+      "es": "Porque el dolor cambia de tipo de nervio a mitad de camino, y el nuevo sí acierta el lugar.",
+      "en": "Because the pain switches nerve type halfway through, and the new one actually gets the location right."
+    },
+    "detail": {
+      "es": "El apéndice manda al principio una señal difusa que entra en la médula por el mismo punto que la piel del ombligo, así que ahí es donde duele primero. Solo cuando la inflamación llega a tocar la pared abdominal se activan nervios de precisión, y el dolor salta, ya localizado, a la zona exacta del apéndice.",
+      "en": "At first the appendix sends a vague signal that enters the spinal cord at the same point as the skin around the navel, so that's where it hurts first. Only once the inflammation reaches the abdominal wall do precision nerves switch on, and the pain jumps, now pinpoint, to the appendix's actual location."
+    },
+    "source": "StatPearls / NIH — Appendicitis",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK493193/",
+    "_evidence": "Stimulation of the visceral T8-T10 afferent nerve fibers causes this initial vague abdominal pain. As the inflamed parietal peritoneum in the adjacent area becomes irritated, the pain becomes more focused in the right lower quadrant."
+  },
+  {
+    "id": "mareo-barco-conflicto-sensorial",
+    "category": "cuerpo",
+    "question": {
+      "es": "En un barco sin ventanas, ¿por qué el oído puede marearte aunque no veas nada moverse?",
+      "en": "Below deck on a ship, why can your inner ear make you seasick with nothing visibly moving?"
+    },
+    "answer": {
+      "es": "Porque el oído interno nota movimiento y los ojos dicen que estás quieto: el cerebro no soporta la contradicción.",
+      "en": "Because your inner ear senses motion while your eyes report stillness, and your brain can't stand the contradiction."
+    },
+    "detail": {
+      "es": "El sistema vestibular, en el oído interno, y la vista mandan constantemente información sobre postura y movimiento al cerebro. Cuando las dos versiones no encajan, como en un camarote sin vistas al exterior, el cerebro interpreta el desajuste como una posible intoxicación y activa las náuseas de forma preventiva.",
+      "en": "The vestibular system in the inner ear and the eyes constantly feed the brain information about posture and movement. When the two versions don't match, like in a cabin with no view outside, the brain reads the mismatch as a possible poisoning and switches on nausea as a precaution."
+    },
+    "source": "CDC Yellow Book — Motion Sickness",
+    "sourceUrl": "https://www.cdc.gov/yellow-book/hcp/travel-air-sea/motion-sickness.html",
+    "_evidence": "The sensory conflict or mismatch is between incoming patterns of vestibular, visual, and kinesthetic inputs versus the expected patterns as predicted by an 'internal model.'"
+  },
+  {
+    "id": "cortar-pelo-no-duele",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué un corte de pelo no duele nada, pero un tirón sí?",
+      "en": "Why doesn't a haircut hurt at all, but a yank on your hair does?"
+    },
+    "answer": {
+      "es": "Porque el pelo que ves es tejido muerto sin nervios: el dolor solo vive en la raíz.",
+      "en": "Because the hair you can see is dead tissue with no nerves — the pain only lives at the root."
+    },
+    "detail": {
+      "es": "El tallo del cabello está hecho de queratina sin riego ni terminaciones nerviosas, así que cortarlo es indoloro como cortarte una uña. El folículo, enterrado en la piel, sí está rodeado de una red de nervios sensibles, y son esos los que se disparan cuando algo tira del pelo.",
+      "en": "The hair shaft is made of keratin with no blood supply or nerve endings, so cutting it is as painless as trimming a nail. The follicle, buried in the skin, really is wrapped in a network of sensitive nerves, and those are what fire when something tugs on the hair."
+    },
+    "source": "Hairfinder — Why doesn't it hurt when you cut hair?",
+    "sourceUrl": "https://www.hairfinder.com/hair5/cut-hair-pain.htm",
+    "_evidence": "Cutting hair is painless because the hair shaft consists of dead keratinized cells without any nerve endings."
+  },
+  {
+    "id": "leptina-freno-del-hambre",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Qué apaga tu hambre cuando ya has comido lo suficiente, y por qué a veces no funciona?",
+      "en": "What switches off your hunger once you've eaten enough, and why does it sometimes fail?"
+    },
+    "answer": {
+      "es": "Una hormona, la leptina, avisa al cerebro de que hay reservas de sobra. A veces el cerebro deja de escucharla.",
+      "en": "A hormone, leptin, tells the brain there's plenty of fat stored. Sometimes the brain just stops listening to it."
+    },
+    "detail": {
+      "es": "La grasa corporal libera leptina de forma continua para frenar el apetito a largo plazo, no comida a comida. En la llamada resistencia a la leptina, el cerebro deja de responder a esa señal aunque los niveles sean altos, así que la sensación de saciedad nunca llega y se sigue comiendo de más.",
+      "en": "Body fat continuously releases leptin to curb appetite over the long run, not meal by meal. In so-called leptin resistance, the brain stops responding to that signal even when levels are high, so the feeling of fullness never arrives and eating continues past the point of need."
+    },
+    "source": "Cleveland Clinic — Leptin",
+    "sourceUrl": "https://my.clevelandclinic.org/health/body/22446-leptin",
+    "_evidence": "If you have leptin resistance, your brain doesn't respond as it normally would to leptin. Since leptin constantly stimulates your brain, you don't get the sensation of feeling full."
+  },
+  {
+    "id": "sonrojo-venas-al-reves",
+    "category": "cuerpo",
+    "question": {
+      "es": "Al ruborizarte, ¿por qué solo se te enrojece la cara y no otras partes del cuerpo?",
+      "en": "When you blush, why does only your face turn red and not the rest of your body?"
+    },
+    "answer": {
+      "es": "Porque las venas de la cara hacen justo lo contrario que las del resto del cuerpo ante la misma hormona.",
+      "en": "Because facial veins do the exact opposite of veins everywhere else in response to the same hormone."
+    },
+    "detail": {
+      "es": "La adrenalina que suelta el sistema nervioso ante la vergüenza suele estrechar los vasos sanguíneos para desviar sangre a los músculos. Pero las venas de la cara y el cuello tienen una concentración de receptores que reaccionan al revés, se relajan y se ensanchan, así que ahí la sangre se acumula justo bajo la piel.",
+      "en": "The adrenaline released by the nervous system during embarrassment usually narrows blood vessels to divert blood to the muscles. But the veins in the face and neck carry a concentration of receptors that react the opposite way, relaxing and widening, so blood pools right under the skin there instead."
+    },
+    "source": "Live Science — What causes blushing? Science finally reveals the answer.",
+    "sourceUrl": "https://www.livescience.com/health/neuroscience/what-causes-blushing",
+    "_evidence": "Veins in the face dilate, causing more blood to flow into your cheeks, thus the rosy color. Normal blushing of skin, and in particular, the face, is a reflection of the vasodilatory effects of blood vessels in the skin caused by emotional stimuli."
+  },
+  {
+    "id": "sangre-brota-o-rezuma",
+    "category": "cuerpo",
+    "question": {
+      "es": "Ante un corte, ¿por qué a veces la sangre sale a chorros y otras solo rezuma despacio?",
+      "en": "With a cut, why does blood sometimes spurt out and other times just ooze slowly?"
+    },
+    "answer": {
+      "es": "Depende de qué vaso se rompa: las arterias empujan con la fuerza del corazón, las venas casi no empujan.",
+      "en": "It depends which vessel breaks: arteries push with the force of the heartbeat, veins barely push at all."
+    },
+    "detail": {
+      "es": "La sangre arterial va a presión alta, marcada por cada latido, así que sale en chorros pulsátiles al romperse el vaso. La sangre venosa circula a baja presión de vuelta al corazón, por eso una vena cortada gotea o mana de forma continua, sin el ritmo ni la fuerza de una arteria.",
+      "en": "Arterial blood travels under high pressure, timed to each heartbeat, so it comes out in pulsing spurts when the vessel tears. Venous blood flows back to the heart at low pressure, which is why a cut vein drips or flows steadily, without an artery's rhythm or force."
+    },
+    "source": "StatPearls / NIH — Hemorrhage Control",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK535393/",
+    "_evidence": "Arterial bleeding is spurting or pulsatile, bright red blood... Venous bleeding flows as dark red blood that is steady but lacks the force of the arterial system."
+  },
+  {
+    "id": "nudillos-no-dan-artritis",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Es verdad que crujirte los nudillos toda la vida te acaba dando artritis?",
+      "en": "Does cracking your knuckles for years really give you arthritis?"
+    },
+    "answer": {
+      "es": "No: décadas de estudios no encuentran ninguna relación entre el hábito y la enfermedad.",
+      "en": "No: decades of studies find no link at all between the habit and the disease."
+    },
+    "detail": {
+      "es": "Un médico se crujió los nudillos de una sola mano dos veces al día durante 50 años, dejando la otra intacta, y no hubo diferencia entre ambas manos. Un estudio con 215 personas de 50 a 89 años tampoco halló relación, con independencia de la frecuencia o los años de práctica.",
+      "en": "One doctor cracked the knuckles on just one hand twice a day for 50 years, leaving the other alone, and found no difference between the two. A study of 215 people aged 50 to 89 found no link either, regardless of how often or how long they'd been doing it."
+    },
+    "source": "Harvard Health — Does cracking knuckles cause arthritis?",
+    "sourceUrl": "https://www.health.harvard.edu/pain/does-cracking-knuckles-cause-arthritis",
+    "_evidence": "Cracking your knuckles may aggravate the people around you, but it probably won't raise your risk for arthritis."
+  },
+  {
+    "id": "alarma-se-cuela-en-el-sueno",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Puede el sonido real de tu despertador colarse dentro del sueño que estás teniendo?",
+      "en": "Can the real sound of your alarm clock sneak its way into the dream you're having?"
+    },
+    "answer": {
+      "es": "Sí: el cerebro dormido lo reinterpreta como parte de la historia, no como una alarma.",
+      "en": "Yes: the sleeping brain reinterprets it as part of the story, not as an alarm at all."
+    },
+    "detail": {
+      "es": "En un caso documentado, alguien soñaba con el ladrido rítmico de un perro justo antes de despertar y descubrir que era el pitido del despertador. El oído sigue funcionando durante el sueño, así que un sonido real entra en la escena onírica disfrazado de teléfono, trueno o conversación, según lo que el cerebro esté narrando en ese momento.",
+      "en": "In one documented case, someone dreamed of a dog's rhythmic barking right before waking up to discover it was their alarm beeping. Hearing keeps working during sleep, so a real sound enters the dream disguised as a ringing phone, thunder, or a conversation, depending on whatever the brain happens to be narrating."
+    },
+    "source": "Psychology Today — Sensory Incorporation in Dreams",
+    "sourceUrl": "https://www.psychologytoday.com/us/blog/dream-factory/201409/sensory-incorporation-in-dreams",
+    "_evidence": "It's not unusual to realize upon awakening that elements of our true physical surroundings have been incorporated into our dreams."
+  },
+  {
+    "id": "bebe-no-recuerda-pero-quiza-si",
+    "category": "cuerpo",
+    "question": {
+      "es": "Si de bebé no recuerdas nada, ¿es porque tu cerebro no guardaba esos momentos?",
+      "en": "If you remember nothing from being a baby, is it because your brain never saved those moments?"
+    },
+    "answer": {
+      "es": "Puede que sí los guardara: un estudio sugiere que el problema es acceder a ellos, no grabarlos.",
+      "en": "It may have saved them after all: one study suggests the problem is retrieval, not recording."
+    },
+    "detail": {
+      "es": "Investigadores mostraron imágenes nuevas a bebés y midieron su actividad cerebral: cuanta más actividad en el hipocampo al ver una imagen, más tiempo la miraban de nuevo al reaparecer, señal de que la habían reconocido. Eso encaja con la idea de que esos primeros recuerdos siguen ahí guardados, solo que en la vida adulta no hay manera de recuperarlos.",
+      "en": "Researchers showed babies new images and measured their brain activity: the more hippocampal activity while viewing an image, the longer they looked at it when it reappeared, a sign they'd recognized it. That fits the idea that those earliest memories are still stored somewhere, just permanently out of reach for the adult mind."
+    },
+    "source": "Yale News — Why don't we remember being a baby?",
+    "sourceUrl": "https://news.yale.edu/2025/03/20/why-dont-we-remember-being-baby-new-study-provides-clues",
+    "_evidence": "The greater the activity in the hippocampus when an infant was looking at a new image, the longer the infant looked at it when it reappeared later."
+  },
+  {
+    "id": "mocos-atrapan-al-virus",
+    "category": "cuerpo",
+    "question": {
+      "es": "Cuando estás resfriado, ¿por qué te sale tanto moco de golpe?",
+      "en": "When you catch a cold, why does so much mucus suddenly pour out?"
+    },
+    "answer": {
+      "es": "Porque es una trampa: el moco atrapa al virus para poder expulsarlo del cuerpo.",
+      "en": "Because it's a trap: the mucus catches the virus so your body can throw it out."
+    },
+    "detail": {
+      "es": "Al notar un virus, la nariz dispara la producción de mucosidad transparente, que envuelve las partículas invasoras. Diminutos pelillos llamados cilios reman ese moco cargado de virus hacia fuera, y sonarte o toser termina el trabajo: no es un síntoma molesto sin más, es el mecanismo de expulsión en marcha.",
+      "en": "When it senses a virus, the nose ramps up clear mucus production, which coats the invading particles. Tiny hairs called cilia row that virus-laden mucus outward, and blowing your nose or coughing finishes the job — it isn't just an annoying symptom, it's the expulsion mechanism at work."
+    },
+    "source": "Cleveland Clinic — Rhinorrhea (Runny Nose)",
+    "sourceUrl": "https://my.clevelandclinic.org/health/symptoms/17660-runny-nose",
+    "_evidence": "This mucus traps the virus and helps flush it out of your nose and sinuses."
+  },
+  {
+    "id": "sin-hambre-por-parasito",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Puede tu propio intestino decidir apagarte el hambre para protegerte de un parásito?",
+      "en": "Can your own gut decide to shut off your hunger to protect you from a parasite?"
+    },
+    "answer": {
+      "es": "Sí: unas células del intestino detectan el parásito y avisan directamente al cerebro para que pares de comer.",
+      "en": "Yes: gut cells detect the parasite and signal the brain directly to make you stop eating."
+    },
+    "detail": {
+      "es": "Unas células especializadas del intestino, las células en penacho, reconocen la presencia de un parásito y liberan una sustancia que activa el nervio vago hasta el cerebro. El cuerpo primero comprueba que la amenaza es real y persistente, y solo entonces apaga el apetito como estrategia de defensa.",
+      "en": "Specialized gut cells called tuft cells recognize a parasite is present and release a substance that activates the vagus nerve all the way to the brain. The body first checks that the threat is real and ongoing, and only then switches off appetite as a defense strategy."
+    },
+    "source": "ScienceDaily — Scientists discover why your appetite suddenly disappears when you're sick",
+    "sourceUrl": "https://www.sciencedaily.com/releases/2026/03/260328024519.htm",
+    "_evidence": "tuft cells detect parasites and send signals that ultimately trigger the brain to suppress appetite."
+  },
+  {
+    "id": "chicle-no-tarda-siete-anos",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Es verdad que un chicle tragado tarda siete años en digerirse dentro del cuerpo?",
+      "en": "Is it true that swallowed gum takes seven years to digest inside your body?"
+    },
+    "answer": {
+      "es": "No: el chicle no se digiere nunca, pero tampoco se queda. Sale por donde entra en un par de días.",
+      "en": "No: gum never gets digested, but it doesn't stay put either — it exits within a couple of days."
+    },
+    "detail": {
+      "es": "El estómago no puede descomponer la base de goma del chicle, así que la deja pasar intacta por el resto del sistema digestivo, igual que haría con una semilla. Solo en casos raros, cuando se traga muchísimo chicle junto con estreñimiento, puede llegar a formar un tapón intestinal, sobre todo en niños pequeños.",
+      "en": "The stomach can't break down gum's rubbery base, so it just lets it pass through the rest of the digestive system intact, the same way it would a seed. Only in rare cases, when someone swallows a lot of gum along with constipation, can it form an intestinal blockage, mostly in young children."
+    },
+    "source": "Mayo Clinic — Swallowing gum: Is it harmful?",
+    "sourceUrl": "https://www.mayoclinic.org/diseases-conditions/indigestion/expert-answers/digestive-system/faq-20058446",
+    "_evidence": "Folklore would suggest that if you swallow gum, it stays in the stomach a really long time – up to seven years. That simply is not true."
+  },
+  {
+    "id": "cabeza-no-pierde-mas-calor",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Pierdes de verdad la mitad de tu calor corporal por la cabeza si sales sin gorro?",
+      "en": "Do you really lose half your body heat through your head if you go out hatless?"
+    },
+    "answer": {
+      "es": "No: la cabeza pierde calor en proporción a la piel que tiene, ni más ni menos.",
+      "en": "No: the head loses heat in proportion to how much skin it has, no more, no less."
+    },
+    "detail": {
+      "es": "El mito viene de un viejo manual militar y de pruebas antiguas en las que solo se dejaba la cabeza al descubierto, así que lógicamente era por donde más se enfriaba el cuerpo. Estudios que cubren o destapan distintas zonas por igual muestran que la cabeza representa en torno al 10 % de la piel, y pierde justo ese 10 % del calor.",
+      "en": "The myth traces to an old military manual and to early tests where only the head was left uncovered, so of course that's where the body lost the most heat. Studies that cover or expose different areas equally show the head makes up roughly 10% of your skin, and loses just that 10% of the heat."
+    },
+    "source": "Cleveland Clinic Health Essentials — Do You Really Lose Most of Your Body's Heat Through Your Head?",
+    "sourceUrl": "https://health.clevelandclinic.org/body-heat-loss",
+    "_evidence": "it's more in the 10% range for adults"
+  },
+  {
+    "id": "azucar-no-pone-hiper-a-ninos",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Provoca de verdad el azúcar que los niños se pongan hiperactivos en las fiestas?",
+      "en": "Does sugar really make kids hyperactive at parties?"
+    },
+    "answer": {
+      "es": "No: un metaanálisis con más de 1.400 niños no encontró ningún efecto real del azúcar en su conducta.",
+      "en": "No: a meta-analysis of over 1,400 kids found no real effect of sugar on their behavior at all."
+    },
+    "detail": {
+      "es": "Un repaso de 23 ensayos controlados, publicado en JAMA, comparó niños que tomaban azúcar con otros que tomaban un sustituto sin que nadie supiera cuál era cuál, y el efecto combinado fue prácticamente cero. Lo que sí se demostró es que basta con que un adulto crea que un niño ha tomado azúcar para que lo puntúe como más revoltoso, aunque en realidad le hayan dado un placebo.",
+      "en": "A review of 23 controlled trials, published in JAMA, compared kids given sugar against kids given a substitute with nobody knowing which was which, and the combined effect came out at essentially zero. What the studies did show is that simply believing a child has had sugar is enough for an adult to rate them as more wound-up, even when they were actually given a placebo."
+    },
+    "source": "Medical News Today — Medical myths: Does sugar make children hyperactive?",
+    "sourceUrl": "https://www.medicalnewstoday.com/articles/medical-myths-does-sugar-make-children-hyperactive",
+    "_evidence": "This meta-analysis provides strong evidence that sugar does not affect children's behavior or cognitive performance."
+  },
+  {
+    "id": "zanahorias-radar-mito-guerra",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué se sigue diciendo que comer zanahorias te da vista de gato en la oscuridad?",
+      "en": "Why do people still say eating carrots gives you cat-like night vision?"
+    },
+    "answer": {
+      "es": "Por una tapadera de guerra: Gran Bretaña la inventó para esconder que tenía radar.",
+      "en": "Because of a wartime cover story: Britain invented it to hide that it had radar."
+    },
+    "detail": {
+      "es": "En 1940, un piloto de caza nocturno derribaba aviones alemanes gracias a un radar de interceptación aérea todavía secreto. Para que Alemania no sospechara, el gobierno británico difundió que su puntería se debía a que comía muchísima zanahoria, y la mentira sobrevivió a la guerra mucho mejor que el secreto que debía tapar.",
+      "en": "In 1940, a night-fighter pilot was shooting down German planes thanks to a still-secret airborne interception radar. To keep Germany from suspecting, the British government spread the story that his aim came from eating huge amounts of carrots — and the lie outlived the secret it was meant to cover by decades."
+    },
+    "source": "Smithsonian Magazine — Carrots Can't Help You See in the Dark",
+    "sourceUrl": "https://www.smithsonianmag.com/history/carrots-cant-help-you-see-in-the-dark-heres-how-world-war-ii-propaganda-campaign-popularized-the-myth-28812484/",
+    "_evidence": "The government told newspapers that the reason for the RAF's success was the fact that pilots like Cunningham ate an excess of carrots."
+  },
+  {
+    "id": "leer-poca-luz-no-danya-vista",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿De verdad te vas a quedar sin vista por leer con poca luz, como avisaban en casa?",
+      "en": "Will you really ruin your eyesight reading in dim light, like you were always warned?"
+    },
+    "answer": {
+      "es": "No: cansa la vista, pero ninguna sociedad de oftalmología ha encontrado que produzca daño real.",
+      "en": "No: it tires your eyes out, but no ophthalmology society has found it causes any real damage."
+    },
+    "detail": {
+      "es": "Leer con poca luz obliga al ojo a esforzarse más, igual que levantar un peso pesado cansa un músculo sin lesionarlo. Los oftalmólogos observan el ojo en tiempo real bajo distintas condiciones de luz y no encuentran cambios estructurales ni daño celular por esta costumbre tan repetida en las advertencias familiares.",
+      "en": "Reading in dim light forces the eye to work harder, the same way lifting something heavy tires a muscle without injuring it. Ophthalmologists watch the eye in real time under different lighting and find no structural change or cellular damage from this habit, despite how often it gets repeated as a warning at home."
+    },
+    "source": "American Academy of Ophthalmology — Common Eye and Vision Myths",
+    "sourceUrl": "https://www.aao.org/eye-health/tips-prevention/common-eye-vision-myths-facts",
+    "_evidence": "It does not harm your eyes to read in dim light."
+  },
+  {
+    "id": "afeitar-no-engrosa-pelo",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Es verdad que afeitarte hace que el pelo vuelva a salir más grueso y oscuro?",
+      "en": "Is it true that shaving makes your hair grow back thicker and darker?"
+    },
+    "answer": {
+      "es": "No: solo lo parece. El folículo, que es quien decide el grosor, ni se entera del afeitado.",
+      "en": "No: it just looks that way. The follicle, which actually decides thickness, never even notices the shave."
+    },
+    "detail": {
+      "es": "La cuchilla corta el pelo en un extremo romo en vez del extremo fino y afilado con el que crece de forma natural, así que al tacto parece más áspero. El nuevo pelo también puede verse más oscuro simplemente porque aún no le ha dado el sol, no porque el afeitado haya cambiado nada bajo la piel.",
+      "en": "The blade cuts hair to a blunt edge instead of the fine, tapered tip it grows with naturally, so it just feels coarser to the touch. New hair can also look darker simply because it hasn't been bleached by the sun yet, not because shaving changed anything under the skin."
+    },
+    "source": "WebMD — Does Shaving Your Legs Make Your Hair Darker? Myth or Fact",
+    "sourceUrl": "https://www.webmd.com/beauty/features/shaving-your-legs-makes-your-hair-darker-myth",
+    "_evidence": "Your hair grows in follicles beneath the skin, and nothing you do to your leg hair on top of the skin can change its diameter or the number of follicles present."
+  },
+  {
+    "id": "no-puedes-leer-en-suenos",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué te resulta casi imposible leer un texto con claridad dentro de un sueño?",
+      "en": "Why is it nearly impossible to read a piece of text clearly inside a dream?"
+    },
+    "answer": {
+      "es": "Porque las zonas del cerebro que procesan el lenguaje escrito están apagadas mientras duermes.",
+      "en": "Because the brain regions that process written language are switched off while you sleep."
+    },
+    "detail": {
+      "es": "El área de Wernicke, encargada de descifrar el lenguaje, reduce su actividad durante el sueño, así que leer, escribir e incluso hablar con fluidez son rarezas dentro de un sueño. El cerebro te da la sensación de estar leyendo, pero si vuelves a mirar el mismo cartel, las letras ya han cambiado.",
+      "en": "Wernicke's area, which decodes language, dials down its activity during sleep, so reading, writing and even fluent speech are all rare inside a dream. Your brain gives you the sensation of reading, but glance back at the same sign and the letters will have already changed."
+    },
+    "source": "Inverse — Sleep Science: Why Can't You Read In Dreams?",
+    "sourceUrl": "https://www.inverse.com/article/40029-why-cant-i-read-in-my-dreams",
+    "_evidence": "the entire language area of the brain is less active, making reading, writing, and even speaking very rare in dreams"
+  },
+  {
+    "id": "sonambulo-actua-sus-suenos",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Existen personas a las que su cuerpo no le impide moverse mientras sueñan?",
+      "en": "Are there people whose bodies don't stop them from moving while they dream?"
+    },
+    "answer": {
+      "es": "Sí: en el trastorno de conducta del sueño REM, la parálisis nocturna normal simplemente no ocurre.",
+      "en": "Yes: in REM sleep behavior disorder, the normal nightly paralysis just doesn't happen."
+    },
+    "detail": {
+      "es": "Cada noche, mientras sueñas, la mayoría de tus músculos quedan bloqueados para que no puedas ejecutar lo que estás soñando. En este trastorno ese bloqueo falla, así que quien lo sufre puede dar patadas, gritar o saltar de la cama actuando literalmente la pesadilla que está teniendo.",
+      "en": "Every night, while you dream, most of your muscles get locked so you can't act out what's happening in the dream. In this disorder that lock fails, so the person can kick, shout, or leap out of bed, literally acting out whatever nightmare they're having."
+    },
+    "source": "Cleveland Clinic — REM Sleep Behavior Disorder",
+    "sourceUrl": "https://my.clevelandclinic.org/health/diseases/24465-rem-sleep-behavior-disorder-rbd",
+    "_evidence": "For people with REM sleep behavior disorder, temporary paralysis doesn't happen. Because of this, they can unknowingly act out their dreams and speak while they sleep."
+  },
+  {
+    "id": "estrias-son-desgarros-reales",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Son en realidad pequeñas roturas por dentro de la piel, y no solo una marca en la superficie?",
+      "en": "Are stretch marks actually tiny tears inside the skin, not just a mark on the surface?"
+    },
+    "answer": {
+      "es": "Sí: son desgarros reales de las fibras de colágeno y elastina de la capa media de la piel.",
+      "en": "Yes: they're real tears in the collagen and elastin fibers of the skin's middle layer."
+    },
+    "detail": {
+      "es": "Cuando la piel se estira más rápido de lo que el colágeno y la elastina pueden acompañar, esas fibras se rompen en vez de estirarse y volver a su sitio. Empiezan rojizas o moradas, por los vasos sanguíneos dilatados que quedan a la vista, y solo con el tiempo se aclaran hasta el tono blanquecino que casi todos reconocen.",
+      "en": "When skin stretches faster than collagen and elastin can keep up, those fibers tear instead of stretching and snapping back. They start out reddish or purple, from the dilated blood vessels now exposed, and only fade to the whitish tone most people recognize much later."
+    },
+    "source": "DermNet NZ — Stretch marks (striae)",
+    "sourceUrl": "https://dermnetnz.org/topics/stretch-marks-striae",
+    "_evidence": "Stretch marks are fine lines on the body that occur from tissue under your skin tearing from rapid growth or over-stretching."
+  },
+  {
+    "id": "bebe-nace-cubierto-de-cera",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué algunos bebés nacen cubiertos de una capa blanquecina y cerosa?",
+      "en": "Why are some babies born coated in a whitish, waxy layer?"
+    },
+    "answer": {
+      "es": "Es la vérnix caseosa: una crema protectora que el propio bebé fabrica dentro del útero.",
+      "en": "It's vernix caseosa: a protective cream the baby itself makes inside the womb."
+    },
+    "detail": {
+      "es": "Hecha en un 81 % de agua y el resto de grasas y proteínas, esa capa evita que la piel del feto se agriete tras meses en líquido amniótico y actúa como lubricante natural durante el parto. Casi un tercio de sus proteínas tienen función antimicrobiana directa, así que además protege de infecciones nada más nacer.",
+      "en": "Made of 81% water plus fats and proteins, that layer keeps the fetus's skin from chapping after months in amniotic fluid and works as a natural lubricant during birth. Nearly a third of its proteins have direct antimicrobial function, so it also guards against infection right from birth."
+    },
+    "source": "PMC — Unraveling the Mystery of Vernix Caseosa",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2763724/",
+    "_evidence": "water (81%), lipid (9%), and proteins (10%)... 39% of identified vernix proteins are components of innate immunity and 29% have direct antimicrobial properties"
+  },
+  {
+    "id": "boca-cicatriza-mas-rapido",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué una herida dentro de la boca cicatriza mucho más rápido que la misma herida en la piel?",
+      "en": "Why does a wound inside the mouth heal much faster than the same wound on skin?"
+    },
+    "answer": {
+      "es": "Porque los genes de las células de la boca ya vienen preparados para cerrar heridas antes de que ocurran.",
+      "en": "Because the genes in mouth cells come pre-set to close wounds before they even happen."
+    },
+    "detail": {
+      "es": "Investigadores compararon células de la boca y de la piel sin ninguna lesión y encontraron genes de reparación, como PITX1 y SOX2, ya mucho más activos en la boca de partida. Con esa ventaja de fábrica, una herida en la boca puede cerrarse en un día o dos, mientras la misma herida en la piel tarda una semana o más.",
+      "en": "Researchers compared uninjured mouth and skin cells and found repair genes, like PITX1 and SOX2, already running much higher in the mouth from the start. With that head start built in, a mouth wound can close in a day or two, while the same wound on skin takes a week or longer."
+    },
+    "source": "NIH Intramural Research Program — Molecular Factors Underlie Mouth's Head Start on Healing",
+    "sourceUrl": "https://irp.nih.gov/blog/post/2018/08/molecular-factors-underlie-mouths-head-start-on-healing",
+    "_evidence": "Two of these transcription factor genes, PITX1 and SOX2, were much more active in cells from the uninjured mouth than cells from uninjured skin."
+  },
+  {
+    "id": "picante-engana-receptor-calor",
+    "category": "cuerpo",
+    "question": {
+      "es": "El picante no quema de verdad, entonces, ¿por qué duele exactamente igual que el fuego?",
+      "en": "Spicy food isn't actually hot, so why does it hurt exactly like fire does?"
+    },
+    "answer": {
+      "es": "Porque la capsaicina activa el mismo receptor que se dispara con el calor real, sin que suba la temperatura.",
+      "en": "Because capsaicin flips the same switch that real heat does, without your temperature actually rising."
+    },
+    "detail": {
+      "es": "Un receptor de las neuronas de la boca, el TRPV1, se activa normalmente solo por encima de los 43 grados. La capsaicina del chile se acopla a ese mismo receptor y lo dispara igual que lo haría una llama, así que el cerebro recibe una señal de quemadura real aunque en la lengua no haya subido ni un grado.",
+      "en": "A receptor in the mouth's nerve cells, TRPV1, normally only switches on above 43 degrees Celsius. Chili's capsaicin latches onto that exact receptor and fires it off just like a flame would, so the brain gets a real burn signal even though the tongue hasn't risen a single degree."
+    },
+    "source": "PMC — Integrating TRPV1 Receptor Function with Capsaicin Psychophysics",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4738735/",
+    "_evidence": "Capsaicin is an agonist that binds to the TRPV1 receptor, a well characterized ion channel that localizes to peripheral terminals of primary afferent neurons that sense both pain and heat."
+  },
+  {
+    "id": "siempre-hay-sitio-para-el-postre",
+    "category": "cuerpo",
+    "question": {
+      "es": "Si ya no te cabe ni un bocado más de la comida, ¿por qué sí te cabe el postre?",
+      "en": "If you couldn't fit in one more bite of your meal, why can you still fit dessert?"
+    },
+    "answer": {
+      "es": "Porque la saciedad es específica de cada sabor: el cerebro se cansa del plato, no del estómago vacío.",
+      "en": "Because fullness is flavor-specific: your brain gets tired of that dish, not of an empty stomach."
+    },
+    "detail": {
+      "es": "Comer el mismo sabor una y otra vez apaga las ganas de seguir con él mucho antes de que el estómago esté realmente lleno. En cuanto aparece un sabor nuevo, como el dulce del postre, ese apetito se reactiva de golpe, así que la sensación de estar lleno depende de qué comes, no solo de cuánto.",
+      "en": "Eating the same flavor over and over kills the desire to keep going with it well before the stomach is actually full. The moment a new flavor shows up, like a dessert's sweetness, that appetite switches back on, so feeling full depends on what you're eating, not just how much."
+    },
+    "source": "Illinois Science Council — Room for Dessert",
+    "sourceUrl": "https://www.illinoisscience.org/blog/room-for-dessert-why-we-crave-sweets-even-when-were-full/",
+    "_evidence": "When our brain has lost interest in a certain food we perceive a feeling of fullness, whereas our appetite returns when we're given the option to try a new food or even a new flavor."
+  },
+  {
+    "id": "hambre-te-vuelve-agresivo",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Puede tu nivel de azúcar en sangre predecir lo mal que vas a tratar a tu pareja esta noche?",
+      "en": "Can your blood sugar level predict how badly you'll treat your partner tonight?"
+    },
+    "answer": {
+      "es": "Según un estudio, sí: a menor azúcar en sangre, más agujas clavaban en un muñeco vudú de su pareja.",
+      "en": "According to one study, yes: the lower the blood sugar, the more pins people stuck in a voodoo doll of their spouse."
+    },
+    "detail": {
+      "es": "Durante 21 días, 107 parejas midieron su azúcar en sangre cada noche y clavaban alfileres en un muñeco que representaba a su cónyuge, como medida simbólica de enfado. Quienes tenían el azúcar más bajo clavaron más del doble de alfileres que quienes lo tenían más alto: el cerebro necesita glucosa para frenar los impulsos.",
+      "en": "For 21 days, 107 couples measured their blood sugar every night and stuck pins in a doll representing their spouse, as a symbolic gauge of anger. Those with the lowest blood sugar stuck more than double the pins of those with the highest — the brain needs glucose to keep impulses in check."
+    },
+    "source": "NPR — Voodoo Dolls Prove It: Hunger Makes Couples Turn On Each Other",
+    "sourceUrl": "https://www.npr.org/sections/health-shots/2014/04/15/301780516/voodoo-dolls-prove-it-hunger-makes-couples-turn-on-each-other",
+    "_evidence": "people with the lowest blood sugar levels stuck more than twice as many pins in the voodoo dolls, compared with people with the highest levels"
+  },
+  {
+    "id": "mareo-que-vuelve-a-tierra-firme",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Puedes sentir que sigues meciéndote en un barco horas después de haber pisado tierra firme?",
+      "en": "Can you still feel like you're rocking on a boat hours after stepping onto dry land?"
+    },
+    "answer": {
+      "es": "Sí, y a veces dura semanas: se llama mal de desembarco, y el cerebro tarda en reajustarse.",
+      "en": "Yes, and sometimes it lasts weeks: it's called mal de debarquement, and the brain is slow to readjust."
+    },
+    "detail": {
+      "es": "El oído interno se acostumbra durante el viaje a compensar un movimiento constante bajo los pies, y al bajar a tierra sigue haciendo esa corrección aunque ya no haga falta. La mayoría lo nota solo un par de días, pero en algunos casos la sensación de balanceo persiste durante meses.",
+      "en": "The inner ear gets used to compensating for constant motion underfoot during the trip, and once you're back on land it keeps making that correction even though it's no longer needed. Most people notice it for just a couple of days, but in some cases the rocking sensation lingers for months."
+    },
+    "source": "Cleveland Clinic — Mal de Débarquement Syndrome (MdDS)",
+    "sourceUrl": "https://my.clevelandclinic.org/health/diseases/24796-mal-de-debarquement-syndrome-mdds",
+    "_evidence": "a rare condition that makes you feel like you're moving, even when you're not"
+  },
+  {
+    "id": "bailarines-no-marean-truco",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Cómo consigue un bailarín dar vueltas y vueltas sin marearse como cualquiera?",
+      "en": "How does a dancer spin around and around without getting dizzy like anyone else would?"
+    },
+    "answer": {
+      "es": "Con un truco de la vista y años de entrenamiento que enseñan al cerebro a ignorar la señal de mareo.",
+      "en": "With a visual trick and years of training that teach the brain to ignore the dizziness signal."
+    },
+    "detail": {
+      "es": "Al girar, el bailarín fija la mirada en un punto y gira la cabeza de golpe al final de cada vuelta, en vez de acompañar el giro poco a poco: es la técnica del \"spotting\". Además, el entrenamiento repetido hace que el cerebro aprenda a apagar la señal que el oído interno manda de más, así que deja de sentir el mareo que sentiría cualquiera.",
+      "en": "While spinning, the dancer fixes their gaze on a point and snaps the head around at the end of each turn instead of letting it drift with the body, a technique called \"spotting.\" On top of that, repeated training teaches the brain to dampen the excess signal the inner ear sends out, so it stops registering the dizziness anyone else would feel."
+    },
+    "source": "Imperial College London — Ballet dancers' brains adapt to stop them feeling dizzy",
+    "sourceUrl": "https://www.imperial.ac.uk/news/130786/ballet-dancers-brains-adapt-stop-them/",
+    "_evidence": "Their brains adapt over years of training to suppress that input."
+  },
+  {
+    "id": "recuerdo-compartido-por-error",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Puede muchísima gente compartir un recuerdo idéntico de algo que nunca pasó?",
+      "en": "Can huge numbers of people share an identical memory of something that never happened?"
+    },
+    "answer": {
+      "es": "Sí, se llama efecto Mandela: miles jurarían haber visto morir a Mandela en prisión en los 80.",
+      "en": "Yes, it's called the Mandela effect: thousands would swear they saw Mandela die in prison in the 1980s."
+    },
+    "detail": {
+      "es": "El cerebro rellena huecos de memoria con información plausible sin avisar de que lo ha hecho, un proceso llamado confabulación. Cuando esa versión inventada encaja con lo que la gente ya esperaba, y luego se repite en redes sociales, el error deja de sentirse como un error y empieza a sentirse como un recuerdo compartido.",
+      "en": "The brain fills memory gaps with plausible information without flagging that it's done so, a process called confabulation. When that invented version matches what people already expected, and then gets repeated across social media, the mistake stops feeling like a mistake and starts feeling like a shared memory."
+    },
+    "source": "Britannica — Mandela effect",
+    "sourceUrl": "https://www.britannica.com/science/Mandela-effect",
+    "_evidence": "the tendency for the brain to fill in gaps in memory by unconsciously adding incorrect information, can lead to groups unintentionally recalling details which, although they may seem to fit with the situation in question, are actually false."
+  },
+  {
+    "id": "recuerdo-vivido-pero-falso",
+    "category": "cuerpo",
+    "question": {
+      "es": "Un recuerdo dramático que \"ves\" con todo detalle, ¿es más fiable que uno borroso?",
+      "en": "Is a dramatic memory you can \"see\" in vivid detail more reliable than a fuzzy one?"
+    },
+    "answer": {
+      "es": "No: en un estudio, nadie recordaba un suceso muy conmocionante igual que en su momento, con la misma seguridad.",
+      "en": "No: in one study, nobody recalled a shocking event the same way years later, despite equal confidence."
+    },
+    "detail": {
+      "es": "Investigadores preguntaron a estudiantes cómo se enteraron de la explosión del Challenger, primero al día siguiente y luego años después. Ni una sola de las 44 personas coincidía en los detalles con su propio relato original, aunque todas seguían convencidas de recordarlo con precisión perfecta.",
+      "en": "Researchers asked students how they learned of the Challenger explosion, first the next day and then years later. Not one of the 44 people matched their own original account in the details, even though every one of them remained convinced they remembered it with perfect accuracy."
+    },
+    "source": "The Christian Science Monitor — Why your memory might be wrong",
+    "sourceUrl": "https://www.csmonitor.com/Science/2014/0128/Where-were-you-when-the-Challenger-exploded-Why-your-memory-might-be-wrong",
+    "_evidence": "not one of their 44 subjects remembered the Challenger's explosion the same way they had in its immediate aftermath"
+  },
+  {
+    "id": "vibracion-fantasma-del-movil",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué a veces notas tu móvil vibrar en el bolsillo cuando en realidad no ha vibrado?",
+      "en": "Why do you sometimes feel your phone buzz in your pocket when it never actually did?"
+    },
+    "answer": {
+      "es": "Le pasa a casi nueve de cada diez personas: el cerebro interpreta una sensación cualquiera como si fuera el aviso que espera.",
+      "en": "It happens to almost nine in ten people: the brain reads some ordinary sensation as the alert it's expecting."
+    },
+    "detail": {
+      "es": "El cerebro procesa sin parar señales del cuerpo, como el roce de la ropa o una contracción muscular leve, y las descarta casi todas sin que te enteres. Cuando estás pendiente de una notificación, basta con que una de esas señales encaje mínimamente en forma o ritmo para que el cerebro la etiquete como \"ha vibrado\".",
+      "en": "The brain constantly processes signals from the body, like clothing brushing skin or a small muscle twitch, and discards almost all of them without you noticing. When you're expecting a notification, it only takes one of those signals to vaguely match the rhythm or shape for the brain to label it \"it just buzzed.\""
+    },
+    "source": "NPR — Phantom Phone Vibrations: So Common They've Changed Our Brains?",
+    "sourceUrl": "https://www.npr.org/sections/alltechconsidered/2013/09/30/226820044/phantom-phone-vibrations-so-common-they-ve-changed-our-brains",
+    "_evidence": "nearly 90 percent of them said they sometimes felt the phantom phone sensations, and 40 percent said it happened at least once a week"
+  },
+  {
+    "id": "conducir-sin-recordar-el-viaje",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Puedes conducir kilómetros por una carretera conocida sin recordar ni un segundo del trayecto?",
+      "en": "Can you drive for miles down a familiar road and not remember a single second of it?"
+    },
+    "answer": {
+      "es": "Sí, se llama hipnosis de carretera: el cerebro conduce en automático y deja de grabar el viaje.",
+      "en": "Yes, it's called highway hypnosis: the brain drives on autopilot and simply stops recording the trip."
+    },
+    "detail": {
+      "es": "Cuando la ruta es tan conocida que conducir se vuelve un gesto automático, como atarte los cordones, el cerebro deja de dedicarle atención consciente y pasa a manejarlo con memoria de procedimiento. El resultado es que puedes llegar a tu destino a salvo sin ser capaz de recordar cómo llegaste hasta ahí.",
+      "en": "When the route is so familiar that driving becomes automatic, the same way tying your shoes is, the brain stops giving it conscious attention and hands it off to procedural memory instead. The result is you can arrive at your destination safely without being able to recall how you got there."
+    },
+    "source": "Cleveland Clinic Health Essentials — What Is Highway Hypnosis and How To Avoid It",
+    "sourceUrl": "https://health.clevelandclinic.org/highway-hypnosis",
+    "_evidence": "Highway hypnosis is characterized by a lost sense of time while driving. Details of how fast you were driving, how well you were driving, things you've seen along the way and locations you've passed might be fuzzy or difficult to recall."
+  },
+  {
+    "id": "escalofrio-por-una-cancion",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué una canción, y no un peligro, puede darte escalofríos y piel de gallina?",
+      "en": "Why can a song, of all things, give you chills and goosebumps just like real danger would?"
+    },
+    "answer": {
+      "es": "Porque ese momento musical activa el mismo circuito de recompensa que usan la comida o el sexo.",
+      "en": "Because that musical moment activates the same reward circuitry used by food or sex."
+    },
+    "detail": {
+      "es": "Un giro melódico inesperado dispara dopamina en el circuito de recompensa del cerebro, y esa liberación química activa a la vez el sistema nervioso que eriza el vello corporal. Cuanto más placentera resulta la música para cada persona, mayor es la cantidad de dopamina liberada en ese instante concreto.",
+      "en": "An unexpected melodic turn triggers dopamine in the brain's reward circuitry, and that chemical release simultaneously switches on the nervous system that raises the tiny hairs on your skin. The more pleasurable the music is to a given person, the more dopamine gets released at that exact moment."
+    },
+    "source": "McGill University Newsroom — Musical chills: why they give us thrills",
+    "sourceUrl": "https://www.mcgill.ca/newsroom/channels/news/musical-chills-why-they-give-us-thrills-170538",
+    "_evidence": "dopamine release is greater for pleasurable versus neutral music, and that levels of release are correlated with the extent of emotional arousal and pleasurability ratings"
+  },
+  {
+    "id": "reirse-en-el-funeral-no-es-culpa",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué a veces te entra la risa justo en el momento más serio e inoportuno posible?",
+      "en": "Why does laughter sometimes hit you at the single worst, most serious possible moment?"
+    },
+    "answer": {
+      "es": "Porque intentar reprimirla la empeora: cuanto más luchas por no reírte, más gana la risa.",
+      "en": "Because trying to suppress it backfires: the harder you fight not to laugh, the more it wins."
+    },
+    "detail": {
+      "es": "La risa es en gran medida involuntaria y muy sensible al contagio social: basta con que otra persona empiece a reírse para que los músculos de la cara respondan sin permiso. Congelar la expresión a propósito no apaga las ganas, sino que atrapa la tensión dentro y la hace sentir aún más graciosa.",
+      "en": "Laughter is largely involuntary and highly contagious socially: it only takes one other person starting to laugh for your own facial muscles to respond without permission. Deliberately freezing your expression doesn't kill the urge, it traps the tension inside and makes it feel even funnier."
+    },
+    "source": "Vice — Why Some People Can't Stop Giggling at Funerals",
+    "sourceUrl": "https://www.vice.com/en/article/why-some-people-laugh-at-funerals-according-to-science/",
+    "_evidence": "Laughter is involuntary, social, and stubborn. Trying to muscle it into submission fuels the reaction instead of stopping it."
+  },
+  {
+    "id": "moco-verde-no-dice-nada",
+    "category": "cuerpo",
+    "question": {
+      "es": "Si tu moco se pone verde o amarillo, ¿significa que ya necesitas antibióticos?",
+      "en": "If your snot turns green or yellow, does that mean you need antibiotics?"
+    },
+    "answer": {
+      "es": "No: el color solo indica que el sistema inmune está trabajando, no si el causante es un virus o una bacteria.",
+      "en": "No: the color just shows the immune system is working, not whether a virus or bacteria is behind it."
+    },
+    "detail": {
+      "es": "El verde aparece cuando hay una alta concentración de glóbulos blancos muertos en la mucosidad, señal de que el cuerpo está en plena batalla contra una infección. Tanto los virus como las bacterias producen exactamente ese mismo color, así que fiarse del tono para pedir antibióticos lleva a recetarlos sin necesidad la mayoría de las veces.",
+      "en": "Green shows up when there's a high concentration of dead white blood cells in the mucus, a sign the body is deep in a fight against infection. Both viruses and bacteria produce that exact same color, so relying on the shade to ask for antibiotics leads to prescribing them unnecessarily most of the time."
+    },
+    "source": "Cleveland Clinic Health Essentials — Mucus Color: What Does It Mean?",
+    "sourceUrl": "https://health.clevelandclinic.org/what-the-color-of-your-snot-really-means",
+    "_evidence": "You can't really tell based on snot color alone whether an infection is viral or bacterial."
+  },
+  {
+    "id": "despertar-sonambulo-es-seguro",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Es verdad que despertar a alguien sonámbulo de golpe puede pararle el corazón?",
+      "en": "Is it true that suddenly waking a sleepwalker can stop their heart?"
+    },
+    "answer": {
+      "es": "No: es un mito centenario. Despertarlo puede desorientarlo, pero no le hace ningún daño físico.",
+      "en": "No: it's a centuries-old myth. Waking them may leave them confused, but it does no physical harm."
+    },
+    "detail": {
+      "es": "La creencia viene de una vieja superstición según la cual el alma abandona el cuerpo al dormir, y despertar bruscamente al durmiente la dejaría fuera para siempre. En realidad, según los especialistas en sueño, lo peor que puede pasar es que la persona se sienta confusa unos segundos al volver en sí.",
+      "en": "The belief traces back to an old superstition that the soul leaves the body during sleep, and abruptly waking the sleeper would strand it outside forever. In reality, according to sleep specialists, the worst that happens is the person feels briefly confused as they come to."
+    },
+    "source": "NBC News — Waking a sleepwalker is totally safe, for them",
+    "sourceUrl": "https://www.nbcnews.com/health/body-odd/waking-sleepwalker-totally-safe-them-f773962",
+    "_evidence": "It's not dangerous for the sleepwalker to wake him up. You're not going to do them any harm."
+  },
+  {
+    "id": "nadar-tras-comer-sin-peligro",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Hay que esperar media hora después de comer para meterse al agua sin riesgo de ahogarse?",
+      "en": "Do you really have to wait 30 minutes after eating before swimming, or risk drowning?"
+    },
+    "answer": {
+      "es": "No: la ciencia no respalda esa espera. El riesgo real de calambre por comer y nadar es mínimo.",
+      "en": "No: science doesn't back that wait at all. The real risk of a cramp from eating and swimming is tiny."
+    },
+    "detail": {
+      "es": "La idea era que la digestión robaba tanta sangre a los brazos y piernas que los músculos se agarrotarían en el agua. El cuerpo tiene de sobra para abastecer estómago y músculos a la vez, y ningún organismo médico o de seguridad acuática actual recomienda ya esa espera antes de nadar.",
+      "en": "The idea was that digestion stole so much blood from the arms and legs that muscles would seize up in the water. The body has plenty of blood to supply both the stomach and the muscles at once, and no current medical or water-safety organization recommends waiting before swimming anymore."
+    },
+    "source": "Britannica — Is It Really Dangerous to Swim After Eating?",
+    "sourceUrl": "https://www.britannica.com/story/is-it-really-dangerous-to-swim-after-eating",
+    "_evidence": "Science doesn't bear this out, though... the chances of suffering a stomach cramp while swimming are remote, regardless of when the swimmer last ate."
+  },
+  {
+    "id": "risa-y-llanto-mismo-circuito",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué te puedes echar a llorar de la risa, como si las dos cosas vinieran del mismo sitio?",
+      "en": "Why can you burst into tears from laughing, as if both came from the exact same place?"
+    },
+    "answer": {
+      "es": "Porque comparten circuito cerebral: una emoción demasiado intensa se descarga por el canal contrario.",
+      "en": "Because they share a brain circuit: an emotion too intense discharges through the opposite channel."
+    },
+    "detail": {
+      "es": "En condiciones donde ese circuito se daña, las personas sueltan ataques de llanto o risa incontrolables sin relación con lo que sienten, prueba de que ambas expresiones comparten fontanería neuronal. Los investigadores llaman \"expresiones dimórficas\" a estas reacciones cruzadas, que ayudan al cuerpo a bajar de un pico emocional demasiado alto, sea de pena o de alegría.",
+      "en": "In conditions where that circuit is damaged, people burst into uncontrollable crying or laughing spells unrelated to what they actually feel, proof both expressions share the same neural plumbing. Researchers call these crossed reactions \"dimorphous expressions,\" and they help the body come down from an emotional peak that's climbed too high, whether it's grief or joy."
+    },
+    "source": "BrainFacts.org / Neurolaunch — Laughing and Crying Simultaneously",
+    "sourceUrl": "https://neurolaunch.com/laughing-and-crying-at-the-same-time-psychology/",
+    "_evidence": "A condition called Pseudobulbar affect (PBA) causes people to have uncontrollable outbursts of crying or laughter because of neurological conditions or brain injuries, leading scientists to believe crying and laughter are run by the same area of the brain."
+  },
+  {
+    "id": "sangre-donada-tarda-semanas",
+    "category": "cuerpo",
+    "question": {
+      "es": "Después de donar sangre, ¿en cuánto tiempo la ha repuesto tu cuerpo del todo?",
+      "en": "After donating blood, how long does your body actually take to fully replace it?"
+    },
+    "answer": {
+      "es": "El plasma en un par de días; los glóbulos rojos tardan bastante más, entre seis y ocho semanas.",
+      "en": "The plasma in a couple of days; the red blood cells take much longer, six to eight weeks."
+    },
+    "detail": {
+      "es": "La parte líquida de la sangre se repone casi de inmediato con solo beber agua, en menos de 48 horas. Los glóbulos rojos, en cambio, se fabrican a un ritmo fijo en la médula ósea, así que aunque el cuerpo produzca millones cada segundo, recuperar el nivel exacto de antes de donar lleva semanas.",
+      "en": "The liquid part of blood gets replaced almost immediately just by drinking water, in under 48 hours. Red blood cells, on the other hand, are manufactured at a fixed rate in the bone marrow, so even though the body churns out millions every second, getting back to the exact pre-donation level takes weeks."
+    },
+    "source": "BioBridge Global — How does blood regenerate?",
+    "sourceUrl": "https://biobridgeglobal.org/donors/how-does-blood-regenerate/",
+    "_evidence": "The plasma lost in a donation is completely replaced within 24-48 hours... it takes about 6-8 weeks for them to return to pre-donation levels."
+  },
+  {
+    "id": "escalofrio-mientras-sube-fiebre",
+    "category": "cuerpo",
+    "question": {
+      "es": "Si tu temperatura está subiendo con la fiebre, ¿por qué sientes frío en vez de calor?",
+      "en": "If your temperature is climbing with a fever, why do you feel cold instead of hot?"
+    },
+    "answer": {
+      "es": "Porque tiemblas para subir aún más la temperatura: el escalofrío es el cuerpo generando el calor que pide la fiebre.",
+      "en": "Because shivering is how you raise it further: the chill is your body generating the heat the fever demands."
+    },
+    "detail": {
+      "es": "Cuando el sistema inmune detecta una infección, sube el termostato interno a un nuevo objetivo más alto, y hasta llegar ahí el cuerpo se siente frío en comparación con esa meta. Los músculos se contraen y relajan a toda velocidad para generar calor por fricción química, y esa es exactamente la sensación de escalofrío.",
+      "en": "When the immune system detects an infection, it raises the internal thermostat to a new, higher target, and until the body reaches it, it feels cold relative to that goal. Muscles contract and relax rapidly to generate heat through chemical friction, and that's exactly what the shivering sensation is."
+    },
+    "source": "Cleveland Clinic — Chills",
+    "sourceUrl": "https://my.clevelandclinic.org/health/symptoms/21476-chills",
+    "_evidence": "Chills are your body's way of raising its core temperature... Shivering causes your muscles to contract and relax, which warms up your body."
+  },
+  {
+    "id": "diversion-acelera-tu-reloj-interno",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué una tarde entretenida se te pasa volando y una aburrida se hace eterna?",
+      "en": "Why does a fun afternoon fly by while a boring one drags on forever?"
+    },
+    "answer": {
+      "es": "Porque la diversión libera dopamina, y la dopamina acelera literalmente el reloj interno del cerebro.",
+      "en": "Because having fun releases dopamine, and dopamine literally speeds up the brain's internal clock."
+    },
+    "detail": {
+      "es": "Un investigador japonés explica que el reloj interno funciona como un metrónomo mental: cuando hay más dopamina en circulación, ese metrónomo late más rápido de lo normal. El resultado es que el cerebro acumula la sensación de \"tiempo transcurrido\" en menos marcas de las que en realidad han pasado, y por eso al mirar el reloj parece que ha volado.",
+      "en": "A Japanese researcher explains the internal clock works like a mental metronome: when more dopamine is circulating, that metronome ticks faster than normal. The result is the brain accumulates the sense of \"time passed\" in fewer beats than have actually gone by, which is why checking the clock feels like it flew."
+    },
+    "source": "University of Tokyo — Why does time fly when you're having fun?",
+    "sourceUrl": "https://www.u-tokyo.ac.jp/focus/en/features/z1304_00229.html",
+    "_evidence": "The pacemaker ticks faster than usual, making time accumulate in a shorter period than it actually does."
+  },
+  {
+    "id": "corte-de-papel-duele-mas",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué un simple corte de papel puede doler más que una herida bastante más profunda?",
+      "en": "Why can a simple paper cut hurt more than a wound that's actually much deeper?"
+    },
+    "answer": {
+      "es": "Porque las yemas de los dedos están repletas de nervios, y el corte es tan fino que ni siquiera sangra para taparlos.",
+      "en": "Because fingertips are packed with nerves, and the cut is so shallow it doesn't even bleed enough to cover them."
+    },
+    "detail": {
+      "es": "Las manos concentran una densidad de receptores del dolor mucho mayor que casi cualquier otra parte del cuerpo, así que un corte ahí activa muchísimas más terminaciones nerviosas. Al ser tan superficial, apenas sangra lo justo para formar una costra protectora, así que esas terminaciones quedan expuestas al aire y a cada roce durante días.",
+      "en": "Hands pack a much higher density of pain receptors than almost anywhere else on the body, so a cut there triggers far more nerve endings at once. Because it's so shallow, it barely bleeds enough to form a protective scab, leaving those endings exposed to air and every touch for days."
+    },
+    "source": "McGill University Office for Science and Society — Paper Cuts Hurt So Much Because Our Fingers Are Really Sensitive",
+    "sourceUrl": "https://www.mcgill.ca/oss/article/did-you-know/paper-cuts-hurt-so-much-because-our-fingers-are-really-sensitive",
+    "_evidence": "Some areas of our bodies have more nerve cells than others, meaning that those areas are more sensitive to touch."
+  },
+  {
+    "id": "picadura-mosquito-alergia-mini",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué te pica tanto una picadura de mosquito si el bicho ya se ha ido hace rato?",
+      "en": "Why does a mosquito bite itch so much long after the insect itself is gone?"
+    },
+    "answer": {
+      "es": "Porque no es la picadura lo que molesta: es una reacción alérgica en miniatura a la saliva que dejó dentro.",
+      "en": "Because it isn't the bite itself that bothers you: it's a miniature allergic reaction to the saliva left behind."
+    },
+    "detail": {
+      "es": "El mosquito inyecta saliva para impedir que la sangre se coagule mientras se alimenta, y el sistema inmune identifica esas proteínas como un intruso. En respuesta libera histamina en la zona, la misma sustancia que provoca alergias, y es esa histamina la que hincha la piel y dispara las ganas de rascarse.",
+      "en": "The mosquito injects saliva to keep blood from clotting while it feeds, and the immune system flags those proteins as an intruder. In response it releases histamine at the site, the same substance behind allergies, and that histamine is what swells the skin and triggers the urge to scratch."
+    },
+    "source": "Cleveland Clinic — Mosquito Bites",
+    "sourceUrl": "https://my.clevelandclinic.org/health/diseases/17695-mosquito-bites",
+    "_evidence": "When a mosquito secretes saliva into your bloodstream, your body registers the saliva as an allergen. Your immune system then sends the chemical histamine to the area where the mosquito bit you to remove the allergen from your body."
+  },
+  {
+    "id": "estornudo-nunca-viene-solo",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué casi nunca estornudas una sola vez, sino dos, tres o más seguidos?",
+      "en": "Why do you almost never sneeze just once, but two, three or more times in a row?"
+    },
+    "answer": {
+      "es": "Porque el primer estornudo casi nunca termina el trabajo: el irritante sigue ahí, así que el reflejo se repite.",
+      "en": "Because the first sneeze almost never finishes the job: the irritant is still there, so the reflex fires again."
+    },
+    "detail": {
+      "es": "Un estornudo expulsa aire a gran velocidad, pero eso no garantiza que arrastre del todo la partícula que lo provocó. Si algo de polvo o polen sigue rozando el revestimiento de la nariz, ese mismo reflejo se dispara otra vez de forma automática, hasta que por fin queda despejado.",
+      "en": "A sneeze blasts air out at high speed, but that doesn't guarantee it carries away the whole particle that triggered it. If some dust or pollen keeps brushing the nasal lining, that same reflex fires again automatically, until it's finally cleared."
+    },
+    "source": "The Naked Scientists — Why do people usually sneeze multiple times in a row?",
+    "sourceUrl": "https://www.thenakedscientists.com/articles/questions/why-do-people-sneeze-multiple-times-row",
+    "_evidence": "if it's something that's actually irritating us like an allergen or something, we may have to sneeze repeatedly to actually get it out of the nose and stop irritating us."
+  },
+  {
+    "id": "frio-no-te-resfria-directamente",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Es el frío en sí mismo lo que te resfría, o hay algo más detrás de ese mito tan repetido?",
+      "en": "Is cold weather itself what gives you a cold, or is there more behind that repeated myth?"
+    },
+    "answer": {
+      "es": "No es el frío: son los virus. El frío solo cambia el comportamiento que facilita que se propaguen.",
+      "en": "It's not the cold: it's viruses. Cold weather only changes behavior in ways that help them spread."
+    },
+    "detail": {
+      "es": "Ningún experimento ha logrado enfermar a nadie con solo bajar la temperatura ambiente sin exponerlo a un virus. Lo que sí ocurre en invierno es que la gente pasa más tiempo encerrada, cerca de otros, respirando el mismo aire, y eso multiplica las oportunidades de que un virus real salte de una persona a otra.",
+      "en": "No experiment has ever managed to make someone sick just by lowering the room temperature, without exposing them to a virus. What does happen in winter is that people spend more time indoors, closer to each other, breathing the same air, and that multiplies the chances for an actual virus to jump from one person to another."
+    },
+    "source": "The Washington Post (via NIH Research News)",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/search/research-news/734/",
+    "_evidence": "Viruses spread faster during the winter than other times of the year, but being chilly doesn't make you more susceptible, experts say."
+  },
+  {
+    "id": "sueno-tras-comer-mucho",
+    "category": "cuerpo",
+    "question": {
+      "es": "Después de una comida copiosa, ¿por qué te entra un sueño que no tiene nada que ver con estar cansado?",
+      "en": "After a heavy meal, why does a sleepiness hit you that has nothing to do with being tired?"
+    },
+    "answer": {
+      "es": "Porque el azúcar en sangre apaga directamente a las neuronas que te mantienen despierto.",
+      "en": "Because blood sugar directly switches off the neurons that keep you awake."
+    },
+    "detail": {
+      "es": "La orexina es una de las señales más potentes que tiene el cerebro para mantenerte alerta, y las neuronas que la producen quedan inhibidas cuando sube la glucosa tras comer. Con esa señal de vigilia apagada, el cuerpo se inclina hacia el sueño aunque no haya dormido mal ni tenga motivo real para estar cansado.",
+      "en": "Orexin is one of the brain's most powerful wakefulness signals, and the neurons that produce it get inhibited when glucose rises after a meal. With that alertness signal dampened, the body tips toward sleep even if it slept fine and has no real reason to be tired."
+    },
+    "source": "Wikipedia — Postprandial somnolence",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Postprandial_somnolence",
+    "_evidence": "These orexin-expressing neurons appear to be hyperpolarised (inhibited) by a glucose-activated potassium channel."
+  },
+  {
+    "id": "orina-amarilla-globulos-rojos-viejos",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Qué tiene que ver el color amarillo de la orina con unos glóbulos rojos que ya murieron?",
+      "en": "What does the yellow color of urine have to do with red blood cells that already died?"
+    },
+    "answer": {
+      "es": "Todo: ese amarillo es el resultado final de reciclar hemoglobina vieja, pasada por el hígado y el intestino.",
+      "en": "Everything: that yellow is the end result of recycling old hemoglobin, routed through the liver and gut."
+    },
+    "detail": {
+      "es": "Al morir, los glóbulos rojos sueltan un pigmento llamado bilirrubina, que viaja hasta el intestino y allí se transforma en urobilinógeno. Una parte de ese urobilinógeno vuelve a la sangre, pasa por el riñón y sale convertida en urobilina, el pigmento amarillo que ves en el inodoro cada día.",
+      "en": "When red blood cells die, they release a pigment called bilirubin, which travels to the gut and gets converted there into urobilinogen. Part of that urobilinogen re-enters the blood, passes through the kidney, and comes out as urobilin, the yellow pigment you see in the toilet every day."
+    },
+    "source": "NIH MedlinePlus Magazine — What makes urine yellow?",
+    "sourceUrl": "https://magazine.medlineplus.gov/article/what-makes-urine-yellow-the-answer-lies-in-your-gut",
+    "_evidence": "When your body replaces old red blood cells, it creates bilirubin. This substance then moves to your gut... is broken down into a chemical called urobilinogen. Your kidneys then turn urobilinogen into urobilin—this makes your urine yellow."
+  },
+  {
+    "id": "esparragos-pipi-quien-lo-huele",
+    "category": "cuerpo",
+    "question": {
+      "es": "Después de comer espárragos, ¿por qué algunas personas no notan absolutamente nada raro al ir al baño?",
+      "en": "After eating asparagus, why do some people notice nothing odd at all in the bathroom?"
+    },
+    "answer": {
+      "es": "Porque hace falta un gen concreto para oler el compuesto que los espárragos meten en la orina.",
+      "en": "Because it takes a specific gene to smell the compound asparagus puts into urine."
+    },
+    "detail": {
+      "es": "Digerir espárragos genera compuestos de azufre que casi todo el mundo expulsa por la orina, los note o no. Un estudio genético a gran escala localizó variantes cerca de una familia de receptores olfativos en el cromosoma 1 que determinan quién es capaz de detectar ese olor concreto y quién simplemente no lo percibe.",
+      "en": "Digesting asparagus produces sulfur compounds that almost everyone excretes in their urine, whether they notice or not. A large genetic study pinpointed variants near a family of olfactory receptors on chromosome 1 that determine who can actually detect that specific smell and who just can't perceive it at all."
+    },
+    "source": "Scientific American — Genes for Smelling Asparagus Metabolites Determine Urine Luck",
+    "sourceUrl": "https://www.scientificamerican.com/article/genes-for-smelling-asparagus-metabolites-determine-urine-luck/",
+    "_evidence": "three apparently important genetic constructs—all in a region on human chromosome 1 that contains various genes in the olfactory receptor 2 family"
+  },
+  {
+    "id": "muelas-juicio-mandibula-encoge",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué a tanta gente le sobran las muelas del juicio en vez de simplemente salirle bien?",
+      "en": "Why do so many people's wisdom teeth not fit, instead of just growing in fine?"
+    },
+    "answer": {
+      "es": "Porque la mandíbula moderna se queda más pequeña de lo que necesitaba el juego completo de dientes.",
+      "en": "Because the modern jaw ends up smaller than what a full set of teeth actually needs."
+    },
+    "detail": {
+      "es": "El tamaño de la mandíbula no es fijo por genética: crece según la fuerza que ejerce al masticar durante la infancia. Una dieta moderna hecha de alimentos blandos y muy procesados exige mucha menos fuerza de masticación que la de generaciones anteriores, así que la mandíbula se desarrolla más pequeña mientras el número de dientes previsto sigue siendo el mismo de siempre.",
+      "en": "Jaw size isn't fixed by genetics alone: it grows according to how much force it exerts chewing during childhood. A modern diet of soft, heavily processed food demands far less chewing force than earlier generations needed, so the jaw develops smaller while the number of teeth it's supposed to fit stays exactly the same as always."
+    },
+    "source": "Pitt Med Magazine / The Conversation — For real: wisdom teeth, evolution, tough foods, jaw size",
+    "sourceUrl": "https://www.pittmed.pitt.edu/news/for-real-wisdom-teeth-evolution-tough-foods-jaw-size-the-conversation",
+    "_evidence": "the shrinking of the human jaw is better understood as a lifestyle-driven change... the most obvious factor being diet: softer, processed foods require far less chewing, so the jaw muscles exert less force during development, and the jawbone doesn't grow as large."
+  },
+  {
+    "id": "agujetas-tardan-dos-dias",
+    "category": "cuerpo",
+    "question": {
+      "es": "Si te has pasado entrenando, ¿por qué el dolor no llega ese mismo día, sino uno o dos después?",
+      "en": "If you've overdone a workout, why doesn't the pain hit that same day, but one or two days later?"
+    },
+    "answer": {
+      "es": "Porque lo que duele no es el esfuerzo en sí, sino la inflamación que se monta después para reparar el daño.",
+      "en": "Because what hurts isn't the effort itself, but the inflammation that builds afterward to repair the damage."
+    },
+    "detail": {
+      "es": "El ejercicio intenso, sobre todo el que estira el músculo mientras se contrae, deja microdesgarros diminutos en las fibras musculares. El cuerpo tarda un día o dos en enviar a ese tejido las células inflamatorias que inician la reparación, y son esas sustancias, no la rotura en sí, las que activan los receptores del dolor con retraso.",
+      "en": "Intense exercise, especially the kind that stretches a muscle while it's contracting, leaves tiny microscopic tears in the muscle fibers. The body takes a day or two to send inflammatory cells to that tissue to start repairs, and it's those substances, not the tear itself, that activate pain receptors on a delay."
+    },
+    "source": "Cleveland Clinic — Delayed Onset Muscle Soreness (DOMS)",
+    "sourceUrl": "https://my.clevelandclinic.org/health/diseases/delayed-onset-muscle-soreness",
+    "_evidence": "This soreness is thought to result from temporary muscle damage and inflammation, commonly triggered by eccentric exercises."
+  },
+  {
+    "id": "olvidas-al-cruzar-la-puerta",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué puedes entrar a una habitación y olvidar de golpe a qué habías ido?",
+      "en": "Why can you walk into a room and instantly forget what you went in there for?"
+    },
+    "answer": {
+      "es": "Porque el cerebro usa cada puerta como una señal para archivar lo anterior y empezar de cero.",
+      "en": "Because the brain uses every doorway as a cue to file away what came before and start fresh."
+    },
+    "detail": {
+      "es": "En experimentos, la gente olvidaba una tarea el doble o el triple de veces al cruzar una puerta que al recorrer la misma distancia dentro de una sola habitación. El cerebro organiza la experiencia en episodios, y atravesar un umbral marca el final de uno y el comienzo de otro, así que barre la memoria de trabajo como si ya no fuera a hacer falta.",
+      "en": "In experiments, people forgot a task two or three times more often after crossing a doorway than after covering the same distance within a single room. The brain organizes experience into episodes, and crossing a threshold marks the end of one and the start of another, so it sweeps out working memory as if it wouldn't be needed anymore."
+    },
+    "source": "Scientific American — Why Walking through a Doorway Makes You Forget",
+    "sourceUrl": "https://www.scientificamerican.com/article/why-walking-through-doorway-makes-you-forget/",
+    "_evidence": "walking through a doorway is a good time to purge your event models because whatever happened in the old room is likely to become less relevant now that you have changed venues."
+  },
+  {
+    "id": "olor-atajo-directo-al-recuerdo",
+    "category": "cuerpo",
+    "question": {
+      "es": "De todos los sentidos, ¿por qué es un simple olor el que más fácil te devuelve a un recuerdo de hace años?",
+      "en": "Of all the senses, why is a simple smell the one most likely to snap you back to a memory from years ago?"
+    },
+    "answer": {
+      "es": "Porque el olfato es el único sentido con una vía directa al centro cerebral de la emoción, sin escalas.",
+      "en": "Because smell is the only sense with a direct line to the brain's emotional center, no layover required."
+    },
+    "detail": {
+      "es": "La vista, el oído y el tacto pasan primero por el tálamo antes de procesarse. La información de la nariz, en cambio, llega casi sin escalas a la amígdala, que gestiona el miedo y la emoción, así que un olor puede reactivar un recuerdo cargado de sentimiento antes incluso de que lo reconozcas conscientemente.",
+      "en": "Sight, hearing and touch all pass through the thalamus first before getting processed. Information from the nose, by contrast, arrives almost without a layover at the amygdala, which handles fear and emotion, so a smell can reactivate an emotionally loaded memory before you've even consciously recognized it."
+    },
+    "source": "Psychology Today — How the Sense of Smell Triggers Old and Long-Forgotten Memories",
+    "sourceUrl": "https://www.psychologytoday.com/us/blog/the-superhuman-mind/202106/how-the-sense-smell-triggers-old-and-long-forgotten-memories",
+    "_evidence": "Smell is the only sense that transmits sensory information directly to the amygdala, the brain region that processes fear and arousal."
+  },
+  {
+    "id": "sabor-es-en-realidad-olfato",
+    "category": "cuerpo",
+    "question": {
+      "es": "Cuando tienes la nariz taponada, ¿por qué de repente la comida no sabe casi a nada?",
+      "en": "When your nose is stuffed up, why does food suddenly barely taste like anything?"
+    },
+    "answer": {
+      "es": "Porque la mayor parte de lo que llamas \"sabor\" en realidad lo capta la nariz, no la lengua.",
+      "en": "Because most of what you call \"taste\" is actually picked up by the nose, not the tongue."
+    },
+    "detail": {
+      "es": "Mientras masticas, las moléculas de aroma suben por dentro, desde la garganta hasta la nariz, y activan cientos de receptores olfativos, un proceso llamado olfacción retronasal. La lengua solo distingue lo básico, dulce, salado, amargo; todo el resto del sabor depende de ese circuito interno, y un resfriado lo bloquea sin tocar las papilas para nada.",
+      "en": "While you chew, aroma molecules travel up internally, from the throat to the nose, and activate hundreds of smell receptors, a process called retronasal olfaction. The tongue only tells basic sweet, salty, bitter apart; the rest of flavor depends on that internal circuit, and a cold blocks it without touching the taste buds at all."
+    },
+    "source": "Ask A Biologist, Arizona State University — Does Smell Affect Taste?",
+    "sourceUrl": "https://askabiologist.asu.edu/smell-taste",
+    "_evidence": "It is the activation of these receptors that primarily affects the flavor of food. This is called retronasal olfaction... Think about when you have a stuffed-up nose during a head cold – food doesn't quite taste the same, right?"
+  },
+  {
+    "id": "cornea-respira-del-aire",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Cómo recibe oxígeno la córnea de tu ojo si no tiene ni un solo vaso sanguíneo dentro?",
+      "en": "How does your cornea get oxygen if it doesn't have a single blood vessel inside it?"
+    },
+    "answer": {
+      "es": "Lo toma directamente del aire: se disuelve en la lágrima y de ahí pasa a las células.",
+      "en": "It takes it straight from the air: it dissolves into the tear film and passes into the cells from there."
+    },
+    "detail": {
+      "es": "Si la córnea tuviera venas, como casi cualquier otro tejido, no serías capaz de ver a través de ella con nitidez. En vez de eso, respira literalmente del aire: el oxígeno se disuelve en la fina capa de lágrima que la cubre y difunde hacia el tejido, así que cerrar los ojos mucho tiempo, como al dormir, le corta buena parte de ese suministro.",
+      "en": "If the cornea had veins, like almost every other tissue, you wouldn't be able to see clearly through it. Instead, it literally breathes from the air: oxygen dissolves into the thin tear layer covering it and diffuses into the tissue, so keeping your eyes closed for a long stretch, like during sleep, cuts off a good part of that supply."
+    },
+    "source": "Cleveland Clinic — Cornea",
+    "sourceUrl": "https://my.clevelandclinic.org/health/body/21562-cornea",
+    "_evidence": "Tear fluid provides lubrication for your eye surface and helps the epithelium absorb oxygen from the air."
+  },
+  {
+    "id": "nariz-deja-de-oler-tu-casa",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué al rato de entrar en tu propia casa dejas de notar cómo huele, aunque un visitante sí lo note?",
+      "en": "Why do you stop noticing how your own house smells shortly after walking in, even though a visitor does?"
+    },
+    "answer": {
+      "es": "Porque el cerebro apaga un olor concreto en cuanto decide que ya es familiar y no supone ningún peligro.",
+      "en": "Because the brain switches off one specific smell as soon as it decides it's familiar and poses no danger."
+    },
+    "detail": {
+      "es": "Es un reflejo antiguo de supervivencia: si un olor sigue presente sin cambiar y no ha resultado ser una amenaza, el cerebro deja de gastar atención en procesarlo para quedar libre ante señales nuevas. Es un apagado muy específico del olor en cuestión, así que la misma nariz insensible al ambiente de casa detecta al instante un perfume nuevo.",
+      "en": "It's an ancient survival reflex: if a smell stays present without changing and hasn't turned out to be a threat, the brain stops spending attention processing it so it stays free for new signals. The shutdown is very specific to that one smell, so the same nose that's numb to the house's own air instantly picks up on a new perfume."
+    },
+    "source": "Wikipedia — Olfactory fatigue",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Olfactory_fatigue",
+    "_evidence": "the temporary, normal inability to distinguish a particular odor after a prolonged exposure to that airborne compound."
+  },
+  {
+    "id": "bostezo-no-es-por-oxigeno",
+    "category": "cuerpo",
+    "question": {
+      "es": "Si bostezar no sirve para tomar más oxígeno, como se creía, ¿para qué sirve realmente?",
+      "en": "If yawning isn't about taking in more oxygen, like people used to think, what's it actually for?"
+    },
+    "answer": {
+      "es": "Para refrigerar el cerebro: el aire que entra de golpe le baja la temperatura por dentro.",
+      "en": "To cool the brain down: the sudden rush of incoming air lowers its internal temperature."
+    },
+    "detail": {
+      "es": "Durante décadas se dio por hecho que bostezar compensaba una falta de oxígeno en sangre, pero ningún estudio ha logrado probar esa relación. La investigación de Gallup muestra en cambio que la gente bosteza más quieta y con más frecuencia en invierno que en pleno verano, justo lo que cabría esperar si su función real fuera mantener el cerebro dentro de una temperatura óptima.",
+      "en": "For decades it was assumed yawning made up for low blood oxygen, but no study has ever managed to prove that link. Gallup's research instead shows people yawn more often in winter than in the height of summer, exactly what you'd expect if its real job is keeping the brain within an optimal temperature window."
+    },
+    "source": "ScienceDaily — Do we yawn to cool the brain?",
+    "sourceUrl": "https://www.sciencedaily.com/releases/2014/05/140506120031.htm",
+    "_evidence": "Common belief is that yawning helps to increase the oxygen supply. However, previous research has failed to show an association between yawning and blood oxygen levels... yawning cools the brain."
+  },
+  {
+    "id": "oler-humo-que-no-existe",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Puedes oler humo o goma quemada con total claridad sin que haya nada quemándose cerca?",
+      "en": "Can you smell smoke or burning rubber with total clarity when nothing nearby is actually burning?"
+    },
+    "answer": {
+      "es": "Sí: se llama fantosmia, una alucinación olfativa que el cerebro genera sin ningún estímulo real.",
+      "en": "Yes: it's called phantosmia, an olfactory hallucination the brain generates with no real stimulus at all."
+    },
+    "detail": {
+      "es": "Quien la sufre percibe olores, casi siempre desagradables como humo, goma quemada o metal, que no vienen de ningún sitio exterior. Puede deberse a algo tan simple como una sinusitis o disparase por migrañas, y en la mayoría de los casos desaparece por sí sola sin dejar ninguna secuela.",
+      "en": "People who experience it perceive smells, almost always unpleasant ones like smoke, burning rubber or metal, that come from nowhere in the outside world. It can stem from something as simple as sinusitis or get triggered by migraines, and in most cases it fades away on its own without leaving any lasting effect."
+    },
+    "source": "Cleveland Clinic — Phantosmia (Olfactory Hallucinations)",
+    "sourceUrl": "https://my.clevelandclinic.org/health/diseases/24799-phantosmia",
+    "_evidence": "a condition that causes you to detect smells that aren't actually present in your environment (phantom smells)"
+  },
+  {
+    "id": "ojos-bebe-cambian-con-la-luz",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué tantos recién nacidos tienen los ojos azul grisáceo y luego les cambian de color?",
+      "en": "Why are so many newborns born with grayish-blue eyes that later change color?"
+    },
+    "answer": {
+      "es": "Porque dentro del útero no hay luz, y sin luz el iris todavía no ha empezado a producir pigmento.",
+      "en": "Because there's no light inside the womb, and without light the iris hasn't started producing pigment yet."
+    },
+    "detail": {
+      "es": "Las células que fabrican melanina en el iris, los melanocitos, se activan con la exposición a la luz una vez el bebé nace. Cuanta más luz reciben los ojos en los primeros meses, más pigmento generan esas células, así que el color puede seguir cambiando hasta los nueve meses o el año de vida, y no se fija del todo hasta los tres años.",
+      "en": "The melanin-producing cells in the iris, melanocytes, switch on with light exposure once the baby is born. The more light the eyes take in during the first months, the more pigment those cells generate, so the color can keep shifting until nine months or a year old, and doesn't fully settle until age three."
+    },
+    "source": "Cleveland Clinic Health Essentials — When Do Babies' Eyes Change Color?",
+    "sourceUrl": "https://health.clevelandclinic.org/when-do-babies-eyes-change-color",
+    "_evidence": "Many babies have lighter, blue-gray eyes due to less pigment in their irises... a baby's eyes — specifically cells in the iris called melanocytes — are exposed to light, and that produces pigment, or color."
+  }
+]

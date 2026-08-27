@@ -1,0 +1,648 @@
+[
+  {
+    "id": "estornudo-por-sol",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué salir a la calle en un día muy soleado hace estornudar a algunas personas?",
+      "en": "Why does stepping into bright sunlight make some people sneeze?"
+    },
+    "answer": {
+      "es": "Porque tienen un reflejo genético, el síndrome ACHOO, que confunde la luz brillante con un picor en la nariz.",
+      "en": "Because they carry a genetic reflex, ACHOO syndrome, that mistakes bright light for an itch in the nose."
+    },
+    "detail": {
+      "es": "Es autosómico dominante: si uno de tus padres lo tiene, tú tienes un 50% de heredarlo. La causa exacta se desconoce, pero apunta a que la señal del nervio óptico se desborda hacia el circuito que dispara el estornudo.",
+      "en": "It's autosomal dominant: if one parent has it, you have a 50% chance of inheriting it. The exact cause is unknown, but the leading idea is that the optic nerve's signal spills over into the circuit that triggers a sneeze."
+    },
+    "source": "NCBI Bookshelf — ACHOO Syndrome (MINI Medical Genetics Summaries)",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK109193/",
+    "_evidence": "Autosomal Dominant Compelling Helioopthalmic Outburst (ACHOO) Syndrome is characterized by uncontrollable sneezing in response to the sudden exposure to bright light, typically intense sunlight. ACHOO syndrome is inherited in an autosomal dominant manner. As such, if one parent is affected, their child has a 50% chance of inheriting the syndrome."
+  },
+  {
+    "id": "hipo-pez-ancestral",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué el hipo cierra la garganta de golpe en vez de simplemente cortar la respiración?",
+      "en": "Why does a hiccup slam your throat shut instead of just interrupting your breath?"
+    },
+    "answer": {
+      "es": "Porque el circuito nervioso que lo controla es el mismo que usaban tus ancestros anfibios para no tragar agua por las branquias.",
+      "en": "Because the nerve circuit behind it is the same one your amphibian ancestors used to keep water out of their lungs while breathing through gills."
+    },
+    "detail": {
+      "es": "El nervio frénico, que hoy controla el diafragma, nació en peces y anfibios pegado a las branquias. El chasquido de la glotis en cada hipo es el mismo movimiento que cerraba el paso a las branquias mientras el agua entraba por la boca.",
+      "en": "The phrenic nerve, which now controls the diaphragm, first evolved in fish and amphibians right next to the gills. The glottis-closing snap of every hiccup is the same movement that once sealed off the gills while water passed through the mouth."
+    },
+    "source": "National Geographic — Why do we hiccup, and how do you get rid of them?",
+    "sourceUrl": "https://www.nationalgeographic.com/science/article/hiccups-why-how-to-get-rid-of-them-fish-ancestors",
+    "_evidence": "The hiccup itself might have been useful when fish evolved into amphibians that lived partly on land. They needed to switch breathing systems: gills underwater, lungs in air. The 'hic' closing the ancestral epiglottis let them send water into their mouth and then to the gills without filling their lungs."
+  },
+  {
+    "id": "reflejo-buceo-cara-fria",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Qué le pasa a tu corazón en el instante en que metes la cara en agua fría?",
+      "en": "What happens to your heart the instant you dunk your face in cold water?"
+    },
+    "answer": {
+      "es": "Se frena de golpe, hasta un 25% en menos de treinta segundos, sin que tú hagas nada.",
+      "en": "It slams the brakes, dropping up to 25% in under thirty seconds, with no effort on your part."
+    },
+    "detail": {
+      "es": "El frío en la cara activa el nervio trigémino, que ordena al vago frenar el corazón y cerrar los vasos de brazos y piernas. Es el reflejo de buceo de los mamíferos: redirige el poco oxígeno disponible al cerebro y al propio corazón.",
+      "en": "Cold on the face triggers the trigeminal nerve, which orders the vagus nerve to slow the heart and clamp the blood vessels in the arms and legs. It's the mammalian dive reflex: it redirects whatever oxygen is left toward the brain and heart."
+    },
+    "source": "NCBI StatPearls — Physiology, Diving Reflex",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK538245/",
+    "_evidence": "When a human holds their breath and submerges in water, the face and nose become wet, which in turn causes bradycardia. The afferent neuronal pathway is the trigeminal nerve relaying sensory information to the brainstem. The brainstem sends efferent signals via the vagus nerve to specific target organs."
+  },
+  {
+    "id": "bostezo-contagioso-empatia",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué te entran ganas de bostezar solo con ver a otra persona bostezar?",
+      "en": "Why do you suddenly need to yawn just from watching someone else do it?"
+    },
+    "answer": {
+      "es": "Porque cuanto más vínculo sientes con esa persona, más se te contagia: el bostezo ajeno activa el circuito cerebral de la empatía.",
+      "en": "Because the more connected you feel to that person, the more it catches: someone else's yawn fires up your brain's empathy circuitry."
+    },
+    "detail": {
+      "es": "Ver, oír o incluso leer sobre un bostezo puede dispararlo, y ocurre más entre gente con lazos sociales fuertes. Quienes puntúan más alto en empatía son también los que más lo contagian.",
+      "en": "Seeing, hearing, or even reading about a yawn can trigger one, and it happens more between people with strong social bonds. People who score higher on empathy tests are also the ones most likely to catch it."
+    },
+    "source": "PMC — The science of yawning: physiology, evolutionary role, and behavioral impact",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12488162/",
+    "_evidence": "Contagious yawning is triggered by seeing, hearing, or even thinking about another person yawning. [...] contagious yawning is more prevalent in individuals with higher levels of empathy and social awareness."
+  },
+  {
+    "id": "no-estornudas-dormido",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Puedes estornudar mientras estás profundamente dormido?",
+      "en": "Can you sneeze while you're deep asleep?"
+    },
+    "answer": {
+      "es": "No: para estornudar hace falta un mínimo de actividad cerebral que el sueño profundo directamente apaga.",
+      "en": "No: sneezing requires a baseline of brain activity that deep sleep simply switches off."
+    },
+    "detail": {
+      "es": "El umbral de estimulación que necesita el reflejo del estornudo sube por la noche, y la parte del cerebro que nota el picor en la nariz está también dormida. Si el irritante es lo bastante fuerte, el cuerpo te despierta primero y estornudas después.",
+      "en": "The stimulation threshold the sneeze reflex needs goes up at night, and the part of the brain that notices the tickle in your nose is asleep too. If the irritant is strong enough, your body wakes you up first and the sneeze comes after."
+    },
+    "source": "Cleveland Clinic — Did You Know You Can't Sneeze in Your Sleep?",
+    "sourceUrl": "https://health.clevelandclinic.org/can-you-sneeze-in-your-sleep",
+    "_evidence": "If you're asleep, the part of your brain that notices those sensations is asleep, too. Sneezing requires a certain amount of cortical or brainstem stimulation, and that threshold actually increases at night. You need to wake up in order to sneeze — and that goes for both children and adults."
+  },
+  {
+    "id": "no-puedes-hacerte-cosquillas",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué no puedes hacerte cosquillas a ti mismo aunque toques exactamente el mismo punto?",
+      "en": "Why can't you tickle yourself, even pressing the exact same spot?"
+    },
+    "answer": {
+      "es": "Porque tu cerebelo predice tu propio roce antes de que ocurra y apaga la respuesta al tacto.",
+      "en": "Because your cerebellum predicts your own touch before it happens and mutes the response to it."
+    },
+    "detail": {
+      "es": "El cerebelo sabe de antemano cuándo, dónde y con cuánta fuerza vas a tocarte, así que reduce la actividad de la corteza que procesa el tacto. Un roce ajeno, en cambio, llega sin aviso y esa corteza responde a pleno.",
+      "en": "The cerebellum already knows when, where, and how hard you're about to touch yourself, so it dampens the cortex that processes touch. A touch from someone else arrives with no warning, and that same cortex fires at full strength."
+    },
+    "source": "BrainFacts.org (Society for Neuroscience) — Why Can't You Tickle Yourself?",
+    "sourceUrl": "https://www.brainfacts.org/thinking-sensing-and-behaving/touch/2021/why-cant-you-tickle-yourself-120221",
+    "_evidence": "Your brain's cerebellum predicts when you are about to apply pressure to your own body. [...] it can reduce activity in the somatosensory cortex: the brain area that responds to pressure and touch."
+  },
+  {
+    "id": "voz-grabada-extrana",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué tu voz suena tan rara en una grabación?",
+      "en": "Why does your voice sound so strange in a recording?"
+    },
+    "answer": {
+      "es": "Porque un micrófono capta solo la mitad del sonido que tú llevas oyendo toda tu vida.",
+      "en": "Because a microphone only picks up half the sound you've been hearing your whole life."
+    },
+    "detail": {
+      "es": "El sonido de tu voz te llega por dos caminos: por el aire, como a todo el mundo, y por los huesos del cráneo, que refuerzan los graves. La grabación borra ese segundo camino, así que oyes una versión sin la parte grave a la que estás acostumbrado.",
+      "en": "The sound of your voice reaches you by two routes: through the air, like everyone else, and through your skull bones, which boost the low frequencies. A recording erases that second route, so you hear a version stripped of the bass you're used to."
+    },
+    "source": "Scientific American — Why does my voice sound so different when it is recorded and played back?",
+    "sourceUrl": "https://www.scientificamerican.com/article/why-does-my-voice-sound-different/",
+    "_evidence": "Air-conducted sound is transmitted from the surrounding environment through the external auditory canal, eardrum and middle ear to the cochlea. [...] bone-conducted sound reaches the cochlea directly through the tissues of the head. [...] When you listen to a recording of yourself speaking, the bone-conducted pathway that you consider part of your 'normal' voice is eliminated, and you hear only the air-conducted component in unfamiliar isolation."
+  },
+  {
+    "id": "mano-de-goma-ilusion",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Puede tu cerebro convencerse de que una mano de goma sobre la mesa es tuya?",
+      "en": "Can your brain be tricked into thinking a rubber hand on the table is really yours?"
+    },
+    "answer": {
+      "es": "Sí, basta con acariciar la de goma y tu mano de verdad a la vez, escondida, durante un minuto.",
+      "en": "Yes — just stroke the rubber hand and your real, hidden hand at the same time for about a minute."
+    },
+    "detail": {
+      "es": "Al ver el roce en la mano falsa mientras sientes el mismo roce en la tuya, el cerebro no soporta el desajuste entre lo que ve, lo que toca y dónde cree que está el brazo, y resuelve el conflicto adoptando la mano de goma como propia.",
+      "en": "Watching the touch land on the fake hand while feeling that same touch on your real one creates a mismatch the brain can't tolerate between sight, touch, and its own sense of limb position — so it resolves the conflict by adopting the rubber hand as its own."
+    },
+    "source": "Scientific Reports (Nature) — The rubber hand illusion in hypnosis provides new insights into the sense of body ownership",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7109052/",
+    "_evidence": "watching a rubber hand stroked synchronously with one's own hidden hand induces a feeling of ownership over the rubber hand. [...] the brain recalibrates one's own limb position toward the rubber hand with proprioceptive drift and combines the rubber hand with one's own body representation, thus inducing a subjective feeling of ownership."
+  },
+  {
+    "id": "moscas-volantes-ojo",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Qué son esas hebras y puntitos que a veces cruzan tu vista al mirar un cielo despejado?",
+      "en": "What are those threads and specks that sometimes drift across your vision when you look at a clear sky?"
+    },
+    "answer": {
+      "es": "Sombras: trocitos de gel del ojo que se han apelmazado y proyectan su forma sobre la retina.",
+      "en": "Shadows: clumps of the eye's own gel that project their shape onto the retina."
+    },
+    "detail": {
+      "es": "El interior del ojo está lleno de un gel llamado vítreo que, con la edad, se encoge y se vuelve grumoso. Esos grumos flotan libremente y, cuando pasan justo delante de la mácula, tapan la luz un instante y ves su silueta.",
+      "en": "The inside of the eye is filled with a gel called the vitreous that shrinks and gets clumpy with age. Those clumps float freely, and when one drifts right in front of the macula, it briefly blocks the light and you see its outline."
+    },
+    "source": "Cleveland Clinic — Eye Floaters: What They Are, Causes & Treatment",
+    "sourceUrl": "https://my.clevelandclinic.org/health/symptoms/14209-eye-floaters-myodesopias",
+    "_evidence": "Eye floaters are shapes or dots that seem like they're passing across your vision when you look at a clear sky, a blank piece of paper or a white wall. [...] when bits of the gel-like fluid inside your eye (the vitreous or vitreous humor) solidify. [...] As floaters move inside your eye, they pass in front of your macula and cast a shadow over it. That shadow is what you notice."
+  },
+  {
+    "id": "luces-frotar-ojos",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué ves destellos de color al frotarte los ojos cerrados, sin ninguna luz cerca?",
+      "en": "Why do you see flashes of color when you rub your closed eyes, with no light anywhere nearby?"
+    },
+    "answer": {
+      "es": "Porque la presión del dedo activa las mismas células que activaría la luz, y el cerebro no distingue el origen.",
+      "en": "Because the pressure of your finger fires the same cells that light would, and your brain can't tell the difference."
+    },
+    "detail": {
+      "es": "Esas luces fantasma se llaman fosfenos: la retina tiene células fotorreceptoras que responden igual a un golpe de presión que a un fotón. El mismo mecanismo explica por qué «ves estrellas» tras un golpe en la cabeza.",
+      "en": "Those phantom lights are called phosphenes: the retina's photoreceptor cells respond the same way to a jolt of pressure as they do to a photon. The same mechanism explains why you 'see stars' after a bump on the head."
+    },
+    "source": "Cleveland Clinic — Phosphenes: What They Are & Common Causes",
+    "sourceUrl": "https://my.clevelandclinic.org/health/symptoms/24888-phosphenes",
+    "_evidence": "Phosphenes are bursts of light or color, but you see phosphenes when your eyes are closed and you don't have a light source. [...] Pressure on the eyeball can stimulate the retinal photoreceptor cells, causing the light you see. [...] If you hit your head or fall, you may see stars — bright flashes of light even when your eyes are closed. This reaction is similar to what you see when you rub your eyes and see light."
+  },
+  {
+    "id": "reloj-parado-mirada",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué el segundero de un reloj parece quedarse quieto un instante justo cuando lo miras?",
+      "en": "Why does a clock's second hand seem to freeze for an instant the moment you look at it?"
+    },
+    "answer": {
+      "es": "Porque tu cerebro rellena con la última imagen el hueco ciego que deja el propio movimiento de tus ojos.",
+      "en": "Because your brain fills the blind gap left by your own eye movement with the last image it had."
+    },
+    "detail": {
+      "es": "Cuando el ojo salta rápido de un punto a otro (una sacada), la visión se apaga unas milésimas de segundo para no marear con el barrido. El cerebro tapa ese hueco repitiendo la primera imagen nítida, y por eso ese primer segundo parece durar de más.",
+      "en": "When the eye darts quickly from one point to another (a saccade), vision briefly shuts off for a fraction of a second so the blur doesn't register. The brain papers over that gap by repeating the first sharp image, which is why that first second feels stretched out."
+    },
+    "source": "EBSCO Research Starters — Chronostasis",
+    "sourceUrl": "https://www.ebsco.com/research-starters/science/chronostasis",
+    "_evidence": "Chronostasis is an optical illusion in which time momentarily seems to stop after a person suddenly shifts their attention from one object or task to another. [...] the first stimulus seen after the saccade may be perceived as lasting longer than it actually does."
+  },
+  {
+    "id": "efecto-mcgurk-labios",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Puede lo que ves con los labios de alguien cambiar el sonido que oyes salir de su boca?",
+      "en": "Can watching someone's lips change the actual sound you hear coming out of their mouth?"
+    },
+    "answer": {
+      "es": "Sí: si el audio dice «ba» pero los labios dibujan «ga», tu cerebro fabrica un tercer sonido, «da», que no está en ninguno de los dos.",
+      "en": "Yes: if the audio says 'ba' but the lips are shaping 'ga', your brain manufactures a third sound, 'da', that's in neither one."
+    },
+    "detail": {
+      "es": "Se llama efecto McGurk y demuestra que entender el habla no es solo cuestión de oído: la vista pesa tanto que puede sobrescribir lo que de verdad llega a tus tímpanos. Con los ojos cerrados, el mismo audio se oye tal cual es.",
+      "en": "It's called the McGurk effect, and it shows that understanding speech isn't just about hearing: sight carries so much weight it can overwrite what's actually hitting your eardrums. Close your eyes, and the very same audio sounds exactly like what it is."
+    },
+    "source": "Simply Psychology — The McGurk Effect: Audio-Visual Speech Perception Illusion",
+    "sourceUrl": "https://www.simplypsychology.org/mcgurk-effect.html",
+    "_evidence": "one sound's optical component is coupled with another sound's audial component. This pairing subsequently induces the perception of a third sound. [...] researchers dubbed audio saying 'ba' over video showing 'ga,' yet listeners perceived 'da'."
+  },
+  {
+    "id": "sacudida-al-dormir",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué a veces das una sacudida brusca justo cuando te estás quedando dormido?",
+      "en": "Why do you sometimes jolt awake with a full-body twitch right as you're drifting off?"
+    },
+    "answer": {
+      "es": "Le pasa a entre el 60% y el 70% de la gente: es un espasmo muscular involuntario llamado sacudida hípnica.",
+      "en": "It happens to 60 to 70 percent of people: an involuntary muscle spasm called a hypnic jerk."
+    },
+    "detail": {
+      "es": "No hay una causa clara y única; se ha visto que va ligada a un patrón concreto de actividad cerebral en el momento del espasmo. El cansancio extremo y el estrés parecen hacerla más frecuente, y suele venir acompañada de esa sensación de estar cayendo.",
+      "en": "There's no single clear cause; it's been linked to a specific pattern of brain activity right at the moment of the spasm. Extreme fatigue and stress seem to make it more frequent, and it often comes paired with the sensation of falling."
+    },
+    "source": "Medical News Today — Hypnic jerk: Why you twitch before falling asleep",
+    "sourceUrl": "https://www.medicalnewstoday.com/articles/324666",
+    "_evidence": "Hypnic jerks, also known as hypnagogic jerks or 'sleep starts,' are involuntary muscle contractions that some people experience as they fall asleep. [...] 60–70% of individuals experience hypnic jerks, usually just as they are about to fall asleep. [...] Research suggests specific brain activity occurs during a hypnic jerk, known as vertex sharp waves."
+  },
+  {
+    "id": "cerebro-se-limpia-dormir",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Qué hace tu cerebro mientras duermes que no puede hacer mientras estás despierto?",
+      "en": "What does your brain do while you sleep that it can't do while you're awake?"
+    },
+    "answer": {
+      "es": "Se lava por dentro: un sistema de canales bombea líquido para arrastrar los desechos que se acumulan entre las neuronas.",
+      "en": "It washes itself out: a network of channels pumps fluid through to flush out the waste that piles up between neurons."
+    },
+    "detail": {
+      "es": "Se llama sistema glinfático y funciona mejor en la fase de sueño profundo, cuando las propias células del cerebro se encogen un poco y dejan más espacio para que el líquido circule. Por ahí se arrastran ácido láctico y proteínas como la beta-amiloide.",
+      "en": "It's called the glymphatic system, and it works best during deep sleep, when the brain's own cells shrink slightly to leave more room for the fluid to flow through. It carries away lactic acid and proteins like amyloid-beta along the way."
+    },
+    "source": "Cleveland Clinic — Glymphatic System: What It Is, Function & How It Works",
+    "sourceUrl": "https://my.clevelandclinic.org/health/body/glymphatic-system",
+    "_evidence": "The glymphatic system is a pathway that clears waste from your brain while you sleep. [...] This system works best during stage 3 NREM sleep (also referred to as slow wave sleep or, more commonly, 'deep sleep'). [...] During deep sleep specifically, interstitial space cells enlarge, allowing more efficient cerebrospinal fluid flow and enhanced waste removal."
+  },
+  {
+    "id": "explosion-en-la-cabeza-dormir",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Puedes oír un estruendo, un disparo o un portazo justo al quedarte dormido sin que haya sonado nada?",
+      "en": "Can you hear a bang that never happened, right as you fall asleep?"
+    },
+    "answer": {
+      "es": "Sí, y tiene nombre clínico: síndrome de la cabeza explosiva, un fallo eléctrico inofensivo del cerebro al apagarse.",
+      "en": "Yes, and it has a clinical name: exploding head syndrome — a harmless electrical glitch as the brain powers down."
+    },
+    "detail": {
+      "es": "Es benigno y no duele, aunque asusta: la explicación que se maneja es una descarga eléctrica repentina en las zonas del cerebro que procesan los sentidos, justo cuando deberían estar apagándose para dormir.",
+      "en": "It's benign and painless, though startling: the leading explanation is a sudden burst of electrical activity in the brain regions that process the senses, firing right when they should be powering down for sleep."
+    },
+    "source": "Cleveland Clinic — Exploding Head Syndrome (EHS): Causes, Symptoms & Treatment",
+    "sourceUrl": "https://my.clevelandclinic.org/health/diseases/21907-exploding-head-syndrome-ehs",
+    "_evidence": "Exploding head syndrome (EHS) is a sleep disorder that makes you hear a loud noise or explosive crashing sound in your head. [...] sudden, unexpected electrical activity in the parts of your brain that process and create your senses (your sensory neurons)."
+  },
+  {
+    "id": "microsueno-ojos-abiertos",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Puedes quedarte dormido unos segundos sin ni siquiera cerrar los ojos?",
+      "en": "Can you actually fall asleep for a few seconds without even closing your eyes?"
+    },
+    "answer": {
+      "es": "Sí: se llama microsueño y el cuerpo se apaga tan rápido que ni te enteras de que ha pasado.",
+      "en": "Yes — it's called a microsleep, and it hits so fast your body doesn't even register that it happened."
+    },
+    "detail": {
+      "es": "Durante esos segundos puedes seguir con los ojos abiertos y aspecto de estar despierto, pero el cerebro ha dejado de procesar lo que entra por ellos. Es lo que vuelve tan peligroso conducir con sueño: el cuerpo se duerme antes de que tú lo sepas.",
+      "en": "During those few seconds you can keep your eyes open and look wide awake, but your brain has simply stopped processing what's coming through them. It's what makes drowsy driving so dangerous: the body falls asleep before you know it."
+    },
+    "source": "National Sleep Foundation — What is Microsleep?",
+    "sourceUrl": "https://www.thensf.org/what-is-microsleep/",
+    "_evidence": "microsleep is when you fall asleep for a period of several seconds. [...] During an episode, you may appear to be awake, and even have your eyes open, but your brain does not process information."
+  },
+  {
+    "id": "despertar-antes-de-la-alarma",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué te despiertas solo, unos minutos antes de que suene la alarma, con una rutina fija?",
+      "en": "Why do you wake up on your own, minutes before your alarm, once you're on a fixed routine?"
+    },
+    "answer": {
+      "es": "Porque tu reloj interno ha aprendido tu horario y empieza a prepararte para levantarte antes de que suene nada.",
+      "en": "Because your internal clock has learned your schedule and starts prepping you to get up before anything even rings."
+    },
+    "detail": {
+      "es": "Con una hora de despertar constante, el cerebro adelanta la subida de cortisol y la bajada de melatonina para dejarte casi despierto de antemano. No es casualidad: es tu ritmo circadiano anticipándose al reloj, no reaccionando a él.",
+      "en": "With a consistent wake time, the brain moves up the rise in cortisol and drop in melatonin to leave you nearly awake ahead of schedule. It isn't a coincidence — it's your circadian rhythm anticipating the clock, not reacting to it."
+    },
+    "source": "The Conversation — Why do we wake up shortly before our alarm goes off? It's not by chance",
+    "sourceUrl": "https://theconversation.com/why-do-we-wake-up-shortly-before-our-alarm-goes-off-its-not-by-chance-268992",
+    "_evidence": "the master clock learns when they usually get up. Well before their alarm sounds, it gently prepares the body: the temperature rises, melatonin levels fall, and cortisol levels start to climb."
+  },
+  {
+    "id": "dedos-arrugados-agua",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué se te arrugan los dedos en la bañera si la piel del resto del cuerpo se queda lisa?",
+      "en": "Why do your fingers wrinkle in the bathtub while the rest of your skin stays smooth?"
+    },
+    "answer": {
+      "es": "Porque no es la piel hinchándose de agua: son los vasos sanguíneos del dedo contrayéndose a propósito.",
+      "en": "Because it isn't skin swelling with water — it's the blood vessels in your fingers deliberately constricting."
+    },
+    "detail": {
+      "es": "El agua entrando por los poros del sudor dispara ese estrechamiento, que dibuja valles en la superficie. Y no es un efecto secundario inútil: con los dedos arrugados hace falta bastante menos fuerza para sujetar un objeto mojado que con los dedos lisos.",
+      "en": "Water entering the sweat pores triggers that narrowing, which carves valleys into the surface. And it's not a pointless side effect: wrinkled fingers need noticeably less grip force to hold a wet object than smooth ones do."
+    },
+    "source": "PMC — Water-immersion finger-wrinkling improves grip efficiency in handling wet objects",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8294484/",
+    "_evidence": "The small blood vessels of the fingertip constrict, which creates valleys in the skin surface, triggered by water entering sweat pores. [...] wrinkly fingers reduce the grip force needed to grip a wet object, bringing that force in line with what is needed for handling a dry object."
+  },
+  {
+    "id": "unas-no-crecen-tras-morir",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Es verdad que a los muertos les sigue creciendo el pelo y las uñas en el ataúd?",
+      "en": "Is it true that dead bodies keep growing hair and nails in the coffin?"
+    },
+    "answer": {
+      "es": "No: dejan de crecer en el instante de morir. Lo que parece crecer es la piel, que se encoge a su alrededor.",
+      "en": "No — growth stops the instant a person dies. What looks like growth is the skin shrinking around them instead."
+    },
+    "detail": {
+      "es": "Sin riego sanguíneo ni oxígeno, las células que fabrican queratina mueren enseguida. Pero la piel se deshidrata y se retrae, así que el pelo y las uñas, del mismo tamaño de siempre, parecen sobresalir más que antes.",
+      "en": "Without blood flow or oxygen, the keratin-producing cells die almost immediately. But the skin dehydrates and pulls back, so hair and nails — exactly the same length they always were — end up looking longer by comparison."
+    },
+    "source": "UAMS Health — Do a Person's Hair and Fingernails Continue to Grow After Death?",
+    "sourceUrl": "https://uamshealth.com/medical-myths/do-a-persons-hair-and-fingernails-continue-to-grow-after-death/",
+    "_evidence": "Hair and fingernails may appear longer after death, but not because they are still growing. After death, dehydration causes the skin and other soft tissues to shrink. This occurs while the hair and nails remain the same length. This change in the body creates the optical illusion of growth people observe."
+  },
+  {
+    "id": "cicatriz-sin-pelo",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué nunca vuelve a salir pelo justo encima de una cicatriz?",
+      "en": "Why does hair never grow back exactly on top of a scar?"
+    },
+    "answer": {
+      "es": "Porque cuando la herida fue profunda, se destruyó también la raíz del folículo que lo producía.",
+      "en": "Because when the wound went deep enough, it destroyed the very follicle root that used to produce it."
+    },
+    "detail": {
+      "es": "La piel cicatrizada no es una reparación idéntica: es un tejido nuevo, más simple, que se rellena de colágeno pero nunca reconstruye los folículos ni las glándulas que había antes. Por eso una cicatriz tampoco suda ni tiene huella dactilar si tocó a un dedo.",
+      "en": "Scarred skin isn't an identical repair job — it's a simpler, new tissue that fills in with collagen but never rebuilds the follicles or glands that used to be there. That's also why a scar doesn't sweat, and why one on a fingertip erases the print."
+    },
+    "source": "PMC — Anagen hair follicles transplanted into mature human scars remodel fibrotic tissue",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9822907/",
+    "_evidence": "After skin injuries that are sufficiently deep to destroy the root of the hair follicle, there is an accumulation of incompletely remodelled ECM lacking hair follicles (a scar)."
+  },
+  {
+    "id": "canas-por-estres",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Puede un susto muy fuerte encanecerte el pelo de verdad, y no solo en las leyendas?",
+      "en": "Can a bad enough scare actually turn your hair gray — not just in old legends?"
+    },
+    "answer": {
+      "es": "Sí, y ya se sabe por qué: el estrés agota de golpe, y para siempre, las células que fabrican el pigmento del pelo.",
+      "en": "Yes, and now the mechanism is known: stress wipes out, all at once and permanently, the cells that manufacture hair pigment."
+    },
+    "detail": {
+      "es": "Los nervios del sistema de lucha o huida liberan noradrenalina dentro de cada folículo, y esas células madre la confunden con la señal de fabricar pigmento a toda máquina. En pocos días se agotan del todo y no hay forma de regenerarlas.",
+      "en": "The nerves of the fight-or-flight system release norepinephrine right inside each follicle, and those stem cells mistake it for a signal to churn out pigment at full speed. Within days they're completely used up, with no way to regenerate them."
+    },
+    "source": "Harvard Gazette — New findings suggest how stress may trigger gray hair",
+    "sourceUrl": "https://news.harvard.edu/gazette/story/2020/01/new-findings-suggest-how-stress-may-trigger-gray-hair/",
+    "_evidence": "Stress causes these nerves to release the chemical norepinephrine, which gets taken up by nearby pigment-regenerating stem cells. [...] After just a few days, all of the pigment-regenerating stem cells were lost. Once they're gone, you can't regenerate pigments anymore."
+  },
+  {
+    "id": "pelusa-fetal-lanugo",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué antes de nacer estuviste cubierto de un vello finísimo por casi todo el cuerpo?",
+      "en": "Why were you covered head to toe in impossibly fine hair before you were even born?"
+    },
+    "answer": {
+      "es": "Se llama lanugo, y no es un adorno: sujeta una capa de grasa que protege la piel del líquido amniótico.",
+      "en": "It's called lanugo, and it isn't decorative — it anchors a waxy layer that shields the skin from amniotic fluid."
+    },
+    "detail": {
+      "es": "Ese vello ayuda a que el vérnix, una sustancia parecida al queso, se quede pegado a la piel en vez de disolverse en el líquido amniótico. Además, al moverse manda vibraciones a los receptores sensoriales del feto que estimulan su propio crecimiento.",
+      "en": "That fuzz helps a cheese-like coating called vernix stay stuck to the skin instead of dissolving in the amniotic fluid. On top of that, its movement sends vibrations to the fetus's sensory receptors that help stimulate its own growth."
+    },
+    "source": "Cleveland Clinic — Lanugo: What Is It, Purpose, Causes & Treatment",
+    "sourceUrl": "https://my.clevelandclinic.org/health/body/22487-lanugo",
+    "_evidence": "Lanugo is the soft, fine hair that covers a fetus in the uterus, helping to protect and warm it during fetal development. [...] Lanugo helps vernix (the waxy, cheese-like substance that covers the fetus) stick to the skin. [...] The lanugo hair sends vibrations to fetal sensory receptors when it moves. These receptors stimulate fetal growth."
+  },
+  {
+    "id": "dolor-de-cabeza-del-helado",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué un bocado de helado demasiado rápido te da dolor de cabeza en vez de dolor de garganta?",
+      "en": "Why does wolfing down ice cream give you a headache instead of a sore throat?"
+    },
+    "answer": {
+      "es": "Porque los vasos del paladar se dilatan de golpe para calentarlo, y el cerebro coloca ese aviso en la frente por error.",
+      "en": "Because the blood vessels in your palate suddenly widen to warm it back up, and your brain files that alarm under 'forehead' by mistake."
+    },
+    "detail": {
+      "es": "El frío repentino en el paladar hace que el cuerpo mande sangre caliente de golpe para recuperar la temperatura, y ese cambio brusco en los vasos duele. La señal viaja por el nervio trigémino, que también cubre la frente, así que el cerebro confunde el origen.",
+      "en": "Sudden cold on the roof of the mouth makes the body rush in warm blood to restore its temperature, and that abrupt shift in the vessels hurts. The signal travels along the trigeminal nerve, which also covers the forehead, so the brain gets the location wrong."
+    },
+    "source": "Cleveland Clinic — Brain Freeze: what it is, symptoms, treatment",
+    "sourceUrl": "https://my.clevelandclinic.org/health/diseases/21478-brain-freeze",
+    "_evidence": "When your body senses sudden, extreme cold in the mouth or throat, it tries to react and warm up. Blood vessels throughout the head expand to let extra blood into the area for warmth. That quick change in blood vessel size causes sudden pain."
+  },
+  {
+    "id": "dolor-hombro-bazo",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué un problema en el bazo puede doler en la punta del hombro y no en el abdomen?",
+      "en": "Why can trouble with your spleen hurt at the tip of your shoulder instead of your belly?"
+    },
+    "answer": {
+      "es": "Porque el nervio del diafragma y los nervios del hombro entran en la médula por el mismo punto, y el cerebro los confunde.",
+      "en": "Because the diaphragm's nerve and the shoulder's nerves plug into the spinal cord at the same point, and the brain mixes them up."
+    },
+    "detail": {
+      "es": "Se llama signo de Kehr, y es la prueba clásica de una hemorragia interna: la sangre irrita el diafragma, cuya señal entra en la médula espinal por los mismos niveles (C3 a C5) que la piel del hombro. El cerebro no distingue el origen y sitúa el dolor donde no está el problema.",
+      "en": "It's called Kehr's sign, a classic clue to internal bleeding: blood irritates the diaphragm, whose signal enters the spinal cord at the same levels (C3 to C5) as the skin of the shoulder. The brain can't tell them apart and places the pain far from where the actual problem is."
+    },
+    "source": "PMC — Postprandial Referred Shoulder Pain: A Case Report",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9246054/",
+    "_evidence": "phrenic afferent fibers innervating the diaphragm and associated serous membranes terminate in the dorsal horns of C3-5 spinal cord levels alongside afferent fibers from the supraclavicular nerves (C3-4). [...] left shoulder pain due to irritation of the left hemidiaphragmatic and related parietal peritoneum and hemidiaphragm from hemoperitoneum secondary to splenic rupture, a well-recognized physical finding referred to as Kehr's sign."
+  },
+  {
+    "id": "frio-que-quema",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Puede el frío doler exactamente igual que una quemadura?",
+      "en": "Can cold hurt in exactly the same way a burn does?"
+    },
+    "answer": {
+      "es": "Sí: si alternas franjas templadas y frías sobre la piel, el cerebro las funde en una sola sensación de fuego.",
+      "en": "Yes: alternate strips of warm and cool on the skin, and the brain fuses them into a single sensation of fire."
+    },
+    "detail": {
+      "es": "Es la ilusión de la rejilla térmica: ninguna de las dos temperaturas, por separado, sería siquiera desagradable. Como no llegan a dañar el tejido, la quemazón no nace en la piel, sino en cómo la médula espinal mezcla las dos señales antes de mandarlas al cerebro.",
+      "en": "It's called the thermal grill illusion: neither temperature on its own would even feel unpleasant. Since neither one comes close to damaging tissue, the burning doesn't start in the skin — it's the spinal cord blending the two signals together before they ever reach the brain."
+    },
+    "source": "PMC — A Review on Various Topics on the Thermal Grill Illusion",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8396808/",
+    "_evidence": "The perception of burning heat and pain that arises from the simultaneous cutaneous application of a grill with interlaced warm (38-42 °C) and cool (18-22 °C) bars. [...] peripheral nociceptors are unlikely to be activated. Therefore, pain due to the TGI is believed to be a purely central phenomenon."
+  },
+  {
+    "id": "hueso-de-la-risa",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué golpearte el codo justo en ese punto manda una descarga hasta los dedos?",
+      "en": "Why does hitting your elbow in just the right spot send a shock all the way to your fingers?"
+    },
+    "answer": {
+      "es": "Porque ahí no hay hueso protegiendo nada: es un nervio entero pasando pegado a la piel, sin apenas relleno.",
+      "en": "Because there's no bone shielding anything there — it's an entire nerve running right under the skin, with barely any padding."
+    },
+    "detail": {
+      "es": "El «hueso de la risa» no es un hueso: es el nervio cubital, que en el codo pasa justo bajo la primera capa de piel. Un golpe ahí lo comprime contra el hueso de al lado y dispara ese hormigueo eléctrico que baja hasta el meñique y el anular.",
+      "en": "The 'funny bone' isn't a bone at all — it's the ulnar nerve, which at the elbow runs just beneath the first layer of skin. A hit there pins it against the bone next to it and sets off that electric tingle running down to your ring and pinky fingers."
+    },
+    "source": "Cleveland Clinic — Ulnar Nerve (Funny Bone): What Is It, Branches & Function",
+    "sourceUrl": "https://my.clevelandclinic.org/health/body/21664-ulnar-nerve",
+    "_evidence": "Your ulnar nerve runs underneath the first layer of skin near your elbow. [...] When you bump your elbow against a hard surface, you may temporarily pinch your ulnar nerve. The impact causes a funny-feeling, shock-like tingling or burning known as 'hitting your funny bone.'"
+  },
+  {
+    "id": "frotar-alivia-dolor",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué frotarte la espinilla después de un golpe alivia de verdad el dolor?",
+      "en": "Why does rubbing your shin after you bang it actually ease the pain?"
+    },
+    "answer": {
+      "es": "Porque el tacto viaja más rápido que el dolor por la médula espinal, y le gana la carrera hasta el cerebro.",
+      "en": "Because touch travels faster than pain through the spinal cord, and it wins the race to the brain."
+    },
+    "detail": {
+      "es": "Las fibras que llevan el tacto son más rápidas que las que llevan el dolor, así que cuando frotas la zona esa señal llega antes y cierra una especie de puerta en la médula. El aviso de dolor, más lento, se queda fuera y llega atenuado o no llega.",
+      "en": "The fibers that carry touch are faster than the ones that carry pain, so rubbing the spot sends that signal in first and closes a kind of gate in the spinal cord. The slower pain signal gets left outside, arriving muted or not arriving at all."
+    },
+    "source": "Cleveland Clinic — Pain and the Brain: What Is the Gate Control Theory?",
+    "sourceUrl": "https://health.clevelandclinic.org/gate-control-theory-of-pain",
+    "_evidence": "Large fiber activity sends messages to your brain very quickly, while small fiber activity moves a bit more slowly. [...] When there's more large fiber activity than small fiber activity, you actually perceive pain as being less painful. [...] The gate closes, and that pain signal doesn't make it into your brain."
+  },
+  {
+    "id": "dolor-miembro-fantasma",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Puede dolerte de verdad una mano que ya no está ahí?",
+      "en": "Can a hand that isn't there anymore actually hurt?"
+    },
+    "answer": {
+      "es": "Sí, y le pasa a la mayoría de amputados: el cerebro sigue mandando señales a un miembro que ya no puede responder.",
+      "en": "Yes, and it happens to most amputees: the brain keeps sending signals to a limb that can no longer answer back."
+    },
+    "detail": {
+      "es": "Las conexiones nerviosas hacia esa zona del cuerpo seguían existiendo aunque el miembro ya no esté. Al no recibir la respuesta de siempre, el cerebro a veces manda más señal de la cuenta o mezcla las que llegan, y esa confusión se percibe como dolor.",
+      "en": "The nerve connections toward that part of the body kept existing even though the limb no longer does. Getting no reply back, the brain sometimes fires off more signal than usual or scrambles what it does receive, and that confusion gets perceived as pain."
+    },
+    "source": "Cleveland Clinic — Phantom Limb Pain: What It Is, Causes, Treatment & Prevention",
+    "sourceUrl": "https://my.clevelandclinic.org/health/diseases/12092-phantom-limb-pain",
+    "_evidence": "Phantom limb pain is pain that you feel in the part of a limb that was removed after an amputation. [...] the nerve connection still exists within your body, even though the nerves in the amputated body part aren't there anymore. [...] nerves to send more signals than they usually do or mix up signals."
+  },
+  {
+    "id": "estomago-suena-limpieza",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué te suena el estómago si no tienes hambre y hace horas que no comes?",
+      "en": "Why does your stomach growl when you're not even hungry and haven't eaten in hours?"
+    },
+    "answer": {
+      "es": "Porque cada hora y media, más o menos, el estómago ejecuta una ronda de limpieza que nada tiene que ver con el apetito.",
+      "en": "Because roughly every hour and a half, your stomach runs a cleaning cycle that has nothing to do with appetite."
+    },
+    "detail": {
+      "es": "Entre comidas, el estómago y el intestino se contraen en oleadas para barrer los restos que quedaron de la última comida, en un ciclo que se repite cada 90-120 minutos. Ese barrido mecánico es lo que produce el ruido, esté vacío o no.",
+      "en": "Between meals, the stomach and intestine contract in waves to sweep out leftover debris from the last meal, in a cycle that repeats every 90 to 120 minutes. That mechanical sweep is what makes the noise, whether or not you're actually hungry."
+    },
+    "source": "PMC — review on the migrating motor complex and gastric motility",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5137267",
+    "_evidence": "Phase III contractions periodically occur every 90-120 min in humans and dogs. [...] The physiological importance of gastric MMC is a mechanical and chemical cleansing of the empty stomach in preparation for the next meal."
+  },
+  {
+    "id": "segundo-cerebro-intestino",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Tienes un segundo cerebro escondido dentro del intestino?",
+      "en": "Do you have a second brain hidden inside your gut?"
+    },
+    "answer": {
+      "es": "Prácticamente: una red de cien millones de neuronas recubre tu tubo digestivo y puede funcionar sin consultar al de arriba.",
+      "en": "Pretty much: a network of 100 million neurons lines your digestive tract and can operate without checking in with the brain upstairs."
+    },
+    "detail": {
+      "es": "Se llama sistema nervioso entérico, tiene más neuronas que la médula espinal entera, y evolucionó para gestionar la digestión sobre el terreno en vez de esperar órdenes desde la cabeza a través de la médula. Por algo se le apoda «el segundo cerebro».",
+      "en": "It's called the enteric nervous system, and it has more neurons than the entire spinal cord — it evolved to run digestion on site instead of waiting for orders from the head via the spinal cord. It's not for nothing that it's nicknamed 'the second brain.'"
+    },
+    "source": "Scientific American — Think Twice: How the Gut's 'Second Brain' Influences Mood and Well-Being",
+    "sourceUrl": "https://www.scientificamerican.com/article/gut-second-brain/",
+    "_evidence": "The second brain contains some 100 million neurons, more than in either the spinal cord or the peripheral nervous system. [...] Thus equipped with its own reflexes and senses, the second brain can control gut behavior independently of the brain."
+  },
+  {
+    "id": "ejercicio-quita-hambre",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué el ejercicio intenso te quita el hambre en vez de dispararla?",
+      "en": "Why does a hard workout often kill your appetite instead of leaving you starving?"
+    },
+    "answer": {
+      "es": "Porque el propio esfuerzo apaga de forma directa la hormona que te da hambre.",
+      "en": "Because the exertion itself directly shuts down the hormone that makes you hungry."
+    },
+    "detail": {
+      "es": "El ejercicio a alta intensidad reduce la grelina, la hormona que dispara el apetito, y ese efecto se ve con más fuerza cuanto más duro es el esfuerzo. El ácido láctico que se acumula al esforzarte parece ser una de las piezas que dispara ese apagado.",
+      "en": "High-intensity exercise lowers ghrelin, the hormone that triggers appetite, and the effect gets stronger the harder you push. The lactate that builds up during exertion appears to be one of the pieces that flips that switch."
+    },
+    "source": "PMC — Exercise-induced appetite suppression: An update on potential mechanisms",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11347021/",
+    "_evidence": "Acute bouts of exercise (aerobic and resistance) can create an energy deficit involving changes in key appetite-regulating hormones. [...] higher-intensity exercise consistently suppresses acylated ghrelin. [...] Lactate emerges as the most supported mechanism."
+  },
+  {
+    "id": "reflejo-gastrocolico",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Por qué a veces necesitas ir al baño casi nada más terminar de comer?",
+      "en": "Why do you sometimes need the bathroom almost the moment you finish eating?"
+    },
+    "answer": {
+      "es": "Porque tu estómago le avisa al colon de que llega comida nueva y que hay que sacar la vieja para hacerle sitio.",
+      "en": "Because your stomach tells your colon that new food is arriving and the old stuff needs to move out to make room."
+    },
+    "detail": {
+      "es": "Se llama reflejo gastrocólico: al llenarse el estómago, unas señales nerviosas y hormonales disparan contracciones en el colon que empujan lo que ya estaba dentro. Las comidas más grasas o copiosas provocan un empujón más fuerte que una comida ligera.",
+      "en": "It's called the gastrocolic reflex: as the stomach fills, nerve and hormone signals trigger contractions in the colon that push along whatever was already inside. Fattier or heavier meals trigger a stronger push than a light one."
+    },
+    "source": "Cleveland Clinic — Gastrocolic Reflex: Why You Need To Poop After Eating",
+    "sourceUrl": "https://my.clevelandclinic.org/health/body/gastrocolic-reflex",
+    "_evidence": "When food enters your stomach, nerves send signals to the muscles in your colon that trigger them to start moving. [...] The gastrocolic reflex is how your stomach tells your intestine that more food is coming, so the old food needs to move out."
+  },
+  {
+    "id": "bacterias-avisan-saciedad",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Pueden las bacterias que viven en tu intestino decidir cuándo dejas de tener hambre?",
+      "en": "Can the bacteria living in your gut decide when you stop feeling hungry?"
+    },
+    "answer": {
+      "es": "En animales de laboratorio, sí: veinte minutos después de comer fabrican una proteína que apaga el apetito por su cuenta.",
+      "en": "In lab animals, yes: twenty minutes after a meal they manufacture a protein that shuts down appetite on their own."
+    },
+    "detail": {
+      "es": "Esa proteína bacteriana, inyectada en ratones y ratas, actuó sobre el cerebro reduciendo el apetito y disparó la misma hormona de saciedad que libera el propio intestino. Las bacterias no solo digieren lo que comes: parecen tener voto en cuándo dejas de comer.",
+      "en": "That bacterial protein, injected into mice and rats, acted on the brain to reduce appetite and triggered the very same satiety hormone the gut itself releases. Bacteria don't just digest what you eat — they seem to get a vote in when you stop eating."
+    },
+    "source": "ScienceDaily — Gut microbes signal to the brain when they're full (Cell Metabolism)",
+    "sourceUrl": "https://www.sciencedaily.com/releases/2015/11/151124143330.htm",
+    "_evidence": "Twenty minutes after a meal, gut microbes produce proteins that can suppress food intake in animals. [...] injected into mice and rats act on the brain reducing appetite. [...] 'full' bacterial proteins stimulated release of peptide YY, described as 'a hormone associated with satiety'."
+  },
+  {
+    "id": "boca-agua-no-es-pavlov",
+    "category": "cuerpo",
+    "question": {
+      "es": "¿Se te hace la boca agua de verdad solo con pensar en tu comida favorita?",
+      "en": "Does your mouth actually water just from thinking about your favorite food?"
+    },
+    "answer": {
+      "es": "No del todo: un estudio comprobó que mirar fotos de comida no aumenta ni una gota de saliva.",
+      "en": "Not really: a study found that looking at photos of food doesn't increase saliva by a single drop."
+    },
+    "detail": {
+      "es": "«No somos como los perros de Pavlov», resumió la investigadora al frente del estudio: ni pensar ni mirar comida disparó saliva de más. Lo que sí la dispara es el olor y, sobre todo, masticar de verdad. Esa sensación de «boca agua» al imaginar algo suele ser solo un par de gotas al mover los músculos de la cara.",
+      "en": "'We're not like Pavlov's dogs,' the lead researcher summed up: neither thinking about food nor looking at it triggered extra saliva. What does trigger it is smell, and above all actually chewing. That 'mouthwatering' feeling from just imagining food is usually just a couple of drops released as your facial muscles move."
+    },
+    "source": "NBC News — We don't actually salivate at the thought of food",
+    "sourceUrl": "https://www.nbcnews.com/health/body-odd/we-dont-actually-salivate-thought-food-flna1c6437187",
+    "_evidence": "Looking at photographs, which simulates thinking about food in real life, didn't increase the amount of saliva flowing from any of the major salivary glands, before or after eating a meal. [...] 'We are not like dogs -- in particular, we're not like Pavlov's dogs -- and don't have conditioned salivary reflexes.'"
+  }
+]

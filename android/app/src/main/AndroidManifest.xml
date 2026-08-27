@@ -1,0 +1,156 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- ==================================================================
+         PERMISSIONS
+         Audit this list before every release: an unused permission is a
+         Play rejection risk and hurts the install conversion rate.
+         Check the MERGED manifest (build/app/outputs/logs) because plugins
+         add permissions of their own.
+         ================================================================== -->
+
+    <!-- Required by AdMob and by any network call. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Advertising ID. Added by the AdMob SDK; declared here so it is not
+         forgotten in the Data Safety form, where it MUST be reported. -->
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+
+    <!-- Question of the day. Requested at runtime from the switch in Settings
+         and nowhere else: Android shows that dialog once and remembers a
+         refusal, so spending it at startup kills the feature before it ships. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- The reminders are scheduled locally, a fortnight at a time. Without
+         this the whole queue is lost on the first reboot and the user simply
+         stops hearing from the app until they open it again. -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- Deliberately NOT declared: SCHEDULE_EXACT_ALARM / USE_EXACT_ALARM.
+         The reminders are scheduled inexact (see DailyQuestionService), which
+         is all a daily nudge needs. Exact alarms are reviewed case by case by
+         Play and would have to be justified; a reminder that lands a few
+         minutes late is still a reminder. -->
+
+    <!-- Reminder: a plugin may inject a permission you do not use. Check the
+         merged manifest (build/app/intermediates/merged_manifest/...) after
+         every dependency change and drop the extras with:
+             <uses-permission android:name="android.permission.SOME_PERMISSION"
+                 tools:node="remove" />
+         The current merge adds BILLING, WAKE_LOCK, FOREGROUND_SERVICE and the
+         Privacy Sandbox ACCESS_ADSERVICES_* permissions, all legitimately
+         required by Play Billing and the AdMob SDK, plus VIBRATE from
+         flutter_local_notifications. -->
+
+    <application
+        android:label="Ajá"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher"
+        android:enableOnBackInvokedCallback="true">
+
+        <!-- ==============================================================
+             AdMob App ID — OFFICIAL GOOGLE TEST ID.
+             Replace it with the production App ID only when you ship.
+             Shipping a production App ID in a debug build is a direct cause
+             of an AdMob ban for invalid traffic.
+             ============================================================== -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
+
+        <!-- Delays ad SDK initialization until MobileAds.initialize() is
+             called, so nothing competes with the first frame. -->
+        <meta-data
+            android:name="com.google.android.gms.ads.flag.OPTIMIZE_INITIALIZATION"
+            android:value="true" />
+        <meta-data
+            android:name="com.google.android.gms.ads.flag.OPTIMIZE_AD_LOADING"
+            android:value="true" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+
+            <meta-data
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme" />
+
+            <!-- Hands deep links to go_router instead of letting the engine
+                 ignore them. Must live inside <activity>: Flutter reads it
+                 from the ActivityInfo metadata. -->
+            <meta-data
+                android:name="flutter_deeplinking_enabled"
+                android:value="true" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Custom scheme deep links: aja://premium, aja://card/<id>
+                 Wired from day one — campaigns, shared cards and the daily
+                 notification all land through here. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="aja" />
+            </intent-filter>
+
+            <!-- App Links (verified https). Enable after publishing
+                 assetlinks.json on the domain, otherwise Android ignores it.
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="example.com" />
+            </intent-filter>
+            -->
+        </activity>
+
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+
+        <!-- ==============================================================
+             SCHEDULED NOTIFICATIONS
+             Android drops every pending alarm on reboot and on app update.
+             These two receivers, from flutter_local_notifications, put the
+             queued questions back.
+             ============================================================== -->
+        <receiver
+            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver"
+            android:exported="false" />
+
+        <receiver
+            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT" />
+            <data android:mimeType="text/plain" />
+        </intent>
+        <!-- url_launcher: sin esto, Android 11+ responde que no hay navegador
+             y el enlace de la fuente de cada dato no abre nada. -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+</manifest>

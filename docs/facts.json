@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "_readme": "Catálogo remoto de Ajá. Se fusiona sobre el que va dentro de la app: mismo id reemplaza, los ids de 'removed' desaparecen, los ids nuevos se añaden al final. Valida con: python3 tool/build_remote_catalog.py --check",
+  "facts": [],
+  "removed": []
+}

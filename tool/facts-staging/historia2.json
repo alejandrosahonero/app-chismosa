@@ -1,0 +1,1332 @@
+[
+  {
+    "id": "alaska-dos-viernes-seguidos",
+    "category": "historia",
+    "question": {
+      "es": "¿Puede un mismo sitio tener dos viernes seguidos, sin sábado entre ellos?",
+      "en": "Can the same place have two Fridays in a row, with no Saturday between?"
+    },
+    "answer": {
+      "es": "Pasó en Alaska en 1867: al viernes 6 de octubre le siguió otro viernes, el 18.",
+      "en": "It happened in Alaska in 1867: Friday, October 6 was followed by another Friday, the 18th."
+    },
+    "detail": {
+      "es": "Al pasar de manos rusas a estadounidenses, Alaska cambió del calendario juliano al gregoriano (saltando días) y cruzó a la vez la línea de cambio de fecha, que anuló uno de esos días. El resultado: solo se perdieron 11 días, no 12, y el día de la semana no avanzó.",
+      "en": "When Alaska passed from Russian to American hands, it switched from the Julian to the Gregorian calendar and crossed the date line at the same time, which cancelled out one of the shifted days. Only 11 days were lost instead of 12, so the weekday didn't advance."
+    },
+    "source": "Now I Know — When the Day After Friday is Friday",
+    "sourceUrl": "https://nowiknow.com/when-the-day-after-friday-is-friday/",
+    "_evidence": "Alaska ended up losing one of the 12 days it gained, moving to October 18th instead of the 19th... it went from Friday to Friday."
+  },
+  {
+    "id": "filipinas-sin-fin-de-ano-1844",
+    "category": "historia",
+    "question": {
+      "es": "¿Hubo alguna vez un año que se quedó sin su último día de diciembre?",
+      "en": "Has a country ever had a year with no last day of December?"
+    },
+    "answer": {
+      "es": "En Filipinas, 1844 pasó del 30 de diciembre directo al 1 de enero: nunca hubo 31.",
+      "en": "In the Philippines, 1844 jumped from December 30 straight to January 1: December 31 never happened."
+    },
+    "detail": {
+      "es": "La colonia llevaba tres siglos con la fecha de España, un día por detrás de sus vecinos asiáticos al otro lado de la línea de cambio de fecha. El gobernador general decretó suprimir un día para alinearse con Asia, y los cartógrafos tardaron cuarenta años en enterarse del cambio.",
+      "en": "The colony had kept Spain's date for three centuries, a full day behind its Asian neighbors across the date line. The governor-general decreed a day be dropped to align with Asia, and mapmakers took forty years to catch up with the change."
+    },
+    "source": "Slate — In 1844, the Philippines skipped a day",
+    "sourceUrl": "https://slate.com/human-interest/2016/02/in-1844-the-philippines-skipped-a-day-and-it-took-decades-for-the-rest-of-the-world-to-notice.html",
+    "_evidence": "The governor-general at the time, the well-named Narciso Claveria, declared that Jan. 1, 1845, would come directly after Dec. 30, 1844."
+  },
+  {
+    "id": "impuesto-sombreros-forjar-sello",
+    "category": "historia",
+    "question": {
+      "es": "¿Se podía acabar en la horca por falsificar el sello fiscal de un sombrero?",
+      "en": "Could you be hanged for forging the tax stamp inside a hat?"
+    },
+    "answer": {
+      "es": "En la Gran Bretaña de 1784, falsificar el sello del impuesto sobre sombreros era pena de muerte.",
+      "en": "In 1780s Britain, forging the hat-tax revenue stamp carried the death penalty."
+    },
+    "detail": {
+      "es": "Cada sombrero debía llevar pegado dentro un sello fiscal que probaba que se había pagado el impuesto, con tarifas que subían según el precio de la prenda. Sombrereros y clientes pagaban multas si se les pillaba sin él, pero solo la falsificación del sello llegaba al patíbulo.",
+      "en": "Every hat had to have a revenue stamp pasted inside proving the duty was paid, with rates rising with the hat's price. Milliners and wearers caught without one paid fines, but only forging the stamp itself was a capital offense."
+    },
+    "source": "Wikipedia — Hat tax",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hat_tax",
+    "_evidence": "the death penalty was reserved for forgers of hat-tax revenue stamps."
+  },
+  {
+    "id": "as-de-picas-sello-de-hacienda",
+    "category": "historia",
+    "question": {
+      "es": "¿Por qué el as de picas es la carta más decorada de toda la baraja inglesa?",
+      "en": "Why is the ace of spades the most decorated card in the whole English deck?"
+    },
+    "answer": {
+      "es": "Porque durante siglos fue el sello con el que Hacienda cobraba el impuesto de las cartas.",
+      "en": "Because for centuries it doubled as the government's proof that card tax had been paid."
+    },
+    "detail": {
+      "es": "Desde 1765, los fabricantes de cartas debían comprar el as de picas ya impreso a la Oficina del Timbre, decorado para dificultar la falsificación. El impuesto bajó en 1862 y dejó de ser obligatorio, pero los fabricantes siguieron adornándolo por costumbre, y la moda se exportó fuera de Gran Bretaña.",
+      "en": "From 1765, card makers had to buy their ace of spades pre-printed by the government Stamp Office, decorated to make forgery harder. The tax was cut in 1862 and the requirement lapsed, but makers kept the ornate ace out of habit, and the style spread abroad."
+    },
+    "source": "The World of Playing Cards — The Ace of Spades",
+    "sourceUrl": "https://www.wopc.co.uk/members/ken-lodge/72-the-ace-of-spades",
+    "_evidence": "the Government of the day collected tax revenues on playing cards by making the card-makers buy their aces from the Stamp Office... the ace was decorative."
+  },
+  {
+    "id": "especias-no-tapaban-carne-podrida",
+    "category": "historia",
+    "question": {
+      "es": "¿Es verdad que la gente medieval usaba especias para disimular la carne podrida?",
+      "en": "Did medieval people really use spices to hide the taste of rotten meat?"
+    },
+    "answer": {
+      "es": "No: solo los ricos podían pagar especias, y eran justo los que menos comían carne mala.",
+      "en": "No: only the rich could afford spices, and they were the ones least likely to eat bad meat."
+    },
+    "detail": {
+      "es": "La idea salió de un libro de 1939 que lo dio por hecho sin pruebas. Quien podía pagar azafrán o pimienta también podía pagar carne fresca o salada de calidad, y el salado, ahumado y curado ya conservaba bien los alimentos. Las especias se usaban por lo mismo que ahora: porque saben bien.",
+      "en": "The idea comes from a 1939 book that assumed it without evidence. Anyone rich enough to buy saffron or pepper could also afford fresh or well-salted meat, and salting, smoking, and curing already preserved food effectively. Spices were used for the same reason they are today: because they taste good."
+    },
+    "source": "Grunge — A Look At The Myth About Medieval Spices",
+    "sourceUrl": "https://www.grunge.com/302397/a-look-at-the-myth-about-medieval-spices/",
+    "_evidence": "Professor Paul Freedman of Yale, who wrote the definitive academic study on medieval spices, called the rotten meat theory a compelling but false idea that constitutes something of an urban legend."
+  },
+  {
+    "id": "tenedor-herramienta-del-diablo",
+    "category": "historia",
+    "question": {
+      "es": "¿Por qué el tenedor tardó siglos en aceptarse en las mesas europeas?",
+      "en": "Why did the fork take centuries to be accepted at European tables?"
+    },
+    "answer": {
+      "es": "Porque se veía como un pecado: Dios ya te dio diez tenedores, tus propios dedos.",
+      "en": "Because it was seen as sinful: God had already given you ten forks, your own fingers."
+    },
+    "detail": {
+      "es": "Cuando una princesa bizantina llevó un tenedor a Venecia en el siglo XI, un clérigo la acusó de vanidad excesiva, y cuando murió de peste años después se contó como castigo divino por usarlo. La leyenda se repitió durante siglos y frenó el tenedor en Europa hasta bien entrado el siglo XVII.",
+      "en": "When a Byzantine princess brought a fork to Venice in the 11th century, a clergyman accused her of excessive vanity, and when she later died of plague it was retold as divine punishment for using it. The legend was repeated for centuries and kept the fork out of Europe until well into the 17th century."
+    },
+    "source": "History.com — Why the Fork Was Once Considered Scandalous",
+    "sourceUrl": "https://www.history.com/articles/fork-history-controversy",
+    "_evidence": "a Byzantine princess's use of a fork... was mocked partly because it resembled the Devil's pitchfork... the claim that her subsequent death from plague was divine punishment for using the fork."
+  },
+  {
+    "id": "jabon-vigilado-por-inspectores",
+    "category": "historia",
+    "question": {
+      "es": "¿Llegó Hacienda a vigilar que nadie hiciera jabón a escondidas en su propia casa?",
+      "en": "Did tax officers really check that nobody was making soap at home?"
+    },
+    "answer": {
+      "es": "Sí: durante 141 años, el jabón se fabricó bajo la supervisión directa de un inspector fiscal.",
+      "en": "Yes: for 141 years, soap in Britain was made under the direct supervision of a tax officer."
+    },
+    "detail": {
+      "es": "El impuesto sobre el jabón rigió en Gran Bretaña de 1712 a 1853, y triplicaba el precio del jabón corriente. Los inspectores de Hacienda visitaban los talleres para comprobar que no se cociera jabón sin registrar, y la vigilancia encarecía tanto el proceso que muchos fabricantes se mudaron a Irlanda.",
+      "en": "The soap tax ran in Britain from 1712 to 1853, tripling the price of ordinary soap. Excise officers visited workshops to check that no soap was being boiled off the books, and the oversight was so costly that many makers moved production to Ireland."
+    },
+    "source": "UK Parliament — Historic Hansard, Duty on Soap (28 Feb 1832)",
+    "sourceUrl": "https://api.parliament.uk/historic-hansard/commons/1832/feb/28/duty-on-soap",
+    "_evidence": "It was usual for the Excise officers to visit every tallow-chandler's shop... under the pretence that they were ordered to see that no soap was made on the premises."
+  },
+  {
+    "id": "radithor-mandibula-perdida",
+    "category": "historia",
+    "question": {
+      "es": "¿Se llegó a vender agua radiactiva como tónico para la salud?",
+      "en": "Was radioactive water ever sold as a health tonic?"
+    },
+    "answer": {
+      "es": "Sí, y un magnate que bebió mil botellas acabó sin mandíbula antes de morir por ello.",
+      "en": "Yes, and a tycoon who drank a thousand bottles ended up losing his jaw before it killed him."
+    },
+    "detail": {
+      "es": "Eben Byers bebió Radithor, radio disuelto en agua, durante más de tres años tras un accidente, convencido de que le sentaba bien. Le quitaron casi toda la mandíbula en dos operaciones y murió en 1932 con más radio en los huesos del que se considera mortal. El caso impulsó leyes de protección al consumidor en EEUU.",
+      "en": "Eben Byers drank Radithor, radium dissolved in water, for over three years after an accident, convinced it made him feel better. Surgeons removed nearly his entire jaw in two operations, and he died in 1932 with far more radium in his bones than is considered fatal. The case pushed forward US consumer protection law."
+    },
+    "source": "History.com — Radium: The Deadly Health Fad of the Early 1900s",
+    "sourceUrl": "https://www.history.com/articles/radium-cures-health-fad-early-20th-century",
+    "_evidence": "his whole upper jaw, excepting two front teeth, and most of his lower jaw had been removed... his bones contained more than three times the amount of radium considered fatal."
+  },
+  {
+    "id": "coca-cola-cocaina-original",
+    "category": "historia",
+    "question": {
+      "es": "¿Llevaba cocaína de verdad la Coca-Cola cuando se inventó?",
+      "en": "Did Coca-Cola really contain cocaine when it was invented?"
+    },
+    "answer": {
+      "es": "Sí, hasta 1903 el jarabe llevaba extracto de hoja de coca con cocaína de verdad.",
+      "en": "Yes, until 1903 the syrup contained real cocaine from coca leaf extract."
+    },
+    "detail": {
+      "es": "La fórmula original de 1886 usaba unas cinco onzas de hoja de coca por cada galón de jarabe. La empresa retiró la coca en 1903 por el rechazo social hacia la droga, aunque quedaron restos hasta 1904; hoy sigue usando extracto de coca, pero procesado para eliminar el alcaloide.",
+      "en": "The original 1886 formula used about five ounces of coca leaf per gallon of syrup. The company removed the coca leaf in 1903 amid growing public backlash against the drug, though trace amounts lingered until 1904; it still uses coca leaf extract today, but processed to strip out the alkaloid."
+    },
+    "source": "Johns Hopkins News-Letter — Did you know it was made with cocaine?",
+    "sourceUrl": "https://www.jhunewsletter.com/article/2016/04/did-you-know-it-was-made-with-cocaine",
+    "_evidence": "The coca leaf was removed from the drink in 1903. The company still used a different type of coca leaf for another year after this, so there were still trace levels of cocaine in Coke until 1904."
+  },
+  {
+    "id": "heroina-marca-registrada-bayer",
+    "category": "historia",
+    "question": {
+      "es": "¿«Heroína» fue en su origen el nombre comercial de un jarabe para la tos?",
+      "en": "Was \"heroin\" originally just the brand name of a cough medicine?"
+    },
+    "answer": {
+      "es": "Sí, Bayer la registró en 1898 como jarabe antitusivo y la vendió como no adictiva.",
+      "en": "Yes, Bayer trademarked it in 1898 as a cough suppressant and sold it as non-addictive."
+    },
+    "detail": {
+      "es": "El químico de Bayer Felix Hoffmann sintetizó el compuesto y la empresa lo presentó como diez veces más eficaz que la codeína para la tos, en botellas de cristal ámbar con etiquetas vistosas. Meses después de su lanzamiento ya había informes que desmentían que fuera segura.",
+      "en": "Bayer chemist Felix Hoffmann synthesized the compound, and the company marketed it as ten times more effective than codeine for coughs, in amber glass bottles with bright labels. Within months of its release, reports were already contradicting the claim that it was safe."
+    },
+    "source": "DEA Museum — Heroin Bottle",
+    "sourceUrl": "https://museum.dea.gov/museum-collection/collection-spotlight/artifact/heroin-bottle",
+    "_evidence": "introduced heroin as a pain reliever and cough suppressant. The company packaged and sold the drug in bottles like this one."
+  },
+  {
+    "id": "washington-sangrado-hasta-morir",
+    "category": "historia",
+    "question": {
+      "es": "¿Perdió George Washington casi la mitad de su sangre en sus últimas horas de vida?",
+      "en": "Did George Washington lose nearly half his blood in his final hours?"
+    },
+    "answer": {
+      "es": "Sí: se lo pidió él mismo, y sus médicos acabaron sangrándolo cinco veces en un día.",
+      "en": "Yes: he asked for it himself, and his doctors ended up bleeding him five times in one day."
+    },
+    "detail": {
+      "es": "Con dolor de garganta y fiebre, Washington pidió a su capataz que le sangrara, y luego tres médicos repitieron el sangrado cuatro veces más en ocho horas, hasta perder cerca del 40 % de su sangre. Uno de ellos avisó de que ya estaba demasiado débil, pero no le hicieron caso.",
+      "en": "With a sore throat and fever, Washington asked his overseer to bleed him, and three doctors then repeated the bleeding four more times over eight hours, until he'd lost close to 40% of his blood. One of them warned he was already too weak, but he was overruled."
+    },
+    "source": "National Constitution Center — The mysterious death of George Washington",
+    "sourceUrl": "https://constitutioncenter.org/blog/the-mysterious-death-of-george-washington",
+    "_evidence": "Doctors then arrived and bled him four more times over the next eight hours, with a total blood loss of 40 percent."
+  },
+  {
+    "id": "sanguijuelas-aprobadas-como-aparato",
+    "category": "historia",
+    "question": {
+      "es": "¿Sigue una agencia sanitaria aprobando oficialmente el uso médico de las sanguijuelas?",
+      "en": "Does a health agency still formally approve the medical use of leeches?"
+    },
+    "answer": {
+      "es": "Sí, la FDA de EEUU las clasifica como aparato médico desde 2004, la primera criatura viva en serlo.",
+      "en": "Yes, the US FDA has classified them as a medical device since 2004, the first live animal to be one."
+    },
+    "detail": {
+      "es": "Las sanguijuelas se usan hoy en cirugía reconstructiva para aliviar la congestión venosa de injertos de piel recién trasplantados, chupando la sangre acumulada mientras el tejido reconecta sus propias venas. Cada una se usa una sola vez, en un solo paciente, y luego se desecha por control de infecciones.",
+      "en": "Leeches are used today in reconstructive surgery to relieve venous congestion in freshly transplanted skin grafts, drawing off pooled blood while the tissue reconnects its own veins. Each one is used exactly once, on a single patient, then disposed of to prevent infection."
+    },
+    "source": "NBC News — FDA approves leeches as medical devices",
+    "sourceUrl": "https://www.nbcnews.com/health/health-news/fda-approves-leeches-medical-devices-flna1c9447212",
+    "_evidence": "the first company to request and receive FDA clearance to market the bloodsucking aquatic animals as medical devices... Healing skin grafts by removing blood pooled under the graft."
+  },
+  {
+    "id": "pony-express-dieciocho-meses",
+    "category": "historia",
+    "question": {
+      "es": "¿Cuánto tiempo estuvo en marcha de verdad el legendario Pony Express?",
+      "en": "How long did the legendary Pony Express actually run for?"
+    },
+    "answer": {
+      "es": "Solo 18 meses: nació en abril de 1860 y el telégrafo lo dejó obsoleto en octubre de 1861.",
+      "en": "Only 18 months: it launched in April 1860 and the telegraph made it obsolete by October 1861."
+    },
+    "detail": {
+      "es": "En ese año y medio, sus jinetes completaron 308 recorridos y repartieron casi 35.000 cartas cruzando el país en unos diez días, con solo una saca de correo perdida. En cuanto el telégrafo transcontinental conectó ambas costas al instante, la empresa cerró dos días después: no tenía sentido seguir.",
+      "en": "In that year and a half, riders completed 308 runs and delivered nearly 35,000 letters across the country in about ten days, losing only one mail pouch. As soon as the transcontinental telegraph linked both coasts instantly, the company shut down two days later: there was no point continuing."
+    },
+    "source": "Britannica — Pony Express, Final days",
+    "sourceUrl": "https://www.britannica.com/topic/Pony-Express/Final-days",
+    "_evidence": "the completion of the transcontinental telegraph line in October 1861—was the immediate cause of the demise of the Pony Express."
+  },
+  {
+    "id": "camino-real-persa-lema-postal",
+    "category": "historia",
+    "question": {
+      "es": "¿De dónde sale el lema «ni la nieve, ni la lluvia» tallado en la oficina postal de Nueva York?",
+      "en": "Where does the postal motto \"neither snow nor rain\" carved on New York's post office come from?"
+    },
+    "answer": {
+      "es": "De un cronista griego del siglo V a.C. que describió a los correos persas, no de EEUU.",
+      "en": "From a 5th-century BC Greek writer describing Persian couriers, not from the US at all."
+    },
+    "detail": {
+      "es": "Herodoto escribió que nada mortal viajaba más rápido que esos jinetes, que se relevaban sin parar en cada posta del Camino Real persa día y noche, con cualquier tiempo. Esas mismas palabras, de hace 2.500 años, se grabaron en 1914 sobre la entrada del edificio postal de Manhattan.",
+      "en": "Herodotus wrote that nothing mortal travelled faster than these riders, who relayed the message without stopping at every station along the Persian Royal Road, day and night, in any weather. Those very words, 2,500 years old, were carved in 1914 above the entrance of Manhattan's post office."
+    },
+    "source": "United States Postal Service — creed inscription, via History with the Szilagyis",
+    "sourceUrl": "https://historywiththeszilagyis.org/hwts142",
+    "_evidence": "neither snow nor rain nor heat nor dark of night keeps them from completing their appointed course as swiftly as possible... carved above the entrance of the New York City Post Office in 1914."
+  },
+  {
+    "id": "bolsillo-mujer-atado-a-la-cintura",
+    "category": "historia",
+    "question": {
+      "es": "¿Por qué los vestidos de mujer del siglo XVIII no tenían bolsillos cosidos dentro?",
+      "en": "Why didn't 18th-century women's dresses have pockets sewn in?"
+    },
+    "answer": {
+      "es": "Porque el bolsillo era una bolsa aparte, atada a la cintura por debajo de las enaguas.",
+      "en": "Because the pocket was a separate bag, tied around the waist and worn under the petticoats."
+    },
+    "detail": {
+      "es": "Se accedía a ella por una abertura lateral en el vestido y cabían un diario, un frasco de perfume, un espejo o costura. La moda neoclásica de después de la Revolución Francesa adelgazó tanto la silueta que ya no cabía ese bulto oculto, y así nació el bolso de mano moderno para sustituirlo.",
+      "en": "It was reached through a side slit in the gown and could hold a diary, a perfume bottle, a mirror, or sewing tools. The slim neoclassical fashion after the French Revolution left no room for that hidden bulge underneath, which is how the modern handbag was born to replace it."
+    },
+    "source": "Victoria and Albert Museum — Pocket, Hannah Haines",
+    "sourceUrl": "https://collections.vam.ac.uk/item/O107966/pocket-haines-hannah",
+    "_evidence": "they were attached to a tape and tied around the waist as separate garments. Worn under the hoops and petticoats, they were accessed through openings in the gown and petticoat seams."
+  },
+  {
+    "id": "avisador-golpea-tu-ventana",
+    "category": "historia",
+    "question": {
+      "es": "¿Qué oficio consistía en despertar a la gente a golpes de guisante contra su ventana?",
+      "en": "What job involved waking people up by shooting peas at their window?"
+    },
+    "answer": {
+      "es": "El de «knocker-up»: un despertador humano que hacía la ronda antes de que hubiera relojes baratos.",
+      "en": "The \"knocker-up\": a human alarm clock who did the rounds before cheap clocks existed."
+    },
+    "detail": {
+      "es": "En las ciudades industriales británicas del XVIII y XIX, quien no podía pagarse un reloj contrataba a alguien para que golpeara su ventana con un palo largo, o disparara guisantes con una cerbatana, hasta obtener respuesta. Por seis peniques a la semana no se iba hasta confirmar que el cliente estaba despierto.",
+      "en": "In Britain's industrial towns of the 18th and 19th centuries, anyone who couldn't afford a clock hired someone to rattle their window with a long stick, or shoot dried peas through a pipe, until they got a response. For sixpence a week, they wouldn't leave until the client was confirmed awake."
+    },
+    "source": "Journal of Victorian Culture Online — Women in the business of waking up industrial Britain",
+    "sourceUrl": "https://jvc.oup.com/2020/06/12/waking-up-industrial-britain/",
+    "_evidence": "they had a variety of methods: sometimes they would even shoot peas through pipes at their client's windows to wake them up... sixpence a week, the usual rate of the service."
+  },
+  {
+    "id": "palomas-de-reuters-bolsa",
+    "category": "historia",
+    "question": {
+      "es": "¿Nació la agencia de noticias Reuters transportando precios de bolsa en palomas?",
+      "en": "Did the Reuters news agency start out by carrying stock prices with pigeons?"
+    },
+    "answer": {
+      "es": "Sí: en 1850 montó un servicio de palomas mensajeras entre Aquisgrán y Bélgica, donde el cable aún no llegaba.",
+      "en": "Yes: in 1850 he ran a carrier-pigeon service between Aachen and Belgium, across a gap the cable had not yet closed."
+    },
+    "detail": {
+      "es": "El telégrafo llegaba hasta Aquisgrán por un lado y hasta Bruselas por el otro, pero entre ambos puntos aún no había cable. Paul Julius Reuter tapó ese hueco con palomas adiestradas que volaban los precios de la bolsa y las noticias más rápido que el correo; en cuanto se tendió el cable, un año después, las palomas se jubilaron.",
+      "en": "The telegraph reached Aachen on one side and Brussels on the other, but the gap between them still had no cable. Paul Julius Reuter plugged that gap with trained pigeons that flew stock prices and news faster than the mail could; once the cable was laid a year later, the pigeons retired."
+    },
+    "source": "Encyclopedia.com — Paul Julius Reuter",
+    "sourceUrl": "https://www.encyclopedia.com/history/encyclopedias-almanacs-transcripts-and-maps/paul-julius-reuter",
+    "_evidence": "In April 1850, he entered into an agreement with Heinrich Geller to start a carrier pigeon service to transmit news and stock prices between Aachen, where German telegraph lines ended, and Belgium."
+  },
+  {
+    "id": "correo-por-tubo-neumatico-paris",
+    "category": "historia",
+    "question": {
+      "es": "¿Se llegó a enviar correo por tubos de aire comprimido bajo una ciudad entera?",
+      "en": "Was mail ever sent through compressed-air tubes running under an entire city?"
+    },
+    "answer": {
+      "es": "Sí, en París, y la red siguió funcionando hasta 1984, más de un siglo después de nacer.",
+      "en": "Yes, in Paris, and the network kept running until 1984, more than a century after it began."
+    },
+    "detail": {
+      "es": "Las cartas viajaban en cápsulas por tubos metálicos tendidos junto a las alcantarillas y el metro, empujadas por aire a hasta 40 km/h, y se cobraban por tarjeta y no por palabra. En su mejor momento la red sumaba 427 km de tubería y 130 oficinas, con 30 millones de mensajes en un solo año.",
+      "en": "Letters travelled in capsules through metal tubes laid alongside the sewers and metro, pushed by compressed air at up to 40 km/h, charged per card rather than per word. At its peak the network spanned 427 km of piping and 130 offices, carrying 30 million messages in a single year."
+    },
+    "source": "Bonjour Paris — When Paris Sent its Mail Down the Tubes",
+    "sourceUrl": "https://bonjourparis.com/history/when-paris-sent-its-mail-down-the-tubes/",
+    "_evidence": "Compressed air operating in a push-pull manner whooshed the capsules round the city at speeds reaching 40km an hour... In 1945, its busiest year, it handled 30 million letters."
+  },
+  {
+    "id": "corbata-mercenarios-croatas",
+    "category": "historia",
+    "question": {
+      "es": "¿Por qué la palabra francesa para «corbata» suena tan parecida a «croata»?",
+      "en": "Why does the French word for \"necktie\" sound so much like \"Croatian\"?"
+    },
+    "answer": {
+      "es": "Porque nació nombrando justo eso: el pañuelo al cuello de los mercenarios croatas de 1630.",
+      "en": "Because it originally named exactly that: the neck scarf worn by Croatian mercenaries in 1630."
+    },
+    "detail": {
+      "es": "Al ver a esos soldados presentados ante Luis XIII con pañuelos anudados al cuello, distintos según su rango, la corte francesa adoptó el estilo y lo llamó «cravate», del gentilicio francés para croata. De ahí salieron también «Krawatte» en alemán y «corbata» en español.",
+      "en": "After seeing those soldiers presented to Louis XIII with knotted scarves around their necks, varying by rank, the French court adopted the style and named it \"cravate,\" from the French word for Croat. That same root also gave German \"Krawatte\" and Spanish \"corbata.\""
+    },
+    "source": "Croatian Studies Foundation — The humble necktie's Croatian origins",
+    "sourceUrl": "https://www.croatianstudiesfoundation.com.au/blog/2014/10/24/the-humble-neckties-croatian-origins",
+    "_evidence": "They named it the cravat, a word derived from the French word for 'Croat.'"
+  },
+  {
+    "id": "tacones-altos-jinetes-persas",
+    "category": "historia",
+    "question": {
+      "es": "¿Nacieron los tacones altos para montar a caballo y no para la moda?",
+      "en": "Were high heels invented for horseback riding, not for fashion?"
+    },
+    "answer": {
+      "es": "Sí, en la Persia del siglo X, para que el pie no resbalase del estribo al disparar flechas.",
+      "en": "Yes, in 10th-century Persia, to keep the foot from slipping out of the stirrup while shooting arrows."
+    },
+    "detail": {
+      "es": "La caballería persa usaba tacón para plantarse en el estribo y ponerse de pie sobre la silla al tirar con el arco, sin necesidad de caminar con ellos. El calzado llegó a Europa por el comercio con Persia y en el siglo XVII la nobleza masculina lo adoptó para parecer más alta y poderosa.",
+      "en": "Persian cavalry used the heel to lock into the stirrup and rise up in the saddle while firing a bow, with no need to walk in them. The footwear reached Europe through trade with Persia, and by the 17th century male nobility had adopted it to look taller and more powerful."
+    },
+    "source": "Heelho — The History of High Heels",
+    "sourceUrl": "https://www.heelho.com/blogs/the-heelho-strut/the-history-of-high-heels",
+    "_evidence": "The heels help to keep the horse rider's feet in the stirrup as they galloped, allowing calvary archers to maintain their position on the horse as they fired at their enemy."
+  },
+  {
+    "id": "remache-vaquero-hoguera",
+    "category": "historia",
+    "question": {
+      "es": "¿Por qué los vaqueros ya no llevan un remache metálico justo en la entrepierna?",
+      "en": "Why don't jeans have a metal rivet right at the crotch anymore?"
+    },
+    "answer": {
+      "es": "Porque quemaba a los vaqueros que se acuclillaban junto a una hoguera para calentarse.",
+      "en": "Because it burned the cowboys who squatted by a campfire to warm up."
+    },
+    "detail": {
+      "es": "El remache reforzaba la base de la bragueta desde el diseño original de Levi's, pero conducía tan bien el calor que se convirtió en queja habitual entre vaqueros. En 1941 la empresa lo quitó de ese punto en concreto, aunque siguió reforzando el resto de costuras con remaches iguales.",
+      "en": "The rivet reinforced the base of the fly in Levi's original design, but conducted heat so well that it became a common cowboy complaint. In 1941 the company removed it from that one spot, though it kept reinforcing the rest of the seams with identical rivets."
+    },
+    "source": "Rope Dye Crafted Goods — Crotch Rivet",
+    "sourceUrl": "https://www.ropedye.com/2010/01/crotch-rivet/",
+    "_evidence": "Levi Strauss & Co. removed the crotch rivets from their jeans in 1942 after numerous complaints from cowboys about these rivets heating up considerably in front of campfires."
+  },
+  {
+    "id": "gran-hedor-de-londres",
+    "category": "historia",
+    "question": {
+      "es": "¿Un mal olor llegó a paralizar el Parlamento británico durante semanas?",
+      "en": "Did a bad smell actually shut down the British Parliament for weeks?"
+    },
+    "answer": {
+      "es": "Sí, en el verano de 1858, cuando el Támesis se convirtió en una cloaca a cielo abierto.",
+      "en": "Yes, in the summer of 1858, when the Thames became an open sewer."
+    },
+    "detail": {
+      "es": "Con más de 2,5 millones de habitantes vertiendo sus desechos al río y un calor récord que bajó el nivel del agua, la peste obligó a colgar cortinas empapadas en cal en las ventanas del Parlamento. El Gobierno aprobó en solo 18 días una ley para financiar una red de alcantarillado nueva, que sigue en uso hoy.",
+      "en": "With over 2.5 million people dumping waste into the river and record heat lowering the water level, the stench forced Parliament to hang lime-soaked curtains over its windows. The government passed a bill to fund a new sewer network in just 18 days, and that network is still in use today."
+    },
+    "source": "London Museum — The Great Stink of 1858",
+    "sourceUrl": "https://www.londonmuseum.org.uk/collections/london-stories/great-stink-of-1858/",
+    "_evidence": "The government rushed through a bill, proposed by Benjamin Disraeli, to fund a new sewer. The bill became law in just 18 days."
+  },
+  {
+    "id": "incendio-parlamento-por-palos-viejos",
+    "category": "historia",
+    "question": {
+      "es": "¿Se puede incendiar un palacio entero por quemar un montón de palos de madera vieja?",
+      "en": "Can an entire palace burn down because of a pile of old wooden sticks?"
+    },
+    "answer": {
+      "es": "Sí: así ardió el Parlamento británico en 1834, quemando registros contables ya inútiles.",
+      "en": "Yes: that's how the British Parliament burned down in 1834, while destroying obsolete accounting records."
+    },
+    "detail": {
+      "es": "Durante siglos, el Tesoro llevaba sus cuentas con muescas talladas en palos de sauce partidos en dos. Cuando el sistema quedó obsoleto, alguien decidió quemar dos carretadas de esos palos en los hornos bajo la Cámara de los Lores, pensados para carbón, no para tanta leña, y el sobrecalentamiento prendió fuego a todo el edificio.",
+      "en": "For centuries, the Treasury kept its accounts as notches carved into willow sticks split in two. Once the system became obsolete, someone decided to burn two cartloads of those sticks in the furnaces under the House of Lords, which were built for coal, not that much wood, and the overheating set the whole building ablaze."
+    },
+    "source": "Amusing Planet — The Burning of The Parliament, 1834",
+    "sourceUrl": "https://www.amusingplanet.com/2026/04/the-burning-of-parliament-1834.html",
+    "_evidence": "The heat from the fires melted the copper lining of the flues and started a chimney fire, which ignited the surrounding woodwork hidden behind the walls."
+  },
+  {
+    "id": "obreros-piramides-cobraban-en-cerveza",
+    "category": "historia",
+    "question": {
+      "es": "¿Cobraban en cerveza los obreros que construyeron las pirámides de Guiza?",
+      "en": "Were the workers who built the Giza pyramids paid in beer?"
+    },
+    "answer": {
+      "es": "En parte sí: pan y cerveza eran la ración básica documentada de los trabajadores estatales.",
+      "en": "Partly: bread and beer were the documented basic ration for state workers."
+    },
+    "detail": {
+      "es": "Textos jeroglíficos y las cocinas encontradas en la ciudad de los obreros de Guiza confirman que el estado egipcio mantenía panaderías y cervecerías propias para alimentar a las cuadrillas. No eran esclavos: vivían en un poblado construido para ellos y se enterraban con honores cerca de la pirámide.",
+      "en": "Hieroglyphic texts and the kitchens found in Giza's workers' town confirm the Egyptian state ran its own bakeries and breweries to feed the crews. They weren't slaves: they lived in a purpose-built town and were buried with honors near the pyramid."
+    },
+    "source": "Ancient Egypt Research Associates — Feeding Pyramid Workers",
+    "sourceUrl": "https://aeraweb.org/feeding-pyramid-workers/",
+    "_evidence": "We know from ancient texts that a staple diet of bread and beer were disbursed as rations in royal labor projects."
+  },
+  {
+    "id": "cinturon-de-castidad-invento-victoriano",
+    "category": "historia",
+    "question": {
+      "es": "¿Usaban de verdad cinturones de castidad las mujeres en la Edad Media?",
+      "en": "Did medieval women really wear chastity belts?"
+    },
+    "answer": {
+      "es": "No: casi todos los que se conservan se fabricaron siglos después, en la era victoriana.",
+      "en": "No: almost all the surviving examples were made centuries later, in the Victorian era."
+    },
+    "detail": {
+      "es": "La primera mención, de 1405, aparecía como broma en un tratado sobre máquinas de asedio. Los objetos que hoy se ven en museos se fabricaron en Inglaterra en el siglo XIX para exhibirlos como curiosidades morbosas de un pasado supuestamente bárbaro, y muchos historiadores dieron el mito por cierto sin comprobarlo.",
+      "en": "The first mention, from 1405, appeared as a joke in a treatise on siege machines. The objects seen in museums today were manufactured in 19th-century England to be displayed as morbid curiosities of a supposedly barbaric past, and many historians simply took the myth at face value without checking."
+    },
+    "source": "TIME — Medieval Chastity Belts: Myth or Reality?",
+    "sourceUrl": "https://time.com/4061117/medieval-chastity-belt-myth/",
+    "_evidence": "ever more popular medieval torture museums were established all over Europe, mostly supplied by modern (!) objects produced in England at that time."
+  },
+  {
+    "id": "vomitorio-no-era-para-vomitar",
+    "category": "historia",
+    "question": {
+      "es": "¿Tenía el Coliseo romano una sala reservada para que los ricos vomitaran entre plato y plato?",
+      "en": "Did the Colosseum have a room reserved for the rich to vomit between courses?"
+    },
+    "answer": {
+      "es": "No: un «vomitorium» era solo el pasillo por el que salía a chorros la multitud, no vómito.",
+      "en": "No: a \"vomitorium\" was just the corridor the crowd streamed out of, not vomit."
+    },
+    "detail": {
+      "es": "El nombre viene del latín «vomere», expulsar, porque esos túneles arqueados «vomitaban» a los espectadores hacia la calle al terminar el espectáculo. El Coliseo tenía 76 de ellos y podía vaciarse en unos quince minutos. La imagen del banquete con sala de vómito es un malentendido moderno del siglo XX.",
+      "en": "The name comes from Latin \"vomere,\" to expel, because these arched tunnels \"spewed\" spectators out onto the street once the show ended. The Colosseum had 76 of them and could empty in about fifteen minutes. The banquet-with-a-vomiting-room image is a modern 20th-century misunderstanding."
+    },
+    "source": "Mental Floss — The Roman Vomitorium Wasn't What You Think It Was",
+    "sourceUrl": "https://www.mentalfloss.com/history/misconceptions/roman-vomitorium-wasn-t-what-you-think-",
+    "_evidence": "A vomitorium was actually an entrance or exit corridor in a theater, amphitheater, or stadium... ancient Romans used it to describe a passageway that emptied crowds from large venues."
+  },
+  {
+    "id": "guerra-por-una-oreja-cortada",
+    "category": "historia",
+    "question": {
+      "es": "¿Empezó una guerra entre dos países porque un capitán enseñó su oreja cortada en el Parlamento?",
+      "en": "Did a war between two countries start because a captain showed off his severed ear in Parliament?"
+    },
+    "answer": {
+      "es": "Sí: la Guerra de la Oreja de Jenkins, entre Gran Bretaña y España, lleva ese nombre por eso.",
+      "en": "Yes: the War of Jenkins' Ear, between Britain and Spain, is named after exactly that."
+    },
+    "detail": {
+      "es": "En 1731, guardacostas españoles le cortaron una oreja al capitán Robert Jenkins al registrar su barco por contrabando. Siete años después, la sacó ante una comisión de la Cámara de los Comunes como prueba del maltrato español, y la indignación que provocó ayudó a empujar a Gran Bretaña a la guerra en 1739.",
+      "en": "In 1731, Spanish coast guards cut off Captain Robert Jenkins' ear while searching his ship for contraband. Seven years later, he produced it before a House of Commons committee as proof of Spanish mistreatment, and the outrage it caused helped push Britain into war in 1739."
+    },
+    "source": "Britannica — War of Jenkins' Ear",
+    "sourceUrl": "https://www.britannica.com/event/War-of-Jenkins-Ear",
+    "_evidence": "Captain Robert Jenkins appeared before a committee of the House of Commons and exhibited what he alleged to be his own amputated ear, cut off in April 1731."
+  },
+  {
+    "id": "fiebre-de-la-ginebra-londres",
+    "category": "historia",
+    "question": {
+      "es": "¿Hubo una época en que una de cada cinco casas de un barrio de Londres vendía ginebra?",
+      "en": "Was there a time when one in five houses in a London neighborhood sold gin?"
+    },
+    "answer": {
+      "es": "Sí, en el siglo XVIII, cuando la ginebra era más barata y accesible que el agua limpia.",
+      "en": "Yes, in the 18th century, when gin was cheaper and more accessible than clean water."
+    },
+    "detail": {
+      "es": "Cualquiera podía destilar y vender ginebra sin licencia, y en el barrio de St Giles una de cada cinco viviendas era un tugurio de ginebra. Para 1750, una de cada ocho muertes de adultos se atribuía al alcohol destilado, hasta que la ley de 1751 limitó la venta a locales con licencia y frenó la crisis.",
+      "en": "Anyone could distill and sell gin without a license, and in the St Giles neighborhood one in five houses was a gin shop. By 1750, one in every eight adult deaths was blamed on spirits, until the 1751 act restricted sales to licensed premises and brought the crisis under control."
+    },
+    "source": "London Museum — The Gin Craze: Ruin of 1700s London",
+    "sourceUrl": "https://www.londonmuseum.org.uk/collections/london-stories/gin-craze-ruin-1700s-london/",
+    "_evidence": "one in five houses operating as a gin shop... one in every eight deaths in adults over the age of 20 was caused by drinking spirits."
+  },
+  {
+    "id": "tulipan-mas-caro-que-una-casa",
+    "category": "historia",
+    "question": {
+      "es": "¿Llegó un solo bulbo de tulipán a costar lo mismo que una mansión?",
+      "en": "Did a single tulip bulb once cost as much as a mansion?"
+    },
+    "answer": {
+      "es": "Sí, en la Holanda de 1637: el bulbo más caro superaba los seis años de salario medio.",
+      "en": "Yes, in Holland in 1637: the priciest bulb cost more than six years of average wages."
+    },
+    "detail": {
+      "es": "Los tulipanes raros se pagaban con contratos a futuro como si fueran acciones, y algunos bulbos llegaron a los 5.500 florines, suficiente para comprar una casa junto a un canal de Ámsterdam. En febrero de ese año los compradores dejaron de aparecer de golpe en las tabernas y el precio se desplomó de la noche a la mañana.",
+      "en": "Rare tulips were traded on futures contracts as if they were stocks, and some bulbs reached 5,500 florins, enough to buy a canal house in Amsterdam. In February of that year buyers simply stopped showing up at the taverns, and prices collapsed overnight."
+    },
+    "source": "Corporate Finance Institute — Dutch Tulip Bulb Market Bubble",
+    "sourceUrl": "https://corporatefinanceinstitute.com/resources/economics/dutch-tulip-bulb-market-bubble/",
+    "_evidence": "A single bulb of tulip cost as much as 4,000 to even 5,500 florins... the rarest tulip bulbs traded for as much as six times the average person's annual salary."
+  },
+  {
+    "id": "cacao-falso-relleno-de-barro",
+    "category": "historia",
+    "question": {
+      "es": "¿Se falsificaba el dinero de verdad con granos de cacao rellenos de barro?",
+      "en": "Was real money once forged out of cacao beans stuffed with mud?"
+    },
+    "answer": {
+      "es": "Sí, en el imperio azteca: vaciaban el grano de cacao y lo rellenaban de barro o cera.",
+      "en": "Yes, in the Aztec empire: people hollowed out cacao beans and filled them with mud or wax."
+    },
+    "detail": {
+      "es": "El cacao servía de moneda de cambio: un conejo pequeño costaba 30 granos y un pavo, 100. Los falsificadores vaciaban la cáscara del grano bueno y la rellenaban de masa de amaranto, cera o arena, o teñían granos malos para que pareciesen de mejor calidad. La ley azteca castigaba esto igual que un robo.",
+      "en": "Cacao worked as small change: a small rabbit cost 30 beans, a turkey 100. Counterfeiters hollowed out good bean husks and refilled them with amaranth dough, wax, or sand, or dyed poor beans to pass as premium ones. Aztec law punished this exactly as harshly as theft."
+    },
+    "source": "JayArr Chocolate — Aztec Cacao Currency: How Beans Worked as Money",
+    "sourceUrl": "https://jayarrchocolate.com/blog/aztec-cacao-currency-history/",
+    "_evidence": "hollowing out the husks of real beans and refilling them with substitutes—most commonly amaranth seed dough (huautli), but also wax, avocado pits, and sand or pebbles... Aztec law treated counterfeiting as harshly as theft."
+  },
+  {
+    "id": "alquiler-de-un-grano-de-pimienta",
+    "category": "historia",
+    "question": {
+      "es": "¿Puede pagarse hoy un alquiler legal con un solo grano de pimienta al año?",
+      "en": "Can a legal lease today still be paid with a single peppercorn a year?"
+    },
+    "answer": {
+      "es": "Sí, y sigue haciéndose: es una tradición legal inglesa de casi mil años que no ha muerto.",
+      "en": "Yes, and it still happens: it's a nearly thousand-year-old English legal tradition that never died."
+    },
+    "detail": {
+      "es": "Todo contrato inglés exige que cada parte entregue algo de valor, aunque sea simbólico, y la pimienta —carísima en la Edad Media— se convirtió en el pago mínimo típico. Hoy la Universidad de Bath paga un grano de pimienta al año por un terreno, y el mercado de Billingsgate paga un salmón entero de renta simbólica.",
+      "en": "Every English contract requires each side to hand over something of value, even a token amount, and pepper—wildly expensive in medieval times—became the classic minimum payment. Today the University of Bath pays one peppercorn a year for a plot of land, and Billingsgate fish market pays a whole salmon in symbolic rent."
+    },
+    "source": "Tarlton Law Library, University of Texas — Peppercorn Rent",
+    "sourceUrl": "https://tarlton.law.utexas.edu/peppercorn-rent",
+    "_evidence": "University of Bath: Rents land from East Somerset Council at one peppercorn annually... Billingsgate Fish Market: The Corporation of London collects 'one salmon' as annual rent."
+  },
+  {
+    "id": "emperador-comprado-en-subasta",
+    "category": "historia",
+    "question": {
+      "es": "¿Se llegó a subastar el trono del Imperio romano al mejor postor?",
+      "en": "Was the throne of the Roman Empire ever sold at auction to the highest bidder?"
+    },
+    "answer": {
+      "es": "Sí, en el año 193: la Guardia Pretoriana vendió el título de emperador tras matar al anterior.",
+      "en": "Yes, in the year 193: the Praetorian Guard sold the title of emperor after killing the previous one."
+    },
+    "detail": {
+      "es": "Dos aspirantes pujaron entre sí ofreciendo dinero a cada soldado de la guardia; ganó Didio Juliano, con 25.000 sestercios por cabeza. Al llegar al trono encontró las arcas casi vacías, y un ejército rival marchó sobre Roma. Reinó apenas 66 días antes de que el Senado ordenara su ejecución.",
+      "en": "Two rivals outbid each other by promising money to every guardsman; Didius Julianus won with 25,000 sesterces per soldier. Once on the throne he found the treasury nearly empty, and a rival army marched on Rome. He reigned barely 66 days before the Senate ordered his execution."
+    },
+    "source": "World History Encyclopedia — Didius Julianus",
+    "sourceUrl": "https://www.worldhistory.org/Didius_Julianus/",
+    "_evidence": "Julianus, standing at the gate of the enclosure, made bid to the soldiers for the rule over Rome... reigned for merely three months, from March to June 193 CE."
+  },
+  {
+    "id": "peste-del-baile-estrasburgo",
+    "category": "historia",
+    "question": {
+      "es": "¿Bailó gente hasta morir en las calles de una ciudad, sin música ni fiesta alguna?",
+      "en": "Did people once dance themselves to death in the streets, with no music or party at all?"
+    },
+    "answer": {
+      "es": "Sí, en Estrasburgo en 1518: cientos de personas bailaron sin parar durante semanas.",
+      "en": "Yes, in Strasbourg in 1518: hundreds of people danced without stopping for weeks."
+    },
+    "detail": {
+      "es": "Empezó cuando una mujer, Frau Troffea, se puso a bailar sola en la calle y no pudo parar hasta caer agotada; en pocos días se le unieron decenas más, y en agosto ya eran unos 400. Varios murieron de infartos y derrames por el esfuerzo. Se cree que fue un episodio de histeria colectiva por el estrés del hambre y la peste, ligado a la superstición de un santo que maldecía con el baile.",
+      "en": "It began when a woman, Frau Troffea, started dancing alone in the street and couldn't stop until she collapsed from exhaustion; within days dozens joined her, and by August there were about 400. Several died of strokes and heart attacks from the strain. It's thought to be a case of mass hysteria driven by famine and plague stress, tied to a superstition about a saint who cursed people with dancing."
+    },
+    "source": "History.com — What Was the Dancing Plague of 1518?",
+    "sourceUrl": "https://www.history.com/articles/what-was-the-dancing-plague-of-1518",
+    "_evidence": "as many as 400 victims... many dancers collapsed from sheer exhaustion. Some even died from strokes and heart attacks."
+  },
+  {
+    "id": "guerra-empezada-por-ventana",
+    "category": "historia",
+    "question": {
+      "es": "¿Se ha desatado alguna vez una guerra europea por tirar a alguien por una ventana?",
+      "en": "Has a European war ever been triggered by throwing someone out a window?"
+    },
+    "answer": {
+      "es": "Sí: la Guerra de los Treinta Años empezó cuando arrojaron a tres hombres por una ventana de Praga.",
+      "en": "Yes: the Thirty Years' War began when three men were thrown out a window in Prague."
+    },
+    "detail": {
+      "es": "En 1618, protestantes bohemios juzgaron a dos regentes imperiales y a su secretario por violar la libertad religiosa y los lanzaron desde una ventana del castillo de Praga. Ninguno murió por la caída, pero el gesto encendió una revuelta contra los Habsburgo que arrastró a media Europa a la guerra durante tres décadas.",
+      "en": "In 1618, Bohemian Protestants tried two imperial regents and their secretary for violating religious freedom and threw them out a window of Prague Castle. None died from the fall, but the act sparked a revolt against the Habsburgs that dragged half of Europe into war for three decades."
+    },
+    "source": "Britannica — Defenestration of Prague, 1618",
+    "sourceUrl": "https://www.britannica.com/event/Defenestration-of-Prague-1618",
+    "_evidence": "were thrown from the windows of the council room... was a signal for the beginning of a Bohemian revolt against the Habsburg emperor Ferdinand II, which marked one of the opening phases of the Thirty Years' War."
+  },
+  {
+    "id": "juicio-a-un-cadaver-de-papa",
+    "category": "historia",
+    "question": {
+      "es": "¿Se llegó a sentar el cadáver de un papa en un trono para juzgarlo por sus crímenes?",
+      "en": "Was a pope's corpse ever propped on a throne to stand trial for his crimes?"
+    },
+    "answer": {
+      "es": "Sí, en el año 897: desenterraron al papa Formoso, nueve meses muerto, para juzgarlo en persona.",
+      "en": "Yes, in the year 897: they dug up Pope Formosus, nine months dead, to try him in person."
+    },
+    "detail": {
+      "es": "Su sucesor, el papa Esteban VI, lo sentó en el trono papal vestido de pontífice, lo declaró culpable de perjurio, y le cortó tres dedos de la mano con la que bendecía. El cuerpo acabó tirado al río Tíber, aunque unos monjes lo rescataron en secreto al día siguiente para darle sepultura.",
+      "en": "His successor, Pope Stephen VI, sat him on the papal throne dressed in pontifical robes, found him guilty of perjury, and cut three fingers off the hand he'd used for blessings. The body was then thrown into the Tiber River, though monks secretly recovered it the next day for burial."
+    },
+    "source": "Medievalists.net — The Cadaver Synod: The Trial of a Dead Pope",
+    "sourceUrl": "https://www.medievalists.net/2025/05/cadaver-synod/",
+    "_evidence": "three fingers were severed from Formosus's right hand—those used for blessing the faithful. The corpse was then discarded into the Tiber River, though monks recovered it the following day."
+  },
+  {
+    "id": "cabalgata-a-york-robada-a-otro",
+    "category": "historia",
+    "question": {
+      "es": "¿Hizo el bandolero Dick Turpin su famosa cabalgata nocturna hasta York?",
+      "en": "Did the outlaw Dick Turpin really make his famous overnight ride to York?"
+    },
+    "answer": {
+      "es": "No: esa hazaña la hizo otro bandolero, 30 años antes de que Turpin naciera siquiera.",
+      "en": "No: another highwayman did it, 30 years before Turpin was even born."
+    },
+    "detail": {
+      "es": "En 1676, John «Swift Nick» Nevison cabalgó 320 km sin parar desde Kent hasta York para tener una coartada tras un robo, y llegó a tiempo de jugar a los bolos con el alcalde. En 1834, una novela le atribuyó esa cabalgata a Turpin, y la ficción se quedó pegada a su leyenda para siempre.",
+      "en": "In 1676, John \"Swift Nick\" Nevison rode 200 miles straight from Kent to York to give himself an alibi after a robbery, arriving in time for a game of bowls with the mayor. In 1834, a novel pinned that ride on Turpin instead, and the fiction stuck to his legend for good."
+    },
+    "source": "History.co.uk (Sky HISTORY) — The truth about Dick Turpin",
+    "sourceUrl": "https://www.history.co.uk/articles/the-truth-about-dick-turpin-englands-most-notorious-higwayman",
+    "_evidence": "the epic ride from London to York for which he is most famous was actually performed by a highwayman called 'Swift Nicks' Dudley at least a quarter of a century before Turpin was even born."
+  },
+  {
+    "id": "guerra-por-un-cubo-de-madera",
+    "category": "historia",
+    "question": {
+      "es": "¿Se enfrentaron dos ciudades italianas en una batalla de miles de soldados por un simple cubo?",
+      "en": "Did two Italian cities fight a battle with thousands of soldiers over a simple bucket?"
+    },
+    "answer": {
+      "es": "Sí: en 1325, Bolonia declaró la guerra a Módena por un cubo de pozo robado.",
+      "en": "Yes: in 1325, Bologna declared war on Modena over a stolen well bucket."
+    },
+    "detail": {
+      "es": "Soldados de Módena se llevaron de noche el cubo de madera de un pozo del centro de Bolonia, y al negarse a devolverlo, los bolañeses reunieron un ejército de 30.000 infantes y 2.000 jinetes. No lograron tomar Módena, y el cubo, sin ningún valor real, todavía se exhibe hoy en su ayuntamiento.",
+      "en": "Modenese soldiers snuck off at night with the wooden bucket from a well in central Bologna, and when they refused to return it, the Bolognese raised an army of 30,000 infantry and 2,000 cavalry. They failed to take Modena, and the bucket, worthless in itself, is still on display in its town hall today."
+    },
+    "source": "HistoryNet — Did Medieval Italians Declare War Over a Wooden Bucket?",
+    "sourceUrl": "https://historynet.com/what-we-learned-from-the-battle-of-zappolino-1325/",
+    "_evidence": "Officials demanded the bucket's return, and when Modena refused, the Bolognese declared war... To this day the bucket remains on display in Modena's palazzo comunale."
+  },
+  {
+    "id": "guerra-toledo-sin-muertos",
+    "category": "historia",
+    "question": {
+      "es": "¿Se pelearon dos estados de EEUU por un mapa mal dibujado, sin que casi nadie resultara herido?",
+      "en": "Did two US states fight over a badly drawn map, with almost nobody getting hurt?"
+    },
+    "answer": {
+      "es": "Sí: Ohio y Michigan casi entran en guerra en 1835 por un error de cartografía de 1787.",
+      "en": "Yes: Ohio and Michigan nearly went to war in 1835 over a mapping mistake from 1787."
+    },
+    "detail": {
+      "es": "Un mapa antiguo situaba mal la punta del lago Míchigan, así que ambos territorios reclamaban la franja donde hoy está Toledo. Todo quedó en leyes contradictorias y una sola puñalada no mortal a un sheriff. Michigan cedió la franja a cambio de convertirse en estado y quedarse la Península Superior, mucho más rica en recursos.",
+      "en": "An old map had misplaced the tip of Lake Michigan, so both territories claimed the strip where Toledo sits today. It amounted to little more than dueling laws and one non-fatal stabbing of a sheriff. Michigan gave up the strip in exchange for statehood and the Upper Peninsula, which turned out far richer in resources."
+    },
+    "source": "Britannica — Toledo War",
+    "sourceUrl": "https://www.britannica.com/event/Toledo-War",
+    "_evidence": "The Toledo War was remarkably bloodless... Michigan relinquished the Toledo Strip to Ohio in exchange for statehood and Upper Peninsula territory."
+  },
+  {
+    "id": "verso-que-salvaba-del-verdugo",
+    "category": "historia",
+    "question": {
+      "es": "¿Podía memorizar un solo verso de la Biblia librarte de morir en la horca?",
+      "en": "Could memorizing a single Bible verse save you from the gallows?"
+    },
+    "answer": {
+      "es": "Sí, en la Inglaterra medieval: recitar bien el salmo 51 te sacaba de la justicia civil.",
+      "en": "Yes, in medieval England: reciting Psalm 51 correctly got you out of civil justice."
+    },
+    "detail": {
+      "es": "El «beneficio de clero» permitía a los condenados evitar la horca si demostraban ser clérigos, y la prueba era leer un pasaje bíblico, casi siempre el mismo. Cualquiera podía memorizarlo de oídas sin saber leer, así que el verso se ganó el apodo de «verso del cuello»: te salvaba el pescuezo pasando el caso a un tribunal eclesiástico mucho más blando.",
+      "en": "\"Benefit of clergy\" let condemned prisoners dodge the noose by proving they were clergymen, and the test was reading a Bible passage, almost always the same one. Anyone could memorize it by ear without knowing how to read, so the verse earned the nickname \"neck verse\": it saved your neck by moving the case to a far gentler church court."
+    },
+    "source": "Strange Ago — Clergy Used the Neck Verse to Escape the Gallows",
+    "sourceUrl": "https://strangeago.com/2020/09/24/clergy-used-the-neck-verse-to-escape-the-gallows/",
+    "_evidence": "Psalm 51:3 became known as the 'neck verse' because knowing it could 'save one's neck' by transferring the case from a secular court, where hanging was a likely sentence, to an ecclesiastical court."
+  },
+  {
+    "id": "pagar-al-vikingo-nunca-funciona",
+    "category": "historia",
+    "question": {
+      "es": "¿Pagaban los reyes ingleses directamente a los vikingos para que no los saquearan?",
+      "en": "Did English kings pay the Vikings directly so they wouldn't raid them?"
+    },
+    "answer": {
+      "es": "Sí, con un impuesto especial, y aun así los vikingos volvían a pedir más una y otra vez.",
+      "en": "Yes, with a special tax, and the Vikings kept coming back for more anyway."
+    },
+    "detail": {
+      "es": "Ese tributo, el «danegeld», se cobró en Inglaterra entre 991 y 1016 para comprar la paz con los daneses, y dejó tantas monedas anglosajonas en Escandinavia que hoy se encuentran más allí que en el propio país que las acuñó. El impuesto siguió cobrándose, ya sin vikingos, hasta 1162.",
+      "en": "That tribute, the \"Danegeld,\" was collected in England between 991 and 1016 to buy peace with the Danes, and it left so many Anglo-Saxon coins in Scandinavia that more turn up there today than in the country that minted them. The tax kept being collected, Vikings or not, until 1162."
+    },
+    "source": "Britannica — Danegeld",
+    "sourceUrl": "https://www.britannica.com/topic/Danegeld",
+    "_evidence": "a tax levied in Anglo-Saxon England to buy off Danish invaders in the reign of Ethelred II (978–1016)... Anglo-Norman and later Angevin kings continued the geld until 1162."
+  },
+  {
+    "id": "formula-secreta-del-fuego-griego",
+    "category": "historia",
+    "question": {
+      "es": "¿Existió un arma tan secreta que su fórmula se perdió y nadie ha logrado recrearla del todo?",
+      "en": "Was there a weapon so secret its formula was lost, and nobody has fully recreated it?"
+    },
+    "answer": {
+      "es": "Sí, el fuego griego bizantino: ardía sobre el agua y su receta se guardó durante siete siglos.",
+      "en": "Yes, Byzantine Greek fire: it burned on top of water, and its recipe was kept secret for seven centuries."
+    },
+    "detail": {
+      "es": "Se lanzaba con tubos de bronce a presión o en granadas de arcilla, y el agua no lo apagaba, algo devastador contra barcos de madera. Un emperador declaró que solo tres cosas jamás debían caer en manos extranjeras: las joyas de la corona, una princesa real y el fuego griego. Tras el siglo XIII dejó de usarse y la fórmula exacta se perdió para siempre.",
+      "en": "It was sprayed under pressure through bronze tubes or hurled in clay grenades, and water couldn't put it out, which was devastating against wooden ships. One emperor declared that only three things must never fall into foreign hands: the crown jewels, a royal princess, and Greek fire. After the 13th century it fell out of use, and the exact formula was lost forever."
+    },
+    "source": "World History Encyclopedia — Greek Fire: The Byzantines' Secret Weapon",
+    "sourceUrl": "https://www.worldhistory.org/Greek_Fire/",
+    "_evidence": "three things must never leave Byzantine hands: the Byzantine imperial regalia, any royal princess, and Greek Fire... For unknown reasons the use of Greek Fire is unrecorded from the Fourth Crusade (1202-1204 CE) onwards."
+  },
+  {
+    "id": "el-cuatro-que-no-es-iv",
+    "category": "historia",
+    "question": {
+      "es": "¿Por qué tantos relojes con números romanos escriben el 4 como IIII y no como IV?",
+      "en": "Why do so many Roman-numeral clocks write four as IIII instead of IV?"
+    },
+    "answer": {
+      "es": "Por simetría visual: así el 4 y el 8 quedan igual de «pesados» en lados opuestos de la esfera.",
+      "en": "For visual symmetry: this way four and eight look equally \"heavy\" on opposite sides of the dial."
+    },
+    "detail": {
+      "es": "Con IIII, la esfera se reparte en tres bloques limpios de cuatro números cada uno: los que empiezan por I, por V y por X. Además, los primeros romanos ya escribían el cuatro como IIII antes de que se impusiera la resta con IV, y fundir cuatro palotes iguales resultaba más barato que fabricar un molde distinto para la V invertida.",
+      "en": "With IIII, the dial splits into three clean blocks of four numbers each: those starting with I, with V, and with X. Also, early Romans already wrote four as IIII before subtractive IV notation took over, and casting four identical strokes was cheaper than making a separate mold for a reversed V."
+    },
+    "source": "Monochrome Watches — Why Do Clocks and Watches Use the Roman Numeral IIII Instead of IV?",
+    "sourceUrl": "https://monochrome-watches.com/why-do-clocks-and-watches-use-roman-numeral-iiii-instead-of-iv/",
+    "_evidence": "The IIII numeral, more complex than the usual IV numeral, might provide better visual balance to the complex VIII found on the other side of the dial."
+  },
+  {
+    "id": "cincuenta-anos-para-creer-en-el-limon",
+    "category": "historia",
+    "question": {
+      "es": "¿Cuánto tardó la Marina Real británica en aceptar una cura ya demostrada contra el escorbuto?",
+      "en": "How long did the Royal Navy take to accept an already-proven cure for scurvy?"
+    },
+    "answer": {
+      "es": "Casi 50 años: el experimento lo demostró en 1747, pero no se adoptó oficialmente hasta 1795.",
+      "en": "Almost 50 years: the experiment proved it in 1747, but it wasn't officially adopted until 1795."
+    },
+    "detail": {
+      "es": "El cirujano James Lind dio a parejas de marineros enfermos seis remedios distintos, y solo los que recibieron naranjas y limón mejoraron en apenas seis días. Lind no defendió con firmeza esa conclusión en su propio libro, así que la Marina siguió probando otros remedios hasta que un viaje sin ni un solo caso de escorbuto en 1795 convenció por fin al Almirantazgo.",
+      "en": "Surgeon James Lind gave pairs of sick sailors six different remedies, and only the ones who got oranges and lemon improved within just six days. Lind himself didn't push that conclusion firmly in his own book, so the Navy kept trying other remedies until a 1795 voyage with not a single case of scurvy finally convinced the Admiralty."
+    },
+    "source": "Amusing Planet — James Lind And The First Clinical Trial",
+    "sourceUrl": "https://www.amusingplanet.com/2025/05/james-lind-and-first-clinical-trial.html",
+    "_evidence": "Later that same year, the British Admiralty officially adopted lemon juice as a standard dietary supplement... approximately 48 years from Lind's experiment to official adoption."
+  },
+  {
+    "id": "los-once-dias-que-nadie-reclamo",
+    "category": "historia",
+    "question": {
+      "es": "¿Hubo disturbios en Gran Bretaña por «robarle» once días a la gente al cambiar de calendario?",
+      "en": "Were there riots in Britain over \"stealing\" eleven days from people when the calendar changed?"
+    },
+    "answer": {
+      "es": "No: esos disturbios nunca ocurrieron, aunque un cuadro famoso hizo creer lo contrario.",
+      "en": "No: those riots never happened, though a famous painting made people believe they did."
+    },
+    "detail": {
+      "es": "En 1752, Gran Bretaña pasó del 2 al 14 de septiembre de golpe para adoptar el calendario gregoriano. Un cuadro de Hogarth de 1755, con una pancarta satírica sobre unas elecciones que decía «Devolvednos nuestros once días», se malinterpretó con el tiempo como prueba de una revuelta popular real que ningún cronista de la época llegó a documentar.",
+      "en": "In 1752, Britain jumped from September 2 straight to September 14 to adopt the Gregorian calendar. A 1755 Hogarth painting, showing a satirical election banner reading \"Give Us Our Eleven Days,\" was later misread as proof of a real popular uprising that no contemporary chronicler ever actually recorded."
+    },
+    "source": "IFLScience — The Calendar Riots: The Myth And Truth Of Britain's Missing 11 Days",
+    "sourceUrl": "https://www.iflscience.com/the-calendar-riots-the-myth-and-truth-of-britains-missing-11-days-75336",
+    "_evidence": "No other contemporary evidence exists that anybody rioted over the calendar changes... this was clearly satirical commentary on that specific election rather than documentary evidence."
+  },
+  {
+    "id": "primer-semaforo-exploto",
+    "category": "historia",
+    "question": {
+      "es": "¿Qué le pasó al primer semáforo del mundo apenas un mes después de instalarse?",
+      "en": "What happened to the world's first traffic light barely a month after it went up?"
+    },
+    "answer": {
+      "es": "Explotó, por una fuga de gas, y quemó la cara del policía que lo manejaba.",
+      "en": "It exploded, from a gas leak, and burned the face of the police officer operating it."
+    },
+    "detail": {
+      "es": "Instalado en Londres en diciembre de 1868, usaba brazos semafóricos de día y lámparas de gas rojas y verdes de noche, encendidas a mano por un agente. En enero de 1869, el gas se acumuló dentro de la columna hueca y estalló. Retiraron el semáforo ese mismo año y Londres no volvió a instalar otro hasta 1925.",
+      "en": "Installed in London in December 1868, it used semaphore arms by day and red and green gas lamps by night, lit by hand by an officer. In January 1869, gas built up inside the hollow column and exploded. The signal was removed that same year, and London didn't install another until 1925."
+    },
+    "source": "Smithsonian Magazine — When the Street Light First Came to London, Disaster Ensued",
+    "sourceUrl": "https://www.smithsonianmag.com/history/when-street-light-first-came-london-disaster-ensued-180970965/",
+    "_evidence": "a defective gas pipe beneath the pavement allowed the lamp's hollow tower to fill with combustible gas. The subsequent explosions severely burned the face of the constable operating the device."
+  },
+  {
+    "id": "burocracia-atada-con-cinta-roja",
+    "category": "historia",
+    "question": {
+      "es": "¿Por qué a la burocracia lenta se la llama «papeleo con cinta roja» en tantos idiomas?",
+      "en": "Why is slow bureaucracy called \"red tape\" in so many languages?"
+    },
+    "answer": {
+      "es": "Porque durante siglos los documentos oficiales urgentes se ataban literalmente con una cinta roja.",
+      "en": "Because for centuries, urgent official documents were literally tied up with a red ribbon."
+    },
+    "detail": {
+      "es": "La costumbre nació en la corte de Carlos V para distinguir los papeles que requerían atención inmediata, y Enrique VIII la usó para atar las peticiones que envió al papa pidiendo su anulación matrimonial. Con el tiempo, el nudo real se convirtió en metáfora de la lentitud administrativa, popularizada por escritores como Dickens.",
+      "en": "The custom began in the court of Charles V to mark papers needing immediate attention, and Henry VIII used it to bind the petitions he sent the Pope seeking his marriage annulment. Over time, the literal knot became a metaphor for administrative slowness, popularized by writers like Dickens."
+    },
+    "source": "Today I Found Out — Why Are Bureaucratic Obstacles Referred to as \"Red Tape\"?",
+    "sourceUrl": "https://www.todayifoundout.com/index.php/2016/05/bureaucratic-obstacles-referred-red-tape/",
+    "_evidence": "his administrators began using red string or ribbon to bind important documents requiring immediate discussion... including those to Pope Clement VII regarding his marriage annulment in 1527."
+  },
+  {
+    "id": "sacerdotisa-enterrada-viva-roma",
+    "category": "historia",
+    "question": {
+      "es": "¿Cómo se ejecutaba en Roma a una sacerdotisa sagrada sin derramar su sangre?",
+      "en": "How did Rome execute a sacred priestess without spilling her blood?"
+    },
+    "answer": {
+      "es": "Enterrándola viva: a una vestal que rompía su voto de castidad la encerraban bajo tierra con comida.",
+      "en": "By burying her alive: a Vestal who broke her chastity vow was sealed underground with food."
+    },
+    "detail": {
+      "es": "Como su cuerpo se consideraba sagrado, no podía morir por mano humana, así que la bajaban a una cámara subterránea con un poco de comida y la sellaban: técnicamente, no la mataba nadie. Se dejaba a los dioses decidir. Se conoce con certeza un solo caso documentado, el de la vestal Cornelia bajo el emperador Domiciano.",
+      "en": "Since her body was considered sacred, she couldn't die by human hand, so she was lowered into an underground chamber with a little food and sealed in: technically, nobody killed her. It was left to the gods to decide. Only one case is confirmed with certainty, that of the Vestal Cornelia under Emperor Domitian."
+    },
+    "source": "Biblical Archaeology Society — Vestal Virgins",
+    "sourceUrl": "https://library.biblicalarchaeology.org/article/vestal-virgins/",
+    "_evidence": "dragged to an underground chamber just inside the city walls and buried alive... Leaving the Vestal with food was supposed to absolve her executioners of any responsibility for her death."
+  },
+  {
+    "id": "canal-de-panama-primer-intento-mortal",
+    "category": "historia",
+    "question": {
+      "es": "¿Por qué abandonó Francia su propio intento de construir el Canal de Panamá?",
+      "en": "Why did France abandon its own attempt to build the Panama Canal?"
+    },
+    "answer": {
+      "es": "Porque murieron unos 20.000 trabajadores, sobre todo por fiebre amarilla y malaria.",
+      "en": "Because about 20,000 workers died, mostly from yellow fever and malaria."
+    },
+    "detail": {
+      "es": "Tres de cada cuatro ingenieros franceses morían en sus tres primeros meses en Panamá, y llegaron a fallecer hasta 40 obreros al día en la estación de lluvias. Nadie sabía todavía que los mosquitos transmitían esas enfermedades, así que los franceses abandonaron el proyecto en 1889; EEUU no pudo terminar el canal hasta que un médico eliminó primero al mosquito.",
+      "en": "Three out of four French engineers died within their first three months in Panama, and as many as 40 workers a day died during the rainy season. Nobody yet knew mosquitoes spread these diseases, so the French abandoned the project in 1889; the US couldn't finish the canal until a doctor got rid of the mosquito first."
+    },
+    "source": "History.com — Why Building the Panama Canal Was So Difficult—and Deadly",
+    "sourceUrl": "https://www.history.com/articles/panama-canal-construction-dangers",
+    "_evidence": "An estimated three-quarters of the French engineers who joined Lesseps in Panama died within three months of arriving... accidents and disease had claimed the lives of a staggering 20,000 laborers."
+  },
+  {
+    "id": "futbol-prohibido-por-el-rey",
+    "category": "historia",
+    "question": {
+      "es": "¿Prohibió un rey inglés jugar al fútbol para obligar a la gente a practicar tiro con arco?",
+      "en": "Did an English king ban football to force people to practice archery instead?"
+    },
+    "answer": {
+      "es": "Sí, en 1363: fútbol, hockey y hasta las peleas de gallos quedaron prohibidos bajo pena de cárcel.",
+      "en": "Yes, in 1363: football, hockey, and even cockfighting were banned under threat of prison."
+    },
+    "detail": {
+      "es": "Eduardo III necesitaba arqueros hábiles para la Guerra de los Cien Años y creía que esos «juegos inútiles» distraían de la práctica del arco. Dos años después obligó por ley a todos los hombres a entrenar tiro con arco los domingos, bajo la supervisión del clero de cada pueblo.",
+      "en": "Edward III needed skilled archers for the Hundred Years' War and believed these \"idle games\" distracted from bow practice. Two years later he legally required all men to train with the bow every Sunday, supervised by the local clergy."
+    },
+    "source": "History Hit — Why Was Medieval Football Banned?",
+    "sourceUrl": "https://www.historyhit.com/why-was-medieval-football-banned/",
+    "_evidence": "we ordain that you prohibit under penalty of imprisonment all and sundry from such stone, wood and iron throwing; handball, football, or hockey; coursing and cock-fighting, or other such idle games."
+  },
+  {
+    "id": "ley-que-decidia-tu-color-de-ropa",
+    "category": "historia",
+    "question": {
+      "es": "¿Podía la ley decidir qué color de ropa tenías prohibido llevar según tu clase social?",
+      "en": "Could the law decide what color of clothing you were forbidden to wear based on your social class?"
+    },
+    "answer": {
+      "es": "Sí, en la Inglaterra isabelina: el púrpura y el oro eran solo para la familia real.",
+      "en": "Yes, in Elizabethan England: purple and gold were reserved for the royal family alone."
+    },
+    "detail": {
+      "es": "Las leyes suntuarias fijaban qué telas, colores y adornos podía llevar cada rango social, y hasta el grosor del relleno de las medias de un criado estaba regulado por ley: un tal Richard Walweyn acabó en la cárcel en 1565 por llevar las medias demasiado abultadas. La norma siguió vigente hasta que Jacobo I la derogó en 1604.",
+      "en": "Sumptuary laws fixed exactly what fabrics, colors, and trim each social rank could wear, even down to how much padding a servant's stockings could hold: a man named Richard Walweyn was jailed in 1565 for wearing his hose too padded. The rule stayed in force until James I scrapped it in 1604."
+    },
+    "source": "Shakespeare's Globe — Elizabethan sumptuary laws",
+    "sourceUrl": "https://www.shakespearesglobe.com/discover/blogs-and-features/2019/04/16/elizabethan-sumptuary-laws-fashion-policing-in-shakespeares-england/",
+    "_evidence": "servants, for instance, could pad their stockings with no more than a yard and three quarters of material, as demonstrated by Richard Walweyn's 1565 imprisonment... The laws remained on the books until 1604."
+  },
+  {
+    "id": "libro-de-1086-aun-vale-en-juicio",
+    "category": "historia",
+    "question": {
+      "es": "¿Puede un libro escrito en 1086 seguir usándose hoy como prueba en un juicio por tierras?",
+      "en": "Can a book written in 1086 still be used as evidence in a land lawsuit today?"
+    },
+    "answer": {
+      "es": "Sí: el Domesday Book, el catastro de Guillermo el Conquistador, sigue citándose de vez en cuando.",
+      "en": "Yes: the Domesday Book, William the Conqueror's property survey, still gets cited on occasion."
+    },
+    "detail": {
+      "es": "Guillermo encargó ese registro para saber exactamente qué tierras tenía cada uno y cuánto podía cobrarles en impuestos, y catalogó más de 13.000 lugares de Inglaterra. Es el documento gubernamental más antiguo que conserva el Archivo Nacional británico, y todavía hoy algún pleito de tierras acude a él como prueba histórica.",
+      "en": "William commissioned that record to know exactly who held which land and how much tax he could collect, cataloguing more than 13,000 places across England. It's the oldest government record held by the UK National Archives, and even today the odd land dispute still turns to it as historical evidence."
+    },
+    "source": "National Archives (UK) — Domesday Book; Point to Point Surveyors",
+    "sourceUrl": "https://www.pointtopointsurvey.com/2016/07/englands-domesday-book/",
+    "_evidence": "The book was often used as evidence in courts of the Middle Ages; even today, occasional cases require its use."
+  },
+  {
+    "id": "subasta-que-ganaba-una-vela",
+    "category": "historia",
+    "question": {
+      "es": "¿Se decidían subastas dejando que una vela encendida marcara cuándo se acababa el plazo?",
+      "en": "Were auctions once decided by letting a lit candle mark when time was up?"
+    },
+    "answer": {
+      "es": "Sí: en la Inglaterra del siglo XVII, la última puja antes de que la llama se apagara sola ganaba.",
+      "en": "Yes: in 17th-century England, the last bid before the flame died out on its own won."
+    },
+    "detail": {
+      "es": "Se encendía un cabo de vela y nadie sabía el instante exacto en que se apagaría, así que la emoción crecía hasta el final. En Lloyd's usaban una variante con un alfiler clavado cerca de la mecha: cuando caía, se acababa la puja. Se vendieron así desde barcos hasta cargamentos de vino en los cafés de Londres.",
+      "en": "A candle stub was lit and nobody knew the exact moment it would go out, so the excitement built right to the end. At Lloyd's they used a variant with a pin stuck near the wick: when it fell out, bidding stopped. Everything from ships to shipments of wine was sold this way in London's coffee houses."
+    },
+    "source": "Insurance Museum — Candle Auctions",
+    "sourceUrl": "https://insurance.museum/candle-auctions",
+    "_evidence": "the successful bid was the last before the candle finally burnt out... the person making the highest bid when the candle burned down to the pin, or the pin fell out of the candle would be offered the right to purchase the lot."
+  },
+  {
+    "id": "balcon-de-viuda-no-era-para-esperar",
+    "category": "historia",
+    "question": {
+      "es": "¿Se construían esos balcones en lo alto de las casas de marineros solo para que sus esposas esperasen?",
+      "en": "Were those rooftop balconies on sailors' houses built just so their wives could wait for them?"
+    },
+    "answer": {
+      "es": "No solo: en la práctica servían sobre todo para llegar a apagar incendios de chimenea desde el tejado.",
+      "en": "Not just that: in practice they mostly served to reach and put out chimney fires from the rooftop."
+    },
+    "detail": {
+      "es": "El nombre romántico, «paseo de la viuda», sugiere a mujeres esperando un barco que nunca vuelve, pero esas plataformas también daban acceso directo a las chimeneas, frecuentes y peligrosas en las casas del siglo XIX calentadas con leña. Muchas familias de capitanes las usaban simplemente para vigilar el puerto y su propio negocio naviero.",
+      "en": "The romantic name, \"widow's walk,\" suggests women waiting for a ship that never returns, but these platforms also gave direct access to chimneys, common and dangerous in wood-heated 19th-century homes. Many sea captains' families simply used them to keep an eye on the harbor and their own shipping business."
+    },
+    "source": "Island Institute — The myth and reality of widow's walks",
+    "sourceUrl": "https://www.islandinstitute.org/working-waterfront/the-myth-and-reality-of-widows-walks/",
+    "_evidence": "many of these platforms were actually built to give the homeowners a foundation on which to stand while they were attempting to put out rooftop fires, common during the 1800s because of the prominence of chimneys."
+  },
+  {
+    "id": "torres-de-madera-que-nadie-quito",
+    "category": "historia",
+    "question": {
+      "es": "¿Por qué siguen siendo de madera los depósitos de agua que corona cada rascacielos bajo de Nueva York?",
+      "en": "Why are the water tanks crowning New York's shorter buildings still made of wood?"
+    },
+    "answer": {
+      "es": "Porque una norma de principios del siglo XX los hizo obligatorios, y esa norma nunca se derogó.",
+      "en": "Because an early-20th-century rule made them mandatory, and that rule was never repealed."
+    },
+    "detail": {
+      "es": "La presión del agua de la ciudad no llegaba más allá de un cuarto o quinto piso, así que se exigió un depósito propio en el tejado de todo edificio de seis plantas o más. La madera de cedro o secuoya sella sola al hincharse con el agua, no se oxida y aísla del calor y del frío, así que hoy siguen fabricándose igual: unos 17.000 depósitos reparten agua por la ciudad.",
+      "en": "The city's water pressure couldn't reach past the fourth or fifth floor, so a rooftop tank of its own was required for every building of six stories or more. Cedar or redwood seals itself as it swells with water, doesn't rust, and insulates against heat and cold, so they're still built the same way today: about 17,000 tanks distribute water across the city."
+    },
+    "source": "6sqft — The history behind NYC's water towers",
+    "sourceUrl": "https://www.6sqft.com/nyc-water-towers-history-use-and-infrastructure/",
+    "_evidence": "the city required that buildings with six or more stories be equipped with a rooftop tank with a pump... up to 17,000 water tanks scattered throughout NYC."
+  },
+  {
+    "id": "casa-construida-para-bloquear-una-calle",
+    "category": "historia",
+    "question": {
+      "es": "¿Se puede construir una casa a toda prisa solo para impedir que el ayuntamiento abra una calle?",
+      "en": "Can a house be rushed into existence just to stop the city from opening a street?"
+    },
+    "answer": {
+      "es": "Sí: en 1814, un médico levantó los cimientos de una mansión en una sola noche para bloquear una vía.",
+      "en": "Yes: in 1814, a doctor poured a mansion's foundation in a single night to block a planned road."
+    },
+    "detail": {
+      "es": "La ley local impedía al ayuntamiento abrir una calle si ya había una «construcción sustancial» en su camino, así que el doctor Tyler mandó verter deprisa los cimientos de una casa que ni siquiera pensaba habitar. Funcionó: la calle nunca se abrió, y el edificio sigue en pie hoy, alquilado, cortando el paso donde debía haber una vía.",
+      "en": "Local law barred the city from opening a street if a \"substantial building\" was already under construction in its path, so Dr. Tyler had a house's foundation hastily poured, even though he never planned to live there. It worked: the street was never opened, and the building still stands today, rented out, blocking the path where a road should have gone."
+    },
+    "source": "Mental Floss — 10 Houses Built Out of Spite",
+    "sourceUrl": "https://www.mentalfloss.com/article/67282/9-houses-built-out-spite",
+    "_evidence": "A local law stipulated that the city couldn't build a road if a building was being constructed in the path of said road, so the doctor quickly ordered that a foundation be poured for this mansion."
+  },
+  {
+    "id": "cafe-prohibido-once-dias",
+    "category": "historia",
+    "question": {
+      "es": "¿Llegó un rey a prohibir por completo tomar café en su país?",
+      "en": "Did a king ever completely ban drinking coffee in his own country?"
+    },
+    "answer": {
+      "es": "Sí, Carlos II de Inglaterra en 1675, y tuvo que retirar la orden apenas diez días después.",
+      "en": "Yes, Charles II of England in 1675, and he had to withdraw the order barely ten days later."
+    },
+    "detail": {
+      "es": "El rey acusó a los cafés de fomentar «efectos peligrosos» y sedición, ya que allí se reunían grupos políticos contrarios a la monarquía. La reacción popular y de los propios comerciantes fue tan fuerte, y el impuesto que esos locales generaban tan jugoso, que la prohibición se levantó antes de entrar siquiera en vigor.",
+      "en": "The king accused coffeehouses of causing \"dangerous effects\" and sedition, since political groups opposed to the monarchy met there. Public and merchant backlash was so strong, and the tax revenue those places generated so valuable, that the ban was lifted before it even took effect."
+    },
+    "source": "British Literature Wiki (University of Delaware) — The Coffeehouse Culture",
+    "sourceUrl": "https://sites.udel.edu/britlitwiki/the-coffeehouse-culture/",
+    "_evidence": "have produced very evil and dangerous effects... shortly after this went into effect there was too much of an outcry from the public that King Charles II had to back off."
+  },
+  {
+    "id": "arma-quimica-se-volvio-quimioterapia",
+    "category": "historia",
+    "question": {
+      "es": "¿Un arma química de la Primera Guerra Mundial dio origen a la primera quimioterapia?",
+      "en": "Did a WWI chemical weapon give rise to the first chemotherapy drug?"
+    },
+    "answer": {
+      "es": "Sí: el gas mostaza reveló que podía destruir células cancerosas igual que destruía las sanas.",
+      "en": "Yes: mustard gas revealed it could destroy cancer cells the same way it destroyed healthy ones."
+    },
+    "detail": {
+      "es": "Dos médicos de Yale notaron que los soldados expuestos al gas tenían muy pocas células inmunitarias en sangre, y probaron una versión del compuesto en un paciente con linfoma en 1942. El tumor se redujo y el hombre volvió a comer y dormir sin dolor: fue el primer tratamiento de quimioterapia de la historia.",
+      "en": "Two Yale doctors noticed soldiers exposed to the gas had unusually few immune cells in their blood, and tested a version of the compound on a lymphoma patient in 1942. His tumor shrank and he could eat and sleep without pain again: it was the first chemotherapy treatment in history."
+    },
+    "source": "Cancer Research UK — Mustard gas: from the Great War to frontline chemotherapy",
+    "sourceUrl": "https://news.cancerresearchuk.org/2014/08/27/mustard-gas-from-the-great-war-to-frontline-chemotherapy/",
+    "_evidence": "noticed that many of them had a surprisingly low number of immune cells in their blood... He could sleep, he could swallow and he could eat. He was much more comfortable and the pain faded away."
+  },
+  {
+    "id": "rueda-de-colores-de-orina",
+    "category": "historia",
+    "question": {
+      "es": "¿Diagnosticaba un médico medieval una enfermedad solo con mirar un frasco de orina?",
+      "en": "Could a medieval doctor diagnose a disease just by looking at a flask of urine?"
+    },
+    "answer": {
+      "es": "Sí, con una rueda de veinte colores de referencia, y algunos pacientes intentaban engañarlo.",
+      "en": "Yes, with a wheel of twenty reference colors, and some patients tried to trick him with it."
+    },
+    "detail": {
+      "es": "Guías ilustradas mostraban frascos de orina de colores que iban del blanco al negro, cada uno asociado a una dolencia distinta: unas motitas blancas señalaban gota, la espuma excesiva apuntaba a los pulmones. Pacientes desconfiados a veces entregaban vino blanco en vez de su propia muestra para poner a prueba al médico.",
+      "en": "Illustrated guides showed urine flasks in colors ranging from white to black, each tied to a different ailment: tiny white flecks pointed to gout, excess foam pointed to the lungs. Skeptical patients sometimes handed over white wine instead of their own sample, just to test the doctor."
+    },
+    "source": "Public Domain Review — Troubled Waters: Reading Urine in Medieval Medicine",
+    "sourceUrl": "https://publicdomainreview.org/essay/troubled-waters/",
+    "_evidence": "\"Tiny white flecks\" revealed gout... cynical patients sometimes provided samples of white wine or other yellowish liquids."
+  },
+  {
+    "id": "pintura-hecha-de-momias-egipcias",
+    "category": "historia",
+    "question": {
+      "es": "¿Pintaban los artistas europeos con un color hecho literalmente de momias egipcias molidas?",
+      "en": "Did European painters use a paint color literally made from ground Egyptian mummies?"
+    },
+    "answer": {
+      "es": "Sí, «marrón momia», y siguió fabricándose y vendiéndose hasta bien entrado el siglo XX.",
+      "en": "Yes, \"mummy brown,\" and it kept being made and sold well into the 20th century."
+    },
+    "detail": {
+      "es": "El pigmento se molía a partir de momias humanas y felinas importadas de Egipto, y lo usaron pintores prerrafaelitas para sombras y tonos de piel. Cuando el pintor Edward Burne-Jones descubrió de qué estaba hecho su tubo de pintura, lo enterró en su jardín. Dejó de fabricarse solo porque se agotaron las momias disponibles para comprar.",
+      "en": "The pigment was ground from human and feline mummies imported from Egypt, and Pre-Raphaelite painters used it for shadows and skin tones. When painter Edward Burne-Jones found out what his tube of paint was made of, he buried it in his garden. It stopped being made only because the supply of mummies to buy ran out."
+    },
+    "source": "Smithsonian Magazine — Ground Up Mummies Were Once an Ingredient in Paint",
+    "sourceUrl": "https://www.smithsonianmag.com/smart-news/ground-mummies-were-once-ingredient-paint-180950350/",
+    "_evidence": "had his wife help him give his tube 'decent burial' by burying it in their yard... We sold our last complete mummy some years ago...Perhaps we shouldn't have. We certainly can't get any more."
+  },
+  {
+    "id": "disturbios-por-sombreros-de-paja",
+    "category": "historia",
+    "question": {
+      "es": "¿Se organizaron disturbios callejeros en Nueva York por llevar un sombrero de paja en la fecha equivocada?",
+      "en": "Did street riots break out in New York over wearing a straw hat on the wrong date?"
+    },
+    "answer": {
+      "es": "Sí, en 1922: llevar paja después del 15 de septiembre bastaba para que una banda te lo destrozara.",
+      "en": "Yes, in 1922: wearing straw after September 15 was enough for a gang to smash your hat."
+    },
+    "detail": {
+      "es": "Había una norma social no escrita que fijaba el fin de la temporada de sombreros de paja cada 15 de septiembre. Unos jóvenes empezaron a arrancar y pisotear sombreros dos días antes de esa fecha, los obreros del puerto respondieron a golpes, y la pelea se extendió durante ocho días con pandillas armadas de palos por toda la ciudad.",
+      "en": "There was an unwritten social rule marking the end of straw hat season every September 15. Some young men started ripping off and stomping hats two days before that date, dockworkers fought back, and the brawl spread for eight days with gangs armed with sticks across the city."
+    },
+    "source": "Ripley's Believe It or Not! — The Straw Hat Riot of 1922",
+    "sourceUrl": "https://www.ripleys.com/stories/straw-hat-riot",
+    "_evidence": "Boys who were guided by the calendar rather the weather...indulged in a straw hat smashing orgy throughout the city last night... hundreds of boys terrorized straw-lidded citizens, forcing them to run through a gauntlet."
+  },
+  {
+    "id": "riada-de-cerveza-por-las-calles",
+    "category": "historia",
+    "question": {
+      "es": "¿Puede una fuga de cerveza matar a ocho personas ahogadas en plena calle?",
+      "en": "Can a beer leak drown eight people to death in the middle of the street?"
+    },
+    "answer": {
+      "es": "Sí, en Londres en 1814: un tanque gigante de cerveza reventó y arrasó un barrio pobre entero.",
+      "en": "Yes, in London in 1814: a giant beer vat burst and swept through an entire poor neighborhood."
+    },
+    "detail": {
+      "es": "Un aro de hierro de 320 kilos se soltó de un tanque de más de seis metros de alto en una cervecería, y horas después el depósito estalló y liberó miles de barriles de cerveza en una ola de más de cuatro metros. Murieron ocho personas, casi todas mujeres y niños, incluidas cinco que velaban a un bebé fallecido. Un jurado determinó que había sido un accidente y la empresa no pagó nada.",
+      "en": "A 700-pound iron hoop slipped off a vat over 20 feet tall at a brewery, and hours later the tank burst, releasing thousands of barrels of beer in a wave over 15 feet high. Eight people died, nearly all women and children, including five who were holding a wake for a dead baby. A jury ruled it an accident, and the company paid nothing."
+    },
+    "source": "Smithsonian Magazine — This 1814 Beer Flood Killed Eight People",
+    "sourceUrl": "https://www.smithsonianmag.com/smart-news/1814-beer-flood-killed-eight-people-180964256/",
+    "_evidence": "Eight people perished in the disaster... women and men were away at work, meaning the victims were children and women."
+  },
+  {
+    "id": "el-oficio-de-comerse-los-pecados",
+    "category": "historia",
+    "question": {
+      "es": "¿Existió un oficio que consistía en comerse literalmente los pecados de un muerto?",
+      "en": "Was there a job that consisted of literally eating a dead person's sins?"
+    },
+    "answer": {
+      "es": "Sí, el «comepecados»: comía pan y bebía cerveza pasados sobre el cadáver, a cambio de unas monedas.",
+      "en": "Yes, the \"sin-eater\": he ate bread and drank beer passed over the corpse, for a few coins."
+    },
+    "detail": {
+      "es": "En la frontera entre Gales e Inglaterra, del siglo XVII al XX, las familias creían que ese pan absorbía las culpas del difunto, y que comérselo las transfería al que lo comía. El último sin-eater documentado de Inglaterra murió en 1906. Nadie envidiaba el trabajo: se pagaba con apenas unos peniques y a quien lo hacía se le temía y evitaba socialmente.",
+      "en": "On the Wales-England border, from the 17th to the 20th century, families believed that bread absorbed the dead person's guilt, and that eating it transferred that guilt to whoever ate it. England's last documented sin-eater died in 1906. Nobody envied the job: it paid barely a few pence, and whoever did it was feared and shunned."
+    },
+    "source": "Atlas Obscura — The Worst Freelance Gig in History Was Being the Village Sin Eater",
+    "sourceUrl": "https://www.atlasobscura.com/articles/the-worst-paid-freelance-gig-in-history-was-being-the-village-sin-eater",
+    "_evidence": "the last man known to have done the work in England died in a Shropshire farmhouse in 1906... The coin he was given was worth a mere four English pence."
+  },
+  {
+    "id": "impuesto-a-empolvarse-la-peluca",
+    "category": "historia",
+    "question": {
+      "es": "¿Había que sacarse un carnet oficial en Hacienda para poder llevar peluca empolvada?",
+      "en": "Did you need an official government certificate just to wear a powdered wig?"
+    },
+    "answer": {
+      "es": "Sí, en la Gran Bretaña de 1795, y esa misma tasa acabó por hundir del todo la moda de la peluca.",
+      "en": "Yes, in 1795 Britain, and that very tax ended up killing the wig fashion for good."
+    },
+    "detail": {
+      "es": "Quien quería usar polvo blanco en el pelo debía pagar un certificado anual de una guinea, casi 100 libras actuales. La peluca empolvada ya estaba de capa caída, pero la tasa aceleró su desaparición: de 46.000 personas pagándola en 1812 se pasó a menos de mil en 1855, sobre todo criados con librea.",
+      "en": "Anyone who wanted white powder in their hair had to buy an annual certificate for one guinea, close to £100 today. The powdered wig was already declining, but the tax sped it along: from 46,000 people paying it in 1812 to under a thousand by 1855, mostly liveried servants."
+    },
+    "source": "Wikipedia — Duty on Hair Powder Act 1795",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Duty_on_Hair_Powder_Act_1795",
+    "_evidence": "The wearing of powdered wigs tied in a queue had already been declining, and the tax speeded this decline... 1855: Only 997 taxpayers remained, almost all of these were servants."
+  },
+  {
+    "id": "anticonceptivo-egipcio-de-caca-de-cocodrilo",
+    "category": "historia",
+    "question": {
+      "es": "¿Recetaban los médicos del Antiguo Egipto excremento de cocodrilo como anticonceptivo?",
+      "en": "Did doctors in ancient Egypt prescribe crocodile dung as birth control?"
+    },
+    "answer": {
+      "es": "Sí, en un papiro médico de hace casi 4.000 años, mezclado con natrón y masa fermentada.",
+      "en": "Yes, in a medical papyrus nearly 4,000 years old, mixed with natron and fermented dough."
+    },
+    "detail": {
+      "es": "El papiro de Kahun, de alrededor del 1850 a.C., contiene la descripción escrita más antigua que se conoce de un anticonceptivo: un supositorio de excremento de cocodrilo, salitre y masa fermentada. El salitre sí tenía propiedades que dificultaban la concepción, así que el remedio no era pura superstición.",
+      "en": "The Kahun Papyrus, from around 1850 BC, contains the oldest known written description of a contraceptive: a suppository of crocodile dung, saltpeter, and fermented dough. The saltpeter did have properties that hindered conception, so the remedy wasn't pure superstition."
+    },
+    "source": "World History Encyclopedia — Family Planning in the Ancient Near East",
+    "sourceUrl": "https://www.worldhistory.org/article/2054/family-planning-in-the-ancient-near-east/",
+    "_evidence": "Egyptian physicians recommended preparing a suppository combining crocodile dung, saltpeter, and fermented dough... the saltpeter could block conception."
+  },
+  {
+    "id": "tren-solo-para-transportar-cadaveres",
+    "category": "historia",
+    "question": {
+      "es": "¿Tuvo Londres una línea de tren dedicada en exclusiva a transportar cadáveres fuera de la ciudad?",
+      "en": "Did London have a train line dedicated solely to carrying corpses out of the city?"
+    },
+    "answer": {
+      "es": "Sí, durante 87 años: los cementerios estaban tan saturados que hacía falta sacar a los muertos en tren.",
+      "en": "Yes, for 87 years: the cemeteries were so overcrowded that the dead had to be shipped out by train."
+    },
+    "detail": {
+      "es": "Tras una epidemia de cólera que dejó más de 14.000 muertos sin sitio donde enterrarlos, se abrió en 1854 un cementerio a 37 km de Londres y un tren propio que salía de Waterloo con ataúdes y familiares en duelo el mismo día. Una bomba destruyó su estación de salida en un bombardeo de 1941 y el servicio nunca volvió a funcionar.",
+      "en": "After a cholera epidemic left over 14,000 dead with nowhere to be buried, a cemetery opened in 1854 some 23 miles from London along with its own train that left Waterloo carrying coffins and grieving families the same day. A 1941 bombing destroyed its departure station, and the service never ran again."
+    },
+    "source": "National Geographic — The history of the London Necropolis Railway",
+    "sourceUrl": "https://www.nationalgeographic.com/history/history-magazine/article/abandoned-railroad-london-train-for-dead",
+    "_evidence": "with 14,601 people dying and no burial space for the influx of corpses... the 1941 bombing of Waterloo Station led to the permanent closure of the venture."
+  },
+  {
+    "id": "docena-del-panadero-por-miedo-a-la-carcel",
+    "category": "historia",
+    "question": {
+      "es": "¿Por qué una «docena de panadero» son en realidad trece panes y no doce?",
+      "en": "Why is a \"baker's dozen\" actually thirteen loaves, not twelve?"
+    },
+    "answer": {
+      "es": "Por miedo: una ley medieval castigaba con multa, cepo o cárcel vender pan que pesara de menos.",
+      "en": "Out of fear: a medieval law punished selling underweight bread with fines, the stocks, or jail."
+    },
+    "detail": {
+      "es": "Desde 1266, una ley inglesa fijaba el peso exacto que debía tener cada pan, pero la levadura hacía que dos panes iguales pesaran distinto de forma impredecible. Para no arriesgarse a una condena por un gramo de menos, los panaderos añadían un pan de propina a cada docena vendida, como colchón de seguridad.",
+      "en": "From 1266, an English law fixed the exact weight each loaf had to be, but yeast made two identical-looking loaves weigh differently in unpredictable ways. Rather than risk punishment over a few missing grams, bakers threw in one extra loaf with every dozen sold, as a safety cushion."
+    },
+    "source": "Tasting Table — The Medieval History Behind A Baker's Dozen",
+    "sourceUrl": "https://www.tastingtable.com/1332008/medieval-history-bakers-dozen/",
+    "_evidence": "Any baker caught violating the laws associated with this body would be subject to fines, beatings, or even imprisonment... an extra (typically smaller) loaf or end piece of bread as insurance."
+  },
+  {
+    "id": "boxing-day-caja-para-el-servicio",
+    "category": "historia",
+    "question": {
+      "es": "¿Por qué el día después de Navidad se llama «Boxing Day» en países de habla inglesa?",
+      "en": "Why is the day after Christmas called \"Boxing Day\" in English-speaking countries?"
+    },
+    "answer": {
+      "es": "Por las cajas de regalos que los señores entregaban ese día a sus criados y proveedores.",
+      "en": "Because of the boxes of gifts masters handed out that day to their servants and tradesmen."
+    },
+    "detail": {
+      "es": "El servicio trabajaba el día de Navidad para que sus señores pudieran celebrar, así que recibía su propio día libre y su caja de regalo justo después. Otra teoría, no excluyente, lo liga a las cajas de limosna de las iglesias, que se abrían ese mismo día para repartir donativos entre los pobres.",
+      "en": "Servants worked on Christmas Day so their employers could celebrate, so they got their own day off and their gift box right after. Another, not mutually exclusive, theory ties it to church alms boxes, which were opened that same day to distribute donations to the poor."
+    },
+    "source": "Britannica — Boxing Day",
+    "sourceUrl": "https://www.britannica.com/topic/Boxing-Day",
+    "_evidence": "it came from the boxes of gifts given to employees on the day after Christmas... it derived from the opening of alms boxes that had been placed in churches for the collection of donations to aid the poor."
+  },
+  {
+    "id": "ballenas-no-morian-solo-por-corses",
+    "category": "historia",
+    "question": {
+      "es": "¿Se cazaban ballenas hasta casi extinguirlas sobre todo para fabricar corsés de moda?",
+      "en": "Were whales hunted nearly to extinction mainly to make fashionable corsets?"
+    },
+    "answer": {
+      "es": "No: durante el siglo XVIII el motivo principal era el aceite, no las varillas de las faldas.",
+      "en": "No: through the 18th century the main reason was oil, not skirt hoops."
+    },
+    "detail": {
+      "es": "Las barbas de ballena, mal llamadas «huesos», sí armaban corsés y miriñaques, pero eran un producto secundario rentable, no la razón de cazar. El verdadero motor era el aceite de ballena, usado para iluminar, lubricar máquinas y fabricar jabón; solo a finales del XIX, cuando el petróleo sustituyó ese aceite, las barbas pasaron a ser el objetivo principal de la caza.",
+      "en": "Whale baleen, misleadingly called \"whalebone,\" really did frame corsets and hoop skirts, but it was a profitable side product, not the reason for hunting. The real driver was whale oil, used for lighting, machine lubrication, and soap; only in the late 19th century, once petroleum replaced that oil, did baleen become the main target of the hunt."
+    },
+    "source": "The Conversation — 'Whales died so women could look like this': what Bridgerton gets wrong about whalebone",
+    "sourceUrl": "https://theconversation.com/whales-died-so-women-could-look-like-this-what-shows-like-bridgerton-get-wrong-about-whalebone-and-corsetry-205385",
+    "_evidence": "fashion was not the driving motivator for whaling during the 18th century... It was not until the late 19th century, when petroleum products replaced the need for oil, that whales were killed primarily for their baleen."
+  },
+  {
+    "id": "rey-de-francia-veinte-minutos",
+    "category": "historia",
+    "question": {
+      "es": "¿Se puede ser rey de un país durante solo veinte minutos?",
+      "en": "Can someone be king of a country for just twenty minutes?"
+    },
+    "answer": {
+      "es": "Sí: Luis XIX de Francia heredó la corona y renunció a ella veinte minutos después, en 1830.",
+      "en": "Yes: Louis XIX of France inherited the crown and gave it up twenty minutes later, in 1830."
+    },
+    "detail": {
+      "es": "En plena Revolución de Julio, su padre Carlos X firmó la abdicación y le cedió el trono; Luis Antonio firmó su propia renuncia en el mismo documento apenas veinte minutos después, sin llegar a ejercer ni un solo acto de gobierno. Algunos monárquicos siguieron considerándolo el legítimo rey de Francia el resto de su vida.",
+      "en": "In the middle of the July Revolution, his father Charles X signed his abdication and passed him the throne; Louis Antoine signed his own renunciation on the very same document barely twenty minutes later, without ever performing a single act of government. Some monarchists kept considering him the rightful king of France for the rest of his life."
+    },
+    "source": "History Facts — The shortest reign of any monarch lasted just 20 minutes",
+    "sourceUrl": "https://historyfacts.com/world-history/fact/shortest-reign-monarch-20-minutes/",
+    "_evidence": "Louis XIX was technically king for just 20 minutes in 1830... The dauphin abdicated his right to the throne in the same document, which he signed 20 minutes after his father."
+  },
+  {
+    "id": "papa-trece-dias-prohibio-tabaco",
+    "category": "historia",
+    "question": {
+      "es": "¿Alcanzó un papa a dejar alguna huella en la Iglesia habiendo reinado solo trece días?",
+      "en": "Did a pope manage to leave a mark on the Church despite reigning only thirteen days?"
+    },
+    "answer": {
+      "es": "Sí: murió de malaria antes de coronarse, pero antes decretó la primera prohibición de fumar.",
+      "en": "Yes: he died of malaria before his coronation, but not before decreeing the first-ever smoking ban."
+    },
+    "detail": {
+      "es": "Urbano VII fue elegido papa el 15 de septiembre de 1590 y murió el día 27, sin llegar a coronarse: el pontificado más corto de la historia de la Iglesia. En esos pocos días prohibió fumar tabaco dentro o cerca de las iglesias, bajo pena de excomunión, mucho antes de que nadie supiera nada sobre los riesgos del tabaco para la salud.",
+      "en": "Urban VII was elected pope on September 15, 1590 and died on the 27th, without ever being crowned: the shortest papacy in Church history. In those few days he banned smoking tobacco in or near churches, on pain of excommunication, long before anyone knew anything about the health risks of tobacco."
+    },
+    "source": "Aleteia — 5 Shortest papacies in history, even shorter than John Paul I",
+    "sourceUrl": "https://aleteia.org/2025/03/14/5-shortest-papacies-in-history-even-shorter-than-john-paul-i/",
+    "_evidence": "holds the record for the shortest papacy, lasting just 13 days before dying of malaria... introducing what is considered the world's first public smoking ban, forbidding tobacco use in or near churches under threat of excommunication."
+  }
+]

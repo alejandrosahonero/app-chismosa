@@ -1,0 +1,83 @@
+name: aja
+description: "Ajá: Datos Curiosos Raros. Mazo deslizable de preguntas incómodas con su respuesta y fuente verificable."
+# App privada: nunca se publica en pub.dev.
+publish_to: "none"
+
+# versionName + versionCode. Incrementar SIEMPRE el build number (+N) en cada
+# subida a Google Play; el versionCode no puede repetirse ni retroceder.
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # --- Estado -------------------------------------------------------------
+  # Riverpod: estándar único de gestión de estado (sin BuildContext, testeable
+  # sin widget tree, autoDispose granular).
+  flutter_riverpod: ^3.4.2
+
+  # --- Navegación ---------------------------------------------------------
+  # go_router: rutas declarativas + deep links desde el día 1 (ASO / push).
+  go_router: ^17.4.0
+
+  # --- Monetización -------------------------------------------------------
+  # AdMob: banner + interstitial + rewarded. Incluye el UMP SDK (consentimiento
+  # GDPR), por eso no se añade ninguna dependencia extra de consentimiento.
+  google_mobile_ads: ^9.0.0
+  # IAP no consumible "quitar anuncios": conversión principal del modelo freemium.
+  in_app_purchase: ^3.3.0
+
+  # --- Plataforma ---------------------------------------------------------
+  # Diálogo nativo de reseña de Google Play tras un momento de éxito.
+  in_app_review: ^2.0.12
+
+  # Hoja de compartir del sistema. Es el único camino soportado para entregar
+  # una imagen a Instagram o TikTok sin integrar sus SDKs: pesa ~50 KB de Dart,
+  # no toca el arranque (se carga al primer uso) y evita cuatro dependencias
+  # propietarias. La imagen se pinta con dart:ui, sin paquetes extra.
+  share_plus: ^13.3.0
+
+  # --- Persistencia -------------------------------------------------------
+  # Clave-valor simple: flags, contadores, preferencias de UI.
+  shared_preferences: ^2.5.5
+  # Datos sensibles: entitlement premium y tokens de compra.
+  flutter_secure_storage: ^11.0.0
+
+  # --- Utilidades ---------------------------------------------------------
+  # Requerido por la localización generada (gen-l10n).
+  # La versión la fija flutter_localizations del SDK de Flutter (pinning).
+  intl: ^0.20.2
+  cupertino_icons: ^1.0.8
+  # Cliente HTTP oficial de dart.dev. Se usa solo para las aportaciones de los
+  # usuarios: una petición POST a un endpoint, sin SDK propietario. Se elige
+  # frente a dart:io porque acepta un `http.Client` inyectado, y eso es lo que
+  # permite testear el envío sin red.
+  http: ^1.6.0
+  flutter_local_notifications: ^22.3.0
+  timezone: ^0.11.1
+  flutter_timezone: ^5.1.0
+  # Directorio de soporte de la app, para cachear en disco el catálogo remoto.
+  # No va en shared_preferences a propósito: las prefs se cargan enteras en
+  # memoria al arrancar, y medio mega de JSON ahí es coste en cada arranque.
+  path_provider: ^2.1.6
+  url_launcher: ^6.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  # Activa la generación de AppLocalizations a partir de lib/l10n/*.arb.
+  generate: true
+  assets:
+    # Catálogo de datos empaquetado. Sin backend en el MVP: se parsea una vez
+    # fuera del isolate principal y se cachea en memoria.
+    - assets/data/
+

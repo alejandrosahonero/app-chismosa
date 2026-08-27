@@ -1,0 +1,1351 @@
+[
+  {
+    "id": "plata-limpieza-aluminio",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué la plata deslustrada se limpia sola con papel de aluminio?",
+      "en": "Why does tarnished silver clean itself with aluminum foil?"
+    },
+    "answer": {
+      "es": "Porque el aluminio le roba el azufre a la plata mediante una reacción electroquímica.",
+      "en": "Because the aluminum electrochemically steals the sulfur right off the silver."
+    },
+    "detail": {
+      "es": "El deslustre es sulfuro de plata. En agua caliente con bicarbonato, la plata y el aluminio forman una pequeña pila: el aluminio cede electrones y el azufre migra hacia el papel, dejando la plata limpia sin frotar.",
+      "en": "Tarnish is silver sulfide. In hot water with baking soda, the silver and foil form a tiny battery: the aluminum gives up electrons and the sulfur migrates onto the foil, leaving the silver clean without scrubbing."
+    },
+    "source": "Universidad de Wisconsin-Madison (Química) — Removing Tarnish from Silver Using an Electrochemical Cell",
+    "sourceUrl": "https://www2.chem.wisc.edu/deptfiles/genchem/demonstrations/Biochem/Pages/removing_tarnish_from_silv.htm",
+    "_evidence": "An electrochemical cell is produced between the silver sulfide and the aluminum, to form silver and aluminum sulfide."
+  },
+  {
+    "id": "lejia-amoniaco-veneno",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué nunca hay que mezclar lejía y amoniaco al limpiar?",
+      "en": "Why should you never mix bleach and ammonia while cleaning?"
+    },
+    "answer": {
+      "es": "Porque forman cloraminas, un gas tóxico que quema las vías respiratorias.",
+      "en": "Because they form chloramines, a toxic gas that burns your airway."
+    },
+    "detail": {
+      "es": "La lejía es hipoclorito de sodio; muchos limpiadores llevan amoniaco. Al juntarse, los átomos se reorganizan y liberan cloraminas: pueden causar tos, quemaduras en los pulmones y, en espacios cerrados, hospitalización.",
+      "en": "Bleach is sodium hypochlorite; many cleaners contain ammonia. Mixed together, the atoms rearrange and release chloramine gas: it can cause coughing, lung burns and, in closed spaces, hospitalization."
+    },
+    "source": "Washington State Department of Health — Dangers of Mixing Bleach with Cleaners",
+    "sourceUrl": "https://doh.wa.gov/community-and-environment/contaminants/bleach-mixing-dangers",
+    "_evidence": "When bleach is mixed with ammonia, toxic gases called chloramines are produced."
+  },
+  {
+    "id": "col-lombarda-indicador",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué el agua de cocer lombarda cambia de color al añadir limón?",
+      "en": "Why does red cabbage water change color when you add lemon?"
+    },
+    "answer": {
+      "es": "Porque su pigmento cambia de forma según la acidez, y eso cambia el color que refleja.",
+      "en": "Because its pigment changes shape with acidity, which changes the color it reflects."
+    },
+    "detail": {
+      "es": "El pigmento se llama antocianina. El ácido reordena su estructura molecular y la vuelve rosa; una base la vuelve verde o amarilla. Es un indicador de pH tan fiable que se usa para medir del 2 al 12 en la escala.",
+      "en": "The pigment is called anthocyanin. Acid rearranges its molecular structure and turns it pink; a base turns it green or yellow. It works as such a reliable pH indicator that it can measure a range from 2 to 12."
+    },
+    "source": "Compound Interest — Making a Red Cabbage pH Indicator",
+    "sourceUrl": "https://www.compoundchem.com/2017/05/18/red-cabbage/",
+    "_evidence": "The pH of the solution they are added to can affect the structure of the anthocyanin molecules, subtly changing them in a way that causes them to appear a different colour"
+  },
+  {
+    "id": "oro-nunca-se-empana",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué el oro nunca se empaña como la plata o el cobre?",
+      "en": "Why does gold never tarnish the way silver or copper do?"
+    },
+    "answer": {
+      "es": "Porque los átomos de su superficie se reorganizan solos para bloquear el oxígeno.",
+      "en": "Because the atoms on its surface rearrange themselves to block oxygen."
+    },
+    "detail": {
+      "es": "El oro ya era químicamente inerte por su configuración electrónica, pero en 2026 se descubrió un segundo motivo: los átomos de la superficie forman patrones protectores que frenan la oxidación hasta un billón de veces.",
+      "en": "Gold was already chemically inert thanks to its electron configuration, but in 2026 researchers found a second reason: surface atoms form protective patterns that suppress oxidation by up to a trillion-fold."
+    },
+    "source": "ScienceDaily — Why gold never tarnishes has finally been explained",
+    "sourceUrl": "https://www.sciencedaily.com/releases/2026/07/260710003511.htm",
+    "_evidence": "atoms on certain gold surfaces naturally shift into protective patterns that make it extremely difficult for oxygen to react with the metal."
+  },
+  {
+    "id": "estatua-libertad-verde",
+    "category": "ciencia",
+    "question": {
+      "es": "¿De qué color era la Estatua de la Libertad cuando se inauguró?",
+      "en": "What color was the Statue of Liberty when it was unveiled?"
+    },
+    "answer": {
+      "es": "Cobre rojizo brillante: tardó unos 25 a 30 años en volverse verde.",
+      "en": "Shiny reddish copper: it took about 25 to 30 years to turn green."
+    },
+    "detail": {
+      "es": "El verde es una pátina que se forma cuando el cobre reacciona con el oxígeno, la lluvia y el agua salada del puerto. Lejos de dañar el metal, esa capa lo protege, y por eso nunca se ha limpiado del todo.",
+      "en": "The green is a patina that forms when copper reacts with oxygen, rain and the harbor's salt water. Far from damaging the metal, that layer actually protects it, which is why it has never been fully cleaned off."
+    },
+    "source": "National Park Service — Preserving a Symbol",
+    "sourceUrl": "https://www.nps.gov/teachers/classrooms/preserving-a-symbol.htm",
+    "_evidence": "the National Park Service believes that the oxidation process took about 25 to 30 years to fully change from bronze to green."
+  },
+  {
+    "id": "jabon-revienta-virus",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Cómo consigue el jabón destruir un virus sin ningún químico agresivo?",
+      "en": "How does plain soap manage to destroy a virus with no harsh chemicals?"
+    },
+    "answer": {
+      "es": "Sus moléculas se clavan en la envoltura grasa del virus como una chincheta y la revientan.",
+      "en": "Its molecules stab into the virus's fatty envelope like a tack and pop it open."
+    },
+    "detail": {
+      "es": "Muchos virus, como el de la gripe o el coronavirus, se envuelven en una membrana robada a la célula que infectaron. El jabón tiene un extremo que se pega a esa grasa, la desarma y deja escapar el contenido: el virus queda inactivo.",
+      "en": "Many viruses, like flu or coronavirus, wrap themselves in a membrane stolen from the cell they infected. Soap has one end that latches onto that fat, tears it apart, and lets the contents spill out, leaving the virus inactive."
+    },
+    "source": "UNESCO — How Soap Kills COVID-19 on Hands",
+    "sourceUrl": "https://www.unesco.org/en/articles/how-soap-kills-covid-19-hands",
+    "_evidence": "Like a nail popping a tire, the water-repelling end of the soap molecule, a hydrophobic tail that can bond with oil and fats, stabs COVID-19 and leaves the virus a deflated and broken sack of RNA cells."
+  },
+  {
+    "id": "leche-se-corta-limon",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué unas gotas de limón cortan la leche casi al momento?",
+      "en": "Why do a few drops of lemon curdle milk almost instantly?"
+    },
+    "answer": {
+      "es": "Porque el ácido desestabiliza las proteínas que mantenían la leche en suspensión.",
+      "en": "Because the acid destabilizes the proteins that were keeping the milk in suspension."
+    },
+    "detail": {
+      "es": "La caseína flota en diminutas esferas cargadas que se repelen entre sí. El ácido del limón neutraliza esa carga: las esferas dejan de rechazarse, se apelmazan y la leche se separa en grumos y suero.",
+      "en": "Casein floats in tiny charged spheres that repel one another. Lemon's acid neutralizes that charge: the spheres stop pushing apart, clump together, and the milk splits into curds and whey."
+    },
+    "source": "Scientific American — A Milk-Curdling Activity",
+    "sourceUrl": "https://www.scientificamerican.com/article/a-milk-curdling-activity/",
+    "_evidence": "The micelle holds the casein protein in suspension, without it the micelles will clump together and the casein comes out of the solution."
+  },
+  {
+    "id": "teflon-nada-se-pega",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué no se pega absolutamente nada a una sartén de teflón?",
+      "en": "Why does literally nothing stick to a Teflon pan?"
+    },
+    "answer": {
+      "es": "Porque su enlace carbono-flúor es de los más fuertes que existen en química orgánica.",
+      "en": "Because its carbon-fluorine bond is one of the strongest that exists in organic chemistry."
+    },
+    "detail": {
+      "es": "El flúor atrae tanto a los electrones que el enlace queda blindado: ninguna molécula de comida logra engancharse a él, y encima repele lo que se le acerca. Ni siquiera el flúor gaseoso, altamente reactivo, reacciona con este plástico.",
+      "en": "Fluorine pulls electrons so hard that the bond becomes armor-plated: no food molecule can latch onto it, and it actively repels whatever comes close. Even reactive fluorine gas itself doesn't react with this plastic."
+    },
+    "source": "Compound Interest — Chemistry History: Teflon & Non-Stick Pans",
+    "sourceUrl": "https://www.compoundchem.com/2016/02/04/teflon/",
+    "_evidence": "These carbon–fluorine bonds are exceptionally strong; due to the high electronegativity of the fluorine atoms (they attract the electrons in the bond strongly), the carbon and fluorine atoms end up with partial charges, which attract each other and strengthen the bond further."
+  },
+  {
+    "id": "manzana-se-oscurece-corte",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué una manzana entera nunca se pone marrón, pero cortada sí?",
+      "en": "Why does a whole apple never turn brown, but a cut one does right away?"
+    },
+    "answer": {
+      "es": "Porque cortarla junta por primera vez a una enzima y a un compuesto que antes vivían separados.",
+      "en": "Because cutting it mixes, for the first time, an enzyme and a compound that used to live apart."
+    },
+    "detail": {
+      "es": "Dentro de la célula intacta, la enzima PPO y los compuestos fenólicos nunca se tocan. El corte rompe esa barrera: entra oxígeno, la enzima los oxida y el resultado forma el mismo pigmento marrón de la melanina de tu piel.",
+      "en": "Inside an intact cell, the PPO enzyme and phenolic compounds never touch. Cutting breaks that barrier: oxygen gets in, the enzyme oxidizes them, and the result forms the same brown pigment as the melanin in your skin."
+    },
+    "source": "Scientific American — Why do apple slices turn brown after being cut?",
+    "sourceUrl": "https://www.scientificamerican.com/article/experts-why-cut-apples-turn-brown/",
+    "_evidence": "When oxygen is present in cells, polyphenol oxidase (PPO) enzymes in the chloroplasts rapidly oxidize phenolic compounds naturally present in the apple tissues to o-quinones, colorless precursors to brown-colored secondary products."
+  },
+  {
+    "id": "refresco-pierde-burbujas",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué un refresco abierto se queda sin gas aunque no lo agites?",
+      "en": "Why does an open soda go flat even if you never shake it?"
+    },
+    "answer": {
+      "es": "Porque al abrirlo la presión cae de golpe y el CO2 disuelto escapa en forma de gas.",
+      "en": "Because opening it drops the pressure instantly, and the dissolved CO2 escapes as gas."
+    },
+    "detail": {
+      "es": "Dentro de la botella cerrada el gas estaba disuelto a una presión muy superior a la del aire. Al abrirla, esa presión se iguala con la exterior y el CO2 vuelve a formar burbujas que escapan por diminutos arañazos del vaso o por el calor ambiente.",
+      "en": "Inside the sealed bottle, the gas was dissolved at a pressure far higher than the surrounding air. Opening it equalizes that pressure, and the CO2 turns back into bubbles that escape through tiny scratches in the glass or simply from room-temperature heat."
+    },
+    "source": "The Conversation — The bubbly chemistry behind carbonated beverages",
+    "sourceUrl": "https://theconversation.com/the-bubbly-chemistry-behind-carbonated-beverages-210111",
+    "_evidence": "the pressure above the carbonated liquid drops to match the pressure outside of the bottle or can."
+  },
+  {
+    "id": "nube-pesa-toneladas-flota",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Cómo flota una nube que pesa cientos de toneladas?",
+      "en": "How does a cloud weighing hundreds of tons stay afloat?"
+    },
+    "answer": {
+      "es": "Porque el aire de debajo pesa aún más: la nube solo es menos densa que él.",
+      "en": "Because the air underneath weighs even more: the cloud is simply less dense than it."
+    },
+    "detail": {
+      "es": "Un cúmulo típico contiene unos 500.000 kilos de agua repartidos en gotitas microscópicas. Igual que el aceite flota sobre el agua, esa nube flota porque el aire húmedo que la forma pesa menos por metro cúbico que el aire seco de alrededor.",
+      "en": "A typical cumulus cloud holds around 500,000 kilograms of water spread across microscopic droplets. Just as oil floats on water, that cloud floats because the moist air forming it weighs less per cubic meter than the dry air around it."
+    },
+    "source": "USGS — How Much Does a Cloud Weigh?",
+    "sourceUrl": "https://www.usgs.gov/water-science-school/science/how-much-does-a-cloud-weigh",
+    "_evidence": "that 'heavy' cloud is floating over your head because the air below it is even heavier— the lesser density of the cloud allows it to float on the dryer and more-dense air."
+  },
+  {
+    "id": "mar-azul-no-por-reflejo",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Es el mar azul porque refleja el color del cielo?",
+      "en": "Is the sea blue because it reflects the color of the sky?"
+    },
+    "answer": {
+      "es": "No: sigue azul incluso con el cielo gris, porque el agua absorbe el rojo de la luz.",
+      "en": "No: it stays blue even under a gray sky, because water absorbs the red part of light."
+    },
+    "detail": {
+      "es": "El agua actúa como un filtro: absorbe las longitudes de onda largas, del rojo, y deja pasar las cortas, del azul. El reflejo del cielo aporta algo en ángulos rasantes, pero no explica el color: eso es pura absorción.",
+      "en": "Water acts as a filter: it absorbs the long, red wavelengths and lets the short, blue ones pass through. The sky's reflection adds a little at shallow angles, but it doesn't explain the color — that's pure absorption."
+    },
+    "source": "NOAA National Ocean Service — Why is the ocean blue?",
+    "sourceUrl": "https://oceanservice.noaa.gov/facts/oceanblue.html",
+    "_evidence": "The ocean is blue because water absorbs colors in the red part of the light spectrum. Like a filter, this leaves behind colors in the blue part of the light spectrum for us to see."
+  },
+  {
+    "id": "cielo-azul-no-violeta",
+    "category": "ciencia",
+    "question": {
+      "es": "Si el violeta se dispersa más que el azul, ¿por qué el cielo no es violeta?",
+      "en": "If violet scatters more than blue, why isn't the sky violet?"
+    },
+    "answer": {
+      "es": "Porque el Sol emite menos violeta y tus ojos son más sensibles al azul.",
+      "en": "Because the Sun emits less violet, and your eyes are more sensitive to blue."
+    },
+    "detail": {
+      "es": "La dispersión de Rayleigh sí favorece al violeta sobre el azul. Pero la luz solar que llega ya trae menos violeta que azul, y el ojo humano percibe el azul como más brillante que el violeta a igual intensidad. El resultado que ves es azul.",
+      "en": "Rayleigh scattering does favor violet over blue. But the sunlight that reaches us already carries less violet than blue, and on top of that the human eye perceives blue as brighter than violet at equal intensity. What you actually see is blue."
+    },
+    "source": "West Texas A&M University — Science Questions with Surprising Answers: Why is the sky blue?",
+    "sourceUrl": "https://www.wtamu.edu/~cbaird/sq/2013/03/28/why-is-the-sky-blue/",
+    "_evidence": "The sunlight that hits the atmosphere is therefore not an equal mix of all colors, but is a mix of all colors with red-orange dominating, and with more blue than violet (at least in frequency space)."
+  },
+  {
+    "id": "destello-verde-atardecer",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Existe de verdad el destello verde que se ve al ponerse el sol?",
+      "en": "Is the green flash you sometimes see right at sunset actually real?"
+    },
+    "answer": {
+      "es": "Sí, y dura uno o dos segundos: es el último resto de verde antes de que el rojo y el azul desaparezcan.",
+      "en": "Yes, and it lasts only a second or two: it's the last green sliver before the red and blue vanish."
+    },
+    "detail": {
+      "es": "Cerca del horizonte, la atmósfera separa la luz del sol como un prisma: el azul se dobla más, el rojo menos y el verde queda en medio. El rojo se hunde primero bajo el horizonte, así que por un instante solo queda visible el verde.",
+      "en": "Near the horizon, the atmosphere splits sunlight apart like a prism: blue bends most, red least, and green sits in between. Red dips below the horizon first, so for one instant only the green remains visible."
+    },
+    "source": "EarthSky — What's a green flash and how can I see one?",
+    "sourceUrl": "https://earthsky.org/earth/can-i-see-a-green-flash/",
+    "_evidence": "When sunlight enters Earth's atmosphere at a low angle, its blue portion bends – refracts – most toward the surface, green next, then red."
+  },
+  {
+    "id": "rayos-erupcion-volcanica",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué algunas erupciones volcánicas generan sus propios rayos?",
+      "en": "Why do some volcanic eruptions generate their own lightning?"
+    },
+    "answer": {
+      "es": "Porque las partículas de ceniza chocan entre sí y se roban electrones unas a otras.",
+      "en": "Because ash particles collide and steal electrons from one another."
+    },
+    "detail": {
+      "es": "El roce constante entre miles de partículas de ceniza dentro de la columna eruptiva genera electricidad estática, igual que frotar un globo. Cuando la carga acumulada es suficiente, se descarga en forma de rayo, a veces cerca del propio cráter.",
+      "en": "Constant friction between thousands of ash particles inside the eruption column builds up static electricity, the same way rubbing a balloon does. Once enough charge accumulates, it discharges as lightning, sometimes right at the crater's edge."
+    },
+    "source": "Scientific American — What Causes Eerie Volcanic Lightning?",
+    "sourceUrl": "https://www.scientificamerican.com/article/what-causes-eerie-volcanic-lightning/",
+    "_evidence": "The particles rub together and the resulting charge buildup generates lightning strikes. (This is called triboelectricity.)"
+  },
+  {
+    "id": "nieve-fresca-silencio",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué todo suena tan apagado justo después de nevar?",
+      "en": "Why does everything sound so muffled right after it snows?"
+    },
+    "answer": {
+      "es": "Porque es un absorbente acústico de verdad: diez centímetros de nieve fresca rinden como un panel acústico de gama alta.",
+      "en": "Because it is a genuine acoustic absorber: four inches of fresh snow performs like a high-end sound panel."
+    },
+    "detail": {
+      "es": "Unos científicos ingleses la midieron en una cámara reverberante en los años treinta: una capa de cuatro pulgadas dio un coeficiente de absorción de 0,89. La nieve compactada, el hielo y hasta la hierba helada reflejan mucho más, así que el efecto dura lo que tarda en cuajar.",
+      "en": "English scientists measured it in a reverberation chamber in the 1930s: a four-inch layer scored a noise reduction coefficient of 0.89. Compacted snow, ice and even frozen grass reflect far more, so the hush lasts only until the snow settles."
+    },
+    "source": "Acentech — The Quiet Snow",
+    "sourceUrl": "https://www.acentech.com/resources/the-quiet-snow/",
+    "_evidence": "A 4-inch layer of fresh snow achieved a Noise Reduction Coefficient (NRC) of 0.89, similar to high performing acoustical panels. Fresh snow is a lot more absorptive than asphalt, compacted snow, ice, and even frozen grass."
+  },
+  {
+    "id": "piedras-caminan-solas",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Cómo se mueven solas las piedras del desierto de Racetrack Playa?",
+      "en": "How do the rocks at Racetrack Playa move all on their own?"
+    },
+    "answer": {
+      "es": "Una fina lámina de hielo las levanta un poco y el viento las empuja sobre el barro mojado.",
+      "en": "A thin sheet of ice lifts them just slightly, and wind pushes them across the wet mud."
+    },
+    "detail": {
+      "es": "En invierno se forma una capa de hielo alrededor de cada roca sobre el fondo encharcado del lago seco. Con el nivel del agua cambiando, la roca queda a flote sobre esa placa y una brisa suave la desliza, dejando un rastro grabado en el barro.",
+      "en": "During winter, a slab of ice forms around each rock on the flooded floor of the dry lakebed. As the water level shifts, the rock floats out on that plate of ice, and a gentle breeze slides it along, etching a trail into the mud."
+    },
+    "source": "Smithsonian Magazine — How Do Death Valley's 'Sailing Stones' Move Themselves Across the Desert?",
+    "sourceUrl": "https://www.smithsonianmag.com/travel/how-do-death-valleys-sailing-stones-move-themselves-across-the-desert-98287558/",
+    "_evidence": "a slab of ice forms around a rock, and the liquid level changes so that the rock gets floated out of the mud."
+  },
+  {
+    "id": "escala-richter-logaritmica",
+    "category": "ciencia",
+    "question": {
+      "es": "Un terremoto de magnitud 6 y otro de magnitud 7, ¿cuánto se diferencian de verdad?",
+      "en": "A magnitude 6 earthquake and a magnitude 7 one — how different are they, really?"
+    },
+    "answer": {
+      "es": "El segundo mueve el suelo 10 veces más y libera unas 32 veces más energía.",
+      "en": "The second one shakes the ground 10 times more and releases about 32 times more energy."
+    },
+    "detail": {
+      "es": "La escala es logarítmica, no lineal: cada número entero que sube multiplica por diez la amplitud registrada en el sismógrafo. La energía crece todavía más deprisa, así que un salto de dos puntos completos supone unas mil veces más energía liberada.",
+      "en": "The scale is logarithmic, not linear: each whole number up multiplies the seismograph amplitude by ten. Energy grows even faster, so a jump of two full points means about a thousand times more energy released."
+    },
+    "source": "USGS — Earthquake Magnitude, Energy Release, and Shaking Intensity",
+    "sourceUrl": "https://www.usgs.gov/programs/earthquake-hazards/earthquake-magnitude-energy-release-and-shaking-intensity",
+    "_evidence": "each whole number increase in magnitude represents a tenfold increase in measured amplitude as measured on a seismogram."
+  },
+  {
+    "id": "halo-alrededor-luna",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué a veces sale un anillo enorme alrededor de la luna?",
+      "en": "Why does a huge ring sometimes appear around the moon?"
+    },
+    "answer": {
+      "es": "Porque su luz atraviesa cristales de hielo hexagonales que la desvían siempre el mismo ángulo.",
+      "en": "Because its light passes through hexagonal ice crystals that bend it by the same fixed angle."
+    },
+    "detail": {
+      "es": "A varios kilómetros de altura flotan nubes de diminutos cristales de hielo con forma de prisma de seis caras. La luz entra por una cara y sale por otra, desviándose 22 grados exactos, así que el anillo siempre aparece a esa misma distancia de la luna.",
+      "en": "Clouds of tiny six-sided ice-crystal prisms float several kilometers up. Light enters through one face and exits through another, bending by exactly 22 degrees, so the ring always shows up at that same fixed distance from the moon."
+    },
+    "source": "Geographical Magazine — What is an Ice halo or the 22° halo",
+    "sourceUrl": "https://geographical.co.uk/science-environment/phenomena-ice-halo-or-the-22-halo",
+    "_evidence": "Light from the sun or moon is reflected off and refracted through hexagonal ice crystals, which act as both mirrors and prisms, in different directions."
+  },
+  {
+    "id": "moho-resuelve-laberintos",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Puede un organismo sin cerebro ni neuronas resolver un laberinto?",
+      "en": "Can an organism with no brain or neurons solve a maze?"
+    },
+    "answer": {
+      "es": "Sí: un moho mucilaginoso encuentra el camino más corto entre dos puntos de comida.",
+      "en": "Yes: a slime mold finds the shortest route between two points of food."
+    },
+    "detail": {
+      "es": "Physarum polycephalum es una sola célula gigante sin sistema nervioso. Repartido por un laberinto con avena en dos extremos, retira sus ramas de los callejones sin salida y termina ocupando solo la ruta más corta entre ambas.",
+      "en": "Physarum polycephalum is a single giant cell with no nervous system. Spread through a maze with oats at both ends, it withdraws its branches from the dead ends and ends up occupying only the shortest path between them."
+    },
+    "source": "ScienceAlert — This Weirdly Smart, Creeping Slime Is Redefining Our Understanding of Intelligence",
+    "sourceUrl": "https://www.sciencealert.com/this-creeping-slime-is-changing-how-we-think-about-intelligence",
+    "_evidence": "This weird little acellular organism managed to find the fastest route through every maze thrown at it."
+  },
+  {
+    "id": "secuoyas-limite-altura",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué ni la secuoya más alta del mundo pasa de los 130 metros?",
+      "en": "Why doesn't even the tallest redwood on Earth exceed 130 meters?"
+    },
+    "answer": {
+      "es": "Porque a esa altura ya no consigue subir agua hasta arriba en contra de la gravedad.",
+      "en": "Because at that height it simply can't pull water up any higher against gravity."
+    },
+    "detail": {
+      "es": "El agua sube por fricción y succión desde la raíz hasta la copa. Pasados los 122-130 metros, esa fuerza ya no vence el peso de la columna de agua, y las hojas más altas viven en una sequía constante aunque el suelo esté empapado.",
+      "en": "Water rises from root to crown through friction and suction. Past 122 to 130 meters, that force can no longer overcome the weight of the water column, and the highest leaves live in constant drought even when the soil below is soaked."
+    },
+    "source": "Nature News — The limits to tree height",
+    "sourceUrl": "https://www.nature.com/news/2004/040419/full/news040419-5.html",
+    "_evidence": "For California redwoods (Sequoia sempervirens), the tug of gravity and the friction between the water and the vessels through which it flows mean that fluid cannot be dragged any higher than 122-130 metres."
+  },
+  {
+    "id": "bacterias-igualan-celulas-humanas",
+    "category": "ciencia",
+    "question": {
+      "es": "¿De verdad tienes diez bacterias por cada célula tuya, como se repite siempre?",
+      "en": "Do you really have ten bacteria for every one of your own cells, like everyone repeats?"
+    },
+    "answer": {
+      "es": "No: un recuento de 2016 corrigió la proporción a prácticamente 1 a 1.",
+      "en": "No: a 2016 recount corrected the ratio to almost exactly 1 to 1."
+    },
+    "detail": {
+      "es": "La cifra de 10 a 1 llevaba décadas en libros de texto sin comprobarse bien. Al repetir el cálculo con datos reales de un hombre de referencia salieron unos 38 billones de bacterias frente a 30 billones de células humanas: una proporción de 1,3 a 1.",
+      "en": "The 10-to-1 figure had sat unchecked in textbooks for decades. Redoing the calculation with real data for a reference man produced about 38 trillion bacteria versus 30 trillion human cells: a ratio of 1.3 to 1."
+    },
+    "source": "PLOS Biology — Revised Estimates for the Number of Human and Bacteria Cells in the Body",
+    "sourceUrl": "https://journals.plos.org/plosbiology/article?id=10.1371%2Fjournal.pbio.1002533",
+    "_evidence": "we can give an updated estimate of B/H = 1.3, with an uncertainty of 25%"
+  },
+  {
+    "id": "liquen-dos-seres-en-uno",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué un liquen no es en realidad un solo ser vivo?",
+      "en": "Why is a lichen not actually a single living thing?"
+    },
+    "answer": {
+      "es": "Porque es un hongo y un alga viviendo pegados, cada uno aportando lo que al otro le falta.",
+      "en": "Because it's a fungus and an alga living stuck together, each supplying what the other lacks."
+    },
+    "detail": {
+      "es": "El alga fotosintetiza y alimenta al hongo con azúcares; el hongo la protege, la ancla a la roca o la corteza y le da agua. Juntos sobreviven en sitios donde ninguno de los dos, por separado, aguantaría.",
+      "en": "The alga photosynthesizes and feeds the fungus sugars; the fungus protects it, anchors it to rock or bark, and supplies it with water. Together they survive in places neither one could endure alone."
+    },
+    "source": "USDA Forest Service — About Lichens",
+    "sourceUrl": "https://www.fs.usda.gov/wildflowers/beauty/lichens/about.shtml",
+    "_evidence": "Lichens are a complex life form that is a symbiotic partnership of two separate organisms, a fungus and an alga."
+  },
+  {
+    "id": "pinos-necesitan-fuego-semillas",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Hay pinos cuyas semillas solo se liberan si pasa un incendio?",
+      "en": "Are there pine trees whose seeds only get released by a wildfire?"
+    },
+    "answer": {
+      "es": "Sí: sus piñas están selladas con resina que solo se derrite con el calor de las llamas.",
+      "en": "Yes: their cones are sealed shut with resin that only melts in the heat of flames."
+    },
+    "detail": {
+      "es": "El pino de Murray guarda piñas cerradas durante años, esperando. Cuando el fuego arrasa el bosque, la resina se funde, la piña se abre y suelta las semillas justo sobre la ceniza fértil y sin competencia, el mejor momento posible para germinar.",
+      "en": "The lodgepole pine keeps its cones sealed shut for years, waiting. When fire sweeps through the forest, the resin melts, the cone opens, and it drops its seeds right onto the fertile, competition-free ash — the best possible moment to germinate."
+    },
+    "source": "National Park Service — Wildland Fire in Lodgepole Pine",
+    "sourceUrl": "https://www.nps.gov/articles/wildland-fire-lodgepole-pine.htm",
+    "_evidence": "These cones are closed tight with resin that melts during a fire and releases seeds that have been stored for years."
+  },
+  {
+    "id": "mimosa-hojas-se-cierran-tacto",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué una planta puede cerrar sus hojas en segundos al tocarla?",
+      "en": "Why can a plant fold its leaves shut in seconds when you touch it?"
+    },
+    "answer": {
+      "es": "Porque vacía de agua sus propias células y estas se desinflan como un globo.",
+      "en": "Because it drains water out of its own cells, and they deflate like a balloon."
+    },
+    "detail": {
+      "es": "En la base de cada hoja de la Mimosa pudica hay células que mantienen su forma a base de presión interna de agua. El roce dispara la salida de iones y agua de esas células: pierden rigidez de golpe y la hoja se dobla en cuestión de segundos.",
+      "en": "At the base of each Mimosa pudica leaf sit cells that hold their shape through internal water pressure. A touch triggers ions and water to rush out of those cells: they lose their rigidity instantly, and the leaf folds shut within seconds."
+    },
+    "source": "PMC (National Library of Medicine) — Mechanical Signaling in the Sensitive Plant Mimosa pudica",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7284940/",
+    "_evidence": "Sudden turgor loss on the extensor side of the pulvinus caused by water redistribution was the driving force behind rapid movements in plants."
+  },
+  {
+    "id": "musgo-sin-raices-de-verdad",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Tiene el musgo raíces de verdad, como cualquier otra planta?",
+      "en": "Does moss have real roots, like any other plant?"
+    },
+    "answer": {
+      "es": "No: solo tiene unos hilos llamados rizoides, que anclan pero casi no absorben agua.",
+      "en": "No: it only has thread-like rhizoids, which anchor it but barely absorb any water."
+    },
+    "detail": {
+      "es": "Los rizoides sujetan el musgo a la roca, la corteza o las tejas, pero el agua y los nutrientes entran directamente por sus hojas diminutas. Por eso una alfombra de musgo se despega tan fácil: nunca estuvo enraizada de verdad.",
+      "en": "Rhizoids hold the moss onto rock, bark, or roof tiles, but water and nutrients actually enter directly through its tiny leaves. That's why a mat of moss peels off so easily: it was never truly rooted in the first place."
+    },
+    "source": "Biology LibreTexts (Raven Biology) — Mosses",
+    "sourceUrl": "https://bio.libretexts.org/Bookshelves/Introductory_and_General_Biology/Map:_Raven_Biology_12th_Edition/29:_Seedless_Plants/29.02:_Bryophytes_Have_a_Dominant_Gametophyte_Generation/29.2.3:_Mosses",
+    "_evidence": "These structures are precursors of roots. They originate from the base of the gametophyte, but are not the major route for the absorption of water and minerals."
+  },
+  {
+    "id": "clorofila-pudo-ser-morada",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Pudo la vida en la Tierra empezar siendo morada en vez de verde?",
+      "en": "Could life on Earth have started out purple instead of green?"
+    },
+    "answer": {
+      "es": "Es la hipótesis de la «Tierra púrpura»: microbios antiguos usaban un pigmento morado antes que la clorofila.",
+      "en": "That's the 'Purple Earth' hypothesis: ancient microbes used a purple pigment before chlorophyll existed."
+    },
+    "detail": {
+      "es": "Ese pigmento, el retinal, absorbe luz verde y refleja el morado; hoy sigue vivo en microbios como las halobacterias. Si dominó el planeta antes de que la fotosíntesis con clorofila se impusiera, la primera vida visible desde el espacio pudo ser violeta, no verde.",
+      "en": "That pigment, retinal, absorbs green light and reflects purple; it survives today in microbes like halobacteria. If it dominated the planet before chlorophyll-based photosynthesis took over, the first life visible from space may have looked violet, not green."
+    },
+    "source": "NASA Astrobiology Institute — Purple as a Sign of Life on Other Planets",
+    "sourceUrl": "https://astrobiology.nasa.gov/nai/articles/2017/8/14/purple-as-a-sign-of-life-on-other-planets/index.html",
+    "_evidence": "absorbs green light and reflects a combination of red and violet"
+  },
+  {
+    "id": "patata-verde-toxica",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué hay que tirar una patata que se ha puesto verde por dentro?",
+      "en": "Why should you throw out a potato that's turned green?"
+    },
+    "answer": {
+      "es": "Porque acumula solanina, una toxina que ni hervir, ni freír, ni el microondas destruyen.",
+      "en": "Because it builds up solanine, a toxin that boiling, frying, or the microwave don't destroy."
+    },
+    "detail": {
+      "es": "La luz dispara a la vez la clorofila y la solanina de la patata, así que el verde es un aviso visual de que la toxina también ha subido. Los niveles más altos están en la piel verde y en los brotes, muy por encima de lo que se considera seguro.",
+      "en": "Light triggers both chlorophyll and solanine in the potato at once, so the green is a visual warning that the toxin has risen too. The highest levels sit in the green skin and the sprouts, well above what's considered safe."
+    },
+    "source": "Poison Control (National Capital Poison Center) — Are sprouted potatoes safe to eat?",
+    "sourceUrl": "https://www.poison.org/articles/are-green-potatoes-safe-to-eat-191",
+    "_evidence": "Cooking potatoes by baking, boiling, frying, and microwaving does not eliminate glycoalkaloids."
+  },
+  {
+    "id": "ventanas-avion-redondas-comet",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué las ventanillas de los aviones son ovaladas y no cuadradas?",
+      "en": "Why are airplane windows oval instead of square?"
+    },
+    "answer": {
+      "es": "Porque un avión de los años 50 con ventanas cuadradas se partió en pleno vuelo.",
+      "en": "Because a 1950s airliner with square windows tore apart mid-flight."
+    },
+    "detail": {
+      "es": "Cada despegue y aterrizaje presuriza y despresuriza el fuselaje. En las esquinas cuadradas del De Havilland Comet, esa tensión se concentraba tanto que aparecían grietas microscópicas que crecían vuelo tras vuelo, hasta abrir el avión por el aire.",
+      "en": "Every takeoff and landing pressurizes and depressurizes the fuselage. At the square corners of the De Havilland Comet, that stress concentrated so intensely that microscopic cracks formed and grew flight after flight, until they tore the plane open in midair."
+    },
+    "source": "MiGFlug — De Havilland Comet: How Square Windows Killed the First Jet Airliner",
+    "sourceUrl": "https://migflug.com/jetflights/de-havilland-comet-metal-fatigue-square-windows-investigation-1954/",
+    "_evidence": "Square corners concentrate stress. Round corners distribute it."
+  },
+  {
+    "id": "bicicleta-no-es-giroscopio",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Se mantiene una bici en pie por el efecto giroscopio de las ruedas?",
+      "en": "Does a bike stay upright thanks to the gyroscopic effect of its wheels?"
+    },
+    "answer": {
+      "es": "No, según un estudio de 2011: una bici sin ese efecto se equilibró igual.",
+      "en": "No, according to a 2011 study: a bike stripped of that effect balanced itself just the same."
+    },
+    "detail": {
+      "es": "Los investigadores construyeron una bicicleta con ruedas extra que anulaban el giroscopio y con la geometría del manillar alterada para eliminar también al otro sospechoso habitual. Aun así se enderezaba sola: lo que manda es dónde cae el peso del conjunto del manillar.",
+      "en": "Researchers built a bicycle with extra counter-rotating wheels that canceled out the gyroscopic effect and altered handlebar geometry to remove the other usual suspect too. It still righted itself: what actually matters is where the weight of the steering assembly sits."
+    },
+    "source": "Cornell Chronicle — Researchers explain why bicycles balance themselves",
+    "sourceUrl": "https://news.cornell.edu/stories/2011/04/researchers-explain-why-bicycles-balance-themselves",
+    "_evidence": "The cause is that the center of mass of the front steering assembly of the test bike is lower than that of the rear frame and forward of the steering axis"
+  },
+  {
+    "id": "tacoma-narrows-no-resonancia",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Se cayó el puente de Tacoma Narrows por simple resonancia, como se suele contar?",
+      "en": "Did the Tacoma Narrows Bridge collapse from simple resonance, like the story usually goes?"
+    },
+    "answer": {
+      "es": "No del todo: hubo resonancia ese día, pero lo que lo tumbó fue un efecto distinto y más traicionero.",
+      "en": "Not quite: there was resonance that day, but what brought it down was a different, more treacherous effect."
+    },
+    "detail": {
+      "es": "El puente sí resonó con los remolinos de viento, pero eso no lo derribó. Lo que lo mató fue el flameo aeroelástico: al torcerse un poco, generaba turbulencias que lo retorcían aún más, en un bucle que se retroalimentaba hasta romper los cables.",
+      "en": "The bridge did resonate with wind vortices, but that's not what took it down. What killed it was aeroelastic flutter: as it twisted slightly, it generated turbulence that twisted it even further, in a self-feeding loop that snapped the cables."
+    },
+    "source": "Practical Engineering — Why the Tacoma Narrows Bridge Collapsed",
+    "sourceUrl": "https://practical.engineering/blog/2019/3/9/why-the-tacoma-narrows-bridge-collapsed",
+    "_evidence": "The day of its failure, the Tacoma Narrows Bridge did experience resonance from the vortex shedding...But this resonance isn't why it failed."
+  },
+  {
+    "id": "hormigon-necesita-varillas",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué el hormigón necesita varillas de acero por dentro para aguantar?",
+      "en": "Why does concrete need steel rods inside it to hold up?"
+    },
+    "answer": {
+      "es": "Porque aguanta muy bien que lo aplasten, pero se rompe fácil si lo estiran.",
+      "en": "Because it takes being crushed extremely well, but snaps easily if you stretch it."
+    },
+    "detail": {
+      "es": "En una viga cargada, la parte de arriba se comprime y la de abajo se estira. El hormigón solo no resiste ese estiramiento y se rompería de golpe; el acero se encarga de esa tensión, y juntos reparten el trabajo según lo que cada material sabe hacer.",
+      "en": "In a loaded beam, the top gets compressed and the bottom gets stretched. Concrete alone can't handle that stretch and would fail suddenly; steel takes on that tension, and together they split the work according to what each material is good at."
+    },
+    "source": "Practical Engineering — Why Does Concrete Need Reinforcement?",
+    "sourceUrl": "https://practical.engineering/blog/2018/8/1/why-does-concrete-need-reinforcement",
+    "_evidence": "It turns out that concrete is very strong in compression but very weak in tension."
+  },
+  {
+    "id": "papel-aluminio-lado-brillante",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué el papel de aluminio tiene un lado brillante y otro mate?",
+      "en": "Why does aluminum foil have one shiny side and one dull side?"
+    },
+    "answer": {
+      "es": "Porque se laminan dos láminas juntas al final del proceso, y solo una toca el rodillo pulido.",
+      "en": "Because two sheets get rolled together at the final pass, and only one touches the polished roller."
+    },
+    "detail": {
+      "es": "El aluminio se estira tanto que, al final del proceso, se vuelve demasiado frágil para pasar solo por el rodillo. Se enrollan dos capas a la vez: la cara que toca el metal pulido sale brillante, y la que queda pegada a la otra lámina, mate.",
+      "en": "Aluminum gets stretched so thin that by the end of the process it's too fragile to go through the rollers alone. Two layers get rolled together at once: the side touching the polished metal comes out shiny, and the side pressed against the other sheet comes out dull."
+    },
+    "source": "Sciencing — The Reason Aluminum Foil Only Has One Shiny Side",
+    "sourceUrl": "https://www.sciencing.com/2218332/why-aluminum-foil-only-shiny-one-side/",
+    "_evidence": "manufacturers use two sheets in one through a technique called double-rolling to help the product maintain its integrity. The duller looking side never comes into contact with the rollers."
+  },
+  {
+    "id": "bolsa-patatas-hincha-avion",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué una bolsa de patatas fritas cerrada se hincha dentro del avión?",
+      "en": "Why does a sealed bag of chips puff up inside an airplane?"
+    },
+    "answer": {
+      "es": "Porque la cabina va a menos presión que a nivel del mar, y el aire de dentro se expande.",
+      "en": "Because the cabin is kept at lower pressure than sea level, and the air inside the bag expands."
+    },
+    "detail": {
+      "es": "La bolsa se selló con aire a la presión del suelo. La cabina presurizada equivale a una altitud de unos 1.800-2.400 metros, así que empuja menos desde fuera: el gas de dentro se dilata hasta hincharla.",
+      "en": "The bag was sealed with air at ground-level pressure. The pressurized cabin sits at the equivalent of roughly 6,000 to 8,000 feet of altitude, so it pushes less from outside: the gas inside expands until the bag puffs up."
+    },
+    "source": "UsefulBS — Why do sealed snack bags inflate during an airplane flight?",
+    "sourceUrl": "https://usefulbs.com/blog/why-do-sealed-snack-bags-inflate-during-an-airplane-flight",
+    "_evidence": "As external pressure decreases, the volume of the gas increases."
+  },
+  {
+    "id": "juntas-dilatacion-puentes",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Para qué son esas ranuras metálicas que se notan al cruzar un puente en coche?",
+      "en": "What are those metal grooves you feel when driving across a bridge?"
+    },
+    "answer": {
+      "es": "Dejan sitio para que el puente se alargue con el calor y se encoja con el frío sin agrietarse.",
+      "en": "They leave room for the bridge to lengthen in heat and shrink in cold without cracking."
+    },
+    "detail": {
+      "es": "El metal y el hormigón cambian de tamaño con la temperatura del día y de la estación. Sin esas juntas de dilatación, ese movimiento continuo generaría tensión acumulada y acabaría rajando la estructura.",
+      "en": "Metal and concrete change size with the temperature of the day and the season. Without those expansion joints, that constant movement would build up stress and eventually crack the structure."
+    },
+    "source": "Iowa PBS — Bridge Expansion Joints",
+    "sourceUrl": "https://www.iowapbs.org/education/initiatives/iowasciencephenomena/12502/bridge-expansion-joints",
+    "_evidence": "As bridges heat up they get longer, and smaller as they cool."
+  },
+  {
+    "id": "galeria-susurros-como-funciona",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué en algunas cúpulas se oye un susurro desde el lado opuesto?",
+      "en": "Why can a whisper be heard from the far side inside some domes?"
+    },
+    "answer": {
+      "es": "Porque el sonido no se dispersa: se pega a la pared curva y viaja así hasta el otro lado.",
+      "en": "Because the sound doesn't scatter: it clings to the curved wall and travels all the way around against it."
+    },
+    "detail": {
+      "es": "En una pared cóncava, las ondas de sonido cercanas a la superficie se curvan siguiendo la pared en vez de esparcirse en todas direcciones. La intensidad baja mucho más despacio que en campo abierto, así que un susurro llega intacto al otro extremo de la cúpula.",
+      "en": "Along a concave wall, sound waves near the surface bend and follow it instead of spreading out in every direction. Intensity drops off far more slowly than in open air, so a whisper arrives intact at the far end of the dome."
+    },
+    "source": "Acoustical Surfaces — Whispering Galleries",
+    "sourceUrl": "https://www.acousticalsurfaces.com/blog/acoustics-education/whispering-galleries/",
+    "_evidence": "Whispering gallery waves are a type of sound waves that travel around a concave surface."
+  },
+  {
+    "id": "copa-cristal-voz-resonancia",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Puede de verdad una voz humana romper una copa de cristal cantando?",
+      "en": "Can a human voice really shatter a wine glass by singing?"
+    },
+    "answer": {
+      "es": "Sí, pero hace falta acertar la nota exacta, cantarla altísimo y sostenerla varios segundos.",
+      "en": "Yes, but you need to hit the exact right note, sing it very loudly, and hold it for several seconds."
+    },
+    "detail": {
+      "es": "Cada copa tiene su propia frecuencia de resonancia, la misma nota que suena si le das un toque. Cantarla con al menos 105 decibelios durante dos o tres segundos hace vibrar el cristal cada vez más, hasta que una imperfección microscópica cede y se rompe.",
+      "en": "Every glass has its own resonant frequency — the same note it makes when you flick it. Singing that note at least 105 decibels for two or three seconds makes the glass vibrate more and more, until a microscopic flaw gives way and it shatters."
+    },
+    "source": "EarthSky — Can a human singing voice shatter glass?",
+    "sourceUrl": "https://earthsky.org/human-world/resonant-frequency/",
+    "_evidence": "The singer has to be very loud – an ear-splitting intensity of at least 105 decibels"
+  },
+  {
+    "id": "camara-anecoica-mas-silenciosa",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Cuál es el lugar más silencioso del planeta, y qué se oye ahí dentro?",
+      "en": "What's the quietest place on the planet, and what can you hear inside it?"
+    },
+    "answer": {
+      "es": "Una cámara en Minnesota con -24,9 decibelios, tan silenciosa que se oye la propia sangre circulando.",
+      "en": "A chamber in Minnesota at -24.9 decibels, so quiet you can hear your own blood moving."
+    },
+    "detail": {
+      "es": "El oído humano capta desde 0 decibelios hacia arriba; esta sala está por debajo de ese cero. Sus paredes de fibra de vidrio, acero y hormigón absorben el 99,99 % del sonido, y nadie ha aguantado dentro más de 45 minutos.",
+      "en": "The human ear picks up sound starting at 0 decibels and up; this room sits below that zero. Its walls of fiberglass, steel and concrete absorb 99.99 percent of sound, and no one has ever lasted inside longer than 45 minutes."
+    },
+    "source": "Guinness World Records — Quietest place",
+    "sourceUrl": "https://www.guinnessworldrecords.com/world-records/quietest-place",
+    "_evidence": "the ambient sound level inside the room was measured at -24.9 decibels."
+  },
+  {
+    "id": "latigo-rompe-sonido-bucle",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Qué parte de un látigo es la que realmente rompe la barrera del sonido?",
+      "en": "Which part of a whip is the one that actually breaks the sound barrier?"
+    },
+    "answer": {
+      "es": "No es la punta, como se creía: es un bucle que viaja por el látigo acelerando hasta esa velocidad.",
+      "en": "It's not the tip, as long believed: it's a loop that travels along the whip, accelerating up to that speed."
+    },
+    "detail": {
+      "es": "El látigo se adelgaza de la empuñadura a la punta, así que la energía del golpe se concentra al viajar por él. Un bucle recorre esa forma cada vez más deprisa hasta alcanzar la velocidad del sonido, y ese instante es el chasquido: un pequeño estampido sónico.",
+      "en": "The whip tapers from handle to tip, so the energy of the swing concentrates as it travels along it. A loop races down that shape, speeding up until it hits the speed of sound, and that instant is the crack — a tiny sonic boom."
+    },
+    "source": "Scientific American — True Cause of Whip's Crack Uncovered",
+    "sourceUrl": "https://www.scientificamerican.com/article/true-cause-of-whips-crack/",
+    "_evidence": "The crack of a whip comes from a loop traveling along the whip, gaining speed until it reaches the speed of sound and creates a sonic boom."
+  },
+  {
+    "id": "cables-electricos-zumban-120hz",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué zumban los transformadores y los cables de alta tensión?",
+      "en": "Why do transformers and high-voltage power lines hum?"
+    },
+    "answer": {
+      "es": "Porque el núcleo metálico se estira y encoge diminutamente cada vez que cambia el campo magnético.",
+      "en": "Because the metal core stretches and shrinks minutely every time the magnetic field flips."
+    },
+    "detail": {
+      "es": "Ese efecto se llama magnetostricción: el material cambia de tamaño da igual hacia qué lado apunte el campo, así que vibra dos veces por cada ciclo eléctrico. En una red de 60 Hz eso produce un zumbido constante de 120 Hz.",
+      "en": "That effect is called magnetostriction: the material changes size regardless of which way the field points, so it vibrates twice per electrical cycle. On a 60 Hz grid, that produces a steady 120 Hz hum."
+    },
+    "source": "Industrial Monitor Direct — Why Transformers Hum at 100/120Hz: Magnetostriction Explained",
+    "sourceUrl": "https://industrialmonitordirect.com/blogs/knowledgebase/transformer-magnetostriction-hum-why-100120hz-not-300360hz",
+    "_evidence": "This two-cycle expansion/contraction produces 120 Hz vibrations on a 60 Hz system and 100 Hz vibrations on a 50 Hz system."
+  },
+  {
+    "id": "iman-solo-tres-metales",
+    "category": "ciencia",
+    "question": {
+      "es": "De todos los metales, ¿a cuántos se les pega realmente un imán?",
+      "en": "Out of all the metals, how many does a magnet actually stick to?"
+    },
+    "answer": {
+      "es": "Prácticamente a tres: hierro, níquel y cobalto. Ni el oro, ni el cobre, ni el aluminio se dejan.",
+      "en": "Practically just three: iron, nickel and cobalt. Gold, copper and aluminum don't respond at all."
+    },
+    "detail": {
+      "es": "En esos metales los electrones desapareados de sus átomos apuntan todos hacia el mismo lado, y sus campos magnéticos se suman en vez de anularse. En el resto de metales esos campos se cancelan entre sí, así que no queda nada que un imán pueda notar.",
+      "en": "In those metals, the unpaired electrons in their atoms all point the same way, and their magnetic fields add up instead of canceling out. In most other metals, those fields cancel each other, leaving nothing for a magnet to detect."
+    },
+    "source": "West Texas A&M University — Science Questions with Surprising Answers: Why are all metals magnetic?",
+    "sourceUrl": "https://www.wtamu.edu/~cbaird/sq/2013/01/20/why-are-all-metals-magnetic/",
+    "_evidence": "only very few elements are ferromagnetic, including iron, cobalt, and nickel."
+  },
+  {
+    "id": "tenedor-microondas-chispas",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué salta una chispa si metes un tenedor en el microondas?",
+      "en": "Why does a spark fly if you put a fork in the microwave?"
+    },
+    "answer": {
+      "es": "Porque las puntas afiladas concentran tanta carga eléctrica que terminan encendiendo el aire.",
+      "en": "Because sharp points concentrate so much electric charge that they end up igniting the air around them."
+    },
+    "detail": {
+      "es": "El microondas agita los electrones de cualquier metal, pero en una superficie lisa no pasa nada. En una punta, en cambio, la carga se amontona hasta crear un campo eléctrico tan fuerte que arranca electrones del aire: eso es la chispa.",
+      "en": "The microwave shakes the electrons in any piece of metal, but on a smooth surface nothing happens. At a sharp point, though, the charge piles up until it creates an electric field strong enough to rip electrons off the surrounding air — that's the spark."
+    },
+    "source": "Microwaves Hub — Why Does Metal Spark in the Microwave?",
+    "sourceUrl": "https://microwaveshub.com/why-does-metal-spark-in-microwave/",
+    "_evidence": "Sharp edges and points amplify the electrical discharge, while flat or dull surfaces are less likely to induce sparks."
+  },
+  {
+    "id": "brujula-no-norte-real",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Apunta la brújula al norte geográfico real?",
+      "en": "Does a compass point to true geographic north?"
+    },
+    "answer": {
+      "es": "No: apunta al norte magnético, que puede estar a casi 20 grados de diferencia según dónde estés.",
+      "en": "No: it points to magnetic north, which can sit almost 20 degrees off depending on where you are."
+    },
+    "detail": {
+      "es": "El campo magnético de la Tierra no es una esfera perfecta, así que la aguja sigue su dirección local, no la línea hacia el polo geográfico. Esa diferencia se llama declinación magnética, y cambia según el lugar y también con los años.",
+      "en": "Earth's magnetic field isn't a perfect sphere, so the needle follows its local direction, not the line toward the geographic pole. That difference is called magnetic declination, and it changes by location — and shifts over the years too."
+    },
+    "source": "NOAA National Centers for Environmental Information — Magnetic Declination",
+    "sourceUrl": "https://www.ncei.noaa.gov/products/magnetic-declination",
+    "_evidence": "Magnetic declination (sometimes called magnetic variation) is the angle between magnetic north and true north."
+  },
+  {
+    "id": "cd-arcoiris-sin-tinta",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué un CD refleja un arcoíris si no tiene ni una gota de tinte?",
+      "en": "Why does a CD reflect a rainbow when it has no dye at all?"
+    },
+    "answer": {
+      "es": "Porque sus surcos microscópicos actúan como una rejilla que separa la luz blanca en colores.",
+      "en": "Because its microscopic grooves act as a grating that splits white light into colors."
+    },
+    "detail": {
+      "es": "Los datos del disco están grabados en millones de diminutos surcos alineados y a la misma distancia entre sí. Al reflejarse en ellos, cada longitud de onda se desvía a un ángulo distinto: eso mismo hace un ala de mariposa o un ópalo, sin usar ningún pigmento.",
+      "en": "The disc's data is etched into millions of tiny grooves, evenly spaced and aligned. Reflecting off them, each wavelength bends off at a different angle — the same trick used by a butterfly wing or an opal, without a single pigment involved."
+    },
+    "source": "Lumen Learning (SUNY Physics) — Multiple Slit Diffraction",
+    "sourceUrl": "https://courses.lumenlearning.com/suny-physics/chapter/27-4-multiple-slit-diffraction/",
+    "_evidence": "Diffraction gratings work both for transmission of light, as in Figure 2, and for reflection of light, as on butterfly wings and the Australian opal in Figure 3 or the CD in Figure 1."
+  },
+  {
+    "id": "vidrio-transparente-arena-opaca",
+    "category": "ciencia",
+    "question": {
+      "es": "El vidrio y la arena son básicamente el mismo material, entonces, ¿por qué uno se ve a través y el otro no?",
+      "en": "Glass and sand are basically the same material, so why can you see through one and not the other?"
+    },
+    "answer": {
+      "es": "Porque la arena tiene una estructura ordenada que dispersa la luz, y el vidrio no tiene ninguna estructura.",
+      "en": "Because sand has an ordered structure that scatters light, and glass has no structure at all."
+    },
+    "detail": {
+      "es": "Los granos de arena son cuarzo cristalino: sus bordes y defectos rebotan la luz en todas direcciones. Al fundir ese mismo cuarzo y enfriarlo deprisa, las moléculas quedan congeladas en desorden, sin bordes de grano que dispersen nada, y la luz pasa recta.",
+      "en": "Sand grains are crystalline quartz: their edges and defects bounce light off in every direction. Melt that same quartz and cool it quickly, and the molecules freeze in disorder, with no grain edges left to scatter anything, so light passes straight through."
+    },
+    "source": "Penn State University — MATSE 81: Why is Glass Transparent?",
+    "sourceUrl": "https://courses.ems.psu.edu/matse81/node/2154",
+    "_evidence": "the edges of the rigidly formed grains and smaller defects within the crystal structure reflect and disperse light that hits them."
+  },
+  {
+    "id": "pintura-luz-mezclan-distinto",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué mezclar pinturas da negro y mezclar focos de colores da blanco?",
+      "en": "Why does mixing paints give you black, while mixing colored lights gives you white?"
+    },
+    "answer": {
+      "es": "Porque la pintura quita luz y el foco la suma: son procesos opuestos.",
+      "en": "Because paint takes light away and a light adds it: they're opposite processes."
+    },
+    "detail": {
+      "es": "Un foco de color emite longitudes de onda que se suman hasta llegar a toda la luz visible, blanco. Una pintura, en cambio, absorbe unas longitudes y solo refleja las que sobran: cuantos más pigmentos mezclas, menos luz queda para reflejar.",
+      "en": "A colored light emits wavelengths that add up until they cover all visible light, which is white. Paint, on the other hand, absorbs certain wavelengths and only reflects what's left over: the more pigments you mix, the less light remains to reflect."
+    },
+    "source": "Hunter Associates Laboratory (HunterLab) — Additive vs. Subtractive Color Models",
+    "sourceUrl": "https://www.hunterlab.com/en/blog/additive-vs-subtractive-color-models/",
+    "_evidence": "additive color is the process of adding one set of wavelengths to another to create a new color."
+  },
+  {
+    "id": "diamante-brilla-mas-vidrio",
+    "category": "ciencia",
+    "question": {
+      "es": "Con el mismo corte exacto, ¿por qué un diamante brilla más que un cristal tallado igual?",
+      "en": "With the exact same cut, why does a diamond sparkle more than a piece of cut glass?"
+    },
+    "answer": {
+      "es": "Porque la luz que entra solo puede salir por un cono estrechísimo, y las facetas están talladas para que casi nunca lo encuentre.",
+      "en": "Because light that gets in can only leave through a very narrow cone, and the facets are cut so that it almost never finds it."
+    },
+    "detail": {
+      "es": "El ángulo crítico de la frontera diamante-aire es de solo 24,4 grados: si la luz llega más tumbada que eso, rebota hacia dentro en vez de escapar. Un buen tallado la obliga a dar muchos rebotes internos y a concentrarse antes de salir, y de ahí el destello.",
+      "en": "The critical angle at a diamond-to-air surface is just 24.4 degrees: hit the surface shallower than that and light reflects back inside instead of escaping. A good cut forces the ray through many internal bounces, concentrating it before it exits."
+    },
+    "source": "OpenStax University Physics (LibreTexts) — Total Internal Reflection",
+    "sourceUrl": "https://phys.libretexts.org/Bookshelves/University_Physics/University_Physics_(OpenStax)/University_Physics_III_-_Optics_and_Modern_Physics_(OpenStax)/01%3A_The_Nature_of_Light/1.05%3A_Total_Internal_Reflection",
+    "_evidence": "The critical angle for a diamond-to-air surface is only 24.4°. Although light freely enters the diamond, it can exit only if it makes an angle less than 24.4°. Facets on diamonds are specifically intended to make this unlikely."
+  },
+  {
+    "id": "gafas-polarizadas-quitan-reflejo",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Cómo consiguen unas gafas de sol quitar el reflejo del agua o del capó de un coche?",
+      "en": "How do sunglasses manage to kill the glare off water or a car hood?"
+    },
+    "answer": {
+      "es": "Filtran solo la luz que rebota en horizontal, que es justo la que produce ese reflejo cegador.",
+      "en": "They filter out only the light bouncing horizontally, which is exactly what causes that blinding glare."
+    },
+    "detail": {
+      "es": "Al reflejarse en una superficie plana, la luz del sol se vuelve mayoritariamente horizontal. El filtro de la lente deja pasar solo la luz que vibra en vertical, como una persiana de listones verticales: el reflejo horizontal se queda fuera.",
+      "en": "When sunlight reflects off a flat surface, it becomes mostly horizontally polarized. The lens filter only lets through light vibrating vertically, like a blind made of vertical slats: the horizontal glare gets blocked out."
+    },
+    "source": "American Academy of Ophthalmology — What Are Polarized Lenses?",
+    "sourceUrl": "https://www.aao.org/eye-health/glasses-contacts/polarized-lenses",
+    "_evidence": "It blocks the light bouncing sideways off water or shiny surfaces like a car hood."
+  },
+  {
+    "id": "vantablack-negro-mas-negro",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Cómo puede un material absorber el 99,965 % de toda la luz que le llega?",
+      "en": "How can a material absorb 99.965 percent of all the light that hits it?"
+    },
+    "answer": {
+      "es": "Atrapándola dentro de un bosque de tubos de carbono tan finos que la luz nunca vuelve a salir.",
+      "en": "By trapping it inside a forest of carbon tubes so narrow that the light never finds its way back out."
+    },
+    "detail": {
+      "es": "El Vantablack está hecho de nanotubos de carbono alineados en vertical, tan juntos y estrechos que la luz que entra rebota de tubo en tubo y se convierte en calor antes de poder escapar. Por eso un objeto cubierto con él parece un agujero plano en el espacio.",
+      "en": "Vantablack is made of vertically aligned carbon nanotubes, packed so tightly that light entering the forest bounces from tube to tube and turns into heat before it can escape. That's why an object coated in it looks like a flat hole cut into space."
+    },
+    "source": "Gamma Scientific — Why Vantablack is Able to Absorb 99.965% of Visible Light",
+    "sourceUrl": "https://gamma-sci.com/2021/06/28/why-vantablack-is-able-to-absorb-99-965-of-visible-light/",
+    "_evidence": "The tiny diameters, measured in mere microns, of the carbon tubes are just wide enough to capture incoming light, but they don't let it back out."
+  },
+  {
+    "id": "aliento-cesar-cada-respiracion",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Es posible que ahora mismo estés respirando un trocito del último aliento de Julio César?",
+      "en": "Is it possible that right now you're breathing in a tiny piece of Julius Caesar's last breath?"
+    },
+    "answer": {
+      "es": "Sí: el cálculo dice que hay más o menos una molécula de ese aliento en cada bocanada que tomas.",
+      "en": "Yes: the math says there's roughly one molecule of that breath in every gulp of air you take."
+    },
+    "detail": {
+      "es": "Aquel último aliento soltó unos 25 trillones de moléculas de aire, y la atmósfera entera se mezcla por completo en uno o dos años. Con el número de Avogadro de por medio, la probabilidad da un resultado casi inevitable: siempre te toca alguna.",
+      "en": "That last breath released about 25 sextillion air molecules, and the entire atmosphere mixes completely within a year or two. Run the numbers with Avogadro's constant and the probability comes out almost inevitable: you always get a few."
+    },
+    "source": "BBC Science Focus — Are we really breathing Caesar's last breath?",
+    "sourceUrl": "https://www.sciencefocus.com/planet-earth/are-we-really-breathing-caesars-last-breath",
+    "_evidence": "roughly one molecule of Caesar's air will appear in your next breath"
+  },
+  {
+    "id": "burbuja-jabon-mas-fina-pelo",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Cuánto más fina es la pared de una pompa de jabón que un pelo humano?",
+      "en": "How much thinner is the wall of a soap bubble than a human hair?"
+    },
+    "answer": {
+      "es": "Miles de veces: puede quedarse en apenas 5 nanómetros justo antes de reventar.",
+      "en": "Thousands of times thinner: it can shrink to just 5 nanometers right before it pops."
+    },
+    "detail": {
+      "es": "Un pelo humano mide entre 70.000 y 100.000 nanómetros de grosor. La película de una pompa, hecha de agua atrapada entre dos capas de jabón, puede llegar a ser hasta veinte mil veces más fina que ese pelo sin romperse.",
+      "en": "A human hair is about 70,000 to 100,000 nanometers thick. A bubble's film, made of water trapped between two layers of soap, can get up to twenty thousand times thinner than that hair without breaking."
+    },
+    "source": "Soapbubble.dk — Color and film thickness",
+    "sourceUrl": "https://www.soapbubble.dk/en/articles/thin-film-interference",
+    "_evidence": "a film of about 5 nm (which is aproximatly the minimum soap film thickness)"
+  },
+  {
+    "id": "inodoro-coriolis-mito",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Gira el agua del inodoro en un sentido por el efecto Coriolis de la Tierra?",
+      "en": "Does toilet water spin one way because of Earth's Coriolis effect?"
+    },
+    "answer": {
+      "es": "No: ese efecto es demasiado débil para un cuenco pequeño; manda la forma del desagüe.",
+      "en": "No: that effect is far too weak for a small basin; the shape of the drain wins."
+    },
+    "detail": {
+      "es": "Hace falta una masa de agua de cientos de kilómetros, como un océano, para que la rotación terrestre se note. En un lavabo o un váter, el chorro con el que se llenó y la forma de la salida generan un giro mucho más fuerte que cualquier cosa que aporte la Tierra.",
+      "en": "You need a body of water hundreds of kilometers across, like an ocean, before Earth's rotation makes any difference. In a sink or toilet, the jet that filled it and the shape of the outlet create a far stronger spin than anything Earth contributes."
+    },
+    "source": "Scientific American — Does water flowing down a drain spin in different directions depending on which hemisphere you're in?",
+    "sourceUrl": "https://www.scientificamerican.com/article/can-somebody-finally-sett/",
+    "_evidence": "any small asymmetry of the shape of the drain will determine which direction the circulation occurs."
+  },
+  {
+    "id": "dinosaurios-ni-frios-ni-calientes",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Eran los dinosaurios de sangre fría, como los lagartos actuales?",
+      "en": "Were dinosaurs cold-blooded, like today's lizards?"
+    },
+    "answer": {
+      "es": "Ni fríos ni calientes del todo: la evidencia apunta a un punto intermedio raro hoy en día.",
+      "en": "Neither fully cold nor fully warm: the evidence points to a rare middle ground."
+    },
+    "detail": {
+      "es": "Analizando el crecimiento del hueso de 21 especies de dinosaurio junto a cientos de animales actuales, su metabolismo cayó en un término medio llamado mesotermia: generan calor propio, pero sin mantener una temperatura constante como un mamífero. Hoy solo lo hacen animales como el atún o la tortuga laúd.",
+      "en": "Analyzing bone growth from 21 dinosaur species alongside hundreds of living animals, their metabolism landed in a middle ground called mesothermy: they generated their own heat, but without holding a constant temperature like a mammal. Today only animals like tuna or leatherback turtles do that."
+    },
+    "source": "Scientific American — Dinosaurs Were Neither Warm-Blooded nor Cold-Blooded",
+    "sourceUrl": "https://www.scientificamerican.com/article/dinosaurs-were-neither-warm-blooded-nor-cold-blooded/",
+    "_evidence": "Mesotherms burn energy from within to regulate their body heat, but not to a constant temperature as a mammal or bird would do."
+  },
+  {
+    "id": "hielo-flota-rareza-agua",
+    "category": "ciencia",
+    "question": {
+      "es": "El agua es casi el único líquido cuyo sólido flota en vez de hundirse, ¿por qué?",
+      "en": "Water is almost the only liquid whose solid form floats instead of sinking — why?"
+    },
+    "answer": {
+      "es": "Porque al congelarse, sus moléculas se ordenan en una red con más huecos, no menos.",
+      "en": "Because when it freezes, its molecules arrange into a lattice with more gaps, not fewer."
+    },
+    "detail": {
+      "es": "En casi todos los materiales, el sólido es más denso porque las moléculas se aprietan al enfriarse. En el agua, los puentes de hidrógeno fuerzan a las moléculas a una estructura hexagonal abierta, así que el hielo ocupa un 9 % más de espacio que la misma agua líquida.",
+      "en": "In almost every other material, the solid is denser because molecules pack tighter as they cool. In water, hydrogen bonds force the molecules into an open hexagonal structure, so ice takes up about 9 percent more space than the same water as a liquid."
+    },
+    "source": "BBC Science Focus — Why does ice float on water?",
+    "sourceUrl": "https://www.sciencefocus.com/science/why-does-ice-float-on-water",
+    "_evidence": "The result is a structure that is slightly less dense than liquid water."
+  },
+  {
+    "id": "hielo-cruje-bebida",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué crujen tanto los cubitos justo al caer en una bebida?",
+      "en": "Why do ice cubes crackle so much right when they hit a drink?"
+    },
+    "answer": {
+      "es": "Porque el exterior se calienta más rápido que el interior, y esa diferencia agrieta el cubito.",
+      "en": "Because the outside warms up faster than the inside, and that mismatch cracks the cube."
+    },
+    "detail": {
+      "es": "El hielo es rígido y no puede expandirse solo por partes: cuando la capa exterior se calienta antes que el núcleo congelado, la tensión acumulada se libera de golpe en forma de grietas, y cada una de esas roturas microscópicas es lo que oyes crujir.",
+      "en": "Ice is rigid and can't expand unevenly: when the outer layer heats up before the still-frozen core does, the built-up stress releases all at once as cracks, and each of those microscopic breaks is what you hear crackling."
+    },
+    "source": "The Conversation — Curious Kids: Why does ice make a cracking sound when water is poured on it?",
+    "sourceUrl": "https://theconversation.com/curious-kids-why-does-ice-make-a-cracking-sound-when-water-is-poured-on-it-92844",
+    "_evidence": "The solid ice cube can't handle the differences in the density caused by the varying temperatures. The pressure of this causes the solid to crack."
+  },
+  {
+    "id": "hielo-seco-sublima-sin-mojar",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué el hielo seco desaparece en niebla sin dejar ni una gota de líquido?",
+      "en": "Why does dry ice vanish into fog without leaving a single drop of liquid?"
+    },
+    "answer": {
+      "es": "Porque a la presión normal del aire, el CO2 no tiene ninguna forma líquida posible.",
+      "en": "Because at normal air pressure, CO2 has no possible liquid form."
+    },
+    "detail": {
+      "es": "Para que exista CO2 líquido hace falta al menos cinco veces la presión atmosférica normal. Por debajo de eso, calentar hielo seco lo salta directo de sólido a gas, sin pasar por líquido: eso es sublimación, y la niebla blanca es solo vapor de agua condensándose por el frío.",
+      "en": "For liquid CO2 to exist at all, you need at least five times normal atmospheric pressure. Below that, heating dry ice skips straight from solid to gas, with no liquid stage: that's sublimation, and the white fog is just water vapor condensing from the cold."
+    },
+    "source": "Energy Education (University of Calgary) — Sublimation and deposition",
+    "sourceUrl": "https://energyeducation.ca/encyclopedia/Sublimation_and_deposition",
+    "_evidence": "This means that liquid carbon dioxide is possible, it just requires 5 times normal atmospheric pressure in order to get the liquid to form."
+  },
+  {
+    "id": "pajita-sube-agua-presion",
+    "category": "ciencia",
+    "question": {
+      "es": "Al beber con una pajita, ¿eres tú quien tira del líquido hacia arriba?",
+      "en": "When you drink through a straw, are you the one pulling the liquid up?"
+    },
+    "answer": {
+      "es": "No: bajas la presión dentro de la pajita, y es el aire de fuera el que empuja el líquido.",
+      "en": "No: you lower the pressure inside the straw, and it's the outside air that pushes the liquid up."
+    },
+    "detail": {
+      "es": "Sin succionar, el aire empuja igual por dentro y por fuera de la pajita, así que el nivel no cambia. Al sorber quitas parte de ese aire de dentro, y la presión desequilibrada del exterior empuja el líquido hacia arriba hasta tu boca.",
+      "en": "Without sucking, air pushes equally inside and outside the straw, so the level stays put. When you sip, you remove some of that inside air, and the unbalanced outside pressure pushes the liquid up into your mouth."
+    },
+    "source": "Chemistry LibreTexts — Straws!",
+    "sourceUrl": "https://chem.libretexts.org/Courses/Anoka-Ramsey_Community_College/Introduction_to_Chemistry/09:_Gases/9.01:_Straws",
+    "_evidence": "Since the atmospheric pressure is greater on the outside of the straw, liquid is forced into and up the straw and into your mouth."
+  },
+  {
+    "id": "hemisferios-magdeburgo-caballos",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Pudieron dieciséis caballos separar dos medias esferas vacías de aire?",
+      "en": "Could sixteen horses pull apart two hemispheres with the air removed?"
+    },
+    "answer": {
+      "es": "No: ni tirando en direcciones opuestas lograron separarlas hasta dejar entrar el aire de nuevo.",
+      "en": "No: even pulling in opposite directions, they couldn't separate them until air was let back in."
+    },
+    "detail": {
+      "es": "En 1654, el científico Otto von Guericke unió dos semiesferas de cobre y les sacó el aire de dentro con una bomba. La presión atmosférica exterior las mantuvo pegadas con tanta fuerza que ni un tiro de caballos consiguió abrirlas.",
+      "en": "In 1654, scientist Otto von Guericke joined two copper hemispheres and pumped the air out from inside. The outer atmospheric pressure held them together so tightly that not even a team of horses pulling could pry them apart."
+    },
+    "source": "Physics Today (American Institute of Physics) — Magdeburg hemispheres",
+    "sourceUrl": "https://physicstoday.aip.org/backscatter/magdeburg-hemispheres",
+    "_evidence": "During the experiment, air was pumped out of the sphere, and a team of horses was attached to either side. They strained in opposite directions yet were unable to pull the hemispheres apart until air was let back in."
+  },
+  {
+    "id": "limite-bomba-agua-diez-metros",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué ninguna bomba de succión puede sacar agua de un pozo de más de diez metros?",
+      "en": "Why can't any suction pump draw water out of a well deeper than about ten meters?"
+    },
+    "answer": {
+      "es": "Porque a esa altura, el peso de la columna de agua ya iguala a toda la presión del aire que la empuja.",
+      "en": "Because at that height, the weight of the water column already matches the full push of the air behind it."
+    },
+    "detail": {
+      "es": "Una bomba no tira del agua: crea un vacío parcial arriba y deja que la presión atmosférica la empuje desde abajo. Esa presión solo puede sostener una columna de agua de unos 10,3 metros; pasado ese punto, no hay más fuerza disponible aunque la bomba sea más potente.",
+      "en": "A pump doesn't pull the water: it creates a partial vacuum up top and lets atmospheric pressure push the water up from below. That pressure can only support a water column of about 10.3 meters; past that point, there's no more force available no matter how powerful the pump is."
+    },
+    "source": "PMC (National Library of Medicine) — Negative Pressures and the First Water Siphon Taller than 10.33 Meters",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4824372/",
+    "_evidence": "Torricelli realized that the production of a partial vacuum at the top of the extracting tube allowed the atmospheric pressure at the lower part of the well to push the liquid to rise towards the lower pressure zone produced by the pump."
+  },
+  {
+    "id": "harina-explota-en-polvo",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Puede la harina, tan inofensiva en la cocina, provocar una explosión?",
+      "en": "Can flour, so harmless in the kitchen, actually cause an explosion?"
+    },
+    "answer": {
+      "es": "Sí, si flota en el aire como una nube de polvo: entonces se vuelve explosiva.",
+      "en": "Yes, if it's floating in the air as a dust cloud: then it becomes explosive."
+    },
+    "detail": {
+      "es": "Un grano sólido o un puñado de harina apenas arden por fuera. Pero molidos hasta ser polvo y dispersos en el aire, cada partícula queda rodeada de oxígeno por todas partes: la superficie total de contacto se dispara, y una sola chispa basta para prender toda la nube de golpe.",
+      "en": "A solid grain or a handful of flour barely burns on the outside. But ground into dust and dispersed in the air, every particle ends up surrounded by oxygen on all sides: the total contact surface explodes, and a single spark is enough to ignite the whole cloud at once."
+    },
+    "source": "Dust Safety Science — Is Flour Flammable and Combustible Dust Explosion Risks",
+    "sourceUrl": "https://dustsafetyscience.com/is-flour-flammable/",
+    "_evidence": "Flour easily burns because it's finely ground, which increases its surface area and makes it burn fast when dispersed in the air."
+  },
+  {
+    "id": "papel-amarillea-lignina",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué un periódico viejo se pone amarillo y un libro de tapa dura casi no cambia?",
+      "en": "Why does an old newspaper turn yellow while a hardcover book barely changes?"
+    },
+    "answer": {
+      "es": "Por la cantidad de lignina que les quedó dentro: al aire, se oxida y se oscurece.",
+      "en": "It comes down to how much lignin was left inside: exposed to air, it oxidizes and darkens."
+    },
+    "detail": {
+      "es": "La lignina es el compuesto que da rigidez a la madera. El papel de periódico apenas la elimina en su fabricación, así que se oxida y amarillea en pocas horas de sol; el papel fino de un libro pasa por un proceso químico que la retira casi entera.",
+      "en": "Lignin is the compound that gives wood its rigidity. Newsprint barely removes it during manufacturing, so it oxidizes and yellows within a few hours of sunlight; fine book paper goes through a chemical process that strips almost all of it out."
+    },
+    "source": "BBC Science Focus — Why does paper go yellow over time?",
+    "sourceUrl": "https://www.sciencefocus.com/science/why-does-paper-go-yellow-over-time",
+    "_evidence": "Lignin oxidises quite easily in air to a yellow or brown colour."
+  },
+  {
+    "id": "oxido-ocupa-mas-espacio",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué el óxido puede llegar a reventar el hormigón que rodea a una varilla de hierro?",
+      "en": "Why can rust actually crack open the concrete surrounding an iron rod?"
+    },
+    "answer": {
+      "es": "Porque el óxido ocupa hasta diez veces más volumen que el metal del que salió.",
+      "en": "Because rust can take up to ten times more volume than the metal it came from."
+    },
+    "detail": {
+      "es": "El hierro oxidado no desaparece: se expande, ya que la capa de óxido es mucho más porosa y menos densa que el metal original. Encerrado dentro de hormigón o piedra, ese empuje hacia fuera termina agrietando y desconchando el material que lo rodea.",
+      "en": "Rusted iron doesn't disappear: it expands, since the oxide layer is far more porous and less dense than the original metal. Trapped inside concrete or stone, that outward push eventually cracks and flakes off the material around it."
+    },
+    "source": "Construction Specifier — Expanding on Structural Steel",
+    "sourceUrl": "https://www.constructionspecifier.com/expanding-on-structural-steel/",
+    "_evidence": "Rust scale can occupy up to 10 times the volume of the original metal."
+  },
+  {
+    "id": "bateria-necesita-dos-metales",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué la primera pila eléctrica de la historia necesitaba dos metales distintos?",
+      "en": "Why did the first electric battery in history need two different metals?"
+    },
+    "answer": {
+      "es": "Porque la corriente nace de la diferencia de reactividad entre ambos, no de uno solo.",
+      "en": "Because the current is born from the difference in reactivity between the two, not from either one alone."
+    },
+    "detail": {
+      "es": "Volta notó que la electricidad aparecía siempre que había dos metales distintos, como el hierro y el latón, separados por algo húmedo. Apilando discos de zinc y cobre con un paño mojado entre medias, consiguió la primera fuente de corriente eléctrica continua.",
+      "en": "Volta noticed that electricity showed up whenever two different metals, like iron and brass, were separated by something moist. Stacking discs of zinc and copper with damp cloth between them, he built the first source of continuous electric current."
+    },
+    "source": "National MagLab (Magnet Academy) — Voltaic Pile, 1800",
+    "sourceUrl": "https://nationalmaglab.org/magnet-academy/history-of-electricity-magnetism/museum/voltaic-pile-1800/",
+    "_evidence": "Volta realized that most of the unusual electrical behavior observed by Galvani involved two different types of metals, such as the iron of a scalpel and the brass of a hook."
+  },
+  {
+    "id": "grafeno-mas-fuerte-que-acero",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Cómo puede una lámina de un solo átomo de grosor ser más fuerte que el acero?",
+      "en": "How can a sheet just one atom thick be stronger than steel?"
+    },
+    "answer": {
+      "es": "Porque sus átomos de carbono forman una red hexagonal tan compacta que casi nada la atraviesa.",
+      "en": "Because its carbon atoms form a hexagonal lattice so tight that almost nothing can get through it."
+    },
+    "detail": {
+      "es": "El grafeno es carbono puro dispuesto en un solo plano, como un panal microscópico. Esa estructura lo hace unas cien veces más resistente que el acero pese a su grosor, y tan cerrada que ni siquiera el helio, el átomo más pequeño que existe, consigue pasar.",
+      "en": "Graphene is pure carbon arranged in a single plane, like a microscopic honeycomb. That structure makes it about a hundred times stronger than steel despite its thinness, and so tightly sealed that not even helium, the smallest atom there is, can get through."
+    },
+    "source": "AIP (American Institute of Physics) — The Flattest Material In The World",
+    "sourceUrl": "https://www.aip.org/inside-science/the-flattest-material-in-the-world",
+    "_evidence": "It is also the strongest material known, about 100 times stronger than steel."
+  },
+  {
+    "id": "edificio-derrite-coche-sol",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Puede un edificio derretir un coche aparcado en la calle con solo reflejar el sol?",
+      "en": "Can a building actually melt a parked car just by reflecting sunlight?"
+    },
+    "answer": {
+      "es": "Sí: en Londres, la fachada curva de un rascacielos concentró tanto sol que fundió parte de un coche.",
+      "en": "Yes: in London, a skyscraper's curved facade concentrated so much sunlight it melted part of a car."
+    },
+    "detail": {
+      "es": "La cara sur del edificio, toda de cristal reflectante y ligeramente cóncava, funcionó como un espejo gigante que enfocaba el sol en un solo punto de la calle, igual que una lupa concentra la luz para quemar una hoja.",
+      "en": "The building's south face, all reflective glass and slightly concave, worked like a giant mirror focusing the sun onto a single spot on the street, the same way a magnifying glass concentrates light to burn a leaf."
+    },
+    "source": "National Geographic — How Sunlight Reflected Off a Building Can Melt Objects",
+    "sourceUrl": "https://www.nationalgeographic.com/history/article/130904-walkie-talkie-building-london-melts-sunlight-physics-science",
+    "_evidence": "It is a coincidence of shapes and materials, say physicists, that is ideally suited to focusing a tremendous amount of solar energy on a small area and generating a lot of heat."
+  },
+  {
+    "id": "lata-se-aplasta-sola-vapor",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Puede una lata aplastarse sola solo por meterla en agua fría?",
+      "en": "Can a can crush itself just by dunking it in cold water?"
+    },
+    "answer": {
+      "es": "Sí, si antes tenía vapor de agua dentro: al condensarse de golpe, deja un vacío que la aplasta desde fuera.",
+      "en": "Yes, if it had water vapor inside beforehand: when it condenses instantly, it leaves a vacuum that crushes it from outside."
+    },
+    "detail": {
+      "es": "Con un poco de agua hirviendo dentro, la lata se llena de vapor y expulsa el aire. Al voltearla en agua fría, ese vapor se condensa en un instante y la presión de dentro cae en picado; la presión atmosférica de fuera, sin nada que la contrarreste, la aplasta al momento.",
+      "en": "With a little boiling water inside, the can fills with vapor and pushes the air out. Flipping it into cold water condenses that vapor instantly and the inside pressure plummets; the outside atmospheric pressure, with nothing left to balance it, crushes the can on the spot."
+    },
+    "source": "Go Science Girls — Crushing Can Experiment: Effect of Atmospheric Pressure",
+    "sourceUrl": "https://gosciencegirls.com/crushing-can-experiment-effect-of-atmospheric-pressure/",
+    "_evidence": "The pressure outside the can is stronger and more than the pressure inside the can. At the time, the can from outside experiences enough pressure, it collapses and gets crushed immediately."
+  },
+  {
+    "id": "moneda-aguanta-agua-tension",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Cuántas gotas de agua caben encima de una moneda antes de que se desborde?",
+      "en": "How many drops of water can pile up on top of a coin before it overflows?"
+    },
+    "answer": {
+      "es": "Muchas más de las que parece: el agua forma una cúpula que sobresale del borde sin caerse.",
+      "en": "Many more than you'd think: the water forms a dome that bulges above the rim without spilling."
+    },
+    "detail": {
+      "es": "Las moléculas de agua se atraen entre sí con tanta fuerza que crean una especie de piel invisible en la superficie. Esa tensión sostiene una cúpula de agua cada vez más alta hasta que el peso de la última gota, por fin, vence a esa fuerza y se derrama.",
+      "en": "Water molecules pull on each other so strongly that they create a kind of invisible skin on the surface. That tension holds up an increasingly tall dome of water until the weight of the last drop finally overcomes that force and it spills over."
+    },
+    "source": "Science World — Drops on a Coin",
+    "sourceUrl": "https://www.scienceworld.ca/resource/drops-penny/",
+    "_evidence": "The cohesive force that occurs between water molecules is so strong that, at the water's surface, it creates a 'skin', which is known as surface tension."
+  },
+  {
+    "id": "sarten-hierro-curada-plastico",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Qué es exactamente la capa negra y antiadherente que cubre una sartén de hierro curada?",
+      "en": "What exactly is the black, nonstick coating on a seasoned cast iron pan?"
+    },
+    "answer": {
+      "es": "Un plástico casero: el aceite se transforma en un polímero al calentarse sobre el metal.",
+      "en": "A homemade plastic: the oil turns into a polymer when heated on the metal."
+    },
+    "detail": {
+      "es": "El calor libera radicales libres en el aceite, que se encadenan entre sí igual que los monómeros de un plástico industrial. El hierro actúa de catalizador de esa reacción, y el resultado es una película dura que rellena los poros del metal y hace de barrera antiadherente.",
+      "en": "Heat releases free radicals in the oil, which link together the same way monomers do in an industrial plastic. The iron acts as a catalyst for that reaction, and the result is a hard film that fills the metal's pores and acts as a nonstick barrier."
+    },
+    "source": "Sheryl Canter — Chemistry of Cast Iron Seasoning: A Science-Based Technique",
+    "sourceUrl": "https://sherylcanter.com/wordpress/2010/01/a-science-based-technique-for-seasoning-cast-iron/",
+    "_evidence": "The transformation is through a chemical process called 'polymerization'."
+  },
+  {
+    "id": "agua-superenfriada-congela-instante",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Puede el agua seguir líquida bajo cero grados y congelarse de golpe al moverla?",
+      "en": "Can water stay liquid below zero degrees and freeze instantly the moment you move it?"
+    },
+    "answer": {
+      "es": "Sí: sin nada que dispare el proceso, se queda «superenfriada» hasta que un golpe la solidifica en segundos.",
+      "en": "Yes: with nothing to trigger the process, it stays 'supercooled' until a jolt solidifies it in seconds."
+    },
+    "detail": {
+      "es": "Formar hielo necesita un punto de arranque: un cristal, una mota de polvo o hasta un rasguño en la botella. El agua muy pura y muy fría puede quedarse líquida sin ninguno de esos puntos, y en cuanto se agita o se golpea, cristaliza de golpe entera.",
+      "en": "Forming ice needs a starting point: a crystal, a speck of dust, even a scratch on the bottle. Very pure, very cold water can stay liquid without any of those, and the instant it's shaken or tapped, it crystallizes all at once."
+    },
+    "source": "Physics Van (University of Illinois) — Supercooled Water in the Freezer",
+    "sourceUrl": "https://van.physics.illinois.edu/ask/listing/1618",
+    "_evidence": "It doesn't take much to start the crystallization process going -- a little piece of dust or other impurity in the water, or even a scratch on the bottle are sometimes all it takes to get ice crystals growing."
+  },
+  {
+    "id": "espejo-se-empana-ducha",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué se empaña el espejo del baño con la ducha caliente y no el resto de la pared?",
+      "en": "Why does the bathroom mirror fog up in a hot shower while the rest of the wall doesn't?"
+    },
+    "answer": {
+      "es": "Porque el espejo se queda más frío que el aire húmedo, y ahí es donde el vapor se condensa.",
+      "en": "Because the mirror stays colder than the humid air, and that's exactly where the vapor condenses."
+    },
+    "detail": {
+      "es": "La ducha carga el aire de vapor de agua. Al tocar una superficie más fría que ese aire, como el espejo, el vapor pierde energía y vuelve a ser líquido en miles de gotas diminutas que dispersan la luz: eso es el vaho.",
+      "en": "The shower loads the air with water vapor. When that vapor touches a surface colder than the air, like the mirror, it loses energy and turns back into liquid as thousands of tiny droplets that scatter light: that is the fog."
+    },
+    "source": "Washington State University — Ask Dr. Universe: Why do mirrors fog up?",
+    "sourceUrl": "https://askdruniverse.wsu.edu/2021/02/26/mirrors-fog-breathe/",
+    "_evidence": "The surface of the mirror is a lot colder than the water vapor... As water vapor reaches the mirror's cool surface, the vapor droplets come together to form a liquid. When this happens, you can see thousands of super tiny liquid droplets form on the mirror: the fog."
+  },
+  {
+    "id": "oceano-frio-en-el-tropico",
+    "category": "ciencia",
+    "question": {
+      "es": "En un mar tropical con la superficie a 30 grados, ¿qué temperatura tiene el agua a mil metros de profundidad?",
+      "en": "In a tropical sea with the surface at 30 degrees, how cold is the water a thousand meters down?"
+    },
+    "answer": {
+      "es": "Cerca de la congelación: una barrera invisible impide que el calor de arriba llegue abajo.",
+      "en": "Close to freezing: an invisible barrier keeps the heat from above from ever reaching down there."
+    },
+    "detail": {
+      "es": "Esa barrera se llama termoclina: una franja donde la temperatura cae en picado entre el agua templada de arriba, agitada por el sol y el viento, y el agua fría y quieta del fondo. En los trópicos es casi permanente, así que el calor de la superficie nunca se mezcla hacia abajo.",
+      "en": "That barrier is called the thermocline: a band where temperature plunges between the warm water up top, stirred by sun and wind, and the cold, still water at the bottom. In the tropics it's nearly permanent, so the surface heat never mixes downward."
+    },
+    "source": "NOAA National Ocean Service — What is a thermocline?",
+    "sourceUrl": "https://oceanservice.noaa.gov/facts/thermocline.html",
+    "_evidence": "in the thermocline, the temperature decreases rapidly from the mixed layer temperature to the much colder deep water temperature."
+  }
+]

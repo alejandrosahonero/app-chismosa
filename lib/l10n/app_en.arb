@@ -1,0 +1,141 @@
+{
+  "@@locale": "en",
+
+  "appTitle": "Ajá",
+
+  "commonCancel": "Cancel",
+  "commonContinue": "Continue",
+  "commonNotNow": "Not now",
+  "commonRetry": "Retry",
+  "commonClose": "Close",
+  "commonErrorGeneric": "Something went wrong. Please try again.",
+
+  "deckHintReveal": "Swipe right to see the answer",
+  "deckHintNext": "Swipe left for the next one",
+  "deckAnswerLabel": "The answer",
+  "deckSource": "Source: {source}",
+  "deckSourceOpenError": "We couldn't open the source.",
+  "deckShowAnswer": "Show answer",
+  "deckHideAnswer": "Hide",
+  "deckNext": "Next",
+  "deckFinishedTitle": "You ran out of questions",
+  "deckFinishedBody": "You've seen every one in this category. Reshuffle them, suggest your own, or ask for more.",
+  "deckRestart": "Restart deck",
+
+  "deckContribute": "Contribute",
+  "deckAskForMore": "Ask for more",
+  "contributeTitle": "Contribute a question",
+  "contributeIntro": "If you know a weird fact that belongs here, write it down. We read every one by hand before publishing it.",
+  "contributeQuestionLabel": "The question",
+  "contributeQuestionHint": "Why…?",
+  "contributeAnswerLabel": "The answer",
+  "contributeAnswerHint": "Because…",
+  "contributeSourceLabel": "Source (optional)",
+  "contributeSourceHint": "Where you read it",
+  "contributeSend": "Send",
+  "contributeRequired": "Write a little more.",
+  "contributeThanks": "Thanks! We'll read it before publishing.",
+  "contributeTooSoon": "Give it a moment before sending another.",
+  "contributeInvalid": "Check the question and the answer.",
+  "deckLoadError": "We could not load the questions.",
+
+  "deckShare": "Share the question",
+  "@deckShare": {
+    "description": "Button and gesture that shares the card"
+  },
+  "deckShareCta": "Do you know the answer?",
+  "@deckShareCta": {
+    "description": "Hook printed under the question on the shared image"
+  },
+  "deckShareTagline": "Weird curious facts",
+  "@deckShareTagline": {
+    "description": "Brand subtitle at the foot of the shared image"
+  },
+  "deckShareMessage": "{question}\n\nDo you know the answer? It is waiting in Ajá.",
+  "@deckShareMessage": {
+    "description": "Text that accompanies the image in the share sheet",
+    "placeholders": {
+      "question": {
+        "type": "String"
+      }
+    }
+  },
+  "deckShareError": "We could not prepare the image to share.",
+  "deckCategoryAll": "All",
+
+  "categoryBody": "Human body",
+  "categoryLanguage": "Language",
+  "categoryHistory": "History",
+  "categoryScience": "Everyday science",
+
+  "adLabel": "Ad",
+
+  "favoritesTitle": "Saved",
+  "favoritesAdd": "Save this card",
+  "favoritesRemove": "Remove from saved",
+  "favoritesSaved": "Saved card",
+  "favoritesEmptyTitle": "Nothing saved yet",
+  "favoritesEmptyBody": "Swipe a card up to keep it here.",
+
+  "premiumFeatureTitle": "Premium feature",
+  "premiumFeatureBody": "Saving cards is part of \"Remove ads\": one payment, no subscription.",
+  "premiumFeatureCta": "See what's included",
+
+
+  "goalsTitle": "Progress",
+  "goalsRingTooltip": "Today's goal: {learned} of {target}",
+  "goalsTodayTitle": "Today's goal",
+  "goalsTodayProgress": "{learned} of {target} facts",
+  "goalsTodayDone": "Goal met: +{points} points",
+  "goalsTodayPending": "{remaining, plural, =1{1 to go} other{{remaining} to go}}",
+  "goalsPoints": "{points, plural, =1{1 point} other{{points} points}}",
+  "goalsNextRank": "{points, plural, =1{1 point to {rank}} other{{points} points to {rank}}}",
+  "goalsMaxRank": "You have reached the last rank. From here it is about keeping it.",
+  "goalsRankLadder": "Ranks",
+  "goalsRankPointsShort": "{points} pts",
+  "goalsHowItWorks": "Every day brings a different goal. A fact counts when you flip the card and read the answer, and the same fact only counts once a day. Meeting the goal earns you as many points as that day asked for, and points are what move you up a rank.",
+  "goalsReachedSnack": "Today's goal met! +{points} points",
+  "goalsRankUpTitle": "New rank",
+  "goalsRankUpBody": "You met today's goal (+{points} points) and moved up a rank.",
+  "goalsSeeProgress": "See progress",
+
+  "rankCurious": "Curious",
+  "rankInquisitive": "Inquisitive",
+  "rankKnowItAll": "Know-it-all",
+  "rankScholar": "Scholar",
+  "rankEncyclopedia": "Encyclopedia",
+  "rankOracle": "Oracle",
+
+  "settingsNotifications": "Reminders",
+  "settingsDailyQuestion": "Question of the day",
+  "settingsDailyQuestionBody": "One curious question every evening. Tap it and it goes to the top of your deck.",
+  "settingsDailyQuestionDenied": "Turn notifications on in system settings to get the question of the day.",
+  "dailyQuestionNotificationTitle": "Question of the day",
+  "settingsTitle": "Settings",
+  "settingsAppearance": "Appearance",
+  "settingsThemeMode": "Theme",
+  "settingsThemeSystem": "System",
+  "settingsThemeLight": "Light",
+  "settingsThemeDark": "Dark",
+  "settingsMonetization": "Subscription and ads",
+  "settingsRemoveAds": "Remove ads",
+  "settingsRestorePurchases": "Restore purchases",
+  "settingsRestoreDone": "Purchases restored",
+  "settingsPrivacyOptions": "Privacy options",
+  "settingsRateApp": "Rate this app",
+  "settingsAbout": "About",
+  "settingsVersion": "Version {version}",
+
+  "premiumActive": "Premium active. No ads.",
+  "paywallTitle": "Remove ads",
+  "paywallHeadline": "Read without interruptions",
+  "paywallBenefitNoAds": "No ad cards and no full screen ads",
+  "paywallBenefitFavorites": "Save any card and read it again whenever you like",
+  "paywallBenefitSupport": "You support the research and writing behind every fact",
+  "paywallBenefitOneTime": "One time payment, no subscription",
+  "paywallBuy": "Buy for {price}",
+  "paywallRestore": "I already bought it",
+  "paywallUnavailable": "The store is not available right now.",
+  "paywallPending": "Processing the purchase…",
+  "paywallError": "The purchase could not be completed."
+}

@@ -1,0 +1,724 @@
+[
+  {
+    "id": "pension-guerra-secesion",
+    "category": "historia",
+    "question": {
+      "es": "¿Hasta qué año se siguió cobrando una pensión por la Guerra de Secesión de EEUU?",
+      "en": "Until what year was someone still collecting a pension for the US Civil War?"
+    },
+    "answer": {
+      "es": "Hasta 2020: la última beneficiaria era hija de un veterano y murió a los 90 años.",
+      "en": "Until 2020: the last recipient was a veteran's own daughter, who died at 90."
+    },
+    "detail": {
+      "es": "Mose Triplett combatió como adolescente en la guerra (1861-1865) y, ya pasados los 80 años, tuvo una hija, Irene. Ella heredó la pensión de su padre por una discapacidad y siguió cobrándola hasta su muerte, 155 años después del final del conflicto.",
+      "en": "Mose Triplett fought as a teenager in the war (1861-1865) and, past age 80, had a daughter, Irene. She inherited his pension due to a disability and kept collecting it until she died, 155 years after the war ended."
+    },
+    "source": "AARP — Last American to Collect a Civil War Pension Dies",
+    "sourceUrl": "https://www.aarp.org/home-family/voices/veterans/info-2020/last-civil-war-pensioner-dies.html",
+    "_evidence": "Irene Triplett, 90, died May 31 at a nursing care facility in Wilkesboro, North Carolina... the last recipient of a Civil War pension from the federal government... She received $73.13 a month from the Department of Veterans Affairs."
+  },
+  {
+    "id": "impuesto-ventanas-tapiadas",
+    "category": "historia",
+    "question": {
+      "es": "¿Por qué tantas casas georgianas británicas tienen ventanas tapiadas con ladrillo?",
+      "en": "Why do so many Georgian British houses have windows bricked up?"
+    },
+    "answer": {
+      "es": "Porque desde 1696 se pagaba un impuesto por cada ventana que tuviera la casa.",
+      "en": "Because from 1696 on, England taxed houses by how many windows they had."
+    },
+    "detail": {
+      "es": "Con más de seis ventanas tocaba pagar, así que muchos propietarios taparon las de sobra con ladrillo y algunos hasta pintaron ventanas falsas encima para disimular. El impuesto duró hasta 1851, pero los muros ciegos siguen ahí.",
+      "en": "Houses with more than six windows had to pay, so owners bricked up the extras — some even painted fake windows over the brick to hide it. The tax lasted until 1851, but the blind walls are still standing."
+    },
+    "source": "Wikipedia — Window tax",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Window_tax",
+    "_evidence": "The tax was introduced in England and Wales in 1696... some houses from the period can be seen to have bricked-up window-spaces for the purpose of (re)glazing after the repeal of the tax... Windows were also bricked up in Europe from the 1600s to avoid taxes."
+  },
+  {
+    "id": "bulo-bañera-fillmore",
+    "category": "historia",
+    "question": {
+      "es": "¿Coló durante décadas una historia inventada sobre la primera bañera de EEUU?",
+      "en": "Was a fake history of the first American bathtub really repeated for decades?"
+    },
+    "answer": {
+      "es": "Sí: un periodista se la inventó como broma en 1917 y siguió citándose como cierta hasta los años 50.",
+      "en": "Yes: a journalist invented it as a joke in 1917, and it kept getting cited as fact into the 1950s."
+    },
+    "detail": {
+      "es": "H. L. Mencken escribió que el presidente Fillmore instaló la primera bañera de la Casa Blanca en 1850 y que antes los médicos la consideraban peligrosa. Confesó el engaño en 1926, pero el propio presidente Truman siguió contando la anécdota como real hasta 1952.",
+      "en": "H. L. Mencken wrote that President Fillmore installed the first White House bathtub in 1850 and that doctors had previously considered bathing dangerous. He confessed the hoax in 1926, but President Truman kept telling the anecdote as fact as late as 1952."
+    },
+    "source": "hoaxes.org — Mencken's History of the Bathtub (1917)",
+    "sourceUrl": "https://hoaxes.org/archive/permalink/the_history_of_the_bathtub/",
+    "_evidence": "President Millard Fillmore gave the bathtub recognition and respectability by installing one in the White House in 1850... Despite Mencken's 1926 admission that 'my history of the bathtub...was pure buncombe'... President Truman repeatedly told the Fillmore bathtub story to White House visitors and in public speeches as late as 1952."
+  },
+  {
+    "id": "vikingos-sin-cuernos",
+    "category": "historia",
+    "question": {
+      "es": "¿Llevaban los vikingos cascos con cuernos como en las películas?",
+      "en": "Did Vikings really wear the horned helmets you see in movies?"
+    },
+    "answer": {
+      "es": "No hay ni un solo casco vikingo con cuernos encontrado jamás. Es un invento del siglo XIX.",
+      "en": "Not a single horned Viking helmet has ever been found. It's a 19th-century invention."
+    },
+    "detail": {
+      "es": "La imagen viene de artistas escandinavos de 1800 y del vestuario que diseñó Carl Emil Doepler para la ópera de Wagner en 1876. Los cascos vikingos reales que se conservan son de metal liso, sin cuernos. Los que sí tienen cuernos, hallados en Dinamarca, son casi 2.000 años anteriores a los vikingos.",
+      "en": "The image comes from Scandinavian artists around 1800 and the costumes Carl Emil Doepler designed for Wagner's opera in 1876. The real Viking helmets that survive are plain metal, with no horns. The horned helmets that do exist, found in Denmark, predate the Vikings by nearly 2,000 years."
+    },
+    "source": "Smithsonian Magazine — The Horned Helmets Falsely Attributed to Vikings Are Actually Nearly 3,000 Years Old",
+    "sourceUrl": "https://www.smithsonianmag.com/smart-news/iconic-viking-horned-helmets-actually-3000-years-old-180979339/",
+    "_evidence": "Viking society only developed in the 9th century C.E., and there is no sign that Vikings really wore horned helmets... The legend likely originated with Scandinavian artists in the 1800s... The horned headpieces discovered in Denmark date to approximately 900 B.C.E.—nearly 2,000 years before Viking civilization emerged."
+  },
+  {
+    "id": "crapper-no-invento-inodoro",
+    "category": "historia",
+    "question": {
+      "es": "¿Inventó el señor Crapper el inodoro que lleva su apellido convertido en insulto en inglés?",
+      "en": "Did a man named Crapper really invent the toilet, the word English turned into slang?"
+    },
+    "answer": {
+      "es": "No: el primer inodoro con cisterna es de 1596, casi 300 años antes de que él naciera.",
+      "en": "No: the first flush toilet dates to 1596, nearly 300 years before he was born."
+    },
+    "detail": {
+      "es": "Lo construyó Sir John Harington para su madrina, la reina Isabel I. Thomas Crapper solo perfeccionó piezas y, sobre todo, montó un showroom de fontanería que hizo populares los inodoros. Su apellido se popularizó porque soldados estadounidenses lo vieron grabado en las cisternas durante la Primera Guerra Mundial.",
+      "en": "It was built by Sir John Harington for his godmother, Queen Elizabeth I. Thomas Crapper only refined the parts and, mainly, ran a plumbing showroom that made toilets fashionable. His name spread because American soldiers saw it stamped on cisterns during World War I."
+    },
+    "source": "Smithsonian Magazine — Three True Things About Sanitary Engineer Thomas Crapper",
+    "sourceUrl": "https://www.smithsonianmag.com/smart-news/three-true-things-about-sanitary-engineer-thomas-crapper-180965008/",
+    "_evidence": "the idea for toilets that flushed dates back to the 1400s... In 1596, Sir John Harington built a flushing toilet at his house near Bath for the visit of his godmother, Queen Elizabeth I."
+  },
+  {
+    "id": "febrero-30-suecia",
+    "category": "historia",
+    "question": {
+      "es": "¿Ha existido alguna vez un 30 de febrero en un calendario oficial?",
+      "en": "Has February 30th ever existed as an official date?"
+    },
+    "answer": {
+      "es": "Una vez: Suecia lo tuvo en 1712 para arreglar un cambio de calendario que había hecho mal.",
+      "en": "Once: Sweden had one in 1712, to fix a calendar switch it had botched."
+    },
+    "detail": {
+      "es": "Suecia intentó pasar del calendario juliano al gregoriano poco a poco, saltándose años bisiestos, pero se olvidó de hacerlo en dos ocasiones por culpa de una guerra. Para deshacer el lío añadió un día extra al febrero de 1712, que así tuvo 30 días.",
+      "en": "Sweden tried to move from the Julian to the Gregorian calendar gradually, by skipping leap years, but forgot to do so twice because of a war. To undo the mess it added an extra day to February 1712, which ended up with 30 days."
+    },
+    "source": "Wikipedia — Swedish calendar",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Swedish_calendar",
+    "_evidence": "An extra day was added to February in the leap year of 1712, thus giving the month a unique 30-day (30 February) and the year a 367-day length."
+  },
+  {
+    "id": "margarina-rosa-ley",
+    "category": "historia",
+    "question": {
+      "es": "¿Hubo un país que obligó por ley a que la margarina fuera rosa?",
+      "en": "Did a country ever pass a law forcing margarine to be dyed pink?"
+    },
+    "answer": {
+      "es": "Sí, varios estados de EEUU, para que nadie la confundiera con la mantequilla y la comprara.",
+      "en": "Yes, several US states did — so nobody would mistake it for butter and buy it."
+    },
+    "detail": {
+      "es": "La industria láctea presionó para que la margarina no pudiera teñirse de amarillo, y New Hampshire llegó a exigir que fuera rosa, con multa de 100 dólares o cárcel para quien vendiera la blanca. El Tribunal Supremo tumbó esas leyes en 1898 por dejar el producto invendible.",
+      "en": "The dairy industry lobbied to stop margarine being dyed yellow, and New Hampshire went as far as requiring it to be pink, with a $100 fine or jail for selling the white kind. The Supreme Court struck the laws down in 1898 for making the product unsellable."
+    },
+    "source": "Smithsonian Magazine — The 1870s Dairy Lobby Turned Margarine Pink So People Would Buy Butter",
+    "sourceUrl": "https://www.smithsonianmag.com/smart-news/1870s-dairy-lobby-turned-margarine-pink-so-people-would-buy-butter-180963328/",
+    "_evidence": "For a while, the state of New Hampshire mandated that margarine be tinted pink. Sellers of non-pink margarine could face a fine of $100 or sixty days in prison... To color the substance as provided for in the statute naturally excites a prejudice and strengthens a repugnance up to the point of a positive and absolute refusal to purchase the article at any price."
+  },
+  {
+    "id": "guerra-perro-callejero",
+    "category": "historia",
+    "question": {
+      "es": "¿Empezó alguna vez una guerra entre dos países porque un perro cruzó la frontera?",
+      "en": "Has a war between two countries ever started because a dog crossed the border?"
+    },
+    "answer": {
+      "es": "En 1925: un soldado griego persiguió a su perro hasta Bulgaria y le dispararon.",
+      "en": "In 1925: a Greek soldier chased his dog into Bulgaria and got shot for it."
+    },
+    "detail": {
+      "es": "El incidente entre centinelas escaló a una invasión griega de la ciudad búlgara de Petrich pocos días después. La guerra terminó por intervención de la Sociedad de Naciones, que obligó a Grecia a retirarse y pagar una indemnización.",
+      "en": "The sentry incident escalated into a Greek invasion of the Bulgarian town of Petrich days later. The war ended when the League of Nations intervened, forcing Greece to withdraw and pay compensation."
+    },
+    "source": "War History Online / Balkan History — War of the Stray Dog (1925)",
+    "sourceUrl": "https://www.balkanhistory.org/war-of-the-stray-dog.html",
+    "_evidence": "Bulgarian sentries shot a Greek soldier who was chasing his stray dog across the border at Demir Kapia on Belasitsa on 18 October... On 22 October 1925, Greece sent soldiers into Bulgaria to occupy the town of Petrich. The incident ended after a decision by the League of Nations."
+  },
+  {
+    "id": "napoleon-altura-normal",
+    "category": "historia",
+    "question": {
+      "es": "¿Era Napoleón realmente bajito, como dice la fama?",
+      "en": "Was Napoleon really as short as his reputation says?"
+    },
+    "answer": {
+      "es": "No: medía en torno a 1,68 m, la altura media de un francés de su época.",
+      "en": "No: he stood around 5'6\", roughly average for a Frenchman of his time."
+    },
+    "detail": {
+      "es": "Su altura se registró en pulgadas francesas, más largas que las inglesas, y al pasarla sin convertir a medida inglesa perdió varios centímetros de un plumazo. Las caricaturas de guerra británicas se encargaron de fijar la imagen del enano en la memoria colectiva.",
+      "en": "His height was recorded in French inches, which are longer than English ones, and converting the number without adjusting the unit shaved several centimeters off in one stroke. British wartime cartoons then did the rest, fixing the image of a tiny man in the public imagination."
+    },
+    "source": "HistorIQly — Debunked: Napoleon Was Not Actually Short",
+    "sourceUrl": "https://blog.historiqly.com/blog/debunked-napoleon-was-short",
+    "_evidence": "Napoleon's recorded height was 5 pieds 2 pouces... a French pouce measured approximately 2.71 centimetres, compared to the English inch at 2.54 centimetres... Five pieds two pouces in the old French royal measure works out to somewhere around 168 to 170 centimeters... This height was actually average for French men in the early 19th century."
+  },
+  {
+    "id": "marioantonieta-frase-falsa",
+    "category": "historia",
+    "question": {
+      "es": "¿Dijo María Antonieta de verdad «que coman pasteles» sobre el pueblo hambriento?",
+      "en": "Did Marie Antoinette really say \"let them eat cake\" about the starving people?"
+    },
+    "answer": {
+      "es": "No hay ninguna prueba: la frase ya circulaba escrita cuando ella tenía diez años.",
+      "en": "There's no evidence she did: the line was already in print when she was ten."
+    },
+    "detail": {
+      "es": "Rousseau la atribuyó a «una gran princesa» en 1766, cuando María Antonieta seguía en Austria. Antes se había colgado a otras nobles, incluidas dos tías de Luis XVI. La conectaron con ella por primera vez en 1843, medio siglo después de su ejecución.",
+      "en": "Rousseau attributed it to \"a great princess\" in 1766, while Marie Antoinette was still in Austria. Before her, it had been pinned on other noblewomen, including two aunts of Louis XVI. It was first linked to her in print in 1843, half a century after her execution."
+    },
+    "source": "HISTORY — Did Marie-Antoinette Really Say 'Let Them Eat Cake'?",
+    "sourceUrl": "https://www.history.com/articles/did-marie-antoinette-really-say-let-them-eat-cake",
+    "_evidence": "The philosopher Jean-Jacques Rousseau included the pâté story in his Confessions in 1766, attributing the words to 'a great princess.'... Marie-Antoinette, who at the time Rousseau was writing was only 10 years old... Over the next century, several other 18th-century royals were also blamed for the remark, including two aunts of Louis XVI."
+  },
+  {
+    "id": "mito-via-tren-romana",
+    "category": "historia",
+    "question": {
+      "es": "¿De verdad el ancho de las vías de tren viene de los carros romanos, como cuenta la leyenda?",
+      "en": "Does modern railroad gauge really come from ancient Roman chariots, as the legend claims?"
+    },
+    "answer": {
+      "es": "No: es un mito. Roma nunca tuvo un ancho de rueda estándar que se conserve como norma.",
+      "en": "No, it's a myth: Rome never had one standard wheel width that survived as a rule."
+    },
+    "detail": {
+      "es": "La leyenda dice que hasta los cohetes del transbordador espacial de la NASA quedaron limitados por ese ancho romano. Pero los vehículos hallados en Pompeya tienen anchuras muy distintas entre sí, y en el siglo XIX EEUU llegó a usar varios anchos de vía a la vez.",
+      "en": "The legend claims even NASA's Space Shuttle rocket boosters ended up constrained by that Roman width. But the vehicles preserved at Pompeii show considerable variation in wheel spacing, and 19th-century America used several different rail gauges side by side."
+    },
+    "source": "Eric Poehler — The Traffic Systems of Pompeii (via Tastes of History)",
+    "sourceUrl": "https://www.tastesofhistory.co.uk/post/dispelling-some-myths-romans-railways-and-nasa-rockets",
+    "_evidence": "Vehicles preserved by Mount Vesuvius show considerable variation in size and wheel spacing, and there was no single 'Roman standard' that everyone had to follow... Multiple rail gauges were used in different parts of the US in the 19th century with confederate states using completely different train tracks to northern states."
+  },
+  {
+    "id": "chicas-radio-pincel",
+    "category": "historia",
+    "question": {
+      "es": "¿Por qué las pintoras de esferas de reloj de los años 20 se afilaban el pincel con la boca?",
+      "en": "Why did 1920s watch-dial painters sharpen their brushes with their lips?"
+    },
+    "answer": {
+      "es": "Porque sus jefes se lo mandaban, y la pintura llevaba radio de verdad.",
+      "en": "Because their bosses told them to — and the paint contained actual radium."
+    },
+    "detail": {
+      "es": "Miles de mujeres pintaban números luminiscentes en relojes y equipos militares humedeciendo el pincel con los labios para afinar la punta. Con los años empezaron a perder dientes y a fracturarse los huesos por la radiación acumulada; sus demandas cambiaron las leyes de seguridad laboral en EEUU.",
+      "en": "Thousands of women painted glow-in-the-dark numbers on watches and military gear by wetting the brush tip with their lips. Over the years their teeth fell out and their bones fractured from accumulated radiation; their lawsuits reshaped US workplace safety law."
+    },
+    "source": "NPR Illinois — The Radium Girls: An Illinois Tragedy",
+    "sourceUrl": "https://www.nprillinois.org/equity-justice/2018-01-25/the-radium-girls-an-illinois-tragedy",
+    "_evidence": "the factory supervisors instructed the women to lick their camel-hair brushes to a point before and after dipping the brushes in the radium paint... Their teeth fell out, their bones crumbled, and dozens died of severe illness."
+  },
+  {
+    "id": "momia-en-polvo-farmacia",
+    "category": "historia",
+    "question": {
+      "es": "¿Se vendía polvo de momia egipcia como medicina en las farmacias europeas?",
+      "en": "Was powdered Egyptian mummy actually sold as medicine in European pharmacies?"
+    },
+    "answer": {
+      "es": "Sí, durante siglos, y siguió en catálogos de laboratorios hasta bien entrado el siglo XX.",
+      "en": "Yes, for centuries — and it stayed in lab catalogues well into the 20th century."
+    },
+    "detail": {
+      "es": "Se recetaba «mumia» para casi todo, de dolores de cabeza a infartos, molida a partir de restos embalsamados. En 1924 la farmacéutica alemana Merck todavía ofrecía «Mumia vera Aegyptica» en su catálogo, a 24 marcos de oro el kilo.",
+      "en": "\"Mumia\" was prescribed for nearly everything, from headaches to heart attacks, ground from embalmed remains. In 1924 the German pharmaceutical company Merck was still listing \"Mumia vera Aegyptica\" in its catalogue, at 24 gold marks per kilo."
+    },
+    "source": "National Geographic — The gory history of Europeans eating mummies for health",
+    "sourceUrl": "https://www.nationalgeographic.com/history/article/mummy-eating-medical-cannibalism-gory-history",
+    "_evidence": "Bodysnatchers would 'steal by night the bodies of such as were hanged,' wrote one observer, who noted the bodies were then embalmed with salt and drugs, dried in an oven, then ground into powder that apothecaries added to their home remedies... It wasn't until the late 19th century that the use of mumia finally died off."
+  },
+  {
+    "id": "hombre-piltdown-40-anos",
+    "category": "historia",
+    "question": {
+      "es": "¿Cuánto tiempo engañó a la ciencia un fósil humano que resultó ser falso?",
+      "en": "How long did a fake human fossil fool the scientific world?"
+    },
+    "answer": {
+      "es": "Más de 40 años: de 1912 a 1953, con el «hombre de Piltdown».",
+      "en": "More than 40 years: from 1912 to 1953, with the \"Piltdown Man\"."
+    },
+    "detail": {
+      "es": "El aficionado Charles Dawson presentó un cráneo que encajaba con la teoría del momento sobre la evolución humana: era en realidad un cráneo humano de 500 años combinado con mandíbula de orangután, con los dientes limados a mano. El fraude cuadraba tan bien con lo que se esperaba encontrar que nadie se atrevió a dudar en público.",
+      "en": "Amateur archaeologist Charles Dawson presented a skull that fit the leading theory of human evolution at the time: it was actually a 500-year-old human skull combined with an orangutan jaw, its teeth filed down by hand. The fraud matched what scientists expected to find so well that no one dared question it publicly."
+    },
+    "source": "Science History Institute — The Problem of Piltdown Man",
+    "sourceUrl": "https://www.sciencehistory.org/stories/magazine/the-problem-of-piltdown-man/",
+    "_evidence": "Charles Dawson presented skull fragments to the Geological Society in 1912, claiming they represented a 'missing link'... Scientists remained convinced for over 40 years... Under microscopic examination, the Piltdown molars had been filed down to resemble human ones."
+  },
+  {
+    "id": "bulo-vida-en-la-luna",
+    "category": "historia",
+    "question": {
+      "es": "¿Un periódico llegó a publicar que había hombres murciélago viviendo en la Luna?",
+      "en": "Did a newspaper actually report that bat-men were living on the Moon?"
+    },
+    "answer": {
+      "es": "Sí, en 1835, y buena parte de Nueva York se lo creyó durante semanas.",
+      "en": "Yes, in 1835, and much of New York believed it for weeks."
+    },
+    "detail": {
+      "es": "El New York Sun publicó seis artículos atribuidos a un astrónomo real que describían unicornios, castores de dos patas y criaturas aladas parecidas a murciélagos en la superficie lunar. Hasta una comisión de científicos de Yale viajó a Nueva York buscando el supuesto artículo original.",
+      "en": "The New York Sun published six articles attributed to a real astronomer describing unicorns, two-legged beavers and winged bat-like creatures on the lunar surface. A committee of Yale scientists even traveled to New York looking for the supposed original article."
+    },
+    "source": "Britannica — The Great Moon Hoax of 1835 Was Sci-Fi Passed Off as News",
+    "sourceUrl": "https://www.britannica.com/story/the-great-moon-hoax-of-1835-was-sci-fi-passed-off-as-news",
+    "_evidence": "the New York Sun published that astronomer John Herschel had discovered life on the Moon, including 'large winged creatures, wholly unlike any kind of birds' that resembled 'a hybrid between humans and bats'... Not one person in ten discredited it."
+  },
+  {
+    "id": "recogedores-nocturnos-heces",
+    "category": "historia",
+    "question": {
+      "es": "¿Por qué solo se vaciaban las letrinas de Londres entre las 9 de la noche y las 5?",
+      "en": "Why could London's cesspits only legally be emptied between 9pm and 5am?"
+    },
+    "answer": {
+      "es": "Para que nadie viera ni oliera a los «recolectores de estiércol nocturno» trabajando.",
+      "en": "So nobody would see or smell the \"night soil men\" at work."
+    },
+    "detail": {
+      "es": "Una norma de 1562 prohibía a estos trabajadores sacar excrementos antes de las nueve de la noche. Cargaban el contenido de las letrinas en cubos y lo transportaban fuera de la ciudad en carros; el trabajo era peligroso por los gases tóxicos, pero pagaba más que casi cualquier otro oficio.",
+      "en": "A 1562 regulation banned these workers from carting away excrement before nine at night. They loaded the contents of privies into buckets and hauled them out of the city by cart; the job was dangerous because of toxic gas pockets, but it paid better than almost any other trade."
+    },
+    "source": "Wikipedia — Gong farmer",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gong_farmer",
+    "_evidence": "only allowed to work at night, between 9:00 p.m. and 5:00 a.m. A 1562 regulation stated that 'no Goungfermour shall carry any Ordure till after nine of the Clocke in the night.'... gong farmers in medieval England enjoyed relatively high pay, often earning in a single day what other workers would make in an entire week."
+  },
+  {
+    "id": "impuesto-romano-orina",
+    "category": "historia",
+    "question": {
+      "es": "¿Por qué un emperador romano cobraba un impuesto sobre la orina?",
+      "en": "Why did a Roman emperor tax urine?"
+    },
+    "answer": {
+      "es": "Porque las lavanderías y curtidurías la compraban: el amoníaco limpiaba la ropa de lana.",
+      "en": "Because laundries and tanneries bought it: the ammonia in it cleaned wool clothing."
+    },
+    "detail": {
+      "es": "El emperador Vespasiano recuperó el impuesto sobre los urinarios públicos hacia el año 70. Cuando su hijo Tito se quejó de lo repugnante que era, Vespasiano le acercó una moneda de oro y le preguntó si le ofendía el olor; ante el «no», respondió: «Y sin embargo viene de la orina». La frase «pecunia non olet» sigue usándose hoy.",
+      "en": "Emperor Vespasian reinstated the tax on public urinals around the year 70. When his son Titus complained about how disgusting it was, Vespasian held up a gold coin and asked if its smell offended him; when Titus said no, he replied, \"Yet it comes from urine.\" The phrase \"pecunia non olet\" is still used today."
+    },
+    "source": "Wikipedia — Pecunia non olet",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pecunia_non_olet",
+    "_evidence": "According to Suetonius, when Titus complained about the tax's repulsive nature, Vespasian held up a gold coin and asked if its smell offended him. Upon receiving a negative answer, the emperor declared: 'Yet it comes from urine.'... The collected urine from Rome's public urinals was sold for industrial use in tanning leather, wool production, and laundry work."
+  },
+  {
+    "id": "primer-sueno-segundo-sueno",
+    "category": "historia",
+    "question": {
+      "es": "¿Dormía la gente antes de la luz eléctrica de un tirón toda la noche?",
+      "en": "Did people before electric lighting really sleep straight through the night?"
+    },
+    "answer": {
+      "es": "No: dormían en dos tandas, con una o dos horas despiertos en medio de la noche.",
+      "en": "No: they slept in two shifts, with an hour or two awake in the middle of the night."
+    },
+    "detail": {
+      "es": "El historiador Roger Ekirch encontró miles de menciones a un «primer sueño» y un «segundo sueño» en diarios, manuales y obras de literatura desde el siglo XIV hasta el XIX. En ese hueco nocturno la gente rezaba, charlaba, tenía relaciones o incluso visitaba a los vecinos.",
+      "en": "Historian Roger Ekirch found thousands of references to a \"first sleep\" and a \"second sleep\" in diaries, manuals and literature from the 14th through the 19th century. In that nighttime gap people prayed, chatted, had sex, or even visited neighbors."
+    },
+    "source": "Roger Ekirch (Virginia Tech) — Segmented Sleep Research",
+    "sourceUrl": "https://sites.google.com/vt.edu/roger-ekirch/sleep-research/segmented-sleep",
+    "_evidence": "Ekirch's compilation documents approximately 2,000+ historical references to segmented sleep across centuries... 'After my first sleep, I hear two o'clock ring, and instead of going back to sleep, I put the stew with bitter chicory.'"
+  },
+  {
+    "id": "colon-tierra-plana-mito",
+    "category": "historia",
+    "question": {
+      "es": "¿Tuvo Colón que convencer a sabios que creían que la Tierra era plana?",
+      "en": "Did Columbus have to convince scholars who thought the Earth was flat?"
+    },
+    "answer": {
+      "es": "No, esa escena nunca pasó: en 1492 nadie educado en Europa dudaba de que fuera redonda.",
+      "en": "No, that scene never happened: no educated person in 1492 Europe doubted the Earth was round."
+    },
+    "detail": {
+      "es": "La discusión real era sobre el tamaño del planeta, no su forma. El enfrentamiento de Colón contra clérigos «terraplanistas» lo inventó el escritor Washington Irving en su biografía de 1828, y se enseñó como historia real en escuelas durante más de un siglo.",
+      "en": "The real dispute was about the planet's size, not its shape. Columbus's confrontation with \"flat-earther\" clergymen was invented by writer Washington Irving in his 1828 biography, and it was taught as real history in schools for over a century."
+    },
+    "source": "HISTORY — Christopher Columbus Never Set Out to Prove the Earth was Round",
+    "sourceUrl": "https://www.history.com/articles/christopher-columbus-never-set-out-to-prove-the-earth-was-round",
+    "_evidence": "no educated person in the history of Western Civilization from the third century B.C. onward believed that the Earth was flat... The legend doesn't even date from Columbus' own lifetime. Rather, it was invented in 1828, when Washington Irving published The Life and Voyages of Christopher Columbus."
+  },
+  {
+    "id": "triangulo-mas-pequeno-nyc",
+    "category": "historia",
+    "question": {
+      "es": "¿Cuál es la parcela privada más pequeña de Nueva York y por qué sigue existiendo?",
+      "en": "What's the smallest private plot of land in New York, and why does it still exist?"
+    },
+    "answer": {
+      "es": "Un triángulo de hormigón de medio metro, que un vecino se negó a regalar a la ciudad.",
+      "en": "A half-meter concrete triangle, which a resident refused to hand over to the city."
+    },
+    "detail": {
+      "es": "En 1910 la ciudad expropió el edificio de David Hess para ensanchar una avenida, pero por error dejó fuera una esquinita de la parcela. En 1922 sus herederos la cubrieron con un mosaico que dice: «Propiedad de la herencia Hess, que nunca se ha cedido para uso público».",
+      "en": "In 1910 the city seized David Hess's building to widen an avenue, but by mistake left out a tiny corner of the lot. In 1922 his heirs covered it with a mosaic reading: \"Property of the Hess Estate, which has never been dedicated for public purposes.\""
+    },
+    "source": "Wikipedia — Hess triangle",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hess_triangle",
+    "_evidence": "a small corner of Plot 55 had been excluded during the city's seizure of the Voorhis property... The plaque reads: 'PROPERTY OF THE HESS ESTATE WHICH HAS NEVER BEEN DEDICATED FOR PUBLIC PURPOSES.' The Hess heirs installed this defiant message on July 27, 1922."
+  },
+  {
+    "id": "placas-seguro-incendios",
+    "category": "historia",
+    "question": {
+      "es": "¿Para qué servían las placas metálicas que aún se ven en algunas fachadas antiguas?",
+      "en": "What were the metal plaques still visible on some old building facades actually for?"
+    },
+    "answer": {
+      "es": "Avisaban a los bomberos privados de qué edificios sí tenían pagado el seguro contra incendios.",
+      "en": "They told private fire brigades which buildings actually had fire insurance paid up."
+    },
+    "detail": {
+      "es": "Tras el Gran Incendio de Londres de 1666 surgieron aseguradoras con sus propios cuerpos de bomberos, cada uno con su emblema. Si un edificio ardía sin la placa correcta, la brigada podía dejarlo arder. Las placas coloniales de EEUU eran tan escasas que muchas acabaron fundidas para hacer munición.",
+      "en": "After the 1666 Great Fire of London, insurers set up their own fire brigades, each with its own emblem. If a burning building didn't carry the right plaque, that brigade could simply let it burn. Colonial American plaques were so rare that many were later melted down for ammunition."
+    },
+    "source": "Atlas Obscura — A Short History of Fire Marks",
+    "sourceUrl": "https://www.atlasobscura.com/articles/fire-mark-collectible-insurance-crest",
+    "_evidence": "They showed that the building to which they were affixed was insured against fire damage—and that if the building caught on fire, a private fire brigade would come to attempt to put it out... these fire marks are extremely rare these days as most of them were made of lead and were melted to make ammunition for the Revolutionary War."
+  },
+  {
+    "id": "manhattan-por-nuez-moscada",
+    "category": "historia",
+    "question": {
+      "es": "¿Se llegó a cambiar Manhattan por una isla diminuta con árboles de nuez moscada?",
+      "en": "Was Manhattan really given up for a tiny island of nutmeg trees?"
+    },
+    "answer": {
+      "es": "En la práctica sí: en 1667 los holandeses se quedaron con la isla y cedieron Manhattan.",
+      "en": "Effectively yes: in 1667 the Dutch kept the island and gave up Manhattan."
+    },
+    "detail": {
+      "es": "En el tratado que cerró una guerra angloholandesa, cada bando se quedó con lo que ya ocupaba: los ingleses conservaron Nueva Ámsterdam (la futura Nueva York) y los holandeses la isla de Run, entonces la única fuente del mundo de nuez moscada, más cara que el oro por gramo en Europa.",
+      "en": "In the treaty that ended an Anglo-Dutch war, each side kept what it already held: the English kept New Amsterdam (the future New York) and the Dutch kept the island of Run, then the world's only source of nutmeg, pricier by weight than gold in Europe."
+    },
+    "source": "Wikipedia — Treaty of Breda (1667)",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Treaty_of_Breda_(1667)",
+    "_evidence": "Article 3 established the principle of uti possidetis, or 'what you have, you hold'... The Dutch kept Surinam... Fort Cormantin and Run while the English kept New Netherland... subsequently divided into the colonies of New York, New Jersey, Pennsylvania, Massachusetts, Connecticut and Delaware."
+  },
+  {
+    "id": "castor-declarado-pez",
+    "category": "historia",
+    "question": {
+      "es": "¿Por qué se podía comer castor en Cuaresma cuando estaba prohibida la carne?",
+      "en": "Why could you eat beaver during Lent when meat was forbidden?"
+    },
+    "answer": {
+      "es": "Porque la Iglesia lo clasificó como pescado, por nadar tan bien.",
+      "en": "Because the Church classified it as fish, on account of how well it swims."
+    },
+    "detail": {
+      "es": "El obispo de Quebec preguntó a sus superiores si sus feligreses podían comer castor los viernes de Cuaresma. Al ser un roedor semiacuático, la Iglesia lo declaró pescado, así que su carne quedó permitida en los días de ayuno. Con la misma lógica, el capibara se sigue comiendo en Cuaresma en Venezuela.",
+      "en": "The Bishop of Quebec asked his superiors whether his flock could eat beaver on Lenten Fridays. Since it's a semi-aquatic rodent, the Church declared it fish, making its meat allowed on fasting days. By the same logic, capybara is still eaten during Lent in Venezuela today."
+    },
+    "source": "Scientific American — Once Upon A Time, The Catholic Church Decided That Beavers Were Fish",
+    "sourceUrl": "https://www.scientificamerican.com/blog/thoughtful-animal/once-upon-a-time-the-catholic-church-decided-that-beavers-were-fish/",
+    "_evidence": "the Bishop of Quebec approached his superiors in the Church and asked whether his flock would be permitted to eat beaver meat on Fridays during Lent... Since the semi-aquatic rodent was a skilled swimmer, the Church declared that the beaver was a fish."
+  },
+  {
+    "id": "ultima-superviviente-esclavitud",
+    "category": "historia",
+    "question": {
+      "es": "¿Hasta qué año vivió alguien que había cruzado el Atlántico como esclavo?",
+      "en": "Until what year was someone who had crossed the Atlantic as a slave still alive?"
+    },
+    "answer": {
+      "es": "Hasta 1937: la última superviviente conocida murió con cine sonoro ya inventado.",
+      "en": "Until 1937: the last known survivor died after talking pictures already existed."
+    },
+    "detail": {
+      "es": "Redoshi tenía 12 años cuando la secuestraron en África occidental y la subieron al Clotilda, el último barco negrero que llegó a EEUU, en 1860. Se conserva un fragmento de una película de 1938 del Gobierno estadounidense en el que aparece, la única filmación que existe de una víctima de la trata transatlántica.",
+      "en": "Redoshi was 12 when she was kidnapped in West Africa and put aboard the Clotilda, the last slave ship to reach the US, in 1860. A fragment of a 1938 US government film survives showing her — the only footage that exists of a victim of the transatlantic slave trade."
+    },
+    "source": "Smithsonian Magazine — Researcher Identifies the Last Living Survivor of the Transatlantic Slave Trade",
+    "sourceUrl": "https://www.smithsonianmag.com/smart-news/researcher-identifies-last-american-woman-survive-african-slave-trade-180971879/",
+    "_evidence": "Redoshi was 12 when she became one of 116 people taken from West Africa and forced aboard the Clotilda."
+  },
+  {
+    "id": "impuesto-barba-rusia",
+    "category": "historia",
+    "question": {
+      "es": "¿Hubo que pagar un impuesto por llevar barba en algún país?",
+      "en": "Has any country ever taxed men for wearing a beard?"
+    },
+    "answer": {
+      "es": "En la Rusia de Pedro el Grande, desde 1705, y con una moneda como recibo.",
+      "en": "In Peter the Great's Russia, starting in 1705, with a coin as your receipt."
+    },
+    "detail": {
+      "es": "El zar quería europeizar Rusia y llegó a afeitar personalmente a nobles en una recepción. Quien quisiera conservar la barba pagaba hasta 100 rublos al año y recibía un token de metal como comprobante para enseñar si le paraban por la calle. Duró hasta 1772.",
+      "en": "The tsar wanted to Europeanize Russia and personally shaved nobles' beards off at a reception. Anyone who wanted to keep theirs paid up to 100 rubles a year and got a metal token as proof to show if stopped on the street. It lasted until 1772."
+    },
+    "source": "Smithsonian Magazine — Why Tsar Peter the Great Established a Beard Tax",
+    "sourceUrl": "https://www.smithsonianmag.com/smart-news/why-tsar-peter-great-established-beard-tax-180964693/",
+    "_evidence": "he tried to get Russians to go beardless, like the 'modern' Western Europeans he had met on his tour... For nobility and merchants, the tax could be as high as 100 rubles annually... Those paying the tax were given a token, silver for nobility and copper for commoners."
+  },
+  {
+    "id": "impuesto-ladrillos-gigantes",
+    "category": "historia",
+    "question": {
+      "es": "¿Por qué hay casas georgianas británicas con ladrillos casi el doble de grandes de lo normal?",
+      "en": "Why do some Georgian British houses have bricks almost double the normal size?"
+    },
+    "answer": {
+      "es": "Porque en 1784 se empezó a cobrar el impuesto por cada ladrillo usado, no por su tamaño.",
+      "en": "Because in 1784 Britain began taxing bricks by the unit, not by size."
+    },
+    "detail": {
+      "es": "Los fabricantes descubrieron el truco evidente: si el ladrillo pesa el doble, hacen falta la mitad para la misma pared. Un constructor de Leicestershire llegó a hacerlos casi del doble del tamaño normal. El Gobierno tuvo que fijar un máximo legal en 1801 para cerrar el hueco.",
+      "en": "Manufacturers found the obvious loophole: make a brick twice as heavy and you need half as many for the same wall. One builder in Leicestershire made bricks nearly double the standard size. The government had to set a legal maximum in 1801 to close the gap."
+    },
+    "source": "Wikipedia — Brick tax",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Brick_tax",
+    "_evidence": "The brick tax was a property tax introduced in Great Britain in 1784... To mitigate the effects of the tax, manufacturers began to increase the size of their bricks... In 1801, the government responded by limiting the dimensions of a brick to 10 in × 5 in × 3 in and doubling the tax on bricks that were larger."
+  },
+  {
+    "id": "ballenas-de-la-corona",
+    "category": "historia",
+    "question": {
+      "es": "¿A quién pertenecen las ballenas y esturiones que aparecen en la costa británica?",
+      "en": "Who legally owns whales and sturgeon that wash up on the British coast?"
+    },
+    "answer": {
+      "es": "Al monarca, por una ley de 1324 que técnicamente nunca se ha derogado.",
+      "en": "The monarch, under a 1324 law that has technically never been repealed."
+    },
+    "detail": {
+      "es": "El estatuto de Eduardo II dice literalmente que «el Rey tendrá las ballenas y los esturiones capturados en el mar». Sigue citándose hoy: en 2004 se recordó la norma cuando un pescador vendió un esturión capturado en Gales sin ofrecérselo antes a la Corona.",
+      "en": "Edward II's statute literally says \"the King shall have whales and sturgeons taken in the sea.\" It's still cited today: in 2004 the rule was invoked after a fisherman sold a sturgeon caught in Wales without first offering it to the Crown."
+    },
+    "source": "Wikipedia — Royal fish",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Royal_fish",
+    "_evidence": "The monarch's right to royal fish was recognized by a statute enacted in 1324, during the reign of Edward II, that applied to whales and sturgeon... The law of royal fish continues to excite some notice and occasional use, as evidenced when a fisherman caught and sold a sturgeon in Swansea Bay in 2004."
+  },
+  {
+    "id": "hielo-nueva-inglaterra-india",
+    "category": "historia",
+    "question": {
+      "es": "¿Se llegó a exportar hielo en barco desde Massachusetts hasta la India, sin refrigeración?",
+      "en": "Was ice really shipped from Massachusetts to India, with no refrigeration, by boat?"
+    },
+    "answer": {
+      "es": "Sí, en 1833: un viaje de cuatro meses y 16.000 millas, y llegó hielo de verdad.",
+      "en": "Yes, in 1833: a four-month, 16,000-mile voyage, and real ice actually arrived."
+    },
+    "detail": {
+      "es": "El barco salió de Boston con 180 toneladas de hielo cortado de estanques congelados; se derritieron 80 por el camino, pero el resto se vendió con beneficio en Calcuta. El negocio de Frederic Tudor, el «Rey del Hielo», llegó a dar 220.000 dólares de ganancia solo en India en veinte años.",
+      "en": "The ship left Boston with 180 tons of ice cut from frozen ponds; 80 tons melted en route, but the rest sold at a profit in Calcutta. Frederic Tudor's business, the \"Ice King,\" earned an estimated $220,000 in profit from India alone over twenty years."
+    },
+    "source": "Amusing Planet — Frederic Tudor: The Ice King of Boston",
+    "sourceUrl": "https://www.amusingplanet.com/2026/02/frederic-tudor-ice-king-of-boston.html",
+    "_evidence": "Tudor packed 180 tons of ice onto his first ship to India. Eighty tons melted on the way, but he still managed a profit when he sold the remainder... Over the next 20 years, India would become Tudor's most lucrative destination, yielding an estimated $220,000 in profits."
+  },
+  {
+    "id": "neron-no-toco-violin",
+    "category": "historia",
+    "question": {
+      "es": "¿Tocó Nerón el violín mientras Roma ardía?",
+      "en": "Did Nero really play the fiddle while Rome burned?"
+    },
+    "answer": {
+      "es": "No pudo: el violín no se inventaría hasta más de mil años después.",
+      "en": "He couldn't have: the fiddle wouldn't be invented for another thousand-plus years."
+    },
+    "detail": {
+      "es": "Cuando estalló el incendio del año 64, Nerón estaba a 55 kilómetros de Roma, volvió enseguida y organizó ayuda para los damnificados. El historiador Tácito solo dice que corrió el rumor de que había cantado mirando el fuego, y aclara que no hay testigos que lo confirmen.",
+      "en": "When the fire broke out in the year 64, Nero was 35 miles from Rome, rushed back, and organized relief for those left homeless. The historian Tacitus only reports a rumor that he sang while watching the fire, and states clearly that no eyewitness confirmed it."
+    },
+    "source": "HISTORY — Did Nero Really Fiddle While Rome Burned?",
+    "sourceUrl": "https://www.history.com/articles/did-nero-really-fiddle-while-rome-burned",
+    "_evidence": "the fiddle didn't exist in ancient Rome. Music historians believe the viol class of instruments (to which the fiddle belongs) was not developed until the 11th century... Though he immediately returned and began relief measures, people still didn't trust him."
+  },
+  {
+    "id": "duelo-legal-inglaterra-1819",
+    "category": "historia",
+    "question": {
+      "es": "¿Se pudo pedir legalmente un duelo a muerte en un juicio inglés del siglo XIX?",
+      "en": "Could you legally demand a duel to the death in a 19th-century English court?"
+    },
+    "answer": {
+      "es": "Sí, hasta 1819: un acusado lo invocó y el juez tuvo que darle la razón.",
+      "en": "Yes, until 1819: a defendant invoked it, and the judge had to allow it."
+    },
+    "detail": {
+      "es": "En 1818, absuelto de asesinato pero acusado de nuevo, Abraham Thornton reclamó su derecho medieval a un «juicio por combate» contra el hermano de la víctima. El juez reconoció que seguía siendo ley vigente aunque nadie la usara desde siglos atrás; el hermano rechazó pelear y el Parlamento abolió la norma al año siguiente.",
+      "en": "In 1818, acquitted of murder but charged again, Abraham Thornton claimed his medieval right to \"trial by combat\" against the victim's brother. The judge acknowledged it was still valid law even though no one had used it for centuries; the brother declined to fight, and Parliament abolished the rule the following year."
+    },
+    "source": "Wikipedia — Ashford v Thornton",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ashford_v_Thornton",
+    "_evidence": "Not guilty; and I am ready to defend the same with my body. — Abraham Thornton's plea... Whatever prejudices may exist therefore against this mode of trial, still as it is the law of the land, the Court must pronounce judgment for it. — Lord Ellenborough... Appeals such as Ashford's were abolished by statute in 1819."
+  },
+  {
+    "id": "dia-diez-horas-francia",
+    "category": "historia",
+    "question": {
+      "es": "¿Llegó a tener Francia días de diez horas, con cien minutos cada una?",
+      "en": "Did France ever have 10-hour days, with 100 minutes each?"
+    },
+    "answer": {
+      "es": "Sí, durante la Revolución: relojes con esfera de diez horas y semanas de diez días.",
+      "en": "Yes, during the Revolution: clocks with a 10-hour face and 10-day weeks."
+    },
+    "detail": {
+      "es": "Se decretó en 1793 y se hizo obligatorio un año después, con la medianoche en el «cero» y el mediodía en el «cinco». Duró apenas año y medio: cambiar todos los relojes salía carísimo y los trabajadores protestaron porque el descanso pasó de cada siete días a cada diez.",
+      "en": "It was decreed in 1793 and made mandatory a year later, with midnight at \"zero\" and noon at \"five.\" It lasted barely a year and a half: replacing every clock was expensive, and workers protested because their day off went from every seven days to every ten."
+    },
+    "source": "Wikipedia — Decimal time",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Decimal_time",
+    "_evidence": "The day, from midnight to midnight, is divided into ten parts or hours, each part into ten others, so on until the smallest measurable portion of the duration... mandatory use was suspended 7 April 1795."
+  },
+  {
+    "id": "ano-445-dias-cesar",
+    "category": "historia",
+    "question": {
+      "es": "¿Ha existido un año con 445 días?",
+      "en": "Has a year with 445 days ever existed?"
+    },
+    "answer": {
+      "es": "Sí, el 46 a.C., cuando Julio César metió dos meses extra para arreglar el calendario.",
+      "en": "Yes, 46 BC, when Julius Caesar squeezed in two extra months to fix the calendar."
+    },
+    "detail": {
+      "es": "El calendario romano llevaba tanto retraso que las fiestas de la cosecha caían en pleno invierno. César insertó dos meses completos entre noviembre y diciembre para alinear de golpe el calendario con las estaciones, antes de estrenar el nuevo sistema al año siguiente. Se le conoce como «el año de la confusión».",
+      "en": "The Roman calendar had drifted so badly that harvest festivals fell in the dead of winter. Caesar inserted two whole months between November and December to realign the calendar with the seasons in one stroke, before launching the new system the following year. It's known as \"the year of confusion.\""
+    },
+    "source": "IFLScience — Julius Caesar's Year Of Confusion In 46 BCE Was The Longest Year In History With 445 Days",
+    "sourceUrl": "https://www.iflscience.com/46-bce-julius-caesars-year-of-confusion-was-80-days-longer-than-normal-78838",
+    "_evidence": "46 BCE became the longest year in recorded history at 445 days... he inserted two other months between those of November and December... sometimes referred to as annus confusionis, or the 'year of confusion.'"
+  },
+  {
+    "id": "kiribati-movio-fecha",
+    "category": "historia",
+    "question": {
+      "es": "¿Puede un país mover la línea internacional de cambio de fecha a su antojo?",
+      "en": "Can a country just move the international date line to suit itself?"
+    },
+    "answer": {
+      "es": "Kiribati lo hizo en 1995, para no tener dos días distintos dentro del mismo país.",
+      "en": "Kiribati did it in 1995, to stop having two different days inside the same country."
+    },
+    "detail": {
+      "es": "Sus islas quedaban repartidas a ambos lados de la línea, con 24 horas de diferencia entre unas y otras, así que solo coincidían cuatro días laborables por semana. El Gobierno desplazó la línea hacia el este y, sin querer, convirtió a Kiribati en el primer país del planeta en ver amanecer el año 2000.",
+      "en": "Its islands sat on both sides of the line, 24 hours apart, so only four working days a week actually overlapped. The government shifted the line eastward and, almost by accident, made Kiribati the first country on Earth to see the sunrise of the year 2000."
+    },
+    "source": "Amusing Planet — Kiribati, The True Land of The Rising Sun",
+    "sourceUrl": "https://www.amusingplanet.com/2014/12/kiribati-true-land-of-rising-sun.html",
+    "_evidence": "Prior to 1995, Kiribati straddled the International Date Line with the eastern and western islands groups having a time difference of 24 hours... In doing so, Kiribati became the first nation to greet the rays of the rising sun at the begin of the third millennium."
+  },
+  {
+    "id": "dia-de-los-dos-mediodias",
+    "category": "historia",
+    "question": {
+      "es": "¿Por qué hubo un día en EEUU en el que el reloj marcó las doce del mediodía dos veces?",
+      "en": "Why was there a day in the US when the clock struck noon twice?"
+    },
+    "answer": {
+      "es": "Porque ese día, en 1883, los ferrocarriles impusieron de golpe las zonas horarias que usamos hoy.",
+      "en": "Because that day, in 1883, the railroads imposed the time zones we still use today."
+    },
+    "detail": {
+      "es": "Antes, cada ciudad ponía en hora sus relojes según el sol local, así que había cientos de horas oficiales distintas y trenes que chocaban por confusión horaria. El 18 de noviembre de 1883 cada ciudad vivió un mediodía solar y, minutos después, el nuevo mediodía «oficial» de su zona. El Congreso no lo hizo ley hasta 1918.",
+      "en": "Before that, every town set its clocks by the local sun, so there were hundreds of different official times and trains that collided from scheduling confusion. On November 18, 1883, every town lived through its solar noon and, minutes later, its new \"official\" zone noon. Congress didn't make it law until 1918."
+    },
+    "source": "Union Pacific Railroad Museum — Time is of the essence... or the railroad?",
+    "sourceUrl": "https://www.uprrmuseum.org/uprrm/exhibits/curators-corner/standard-time/index.htm",
+    "_evidence": "On November 18, 1883, known as 'the Day of Two Noons,' railroads implemented a system of time zones... In the eastern part of each time zone there was a noon based upon sun-time; then another noon when clocks and watches were set back to the new standard railroad time."
+  },
+  {
+    "id": "lavativa-tabaco-ahogados",
+    "category": "historia",
+    "question": {
+      "es": "¿Cómo intentaban reanimar a un ahogado en el Támesis del siglo XVIII?",
+      "en": "How did 18th-century Londoners try to revive someone who'd drowned in the Thames?"
+    },
+    "answer": {
+      "es": "Soplándole humo de tabaco por el recto con un fuelle.",
+      "en": "By blowing tobacco smoke up their rectum with a bellows."
+    },
+    "detail": {
+      "es": "La Royal Humane Society instaló kits de reanimación con estos fuelles en varios puntos del río, convencida de que la nicotina reactivaba el corazón. La práctica se abandonó en 1811, cuando unos experimentos demostraron que la nicotina era tóxica, no estimulante. De ahí viene la expresión inglesa «blow smoke up your ass».",
+      "en": "The Royal Humane Society installed resuscitation kits with these bellows at various points along the river, convinced nicotine restarted the heart. The practice was dropped in 1811, when experiments showed nicotine was toxic, not stimulating. It's the origin of the English phrase \"blow smoke up your ass.\""
+    },
+    "source": "Wikipedia — Tobacco smoke enema",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tobacco_smoke_enema",
+    "_evidence": "In the 1780s the Royal Humane Society installed resuscitation kits, including smoke enemas, at various points along the River Thames."
+  },
+  {
+    "id": "rayos-x-en-zapaterias",
+    "category": "historia",
+    "question": {
+      "es": "¿Se usaron máquinas de rayos X para probarse zapatos en las tiendas?",
+      "en": "Were X-ray machines really used to try on shoes in stores?"
+    },
+    "answer": {
+      "es": "Sí, hasta los años 50, y hubo más de 10.000 solo en EEUU.",
+      "en": "Yes, into the 1950s, and there were over 10,000 of them in the US alone."
+    },
+    "detail": {
+      "es": "El cliente metía el pie en la máquina y veía sus propios huesos dentro del zapato por una mirilla, como truco de venta más que como ciencia real. Algunas irradiaban hasta 116 roentgen en veinte segundos; la FDA las prohibió en 1953 y en 1970 ya estaban vetadas en 33 estados.",
+      "en": "The customer put a foot in the machine and watched their own bones inside the shoe through a viewport — more a sales gimmick than real science. Some delivered up to 116 roentgens in twenty seconds; the FDA banned them in 1953, and by 1970 they were outlawed in 33 states."
+    },
+    "source": "Wikipedia — Shoe-fitting fluoroscope",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Shoe-fitting_fluoroscope",
+    "_evidence": "An estimated 10,000 machines were sold in the US... American machines delivered an average of 13 roentgen (r) to the customer's feet during a typical 20-second viewing, with one capable of delivering 116 r in 20 seconds... by 1970, 33 US states have banned the machine."
+  },
+  {
+    "id": "gripe-espanola-nombre-injusto",
+    "category": "historia",
+    "question": {
+      "es": "¿Empezó en España la pandemia de gripe de 1918 que lleva su nombre?",
+      "en": "Did the 1918 flu pandemic that bears Spain's name actually start there?"
+    },
+    "answer": {
+      "es": "No hay pruebas de eso: se llama así porque España fue la única que informó de ella sin censura.",
+      "en": "There's no evidence of that: it's named that way because Spain was the only country reporting it without censorship."
+    },
+    "detail": {
+      "es": "En plena Primera Guerra Mundial, los países en guerra ocultaban los brotes para no dar información al enemigo. España era neutral y su prensa cubrió la epidemia con libertad, hasta la enfermedad del propio rey, lo que dio la falsa impresión de que el foco estaba ahí. Los primeros casos documentados fueron en un campamento militar de Kansas.",
+      "en": "In the middle of World War I, warring countries hid their outbreaks to avoid handing information to the enemy. Spain was neutral and its press covered the epidemic freely, even the king's own illness, creating the false impression the outbreak centered there. The earliest documented cases were at a military camp in Kansas."
+    },
+    "source": "HISTORY — As the 1918 Flu Emerged, Cover-Up and Denial Helped It Spread",
+    "sourceUrl": "https://www.history.com/articles/1918-pandemic-spanish-flu-censorship",
+    "_evidence": "Basically, it gets called the 'Spanish flu' because the Spanish media did their job... Spain remained neutral during World War I, allowing its press to freely report flu cases—including when the Spanish king contracted it in spring 1918."
+  },
+  {
+    "id": "telegrama-editado-guerra",
+    "category": "historia",
+    "question": {
+      "es": "¿Puede editar unas pocas frases de un telegrama desatar una guerra entre dos países?",
+      "en": "Can editing a few lines of a telegram set off a war between two countries?"
+    },
+    "answer": {
+      "es": "En 1870, sí: Bismarck recortó un despacho diplomático y provocó la guerra franco-prusiana.",
+      "en": "In 1870, yes: Bismarck trimmed a diplomatic cable and triggered the Franco-Prussian War."
+    },
+    "detail": {
+      "es": "El telegrama original narraba un encuentro educado entre el rey de Prusia y el embajador francés. Bismarck quitó las frases conciliadoras antes de publicarlo, dejando la escena como un desplante mutuo. Él mismo dijo a sus colaboradores que el texto tendría «el efecto de un trapo rojo sobre el toro galo», y así fue: Francia declaró la guerra seis días después.",
+      "en": "The original telegram described a polite exchange between the King of Prussia and the French ambassador. Bismarck cut the conciliatory lines before publishing it, leaving the scene looking like a mutual snub. He told associates the text would have \"the effect of a red rag on the Gallic bull\" — and it did: France declared war six days later."
+    },
+    "source": "Wikipedia — Ems dispatch",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ems_dispatch",
+    "_evidence": "Bismarck decided to use some of Abeken's wording for his own press release. He removed Wilhelm's conciliatory phrases and emphasised the real issue... 'would have the effect of a red rag on the Gallic bull,' he assured associates."
+  }
+]

@@ -1,0 +1,8 @@
+# Configuración de gen-l10n. Los .arb viven en lib/l10n y el código generado se
+# escribe en lib/l10n/generated (excluido del analizador y del control de versiones).
+arb-dir: lib/l10n
+template-arb-file: app_es.arb
+output-localization-file: app_localizations.dart
+output-class: AppLocalizations
+output-dir: lib/l10n/generated
+nullable-getter: false

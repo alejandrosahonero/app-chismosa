@@ -1,0 +1,762 @@
+[
+  {
+    "id": "hielo-resbaladizo",
+    "category": "ciencia",
+    "question": {
+      "es": "Si por dentro el hielo es sólido y duro, ¿por qué resbala tanto?",
+      "en": "If ice is solid and hard all the way through, why does it feel so slick?"
+    },
+    "answer": {
+      "es": "Porque su superficie está cubierta de una capa de moléculas de agua demasiado desordenadas para congelarse del todo.",
+      "en": "Because its surface carries a layer of water molecules too disordered to freeze solid."
+    },
+    "detail": {
+      "es": "Dentro del hielo el agua forma una red cristalina rígida, pero las moléculas de la superficie no consiguen completar esa red y quedan sueltas, deslizándose unas sobre otras. Esa capa casi líquida aparece incluso a -38 °C, mucho antes de que nada se derrita en el sentido normal.",
+      "en": "Inside ice, water molecules lock into a rigid crystal lattice, but the ones right at the surface can't complete it and stay loose, sliding past each other. That near-liquid layer shows up even at -38°C, long before anything is melting in the usual sense."
+    },
+    "source": "UC Davis — Ice Surface Melts One Step at a Time",
+    "sourceUrl": "https://www.ucdavis.edu/news/ice-surface-melts-one-step-time",
+    "_evidence": "The quasi-liquid layer appears because, while water molecules inside ice are arranged in a crystal lattice, molecules at the surface get 'disordered'... and can diffuse laterally across the surface."
+  },
+  {
+    "id": "agua-caliente-no-congela-antes",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Es verdad que el agua caliente se congela antes que la fría?",
+      "en": "Does hot water really freeze faster than cold water?"
+    },
+    "answer": {
+      "es": "No: cuando se repite el experimento midiendo bien, el agua caliente siempre tarda más, no menos.",
+      "en": "No — when the experiment is repeated with careful measurements, hot water always takes longer, not less."
+    },
+    "detail": {
+      "es": "La idea circula desde los años 60 por la anécdota de un estudiante tanzano, pero un estudio que controló con precisión dónde se medía la temperatura descubrió que el agua inicialmente más caliente tardaba siempre más en enfriarse. Los casos que parecían demostrarlo resultaron errores de medición.",
+      "en": "The claim has circulated since the 1960s after a Tanzanian student's anecdote, but a study that carefully controlled where temperature was measured found the initially hotter water consistently took longer to cool. The famous cases that seemed to prove it turned out to be measurement errors."
+    },
+    "source": "PMC (National Library of Medicine) — Questioning the Mpemba effect",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5121640/",
+    "_evidence": "the 'Mpemba effect' is not a genuine physical effect and is a scientific fallacy."
+  },
+  {
+    "id": "pliegues-papel-limite",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué es imposible doblar un papel por la mitad más de siete u ocho veces?",
+      "en": "Why can't you fold a sheet of paper in half more than seven or eight times?"
+    },
+    "answer": {
+      "es": "Porque el grosor crece exponencialmente mientras el ancho disponible se reduce a la mitad en cada doblez.",
+      "en": "Because the thickness grows exponentially while the width you have left to fold keeps halving."
+    },
+    "detail": {
+      "es": "Cada doblez duplica el grosor de la pila, pero deja menos papel para doblar en esa dirección. Llega un punto en que la pila es más gruesa que ancha y no queda margen físico. Con una tira lo bastante larga y fina sí se puede seguir: el récord supera los doce dobleces.",
+      "en": "Each fold doubles the stack's thickness while leaving less width to fold along. Eventually the stack is thicker than it is wide and there's no physical room left. With a long enough, thin enough strip it keeps going — the record stands past twelve folds."
+    },
+    "source": "West Texas A&M University — Science Questions with Surprising Answers",
+    "sourceUrl": "https://www.wtamu.edu/~cbaird/sq/2012/12/07/what-stops-a-piece-of-paper-from-being-folded-more-than-seven-times/",
+    "_evidence": "Each fold in half makes a paper twice as thick, so that n folds ... results in a total thickness of 2nt ... after that point, there simply is nothing left to fold."
+  },
+  {
+    "id": "tornillo-phillips-diseno",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Diseñaron el tornillo de estrella Phillips para que el destornillador resbalase a propósito?",
+      "en": "Was the Phillips screw designed to make the screwdriver slip out on purpose?"
+    },
+    "answer": {
+      "es": "No: la patente original de los años 30 pedía justo lo contrario, un cabezal que nunca resbalase.",
+      "en": "No — the original 1930s patent asked for exactly the opposite: a head that would never slip."
+    },
+    "detail": {
+      "es": "El documento describe un diseño pensado para agarrar firme, \"sin tendencia del destornillador a resbalarse\". Ese resbalón bajo mucha fuerza (cam-out) fue un efecto secundario no buscado, que más tarde se apreció porque protegía el tornillo de las primeras herramientas eléctricas, que aún no tenían embrague limitador de fuerza.",
+      "en": "The application describes a design meant to grip firmly, with \"no tendency of the driver to cam out.\" That slip under heavy torque was an unintended side effect, later valued because it protected the screw from early power tools that had no torque-limiting clutch."
+    },
+    "source": "Wikipedia — Cam out",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cam_out",
+    "_evidence": "the inventors described the key objectives as providing a screw head recess that ... was adapted for firm engagement with a driving tool with 'no tendency of the driver to cam out'."
+  },
+  {
+    "id": "hueco-fondo-botella-vino",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Para qué sirve el hueco hundido en el fondo de una botella de vino?",
+      "en": "What's that hollow dent in the bottom of a wine bottle actually for?"
+    },
+    "answer": {
+      "es": "En origen, para esconder la punta afilada que dejaba el vidrio soplado a mano.",
+      "en": "Originally, to hide the sharp point that hand-blown glass left behind."
+    },
+    "detail": {
+      "es": "Al soplar una botella, el vidriero empujaba el vidrio de la base hacia dentro para que no quedara un pico cortante y la botella se sostuviera de pie. En las botellas de champán ese hueco además reparte mejor la presión del gas, pero en el vino normal de hoy, hecho a máquina, ya es puro gesto de estilo.",
+      "en": "While blowing a bottle, the glassmaker pushed the base's glass inward so it wouldn't leave a sharp point and the bottle could stand upright. In champagne bottles that dent also helps spread out gas pressure, but on today's machine-made wine bottles it's mostly a style holdover."
+    },
+    "source": "Wine Spectator — Why is there an indentation in the bottom of a wine bottle?",
+    "sourceUrl": "https://www.winespectator.com/articles/why-is-there-an-indentation-in-the-bottom-of-a-wine-bottle-46387",
+    "_evidence": "The seam was pushed up to make sure the bottle could stand upright and there wasn't a sharp point of glass on the bottom."
+  },
+  {
+    "id": "huecos-vias-tren",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Para qué sirve el hueco que se deja entre un tramo de vía de tren y el siguiente?",
+      "en": "What's the small gap between one stretch of train rail and the next actually for?"
+    },
+    "answer": {
+      "es": "Para darle al metal un sitio donde crecer sin combarse cuando aprieta el calor.",
+      "en": "To give the metal somewhere to expand into without buckling in the heat."
+    },
+    "detail": {
+      "es": "Un tramo de raíl de acero de 550 metros puede alargarse más de dos centímetros con solo cinco grados de subida. Sin ese margen la vía se arquea —lo que se llama pandeo— y puede descarrilar un tren; el traqueteo característico del tren es justo el paso de las ruedas por esos huecos.",
+      "en": "A 550-meter stretch of steel rail can grow over an inch longer for every 10°F rise in temperature. Without that margin the track bows outward — called buckling — and can derail a train; that classic clickety-clack sound is the wheels crossing those very gaps."
+    },
+    "source": "Scientific American — Heat Waves Can Buckle Train Tracks",
+    "sourceUrl": "https://www.scientificamerican.com/article/heat-waves-can-buckle-train-tracks-delaying-commutes-and-commerce/",
+    "_evidence": "1,800 feet of rail expands by more than an inch for every 10 degrees Fahrenheit of temperature increase."
+  },
+  {
+    "id": "rascacielos-se-balancean",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Los rascacielos más altos del mundo están diseñados para moverse con el viento?",
+      "en": "Are the world's tallest skyscrapers actually built to sway in the wind?"
+    },
+    "answer": {
+      "es": "Sí, y hacerlos más rígidos los pondría en más peligro, no en menos.",
+      "en": "Yes — and making them stiffer would put them in more danger, not less."
+    },
+    "detail": {
+      "es": "Un edificio totalmente rígido concentraría toda la fuerza del viento en un único punto de ruptura; dejarlo oscilar reparte esa energía. En la torre Taipei 101 una bola de acero de 660 toneladas cuelga como un péndulo gigante en el piso 87 y recorta hasta un 40 % del balanceo del edificio.",
+      "en": "A perfectly rigid tower would concentrate all the wind's force at a single breaking point; letting it sway spreads that energy out. In Taipei 101, a 660-ton steel ball hangs like a giant pendulum on the 87th floor and cuts the building's sway by up to 40%."
+    },
+    "source": "The Civil Engineer — Taipei 101's Impressive Tuned Mass Damper",
+    "sourceUrl": "https://www.thecivilengineer.org/news/taipei-101s-impressive-tuned-mass-damper",
+    "_evidence": "The damper can reduce the skyscraper's swaying by 40% during imposed excitations"
+  },
+  {
+    "id": "lata-refresco-fondo",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué el fondo de una lata de refresco está hundido hacia dentro en vez de plano?",
+      "en": "Why is a soda can's bottom pushed inward instead of flat?"
+    },
+    "answer": {
+      "es": "Porque una base curva aguanta la presión del gas mucho mejor que una plana.",
+      "en": "Because a curved base handles the gas pressure far better than a flat one."
+    },
+    "detail": {
+      "es": "El líquido carbonatado empuja hacia fuera con varias atmósferas de presión; una base curva reparte ese empuje en compresión a lo largo de toda la curva, como un arco, en vez de concentrarlo en un punto débil. Así el aluminio puede ser tan fino como una décima de milímetro y no reventar.",
+      "en": "Carbonated liquid pushes outward with several atmospheres of pressure; a curved base spreads that push into compression across the whole curve, like an arch, instead of concentrating it on one weak spot. That's how the aluminum can be as thin as a tenth of a millimeter and still not burst."
+    },
+    "source": "ASMR Education — Aluminum Can Concave Bottom",
+    "sourceUrl": "https://asmr.education/faq/aluminum-cans/aluminum-can-concave-bottom-dome-function",
+    "_evidence": "Arches are among the strongest geometric forms in structural engineering because they convert downward or outward forces into compressive stress distributed along the curve."
+  },
+  {
+    "id": "forma-no-cae-alcantarilla",
+    "category": "ciencia",
+    "question": {
+      "es": "Aparte del círculo, ¿existe otra forma que tampoco pueda colarse por su propio agujero?",
+      "en": "Besides a circle, is there another shape that can't fall through its own hole?"
+    },
+    "answer": {
+      "es": "Sí, un triángulo de lados curvos llamado triángulo de Reuleaux.",
+      "en": "Yes — a curved triangle called a Reuleaux triangle."
+    },
+    "detail": {
+      "es": "Su ancho mide siempre lo mismo se gire como se gire, igual que el diámetro de un círculo, así que nunca cabe en diagonal por un hueco con su misma forma. Es justo por eso por lo que las tapas de alcantarilla son redondas: es la manera más barata de lograr el mismo efecto.",
+      "en": "Its width measures the same no matter how it's turned, just like a circle's diameter, so it can never slip diagonally through a hole shaped just like it. That's exactly why manhole covers are round: it's the cheapest way to get the same trick."
+    },
+    "source": "Wikipedia — Reuleaux triangle",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Reuleaux_triangle",
+    "_evidence": "Because its width is constant, the Reuleaux triangle is one answer to the question 'Other than a circle, what shape can a manhole cover be made so that it cannot fall down through the hole?'"
+  },
+  {
+    "id": "cables-auriculares-nudo",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué unos auriculares sueltos en un bolsillo casi siempre acaban anudados?",
+      "en": "Why do loose earphones in a pocket almost always end up knotted?"
+    },
+    "answer": {
+      "es": "Porque a partir de cierta longitud, agitar una cuerda suelta forma un nudo casi la mitad de las veces.",
+      "en": "Because past a certain length, jostling a loose cord ties a knot almost half the time."
+    },
+    "detail": {
+      "es": "Dos físicos metieron cuerdas en una caja y la agitaron más de 3000 veces: por debajo de 46 cm casi nunca se anudaban, pero entre eso y metro y medio la probabilidad subía en picado hasta estabilizarse cerca del 50 %. Contaron 120 tipos distintos de nudo, algunos con hasta once cruces.",
+      "en": "Two physicists tumbled cords in a box more than 3,000 times: below 46 cm they almost never knotted, but between that and about five feet the odds climbed fast and leveled off near 50%. They counted 120 different knot types, some crossing themselves eleven times."
+    },
+    "source": "Physics Today (AIP) — Pieces of tumbled string form topologically simple and complex knots",
+    "sourceUrl": "https://physicstoday.aip.org/news/pieces-of-tumbled-string-form-topologically-simple-and-complex-knots",
+    "_evidence": "As L increased, P rose rapidly until L reached about 1.5 m. At that length, P appeared to saturate at about 0.5."
+  },
+  {
+    "id": "luna-siempre-misma-cara",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué desde la Tierra solo vemos siempre la misma cara de la Luna?",
+      "en": "Why do we always see the same side of the Moon from Earth?"
+    },
+    "answer": {
+      "es": "Porque la Luna tarda exactamente lo mismo en girar sobre sí misma que en darle una vuelta a la Tierra.",
+      "en": "Because the Moon takes exactly as long to spin once as it does to complete one orbit around Earth."
+    },
+    "detail": {
+      "es": "Hace miles de millones de años la gravedad terrestre deformó ligeramente a la Luna, todavía fundida, y ese abultamiento frenó su giro hasta encajarlo con su órbita. La Luna sí gira, solo que al mismo ritmo que orbita, así que la cara oculta existe pero nunca mira hacia nosotros.",
+      "en": "Billions of years ago Earth's gravity slightly deformed the still-molten Moon, and that bulge braked its spin until it locked to its orbit. The Moon does rotate — just at the same pace it orbits — so the far side exists, it simply never faces us."
+    },
+    "source": "NASA Science — Tidal Locking",
+    "sourceUrl": "https://science.nasa.gov/moon/tidal-locking/",
+    "_evidence": "Earth's Moon rotates, but it takes precisely as long for the Moon to spin on its axis as it does to complete its monthly orbit around Earth."
+  },
+  {
+    "id": "luz-sol-atrapada-nucleo",
+    "category": "ciencia",
+    "question": {
+      "es": "La luz del Sol tarda ocho minutos en llegar a la Tierra, ¿cuánto tardó en salir del propio Sol?",
+      "en": "Sunlight takes eight minutes to reach Earth — how long did it take to get out of the Sun itself?"
+    },
+    "answer": {
+      "es": "Puede que unos 170.000 años, rebotando dentro del núcleo antes de escapar a la superficie.",
+      "en": "Maybe around 170,000 years, bouncing inside the core before ever escaping to the surface."
+    },
+    "detail": {
+      "es": "En el núcleo el plasma es tan denso que un fotón choca con una partícula a cada paso, se absorbe, se reemite en una dirección al azar y vuelve a chocar: un camino aleatorio de 700.000 km en línea recta que en la práctica se convierte en un laberinto de milenios. Cálculos anteriores lo situaban en solo miles de años; modelos de densidad más precisos lo han alargado hasta esa cifra.",
+      "en": "In the core, plasma is so dense that a photon hits a particle at every step, gets absorbed, re-emitted in a random direction, and hits again: a 700,000-km straight-line trip that in practice becomes a millennia-long maze. Earlier estimates put it at just thousands of years; more precise density models have since stretched that figure out."
+    },
+    "source": "ScienceAlert — The Longest Journey Sunlight Ever Takes Happens Before It Leaves The Sun",
+    "sourceUrl": "https://www.sciencealert.com/the-sunlight-on-your-face-took-8-minutes-to-reach-earth-but-first-it-spent-170000-years-escaping-the-sun",
+    "_evidence": "traveling the 695,700-kilometer distance from the Sun's center to its surface can take around 170,000 years."
+  },
+  {
+    "id": "estrellas-titilan-planetas-no",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué las estrellas titilan en el cielo nocturno y los planetas no?",
+      "en": "Why do stars twinkle in the night sky while planets don't?"
+    },
+    "answer": {
+      "es": "Porque una estrella es un punto tan pequeño que el aire lo desvía entero, y un planeta es un disco lo bastante ancho para que esos tirones se cancelen.",
+      "en": "Because a star is a point of light so small that the air deflects the whole thing, while a planet is a disk wide enough for those tugs to cancel each other out."
+    },
+    "detail": {
+      "es": "La atmósfera está llena de capas de aire a distinta temperatura que curvan la luz al pasar. Un punto único, como una estrella, se mueve entero con cada capa. Un disco, como un planeta, tiene un borde curvándose hacia un lado y el borde opuesto hacia el otro, y el promedio sale estable.",
+      "en": "The atmosphere is full of air layers at different temperatures that bend light as it passes through. A single point, like a star, gets nudged as a whole by each layer. A disk, like a planet, has one edge bending one way and the opposite edge bending the other, and the average comes out steady."
+    },
+    "source": "EarthSky — Why don't planets twinkle as stars do?",
+    "sourceUrl": "https://earthsky.org/space/why-dont-planets-twinkle-as-stars-do/",
+    "_evidence": "Earth's atmosphere refracts the light from these little disks as it travels toward our eyes. But – while the light from one edge of a planet's disk might 'zig' one way – light from the opposite edge of the disk might be 'zagging' in an opposite way."
+  },
+  {
+    "id": "luna-se-aleja-cada-ano",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Cambia de verdad la distancia entre la Tierra y la Luna con el paso del tiempo?",
+      "en": "Does the distance between Earth and the Moon actually change over time?"
+    },
+    "answer": {
+      "es": "Sí: la Luna se aleja cada año unos 3,8 centímetros, más o menos lo que crece una uña.",
+      "en": "Yes — the Moon drifts about 3.8 centimeters farther away every year, roughly as fast as a fingernail grows."
+    },
+    "detail": {
+      "es": "Los astronautas del Apolo dejaron espejos en la Luna, y disparar láseres contra ellos permite medir la distancia con precisión de milímetros. El tirón de las mareas le pasa energía de rotación de la Tierra a la Luna, que sube a una órbita más alta, y por el camino nuestros días se alargan una fracción de segundo cada siglo.",
+      "en": "Apollo astronauts left mirrors on the Moon, and bouncing lasers off them measures the distance to within millimeters. Tidal pull transfers rotational energy from Earth to the Moon, nudging it into a higher orbit, and along the way our days get a fraction of a second longer each century."
+    },
+    "source": "IFLScience — The Moon Is Moving Away From Earth At A Rate Of About 3.8 Centimeters Per Year",
+    "sourceUrl": "https://www.iflscience.com/the-moon-is-moving-away-from-earth-at-a-rate-of-about-38-centimeters-per-year-will-it-ever-drift-apart-80834",
+    "_evidence": "NASA confirms that the Moon is moving away from Earth at a rate of 3.8 centimeters per year."
+  },
+  {
+    "id": "venus-gira-al-reves",
+    "category": "ciencia",
+    "question": {
+      "es": "En Venus, ¿por dónde sale el Sol?",
+      "en": "On Venus, which direction does the sun rise from?"
+    },
+    "answer": {
+      "es": "Por el oeste, porque Venus es el único planeta grande que gira al revés que casi todos los demás.",
+      "en": "From the west — Venus is one of only two planets that spin the opposite way from most of the rest."
+    },
+    "detail": {
+      "es": "A esa rotación al contrario se le llama retrógrada, y nadie tiene la respuesta cerrada de por qué: la hipótesis más aceptada es un choque colosal —o varios— durante la formación del planeta que le dio la vuelta al giro entero. Además Venus rota tan despacio que su día dura más que su año.",
+      "en": "That backward spin is called retrograde rotation, and nobody has a settled answer for why: the leading hypothesis is one massive collision — or several — during the planet's formation that flipped its spin entirely. Venus also rotates so slowly that its day is longer than its year."
+    },
+    "source": "NASA — StarChild",
+    "sourceUrl": "https://starchild.gsfc.nasa.gov/docs/StarChild/solar_system_level2/venus_answer.html",
+    "_evidence": "Venus has a retrograde rotation which means it rotates on its axis in the opposite direction from the Earth's rotation."
+  },
+  {
+    "id": "paradoja-cumpleanos",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Cuánta gente hace falta en una sala para que sea más probable que dos cumplan el mismo día?",
+      "en": "How many people do you need in a room before it's more likely than not that two share a birthday?"
+    },
+    "answer": {
+      "es": "Solo 23, aunque haya 365 días entre los que elegir.",
+      "en": "Just 23 — even with 365 days to choose from."
+    },
+    "detail": {
+      "es": "La trampa mental es pensar en una sola comparación: «yo con cada uno de los demás». Pero con 23 personas hay 253 parejas posibles comparándose entre sí a la vez, y basta con que una sola de esas 253 coincida para ganar la apuesta.",
+      "en": "The mental trap is picturing just one comparison — you against everyone else. But 23 people create 253 possible pairs all being checked against each other at once, and it only takes one of those 253 to match to win the bet."
+    },
+    "source": "Wikipedia — Birthday problem",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Birthday_problem",
+    "_evidence": "The birthday paradox is the counterintuitive fact that only 23 people are needed for that probability to exceed 50%."
+  },
+  {
+    "id": "monty-hall-cambiar-puerta",
+    "category": "ciencia",
+    "question": {
+      "es": "Tres puertas, un coche y dos cabras: ¿conviene cambiar tras ver una cabra?",
+      "en": "Three doors, one car, two goats: should you switch after seeing a goat?"
+    },
+    "answer": {
+      "es": "Sí: cambiar duplica tus probabilidades de ganar, de un tercio a dos tercios.",
+      "en": "Yes — switching doubles your odds of winning, from one third to two thirds."
+    },
+    "detail": {
+      "es": "Al elegir tu puerta tenías un tercio de acertar y dos tercios de que el coche estuviera en las otras dos. El presentador, que sabe dónde está el coche, siempre descarta una cabra de esas dos: por eso, si cambias, te quedas con todo ese dos tercios concentrado en la puerta que queda.",
+      "en": "When you first pick, you have a one-in-three chance of being right and a two-in-three chance the car is behind one of the other two. The host, who knows where the car is, always eliminates a goat from those two — so switching hands you that entire two-thirds probability concentrated on the one door left."
+    },
+    "source": "Encyclopaedia Britannica — Monty Hall problem",
+    "sourceUrl": "https://www.britannica.com/topic/Monty-Hall-problem",
+    "_evidence": "One losing option has been removed from the two-door group of doors that the contestant did not choose, which originally had a 2/3 chance of containing the car."
+  },
+  {
+    "id": "baraja-nunca-repetida",
+    "category": "ciencia",
+    "question": {
+      "es": "Al barajar bien una baraja de 52 cartas, ¿es probable que ese orden ya haya salido antes en la historia?",
+      "en": "When you properly shuffle a deck of 52 cards, is it likely that exact order has happened before in history?"
+    },
+    "answer": {
+      "es": "Casi seguro que no: hay más órdenes posibles que átomos tiene la Tierra entera.",
+      "en": "Almost certainly not — there are more possible orders than there are atoms on the entire planet Earth."
+    },
+    "detail": {
+      "es": "El número de formas de ordenar 52 cartas es 52 factorial, un 8 seguido de 67 ceros. La Tierra tiene alrededor de 10^50 átomos, muchísimos menos. Aunque cada persona del planeta barajase una vez por segundo desde el Big Bang, no se habría agotado ni una fracción minúscula de esas combinaciones.",
+      "en": "The number of ways to order 52 cards is 52 factorial — an 8 followed by 67 zeros. Earth has around 10^50 atoms, far fewer. Even if everyone on the planet shuffled once a second since the Big Bang, they wouldn't have used up a meaningful fraction of those combinations."
+    },
+    "source": "McGill University — Office for Science and Society",
+    "sourceUrl": "https://www.mcgill.ca/oss/article/did-you-know-infographics/there-are-more-ways-arrange-deck-cards-there-are-atoms-earth",
+    "_evidence": "52! (or 52x51x50 …) you get a number with 68 total digits – an integer much larger than all the atoms estimated to be on Earth."
+  },
+  {
+    "id": "cebolla-lagrimas-molecula",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Qué es exactamente lo que hace que cortar una cebolla te haga llorar?",
+      "en": "What exactly is it about cutting an onion that makes you cry?"
+    },
+    "answer": {
+      "es": "Una molécula que la propia cebolla fabrica en el momento, en cuanto notas el corte con el cuchillo.",
+      "en": "A molecule the onion manufactures on the spot, the instant the knife breaks its cells open."
+    },
+    "detail": {
+      "es": "Al cortarla, enzimas que antes estaban separadas se mezclan con aminoácidos de azufre y forman ácidos inestables que se reordenan en syn-propanetial-S-óxido, un gas que sube hasta los ojos y allí forma un ácido leve. El cuerpo responde generando lágrimas para diluirlo y expulsarlo.",
+      "en": "Cutting the onion mixes enzymes that were previously kept apart with sulfur-rich amino acids, forming unstable acids that rearrange into syn-propanethial-S-oxide, a gas that drifts up to the eyes and forms a mild acid there. The body responds by producing tears to dilute and flush it out."
+    },
+    "source": "Encyclopaedia Britannica — Why Do Onions Make You Cry?",
+    "sourceUrl": "https://www.britannica.com/story/why-do-onions-make-you-cry",
+    "_evidence": "Previously separated enzymes meet the sulfur-rich amino acids and form unstable sulfenic acids, which then rearrange into a chemical known as syn-propanethial-S-oxide."
+  },
+  {
+    "id": "ley-benford-primer-digito",
+    "category": "ciencia",
+    "question": {
+      "es": "En listas de números reales —facturas, ríos, poblaciones— ¿todas las primeras cifras aparecen por igual?",
+      "en": "In lists of real-world numbers — bills, rivers, populations — does every leading digit show up equally often?"
+    },
+    "answer": {
+      "es": "No: el 1 encabeza casi un tercio de esos números, y el 9 apenas un veinteavo.",
+      "en": "No — a 1 leads almost a third of those numbers, while a 9 leads barely a twentieth."
+    },
+    "detail": {
+      "es": "Se llama ley de Benford y funciona en facturas eléctricas, poblaciones de pueblos, superficies de ríos o cotizaciones bursátiles, siempre que los datos abarquen varios órdenes de magnitud. Se usa hoy para detectar contabilidad falsificada: unos números realmente manipulados casi nunca respetan ese patrón sin querer.",
+      "en": "It's called Benford's law, and it holds for electricity bills, town populations, river areas, or stock prices, as long as the data spans several orders of magnitude. It's used today to catch cooked accounting: genuinely manipulated numbers almost never happen to follow that pattern."
+    },
+    "source": "Wikipedia — Benford's law",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Benford%27s_law",
+    "_evidence": "the number 1 appears as the leading significant digit about 30% of the time, while 9 appears as the leading significant digit less than 5% of the time."
+  },
+  {
+    "id": "gota-principe-ruperto",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué una gota de vidrio aguanta un martillazo pero estalla si le rompes la cola?",
+      "en": "Why can a glass droplet survive a hammer blow to its head but explode completely if you snap its thin tail?"
+    },
+    "answer": {
+      "es": "Porque al enfriarse de golpe en agua, la gota queda con la superficie comprimida y el interior en tensión, y la cola es la única grieta de entrada a esa tensión.",
+      "en": "Because quenching it in water leaves the surface compressed and the interior in tension, and the tail is the only crack that can reach that tension."
+    },
+    "detail": {
+      "es": "Esa compresión superficial blinda la cabeza contra los golpes, igual que el vidrio templado de un coche. Pero romper la cola libera de golpe la tensión interna, y una grieta recorre toda la gota a más de 1500 metros por segundo, pulverizándola en microsegundos.",
+      "en": "That surface compression armors the head against blows, the same way tempered car glass works. But snapping the tail suddenly releases the internal tension, and a crack races through the whole drop at over 1,500 meters per second, pulverizing it within microseconds."
+    },
+    "source": "Purdue University — Research solves centuries-old riddle of Prince Rupert's drops",
+    "sourceUrl": "https://www.purdue.edu/newsroom/archive/releases/2017/Q2/research-solves-centuries-old-riddle-of-prince-ruperts-drops.html",
+    "_evidence": "if you could change the tensile stress to a compressive stress, then it becomes difficult for cracks to grow, and this is what happens in the head portion of the Prince Rupert's drops."
+  },
+  {
+    "id": "papel-a4-raiz-de-dos",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué al doblar un folio A4 por la mitad, el resultado sigue teniendo exactamente la misma forma?",
+      "en": "Why does folding an A4 sheet in half produce a page with exactly the same shape as before?"
+    },
+    "answer": {
+      "es": "Porque sus lados no guardan una proporción cualquiera: guardan la raíz cuadrada de dos, la única que se conserva al partir la hoja por la mitad.",
+      "en": "Because its sides aren't in just any ratio — they're in the square root of two, the only ratio that survives being cut in half."
+    },
+    "detail": {
+      "es": "Un A0 mide un metro cuadrado exacto; cada tamaño siguiente —A1, A2, A3, A4...— es la mitad del anterior partido por su lado corto, y gracias a esa proporción cada uno conserva la misma silueta que el A0. Es un diseño alemán de 1922 pensado para fotocopiadoras e imprentas, algo que el sistema de pulgadas de EE. UU. no consigue.",
+      "en": "A0 measures exactly one square meter; each following size — A1, A2, A3, A4... — is the previous one cut in half along its short side, and thanks to that ratio each one keeps the same silhouette as A0. It's a 1922 German design meant for copiers and printing presses, something the US inch-based system never manages."
+    },
+    "source": "University of Cambridge — A4 paper format / International standard paper sizes",
+    "sourceUrl": "https://www.cl.cam.ac.uk/~mgk25/iso-paper.html",
+    "_evidence": "If you put two such pages next to each other, or equivalently cut one parallel to its shorter side into two equal pieces, then the resulting page will have again the same width/height ratio."
+  },
+  {
+    "id": "grafito-diamante-mismo-carbono",
+    "category": "ciencia",
+    "question": {
+      "es": "El grafito de un lápiz y un diamante son el mismo elemento químico puro, ¿por qué son tan distintos?",
+      "en": "Pencil graphite and diamond are the same pure chemical element — so why are they so different?"
+    },
+    "answer": {
+      "es": "Porque el mismo átomo de carbono puede encajar de dos maneras: en red plana que resbala, o en red tridimensional que no cede.",
+      "en": "Because the same carbon atom can lock together two different ways: a flat lattice that slides, or a 3D lattice that won't give."
+    },
+    "detail": {
+      "es": "En el diamante cada átomo se une a otros cuatro formando una red rígida en las tres direcciones del espacio, lo que lo hace el material natural más duro que existe. En el grafito cada átomo solo se une a otros tres, en láminas planas que se deslizan unas sobre otras con nada que las sujete, y por eso raya el papel y es tan blando.",
+      "en": "In diamond, each atom bonds to four others in a rigid lattice running through all three dimensions of space, making it the hardest natural material there is. In graphite, each atom bonds to only three others, in flat sheets that slide over one another with barely anything holding them together — which is exactly why it marks paper and is so soft."
+    },
+    "source": "Scientific American — How can graphite and diamond be so different if they are both composed of pure carbon?",
+    "sourceUrl": "https://www.scientificamerican.com/article/how-can-graphite-and-diam/",
+    "_evidence": "The way the carbon atoms are arranged in space, however, is different for the three materials, making them allotropes of carbon."
+  },
+  {
+    "id": "rayo-mismo-sitio",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Es verdad que un rayo nunca cae dos veces en el mismo sitio?",
+      "en": "Is it true that lightning never strikes the same place twice?"
+    },
+    "answer": {
+      "es": "Todo lo contrario: un objeto alto y aislado puede recibir decenas de rayos al año.",
+      "en": "The exact opposite is true — a tall, isolated object can take dozens of strikes a year."
+    },
+    "detail": {
+      "es": "El Empire State Building recibe una media de 23 impactos de rayo al año. Cuanto más alto y más solo está un objeto, más fácil le resulta a la carga eléctrica de la nube encontrar en él el camino más corto hasta el suelo, así que lo vuelve a elegir una y otra vez.",
+      "en": "The Empire State Building takes an average of 23 lightning strikes a year. The taller and more isolated an object is, the easier it is for the cloud's electrical charge to find it as the shortest path to the ground — so it gets picked again and again."
+    },
+    "source": "National Weather Service (NOAA) — Lightning Myths",
+    "sourceUrl": "https://www.weather.gov/safety/lightning-myths",
+    "_evidence": "Lightning often strikes the same place repeatedly, especially if it's a tall, pointy, isolated object."
+  },
+  {
+    "id": "arcoiris-siempre-arco",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué un arcoíris siempre tiene forma de arco, nunca de otra figura?",
+      "en": "Why is a rainbow always shaped as an arc, never any other shape?"
+    },
+    "answer": {
+      "es": "Porque solo te devuelven luz las gotas que forman un ángulo exacto de 42 grados entre el Sol, la gota y tu ojo.",
+      "en": "Because only the raindrops sitting at an exact 42-degree angle between the sun, the drop, and your eye send light back to you."
+    },
+    "detail": {
+      "es": "Todas esas gotas —las que cumplen justo ese ángulo— se reparten formando un cono con la punta en tu ojo apuntando al Sol, y un cono visto de frente dibuja un círculo. El suelo tapa la mitad de abajo, así que solo ves el arco superior; por eso desde un avión, sin suelo de por medio, un arcoíris se ve como el círculo completo.",
+      "en": "All the drops meeting that exact angle sit along a cone with its tip at your eye, pointed at the sun — and a cone seen head-on traces a circle. The ground blocks the bottom half, so you only ever see the top arc; that's why from an airplane, with no ground in the way, a rainbow shows up as a complete circle."
+    },
+    "source": "Physics Van — University of Illinois",
+    "sourceUrl": "https://van.physics.illinois.edu/ask/listing/2195",
+    "_evidence": "The rainbow is curved because the set of all the raindrops that have the right angle between you, the drop, and the sun lie on a cone pointing at the sun with you at one tip."
+  },
+  {
+    "id": "nieve-blanca-hielo-transparente",
+    "category": "ciencia",
+    "question": {
+      "es": "El hielo es transparente, entonces, ¿de dónde sale el blanco de la nieve?",
+      "en": "Ice is transparent — so where does snow's white color come from?"
+    },
+    "answer": {
+      "es": "De que un copo no es un bloque de hielo: es miles de superficies diminutas que rebotan la luz en todas direcciones a la vez.",
+      "en": "From the fact that a snowflake isn't a block of ice — it's thousands of tiny surfaces bouncing light in every direction at once."
+    },
+    "detail": {
+      "es": "En un cubito de hielo la luz atraviesa una estructura compacta casi sin obstáculos. En un copo, el aire atrapado entre los cristales crea cientos de superficies que reflejan y refractan la luz una y otra vez, sin favorecer ningún color por encima de otro, hasta que sale de vuelta hacia el ojo como blanco.",
+      "en": "In an ice cube, light travels through a compact structure with almost nothing in its way. In a snowflake, air trapped between the crystals creates hundreds of surfaces that reflect and bend the light again and again, without favoring any one color, until it bounces back out toward your eye as white."
+    },
+    "source": "National Snow and Ice Data Center (NSIDC) — Science of Snow",
+    "sourceUrl": "https://nsidc.org/learn/parts-cryosphere/snow/science-snow",
+    "_evidence": "As light waves travel into the snow or ice, the ice grains scatter a large amount of light."
+  },
+  {
+    "id": "acero-inoxidable-capa-invisible",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué el acero inoxidable no se oxida como el hierro normal si ambos son metal expuesto al aire?",
+      "en": "Why doesn't stainless steel rust like ordinary iron, when both are just metal exposed to air?"
+    },
+    "answer": {
+      "es": "Porque el cromo que lleva mezclado reacciona con el oxígeno antes que nadie y forma una capa invisible de apenas unos nanómetros.",
+      "en": "Because the chromium mixed into it reacts with oxygen first and forms an invisible layer just a few nanometers thick."
+    },
+    "detail": {
+      "es": "Esa capa —menos de la milésima parte del grosor de un pelo— aísla el metal de debajo del aire y el agua, así que nunca llega a formarse el óxido rojizo del hierro. Si se raya, el cromo expuesto vuelve a reaccionar al instante con el oxígeno y reconstruye la capa por sí sola.",
+      "en": "That layer — less than a thousandth the thickness of a human hair — seals the metal underneath off from air and water, so the familiar reddish rust of iron never gets the chance to form. Scratch it, and the exposed chromium reacts with oxygen again instantly, rebuilding the layer on its own."
+    },
+    "source": "PMC (National Library of Medicine) — A Super Anticorrosive Ultrathin Film on 316L Stainless Steel",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9862606/",
+    "_evidence": "A spontaneously formed ultrathin film (less than 5 nm in thickness) isolates the metal substrate from aggressive environments and protects metal from degradation."
+  },
+  {
+    "id": "hongo-mas-grande-oregon",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Cuál es el ser vivo individual más extenso que se conoce, y dónde vive?",
+      "en": "What's the single largest living individual organism known, and where does it live?"
+    },
+    "answer": {
+      "es": "Un hongo bajo un bosque de Oregón que ocupa casi diez kilómetros cuadrados de suelo.",
+      "en": "A fungus under an Oregon forest that spans nearly ten square kilometers of ground."
+    },
+    "detail": {
+      "es": "Es un solo organismo genéticamente idéntico, Armillaria ostoyae, y casi todo él vive invisible bajo tierra en forma de filamentos; lo que se ve encima son solo las pequeñas setas de otoño. Se calcula que tiene entre 2400 y 8650 años, y unas 1665 campos de fútbol de extensión.",
+      "en": "It's a single, genetically identical organism, Armillaria ostoyae, and almost all of it lives invisibly underground as thread-like filaments; what you see above ground is just its small autumn mushrooms. It's estimated at somewhere between 2,400 and 8,650 years old, spanning roughly 1,665 football fields."
+    },
+    "source": "Scientific American — The Largest Organism on Earth Is a Fungus in Eastern Oregon",
+    "sourceUrl": "https://www.scientificamerican.com/article/strange-but-true-largest-organism-is-fungus/",
+    "_evidence": "This humongous fungus would encompass 1,665 football fields, or nearly four square miles (10 square kilometers) of turf."
+  },
+  {
+    "id": "arboles-red-hongos",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Pueden dos árboles de especies distintas intercambiarse recursos bajo tierra sin tocarse las raíces?",
+      "en": "Can two trees of different species trade resources underground without their roots ever touching?"
+    },
+    "answer": {
+      "es": "Sí, a través de una red de hongos que conecta sus raíces y que hace de intermediaria.",
+      "en": "Yes — through a network of fungi that links their roots and acts as the go-between."
+    },
+    "detail": {
+      "es": "Esos hongos micorrízicos tejen filamentos entre las raíces de árboles distintos y mueven carbono, agua y nutrientes del que tiene de sobra al que anda escaso. También sirven de aviso: cuando un árbol sufre el ataque de un insecto, sus vecinos conectados a la misma red pueden activar sus defensas horas después, antes de que la plaga llegue hasta ellos.",
+      "en": "These mycorrhizal fungi weave threads between the roots of different trees and move carbon, water, and nutrients from whichever tree has a surplus to whichever one is running short. They also work as an early warning system: when one tree comes under insect attack, its neighbors on the same network can switch on their defenses hours later, before the pest ever reaches them."
+    },
+    "source": "PMC (National Library of Medicine) — Inter-plant communication through mycorrhizal networks",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4497361/",
+    "_evidence": "herbivore- and pathogen-induced stress responses were up-regulated in undamaged neighbours in as little as 6 h following insect or fungal infestation."
+  },
+  {
+    "id": "rayo-camino-zigzag",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué un rayo baja en zigzag en vez de trazar una línea recta hasta el suelo?",
+      "en": "Why does lightning zigzag on its way down instead of tracing a straight line to the ground?"
+    },
+    "answer": {
+      "es": "Porque avanza a tirones: cada tramo necesita que se acumule suficiente aire conductor antes de poder dar el siguiente paso.",
+      "en": "Because it advances in fits and starts: each stretch needs enough conductive air to build up before it can take the next step."
+    },
+    "detail": {
+      "es": "El campo eléctrico de la nube excita moléculas de oxígeno hasta un estado especial que, al acumularse, deja el aire un instante lo bastante conductor como para que la descarga dé un paso breve y brillante. Luego hay una pausa oscura mientras esas moléculas se regeneran, y el siguiente paso nace del final del anterior, tirando hacia donde el aire ceda menos resistencia: de ahí el zigzag.",
+      "en": "The cloud's electric field excites oxygen molecules into a special state that, once enough of them build up, leaves the air conductive for an instant — just long enough for the discharge to take one brief, bright step. Then comes a dark pause while those molecules regenerate, and the next step grows from the end of the last one, pulled toward wherever the air offers the least resistance — hence the zigzag."
+    },
+    "source": "The Conversation — Why does lightning zigzag? At last, we have an answer to the mystery",
+    "sourceUrl": "https://theconversation.com/why-does-lightning-zigzag-at-last-we-have-an-answer-to-the-mystery-195549",
+    "_evidence": "The intense electrical fields in thunderclouds excite electrons to have enough energy to create what are known as 'singlet delta oxygen molecules'. These molecules and electrons build up to create a short, highly conducting step, which lights up intensely for a millionth of a second."
+  },
+  {
+    "id": "eter-nunca-existio",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Qué pasó con el «éter», la sustancia que según la física del siglo XIX llenaba todo el espacio?",
+      "en": "Whatever happened to the \"ether,\" the substance 19th-century physics said filled all of space?"
+    },
+    "answer": {
+      "es": "Que un experimento diseñado para medirlo no encontró nada, y ese fracaso es lo que abrió la puerta a Einstein.",
+      "en": "An experiment built to measure it found nothing — and that failure is what opened the door for Einstein."
+    },
+    "detail": {
+      "es": "En 1887 se asumía que la luz necesitaba un medio material para propagarse, igual que el sonido necesita aire, y que la Tierra debía notarse moviéndose a través de él. El experimento de Michelson y Morley buscó ese movimiento con un instrumento capaz de detectar diferencias mínimas de velocidad de la luz, y no encontró ninguna diferencia en absoluto. La ausencia total de resultado resultó ser el resultado.",
+      "en": "In 1887 physicists assumed light needed a physical medium to travel through, the way sound needs air, and that Earth should be detectably moving through it. The Michelson-Morley experiment searched for that motion with an instrument able to detect tiny differences in the speed of light — and found no difference whatsoever. The total absence of a result turned out to be the result."
+    },
+    "source": "Encyclopaedia Britannica — Michelson-Morley experiment",
+    "sourceUrl": "https://www.britannica.com/science/Michelson-Morley-experiment",
+    "_evidence": "No difference was found. This null result seriously discredited the ether theories and ultimately led to the proposal by Albert Einstein in 1905 that the speed of light is a universal constant."
+  },
+  {
+    "id": "ulceras-bacteria-no-estres",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Se ganó alguna vez un Nobel de Medicina por beberse un cultivo de bacterias a propósito?",
+      "en": "Has anyone ever won a Nobel Prize in Medicine for deliberately drinking a culture of bacteria?"
+    },
+    "answer": {
+      "es": "Sí: para demostrar que las úlceras de estómago las causa una bacteria y no el estrés, como se creía.",
+      "en": "Yes — to prove that stomach ulcers are caused by a bacterium, not stress, as everyone believed."
+    },
+    "detail": {
+      "es": "En 1984 nadie aceptaba la idea de Barry Marshall de que la Helicobacter pylori, y no la ansiedad ni la comida picante, causaba la mayoría de las úlceras. Sin financiación para un ensayo clínico, se bebió él mismo el cultivo, desarrolló gastritis en pocos días y lo confirmó con una endoscopia. Ganó el Nobel en 2005, y hoy las úlceras se tratan con antibióticos.",
+      "en": "In 1984, nobody accepted Barry Marshall's idea that Helicobacter pylori, not anxiety or spicy food, caused most ulcers. With no funding for a clinical trial, he drank the bacterial culture himself, developed gastritis within days, and confirmed it with an endoscopy. He won the Nobel Prize in 2005, and ulcers are now treated with antibiotics."
+    },
+    "source": "Lasker Foundation — Gut Feeling",
+    "sourceUrl": "https://laskerfoundation.org/gut-feeling/",
+    "_evidence": "The only person in the world at that time who could make an informed consent about the risk of swallowing the Helicobacter was me."
+  },
+  {
+    "id": "mito-diez-por-ciento-cerebro",
+    "category": "ciencia",
+    "question": {
+      "es": "¿De dónde sale la idea de que solo usamos el 10 % del cerebro?",
+      "en": "Where does the idea that we only use 10% of our brain actually come from?"
+    },
+    "answer": {
+      "es": "De ningún estudio real: los escáneres muestran actividad repartida por todo el cerebro incluso en tareas sencillas.",
+      "en": "From no real study at all — brain scans show activity spread across the whole brain even during simple tasks."
+    },
+    "detail": {
+      "es": "El cerebro consume una quinta parte de la energía del cuerpo entero con solo un 2 % de su peso, así que evolutivamente no tendría sentido arrastrar ese gasto para dejar el 90 % apagado. El origen del mito parece estar en frases mal citadas de psicólogos de principios del siglo XX, repetidas tantas veces que acabaron sonando a dato.",
+      "en": "The brain burns a fifth of the whole body's energy while making up just 2% of its weight, so evolutionarily it would make no sense to carry that cost while leaving 90% switched off. The myth's origin seems to trace back to misquoted lines from early 20th-century psychologists, repeated so often they started to sound like data."
+    },
+    "source": "Wikipedia — Ten-percent-of-the-brain myth",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ten-percent-of-the-brain_myth",
+    "_evidence": "The popular notion that large parts of the brain remain unused, and could subsequently be 'activated', rests in folklore and not science."
+  },
+  {
+    "id": "rayos-n-autoengano",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Puede un físico serio ver con sus propios ojos algo que sencillamente no está ahí?",
+      "en": "Can a serious physicist actually see something with his own eyes that simply isn't there?"
+    },
+    "answer": {
+      "es": "Pasó de verdad: en 1903 un físico francés anunció unos «rayos N» que ni existían.",
+      "en": "It actually happened: in 1903 a French physicist announced \"N-rays\" that didn't even exist."
+    },
+    "detail": {
+      "es": "Unos 120 científicos llegaron a publicar 300 artículos afirmando haber detectado esos rayos. El estadounidense Robert Wood viajó a Francia, y durante una demostración a oscuras retiró en secreto el prisma esencial del aparato: los investigadores siguieron «viendo» los rayos igual. Nunca hubo rayos N; solo la expectativa de encontrarlos.",
+      "en": "Around 120 scientists went as far as publishing 300 papers claiming to have detected these rays. American physicist Robert Wood traveled to France, and during a darkened demonstration secretly removed the apparatus's essential prism — the researchers went right on \"seeing\" the rays anyway. There were never any N-rays; only the expectation of finding them."
+    },
+    "source": "Wikipedia — N-ray",
+    "sourceUrl": "https://en.wikipedia.org/wiki/N-ray",
+    "_evidence": "In the darkened room during Blondlot's demonstration, Wood surreptitiously removed an essential prism from the experimental apparatus, yet the experimenters still said that they observed N-rays."
+  },
+  {
+    "id": "planeta-vulcano-nunca-existio",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Llegó a tener nombre oficial un planeta que resultó no existir jamás?",
+      "en": "Did a planet that turned out never to exist actually get an official name?"
+    },
+    "answer": {
+      "es": "Sí, Vulcano: un mundo entre el Sol y Mercurio que astrónomos serios dieron por real durante más de medio siglo.",
+      "en": "Yes — Vulcan, a world between the Sun and Mercury that serious astronomers took as real for more than half a century."
+    },
+    "detail": {
+      "es": "En 1859 el astrónomo Le Verrier —el mismo que había predicho la existencia de Neptuno con solo cálculos— notó que Mercurio no giraba exactamente como predecía la gravedad newtoniana, y propuso que un planeta oculto lo explicaba. Décadas de búsquedas nunca encontraron nada, hasta que en 1915 la relatividad general de Einstein explicó la órbita de Mercurio sin necesitar ningún planeta extra.",
+      "en": "In 1859, astronomer Le Verrier — the same man who had predicted Neptune's existence from calculations alone — noticed Mercury wasn't orbiting exactly as Newtonian gravity predicted, and proposed a hidden planet as the explanation. Decades of searches never found a thing, until in 1915 Einstein's general relativity accounted for Mercury's orbit without needing any extra planet."
+    },
+    "source": "Smithsonian Magazine — Why Everyone Went on a Wild Goose Chase Looking for the Planet Vulcan",
+    "sourceUrl": "https://www.smithsonianmag.com/smart-news/why-everyone-went-wild-goose-chase-looking-planet-vulcan-180964822/",
+    "_evidence": "His new theory correctly provides what astronomers call the table for Mercury, accurately describing how it moves around the sun."
+  },
+  {
+    "id": "palomitas-presion-vapor",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Qué hace que un grano de maíz explote al calentarlo y no simplemente se tueste?",
+      "en": "What makes a corn kernel explode when heated instead of just toasting?"
+    },
+    "answer": {
+      "es": "El agua de dentro, atrapada bajo una cáscara casi hermética, que se convierte en vapor a presión creciente.",
+      "en": "The water inside it, trapped under an almost airtight hull, turning into steam under building pressure."
+    },
+    "detail": {
+      "es": "Cada grano de maíz para palomitas guarda alrededor de un 14 % de agua bajo una cubierta especialmente resistente. Al calentarse esa agua se vuelve vapor que no tiene por dónde salir, y la presión sube hasta que a unos 180 °C la cáscara cede de golpe: el almidón del interior se expande de inmediato y el grano se vuelve del revés.",
+      "en": "Each popcorn kernel holds about 14% water under an unusually tough hull. As it heats up, that water turns to steam with nowhere to escape, and pressure builds until, at around 180°C (355°F), the hull suddenly gives way: the starch inside expands instantly and the kernel turns itself inside out."
+    },
+    "source": "Scientific American — Explore the \"POP\" in Popcorn",
+    "sourceUrl": "https://www.scientificamerican.com/article/explore-the-pop-in-popcorn/",
+    "_evidence": "Once the pressure gets high enough and the temperature reaches about 180 degrees Celsius (355 degrees Fahrenheit), the kernel hull bursts and the popcorn is turned inside out."
+  },
+  {
+    "id": "pan-duro-no-es-solo-secarse",
+    "category": "ciencia",
+    "question": {
+      "es": "Cuando el pan se pone duro, ¿es solo porque ha perdido agua?",
+      "en": "When bread goes stale and hard, is it simply because it lost water?"
+    },
+    "answer": {
+      "es": "No: el pan duro puede conservar casi la misma agua que el recién hecho, solo que atrapada de otra forma.",
+      "en": "No — stale bread can hold almost as much water as fresh bread, just trapped differently."
+    },
+    "detail": {
+      "es": "Al hornear, el calor desordena las moléculas de almidón; al enfriarse y pasar los días, esas moléculas se reordenan poco a poco en una estructura más compacta y expulsan agua hacia los huecos entre ellas, endureciendo la miga sin que el pan se haya secado de verdad. Por eso calentarlo a 60 °C deshace ese reordenamiento y lo devuelve, aunque sea un rato, a algo parecido a recién hecho.",
+      "en": "During baking, heat scrambles the starch molecules; as the loaf cools over the following days, those molecules gradually settle back into a more compact structure and push water out into the gaps between them, hardening the crumb without the bread actually drying out. That's why reheating it to 60°C undoes that rearrangement and briefly brings it back to something like fresh."
+    },
+    "source": "Wikipedia — Staling",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Staling",
+    "_evidence": "migration of moisture from the starch granules into the interstitial spaces, degelatinizing the starch."
+  },
+  {
+    "id": "llama-amarilla-azul-oxigeno",
+    "category": "ciencia",
+    "question": {
+      "es": "¿Por qué la llama de una vela es amarilla y la de un mechero de cocina es azul?",
+      "en": "Why is a candle flame yellow while a kitchen lighter's flame is blue?"
+    },
+    "answer": {
+      "es": "Porque la vela quema con poco oxígeno y deja partículas de carbón brillando al rojo, y el mechero quema casi todo el combustible.",
+      "en": "Because the candle burns with little oxygen and leaves carbon particles glowing red-hot, while the lighter burns almost all its fuel."
+    },
+    "detail": {
+      "es": "En la vela, la cera se descompone en diminutas partículas de hollín que el calor pone a brillar como ascuas, y ese resplandor incandescente es el amarillo que vemos. En un mechero de gas el combustible se mezcla mucho mejor con el aire antes de arder, se quema casi entero y apenas queda hollín; lo que se ve entonces es la luz azul que emiten las propias moléculas al arder, no partículas al rojo.",
+      "en": "In a candle, the wax breaks down into tiny soot particles that heat makes glow like embers, and that incandescent glow is the yellow we see. In a gas lighter, the fuel mixes far better with air before it burns, so it burns almost completely and leaves barely any soot; what you see then is the blue light the burning molecules themselves give off, not glowing particles."
+    },
+    "source": "Hong Kong Observatory — Why is candlelight yellow and gas-grill light blue?",
+    "sourceUrl": "https://www.hko.gov.hk/en/education/earth-science/optical-phenomena/00354-why-is-candlelight-yellow-and-gasgrill-light-blue.html",
+    "_evidence": "Lots of oxygen makes blue flames, while limited oxygen produces yellow flames."
+  },
+  {
+    "id": "plata-se-oscurece-azufre",
+    "category": "ciencia",
+    "question": {
+      "es": "Si la plata no se oxida con el oxígeno normal, ¿por qué se pone negra con el tiempo?",
+      "en": "If silver doesn't rust from ordinary oxygen, why does it turn black over time?"
+    },
+    "answer": {
+      "es": "Porque reacciona con trazas de azufre que flotan en el aire, no con el oxígeno.",
+      "en": "Because it reacts with trace amounts of sulfur floating in the air, not with oxygen."
+    },
+    "detail": {
+      "es": "El aire lleva cantidades mínimas de sulfuro de hidrógeno, procedentes de la contaminación, el huevo o hasta la piel, y la plata reacciona con él para formar sulfuro de plata, un compuesto negro que se deposita como una capa fina sobre la superficie. Cuanta más humedad hay en el ambiente, más rápido avanza la reacción.",
+      "en": "Air carries trace amounts of hydrogen sulfide from pollution, eggs, or even skin, and silver reacts with it to form silver sulfide, a black compound that builds up as a thin layer on the surface. The more humid the environment, the faster the reaction runs."
+    },
+    "source": "Compound Interest — Removing Tarnish from Silver",
+    "sourceUrl": "https://www.compoundchem.com/2013/12/16/removing-tarnish-silver/",
+    "_evidence": "Silver tarnishes in air to form a black coating of silver sulphide, which has the formula Ag2S."
+  },
+  {
+    "id": "espejo-no-invierte-arriba-abajo",
+    "category": "ciencia",
+    "question": {
+      "es": "Si un espejo te invierte izquierda y derecha, ¿por qué no te invierte arriba y abajo?",
+      "en": "A mirror swaps your left and right — so why doesn't it ever put your feet where your head should be?"
+    },
+    "answer": {
+      "es": "Porque en realidad no invierte izquierda-derecha: invierte delante-detrás, y esa inversión te la traduce tu propio cerebro.",
+      "en": "Because it doesn't actually flip left-right at all: it flips front-to-back, and it's your own brain that translates that into a left-right swap."
+    },
+    "detail": {
+      "es": "Un espejo devuelve la luz por donde llegó, así que lo único que invierte de verdad es la profundidad: lo que estaba de cara a él queda mirando hacia afuera. Estás acostumbrado a que, para ver algo desde el lado contrario, tengas que rodearlo girando tu cuerpo —y eso sí cambia tu izquierda por tu derecha—; el espejo consigue el mismo efecto sin que gires nada, y tu cerebro interpreta ese atajo como una inversión lateral.",
+      "en": "A mirror sends light back the way it came, so the only thing it truly flips is depth: whatever faced it now faces outward. You're used to walking around an object to see its other side, which really does swap your left for your right; a mirror produces the same effect without you turning at all, and your brain reads that shortcut as a left-right flip."
+    },
+    "source": "West Texas A&M University — Science Questions with Surprising Answers",
+    "sourceUrl": "https://www.wtamu.edu/~cbaird/sq/2013/01/05/why-do-mirrors-flip-left-to-right-and-not-up-to-down/",
+    "_evidence": "Turning your head flips images from left to right, but we don't usually notice because we unconsciously undo the effect by flipping the object as well."
+  }
+]

@@ -1,0 +1,242 @@
+{
+  "@@locale": "es",
+
+  "appTitle": "Ajá",
+  "@appTitle": {
+    "description": "Nombre visible de la aplicación"
+  },
+
+  "commonCancel": "Cancelar",
+  "commonContinue": "Continuar",
+  "commonNotNow": "Ahora no",
+  "commonRetry": "Reintentar",
+  "commonClose": "Cerrar",
+  "commonErrorGeneric": "Algo ha salido mal. Inténtalo de nuevo.",
+
+  "deckHintReveal": "Desliza a la derecha para ver la respuesta",
+  "@deckHintReveal": {
+    "description": "Pista en el frente de la tarjeta"
+  },
+  "deckHintNext": "Desliza a la izquierda para pasar a la siguiente",
+  "deckAnswerLabel": "La respuesta",
+  "deckSource": "Fuente: {source}",
+  "@deckSource": {
+    "placeholders": {
+      "source": {
+        "type": "String"
+      }
+    }
+  },
+  "deckSourceOpenError": "No hemos podido abrir la fuente.",
+  "@deckSourceOpenError": {
+    "description": "Aviso cuando el enlace de la fuente no abre ningún navegador"
+  },
+  "deckShowAnswer": "Ver respuesta",
+  "deckHideAnswer": "Ocultar",
+  "deckNext": "Siguiente",
+  "deckFinishedTitle": "Te has quedado sin preguntas",
+  "deckFinishedBody": "Has visto todas las de esta categoría. Rebarájalas, propón una tuya o pide más.",
+  "deckRestart": "Reiniciar deck",
+
+  "deckContribute": "Aportar",
+  "@deckContribute": {
+    "description": "Botón que abre el formulario para proponer una pregunta"
+  },
+  "deckAskForMore": "Pedir más",
+  "@deckAskForMore": {
+    "description": "Botón de corazones: el usuario pide más contenido"
+  },
+  "contributeTitle": "Aporta una pregunta",
+  "contributeIntro": "Si se te ocurre un dato raro que merezca estar aquí, escríbelo. Lo revisamos a mano antes de publicarlo.",
+  "contributeQuestionLabel": "La pregunta",
+  "contributeQuestionHint": "¿Por qué…?",
+  "contributeAnswerLabel": "La respuesta",
+  "contributeAnswerHint": "Porque…",
+  "contributeSourceLabel": "Fuente (opcional)",
+  "contributeSourceHint": "Dónde lo has leído",
+  "contributeSend": "Enviar",
+  "contributeRequired": "Escribe un poco más.",
+  "contributeThanks": "¡Gracias! La leeremos antes de publicarla.",
+  "contributeTooSoon": "Espera un momento antes de enviar otra.",
+  "contributeInvalid": "Repasa la pregunta y la respuesta.",
+  "deckLoadError": "No hemos podido cargar las preguntas.",
+
+  "deckShare": "Compartir la pregunta",
+  "@deckShare": {
+    "description": "Botón y gesto para compartir la tarjeta"
+  },
+  "deckShareCta": "¿Sabes la respuesta?",
+  "@deckShareCta": {
+    "description": "Gancho impreso bajo la pregunta en la imagen compartida"
+  },
+  "deckShareTagline": "Datos curiosos raros",
+  "@deckShareTagline": {
+    "description": "Subtítulo de marca al pie de la imagen compartida"
+  },
+  "deckShareMessage": "{question}\n\n¿Sabes la respuesta? La tienes en Ajá.",
+  "@deckShareMessage": {
+    "description": "Texto que acompaña a la imagen en la hoja de compartir",
+    "placeholders": {
+      "question": {
+        "type": "String"
+      }
+    }
+  },
+  "deckShareError": "No hemos podido preparar la imagen para compartir.",
+  "deckCategoryAll": "Todas",
+
+  "categoryBody": "Cuerpo humano",
+  "categoryLanguage": "Lenguaje",
+  "categoryHistory": "Historia",
+  "categoryScience": "Ciencia cotidiana",
+
+  "adLabel": "Publicidad",
+
+  "favoritesTitle": "Guardadas",
+  "favoritesAdd": "Guardar esta tarjeta",
+  "@favoritesAdd": {
+    "description": "Tooltip del botón de guardar; el gesto equivalente es deslizar hacia arriba"
+  },
+  "favoritesRemove": "Quitar de guardadas",
+  "favoritesSaved": "Tarjeta guardada",
+  "favoritesEmptyTitle": "Todavía no has guardado nada",
+  "favoritesEmptyBody": "Desliza una tarjeta hacia arriba para guardarla aquí.",
+
+  "premiumFeatureTitle": "Función premium",
+  "premiumFeatureBody": "Guardar tarjetas forma parte de «Quitar anuncios»: un único pago, sin suscripción.",
+  "premiumFeatureCta": "Ver qué incluye",
+
+
+  "goalsTitle": "Progreso",
+  "@goalsTitle": {
+    "description": "Título de la pantalla de objetivos y rangos"
+  },
+  "goalsRingTooltip": "Objetivo de hoy: {learned} de {target}",
+  "@goalsRingTooltip": {
+    "description": "Tooltip del anillo de la barra superior; es lo que lee el lector de pantalla",
+    "placeholders": {
+      "learned": { "type": "int" },
+      "target": { "type": "int" }
+    }
+  },
+  "goalsTodayTitle": "Objetivo de hoy",
+  "goalsTodayProgress": "{learned} de {target} datos",
+  "@goalsTodayProgress": {
+    "placeholders": {
+      "learned": { "type": "int" },
+      "target": { "type": "int" }
+    }
+  },
+  "goalsTodayDone": "Objetivo cumplido: +{points} puntos",
+  "@goalsTodayDone": {
+    "placeholders": {
+      "points": { "type": "int" }
+    }
+  },
+  "goalsTodayPending": "{remaining, plural, =1{Te falta 1} other{Te faltan {remaining}}}",
+  "@goalsTodayPending": {
+    "placeholders": {
+      "remaining": { "type": "num" }
+    }
+  },
+  "goalsPoints": "{points, plural, =1{1 punto} other{{points} puntos}}",
+  "@goalsPoints": {
+    "placeholders": {
+      "points": { "type": "num" }
+    }
+  },
+  "goalsNextRank": "{points, plural, =1{1 punto para {rank}} other{{points} puntos para {rank}}}",
+  "@goalsNextRank": {
+    "description": "Cuánto falta para el siguiente rango",
+    "placeholders": {
+      "points": { "type": "num" },
+      "rank": { "type": "String" }
+    }
+  },
+  "goalsMaxRank": "Has llegado al último rango. A partir de aquí solo queda mantenerlo.",
+  "goalsRankLadder": "Rangos",
+  "goalsRankPointsShort": "{points} pts",
+  "@goalsRankPointsShort": {
+    "placeholders": {
+      "points": { "type": "int" }
+    }
+  },
+  "goalsHowItWorks": "Cada día trae un objetivo distinto. Un dato cuenta cuando le das la vuelta a la tarjeta y lees la respuesta, y el mismo dato solo cuenta una vez al día. Al cumplir el objetivo sumas tantos puntos como datos pedía ese día, y los puntos son los que suben de rango.",
+  "goalsReachedSnack": "¡Objetivo del día cumplido! +{points} puntos",
+  "@goalsReachedSnack": {
+    "placeholders": {
+      "points": { "type": "int" }
+    }
+  },
+  "goalsRankUpTitle": "Rango nuevo",
+  "goalsRankUpBody": "Has cumplido el objetivo del día (+{points} puntos) y con eso subes de rango.",
+  "@goalsRankUpBody": {
+    "placeholders": {
+      "points": { "type": "int" }
+    }
+  },
+  "goalsSeeProgress": "Ver progreso",
+
+  "rankCurious": "Curioso",
+  "@rankCurious": {
+    "description": "Rango 1 de 6"
+  },
+  "rankInquisitive": "Preguntón",
+  "rankKnowItAll": "Sabelotodo",
+  "rankScholar": "Erudito",
+  "rankEncyclopedia": "Enciclopedia",
+  "rankOracle": "Oráculo",
+
+  "settingsNotifications": "Recordatorios",
+  "@settingsNotifications": {
+    "description": "Cabecera de la sección de notificaciones en Ajustes"
+  },
+  "settingsDailyQuestion": "Pregunta del día",
+  "settingsDailyQuestionBody": "Una pregunta curiosa cada tarde. Al tocarla, se pone la primera del mazo.",
+  "settingsDailyQuestionDenied": "Actívalas en los ajustes del sistema para recibir la pregunta del día.",
+  "dailyQuestionNotificationTitle": "Pregunta del día",
+  "@dailyQuestionNotificationTitle": {
+    "description": "Título de la notificación diaria"
+  },
+  "settingsTitle": "Ajustes",
+  "settingsAppearance": "Apariencia",
+  "settingsThemeMode": "Tema",
+  "settingsThemeSystem": "Sistema",
+  "settingsThemeLight": "Claro",
+  "settingsThemeDark": "Oscuro",
+  "settingsMonetization": "Suscripción y anuncios",
+  "settingsRemoveAds": "Quitar anuncios",
+  "settingsRestorePurchases": "Restaurar compras",
+  "settingsRestoreDone": "Compras restauradas",
+  "settingsPrivacyOptions": "Opciones de privacidad",
+  "settingsRateApp": "Valorar la aplicación",
+  "settingsAbout": "Acerca de",
+  "settingsVersion": "Versión {version}",
+  "@settingsVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+
+  "premiumActive": "Premium activo. Sin anuncios.",
+  "paywallTitle": "Quitar anuncios",
+  "paywallHeadline": "Lee sin interrupciones",
+  "paywallBenefitNoAds": "Ni tarjetas de publicidad ni anuncios a pantalla completa",
+  "paywallBenefitFavorites": "Guardas las tarjetas que quieras y las relees cuando quieras",
+  "paywallBenefitSupport": "Apoyas la investigación y la redacción de cada dato",
+  "paywallBenefitOneTime": "Pago único, sin suscripción",
+  "paywallBuy": "Comprar por {price}",
+  "@paywallBuy": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "paywallRestore": "Ya lo compré",
+  "paywallUnavailable": "La tienda no está disponible ahora mismo.",
+  "paywallPending": "Procesando la compra…",
+  "paywallError": "No se ha podido completar la compra."
+}
