@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:aja/core/config/ad_config.dart';
-import 'package:aja/core/utils/app_logger.dart';
+import 'package:chismosa/core/config/ad_config.dart';
+import 'package:chismosa/core/utils/app_logger.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 /// Google UMP (User Messaging Platform) wrapper.

@@ -8,7 +8,7 @@
 
 library;
 
-import 'package:aja/features/goals/domain/daily_goal.dart';
+import 'package:chismosa/features/goals/domain/daily_goal.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

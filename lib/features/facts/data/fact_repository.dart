@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:aja/core/errors/app_exception.dart';
-import 'package:aja/core/utils/app_logger.dart';
-import 'package:aja/features/facts/domain/fact.dart';
-import 'package:aja/features/facts/domain/remote_catalogue.dart';
+import 'package:chismosa/core/errors/app_exception.dart';
+import 'package:chismosa/core/utils/app_logger.dart';
+import 'package:chismosa/features/facts/domain/fact.dart';
+import 'package:chismosa/features/facts/domain/remote_catalogue.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 

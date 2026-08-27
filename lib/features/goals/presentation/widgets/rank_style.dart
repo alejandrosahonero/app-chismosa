@@ -1,5 +1,5 @@
-import 'package:aja/core/extensions/build_context_x.dart';
-import 'package:aja/features/goals/domain/rank.dart';
+import 'package:chismosa/core/extensions/build_context_x.dart';
+import 'package:chismosa/features/goals/domain/rank.dart';
 import 'package:flutter/material.dart';
 
 /// Name and icon for each rank, kept out of the domain the same way

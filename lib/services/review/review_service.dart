@@ -1,6 +1,6 @@
-import 'package:aja/core/config/app_config.dart';
-import 'package:aja/core/utils/app_logger.dart';
-import 'package:aja/services/storage/key_value_store.dart';
+import 'package:chismosa/core/config/app_config.dart';
+import 'package:chismosa/core/utils/app_logger.dart';
+import 'package:chismosa/services/storage/key_value_store.dart';
 import 'package:in_app_review/in_app_review.dart';
 
 /// In-app review prompt (Google Play native dialog).

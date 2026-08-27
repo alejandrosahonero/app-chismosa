@@ -1,7 +1,7 @@
-import 'package:aja/core/routing/app_router.dart';
-import 'package:aja/core/theme/app_theme.dart';
-import 'package:aja/core/theme/theme_controller.dart';
-import 'package:aja/l10n/generated/app_localizations.dart';
+import 'package:chismosa/core/routing/app_router.dart';
+import 'package:chismosa/core/theme/app_theme.dart';
+import 'package:chismosa/core/theme/theme_controller.dart';
+import 'package:chismosa/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';

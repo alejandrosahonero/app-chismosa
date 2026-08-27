@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:math' as math;
 
-import 'package:aja/core/config/ad_config.dart';
-import 'package:aja/core/config/app_config.dart';
-import 'package:aja/core/utils/app_logger.dart';
-import 'package:aja/services/ads/consent_service.dart';
+import 'package:chismosa/core/config/ad_config.dart';
+import 'package:chismosa/core/config/app_config.dart';
+import 'package:chismosa/core/utils/app_logger.dart';
+import 'package:chismosa/services/ads/consent_service.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 /// Result of an attempt to show a full screen ad.

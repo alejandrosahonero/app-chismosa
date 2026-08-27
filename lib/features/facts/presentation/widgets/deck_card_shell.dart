@@ -1,4 +1,4 @@
-import 'package:aja/core/theme/app_spacing.dart';
+import 'package:chismosa/core/theme/app_spacing.dart';
 import 'package:flutter/material.dart';
 
 /// Common frame for everything the deck renders.

@@ -1,5 +1,5 @@
-import 'package:aja/core/theme/app_colors.dart';
-import 'package:aja/core/theme/app_spacing.dart';
+import 'package:chismosa/core/theme/app_colors.dart';
+import 'package:chismosa/core/theme/app_spacing.dart';
 import 'package:flutter/material.dart';
 
 /// Material 3 themes for the app.

@@ -1,5 +1,5 @@
-import 'package:aja/services/ads/ads_service.dart';
-import 'package:aja/services/ads/consent_service.dart';
+import 'package:chismosa/services/ads/ads_service.dart';
+import 'package:chismosa/services/ads/consent_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 /// Consent is not granted and the SDK was never initialized, which is exactly

@@ -1,5 +1,5 @@
-import 'package:aja/core/theme/app_colors.dart';
-import 'package:aja/l10n/generated/app_localizations.dart';
+import 'package:chismosa/core/theme/app_colors.dart';
+import 'package:chismosa/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 /// Shorthands for the three lookups that appear in almost every widget.

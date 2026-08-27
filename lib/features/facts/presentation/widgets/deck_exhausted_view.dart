@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:aja/core/extensions/build_context_x.dart';
-import 'package:aja/core/theme/app_spacing.dart';
-import 'package:aja/core/widgets/empty_state.dart';
-import 'package:aja/features/facts/presentation/providers/contribution_providers.dart';
-import 'package:aja/features/facts/presentation/providers/deck_controller.dart';
-import 'package:aja/features/facts/presentation/widgets/contribute_dialog.dart';
-import 'package:aja/features/facts/presentation/widgets/heart_burst.dart';
+import 'package:chismosa/core/extensions/build_context_x.dart';
+import 'package:chismosa/core/theme/app_spacing.dart';
+import 'package:chismosa/core/widgets/empty_state.dart';
+import 'package:chismosa/features/facts/presentation/providers/contribution_providers.dart';
+import 'package:chismosa/features/facts/presentation/providers/deck_controller.dart';
+import 'package:chismosa/features/facts/presentation/widgets/contribute_dialog.dart';
+import 'package:chismosa/features/facts/presentation/widgets/heart_burst.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

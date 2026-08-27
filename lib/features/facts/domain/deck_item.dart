@@ -1,5 +1,5 @@
-import 'package:aja/core/config/app_config.dart';
-import 'package:aja/features/facts/domain/fact.dart';
+import 'package:chismosa/core/config/app_config.dart';
+import 'package:chismosa/features/facts/domain/fact.dart';
 import 'package:flutter/foundation.dart';
 
 /// Something the deck can render as a card.

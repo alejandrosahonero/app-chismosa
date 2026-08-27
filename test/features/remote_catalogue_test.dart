@@ -5,8 +5,8 @@
 /// needed — just hand-built [Fact] fixtures.
 library;
 
-import 'package:aja/features/facts/domain/fact.dart';
-import 'package:aja/features/facts/domain/remote_catalogue.dart';
+import 'package:chismosa/features/facts/domain/fact.dart';
+import 'package:chismosa/features/facts/domain/remote_catalogue.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 /// Helper to build a test fact with the given id. All fields are filled with

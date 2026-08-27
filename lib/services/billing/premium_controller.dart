@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:aja/core/utils/app_logger.dart';
-import 'package:aja/services/billing/premium_service.dart';
-import 'package:aja/services/billing/premium_state.dart';
-import 'package:aja/services/storage/storage_providers.dart';
+import 'package:chismosa/core/utils/app_logger.dart';
+import 'package:chismosa/services/billing/premium_service.dart';
+import 'package:chismosa/services/billing/premium_state.dart';
+import 'package:chismosa/services/storage/storage_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 

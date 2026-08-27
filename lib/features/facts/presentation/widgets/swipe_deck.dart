@@ -1,8 +1,8 @@
 import 'dart:math' as math;
 
-import 'package:aja/core/config/app_config.dart';
-import 'package:aja/features/facts/domain/deck_item.dart';
-import 'package:aja/features/facts/presentation/widgets/deck_swipe_progress.dart';
+import 'package:chismosa/core/config/app_config.dart';
+import 'package:chismosa/features/facts/domain/deck_item.dart';
+import 'package:chismosa/features/facts/presentation/widgets/deck_swipe_progress.dart';
 import 'package:flutter/material.dart';
 
 /// Tinder-style card stack.

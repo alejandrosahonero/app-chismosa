@@ -5,8 +5,8 @@
 /// fact list lengths, including edge cases.
 library;
 
-import 'package:aja/features/facts/domain/deck_item.dart';
-import 'package:aja/features/facts/domain/fact.dart';
+import 'package:chismosa/features/facts/domain/deck_item.dart';
+import 'package:chismosa/features/facts/domain/fact.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 /// Helper to build a test fact with the given ID. All fields are filled with

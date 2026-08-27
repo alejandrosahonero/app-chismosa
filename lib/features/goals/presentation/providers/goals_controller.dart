@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:aja/features/goals/domain/daily_goal.dart';
-import 'package:aja/features/goals/domain/goals_state.dart';
-import 'package:aja/features/goals/domain/rank.dart';
-import 'package:aja/services/storage/key_value_store.dart';
-import 'package:aja/services/storage/storage_providers.dart';
+import 'package:chismosa/features/goals/domain/daily_goal.dart';
+import 'package:chismosa/features/goals/domain/goals_state.dart';
+import 'package:chismosa/features/goals/domain/rank.dart';
+import 'package:chismosa/services/storage/key_value_store.dart';
+import 'package:chismosa/services/storage/storage_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// The clock the goal reads.

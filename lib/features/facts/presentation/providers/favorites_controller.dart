@@ -1,7 +1,7 @@
-import 'package:aja/features/facts/domain/fact.dart';
-import 'package:aja/features/facts/presentation/providers/facts_providers.dart';
-import 'package:aja/services/billing/premium_controller.dart';
-import 'package:aja/services/storage/storage_providers.dart';
+import 'package:chismosa/features/facts/domain/fact.dart';
+import 'package:chismosa/features/facts/presentation/providers/facts_providers.dart';
+import 'package:chismosa/services/billing/premium_controller.dart';
+import 'package:chismosa/services/storage/storage_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Ids of the saved cards, oldest first.

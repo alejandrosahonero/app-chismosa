@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:aja/features/facts/domain/fact.dart';
+import 'package:chismosa/features/facts/domain/fact.dart';
 import 'package:flutter/foundation.dart';
 
 /// A catalogue downloaded after the app shipped.

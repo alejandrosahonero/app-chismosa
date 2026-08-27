@@ -1,5 +1,5 @@
-import 'package:aja/core/errors/app_exception.dart';
-import 'package:aja/core/utils/app_logger.dart';
+import 'package:chismosa/core/errors/app_exception.dart';
+import 'package:chismosa/core/utils/app_logger.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 /// Encrypted key-value storage for sensitive data (purchase tokens, premium

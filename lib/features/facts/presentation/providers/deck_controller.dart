@@ -1,11 +1,11 @@
 import 'dart:math';
 
-import 'package:aja/features/facts/domain/deck_item.dart';
-import 'package:aja/features/facts/domain/fact.dart';
-import 'package:aja/features/facts/presentation/providers/facts_providers.dart';
-import 'package:aja/services/billing/premium_controller.dart';
-import 'package:aja/services/storage/key_value_store.dart';
-import 'package:aja/services/storage/storage_providers.dart';
+import 'package:chismosa/features/facts/domain/deck_item.dart';
+import 'package:chismosa/features/facts/domain/fact.dart';
+import 'package:chismosa/features/facts/presentation/providers/facts_providers.dart';
+import 'package:chismosa/services/billing/premium_controller.dart';
+import 'package:chismosa/services/storage/key_value_store.dart';
+import 'package:chismosa/services/storage/storage_providers.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

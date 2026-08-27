@@ -1,7 +1,7 @@
 {
   "@@locale": "es",
 
-  "appTitle": "Ajá",
+  "appTitle": "Chismosa",
   "@appTitle": {
     "description": "Nombre visible de la aplicación"
   },
@@ -73,7 +73,7 @@
   "@deckShareTagline": {
     "description": "Subtítulo de marca al pie de la imagen compartida"
   },
-  "deckShareMessage": "{question}\n\n¿Sabes la respuesta? La tienes en Ajá.",
+  "deckShareMessage": "{question}\n\n¿Sabes la respuesta? La tienes en Chismosa.",
   "@deckShareMessage": {
     "description": "Texto que acompaña a la imagen en la hoja de compartir",
     "placeholders": {

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:aja/core/config/contribution_config.dart';
+import 'package:chismosa/core/config/contribution_config.dart';
 import 'package:flutter/foundation.dart';
 
 /// Why a contribution was refused before it ever left the device.

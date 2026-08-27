@@ -1,5 +1,5 @@
-import 'package:aja/core/extensions/build_context_x.dart';
-import 'package:aja/core/routing/app_routes.dart';
+import 'package:chismosa/core/extensions/build_context_x.dart';
+import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

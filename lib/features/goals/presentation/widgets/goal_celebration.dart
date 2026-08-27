@@ -1,9 +1,9 @@
-import 'package:aja/core/extensions/build_context_x.dart';
-import 'package:aja/core/routing/app_routes.dart';
-import 'package:aja/core/theme/app_spacing.dart';
-import 'package:aja/features/goals/domain/goals_state.dart';
-import 'package:aja/features/goals/domain/rank.dart';
-import 'package:aja/features/goals/presentation/widgets/rank_style.dart';
+import 'package:chismosa/core/extensions/build_context_x.dart';
+import 'package:chismosa/core/routing/app_routes.dart';
+import 'package:chismosa/core/theme/app_spacing.dart';
+import 'package:chismosa/features/goals/domain/goals_state.dart';
+import 'package:chismosa/features/goals/domain/rank.dart';
+import 'package:chismosa/features/goals/presentation/widgets/rank_style.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

@@ -1,9 +1,9 @@
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
-import 'package:aja/core/errors/app_exception.dart';
-import 'package:aja/core/theme/app_colors.dart';
-import 'package:aja/features/facts/domain/fact.dart';
+import 'package:chismosa/core/errors/app_exception.dart';
+import 'package:chismosa/core/theme/app_colors.dart';
+import 'package:chismosa/features/facts/domain/fact.dart';
 import 'package:flutter/material.dart';
 
 /// Every string that goes on the shared image, already resolved.

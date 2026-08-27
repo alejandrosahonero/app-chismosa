@@ -1,15 +1,15 @@
 import 'dart:async';
 
-import 'package:aja/app.dart';
-import 'package:aja/core/utils/app_logger.dart';
-import 'package:aja/features/facts/presentation/providers/facts_providers.dart';
-import 'package:aja/l10n/generated/app_localizations.dart';
-import 'package:aja/services/ads/ads_providers.dart';
-import 'package:aja/services/billing/premium_controller.dart';
-import 'package:aja/services/notifications/daily_question_service.dart';
-import 'package:aja/services/notifications/notification_providers.dart';
-import 'package:aja/services/review/review_providers.dart';
-import 'package:aja/services/storage/storage_providers.dart';
+import 'package:chismosa/app.dart';
+import 'package:chismosa/core/utils/app_logger.dart';
+import 'package:chismosa/features/facts/presentation/providers/facts_providers.dart';
+import 'package:chismosa/l10n/generated/app_localizations.dart';
+import 'package:chismosa/services/ads/ads_providers.dart';
+import 'package:chismosa/services/billing/premium_controller.dart';
+import 'package:chismosa/services/notifications/daily_question_service.dart';
+import 'package:chismosa/services/notifications/notification_providers.dart';
+import 'package:chismosa/services/review/review_providers.dart';
+import 'package:chismosa/services/storage/storage_providers.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

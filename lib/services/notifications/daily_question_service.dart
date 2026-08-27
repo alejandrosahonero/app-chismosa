@@ -1,9 +1,9 @@
 import 'dart:math';
 
-import 'package:aja/core/config/app_config.dart';
-import 'package:aja/core/utils/app_logger.dart';
-import 'package:aja/features/facts/domain/fact.dart';
-import 'package:aja/services/storage/key_value_store.dart';
+import 'package:chismosa/core/config/app_config.dart';
+import 'package:chismosa/core/utils/app_logger.dart';
+import 'package:chismosa/features/facts/domain/fact.dart';
+import 'package:chismosa/services/storage/key_value_store.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';

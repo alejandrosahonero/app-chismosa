@@ -1,7 +1,7 @@
 library;
 
-import 'package:aja/features/facts/data/fact_repository.dart';
-import 'package:aja/features/facts/domain/fact.dart';
+import 'package:chismosa/features/facts/data/fact_repository.dart';
+import 'package:chismosa/features/facts/domain/fact.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 /// Guards the shipped catalogue itself, not just the parser.

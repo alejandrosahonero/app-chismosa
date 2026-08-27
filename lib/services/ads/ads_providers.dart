@@ -1,6 +1,6 @@
-import 'package:aja/services/ads/ads_service.dart';
-import 'package:aja/services/ads/consent_service.dart';
-import 'package:aja/services/billing/premium_controller.dart';
+import 'package:chismosa/services/ads/ads_service.dart';
+import 'package:chismosa/services/ads/consent_service.dart';
+import 'package:chismosa/services/billing/premium_controller.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final Provider<ConsentService> consentServiceProvider =

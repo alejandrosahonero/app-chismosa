@@ -1,8 +1,8 @@
-import 'package:aja/core/routing/app_router.dart';
-import 'package:aja/core/routing/app_routes.dart';
-import 'package:aja/features/facts/presentation/providers/facts_providers.dart';
-import 'package:aja/services/notifications/daily_question_service.dart';
-import 'package:aja/services/storage/storage_providers.dart';
+import 'package:chismosa/core/routing/app_router.dart';
+import 'package:chismosa/core/routing/app_routes.dart';
+import 'package:chismosa/features/facts/presentation/providers/facts_providers.dart';
+import 'package:chismosa/services/notifications/daily_question_service.dart';
+import 'package:chismosa/services/storage/storage_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Kept alive: it owns the plugin instance and the tap callback, which have to

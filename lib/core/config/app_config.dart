@@ -15,7 +15,7 @@ abstract final class AppConfig {
 
   // --- Ad pacing ----------------------------------------------------------
 
-  /// Number of "value actions" between two interstitials. In Ajá a value action
+  /// Number of "value actions" between two interstitials. In Chismosa a value action
   /// is one card swiped away, so this is "an interstitial every 9 cards".
   ///
   /// Combined with [minIntervalBetweenInterstitials]: BOTH conditions must be

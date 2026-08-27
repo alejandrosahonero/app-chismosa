@@ -1,4 +1,4 @@
-package com.alejandrosahonero.aja
+package com.alejandrosahonero.chismosa
 
 import io.flutter.embedding.android.FlutterActivity
 

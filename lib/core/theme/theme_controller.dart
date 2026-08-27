@@ -1,4 +1,4 @@
-import 'package:aja/services/storage/storage_providers.dart';
+import 'package:chismosa/services/storage/storage_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

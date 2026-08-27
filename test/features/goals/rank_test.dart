@@ -1,7 +1,7 @@
 /// The rank ladder: thresholds, what comes next, and how the bar fills.
 library;
 
-import 'package:aja/features/goals/domain/rank.dart';
+import 'package:chismosa/features/goals/domain/rank.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

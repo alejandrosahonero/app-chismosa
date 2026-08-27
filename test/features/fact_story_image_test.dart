@@ -3,8 +3,8 @@ library;
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
-import 'package:aja/features/facts/data/fact_story_image.dart';
-import 'package:aja/features/facts/domain/fact.dart';
+import 'package:chismosa/features/facts/data/fact_story_image.dart';
+import 'package:chismosa/features/facts/domain/fact.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 /// The share image is the app's only marketing surface: every post is a 9:16
@@ -17,7 +17,7 @@ import 'package:flutter_test/flutter_test.dart';
 /// `tester.runAsync`) is required or the future never completes.
 
 const FactStoryLabels _labels = FactStoryLabels(
-  appName: 'Ajá',
+  appName: 'Chismosa',
   tagline: 'Datos curiosos raros',
   category: 'Ciencia',
   callToAction: '¿Sabes la respuesta?',

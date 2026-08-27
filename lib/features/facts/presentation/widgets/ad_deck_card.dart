@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:aja/core/config/app_config.dart';
-import 'package:aja/core/extensions/build_context_x.dart';
-import 'package:aja/core/routing/app_routes.dart';
-import 'package:aja/core/theme/app_spacing.dart';
-import 'package:aja/core/utils/app_logger.dart';
-import 'package:aja/features/facts/presentation/widgets/deck_card_shell.dart';
-import 'package:aja/services/ads/ads_providers.dart';
-import 'package:aja/services/ads/ads_service.dart';
+import 'package:chismosa/core/config/app_config.dart';
+import 'package:chismosa/core/extensions/build_context_x.dart';
+import 'package:chismosa/core/routing/app_routes.dart';
+import 'package:chismosa/core/theme/app_spacing.dart';
+import 'package:chismosa/core/utils/app_logger.dart';
+import 'package:chismosa/features/facts/presentation/widgets/deck_card_shell.dart';
+import 'package:chismosa/services/ads/ads_providers.dart';
+import 'package:chismosa/services/ads/ads_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';

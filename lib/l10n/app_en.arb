@@ -1,7 +1,7 @@
 {
   "@@locale": "en",
 
-  "appTitle": "Ajá",
+  "appTitle": "Chismosa",
 
   "commonCancel": "Cancel",
   "commonContinue": "Continue",
@@ -51,7 +51,7 @@
   "@deckShareTagline": {
     "description": "Brand subtitle at the foot of the shared image"
   },
-  "deckShareMessage": "{question}\n\nDo you know the answer? It is waiting in Ajá.",
+  "deckShareMessage": "{question}\n\nDo you know the answer? It is waiting in Chismosa.",
   "@deckShareMessage": {
     "description": "Text that accompanies the image in the share sheet",
     "placeholders": {

@@ -1,6 +1,6 @@
-import 'package:aja/core/config/billing_config.dart';
-import 'package:aja/core/utils/app_logger.dart';
-import 'package:aja/services/storage/secure_store.dart';
+import 'package:chismosa/core/config/billing_config.dart';
+import 'package:chismosa/core/utils/app_logger.dart';
+import 'package:chismosa/services/storage/secure_store.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
 /// Store plumbing for the non consumable "remove ads" product.

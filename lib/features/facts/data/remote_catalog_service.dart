@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:aja/core/config/remote_catalog_config.dart';
-import 'package:aja/core/utils/app_logger.dart';
-import 'package:aja/features/facts/domain/remote_catalogue.dart';
-import 'package:aja/services/storage/key_value_store.dart';
+import 'package:chismosa/core/config/remote_catalog_config.dart';
+import 'package:chismosa/core/utils/app_logger.dart';
+import 'package:chismosa/features/facts/domain/remote_catalogue.dart';
+import 'package:chismosa/services/storage/key_value_store.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';

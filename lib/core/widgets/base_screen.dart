@@ -1,4 +1,4 @@
-import 'package:aja/core/widgets/adaptive_banner_ad.dart';
+import 'package:chismosa/core/widgets/adaptive_banner_ad.dart';
 import 'package:flutter/material.dart';
 
 /// Standard screen shell for the app.

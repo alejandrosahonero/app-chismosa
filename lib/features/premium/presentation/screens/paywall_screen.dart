@@ -1,10 +1,10 @@
-import 'package:aja/core/extensions/build_context_x.dart';
-import 'package:aja/core/theme/app_spacing.dart';
-import 'package:aja/core/widgets/app_loader.dart';
-import 'package:aja/core/widgets/base_screen.dart';
-import 'package:aja/core/widgets/error_view.dart';
-import 'package:aja/services/billing/premium_controller.dart';
-import 'package:aja/services/billing/premium_state.dart';
+import 'package:chismosa/core/extensions/build_context_x.dart';
+import 'package:chismosa/core/theme/app_spacing.dart';
+import 'package:chismosa/core/widgets/app_loader.dart';
+import 'package:chismosa/core/widgets/base_screen.dart';
+import 'package:chismosa/core/widgets/error_view.dart';
+import 'package:chismosa/services/billing/premium_controller.dart';
+import 'package:chismosa/services/billing/premium_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

@@ -1,5 +1,5 @@
-import 'package:aja/features/facts/data/contribution_service.dart';
-import 'package:aja/services/storage/storage_providers.dart';
+import 'package:chismosa/features/facts/data/contribution_service.dart';
+import 'package:chismosa/services/storage/storage_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Kept alive on purpose: it owns the debounce timer that batches "ask for

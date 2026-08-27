@@ -1,10 +1,10 @@
 import 'dart:math' as math;
 
-import 'package:aja/core/extensions/build_context_x.dart';
-import 'package:aja/core/theme/app_spacing.dart';
-import 'package:aja/features/facts/domain/fact.dart';
-import 'package:aja/features/facts/presentation/widgets/deck_card_shell.dart';
-import 'package:aja/features/facts/presentation/widgets/fact_source_link.dart';
+import 'package:chismosa/core/extensions/build_context_x.dart';
+import 'package:chismosa/core/theme/app_spacing.dart';
+import 'package:chismosa/features/facts/domain/fact.dart';
+import 'package:chismosa/features/facts/presentation/widgets/deck_card_shell.dart';
+import 'package:chismosa/features/facts/presentation/widgets/fact_source_link.dart';
 import 'package:flutter/material.dart';
 
 /// Localized name of a category, for the chip on the front of the card.

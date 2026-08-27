@@ -1,8 +1,8 @@
-import 'package:aja/features/facts/data/fact_repository.dart';
-import 'package:aja/features/facts/data/fact_share_service.dart';
-import 'package:aja/features/facts/data/remote_catalog_service.dart';
-import 'package:aja/features/facts/domain/fact.dart';
-import 'package:aja/services/storage/storage_providers.dart';
+import 'package:chismosa/features/facts/data/fact_repository.dart';
+import 'package:chismosa/features/facts/data/fact_share_service.dart';
+import 'package:chismosa/features/facts/data/remote_catalog_service.dart';
+import 'package:chismosa/features/facts/domain/fact.dart';
+import 'package:chismosa/services/storage/storage_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Downloads and caches the catalogue published after the app shipped.

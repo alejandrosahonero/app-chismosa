@@ -1,6 +1,8 @@
-# Ajá: Datos Curiosos Raros
+# Chismosa
 
-App Android de feed vertical swipeable con preguntas y respuestas curiosas sobre ciencia, historia, lenguaje y cuerpo humano. Freemium con monetización (AdMob + compra "quitar anuncios"), consentimiento GDPR, reseñas in-app, tema Material 3 claro/oscuro, navegación declarativa y localización es/en.
+App Android de historias anónimas en formato mazo deslizable: cada carta es un chisme corto subido por otro usuario, y deslizar hacia abajo te mete en el hilo de conversación de esa historia. Freemium con monetización (AdMob + compra "quitar anuncios"), consentimiento GDPR, reseñas in-app, tema Material 3 claro/oscuro, navegación declarativa y localización es/en.
+
+> ⚠️ **Repo en transición.** Este proyecto reutiliza la base de *Ajá: Datos Curiosos Raros* (mazo + gestos). La identidad ya es Chismosa (`chismosa`, `com.alejandrosahonero.chismosa`, deep link `chismosa://`); las features todavía son las heredadas del mazo de datos curiosos y se irán sustituyendo. Lo que describen las secciones de abajo es el código heredado tal y como está hoy.
 
 > **Para agentes de IA y para cualquiera que toque el código: leer [`CLAUDE.md`](CLAUDE.md) primero.** Explica la arquitectura, las reglas y el porqué de cada decisión.
 
@@ -11,7 +13,7 @@ App Android de feed vertical swipeable con preguntas y respuestas curiosas sobre
 | Área | Implementación |
 |---|---|
 | Estado | Riverpod 3 (`Provider` / `NotifierProvider` / `AsyncNotifierProvider`) |
-| Navegación | `go_router` con rutas tipadas y deep links (`aja://`) |
+| Navegación | `go_router` con rutas tipadas y deep links (`chismosa://`) |
 | Anuncios | `AdsService`: banner adaptativo, interstitial con pacing |
 | Consentimiento | UMP SDK (incluido en `google_mobile_ads`) + "Opciones de privacidad" en Ajustes |
 | Compras | `in_app_purchase`: producto no consumible `premium_remove_ads` + restaurar compras |
@@ -96,9 +98,9 @@ dart format lib test && flutter analyze && flutter test
 
 ---
 
-## Configuración de Ajá
+## Configuración de Chismosa
 
-La identidad de la app (nombre, IDs, colores) está completamente fijada. Antes de publicar en Play Console, completar los siguientes items en el checklist de [`CLAUDE.md` §11](CLAUDE.md):
+La identidad de la app (nombre, IDs) ya es la de Chismosa; el seed color sigue siendo el heredado. Antes de publicar en Play Console, completar los siguientes items en el checklist de [`CLAUDE.md` §11](CLAUDE.md):
 
 - `lib/core/config/ad_config.dart` → IDs de producción de AdMob.
 - `android/app/src/main/AndroidManifest.xml` → App ID de AdMob de producción.

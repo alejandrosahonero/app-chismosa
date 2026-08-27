@@ -1,4 +1,4 @@
-import 'package:aja/features/goals/domain/rank.dart';
+import 'package:chismosa/features/goals/domain/rank.dart';
 import 'package:flutter/foundation.dart';
 
 /// Everything the goal ring and the progress screen paint.

@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
-import 'package:aja/features/facts/data/fact_story_image.dart';
-import 'package:aja/features/facts/domain/fact.dart';
+import 'package:chismosa/features/facts/data/fact_story_image.dart';
+import 'package:chismosa/features/facts/domain/fact.dart';
 import 'package:share_plus/share_plus.dart';
 
 /// Hands a fact to the system share sheet as a ready-to-post 9:16 image.
@@ -27,7 +27,7 @@ class FactShareService {
       labels: labels,
     );
 
-    final String fileName = 'aja-${fact.id}.png';
+    final String fileName = 'chismosa-${fact.id}.png';
 
     await SharePlus.instance.share(
       ShareParams(

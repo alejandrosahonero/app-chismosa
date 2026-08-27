@@ -1,6 +1,6 @@
-import 'package:aja/core/config/app_config.dart';
-import 'package:aja/services/review/review_service.dart';
-import 'package:aja/services/storage/key_value_store.dart';
+import 'package:chismosa/core/config/app_config.dart';
+import 'package:chismosa/services/review/review_service.dart';
+import 'package:chismosa/services/storage/key_value_store.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

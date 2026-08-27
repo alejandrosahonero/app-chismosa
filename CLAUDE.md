@@ -1,8 +1,10 @@
 # CLAUDE.md — Guía del proyecto para agentes de IA
 
-> **Contexto obligatorio.** Este repositorio es **Ajá: Datos Curiosos Raros**, una app Android de datos curiosos en formato mazo deslizable estilo Tinder, con monetización freemium (AdMob + IAP "quitar anuncios").
+> **Contexto obligatorio.** Este repositorio es **Chismosa**, una app Android de historias anónimas en formato mazo deslizable estilo Tinder: cada carta es un chisme corto que alguien del mundo ha subido, y deslizar hacia abajo te mete en el hilo de conversación de esa historia. Monetización freemium (AdMob + IAP "quitar anuncios").
 >
-> Nació de una plantilla base de Flutter; queda de ella toda la infraestructura (`core/`, `services/`), pero las features de demostración ya no existen. La fuente de verdad arquitectónica es `GUIA_ESTANDAR_FLUTTER_ANDROID.md` (documento del usuario, fuera del repo). Este archivo explica **qué** hay implementado, **cómo** funciona y **por qué** se decidió así. Ante cualquier duda o conflicto, manda la guía estándar.
+> ⚠️ **Repo en transición.** El proyecto nació como *Ajá: Datos Curiosos Raros* y se ha reutilizado como base para Chismosa. La **identidad** (paquete, `applicationId`, `android:label`, deep link, textos de marca) ya es la de Chismosa; el **código de features** todavía es el del mazo de datos curiosos (`features/facts`, `features/goals`, catálogo de `facts.json`, aportaciones) y se irá sustituyendo. Todo lo que este documento describe de `features/` hay que leerlo como "lo que hay heredado", no como "lo que Chismosa quiere ser".
+>
+> La fuente de verdad arquitectónica es `GUIA_ESTANDAR_FLUTTER_ANDROID.md` (documento del usuario, fuera del repo). Este archivo explica **qué** hay implementado, **cómo** funciona y **por qué** se decidió así. Ante cualquier duda o conflicto, manda la guía estándar.
 
 ---
 
@@ -24,11 +26,11 @@
 
 | Cosa | Valor |
 |---|---|
-| Paquete Dart (`pubspec.yaml`) | `aja` |
-| `applicationId` / `namespace` | `com.alejandrosahonero.aja` |
-| Paquete Kotlin | `com.alejandrosahonero.aja` |
-| `android:label` | `Ajá` |
-| Deep link | `aja://` |
+| Paquete Dart (`pubspec.yaml`) | `chismosa` |
+| `applicationId` / `namespace` | `com.alejandrosahonero.chismosa` |
+| Paquete Kotlin | `com.alejandrosahonero.chismosa` |
+| `android:label` | `Chismosa` |
+| Deep link | `chismosa://` |
 | Producto IAP | `premium_remove_ads` |
 | Seed color | `0xFFC026D3` |
 
@@ -357,7 +359,7 @@ En Ajustes hay una fila **"Opciones de privacidad"** que reabre el formulario, v
 - Entitlement cacheado en `flutter_secure_storage` + `restorePurchases()` al arrancar para verificar contra el store. Nunca confiar solo en un flag de `shared_preferences`.
 - **Botón "Restaurar compras" obligatorio y visible** en Ajustes (y también en el paywall). Su ausencia es motivo de rechazo.
 - Verificación local del token (app sin backend). Con servidor: validar contra la Google Play Developer API en `PremiumService.isValidPurchase`.
-- **Paywall tras un momento de valor**, nunca en el primer arranque. Puntos de entrada: el intento de guardar una tarjeta, la pantalla de guardadas bloqueada, la tarjeta de anuncio sin relleno, fila en Ajustes, deep link `aja://premium`.
+- **Paywall tras un momento de valor**, nunca en el primer arranque. Puntos de entrada: el intento de guardar una tarjeta, la pantalla de guardadas bloqueada, la tarjeta de anuncio sin relleno, fila en Ajustes, deep link `chismosa://premium`.
 
 ### 4.4 Política
 
@@ -415,7 +417,7 @@ El «pin» vive en `pinnedFactProvider` y **no se persiste**: pertenece a una se
 - `reviewMinAppAge` = 3 días desde la instalación.
 - `reviewMinInterval` = 120 días entre solicitudes.
 
-En Ajá el **momento de valor es voltear una tarjeta para leer la respuesta**: es lo único que el usuario viene a hacer. `requestReviewAfterSuccess()` se llama solo desde ahí (`DeckScreen._reveal`), nunca al arrancar, nunca tras un error, nunca desde Ajustes.
+En Chismosa el **momento de valor es voltear una tarjeta para leer la respuesta**: es lo único que el usuario viene a hacer. `requestReviewAfterSuccess()` se llama solo desde ahí (`DeckScreen._reveal`), nunca al arrancar, nunca tras un error, nunca desde Ajustes.
 Para el botón explícito "Valorar la aplicación" de Ajustes se usa `openStoreListing()`, que no consume la cuota del diálogo nativo.
 
 ---
@@ -439,7 +441,7 @@ Para el botón explícito "Valorar la aplicación" de Ajustes se usa `openStoreL
 - Rutas declarativas en `core/routing/app_router.dart`, constantes en `app_routes.dart`. **Nunca escribir un path literal en una pantalla.**
 - Navegación por nombre: `context.goNamed(AppRoutes.settingsName)`.
 - `rootNavigatorKey` disponible para código fuera del árbol (callbacks de anuncios, stream de compras) en vez de guardar un `BuildContext` obsoleto.
-- Deep links activos desde el día 1: esquema `aja://` en el manifiesto + `flutter_deeplinking_enabled`. App Links (`https`, `autoVerify`) están comentados: activarlos requiere publicar `assetlinks.json` en el dominio.
+- Deep links activos desde el día 1: esquema `chismosa://` en el manifiesto + `flutter_deeplinking_enabled`. App Links (`https`, `autoVerify`) están comentados: activarlos requiere publicar `assetlinks.json` en el dominio.
 - `errorBuilder` → `RouteErrorScreen`, para que un deep link de campaña obsoleto no crashee.
 
 ---
@@ -472,7 +474,7 @@ Todo va dentro de `runZonedGuarded`, con `FlutterError.onError` y `PlatformDispa
 
 - `compileSdk = 37` — lo exige `flutter_secure_storage 11`. No bajarlo.
 - `minSdk = 24`, `targetSdk = flutter.targetSdkVersion`.
-- `applicationId = com.alejandrosahonero.aja` — **no se puede cambiar nunca** tras publicar.
+- `applicationId = com.alejandrosahonero.chismosa` — **no se puede cambiar nunca** tras publicar.
 - Release: `isMinifyEnabled = true`, `isShrinkResources = true`, `proguard-rules.pro`.
 - **Firma:** lee `android/key.properties` (git-ignored). Si no existe, cae a la firma de debug para no romper builds locales. Antes de publicar, verificar que `key.properties` existe y que el AAB **no** va firmado con debug.
 - **Sin product flavors ni entornos.** `flutter run` y `flutter build` funcionan sin `--flavor` ni `--dart-define`. No reintroducirlos.

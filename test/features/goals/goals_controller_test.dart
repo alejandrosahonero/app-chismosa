@@ -7,11 +7,11 @@
 
 library;
 
-import 'package:aja/features/goals/domain/daily_goal.dart';
-import 'package:aja/features/goals/domain/goals_state.dart';
-import 'package:aja/features/goals/domain/rank.dart';
-import 'package:aja/features/goals/presentation/providers/goals_controller.dart';
-import 'package:aja/services/storage/storage_providers.dart';
+import 'package:chismosa/features/goals/domain/daily_goal.dart';
+import 'package:chismosa/features/goals/domain/goals_state.dart';
+import 'package:chismosa/features/goals/domain/rank.dart';
+import 'package:chismosa/features/goals/presentation/providers/goals_controller.dart';
+import 'package:chismosa/services/storage/storage_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';

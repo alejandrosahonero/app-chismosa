@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:aja/core/config/contribution_config.dart';
-import 'package:aja/core/utils/app_logger.dart';
-import 'package:aja/features/facts/domain/contribution.dart';
-import 'package:aja/services/storage/key_value_store.dart';
+import 'package:chismosa/core/config/contribution_config.dart';
+import 'package:chismosa/core/utils/app_logger.dart';
+import 'package:chismosa/features/facts/domain/contribution.dart';
+import 'package:chismosa/services/storage/key_value_store.dart';
 import 'package:http/http.dart' as http;
 
 /// Collects what users send from the "deck finished" screen and forwards it to

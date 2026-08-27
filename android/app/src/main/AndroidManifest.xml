@@ -44,7 +44,7 @@
          flutter_local_notifications. -->
 
     <application
-        android:label="Ajá"
+        android:label="Chismosa"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:enableOnBackInvokedCallback="true">
@@ -94,14 +94,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <!-- Custom scheme deep links: aja://premium, aja://card/<id>
+            <!-- Custom scheme deep links: chismosa://premium, chismosa://card/<id>
                  Wired from day one — campaigns, shared cards and the daily
                  notification all land through here. -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="aja" />
+                <data android:scheme="chismosa" />
             </intent-filter>
 
             <!-- App Links (verified https). Enable after publishing

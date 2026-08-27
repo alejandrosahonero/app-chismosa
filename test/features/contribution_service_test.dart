@@ -6,9 +6,9 @@
 
 library;
 
-import 'package:aja/features/facts/data/contribution_service.dart';
-import 'package:aja/features/facts/domain/contribution.dart';
-import 'package:aja/services/storage/key_value_store.dart';
+import 'package:chismosa/features/facts/data/contribution_service.dart';
+import 'package:chismosa/features/facts/domain/contribution.dart';
+import 'package:chismosa/services/storage/key_value_store.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -8,9 +8,9 @@ library;
 
 import 'dart:convert';
 
-import 'package:aja/features/facts/data/fact_repository.dart';
-import 'package:aja/features/facts/domain/fact.dart';
-import 'package:aja/features/facts/domain/remote_catalogue.dart';
+import 'package:chismosa/features/facts/data/fact_repository.dart';
+import 'package:chismosa/features/facts/domain/fact.dart';
+import 'package:chismosa/features/facts/domain/remote_catalogue.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 

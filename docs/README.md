@@ -1,4 +1,4 @@
-# Catálogo remoto de Ajá
+# Catálogo remoto de Chismosa
 
 Este directorio se publica con **GitHub Pages**. `facts.json` es el catálogo que la
 app descarga para añadir, corregir o retirar preguntas **sin publicar una versión

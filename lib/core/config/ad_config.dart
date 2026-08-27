@@ -1,4 +1,4 @@
-import 'package:aja/core/config/app_config.dart';
+import 'package:chismosa/core/config/app_config.dart';
 
 /// AdMob identifiers.
 ///

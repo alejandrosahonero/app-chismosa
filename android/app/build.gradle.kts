@@ -19,7 +19,7 @@ if (hasKeystore) {
 }
 
 android {
-    namespace = "com.alejandrosahonero.aja"
+    namespace = "com.alejandrosahonero.chismosa"
 
     // Pinned to 37: required by permission_handler 13 and
     // flutter_secure_storage 11. Do not lower it.
@@ -37,7 +37,7 @@ android {
 
     defaultConfig {
         // CANNOT be changed after the first publication on Google Play.
-        applicationId = "com.alejandrosahonero.aja"
+        applicationId = "com.alejandrosahonero.chismosa"
         minSdk = 24
         // Play requires targeting a recent API every year (deadline is usually
         // 31 August). `flutter.targetSdkVersion` tracks the Flutter stable

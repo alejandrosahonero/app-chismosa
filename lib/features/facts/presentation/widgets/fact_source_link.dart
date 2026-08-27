@@ -1,6 +1,6 @@
-import 'package:aja/core/extensions/build_context_x.dart';
-import 'package:aja/core/theme/app_spacing.dart';
-import 'package:aja/core/utils/app_logger.dart';
+import 'package:chismosa/core/extensions/build_context_x.dart';
+import 'package:chismosa/core/theme/app_spacing.dart';
+import 'package:chismosa/core/utils/app_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 

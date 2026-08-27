@@ -1,5 +1,5 @@
-name: aja
-description: "Ajá: Datos Curiosos Raros. Mazo deslizable de preguntas incómodas con su respuesta y fuente verificable."
+name: chismosa
+description: "Chismosa: historias anónimas de todo el mundo. Mazo deslizable de chismes; desliza hacia abajo para entrar en el hilo y comentar."
 # App privada: nunca se publica en pub.dev.
 publish_to: "none"
 

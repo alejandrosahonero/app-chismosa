@@ -1,8 +1,8 @@
-import 'package:aja/core/config/contribution_config.dart';
-import 'package:aja/core/extensions/build_context_x.dart';
-import 'package:aja/core/theme/app_spacing.dart';
-import 'package:aja/features/facts/domain/contribution.dart';
-import 'package:aja/features/facts/presentation/providers/contribution_providers.dart';
+import 'package:chismosa/core/config/contribution_config.dart';
+import 'package:chismosa/core/extensions/build_context_x.dart';
+import 'package:chismosa/core/theme/app_spacing.dart';
+import 'package:chismosa/features/facts/domain/contribution.dart';
+import 'package:chismosa/features/facts/presentation/providers/contribution_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

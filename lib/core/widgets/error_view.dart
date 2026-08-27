@@ -1,5 +1,5 @@
-import 'package:aja/core/routing/app_routes.dart';
-import 'package:aja/core/theme/app_spacing.dart';
+import 'package:chismosa/core/routing/app_routes.dart';
+import 'package:chismosa/core/theme/app_spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

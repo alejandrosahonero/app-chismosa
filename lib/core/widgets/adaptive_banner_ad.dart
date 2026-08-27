@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:aja/core/utils/app_logger.dart';
-import 'package:aja/services/ads/ads_providers.dart';
-import 'package:aja/services/ads/ads_service.dart';
-import 'package:aja/services/billing/premium_controller.dart';
+import 'package:chismosa/core/utils/app_logger.dart';
+import 'package:chismosa/services/ads/ads_providers.dart';
+import 'package:chismosa/services/ads/ads_service.dart';
+import 'package:chismosa/services/billing/premium_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
