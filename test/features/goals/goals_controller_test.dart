@@ -49,7 +49,7 @@ void main() {
   Future<GoalEvent> learn(int count, {int from = 0}) async {
     GoalEvent event = const GoalUnchanged();
     for (int i = 0; i < count; i++) {
-      event = await controller().registerLearned('fact-${from + i}');
+      event = await controller().registerProgress('fact-${from + i}');
     }
     return event;
   }
@@ -78,8 +78,8 @@ void main() {
   });
 
   test('the same card cannot be counted twice in one day', () async {
-    await controller().registerLearned('fact-0');
-    final GoalEvent again = await controller().registerLearned('fact-0');
+    await controller().registerProgress('fact-0');
+    final GoalEvent again = await controller().registerProgress('fact-0');
 
     expect(goals().learned, 1);
     expect(again, isA<GoalUnchanged>());
@@ -155,7 +155,7 @@ void main() {
       now = day2;
       // The first flip of the new day is what catches the rollover: the state
       // in memory still believes it is yesterday until something happens.
-      await controller().registerLearned('fact-0');
+      await controller().registerProgress('fact-0');
 
       expect(
         goals().learned,
@@ -173,10 +173,10 @@ void main() {
     });
 
     test('a card learned yesterday counts again today', () async {
-      await controller().registerLearned('fact-0');
+      await controller().registerProgress('fact-0');
 
       now = day2;
-      final GoalEvent again = await controller().registerLearned('fact-0');
+      final GoalEvent again = await controller().registerProgress('fact-0');
 
       expect(again, isA<GoalUnchanged>());
       expect(
@@ -238,7 +238,7 @@ void main() {
     expect(goals().target, target);
 
     // And the last card still finishes the job it was one short of.
-    final GoalEvent event = await controller().registerLearned('fact-last');
+    final GoalEvent event = await controller().registerProgress('fact-last');
     expect(event, isA<GoalReached>());
   });
 

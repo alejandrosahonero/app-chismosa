@@ -40,7 +40,6 @@ class _FakeRepository implements StoryRepository {
   final List<Story> catalogue;
 
   final List<String> liked = <String>[];
-  final List<String> joined = <String>[];
   final List<String> reported = <String>[];
   final List<List<String>> excludeCalls = <List<String>>[];
 
@@ -84,9 +83,6 @@ class _FakeRepository implements StoryRepository {
 
   @override
   Future<void> unlike(String storyId) async => liked.remove(storyId);
-
-  @override
-  Future<void> joinThread(String storyId) async => joined.add(storyId);
 
   @override
   Future<void> report(String storyId, {String? reason}) async =>
@@ -316,11 +312,10 @@ void main() {
       expect(deck().seenIds, contains('a'));
     });
 
-    test('entering a thread joins it and keeps the card in place', () async {
+    test('entering a thread marks the card and keeps it in place', () async {
       await boot(<Story>[_story('a'), _story('b')]);
-      final Story? joined = await controller().joinTopThread();
+      final Story? joined = controller().markTopAsJoined();
 
-      expect(repository.joined, <String>['a']);
       expect(joined?.joined, isTrue);
       // Coming back from a thread onto a different card would make the whole
       // trip feel like a mistake.

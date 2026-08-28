@@ -102,9 +102,6 @@ abstract interface class StoryRepository {
     String? groupId,
   });
 
-  /// Joins the story's thread, creating the alias. Idempotent.
-  Future<void> joinThread(String storyId);
-
   Future<void> report(String storyId, {String? reason});
 }
 
@@ -204,14 +201,6 @@ class SupabaseStoryRepository implements StoryRepository {
     );
     return row['id']! as String;
   }
-
-  @override
-  Future<void> joinThread(String storyId) => _guard(
-    () => _client.rpc<void>(
-      'join_thread',
-      params: <String, dynamic>{'p_story': storyId},
-    ),
-  );
 
   @override
   Future<void> report(String storyId, {String? reason}) => _guard(

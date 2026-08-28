@@ -12,6 +12,9 @@ import 'package:chismosa/features/stories/domain/story.dart';
 import 'package:chismosa/features/stories/presentation/providers/stories_providers.dart';
 import 'package:chismosa/features/stories/presentation/screens/compose_story_screen.dart';
 import 'package:chismosa/features/stories/presentation/screens/stories_deck_screen.dart';
+import 'package:chismosa/features/threads/data/thread_repository.dart';
+import 'package:chismosa/features/threads/domain/thread_message.dart';
+import 'package:chismosa/features/threads/presentation/providers/threads_providers.dart';
 import 'package:chismosa/l10n/generated/app_localizations.dart';
 import 'package:chismosa/services/billing/premium_controller.dart';
 import 'package:chismosa/services/billing/premium_state.dart';
@@ -37,7 +40,6 @@ class _Repository implements StoryRepository {
 
   final List<Story> catalogue;
   final List<String> liked = <String>[];
-  final List<String> joined = <String>[];
 
   @override
   Future<List<Story>> fetchFeed(
@@ -59,9 +61,6 @@ class _Repository implements StoryRepository {
 
   @override
   Future<void> unlike(String storyId) async => liked.remove(storyId);
-
-  @override
-  Future<void> joinThread(String storyId) async => joined.add(storyId);
 
   @override
   Future<void> report(String storyId, {String? reason}) async {}
@@ -129,8 +128,66 @@ class _HostState extends State<_Host> {
   );
 }
 
+/// Enough of a thread server for the deck to be able to open one.
+class _Threads implements ThreadRepository {
+  final List<String> joined = <String>[];
+
+  @override
+  Future<ThreadMembership> join(String storyId) async {
+    joined.add(storyId);
+    return ThreadMembership(
+      id: 'member-$storyId',
+      storyId: storyId,
+      alias: 'Brújula Inquieta',
+      muted: false,
+    );
+  }
+
+  @override
+  Future<List<ThreadMessage>> messages(
+    String storyId, {
+    DateTime? before,
+    int limit = BackendConfig.threadPageSize,
+  }) async => const <ThreadMessage>[];
+
+  @override
+  Future<Map<String, ThreadAlias>> aliases(String storyId) async =>
+      const <String, ThreadAlias>{};
+
+  @override
+  Future<ThreadMessage> send({
+    required String storyId,
+    required ThreadMembership membership,
+    required String body,
+  }) async => ThreadMessage(
+    id: 'm1',
+    alias: membership.alias,
+    body: body,
+    createdAt: DateTime.now().toUtc(),
+    isMine: true,
+    isAuthor: false,
+  );
+
+  @override
+  Stream<Map<String, dynamic>> watch(String storyId) =>
+      const Stream<Map<String, dynamic>>.empty();
+
+  @override
+  Future<void> markRead(String storyId) async {}
+
+  @override
+  Future<void> setMuted(String storyId, {required bool muted}) async {}
+
+  @override
+  Future<List<ThreadSummary>> myThreads() async => const <ThreadSummary>[];
+
+  @override
+  Future<void> reportMessage(String messageId, {String? reason}) async {}
+}
+
 void main() {
   late _Repository repository;
+  late _Threads threads;
 
   Future<void> pump(WidgetTester tester, List<Story> catalogue) async {
     // Pinned to Spanish: the default test locale is `en`, and an unpinned one
@@ -141,12 +198,14 @@ void main() {
     SharedPreferences.setMockInitialValues(<String, Object>{});
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     repository = _Repository(catalogue);
+    threads = _Threads();
 
     final ProviderContainer container = ProviderContainer(
       overrides: [
         sharedPreferencesProvider.overrideWithValue(prefs),
         premiumControllerProvider.overrideWith(_AlwaysPremium.new),
         storyRepositoryProvider.overrideWithValue(repository),
+        threadRepositoryProvider.overrideWithValue(threads),
       ],
     );
     addTearDown(container.dispose);
@@ -209,10 +268,13 @@ void main() {
     await pump(tester, <Story>[_story('a'), _story('b')]);
     await swipe(tester, const Offset(0, -400));
 
-    expect(repository.joined, <String>['a']);
-    // Coming back from a thread onto a different card would make the whole
-    // trip feel like a mistake.
-    expect(find.text(_story('a').body), findsOneWidget);
+    expect(threads.joined, <String>['a']);
+    // Twice on screen now: the card, which stays put — coming back from a
+    // thread onto a different one would make the whole trip feel like a
+    // mistake — and the sheet that rose over it, which repeats the story at
+    // the head of its conversation.
+    expect(find.text(_story('a').body), findsNWidgets(2));
+    expect(find.text('Aquí eres Brújula Inquieta'), findsOneWidget);
   });
 
   testWidgets('the like button does what the rightward swipe does', (

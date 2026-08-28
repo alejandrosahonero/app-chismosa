@@ -149,21 +149,22 @@ class StoriesDeckController extends AsyncNotifier<StoriesDeckState> {
     }
   }
 
-  /// Up swipe: join the thread and hand the story back so the sheet can open.
+  /// Up swipe: hand the top story over so the thread panel can open it.
   ///
-  /// The card is **not** consumed here. Coming back from a thread onto a
-  /// different card would make the whole trip feel like a mistake; the screen
-  /// calls [pass] once the sheet is closed.
-  Future<Story?> joinTopThread() async {
+  /// The join itself belongs to the thread controller — it is the one that
+  /// needs the membership back, because a message points at it. All this does
+  /// is mark the card so the footer stops saying the reader is a stranger to
+  /// the conversation.
+  ///
+  /// The card is **not** consumed. Coming back from a thread onto a different
+  /// card would make the whole trip feel like a mistake.
+  Story? markTopAsJoined() {
     final StoryDeckItem? top = state.value?.current;
     if (top is! StoryCard) return null;
 
-    final StoryRepository? repository = ref.read(storyRepositoryProvider);
-    if (repository == null) return null;
-
-    await repository.joinThread(top.story.id);
-    _replaceTop(top.story.copyWith(joined: true));
-    return top.story.copyWith(joined: true);
+    final Story joined = top.story.copyWith(joined: true);
+    _replaceTop(joined);
+    return joined;
   }
 
   /// Reports the top card and drops it.

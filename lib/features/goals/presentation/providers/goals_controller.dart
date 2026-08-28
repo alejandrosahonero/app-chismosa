@@ -73,7 +73,13 @@ class GoalsController extends Notifier<GoalsState> {
     );
   }
 
-  /// Counts one fact as learned and returns whether that was worth announcing.
+  /// Counts one step towards today's goal and returns whether that was worth
+  /// announcing.
+  ///
+  /// In Chismosa the step is **entering a thread**, not swiping a card: the
+  /// goal has to measure the thing the app exists for, and cards passed by a
+  /// fast thumb are not it. The inherited deck feeds the same counter with
+  /// "read the answer", for the same reason.
   ///
   /// Deliberately derived from storage rather than from [state]: an app left
   /// open across midnight still holds yesterday's state in memory, and this is
@@ -84,7 +90,7 @@ class GoalsController extends Notifier<GoalsState> {
   /// re-reading a favourite, must not fill the ring — but a card met again
   /// tomorrow does count, otherwise restarting the deck would leave a long-time
   /// user with a goal they can no longer reach.
-  Future<GoalEvent> registerLearned(String factId) async {
+  Future<GoalEvent> registerProgress(String id) async {
     final KeyValueStore store = _store;
     final int today = _today;
     final bool isToday = store.getInt(_dayKey, fallback: today) == today;
@@ -93,8 +99,8 @@ class GoalsController extends Notifier<GoalsState> {
         ? List<String>.of(store.getStringList(_learnedKey))
         : <String>[];
 
-    if (learned.contains(factId)) return const GoalUnchanged();
-    learned.add(factId);
+    if (learned.contains(id)) return const GoalUnchanged();
+    learned.add(id);
 
     final int target = DailyGoal.targetFor(today, firstDay: _firstDay(today));
     final int pointsBefore = store.getInt(_pointsKey);

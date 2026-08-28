@@ -14,13 +14,20 @@ import 'package:chismosa/core/widgets/deck/deck_thresholds.dart';
 import 'package:chismosa/core/widgets/deck/swipe_deck.dart';
 import 'package:chismosa/core/widgets/empty_state.dart';
 import 'package:chismosa/core/widgets/error_view.dart';
+import 'package:chismosa/features/goals/domain/goals_state.dart';
+import 'package:chismosa/features/goals/presentation/providers/goals_controller.dart';
+import 'package:chismosa/features/goals/presentation/widgets/goal_celebration.dart';
+import 'package:chismosa/features/goals/presentation/widgets/goal_ring_button.dart';
 import 'package:chismosa/features/stories/domain/story.dart';
 import 'package:chismosa/features/stories/domain/story_deck.dart';
 import 'package:chismosa/features/stories/presentation/providers/stories_deck_controller.dart';
 import 'package:chismosa/features/stories/presentation/widgets/story_card_view.dart';
 import 'package:chismosa/features/stories/presentation/widgets/story_filters.dart';
+import 'package:chismosa/features/threads/presentation/providers/thread_controller.dart';
+import 'package:chismosa/features/threads/presentation/widgets/thread_panel.dart';
 import 'package:chismosa/l10n/generated/app_localizations.dart';
 import 'package:chismosa/services/ads/ads_providers.dart';
+import 'package:chismosa/services/review/review_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -47,7 +54,15 @@ class StoriesDeckScreen extends ConsumerStatefulWidget {
   ConsumerState<StoriesDeckScreen> createState() => _StoriesDeckScreenState();
 }
 
-class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen> {
+class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
+    with SingleTickerProviderStateMixin {
+  /// Fraction of the sheet an upward drag alone can reveal.
+  ///
+  /// Enough that the conversation behind the gesture is recognisable while
+  /// there is still time to change one's mind, and not so much that a drag
+  /// that was going to be cancelled covers the card it came from.
+  static const double _peek = 0.45;
+
   /// Live drag, written by [SwipeDeck] and read by the badges over the card and
   /// the buttons under it.
   ///
@@ -57,10 +72,45 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen> {
   final ValueNotifier<DeckSwipeProgress> _progress =
       ValueNotifier<DeckSwipeProgress>(DeckSwipeProgress.idle);
 
+  /// How far the thread sheet is out: 0 hidden, 1 fully open.
+  ///
+  /// The upward drag writes straight into this while the finger is down, and
+  /// the controller takes over from wherever the drag left it once the gesture
+  /// commits. That hand-off is what makes the sheet one continuous movement
+  /// rather than a gesture followed by an animation starting from scratch.
+  late final AnimationController _sheet = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 260),
+    reverseDuration: const Duration(milliseconds: 200),
+  );
+
+  /// Set from the moment the gesture commits until the sheet is back down.
+  /// While it holds, the drag no longer drives [_sheet]: the conversation owns
+  /// the screen.
+  bool _threadOpen = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _progress.addListener(_followDrag);
+  }
+
   @override
   void dispose() {
+    _progress.removeListener(_followDrag);
     _progress.dispose();
+    _sheet.dispose();
     super.dispose();
+  }
+
+  /// Lets the sheet peek out while the finger drags upwards.
+  ///
+  /// Writing to the controller's value rather than calling `setState` keeps
+  /// this off the deck: it runs on every frame of every upward drag, and the
+  /// cards must not rebuild for it.
+  void _followDrag() {
+    if (_threadOpen || _sheet.isAnimating) return;
+    _sheet.value = _progress.value.amountFor(DeckSwipeDirection.up) * _peek;
   }
 
   @override
@@ -75,24 +125,53 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen> {
       // [_body].
       showBanner: false,
       actions: <Widget>[
+        // The ring counts up, towards a number that resets tomorrow. It is the
+        // only reason the app gives to come back on a particular day.
+        const GoalRingButton(),
+        IconButton(
+          onPressed: () => context.goNamed(AppRoutes.threadsName),
+          icon: const Icon(Icons.forum_outlined),
+          tooltip: context.l10n.threadsTitle,
+        ),
         IconButton(
           onPressed: () => context.goNamed(AppRoutes.settingsName),
           icon: const Icon(Icons.settings_outlined),
           tooltip: context.l10n.settingsTitle,
         ),
       ],
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => context.goNamed(AppRoutes.composeName),
-        tooltip: context.l10n.composeTitle,
-        child: const Icon(Icons.edit_outlined),
-      ),
-      body: deck.when(
-        loading: () => const AppLoader(),
-        error: (Object error, StackTrace stack) => ErrorView(
-          message: context.l10n.storiesOfflineBody,
-          onRetry: () => ref.invalidate(storiesDeckControllerProvider),
+      floatingActionButton: AnimatedBuilder(
+        animation: _sheet,
+        builder: (BuildContext context, Widget? child) =>
+            _sheet.value > 0.02 ? const SizedBox.shrink() : child!,
+        child: FloatingActionButton(
+          onPressed: () => context.goNamed(AppRoutes.composeName),
+          tooltip: context.l10n.composeTitle,
+          child: const Icon(Icons.edit_outlined),
         ),
-        data: _body,
+      ),
+      body: PopScope(
+        // Back closes the conversation before it leaves the deck. Anything else
+        // would drop the reader out of the app from inside a thread.
+        canPop: !_threadOpen,
+        onPopInvokedWithResult: (bool didPop, Object? _) {
+          if (!didPop) unawaited(_closeThread());
+        },
+        child: Stack(
+          children: <Widget>[
+            deck.when(
+              loading: () => const AppLoader(),
+              error: (Object error, StackTrace stack) => ErrorView(
+                message: context.l10n.storiesOfflineBody,
+                onRetry: () => ref.invalidate(storiesDeckControllerProvider),
+              ),
+              data: _body,
+            ),
+            _ThreadSheet(
+              animation: _sheet,
+              onClose: () => unawaited(_closeThread()),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -180,23 +259,45 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen> {
     _countCardForAds();
   }
 
-  /// Up swipe: join the thread.
+  /// Up swipe: the conversation takes over, carrying on from where the drag
+  /// left the sheet.
   ///
-  /// The thread itself is the next feature to land; until then this confirms
-  /// the join, which is the part that has to be right — the membership is what
-  /// creates the alias and puts the conversation in the reader's history.
+  /// The card stays underneath and is not consumed. Closing the sheet puts the
+  /// reader back on the same story, which is the only thing that makes a trip
+  /// into a thread feel like a detour rather than a mistake.
   Future<void> _openThread() async {
-    final StoriesDeckController controller = ref.read(
-      storiesDeckControllerProvider.notifier,
-    );
-    try {
-      final Story? story = await controller.joinTopThread();
-      if (story == null || !mounted) return;
-      context.showSnack(context.l10n.storiesJoinedThread);
-    } on Object {
-      if (!mounted) return;
-      context.showSnack(context.l10n.storiesOfflineBody);
-    }
+    final Story? story = ref
+        .read(storiesDeckControllerProvider.notifier)
+        .markTopAsJoined();
+    if (story == null) return;
+
+    setState(() => _threadOpen = true);
+    // Started before the join finishes: the sheet is already half way up from
+    // the drag, and stopping it there to wait for a round trip is exactly the
+    // stutter this whole arrangement exists to avoid. The panel shows its own
+    // loading state.
+    unawaited(_sheet.animateTo(1, curve: Curves.easeOutCubic));
+    await ref.read(threadControllerProvider.notifier).open(story);
+
+    // Entering a thread is the day's unit of progress, and the moment the app
+    // is worth asking for a review. Both hang off this and nothing else: cards
+    // passed by a fast thumb are not what anybody came here for.
+    unawaited(ref.read(reviewServiceProvider).requestReviewAfterSuccess());
+
+    final GoalEvent event = await ref
+        .read(goalsControllerProvider.notifier)
+        .registerProgress(story.id);
+
+    if (!mounted) return;
+    await showGoalEvent(context, event);
+  }
+
+  Future<void> _closeThread() async {
+    if (!_threadOpen) return;
+    await _sheet.animateBack(0, curve: Curves.easeInCubic);
+    if (!mounted) return;
+    setState(() => _threadOpen = false);
+    await ref.read(threadControllerProvider.notifier).close();
   }
 
   Future<void> _restart() =>
@@ -342,6 +443,52 @@ class _Controls extends StatelessWidget {
           onPressed: isStory ? () => onAction(DeckSwipeDirection.right) : null,
         ),
       ],
+    );
+  }
+}
+
+/// The conversation, rising out of the bottom of the deck.
+///
+/// It is laid out as a fraction of the screen height driven by [animation], so
+/// the same value carries the movement from the finger to the controller
+/// without a seam. Below a sliver of progress it is not built at all: an empty
+/// deck must not pay for a panel nobody is dragging towards.
+class _ThreadSheet extends StatelessWidget {
+  const _ThreadSheet({required this.animation, required this.onClose});
+
+  final Animation<double> animation;
+  final VoidCallback onClose;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: animation,
+      builder: (BuildContext context, Widget? child) {
+        final double t = animation.value;
+        if (t <= 0.001) return const SizedBox.shrink();
+
+        return Stack(
+          children: <Widget>[
+            // The deck dims as the sheet climbs, so the card underneath reads
+            // as context rather than as something still being swiped.
+            IgnorePointer(
+              ignoring: t < 0.5,
+              child: GestureDetector(
+                onTap: onClose,
+                child: ColoredBox(
+                  color: Colors.black.withValues(alpha: 0.45 * t),
+                  child: const SizedBox.expand(),
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: FractionallySizedBox(heightFactor: t, child: child),
+            ),
+          ],
+        );
+      },
+      child: ThreadPanel(onClose: onClose),
     );
   }
 }

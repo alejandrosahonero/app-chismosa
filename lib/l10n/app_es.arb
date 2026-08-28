@@ -120,7 +120,7 @@
     }
   },
   "goalsTodayTitle": "Objetivo de hoy",
-  "goalsTodayProgress": "{learned} de {target} datos",
+  "goalsTodayProgress": "{learned} de {target} hilos",
   "@goalsTodayProgress": {
     "placeholders": {
       "learned": { "type": "int" },
@@ -161,7 +161,7 @@
       "points": { "type": "int" }
     }
   },
-  "goalsHowItWorks": "Cada día trae un objetivo distinto. Un dato cuenta cuando le das la vuelta a la tarjeta y lees la respuesta, y el mismo dato solo cuenta una vez al día. Al cumplir el objetivo sumas tantos puntos como datos pedía ese día, y los puntos son los que suben de rango.",
+  "goalsHowItWorks": "Cada día trae un objetivo distinto. Cuenta entrar al hilo de una historia, y el mismo hilo solo cuenta una vez al día. Al cumplir el objetivo sumas tantos puntos como hilos pedía ese día, y los puntos son los que suben de rango.",
   "goalsReachedSnack": "¡Objetivo del día cumplido! +{points} puntos",
   "@goalsReachedSnack": {
     "placeholders": {
@@ -336,4 +336,48 @@
   "languageFr": "Francés",
   "languageIt": "Italiano",
   "languageDe": "Alemán"
+,
+
+  "threadTitle": "El hilo",
+  "@threadTitle": {
+    "description": "Título de la conversación de una historia"
+  },
+  "threadYouAre": "Aquí eres {alias}",
+  "@threadYouAre": {
+    "description": "Alias del usuario dentro de este hilo",
+    "placeholders": {
+      "alias": {
+        "type": "String"
+      }
+    }
+  },
+  "threadAliasNote": "Tu nombre cambia en cada hilo. Nadie puede seguirte de una historia a otra.",
+  "threadEmpty": "Nadie ha escrito todavía. Empieza tú.",
+  "threadHint": "Escribe algo…",
+  "threadSend": "Enviar",
+  "threadOlder": "Ver mensajes anteriores",
+  "threadStart": "Aquí empieza la conversación",
+  "threadAuthorTag": "Quien lo contó",
+  "threadClosedNotice": "Este hilo se cerró por inactividad. Puedes leerlo, pero ya no admite mensajes.",
+  "threadMute": "Silenciar",
+  "threadUnmute": "Activar avisos",
+  "threadMuted": "Hilo silenciado",
+  "threadUnmuted": "Volverás a recibir avisos",
+  "threadReportMessage": "Reportar mensaje",
+  "threadMessageReported": "Gracias. No volverás a ver ese mensaje.",
+  "threadSendError": "No se ha podido enviar. Comprueba tu conexión.",
+  "threadTooFast": "Vas muy rápido. Espera un momento.",
+  "threadOpenHint": "Desliza hacia arriba para entrar al hilo",
+
+  "threadsTitle": "Mis hilos",
+  "threadsEmptyTitle": "Todavía no has entrado a ningún hilo",
+  "threadsEmptyBody": "Desliza una historia hacia arriba y la conversación se guarda aquí.",
+  "threadsUnread": "{count, plural, =1{1 sin leer} other{{count} sin leer}}",
+  "@threadsUnread": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

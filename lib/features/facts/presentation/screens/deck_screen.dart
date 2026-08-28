@@ -280,7 +280,7 @@ class _DeckBodyState extends ConsumerState<_DeckBody> {
 
     final GoalEvent event = await ref
         .read(goalsControllerProvider.notifier)
-        .registerLearned(current.fact.id);
+        .registerProgress(current.fact.id);
 
     if (!context.mounted) return;
     await showGoalEvent(context, event);

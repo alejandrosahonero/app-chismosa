@@ -32,6 +32,17 @@ abstract final class AppRoutes {
   static const String rulesPath = '/rules';
   static const String rulesName = 'rules';
 
+  /// Conversations this reader has joined. The only place a story can be
+  /// found again: the deck deals a card once and never brings it back.
+  static const String threadsPath = '/threads';
+  static const String threadsName = 'threads';
+
+  /// One conversation, reached from the history. The deck raises the same
+  /// panel as a sheet instead of navigating, because there the card is still
+  /// underneath.
+  static const String threadPath = '/thread/:id';
+  static const String threadName = 'thread';
+
   /// Languages the deck deals in.
   static const String languagesPath = '/languages';
   static const String languagesName = 'languages';

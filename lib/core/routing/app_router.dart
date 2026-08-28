@@ -8,6 +8,8 @@ import 'package:chismosa/features/settings/presentation/screens/settings_screen.
 import 'package:chismosa/features/stories/presentation/screens/compose_story_screen.dart';
 import 'package:chismosa/features/stories/presentation/screens/rules_screen.dart';
 import 'package:chismosa/features/stories/presentation/screens/stories_deck_screen.dart';
+import 'package:chismosa/features/threads/presentation/screens/thread_screen.dart';
+import 'package:chismosa/features/threads/presentation/screens/threads_history_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -60,6 +62,18 @@ final Provider<GoRouter> routerProvider = Provider<GoRouter>((Ref ref) {
             name: AppRoutes.composeName,
             builder: (BuildContext context, GoRouterState state) =>
                 const ComposeStoryScreen(),
+          ),
+          GoRoute(
+            path: 'threads',
+            name: AppRoutes.threadsName,
+            builder: (BuildContext context, GoRouterState state) =>
+                const ThreadsHistoryScreen(),
+          ),
+          GoRoute(
+            path: 'thread/:id',
+            name: AppRoutes.threadName,
+            builder: (BuildContext context, GoRouterState state) =>
+                ThreadScreen(storyId: state.pathParameters['id']!),
           ),
           GoRoute(
             path: 'rules',
