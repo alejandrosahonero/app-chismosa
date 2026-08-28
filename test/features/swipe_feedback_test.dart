@@ -1,9 +1,9 @@
 library;
 
 import 'package:chismosa/app.dart';
+import 'package:chismosa/core/widgets/deck/swipe_deck.dart';
 import 'package:chismosa/features/facts/domain/fact.dart';
 import 'package:chismosa/features/facts/presentation/providers/facts_providers.dart';
-import 'package:chismosa/features/facts/presentation/widgets/swipe_deck.dart';
 import 'package:chismosa/services/billing/premium_controller.dart';
 import 'package:chismosa/services/billing/premium_state.dart';
 import 'package:chismosa/services/storage/storage_providers.dart';

@@ -5,7 +5,7 @@ import 'package:chismosa/core/extensions/build_context_x.dart';
 import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/theme/app_spacing.dart';
 import 'package:chismosa/core/utils/app_logger.dart';
-import 'package:chismosa/features/facts/presentation/widgets/deck_card_shell.dart';
+import 'package:chismosa/core/widgets/deck/deck_card_shell.dart';
 import 'package:chismosa/services/ads/ads_providers.dart';
 import 'package:chismosa/services/ads/ads_service.dart';
 import 'package:flutter/material.dart';

@@ -7,6 +7,10 @@ import 'package:chismosa/core/utils/app_logger.dart';
 import 'package:chismosa/core/widgets/adaptive_banner_ad.dart';
 import 'package:chismosa/core/widgets/app_loader.dart';
 import 'package:chismosa/core/widgets/base_screen.dart';
+import 'package:chismosa/core/widgets/deck/deck_card.dart';
+import 'package:chismosa/core/widgets/deck/deck_swipe_progress.dart';
+import 'package:chismosa/core/widgets/deck/deck_thresholds.dart';
+import 'package:chismosa/core/widgets/deck/swipe_deck.dart';
 import 'package:chismosa/core/widgets/error_view.dart';
 import 'package:chismosa/features/facts/data/fact_story_image.dart';
 import 'package:chismosa/features/facts/domain/deck_item.dart';
@@ -16,9 +20,7 @@ import 'package:chismosa/features/facts/presentation/providers/facts_providers.d
 import 'package:chismosa/features/facts/presentation/providers/favorites_controller.dart';
 import 'package:chismosa/features/facts/presentation/widgets/ad_deck_card.dart';
 import 'package:chismosa/features/facts/presentation/widgets/deck_exhausted_view.dart';
-import 'package:chismosa/features/facts/presentation/widgets/deck_swipe_progress.dart';
 import 'package:chismosa/features/facts/presentation/widgets/fact_card.dart';
-import 'package:chismosa/features/facts/presentation/widgets/swipe_deck.dart';
 import 'package:chismosa/features/goals/domain/goals_state.dart';
 import 'package:chismosa/features/goals/presentation/providers/goals_controller.dart';
 import 'package:chismosa/features/goals/presentation/widgets/goal_celebration.dart';
@@ -147,16 +149,21 @@ class _DeckBodyState extends ConsumerState<_DeckBody> {
             items: state.items,
             index: state.index,
             progress: _progress,
-            onSwipeLeft: () => unawaited(_next(ref)),
-            onSwipeRight: () => unawaited(_reveal(context, ref)),
-            onSwipeUp: () => unawaited(_toggleFavorite(context, ref)),
-            onSwipeDown: () => unawaited(_share(context, ref)),
+            thresholds: _factThresholds,
+            onSwipe: (DeckSwipeDirection direction) =>
+                unawaited(switch (direction) {
+                  DeckSwipeDirection.left => _next(ref),
+                  DeckSwipeDirection.right => _reveal(context, ref),
+                  DeckSwipeDirection.up => _toggleFavorite(context, ref),
+                  DeckSwipeDirection.down => _share(context, ref),
+                  DeckSwipeDirection.none => Future<void>.value(),
+                }),
             overlayBuilder:
                 (BuildContext context, DeckSwipeProgress progress) =>
                     _SwipeBadges(progress: progress),
-            builder: (BuildContext context, DeckItem item, int depth) {
+            builder: (BuildContext context, DeckCard card, int depth) {
               final bool isTop = depth == 0;
-              return switch (item) {
+              return switch (card as DeckItem) {
                 FactItem(:final Fact fact) => FactCard(
                   fact: fact,
                   revealed: isTop && state.revealed,
@@ -684,3 +691,17 @@ class _DeckButton extends StatelessWidget {
     );
   }
 }
+
+/// Gesture costs of the facts deck.
+///
+/// Down is the longest of the four on purpose: sharing opens the system sheet,
+/// which covers the app, and it sits on the same axis as "save" — an upward
+/// flick that lands the wrong way must not be able to reach it by accident.
+/// That is also why it is the only direction a bare flick cannot commit.
+const DeckThresholds _factThresholds = DeckThresholds(
+  left: 0.28,
+  right: 0.28,
+  up: 0.16,
+  down: 0.26,
+  requireTravel: <DeckSwipeDirection>{DeckSwipeDirection.down},
+);

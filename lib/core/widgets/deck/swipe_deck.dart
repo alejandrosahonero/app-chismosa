@@ -1,46 +1,41 @@
 import 'dart:math' as math;
 
 import 'package:chismosa/core/config/app_config.dart';
-import 'package:chismosa/features/facts/domain/deck_item.dart';
-import 'package:chismosa/features/facts/presentation/widgets/deck_swipe_progress.dart';
+import 'package:chismosa/core/widgets/deck/deck_card.dart';
+import 'package:chismosa/core/widgets/deck/deck_swipe_progress.dart';
+import 'package:chismosa/core/widgets/deck/deck_thresholds.dart';
 import 'package:flutter/material.dart';
 
 /// Tinder-style card stack.
 ///
-/// Cards sit one behind the other; only the top one reacts to touch. Each
-/// direction does something different on purpose:
+/// Cards sit one behind the other; only the top one reacts to touch. The widget
+/// owns **nothing but the gesture**: it reports the direction upwards and
+/// re-reads what to paint from [items]/[index]. That is what keeps the deck's
+/// own state — position, flip, read pile — in a controller, and testable
+/// without pumping a single animation.
 ///
-/// * **right** — flips the card over to its answer. The card springs back to
-///   the centre, it is not dismissed.
-/// * **left** — throws the card away and brings the next one up.
-/// * **up** — saves the card to favourites. Like the flip, it springs back:
-///   saving a card is not a reason to stop reading it.
-/// * **down** — shares the question as an image. Springs back too, for the
-///   same reason, and asks for the longest drag of the four: it opens the
-///   system share sheet on top of the app.
+/// What each direction *means* is not decided here. [dismissOn] says which
+/// directions throw the card off screen and which spring back to the centre,
+/// so the same widget serves a deck where left is "discard" and one where
+/// three directions consume the card and the fourth opens a thread.
 ///
-/// The widget owns nothing but the gesture: it reports every direction upwards
-/// and re-reads what to paint from [items]/[index]. That is what keeps the deck
-/// state (position, flip) in the controller and testable.
-///
-/// While a finger is down it also publishes how far the drag has got into
-/// [progress], so the controls outside the deck can react to the gesture
+/// While a finger is down it publishes how far the drag has got into
+/// [progress], so controls outside the deck can animate with the gesture
 /// without rebuilding the cards on every frame.
 class SwipeDeck extends StatefulWidget {
   const SwipeDeck({
     required this.items,
     required this.index,
     required this.builder,
-    required this.onSwipeLeft,
-    required this.onSwipeRight,
-    required this.onSwipeUp,
-    required this.onSwipeDown,
+    required this.onSwipe,
+    required this.thresholds,
     super.key,
+    this.dismissOn = const <DeckSwipeDirection>{DeckSwipeDirection.left},
     this.progress,
     this.overlayBuilder,
   });
 
-  final List<DeckItem> items;
+  final List<DeckCard> items;
 
   /// Position of the top card inside [items].
   final int index;
@@ -52,22 +47,22 @@ class SwipeDeck extends StatefulWidget {
   /// start work before it is reachable — an ad slot fetches its creative one
   /// place early so it is not still loading when it arrives — and that is not
   /// expressible with a boolean.
-  final Widget Function(BuildContext context, DeckItem item, int depth) builder;
+  final Widget Function(BuildContext context, DeckCard item, int depth) builder;
 
-  /// Dismiss the top card.
-  final VoidCallback onSwipeLeft;
+  /// Fired once a gesture is committed.
+  ///
+  /// For a direction in [dismissOn] this arrives **after** the card has flown
+  /// off screen, so the parent advances exactly when the card is gone. For the
+  /// others it arrives on release, while the card is springing back.
+  final void Function(DeckSwipeDirection direction) onSwipe;
 
-  /// Flip the top card.
-  final VoidCallback onSwipeRight;
+  /// Directions that consume the card. Everything else springs back.
+  final Set<DeckSwipeDirection> dismissOn;
 
-  /// Save the top card to favourites.
-  final VoidCallback onSwipeUp;
+  final DeckThresholds thresholds;
 
-  /// Share the top card.
-  final VoidCallback onSwipeDown;
-
-  /// Live drag state, pushed out so widgets outside the deck (the round
-  /// controls) can animate with the gesture.
+  /// Live drag state, pushed out so widgets outside the deck can animate with
+  /// the gesture.
   ///
   /// A notifier and not a callback: this changes every frame of a drag, and
   /// only the handful of widgets that listen should rebuild — not the whole
@@ -97,12 +92,15 @@ class _SwipeDeckState extends State<SwipeDeck>
   Size _size = Size.zero;
 
   /// True while the card is flying off screen; the gesture is ignored until it
-  /// lands so a fast second swipe cannot skip two cards at once.
+  /// lands so a fast second swipe cannot consume two cards at once.
   bool _dismissing = false;
 
   /// Action the released drag belonged to, held for as long as the card is
   /// settling. See [_currentProgress].
   DeckSwipeDirection? _settleDirection;
+
+  /// Direction whose [SwipeDeck.onSwipe] fires when the fly-off lands.
+  DeckSwipeDirection? _pendingDismiss;
 
   @override
   void initState() {
@@ -155,65 +153,78 @@ class _SwipeDeckState extends State<SwipeDeck>
   void _onPanEnd(DragEndDetails details, Size size) {
     if (_dismissing || _controller.isAnimating) return;
 
-    final Offset velocity = details.velocity.pixelsPerSecond;
+    final DeckSwipeDirection? committed = _committedDirection(
+      details.velocity.pixelsPerSecond,
+      size,
+    );
 
-    // The dominant axis decides which action the drag was: a gesture that moved
-    // 200 px up and 60 px left is an upward swipe, not a dismissal.
-    if (_drag.dy.abs() > _drag.dx.abs()) {
-      if (_drag.dy.isNegative) {
-        final bool up =
-            -_drag.dy > size.height * AppConfig.deckSwipeUpThreshold ||
-            -velocity.dy > AppConfig.deckSwipeVelocity;
-        if (up) widget.onSwipeUp();
-      } else {
-        // A bare flick commits the other three directions. Not this one: the
-        // share sheet takes over the screen, so a fast gesture also has to have
-        // travelled as far as a deliberate save before it counts.
-        final bool down =
-            _drag.dy > size.height * AppConfig.deckSwipeDownThreshold ||
-            (velocity.dy > AppConfig.deckSwipeVelocity &&
-                _drag.dy > size.height * AppConfig.deckSwipeUpThreshold);
-        if (down) widget.onSwipeDown();
-      }
-
-      // Neither saving nor sharing consumes the card, so either way it goes
-      // back to the centre.
+    if (committed == null) {
       _settleBack();
       return;
     }
 
-    final bool committed =
-        _drag.dx.abs() > size.width * AppConfig.deckSwipeThreshold ||
-        velocity.dx.abs() > AppConfig.deckSwipeVelocity;
-
-    if (!committed) {
-      _settleBack();
+    if (widget.dismissOn.contains(committed)) {
+      _dismiss(committed, size);
       return;
     }
 
-    if (_drag.dx.isNegative) {
-      _dismiss(size.width);
-    } else {
-      // Right means "turn the card over", so it comes back to the centre and
-      // the flip animation takes it from there.
-      widget.onSwipeRight();
-      _settleBack();
-    }
+    // Springs back to the centre: the card was not consumed, whatever the
+    // gesture opened is on top of it now.
+    widget.onSwipe(committed);
+    _settleBack();
   }
 
-  void _settleBack() => _animate(Offset.zero, dismiss: false);
+  /// The action this release belongs to, or null if it was a hesitation.
+  ///
+  /// The dominant axis decides which direction it was — a gesture that moved
+  /// 200 px up and 60 px left is an upward swipe, not a dismissal — and the
+  /// same rule drives the live feedback, which is what guarantees the badge
+  /// that lit up mid-drag is the action that actually runs.
+  DeckSwipeDirection? _committedDirection(Offset velocity, Size size) {
+    final DeckSwipeDirection direction = _progressFor(_drag, size).direction;
+    if (direction == DeckSwipeDirection.none || size.isEmpty) return null;
 
-  void _dismiss(double width) =>
-      _animate(Offset(-width * 1.6, _drag.dy), dismiss: true);
+    final bool vertical =
+        direction == DeckSwipeDirection.up ||
+        direction == DeckSwipeDirection.down;
 
-  void _animate(Offset target, {required bool dismiss}) {
+    final double travelled = vertical ? _drag.dy.abs() : _drag.dx.abs();
+    final double extent = vertical ? size.height : size.width;
+    final double needed = extent * widget.thresholds.forDirection(direction);
+    if (travelled >= needed) return direction;
+
+    final double speed = vertical ? velocity.dy.abs() : velocity.dx.abs();
+    if (speed < widget.thresholds.velocity) return null;
+
+    // A flick commits most directions outright. For the ones that take the
+    // screen over, it still has to have gone somewhere: half the distance, so
+    // an off-axis flick cannot reach them by accident.
+    if (widget.thresholds.requireTravel.contains(direction)) {
+      return travelled >= needed * 0.5 ? direction : null;
+    }
+    return direction;
+  }
+
+  void _settleBack() => _animate(Offset.zero, dismiss: null);
+
+  void _dismiss(DeckSwipeDirection direction, Size size) =>
+      _animate(switch (direction) {
+        DeckSwipeDirection.left => Offset(-size.width * 1.6, _drag.dy),
+        DeckSwipeDirection.right => Offset(size.width * 1.6, _drag.dy),
+        DeckSwipeDirection.up => Offset(_drag.dx, -size.height * 1.4),
+        DeckSwipeDirection.down => Offset(_drag.dx, size.height * 1.4),
+        DeckSwipeDirection.none => Offset.zero,
+      }, dismiss: direction);
+
+  void _animate(Offset target, {required DeckSwipeDirection? dismiss}) {
     _settle = Tween<Offset>(begin: _drag, end: target).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: dismiss ? Curves.easeIn : Curves.easeOutBack,
+        curve: dismiss != null ? Curves.easeIn : Curves.easeOutBack,
       ),
     );
-    _dismissing = dismiss;
+    _dismissing = dismiss != null;
+    _pendingDismiss = dismiss;
     _settleDirection = _progressFor(_drag, _size).direction;
 
     _controller
@@ -223,12 +234,14 @@ class _SwipeDeckState extends State<SwipeDeck>
         _settle = null;
         _settleDirection = null;
 
-        if (dismiss) {
+        final DeckSwipeDirection? dismissed = _pendingDismiss;
+        if (dismissed != null) {
           // `_drag` stays at the off screen target on purpose; didUpdateWidget
           // resets it once the next card is on top. The feedback does not: the
           // card is gone, so the button has nothing left to announce.
+          _pendingDismiss = null;
           widget.progress?.value = DeckSwipeProgress.idle;
-          widget.onSwipeLeft();
+          widget.onSwipe(dismissed);
           return;
         }
 
@@ -238,33 +251,22 @@ class _SwipeDeckState extends State<SwipeDeck>
   }
 
   /// Turns the raw finger offset into the action the gesture is aiming at.
-  ///
-  /// Only the dominant axis counts, which is the same rule [_onPanEnd] uses to
-  /// decide what to fire. Sharing it here is what guarantees the badge and the
-  /// button that swell mid-drag belong to the action that will actually run.
   DeckSwipeProgress _progressFor(Offset drag, Size size) {
     if (size.isEmpty || drag == Offset.zero) return DeckSwipeProgress.idle;
 
-    if (drag.dy.abs() > drag.dx.abs()) {
-      if (drag.dy.isNegative) {
-        return DeckSwipeProgress(
-          direction: DeckSwipeDirection.up,
-          amount: (-drag.dy / (size.height * AppConfig.deckSwipeUpThreshold))
-              .clamp(0.0, 1.0),
-        );
-      }
-      return DeckSwipeProgress(
-        direction: DeckSwipeDirection.down,
-        amount: (drag.dy / (size.height * AppConfig.deckSwipeDownThreshold))
-            .clamp(0.0, 1.0),
-      );
-    }
+    final bool vertical = drag.dy.abs() > drag.dx.abs();
+    final DeckSwipeDirection direction = vertical
+        ? (drag.dy.isNegative ? DeckSwipeDirection.up : DeckSwipeDirection.down)
+        : (drag.dx.isNegative
+              ? DeckSwipeDirection.left
+              : DeckSwipeDirection.right);
+
+    final double travelled = vertical ? drag.dy.abs() : drag.dx.abs();
+    final double extent = vertical ? size.height : size.width;
 
     return DeckSwipeProgress(
-      direction: drag.dx.isNegative
-          ? DeckSwipeDirection.left
-          : DeckSwipeDirection.right,
-      amount: (drag.dx.abs() / (size.width * AppConfig.deckSwipeThreshold))
+      direction: direction,
+      amount: (travelled / (extent * widget.thresholds.forDirection(direction)))
           .clamp(0.0, 1.0),
     );
   }
@@ -313,7 +315,7 @@ class _SwipeDeckState extends State<SwipeDeck>
         );
 
         for (int i = last - 1; i >= widget.index; i--) {
-          final DeckItem item = widget.items[i];
+          final DeckCard item = widget.items[i];
           final int depth = i - widget.index;
           cards.add(
             depth == 0
@@ -327,7 +329,7 @@ class _SwipeDeckState extends State<SwipeDeck>
     );
   }
 
-  Widget _buildTopCard(BuildContext context, DeckItem item, Size size) {
+  Widget _buildTopCard(BuildContext context, DeckCard item, Size size) {
     final DeckSwipeProgress progress = _currentProgress();
 
     return GestureDetector(
@@ -355,9 +357,9 @@ class _SwipeDeckState extends State<SwipeDeck>
     );
   }
 
-  Widget _buildBackCard(BuildContext context, DeckItem item, int depth) {
+  Widget _buildBackCard(BuildContext context, DeckCard item, int depth) {
     // Cards behind peek out from under the top one. They never animate on
-    // their own, hence the const-friendly static transform.
+    // their own, hence the static transform.
     return Transform.translate(
       key: ValueKey<String>(item.key),
       offset: Offset(0, depth * 12.0),

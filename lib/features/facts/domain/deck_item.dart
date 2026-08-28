@@ -1,4 +1,5 @@
 import 'package:chismosa/core/config/app_config.dart';
+import 'package:chismosa/core/widgets/deck/deck_card.dart';
 import 'package:chismosa/features/facts/domain/fact.dart';
 import 'package:flutter/foundation.dart';
 
@@ -7,11 +8,12 @@ import 'package:flutter/foundation.dart';
 /// Sealed so the widget layer has to handle both cases: an ad slot is a first
 /// class member of the deck, not a special case bolted onto the fact card.
 @immutable
-sealed class DeckItem {
+sealed class DeckItem implements DeckCard {
   const DeckItem();
 
   /// Unique within a deck, used as the widget key so the stack does not reuse
   /// the wrong element's state while cards animate out.
+  @override
   String get key;
 }
 
