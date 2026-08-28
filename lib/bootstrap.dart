@@ -5,6 +5,7 @@ import 'package:chismosa/core/utils/app_logger.dart';
 import 'package:chismosa/features/facts/presentation/providers/facts_providers.dart';
 import 'package:chismosa/l10n/generated/app_localizations.dart';
 import 'package:chismosa/services/ads/ads_providers.dart';
+import 'package:chismosa/services/backend/backend_providers.dart';
 import 'package:chismosa/services/billing/premium_controller.dart';
 import 'package:chismosa/services/notifications/daily_question_service.dart';
 import 'package:chismosa/services/notifications/notification_providers.dart';
@@ -14,6 +15,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 /// Application entry point logic.
 ///
@@ -78,7 +80,24 @@ Future<void> bootstrap() async {
 /// crash the app or block the UI.
 Future<void> _initializeAfterFirstFrame(ProviderContainer container) async {
   try {
-    // Entitlement first: `AdsService` must know whether the user is premium
+    // Backend first: it is what the deck is waiting on, and signing in has to
+    // finish before any screen can read or write a thing. A failure here leaves
+    // the app in its offline state, not broken.
+    final SupabaseClient? client = await initializeBackend();
+    if (client != null) {
+      container.read(supabaseClientProvider.notifier).attach(client);
+      await container.read(identityServiceProvider)?.ensureSignedIn();
+    }
+  } on Object catch (error, stackTrace) {
+    AppLogger.error(
+      'Backend initialization failed',
+      error: error,
+      stackTrace: stackTrace,
+    );
+  }
+
+  try {
+    // Entitlement next: `AdsService` must know whether the user is premium
     // before it requests the first ad.
     await container.read(premiumControllerProvider.future);
   } on Object catch (error, stackTrace) {

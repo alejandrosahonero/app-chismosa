@@ -43,10 +43,19 @@
          required by Play Billing and the AdMob SDK, plus VIBRATE from
          flutter_local_notifications. -->
 
+    <!-- Auto Backup is declared explicitly rather than left to the default,
+         because it is load-bearing here: an account has no e-mail and no
+         password the user knows, so `files/identity.key` coming back after a
+         reinstall is what keeps somebody's threads. It is not a guarantee (the
+         user may have backup off, or a different Google account), which is why
+         there is also a recovery code — see RecoveryCode. -->
     <application
         android:label="Chismosa"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/full_backup_content"
+        android:dataExtractionRules="@xml/data_extraction_rules"
         android:enableOnBackInvokedCallback="true">
 
         <!-- ==============================================================

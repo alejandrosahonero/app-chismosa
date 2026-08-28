@@ -67,6 +67,27 @@ dependencies:
   path_provider: ^2.1.6
   url_launcher: ^6.3.2
 
+  # --- Backend --------------------------------------------------------------
+  # Supabase: auth anónima + Postgres + Realtime en UNA dependencia. Chismosa
+  # es una app de servidor por definición (feed mundial, hilos en vivo, cuentas,
+  # moderación), así que la premisa de "sin backend" que heredó este repo ya no
+  # se sostiene.
+  #
+  # Frente a Firebase: desplegar Cloud Functions exige el plan Blaze (tarjeta de
+  # crédito), y sin funciones no hay moderación automática, ni límite de
+  # publicación fiable, ni envío de push. El plan gratuito de Supabase incluye
+  # Edge Functions, y sobre todo Postgres con RLS: el límite de 1 publicación al
+  # día, el auto-ocultar por reportes y los bloqueos son políticas y triggers en
+  # el servidor, no promesas del cliente.
+  #
+  # Coste: ~1,5 MB de AAB y una conexión Realtime, que solo se abre mientras hay
+  # un hilo abierto en pantalla (el plan gratuito da 200 simultáneas).
+  supabase_flutter: ^2.17.2
+  # SHA-256 para derivar las credenciales de la cuenta a partir del código de
+  # recuperación (`RecoveryCode`). Paquete de dart.dev, sin transitivas propias;
+  # ya venía de rebote con supabase_flutter, se declara para no depender de eso.
+  crypto: ^3.0.7
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Android 12+ backup rules.
+
+    Auto Backup is what makes an anonymous account survive a reinstall: the
+    recovery secret lives in `files/identity.key`, which is included by default.
+    Do not exclude the files directory.
+
+    FlutterSecureStorage is excluded on purpose. Its master key lives in the
+    hardware keystore and is never part of a backup, so a restored install would
+    get ciphertext it cannot read — and a half-restored entitlement is worse
+    than none, because it looks valid until it is used. The premium entitlement
+    is re-verified against Play on every launch anyway.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="sharedpref" path="FlutterSecureStorage.xml" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="sharedpref" path="FlutterSecureStorage.xml" />
+    </device-transfer>
+</data-extraction-rules>
