@@ -7,6 +7,7 @@ import 'package:chismosa/l10n/generated/app_localizations.dart';
 import 'package:chismosa/services/ads/ads_providers.dart';
 import 'package:chismosa/services/backend/backend_providers.dart';
 import 'package:chismosa/services/billing/premium_controller.dart';
+import 'package:chismosa/services/locale/locale_providers.dart';
 import 'package:chismosa/services/notifications/daily_question_service.dart';
 import 'package:chismosa/services/notifications/notification_providers.dart';
 import 'package:chismosa/services/review/review_providers.dart';
@@ -87,6 +88,11 @@ Future<void> _initializeAfterFirstFrame(ProviderContainer container) async {
     if (client != null) {
       container.read(supabaseClientProvider.notifier).attach(client);
       await container.read(identityServiceProvider)?.ensureSignedIn();
+      // The profile row exists by now (a trigger creates it on sign-up), so
+      // this is where the country and languages the device reports first reach
+      // the server. It swallows its own failures: the deck sends its filters
+      // with every request, so nothing on screen depends on this landing.
+      await container.read(localeSettingsProvider.notifier).syncToProfile();
     }
   } on Object catch (error, stackTrace) {
     AppLogger.error(
