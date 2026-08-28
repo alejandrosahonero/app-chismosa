@@ -74,6 +74,14 @@ abstract final class AppConfig {
   /// Keep this small: every preloaded card is a request that may never be seen.
   static const int deckAdPreloadDepth = 1;
 
+  /// How few unseen cards may be left before the deck asks the server for
+  /// another page.
+  ///
+  /// The request has to be in flight well before the reader reaches the end,
+  /// because on a slow connection the round trip is longer than three swipes.
+  /// Bigger than that only means fetching cards the reader will never see.
+  static const int deckPrefetchThreshold = 5;
+
   /// Fraction of the card width a horizontal drag has to cover before it counts
   /// as a swipe instead of a hesitation.
   static const double deckSwipeThreshold = 0.28;
