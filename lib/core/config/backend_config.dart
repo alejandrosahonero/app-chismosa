@@ -36,13 +36,14 @@ abstract final class BackendConfig {
   /// Like an empty ad unit id, an empty URL **disables** the backend instead of
   /// crashing: the app builds, the tests run and the deck shows its offline
   /// state. That is what lets the whole feature land before the project does.
-  static const String url = '';
+  static const String url = 'https://sbeyvzhtvmzcalflqajv.supabase.co';
 
   /// The `publishable` key (labelled `anon public` in older dashboards).
   ///
   /// Never the `service_role` key: that one bypasses row level security and
   /// would hand every device full read and write access to the database.
-  static const String publishableKey = '';
+  static const String publishableKey =
+      'sb_publishable_MWswrHc_IZo3A1dU6Vkjkw_3U4lwJj9';
 
   static bool get isConfigured => url.isNotEmpty && publishableKey.isNotEmpty;
 
