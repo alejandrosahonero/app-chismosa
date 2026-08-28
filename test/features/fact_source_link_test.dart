@@ -7,7 +7,6 @@
 
 library;
 
-import 'package:chismosa/app.dart';
 import 'package:chismosa/features/facts/domain/fact.dart';
 import 'package:chismosa/features/facts/presentation/providers/deck_controller.dart';
 import 'package:chismosa/features/facts/presentation/providers/facts_providers.dart';
@@ -20,6 +19,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../support/facts_deck_host.dart';
 
 class _FakePremiumController extends PremiumController {
   @override
@@ -106,7 +107,10 @@ void main() {
     addTearDown(container.dispose);
 
     await tester.pumpWidget(
-      UncontrolledProviderScope(container: container, child: const App()),
+      UncontrolledProviderScope(
+        container: container,
+        child: const FactsDeckHost(),
+      ),
     );
     await tester.pumpAndSettle();
 

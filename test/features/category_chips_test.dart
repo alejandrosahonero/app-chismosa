@@ -1,6 +1,5 @@
 library;
 
-import 'package:chismosa/app.dart';
 import 'package:chismosa/features/facts/domain/fact.dart';
 import 'package:chismosa/features/facts/presentation/providers/facts_providers.dart';
 import 'package:chismosa/services/billing/premium_controller.dart';
@@ -10,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../support/facts_deck_host.dart';
 
 /// The chip row replaced the app bar's popup menu, so it is now the only way
 /// to change category. A regression here strands the user in whatever bucket
@@ -69,7 +70,10 @@ Future<ProviderContainer> _pumpDeck(WidgetTester tester) async {
   addTearDown(container.dispose);
 
   await tester.pumpWidget(
-    UncontrolledProviderScope(container: container, child: const App()),
+    UncontrolledProviderScope(
+      container: container,
+      child: const FactsDeckHost(),
+    ),
   );
   await tester.pumpAndSettle();
 

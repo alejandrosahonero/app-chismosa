@@ -1,6 +1,5 @@
 library;
 
-import 'package:chismosa/app.dart';
 import 'package:chismosa/features/facts/domain/fact.dart';
 import 'package:chismosa/features/facts/presentation/providers/facts_providers.dart';
 import 'package:chismosa/services/billing/premium_controller.dart';
@@ -10,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'support/facts_deck_host.dart';
 
 /// End to end test of the only screen the app has.
 ///
@@ -56,7 +57,7 @@ Future<void> _pumpDeck(WidgetTester tester) async {
           (Ref ref) async => <Fact>[_fact('1'), _fact('2'), _fact('3')],
         ),
       ],
-      child: const App(),
+      child: const FactsDeckHost(),
     ),
   );
   await tester.pumpAndSettle();

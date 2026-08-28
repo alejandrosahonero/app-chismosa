@@ -21,6 +21,21 @@ abstract final class AppRoutes {
   static const String progressPath = '/progress';
   static const String progressName = 'progress';
 
+  /// Where a story is written. A screen and not a bottom sheet: 600 characters
+  /// with the keyboard up needs the whole height, and a sheet that covers
+  /// itself is how a half-written story gets lost.
+  static const String composePath = '/compose';
+  static const String composeName = 'compose';
+
+  /// The community rules. Linked from the compose screen and from Settings —
+  /// the moment the rules matter is the moment somebody is about to publish.
+  static const String rulesPath = '/rules';
+  static const String rulesName = 'rules';
+
+  /// Languages the deck deals in.
+  static const String languagesPath = '/languages';
+  static const String languagesName = 'languages';
+
   /// Paywall. Reachable by deep link so a campaign can land directly on it.
   static const String paywallPath = '/premium';
   static const String paywallName = 'premium';

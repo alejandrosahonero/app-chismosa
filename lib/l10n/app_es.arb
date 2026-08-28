@@ -239,4 +239,101 @@
   "paywallUnavailable": "La tienda no está disponible ahora mismo.",
   "paywallPending": "Procesando la compra…",
   "paywallError": "No se ha podido completar la compra."
+,
+
+  "storiesEmptyTitle": "Por ahora no hay más chismes",
+  "@storiesEmptyTitle": {
+    "description": "Título de la pantalla cuando el mazo se queda sin historias"
+  },
+  "storiesEmptyBody": "Has visto todo lo que hay con estos filtros. Cuenta el tuyo, cambia de categoría o vuelve a empezar.",
+  "storiesEmptyRestart": "Volver a empezar",
+  "storiesEmptyWrite": "Contar el mío",
+  "storiesOfflineTitle": "Sin conexión",
+  "storiesOfflineBody": "No hemos podido traer historias. Comprueba tu conexión.",
+  "storiesLike": "Me gusta",
+  "storiesPass": "Pasar",
+  "storiesThread": "Entrar al hilo",
+  "storiesJoinedThread": "Ya estás en el hilo",
+  "storiesReport": "Reportar",
+  "storiesReportDone": "Gracias. No volverás a ver esta historia.",
+  "storiesReportConfirmTitle": "¿Reportar esta historia?",
+  "storiesReportConfirmBody": "La revisaremos y dejarás de verla ahora mismo.",
+  "storiesMessages": "{count, plural, =0{Sin mensajes} =1{1 mensaje} other{{count} mensajes}}",
+  "@storiesMessages": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "storiesLikes": "{count, plural, =0{Sin me gusta} =1{1 me gusta} other{{count} me gusta}}",
+  "@storiesLikes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "storiesThreadClosed": "Hilo cerrado",
+  "storiesSortHot": "Populares",
+  "storiesSortNew": "Nuevos",
+  "storiesCountryAll": "Todo el mundo",
+  "storiesCountryMine": "Mi país",
+  "storiesCategoryAll": "Todas",
+  "storiesCategoryAnything": "Cualquiera",
+  "storiesCategoryLove": "Amor",
+  "storiesCategoryFamily": "Familia",
+  "storiesCategoryWork": "Trabajo",
+  "storiesCategoryFriendship": "Amistad",
+  "storiesCategorySchool": "Escuela",
+  "storiesCategoryNeighbours": "Vecinos",
+  "storiesCategoryMoney": "Dinero",
+
+  "composeTitle": "Cuenta tu chisme",
+  "composeHint": "Escríbelo como se lo contarías a alguien que no te conoce.",
+  "composeField": "Tu historia",
+  "composeCategory": "Categoría",
+  "composeCounter": "{count} de {max}",
+  "@composeCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "composePublish": "Publicar",
+  "composePublished": "Publicado. Ya está en el mazo de alguien.",
+  "composeTooShort": "Cuéntalo un poco más: mínimo {min} caracteres.",
+  "@composeTooShort": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      }
+    }
+  },
+  "composeErrorDailyLimit": "Ya has publicado hoy. Vuelve mañana o mira un anuncio para publicar otra.",
+  "composeErrorBanned": "Tu cuenta no puede publicar por incumplir las normas.",
+  "composeErrorBlocked": "Ese texto no se puede publicar.",
+  "composeErrorOffline": "No hemos podido publicarlo. Comprueba tu conexión.",
+  "composeAnonymousNote": "Nadie verá quién eres. Ni nosotros guardamos con qué cuenta se publicó.",
+
+  "rulesTitle": "Normas",
+  "rulesIntro": "Esto funciona porque nadie sabe quién eres. Por eso hay tres reglas y son cortas:",
+  "rulesNoNames": "Sin nombres, teléfonos, direcciones ni nada que identifique a alguien.",
+  "rulesNoHate": "Sin odio, amenazas ni acoso.",
+  "rulesNoMinors": "Nada sexual con menores, y nada ilegal.",
+  "rulesConsequence": "Tres reportes ocultan una historia. Tres historias ocultas cierran la cuenta.",
+  "rulesAccept": "Entendido",
+
+  "languagesTitle": "Idiomas",
+  "languagesSubtitle": "Solo verás historias escritas en los idiomas que elijas.",
+  "languageEs": "Español",
+  "languageEn": "Inglés",
+  "languagePt": "Portugués",
+  "languageFr": "Francés",
+  "languageIt": "Italiano",
+  "languageDe": "Alemán"
 }

@@ -7,7 +7,9 @@ import 'package:chismosa/core/utils/app_logger.dart';
 import 'package:chismosa/core/widgets/adaptive_banner_ad.dart';
 import 'package:chismosa/core/widgets/app_loader.dart';
 import 'package:chismosa/core/widgets/base_screen.dart';
+import 'package:chismosa/core/widgets/deck/ad_deck_card.dart';
 import 'package:chismosa/core/widgets/deck/deck_card.dart';
+import 'package:chismosa/core/widgets/deck/deck_controls.dart';
 import 'package:chismosa/core/widgets/deck/deck_swipe_progress.dart';
 import 'package:chismosa/core/widgets/deck/deck_thresholds.dart';
 import 'package:chismosa/core/widgets/deck/swipe_deck.dart';
@@ -18,7 +20,6 @@ import 'package:chismosa/features/facts/domain/fact.dart';
 import 'package:chismosa/features/facts/presentation/providers/deck_controller.dart';
 import 'package:chismosa/features/facts/presentation/providers/facts_providers.dart';
 import 'package:chismosa/features/facts/presentation/providers/favorites_controller.dart';
-import 'package:chismosa/features/facts/presentation/widgets/ad_deck_card.dart';
 import 'package:chismosa/features/facts/presentation/widgets/deck_exhausted_view.dart';
 import 'package:chismosa/features/facts/presentation/widgets/fact_card.dart';
 import 'package:chismosa/features/goals/domain/goals_state.dart';
@@ -306,16 +307,6 @@ class _DeckBodyState extends ConsumerState<_DeckBody> {
 /// The badge over the card and the button under it have to be the same colour
 /// for the association to work, and a colour defined twice is a colour that
 /// drifts.
-extension on DeckSwipeDirection {
-  Color color(BuildContext context) => switch (this) {
-    DeckSwipeDirection.left => context.colors.onSurfaceVariant,
-    DeckSwipeDirection.right => context.colors.primary,
-    DeckSwipeDirection.up => context.colors.tertiary,
-    DeckSwipeDirection.down => context.colors.secondary,
-    DeckSwipeDirection.none => context.colors.outline,
-  };
-}
-
 class _SwipeBadges extends StatelessWidget {
   const _SwipeBadges({required this.progress});
 
@@ -326,95 +317,31 @@ class _SwipeBadges extends StatelessWidget {
     return Stack(
       fit: StackFit.expand,
       children: <Widget>[
-        _SwipeBadge(
+        DeckSwipeBadge(
           icon: Icons.close_rounded,
           direction: DeckSwipeDirection.left,
           alignment: Alignment.topRight,
           amount: progress.amountFor(DeckSwipeDirection.left),
         ),
-        _SwipeBadge(
+        DeckSwipeBadge(
           icon: Icons.flip_to_back,
           direction: DeckSwipeDirection.right,
           alignment: Alignment.topLeft,
           amount: progress.amountFor(DeckSwipeDirection.right),
         ),
-        _SwipeBadge(
+        DeckSwipeBadge(
           icon: Icons.bookmark_add_outlined,
           direction: DeckSwipeDirection.up,
           alignment: Alignment.bottomCenter,
           amount: progress.amountFor(DeckSwipeDirection.up),
         ),
-        _SwipeBadge(
+        DeckSwipeBadge(
           icon: Icons.ios_share,
           direction: DeckSwipeDirection.down,
           alignment: Alignment.topCenter,
           amount: progress.amountFor(DeckSwipeDirection.down),
         ),
       ],
-    );
-  }
-}
-
-/// One badge: a filled disc that fades and swells with the drag.
-class _SwipeBadge extends StatelessWidget {
-  const _SwipeBadge({
-    required this.icon,
-    required this.direction,
-    required this.alignment,
-    required this.amount,
-  });
-
-  final IconData icon;
-  final DeckSwipeDirection direction;
-  final AlignmentGeometry alignment;
-
-  /// 0 at rest, 1 at the commit threshold.
-  final double amount;
-
-  @override
-  Widget build(BuildContext context) {
-    if (amount <= 0) return const SizedBox.shrink();
-
-    final double t = Curves.easeOut.transform(amount.clamp(0.0, 1.0));
-    final Color color = direction.color(context);
-
-    return Align(
-      alignment: alignment,
-      child: Padding(
-        padding: const EdgeInsets.all(AppSpacing.lg),
-        child: Opacity(
-          // Faster than the scale so the badge is legible well before the
-          // threshold: the point is to tell the user what will happen while
-          // there is still time to change their mind.
-          opacity: (t * 1.6).clamp(0.0, 1.0),
-          child: Transform.scale(
-            scale: 0.65 + 0.45 * t,
-            child: Container(
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                color: color,
-                shape: BoxShape.circle,
-                // A ring in the deck's surface colour, so the disc stays
-                // readable over either face of the card.
-                border: Border.all(
-                  color: context.colors.surfaceContainerHigh,
-                  width: 3,
-                ),
-              ),
-              child: Icon(
-                icon,
-                size: 30,
-                color:
-                    ThemeData.estimateBrightnessForColor(color) ==
-                        Brightness.dark
-                    ? Colors.white
-                    : Colors.black,
-              ),
-            ),
-          ),
-        ),
-      ),
     );
   }
 }
@@ -555,7 +482,7 @@ class _DeckControls extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        _DeckButton(
+        DeckActionButton(
           icon: Icons.close_rounded,
           direction: DeckSwipeDirection.left,
           progress: progress,
@@ -566,7 +493,7 @@ class _DeckControls extends StatelessWidget {
         // Smaller and in the middle, where the upward swipe points. Never
         // disabled for a locked user: tapping it is how they find out the
         // feature exists and what unlocks it.
-        _DeckButton(
+        DeckActionButton(
           icon: favorited ? Icons.bookmark : Icons.bookmark_add_outlined,
           direction: DeckSwipeDirection.up,
           progress: progress,
@@ -574,20 +501,20 @@ class _DeckControls extends StatelessWidget {
               ? context.l10n.favoritesRemove
               : context.l10n.favoritesAdd,
           onPressed: isFact ? onFavorite : null,
-          diameter: _DeckButton.small,
+          diameter: DeckActionButton.small,
         ),
         const SizedBox(width: AppSpacing.md),
         // The other vertical gesture, next to the one it shares an axis with.
-        _DeckButton(
+        DeckActionButton(
           icon: Icons.ios_share,
           direction: DeckSwipeDirection.down,
           progress: progress,
           tooltip: context.l10n.deckShare,
           onPressed: isFact ? onShare : null,
-          diameter: _DeckButton.small,
+          diameter: DeckActionButton.small,
         ),
         const SizedBox(width: AppSpacing.md),
-        _DeckButton(
+        DeckActionButton(
           icon: state.revealed ? Icons.flip_to_front : Icons.flip_to_back,
           direction: DeckSwipeDirection.right,
           progress: progress,
@@ -597,97 +524,6 @@ class _DeckControls extends StatelessWidget {
           onPressed: isFact ? onReveal : null,
         ),
       ],
-    );
-  }
-}
-
-/// One round control: a tinted ring over the surface colour, with the icon in
-/// the same tint.
-///
-/// It listens to [progress] on its own instead of taking a plain number, so a
-/// drag repaints three small buttons and nothing else on the screen.
-class _DeckButton extends StatelessWidget {
-  const _DeckButton({
-    required this.icon,
-    required this.direction,
-    required this.progress,
-    required this.tooltip,
-    required this.onPressed,
-    this.diameter = large,
-  });
-
-  /// Comfortably past the 48dp minimum touch target on both sizes.
-  static const double large = 64;
-  static const double small = 52;
-
-  /// How much bigger the button gets at the commit threshold. Enough to be
-  /// unmistakable, small enough that the three buttons never collide.
-  static const double maxZoom = 0.4;
-
-  final IconData icon;
-
-  /// The gesture this button answers to.
-  final DeckSwipeDirection direction;
-
-  final ValueNotifier<DeckSwipeProgress> progress;
-  final String tooltip;
-
-  /// Null disables the button, which only happens while the ad card is on top.
-  final VoidCallback? onPressed;
-
-  final double diameter;
-
-  @override
-  Widget build(BuildContext context) {
-    final bool enabled = onPressed != null;
-    final Color color = direction.color(context);
-
-    return Tooltip(
-      message: tooltip,
-      child: ValueListenableBuilder<DeckSwipeProgress>(
-        valueListenable: progress,
-        builder: (BuildContext context, DeckSwipeProgress value, Widget? _) {
-          // A disabled button belongs to a card that cannot be acted on, so it
-          // must not answer the drag either.
-          final double t = enabled
-              ? Curves.easeOut.transform(value.amountFor(direction))
-              : 0;
-
-          // Faded rather than greyed: the button keeps its identity while it
-          // waits. Under the finger it does the opposite, filling in with its
-          // own tint until it reads as pressed.
-          final Color tint = enabled ? color : color.withValues(alpha: 0.3);
-
-          return Transform.scale(
-            scale: 1 + maxZoom * t,
-            child: SizedBox.square(
-              dimension: diameter,
-              child: Material(
-                color: Color.lerp(
-                  context.colors.surface,
-                  tint.withValues(alpha: 0.2),
-                  t,
-                ),
-                elevation: enabled ? 2 + 6 * t : 0,
-                shadowColor: context.colors.shadow,
-                shape: CircleBorder(
-                  side: BorderSide(
-                    color: tint.withValues(alpha: 0.4 + 0.6 * t),
-                    width: 1 + t,
-                  ),
-                ),
-                clipBehavior: Clip.antiAlias,
-                child: InkWell(
-                  onTap: onPressed,
-                  child: Center(
-                    child: Icon(icon, color: tint, size: diameter * 0.42),
-                  ),
-                ),
-              ),
-            ),
-          );
-        },
-      ),
     );
   }
 }

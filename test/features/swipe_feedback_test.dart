@@ -1,6 +1,5 @@
 library;
 
-import 'package:chismosa/app.dart';
 import 'package:chismosa/core/widgets/deck/swipe_deck.dart';
 import 'package:chismosa/features/facts/domain/fact.dart';
 import 'package:chismosa/features/facts/presentation/providers/facts_providers.dart';
@@ -11,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../support/facts_deck_host.dart';
 
 /// The swipe feedback system — badge fade-in and button zoom — is a visual
 /// signal of which action a mid-drag gesture will fire. It must be correct,
@@ -60,7 +61,10 @@ Future<ProviderContainer> _pumpDeck(WidgetTester tester) async {
   addTearDown(container.dispose);
 
   await tester.pumpWidget(
-    UncontrolledProviderScope(container: container, child: const App()),
+    UncontrolledProviderScope(
+      container: container,
+      child: const FactsDeckHost(),
+    ),
   );
   await tester.pumpAndSettle();
 

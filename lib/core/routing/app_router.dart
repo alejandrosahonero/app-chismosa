@@ -1,10 +1,13 @@
 import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/widgets/error_view.dart';
-import 'package:chismosa/features/facts/presentation/screens/deck_screen.dart';
 import 'package:chismosa/features/facts/presentation/screens/favorites_screen.dart';
 import 'package:chismosa/features/goals/presentation/screens/progress_screen.dart';
 import 'package:chismosa/features/premium/presentation/screens/paywall_screen.dart';
+import 'package:chismosa/features/settings/presentation/screens/language_preferences_screen.dart';
 import 'package:chismosa/features/settings/presentation/screens/settings_screen.dart';
+import 'package:chismosa/features/stories/presentation/screens/compose_story_screen.dart';
+import 'package:chismosa/features/stories/presentation/screens/rules_screen.dart';
+import 'package:chismosa/features/stories/presentation/screens/stories_deck_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -32,7 +35,7 @@ final Provider<GoRouter> routerProvider = Provider<GoRouter>((Ref ref) {
         path: AppRoutes.homePath,
         name: AppRoutes.homeName,
         builder: (BuildContext context, GoRouterState state) =>
-            const DeckScreen(),
+            const StoriesDeckScreen(),
         routes: <RouteBase>[
           GoRoute(
             path: 'settings',
@@ -51,6 +54,24 @@ final Provider<GoRouter> routerProvider = Provider<GoRouter>((Ref ref) {
             name: AppRoutes.progressName,
             builder: (BuildContext context, GoRouterState state) =>
                 const ProgressScreen(),
+          ),
+          GoRoute(
+            path: 'compose',
+            name: AppRoutes.composeName,
+            builder: (BuildContext context, GoRouterState state) =>
+                const ComposeStoryScreen(),
+          ),
+          GoRoute(
+            path: 'rules',
+            name: AppRoutes.rulesName,
+            builder: (BuildContext context, GoRouterState state) =>
+                const RulesScreen(),
+          ),
+          GoRoute(
+            path: 'languages',
+            name: AppRoutes.languagesName,
+            builder: (BuildContext context, GoRouterState state) =>
+                const LanguagePreferencesScreen(),
           ),
           GoRoute(
             path: 'premium',
