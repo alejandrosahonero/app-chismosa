@@ -37,6 +37,18 @@ abstract final class AppConfig {
   /// explicit request.
   static const int adMaxRetries = 4;
 
+  /// How long to wait for a rewarded video before giving up. The user is
+  /// looking at a spinner they asked for, so this is short: past it, "no video
+  /// right now" is a better answer than more waiting.
+  static const Duration rewardedLoadTimeout = Duration(seconds: 10);
+
+  /// After a rewarded video, how long to wait for the server to grant the
+  /// credit, and how often to look. AdMob usually calls back within a couple
+  /// of seconds; past the timeout the reader is told to try again rather than
+  /// left watching a spinner, and the story stays in the field.
+  static const Duration creditWaitTimeout = Duration(seconds: 20);
+  static const Duration creditPollInterval = Duration(milliseconds: 1500);
+
   // --- In-app review pacing ----------------------------------------------
 
   /// Successful "value moments" required before the review prompt is allowed.

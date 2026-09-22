@@ -15,6 +15,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 /// frame, and the deck has a perfectly good thing to show in the meantime.
 final Provider<StoryRepository?> storyRepositoryProvider =
     Provider<StoryRepository?>((Ref ref) {
+      ref.watch(sessionEpochProvider);
       final SupabaseClient? client = ref.watch(supabaseClientProvider);
       if (client == null) return null;
       return SupabaseStoryRepository(client);
@@ -55,3 +56,15 @@ class FeedQueryController extends Notifier<FeedQuery> {
   /// null goes back to the worldwide deck; an id restricts it to one group.
   void selectGroup(String? groupId) => state = state.copyWith(groupId: groupId);
 }
+
+/// Today's publishing quota, for the compose screen.
+///
+/// Re-read on every visit, and invalidated after a publish or a rewarded
+/// video: it is a snapshot of the server, and a stale "you have 1 left" is the
+/// one thing that screen must not say.
+final FutureProvider<PublishStatus?> publishStatusProvider =
+    FutureProvider<PublishStatus?>((Ref ref) async {
+      final StoryRepository? repository = ref.watch(storyRepositoryProvider);
+      if (repository == null) return null;
+      return repository.publishStatus();
+    }, isAutoDispose: true);

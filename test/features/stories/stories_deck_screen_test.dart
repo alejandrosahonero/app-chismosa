@@ -54,6 +54,14 @@ class _Repository implements StoryRepository {
   }
 
   @override
+  Future<PublishStatus> publishStatus() async => const PublishStatus(
+    postedToday: 0,
+    dailyLimit: 1,
+    credits: 0,
+    isPremium: false,
+  );
+
+  @override
   Future<Story?> fetchStory(String id) async => null;
 
   @override

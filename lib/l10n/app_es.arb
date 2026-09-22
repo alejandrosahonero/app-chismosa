@@ -380,4 +380,57 @@
       }
     }
   }
+,
+
+  "moderationMore": "Más opciones",
+  "moderationBlockAuthor": "Bloquear a quien lo escribió",
+  "moderationBlockMessageAuthor": "Bloquear a esta persona",
+  "moderationBlockConfirmTitle": "¿Bloquear?",
+  "moderationBlockConfirmBody": "No volverás a ver nada suyo: ni historias ni mensajes, en ningún hilo. No sabrás quién era, y no sabrá que lo has bloqueado.",
+  "moderationBlock": "Bloquear",
+  "moderationBlocked": "Bloqueado. No volverás a ver nada suyo.",
+  "moderationError": "No se ha podido completar. Comprueba tu conexión.",
+
+  "composeRemaining": "{count, plural, =0{Hoy ya no te quedan publicaciones} =1{Hoy te queda 1 publicación} other{Hoy te quedan {count} publicaciones}}",
+  "@composeRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "composeUnlimited": "Publicaciones sin límite con premium",
+  "composeWatchAd": "Ver un anuncio para publicar otra",
+  "composeWatchAdBody": "Ya has publicado hoy. Mira un vídeo corto y podrás publicar una más.",
+  "composeAdUnavailable": "Ahora mismo no hay ningún vídeo disponible. Prueba en un rato.",
+  "composeAdDismissed": "Tienes que ver el vídeo entero para conseguir la publicación.",
+  "composeCreditPending": "Confirmando el vídeo…",
+  "composeCreditTimeout": "El vídeo aún no se ha confirmado. Tu historia está guardada aquí; prueba a publicar en un momento.",
+  "composeRemoveLimit": "Quitar el límite",
+
+  "accountSection": "Tu cuenta",
+  "accountCodeTitle": "Código de recuperación",
+  "accountCodeBody": "Es la única forma de recuperar tus hilos en otro móvil o si reinstalas sin copia de seguridad. Guárdalo donde no lo vea nadie: quien lo tenga, entra como tú.",
+  "accountCodeShow": "Mostrar código",
+  "accountCodeCopy": "Copiar",
+  "accountCodeCopied": "Código copiado",
+  "accountCodeUnavailable": "Tu cuenta aún se está creando. Vuelve en un momento.",
+  "accountRestoreTitle": "Recuperar otra cuenta",
+  "accountRestoreBody": "Escribe el código de la cuenta que quieres recuperar. La de este móvil se dejará de usar aquí; si no has guardado su código, se perderá.",
+  "accountRestoreField": "CHM-XXXX-XXXX-…",
+  "accountRestore": "Recuperar",
+  "accountRestored": "Cuenta recuperada",
+  "accountRestoreInvalid": "Ese código no es válido o no corresponde a ninguna cuenta.",
+  "accountBlockedTitle": "Personas bloqueadas",
+  "accountBlockedCount": "{count, plural, =0{No has bloqueado a nadie} =1{1 persona bloqueada} other{{count} personas bloqueadas}}",
+  "@accountBlockedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "accountUnblockAll": "Desbloquear a todos",
+  "accountUnblockAllBody": "No se puede desbloquear a una persona concreta, porque nadie sabe quién es quién. Solo a todas a la vez.",
+  "accountUnblocked": "Has desbloqueado a todos"
 }

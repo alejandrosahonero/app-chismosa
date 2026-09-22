@@ -47,6 +47,24 @@ final Provider<AnonymousIdentityService?> identityServiceProvider =
       );
     });
 
+/// Bumped whenever the signed-in account changes under a running app — today,
+/// only when somebody restores an older account from its recovery code.
+///
+/// Every repository watches it, so everything built on the old account (the
+/// deck, the thread history, the block count) is thrown away and rebuilt at
+/// once. Without it the screens would keep showing the previous account’s
+/// threads until the app was restarted, which after a restore reads as "it did
+/// not work".
+final NotifierProvider<SessionEpoch, int> sessionEpochProvider =
+    NotifierProvider<SessionEpoch, int>(SessionEpoch.new);
+
+class SessionEpoch extends Notifier<int> {
+  @override
+  int build() => 0;
+
+  void bump() => state++;
+}
+
 /// Id of the signed-in anonymous account, or null before sign-in finishes.
 final Provider<String?> currentUserIdProvider = Provider<String?>(
   (Ref ref) => ref.watch(identityServiceProvider)?.identity?.userId,

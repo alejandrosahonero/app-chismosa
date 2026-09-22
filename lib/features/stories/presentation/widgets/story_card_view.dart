@@ -28,9 +28,13 @@ String categoryLabel(AppLocalizations l10n, StoryCategory category) =>
 /// Wrapped in a [RepaintBoundary] because the cards underneath must not repaint
 /// while this one is being dragged.
 class StoryCardView extends StatelessWidget {
-  const StoryCardView({required this.story, super.key});
+  const StoryCardView({required this.story, super.key, this.onMore});
 
   final Story story;
+
+  /// Opens report / block. Only the top card gets one: the cards behind are
+  /// covered and cannot be tapped anyway.
+  final VoidCallback? onMore;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +46,7 @@ class StoryCardView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            _Header(story: story),
+            _Header(story: story, onMore: onMore),
             const SizedBox(height: AppSpacing.lg),
             Expanded(
               child: SingleChildScrollView(
@@ -69,9 +73,10 @@ class StoryCardView extends StatelessWidget {
 }
 
 class _Header extends StatelessWidget {
-  const _Header({required this.story});
+  const _Header({required this.story, this.onMore});
 
   final Story story;
+  final VoidCallback? onMore;
 
   @override
   Widget build(BuildContext context) {
@@ -103,6 +108,13 @@ class _Header extends StatelessWidget {
             // update when a country changes its name.
             _flagOf(story.countryCode!),
             style: const TextStyle(fontSize: 20),
+          ),
+        if (onMore != null)
+          IconButton(
+            onPressed: onMore,
+            tooltip: context.l10n.moderationMore,
+            visualDensity: VisualDensity.compact,
+            icon: const Icon(Icons.more_vert),
           ),
       ],
     );

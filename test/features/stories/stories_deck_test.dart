@@ -68,6 +68,14 @@ class _FakeRepository implements StoryRepository {
   }
 
   @override
+  Future<PublishStatus> publishStatus() async => const PublishStatus(
+    postedToday: 0,
+    dailyLimit: 1,
+    credits: 0,
+    isPremium: false,
+  );
+
+  @override
   Future<Story?> fetchStory(String id) async {
     for (final Story story in catalogue) {
       if (story.id == id) return story;

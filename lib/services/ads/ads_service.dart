@@ -22,6 +22,18 @@ enum AdShowResult {
   notReady,
 }
 
+/// What happened to a rewarded video.
+enum RewardOutcome {
+  /// Watched to the end. The credit is on its way from the server.
+  earned,
+
+  /// Closed before the reward.
+  dismissed,
+
+  /// No creative, no consent, premium, or no unit configured.
+  unavailable,
+}
+
 /// Alias kept because the format-specific name reads better at call sites in
 /// some features. `AdsService` is the canonical name used by the project guide.
 typedef AdService = AdsService;
@@ -39,8 +51,9 @@ typedef AdService = AdsService;
 /// * A missing ad never blocks a user flow: callers get [AdShowResult.notReady]
 ///   and continue.
 ///
-/// There is deliberately no rewarded format: browsing the deck is passive, so
-/// there is nothing a user could want to unlock badly enough to watch a video.
+/// The rewarded format exists for exactly one thing: a second story on a day
+/// the free quota is spent. Nothing else in the app is locked, so nothing else
+/// may ask for a video.
 class AdsService {
   AdsService({required ConsentService consentService, required this.isPremium})
     : _consent = consentService;
@@ -216,6 +229,77 @@ class AdsService {
     _interstitial?.dispose();
     _interstitial = null;
     _interstitialLoadedAt = null;
+  }
+
+  // --- Rewarded -----------------------------------------------------------
+
+  /// Plays a rewarded video that pays for one extra story today.
+  ///
+  /// **Nothing is granted here.** The reward the SDK reports on the phone is
+  /// only a signal that the video finished; the credit itself is written by
+  /// the `admob-ssv` Edge Function when Google calls it with a signed receipt.
+  /// [userId] travels inside that receipt — it is how the server knows whom to
+  /// pay — so nobody can credit themselves by faking the callback.
+  ///
+  /// Loaded on demand rather than preloaded at startup: the video is only ever
+  /// wanted by somebody who has already spent the day's story, and a creative
+  /// cached for everybody else is a request nobody watches.
+  Future<RewardOutcome> showRewardedForPostCredit({
+    required String userId,
+  }) async {
+    if (!adsEnabled || AdConfig.rewardedAdUnitId.isEmpty) {
+      return RewardOutcome.unavailable;
+    }
+
+    final Completer<RewardedAd?> loaded = Completer<RewardedAd?>();
+    unawaited(
+      RewardedAd.load(
+        adUnitId: AdConfig.rewardedAdUnitId,
+        request: buildRequest(),
+        rewardedAdLoadCallback: RewardedAdLoadCallback(
+          onAdLoaded: loaded.complete,
+          onAdFailedToLoad: (LoadAdError error) {
+            AppLogger.debug('Rewarded load failed: $error', name: 'ads');
+            loaded.complete(null);
+          },
+        ),
+      ),
+    );
+
+    final RewardedAd? ad = await loaded.future.timeout(
+      AppConfig.rewardedLoadTimeout,
+      onTimeout: () => null,
+    );
+    if (ad == null) return RewardOutcome.unavailable;
+
+    await ad.setServerSideOptions(
+      ServerSideVerificationOptions(userId: userId, customData: 'post_credit'),
+    );
+
+    final Completer<RewardOutcome> outcome = Completer<RewardOutcome>();
+    bool earned = false;
+
+    ad.fullScreenContentCallback = FullScreenContentCallback<RewardedAd>(
+      onAdDismissedFullScreenContent: (RewardedAd ad) {
+        ad.dispose();
+        if (!outcome.isCompleted) {
+          outcome.complete(
+            earned ? RewardOutcome.earned : RewardOutcome.dismissed,
+          );
+        }
+      },
+      onAdFailedToShowFullScreenContent: (RewardedAd ad, AdError error) {
+        AppLogger.error('Rewarded show failed: $error', name: 'ads');
+        ad.dispose();
+        if (!outcome.isCompleted) outcome.complete(RewardOutcome.unavailable);
+      },
+    );
+
+    await ad.show(
+      onUserEarnedReward: (AdWithoutView ad, RewardItem reward) =>
+          earned = true,
+    );
+    return outcome.future;
   }
 
   // --- Shared helpers -----------------------------------------------------

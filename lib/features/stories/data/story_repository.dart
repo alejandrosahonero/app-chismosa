@@ -82,6 +82,9 @@ abstract interface class StoryRepository {
     int limit = BackendConfig.feedPageSize,
   });
 
+  /// Today's quota: how many are left, and whether a video can buy more.
+  Future<PublishStatus> publishStatus();
+
   /// One story by id, for a deep link or a row in the thread history.
   Future<Story?> fetchStory(String id);
 
@@ -149,6 +152,22 @@ class SupabaseStoryRepository implements StoryRepository {
         });
 
     return rows.map(Story.fromRow).toList(growable: false);
+  }
+
+  @override
+  Future<PublishStatus> publishStatus() async {
+    final List<Map<String, dynamic>> rows = await _rpcRows(
+      'publish_status',
+      <String, dynamic>{},
+    );
+    return rows.isEmpty
+        ? const PublishStatus(
+            postedToday: 0,
+            dailyLimit: 1,
+            credits: 0,
+            isPremium: false,
+          )
+        : PublishStatus.fromRow(rows.first);
   }
 
   @override

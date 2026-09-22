@@ -8,6 +8,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 /// the history both have something to show before sign-in finishes.
 final Provider<ThreadRepository?> threadRepositoryProvider =
     Provider<ThreadRepository?>((Ref ref) {
+      ref.watch(sessionEpochProvider);
       final SupabaseClient? client = ref.watch(supabaseClientProvider);
       if (client == null) return null;
       return SupabaseThreadRepository(client);

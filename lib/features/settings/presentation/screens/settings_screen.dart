@@ -7,6 +7,7 @@ import 'package:chismosa/core/theme/app_spacing.dart';
 import 'package:chismosa/core/theme/theme_controller.dart';
 import 'package:chismosa/core/widgets/base_screen.dart';
 import 'package:chismosa/features/facts/presentation/providers/facts_providers.dart';
+import 'package:chismosa/features/settings/presentation/widgets/account_section.dart';
 import 'package:chismosa/services/ads/ads_providers.dart';
 import 'package:chismosa/services/billing/premium_controller.dart';
 import 'package:chismosa/services/notifications/daily_question_service.dart';
@@ -47,6 +48,9 @@ class SettingsScreen extends ConsumerWidget {
       showBanner: false,
       body: ListView(
         children: <Widget>[
+          _SectionHeader(title: context.l10n.accountSection),
+          const AccountSection(),
+          const Divider(),
           _SectionHeader(title: context.l10n.settingsAppearance),
           RadioGroup<ThemeMode>(
             groupValue: themeMode,

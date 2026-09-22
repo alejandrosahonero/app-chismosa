@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:chismosa/core/config/app_config.dart';
 import 'package:chismosa/core/extensions/build_context_x.dart';
 import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/theme/app_spacing.dart';
@@ -8,6 +11,9 @@ import 'package:chismosa/features/stories/presentation/providers/stories_deck_co
 import 'package:chismosa/features/stories/presentation/providers/stories_providers.dart';
 import 'package:chismosa/features/stories/presentation/widgets/story_card_view.dart';
 import 'package:chismosa/l10n/generated/app_localizations.dart';
+import 'package:chismosa/services/ads/ads_providers.dart';
+import 'package:chismosa/services/ads/ads_service.dart';
+import 'package:chismosa/services/backend/backend_providers.dart';
 import 'package:chismosa/services/locale/locale_providers.dart';
 import 'package:chismosa/services/locale/locale_settings.dart';
 import 'package:flutter/material.dart';
@@ -112,6 +118,8 @@ class _ComposeStoryScreenState extends ConsumerState<ComposeStoryScreen> {
           const SizedBox(height: AppSpacing.lg),
           _AnonymityNote(onRules: () => context.pushNamed(AppRoutes.rulesName)),
           const SizedBox(height: AppSpacing.lg),
+          const _QuotaLine(),
+          const SizedBox(height: AppSpacing.sm),
           FilledButton(
             onPressed: canSend ? _publish : null,
             child: _sending
@@ -156,11 +164,125 @@ class _ComposeStoryScreenState extends ConsumerState<ComposeStoryScreen> {
     } on StoryException catch (error) {
       if (!mounted) return;
       setState(() => _sending = false);
+      ref.invalidate(publishStatusProvider);
+      if (error.failure == StoryFailure.dailyLimitReached) {
+        // Not a dead end: the story is written, and the reader is one video
+        // away from publishing it. Offering that here, at the moment of
+        // refusal, is the only time the offer makes sense.
+        await _offerRewardedCredit();
+        return;
+      }
       context.showSnack(_messageFor(l10n, error.failure));
     } on Object {
       if (!mounted) return;
       setState(() => _sending = false);
       context.showSnack(l10n.composeErrorOffline);
+    }
+  }
+
+  /// Asks whether to watch a video for one more story, and publishes if the
+  /// credit arrives.
+  Future<void> _offerRewardedCredit() async {
+    final AppLocalizations l10n = context.l10n;
+    final bool? watch = await showDialog<bool>(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: Text(l10n.composeErrorDailyLimit),
+        content: Text(l10n.composeWatchAdBody),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(false);
+              unawaited(context.pushNamed(AppRoutes.paywallName));
+            },
+            child: Text(l10n.composeRemoveLimit),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: Text(l10n.composeWatchAd),
+          ),
+        ],
+      ),
+    );
+    if ((watch ?? false) && mounted) await _watchForCredit();
+  }
+
+  /// Plays the video, waits for the server to grant the credit, publishes.
+  ///
+  /// The wait is the unusual part. The reward the SDK reports on the phone
+  /// proves nothing — anything on the phone can be faked — so the credit is
+  /// written by the server when Google calls it with a signed receipt, a few
+  /// seconds after the video closes. Until that row exists, publishing would
+  /// just be refused again.
+  Future<void> _watchForCredit() async {
+    final AppLocalizations l10n = context.l10n;
+    final String? userId = ref
+        .read(supabaseClientProvider)
+        ?.auth
+        .currentUser
+        ?.id;
+    final StoryRepository? repository = ref.read(storyRepositoryProvider);
+    if (userId == null || repository == null) {
+      context.showSnack(l10n.composeErrorOffline);
+      return;
+    }
+
+    setState(() => _sending = true);
+    final int before = (await _statusOrNull(repository))?.credits ?? 0;
+
+    final RewardOutcome outcome = await ref
+        .read(adsServiceProvider)
+        .showRewardedForPostCredit(userId: userId);
+    if (!mounted) return;
+
+    switch (outcome) {
+      case RewardOutcome.unavailable:
+        setState(() => _sending = false);
+        context.showSnack(l10n.composeAdUnavailable);
+        return;
+      case RewardOutcome.dismissed:
+        setState(() => _sending = false);
+        context.showSnack(l10n.composeAdDismissed);
+        return;
+      case RewardOutcome.earned:
+        break;
+    }
+
+    context.showSnack(l10n.composeCreditPending);
+    final bool arrived = await _awaitCredit(repository, above: before);
+    if (!mounted) return;
+    ref.invalidate(publishStatusProvider);
+
+    if (!arrived) {
+      setState(() => _sending = false);
+      // The text stays in the field: nothing is lost, it just has to be sent
+      // again once the server catches up.
+      context.showSnack(l10n.composeCreditTimeout);
+      return;
+    }
+    await _publish();
+  }
+
+  Future<bool> _awaitCredit(
+    StoryRepository repository, {
+    required int above,
+  }) async {
+    final DateTime deadline = DateTime.now().add(AppConfig.creditWaitTimeout);
+    while (DateTime.now().isBefore(deadline)) {
+      await Future<void>.delayed(AppConfig.creditPollInterval);
+      final PublishStatus? status = await _statusOrNull(repository);
+      if (status != null && status.credits > above) return true;
+    }
+    return false;
+  }
+
+  static Future<PublishStatus?> _statusOrNull(
+    StoryRepository repository,
+  ) async {
+    try {
+      return await repository.publishStatus();
+    } on Object {
+      return null;
     }
   }
 
@@ -171,6 +293,32 @@ class _ComposeStoryScreenState extends ConsumerState<ComposeStoryScreen> {
         StoryFailure.blockedContent => l10n.composeErrorBlocked,
         _ => l10n.composeErrorOffline,
       };
+}
+
+/// How many stories are left today, said before the reader presses publish.
+///
+/// Silent while it loads or when the server cannot be reached: the quota is
+/// enforced by the server either way, and a line that flickers "0 left" before
+/// the real number arrives would be the worst thing to show.
+class _QuotaLine extends ConsumerWidget {
+  const _QuotaLine();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final PublishStatus? status = ref.watch(publishStatusProvider).value;
+    if (status == null) return const SizedBox.shrink();
+
+    final int? remaining = status.remaining;
+    return Text(
+      remaining == null
+          ? context.l10n.composeUnlimited
+          : context.l10n.composeRemaining(remaining),
+      textAlign: TextAlign.center,
+      style: context.texts.labelMedium?.copyWith(
+        color: context.colors.onSurfaceVariant,
+      ),
+    );
+  }
 }
 
 class _AnonymityNote extends StatelessWidget {

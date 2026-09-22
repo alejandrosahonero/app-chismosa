@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:chismosa/core/extensions/build_context_x.dart';
 import 'package:chismosa/core/theme/app_spacing.dart';
 import 'package:chismosa/core/widgets/app_loader.dart';
+import 'package:chismosa/core/widgets/confirm_dialog.dart';
 import 'package:chismosa/core/widgets/error_view.dart';
 import 'package:chismosa/features/threads/domain/thread_message.dart';
 import 'package:chismosa/features/threads/presentation/providers/thread_controller.dart';
@@ -286,7 +287,9 @@ class _Bubble extends ConsumerWidget {
     return Align(
       alignment: mine ? Alignment.centerRight : Alignment.centerLeft,
       child: GestureDetector(
-        onLongPress: mine ? null : () => unawaited(_report(context, ref)),
+        onLongPress: mine || message.pending
+            ? null
+            : () => unawaited(_moderate(context, ref)),
         child: Container(
           margin: const EdgeInsets.only(bottom: AppSpacing.sm),
           padding: const EdgeInsets.symmetric(
@@ -337,32 +340,64 @@ class _Bubble extends ConsumerWidget {
     );
   }
 
-  Future<void> _report(BuildContext context, WidgetRef ref) async {
+  /// Report or block, on a long press. Never on one's own lines.
+  Future<void> _moderate(BuildContext context, WidgetRef ref) async {
     final AppLocalizations l10n = context.l10n;
-    final bool? confirmed = await showDialog<bool>(
+    final _MessageAction? action = await showModalBottomSheet<_MessageAction>(
       context: context,
-      builder: (BuildContext context) => AlertDialog(
-        title: Text(l10n.threadReportMessage),
-        content: Text(l10n.storiesReportConfirmBody),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(false),
-            child: Text(l10n.commonCancel),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.of(context).pop(true),
-            child: Text(l10n.storiesReport),
-          ),
-        ],
+      showDragHandle: true,
+      builder: (BuildContext context) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            ListTile(
+              leading: const Icon(Icons.flag_outlined),
+              title: Text(l10n.threadReportMessage),
+              onTap: () => Navigator.of(context).pop(_MessageAction.report),
+            ),
+            ListTile(
+              leading: const Icon(Icons.block),
+              title: Text(l10n.moderationBlockMessageAuthor),
+              onTap: () => Navigator.of(context).pop(_MessageAction.block),
+            ),
+          ],
+        ),
       ),
     );
+    if (action == null || !context.mounted) return;
 
-    if (confirmed ?? false) {
-      await ref.read(threadControllerProvider.notifier).report(message.id);
-      if (context.mounted) context.showSnack(l10n.threadMessageReported);
+    final ThreadController thread = ref.read(threadControllerProvider.notifier);
+
+    switch (action) {
+      case _MessageAction.report:
+        final bool ok = await showConfirmDialog(
+          context,
+          title: l10n.threadReportMessage,
+          body: l10n.storiesReportConfirmBody,
+          confirmLabel: l10n.storiesReport,
+        );
+        if (!ok) return;
+        await thread.report(message.id);
+        if (context.mounted) context.showSnack(l10n.threadMessageReported);
+      case _MessageAction.block:
+        final bool ok = await showConfirmDialog(
+          context,
+          title: l10n.moderationBlockConfirmTitle,
+          body: l10n.moderationBlockConfirmBody,
+          confirmLabel: l10n.moderationBlock,
+        );
+        if (!ok) return;
+        try {
+          await thread.blockAuthorOf(message.id);
+          if (context.mounted) context.showSnack(l10n.moderationBlocked);
+        } on Object {
+          if (context.mounted) context.showSnack(l10n.moderationError);
+        }
     }
   }
 }
+
+enum _MessageAction { report, block }
 
 class _Composer extends StatelessWidget {
   const _Composer({

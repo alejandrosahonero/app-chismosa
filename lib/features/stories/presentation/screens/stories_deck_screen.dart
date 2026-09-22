@@ -6,6 +6,7 @@ import 'package:chismosa/core/theme/app_spacing.dart';
 import 'package:chismosa/core/widgets/adaptive_banner_ad.dart';
 import 'package:chismosa/core/widgets/app_loader.dart';
 import 'package:chismosa/core/widgets/base_screen.dart';
+import 'package:chismosa/core/widgets/confirm_dialog.dart';
 import 'package:chismosa/core/widgets/deck/ad_deck_card.dart';
 import 'package:chismosa/core/widgets/deck/deck_card.dart';
 import 'package:chismosa/core/widgets/deck/deck_controls.dart';
@@ -224,7 +225,10 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
           _Badges(progress: progress),
       builder: (BuildContext context, DeckCard card, int depth) =>
           switch (card as StoryDeckItem) {
-            StoryCard(:final Story story) => StoryCardView(story: story),
+            StoryCard(:final Story story) => StoryCardView(
+              story: story,
+              onMore: depth == 0 ? () => unawaited(_moderate()) : null,
+            ),
             // Depth and not "is this the top one": the ad slot fetches its
             // creative one place early so it is not still loading when it
             // arrives.
@@ -298,6 +302,68 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
     if (!mounted) return;
     setState(() => _threadOpen = false);
     await ref.read(threadControllerProvider.notifier).close();
+  }
+
+  /// Report or block, from the button on the top card.
+  ///
+  /// A menu behind a button and never a gesture: all four directions of the
+  /// deck are already taken, and reporting somebody is not a thing that should
+  /// ever happen by a thumb slipping.
+  Future<void> _moderate() async {
+    final AppLocalizations l10n = context.l10n;
+    final _StoryAction? action = await showModalBottomSheet<_StoryAction>(
+      context: context,
+      showDragHandle: true,
+      builder: (BuildContext context) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            ListTile(
+              leading: const Icon(Icons.flag_outlined),
+              title: Text(l10n.storiesReport),
+              onTap: () => Navigator.of(context).pop(_StoryAction.report),
+            ),
+            ListTile(
+              leading: const Icon(Icons.block),
+              title: Text(l10n.moderationBlockAuthor),
+              onTap: () => Navigator.of(context).pop(_StoryAction.block),
+            ),
+          ],
+        ),
+      ),
+    );
+    if (action == null || !mounted) return;
+
+    final StoriesDeckController deck = ref.read(
+      storiesDeckControllerProvider.notifier,
+    );
+
+    switch (action) {
+      case _StoryAction.report:
+        final bool ok = await showConfirmDialog(
+          context,
+          title: l10n.storiesReportConfirmTitle,
+          body: l10n.storiesReportConfirmBody,
+          confirmLabel: l10n.storiesReport,
+        );
+        if (!ok) return;
+        await deck.reportTop();
+        if (mounted) context.showSnack(l10n.storiesReportDone);
+      case _StoryAction.block:
+        final bool ok = await showConfirmDialog(
+          context,
+          title: l10n.moderationBlockConfirmTitle,
+          body: l10n.moderationBlockConfirmBody,
+          confirmLabel: l10n.moderationBlock,
+        );
+        if (!ok) return;
+        try {
+          await deck.blockTopAuthor();
+          if (mounted) context.showSnack(l10n.moderationBlocked);
+        } on Object {
+          if (mounted) context.showSnack(l10n.moderationError);
+        }
+    }
   }
 
   Future<void> _restart() =>
@@ -446,6 +512,8 @@ class _Controls extends StatelessWidget {
     );
   }
 }
+
+enum _StoryAction { report, block }
 
 /// The conversation, rising out of the bottom of the deck.
 ///

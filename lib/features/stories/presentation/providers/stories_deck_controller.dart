@@ -10,6 +10,7 @@ import 'package:chismosa/features/stories/domain/story.dart';
 import 'package:chismosa/features/stories/domain/story_deck.dart';
 import 'package:chismosa/features/stories/presentation/providers/stories_providers.dart';
 import 'package:chismosa/services/billing/premium_controller.dart';
+import 'package:chismosa/services/moderation/moderation_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -184,6 +185,24 @@ class StoriesDeckController extends AsyncNotifier<StoriesDeckState> {
     } on Object catch (error) {
       AppLogger.debug('Report failed: $error', name: 'stories');
     }
+  }
+
+  /// Blocks whoever wrote the top story, then deals the pile again.
+  ///
+  /// Re-dealing rather than just dropping the card: the same author may have
+  /// more stories further down the pile already fetched, and the point of a
+  /// block is that none of them ever shows up. The server leaves them out of
+  /// the new page; the read pile keeps everything already swiped out of it.
+  Future<void> blockTopAuthor() async {
+    final StoryDeckItem? top = state.value?.current;
+    if (top is! StoryCard) return;
+
+    final ModerationService? moderation = ref.read(moderationServiceProvider);
+    if (moderation == null) return;
+
+    await moderation.blockStoryAuthor(top.story.id);
+    await ref.read(seenStoriesStoreProvider).add(<String>[top.story.id]);
+    ref.invalidateSelf();
   }
 
   /// Forgets every card this device has been dealt and starts over.

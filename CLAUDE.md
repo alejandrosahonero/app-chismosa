@@ -289,7 +289,7 @@ Dos sistemas encadenados: **cada día pide un número de datos**, y **cumplirlo 
 - Núcleo gratuito completo y usable (apps de "funcionalidad mínima" se retiran).
 - **Tarjeta de anuncio dentro del mazo = formato principal.** Se desliza igual que el contenido.
 - **Interstitial = secundario**, cada ~9 tarjetas y nunca antes de 3 min desde el anterior.
-- **Sin rewarded.** El uso es pasivo: no hay nada que desbloquear que justifique un vídeo. `AdsService` ya no tiene ese formato — **no reintroducirlo** sin una razón de producto nueva.
+- **Rewarded solo para una cosa: publicar una historia más** el día que ya se gastó la gratuita. El crédito lo concede el servidor (Edge Function `admob-ssv`, verificación SSV de AdMob), nunca la app. Nada más en la app está bloqueado, así que nada más puede pedir un vídeo.
 - **IAP no consumible "quitar anuncios"** = conversión principal. Desbloquea además los favoritos (§3.7), así que tiene dos puntos de venta: la tarjeta de anuncio sin relleno y el intento de guardar una tarjeta.
 
 ### 4.2 AdMob (`google_mobile_ads`)

@@ -28,6 +28,7 @@ normales.
    - `migrations/0001_initial.sql`
    - `migrations/0002_logic.sql`
    - `migrations/0003_rls.sql`
+   - `migrations/0004_moderation.sql`
 5. Settings → API → copiar *Project URL* y la clave *publishable* en
    `lib/core/config/backend_config.dart`.
 
@@ -61,9 +62,27 @@ una vez al día con pg_cron:
 select cron.schedule('close-stale-threads', '0 4 * * *', $$select public.close_stale_threads()$$);
 ```
 
+## Anuncio recompensado (publicar una historia más)
+
+El crédito lo escribe la Edge Function `functions/admob-ssv` cuando Google la llama con un recibo firmado. La app solo lo lee: un crédito que el móvil pudiera concederse no sería un límite.
+
+1. Instalar la CLI de Supabase y enlazar el proyecto:
+   ```bash
+   npx supabase login
+   npx supabase link --project-ref sbeyvzhtvmzcalflqajv
+   ```
+2. Desplegar (sin JWT: quien llama es Google, que no tiene sesión; lo autentica la firma):
+   ```bash
+   npx supabase functions deploy admob-ssv --no-verify-jwt
+   ```
+3. AdMob → crear una unidad **Recompensado** → *Verificación del lado del servidor* → URL:
+   `https://sbeyvzhtvmzcalflqajv.supabase.co/functions/v1/admob-ssv`
+4. Poner el id de esa unidad en `_prodRewarded` (`lib/core/config/ad_config.dart`).
+
+La unidad de prueba de Google no tiene callback, así que en debug el vídeo se ve pero **no llega crédito**. Para probar el circuito entero: la unidad real con tu móvil en `AdConfig.testDeviceIds`.
+
 ## Pendiente
 
-- Edge Function del callback de AdMob (créditos de publicación).
 - Edge Function que envía push por FCM al llegar un mensaje a un hilo.
 - Validar el token de compra de Play antes de fiarse de `profiles.is_premium`.
 - Rellenar `banned_words`. Está vacía a propósito: una lista mal elegida bloquea

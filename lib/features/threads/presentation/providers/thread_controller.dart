@@ -6,6 +6,7 @@ import 'package:chismosa/features/stories/domain/story.dart';
 import 'package:chismosa/features/threads/data/thread_repository.dart';
 import 'package:chismosa/features/threads/domain/thread_message.dart';
 import 'package:chismosa/features/threads/presentation/providers/threads_providers.dart';
+import 'package:chismosa/services/moderation/moderation_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -67,6 +68,11 @@ class ThreadController extends AsyncNotifier<ThreadState?> {
   /// name is put back on.
   Map<String, ThreadAlias> _aliases = <String, ThreadAlias>{};
 
+  /// Aliases blocked while this thread is open. Realtime does not know about
+  /// blocks — it ships every row to every member — so without this a blocked
+  /// person would keep talking until the thread was reopened.
+  final Set<String> _blockedAliases = <String>{};
+
   @override
   Future<ThreadState?> build() async {
     ref.onDispose(() => unawaited(_live?.cancel()));
@@ -86,6 +92,7 @@ class ThreadController extends AsyncNotifier<ThreadState?> {
 
     await _live?.cancel();
     _live = null;
+    _blockedAliases.clear();
     state = const AsyncLoading<ThreadState?>();
 
     try {
@@ -222,6 +229,35 @@ class ThreadController extends AsyncNotifier<ThreadState?> {
     await _swallow(() => _repository!.reportMessage(messageId));
   }
 
+  /// Blocks whoever wrote [messageId] and clears their lines from the screen.
+  ///
+  /// Matched by alias, which is unique inside a thread: the app never learns
+  /// the account behind a message, only the name it wears here. Their future
+  /// messages are dropped by the server (`thread_messages` filters on blocks)
+  /// but Realtime ships rows to every member as they are, so the live path
+  /// filters them too — see [_blockedAliases].
+  Future<void> blockAuthorOf(String messageId) async {
+    final ThreadState? current = state.value;
+    final ModerationService? moderation = ref.read(moderationServiceProvider);
+    if (current == null || moderation == null) return;
+
+    final String alias = current.messages
+        .firstWhere((ThreadMessage m) => m.id == messageId)
+        .alias;
+
+    await moderation.blockMessageAuthor(messageId);
+    _blockedAliases.add(alias);
+
+    final ThreadState now = state.value ?? current;
+    state = AsyncData<ThreadState?>(
+      now.copyWith(
+        messages: now.messages
+            .where((ThreadMessage m) => m.alias != alias)
+            .toList(growable: false),
+      ),
+    );
+  }
+
   /// A row that arrived over the socket.
   Future<void> _onLiveRow(Map<String, dynamic> row) async {
     final ThreadState? current = state.value;
@@ -248,6 +284,7 @@ class ThreadController extends AsyncNotifier<ThreadState?> {
 
     final ThreadState? now = state.value;
     if (now == null) return;
+    if (alias != null && _blockedAliases.contains(alias.alias)) return;
 
     state = AsyncData<ThreadState?>(
       now.copyWith(

@@ -171,3 +171,36 @@ class Story {
   @override
   int get hashCode => Object.hash(id, liked, joined, likesCount, messagesCount);
 }
+
+/// Where the reader stands against today's publishing quota.
+@immutable
+class PublishStatus {
+  const PublishStatus({
+    required this.postedToday,
+    required this.dailyLimit,
+    required this.credits,
+    required this.isPremium,
+  });
+
+  factory PublishStatus.fromRow(Map<String, dynamic> row) => PublishStatus(
+    postedToday: (row['posted_today'] as num?)?.toInt() ?? 0,
+    dailyLimit: (row['daily_limit'] as num?)?.toInt() ?? 1,
+    credits: (row['credits'] as num?)?.toInt() ?? 0,
+    isPremium: (row['is_premium'] as bool?) ?? false,
+  );
+
+  final int postedToday;
+  final int dailyLimit;
+
+  /// Extra stories bought with rewarded videos, not yet spent.
+  final int credits;
+
+  final bool isPremium;
+
+  /// Stories this reader can still publish today, or null for "no limit".
+  int? get remaining => isPremium
+      ? null
+      : (dailyLimit - postedToday).clamp(0, dailyLimit) + credits;
+
+  bool get canPublish => remaining == null || remaining! > 0;
+}
