@@ -15,6 +15,7 @@ class FeedQuery {
     this.languages = const <String>[],
     this.countryCode,
     this.sort = StorySort.hot,
+    this.liked = false,
   });
 
   /// Group whose members' stories to show, or null for the worldwide deck.
@@ -29,11 +30,18 @@ class FeedQuery {
   /// somehow ends up with no languages must still get a deck.
   final List<String> languages;
 
-  /// Restricts the deck to one country. Null is the point of the app — stories
-  /// from everywhere — so this is opt-in.
+  /// Restricts the deck to one country. The deck **starts** on the phone's own
+  /// country: at launch there are three markets and a thin catalogue, and a
+  /// reader in Madrid is better served by forty Spanish stories than by the
+  /// same forty diluted among three countries. When they run out, the
+  /// "nothing left" screen offers to widen to the whole world.
   final String? countryCode;
 
   final StorySort sort;
+
+  /// "Me gustaron": the stories this reader liked, newest like first. The
+  /// only mode that deals cards already seen — re-reading is the point.
+  final bool liked;
 
   /// The `category` argument `feed()` expects. Both nulls collapse to the same
   /// "no filter" so the server does not have to know about the distinction.
@@ -50,6 +58,7 @@ class FeedQuery {
     List<String>? languages,
     Object? countryCode = _unset,
     StorySort? sort,
+    bool? liked,
   }) => FeedQuery(
     // Sentinel rather than null-coalescing: every one of these fields has null
     // as a meaningful value ("worldwide", "every category"), so `?? this.x`
@@ -61,6 +70,7 @@ class FeedQuery {
         ? this.countryCode
         : countryCode as String?,
     sort: sort ?? this.sort,
+    liked: liked ?? this.liked,
   );
 
   static const Object _unset = Object();
@@ -72,6 +82,7 @@ class FeedQuery {
       other.category == category &&
       other.countryCode == countryCode &&
       other.sort == sort &&
+      other.liked == liked &&
       listEquals(other.languages, languages);
 
   @override
@@ -80,11 +91,13 @@ class FeedQuery {
     category,
     countryCode,
     sort,
+    liked,
     Object.hashAll(languages),
   );
 
   @override
   String toString() =>
       'FeedQuery(group: $groupId, category: ${category?.id}, '
-      'langs: $languages, country: $countryCode, sort: ${sort.id})';
+      'langs: $languages, country: $countryCode, sort: ${sort.id}, '
+      'liked: $liked)';
 }

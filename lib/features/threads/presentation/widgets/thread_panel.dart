@@ -6,6 +6,7 @@ import 'package:chismosa/core/theme/app_spacing.dart';
 import 'package:chismosa/core/widgets/app_loader.dart';
 import 'package:chismosa/core/widgets/confirm_dialog.dart';
 import 'package:chismosa/core/widgets/error_view.dart';
+import 'package:chismosa/core/widgets/report_reason_sheet.dart';
 import 'package:chismosa/features/threads/domain/thread_message.dart';
 import 'package:chismosa/features/threads/presentation/providers/thread_controller.dart';
 import 'package:chismosa/l10n/generated/app_localizations.dart';
@@ -414,14 +415,9 @@ class _Bubble extends ConsumerWidget {
 
     switch (action) {
       case _MessageAction.report:
-        final bool ok = await showConfirmDialog(
-          context,
-          title: l10n.threadReportMessage,
-          body: l10n.storiesReportConfirmBody,
-          confirmLabel: l10n.storiesReport,
-        );
-        if (!ok) return;
-        await thread.report(message.id);
+        final ReportReason? reason = await pickReportReason(context);
+        if (reason == null) return;
+        await thread.report(message.id, reason: reason.id);
         if (context.mounted) context.showSnack(l10n.threadMessageReported);
       case _MessageAction.block:
         final bool ok = await showConfirmDialog(

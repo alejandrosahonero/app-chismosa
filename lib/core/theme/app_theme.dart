@@ -8,15 +8,27 @@ import 'package:flutter/material.dart';
 /// Dynamic colour (Material You) is deliberately **not** used: on most phones
 /// it would repaint Chismosa in the wallpaper's colours, and a brand that
 /// changes with the wallpaper is not a brand.
+/// The two brand faces, bundled in `assets/fonts` (OFL).
+abstract final class AppFonts {
+  static const String body = 'Onest';
+  static const String display = 'Bricolage Grotesque';
+}
+
 abstract final class AppTheme {
   static ThemeData light() => _build(AppColors.light, AppSemanticColors.light);
 
   static ThemeData dark() => _build(AppColors.dark, AppSemanticColors.dark);
 
   static ThemeData _build(ColorScheme scheme, AppSemanticColors semantic) {
-    // Roboto named explicitly: it is Android's default anyway, and naming it
-    // makes the screenshot tool render every widget with the real font.
-    final ThemeData base = ThemeData(colorScheme: scheme, fontFamily: 'Roboto');
+    // Onest for everything a person reads; Bricolage Grotesque for the few
+    // lines that are the brand talking (titles, the welcome, the share card).
+    final ThemeData base = ThemeData(
+      colorScheme: scheme,
+      fontFamily: AppFonts.body,
+    );
+    final TextTheme text = base.textTheme;
+    TextStyle? display(TextStyle? style) =>
+        style?.copyWith(fontFamily: AppFonts.display);
 
     return base.copyWith(
       scaffoldBackgroundColor: scheme.surface,
@@ -74,17 +86,20 @@ abstract final class AppTheme {
         ),
         showCheckmark: false,
       ),
-      textTheme: base.textTheme.copyWith(
+      textTheme: text.copyWith(
+        displayLarge: display(text.displayLarge),
+        displayMedium: display(text.displayMedium),
+        displaySmall: display(text.displaySmall),
         // Tighter and heavier than Material's defaults: the story is the
         // interface, and it should read like a voice, not like a form.
-        headlineSmall: base.textTheme.headlineSmall?.copyWith(
+        headlineSmall: text.headlineSmall?.copyWith(
           fontWeight: FontWeight.w600,
           letterSpacing: -0.2,
         ),
-        titleLarge: base.textTheme.titleLarge?.copyWith(
-          fontWeight: FontWeight.w800,
-          letterSpacing: -0.4,
-        ),
+        // The app bar title is the wordmark's place on every screen.
+        titleLarge: display(
+          text.titleLarge,
+        )?.copyWith(fontWeight: FontWeight.w800, letterSpacing: -0.4),
       ),
       snackBarTheme: const SnackBarThemeData(
         behavior: SnackBarBehavior.floating,

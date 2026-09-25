@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:chismosa/core/config/app_config.dart';
+import 'package:chismosa/core/config/links_config.dart';
 import 'package:chismosa/core/extensions/build_context_x.dart';
 import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/theme/app_spacing.dart';
@@ -16,13 +17,16 @@ import 'package:chismosa/core/widgets/deck/deck_thresholds.dart';
 import 'package:chismosa/core/widgets/deck/swipe_deck.dart';
 import 'package:chismosa/core/widgets/empty_state.dart';
 import 'package:chismosa/core/widgets/error_view.dart';
+import 'package:chismosa/core/widgets/report_reason_sheet.dart';
 import 'package:chismosa/features/goals/domain/goals_state.dart';
 import 'package:chismosa/features/goals/presentation/providers/goals_controller.dart';
 import 'package:chismosa/features/goals/presentation/widgets/goal_celebration.dart';
 import 'package:chismosa/features/goals/presentation/widgets/goal_ring_button.dart';
+import 'package:chismosa/features/stories/domain/feed_query.dart';
 import 'package:chismosa/features/stories/domain/story.dart';
 import 'package:chismosa/features/stories/domain/story_deck.dart';
 import 'package:chismosa/features/stories/presentation/providers/stories_deck_controller.dart';
+import 'package:chismosa/features/stories/presentation/providers/stories_providers.dart';
 import 'package:chismosa/features/stories/presentation/widgets/story_card_view.dart';
 import 'package:chismosa/features/stories/presentation/widgets/story_filters.dart';
 import 'package:chismosa/features/threads/presentation/providers/thread_controller.dart';
@@ -36,16 +40,20 @@ import 'package:go_router/go_router.dart';
 
 /// Gesture costs of the stories deck.
 ///
-/// Three of the four directions consume the card, so they are cheap: passing on
-/// somebody's story should take no effort at all. Up is the odd one out — it
-/// opens the thread on top of the app — so it is the only direction a bare
-/// flick cannot commit on its own.
+/// Left and right consume the card, so they are cheap: passing on somebody's
+/// story should take no effort at all. Up (the thread) and down (share) open
+/// something over the app, so a bare flick cannot commit either: they need the
+/// finger to travel. Down is the longest of all — it hands the story to
+/// another app, and a thumb slipping must never do that.
 const DeckThresholds _storyThresholds = DeckThresholds(
   left: 0.28,
   right: 0.28,
   up: 0.16,
-  down: 0.22,
-  requireTravel: <DeckSwipeDirection>{DeckSwipeDirection.up},
+  down: 0.26,
+  requireTravel: <DeckSwipeDirection>{
+    DeckSwipeDirection.up,
+    DeckSwipeDirection.down,
+  },
 );
 
 /// The deck. It is the app.
@@ -216,12 +224,11 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
       index: state.index,
       progress: _progress,
       thresholds: _storyThresholds,
-      // Everything but "open the thread" consumes the card. Down is a second
-      // way to pass: the reader who is scrolling fast should not have to aim.
+      // Pass and like consume the card. The thread and sharing leave it in
+      // place: coming back from either should land on the same story.
       dismissOn: const <DeckSwipeDirection>{
         DeckSwipeDirection.left,
         DeckSwipeDirection.right,
-        DeckSwipeDirection.down,
       },
       onSwipe: _run,
       overlayBuilder: (BuildContext context, DeckSwipeProgress progress) =>
@@ -245,14 +252,50 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
   void _run(DeckSwipeDirection direction) {
     switch (direction) {
       case DeckSwipeDirection.left:
-      case DeckSwipeDirection.down:
         unawaited(_pass());
+      case DeckSwipeDirection.down:
+        unawaited(_share());
       case DeckSwipeDirection.right:
         unawaited(_like());
       case DeckSwipeDirection.up:
         unawaited(_openThread());
       case DeckSwipeDirection.none:
         break;
+    }
+  }
+
+  /// Down: the story as a 1080x1920 image for TikTok, Instagram or WhatsApp,
+  /// with a link back to its thread. The growth loop of the whole app.
+  ///
+  /// Group stories never leave the group: sharing one outside would break the
+  /// only promise a private deck makes.
+  Future<void> _share() async {
+    final StoryDeckItem? top = ref
+        .read(storiesDeckControllerProvider)
+        .value
+        ?.current;
+    if (top is! StoryCard) return;
+    final AppLocalizations l10n = context.l10n;
+    if (ref.read(feedQueryProvider).groupId != null) {
+      context.showSnack(l10n.shareGroupBlocked);
+      return;
+    }
+
+    final Story story = top.story;
+    final String link = LinksConfig.story(story.id);
+    try {
+      await ref
+          .read(storyShareServiceProvider)
+          .share(
+            storyId: story.id,
+            body: story.body,
+            cta: l10n.shareCta,
+            link: link,
+            message: l10n.shareMessage(link),
+            tag: story.chapter > 1 ? l10n.storiesChapter(story.chapter) : null,
+          );
+    } on Object {
+      if (mounted) context.showSnack(l10n.shareError);
     }
   }
 
@@ -343,15 +386,15 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
 
     switch (action) {
       case _StoryAction.report:
-        final bool ok = await showConfirmDialog(
-          context,
-          title: l10n.storiesReportConfirmTitle,
-          body: l10n.storiesReportConfirmBody,
-          confirmLabel: l10n.storiesReport,
+        final ReportReason? reason = await pickReportReason(context);
+        if (reason == null) return;
+        await deck.reportTop(reason: reason.id);
+        if (!mounted) return;
+        context.showSnack(
+          reason == ReportReason.namesSomeone
+              ? l10n.reportNamesSomeoneDone
+              : l10n.storiesReportDone,
         );
-        if (!ok) return;
-        await deck.reportTop();
-        if (mounted) context.showSnack(l10n.storiesReportDone);
       case _StoryAction.block:
         final bool ok = await showConfirmDialog(
           context,
@@ -385,14 +428,53 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
   }
 }
 
-class _Exhausted extends StatelessWidget {
+class _Exhausted extends ConsumerWidget {
   const _Exhausted({required this.onRestart});
 
   final Future<void> Function() onRestart;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final AppLocalizations l10n = context.l10n;
+    final FeedQuery query = ref.watch(feedQueryProvider);
+    final FeedQueryController filters = ref.read(feedQueryProvider.notifier);
+
+    if (query.liked) {
+      return EmptyState(
+        icon: Icons.favorite_border,
+        title: l10n.storiesLikedEmptyTitle,
+        message: l10n.storiesLikedEmptyBody,
+        action: FilledButton(
+          onPressed: () => filters.showLiked(liked: false),
+          child: Text(l10n.storiesLikedBack),
+        ),
+      );
+    }
+
+    // Out of stories in the reader's own country: the obvious next step is
+    // the rest of the world, one tap away, before anything else.
+    if (query.countryCode != null) {
+      return EmptyState(
+        icon: Icons.travel_explore,
+        title: l10n.storiesCountryEmptyTitle,
+        message: l10n.storiesCountryEmptyBody,
+        action: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            FilledButton.icon(
+              onPressed: () => filters.selectCountry(null),
+              icon: const Icon(Icons.public),
+              label: Text(l10n.storiesWidenSearch),
+            ),
+            const SizedBox(height: AppSpacing.sm),
+            TextButton(
+              onPressed: () => context.goNamed(AppRoutes.composeName),
+              child: Text(l10n.storiesEmptyWrite),
+            ),
+          ],
+        ),
+      );
+    }
 
     return EmptyState(
       icon: Icons.forum_outlined,
@@ -451,7 +533,7 @@ class _Badges extends StatelessWidget {
           amount: progress.amountFor(DeckSwipeDirection.up),
         ),
         DeckSwipeBadge(
-          icon: Icons.keyboard_double_arrow_down,
+          icon: Icons.ios_share,
           direction: DeckSwipeDirection.down,
           alignment: Alignment.topCenter,
           amount: progress.amountFor(DeckSwipeDirection.down),
@@ -461,11 +543,10 @@ class _Badges extends StatelessWidget {
   }
 }
 
-/// The buttons under the deck.
+/// The buttons under the deck, one per gesture.
 ///
 /// Not decorative: a drag-only surface is unusable with a screen reader and is
-/// penalised by Play's accessibility scan. Down has no button of its own — it
-/// is a second way to do what "pass" already does.
+/// penalised by Play's accessibility scan.
 class _Controls extends StatelessWidget {
   const _Controls({
     required this.state,
@@ -485,6 +566,17 @@ class _Controls extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
+        // Small, like the thread button: the two gestures that open something
+        // rather than decide something.
+        DeckActionButton(
+          icon: Icons.ios_share,
+          direction: DeckSwipeDirection.down,
+          progress: progress,
+          tooltip: l10n.storiesShare,
+          onPressed: isStory ? () => onAction(DeckSwipeDirection.down) : null,
+          diameter: DeckActionButton.small,
+        ),
+        const SizedBox(width: AppSpacing.md),
         DeckActionButton(
           icon: Icons.close_rounded,
           direction: DeckSwipeDirection.left,

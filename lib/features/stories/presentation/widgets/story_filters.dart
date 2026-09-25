@@ -56,6 +56,15 @@ class StoryFilters extends ConsumerWidget {
             selected: query.groupId != null,
             onTap: () => context.pushNamed(AppRoutes.groupsName),
           ),
+          const SizedBox(width: AppSpacing.sm),
+          _Chip(
+            label: l10n.storiesLikedFilter,
+            icon: query.liked ? Icons.favorite : Icons.favorite_border,
+            selected: query.liked,
+            onTap: () => ref
+                .read(feedQueryProvider.notifier)
+                .showLiked(liked: !query.liked),
+          ),
           const SizedBox(width: AppSpacing.md),
           // Sort first: it changes what the deck *is*, while a category only
           // narrows it.

@@ -115,15 +115,18 @@
                 <data android:scheme="chismosa" />
             </intent-filter>
 
-            <!-- App Links (verified https). Enable after publishing
-                 assetlinks.json on the domain, otherwise Android ignores it.
+            <!-- App Links: shared stories (/s/<id>) and group invites
+                 (/g/<code>) over https, so they are tappable in WhatsApp and
+                 everywhere else. Verified against
+                 https://chismosa.pages.dev/.well-known/assetlinks.json
+                 (site/). The host must match LinksConfig.host. -->
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https" android:host="example.com" />
+                <data android:scheme="https" android:host="chismosa.pages.dev" android:pathPrefix="/s/" />
+                <data android:scheme="https" android:host="chismosa.pages.dev" android:pathPrefix="/g/" />
             </intent-filter>
-            -->
         </activity>
 
         <meta-data

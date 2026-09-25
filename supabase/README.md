@@ -32,6 +32,7 @@ normales.
    - `migrations/0005_groups.sql`
    - `migrations/0006_push.sql`
    - `migrations/0007_safety_and_chapters.sql`
+   - `migrations/0008_launch.sql`
 5. Settings → API → copiar *Project URL* y la clave *publishable* en
    `lib/core/config/backend_config.dart`.
 
@@ -115,27 +116,59 @@ a quien escribió, nunca a quien lo tiene silenciado, y nada entre personas que
 se han bloqueado. El permiso de notificaciones se pide una sola vez, justo
 después de tu primer mensaje en un hilo.
 
+## Compras premium verificadas (`verify-purchase`)
+
+Premium solo lo concede el servidor: la app manda el token de compra a
+`verify-purchase`, que lo comprueba con la API de Google Play y actualiza
+`profiles.is_premium` (la app ya no puede escribir esa columna). Pasos, todos
+gratis, en la cabecera de `functions/verify-purchase/index.ts`. Resumen:
+
+1. Play Console → Configuración → Acceso a la API → vincular un proyecto de
+   Google Cloud.
+2. En ese proyecto: cuenta de servicio + clave JSON.
+3. Play Console → Usuarios y permisos → invitar el email de la cuenta de
+   servicio con «Ver información de la app» y «Ver datos financieros» (puede
+   tardar hasta 24 h en aplicarse).
+4. `npx supabase secrets set --env-file <.env con PLAY_SERVICE_ACCOUNT=<json>>`
+5. `npx supabase functions deploy verify-purchase` (con verificación de JWT).
+
+**Probarlo antes de lanzar, sin excepción** (con una cuenta de «tester con
+licencia» en Play Console, que compra sin pagar):
+
+- [ ] Comprar → la app quita anuncios y `select is_premium from profiles` da `true`.
+- [ ] Publicar más de 3 historias en un día con esa cuenta.
+- [ ] Desinstalar, reinstalar, restaurar la cuenta con el código → sigue premium.
+- [ ] «Restaurar compras» en Ajustes funciona en una cuenta nueva del mismo Google.
+- [ ] Reembolsar la compra de prueba en Play Console → al abrir la app, deja de ser premium.
+- [ ] Sin conexión en el momento de comprar → premium provisional, y se confirma al volver la red.
+
 ## Pendiente
 
 ### Pasos a mano todavía sin hacer
 
-- [ ] Ejecutar `0004_moderation.sql`, `0005_groups.sql`, `0006_push.sql` y `0007_safety_and_chapters.sql` en el SQL Editor.
-- [ ] Volver a desplegar `thread-push` después de la 0007 (ahora también avisa de las continuaciones).
-- [ ] Desplegar la Edge Function `admob-ssv` (`npx supabase login`,
-      `npx supabase link --project-ref sbeyvzhtvmzcalflqajv`,
-      `npx supabase functions deploy admob-ssv --no-verify-jwt`).
+- [ ] Ejecutar en el SQL Editor, en orden: `0004_moderation.sql`,
+      `0005_groups.sql`, `0006_push.sql`, `0007_safety_and_chapters.sql`,
+      `0008_launch.sql`.
+- [ ] Después, `tool/seed_house_stories.sql` (borra las demo y la historia
+      basura, publica las 10 de la casa).
+- [ ] Desplegar las Edge Functions: `admob-ssv`, `thread-push` y
+      `verify-purchase` (`npx supabase login`,
+      `npx supabase link --project-ref sbeyvzhtvmzcalflqajv`, y un
+      `npx supabase functions deploy <nombre>` por cada una; `admob-ssv` y
+      `thread-push` con `--no-verify-jwt`).
+- [ ] Secretos: los de push (sección de arriba) y `PLAY_SERVICE_ACCOUNT`.
 - [ ] Crear la unidad recompensada en AdMob con SSV apuntando a
       `https://sbeyvzhtvmzcalflqajv.supabase.co/functions/v1/admob-ssv` y poner
       su id en `_prodRewarded` (`lib/core/config/ad_config.dart`).
-- [ ] Notificaciones push (sección de abajo): secretos en Vault, secretos de
-      la función y desplegar `thread-push`.
-- [ ] Borrar la historia basura `90f59fbc-8423-4e0d-b84d-b82e5d641de8`.
+- [ ] Publicar `site/` en Cloudflare Pages como `chismosa.pages.dev` y poner
+      la huella de Play App Signing en `assetlinks.json` (ver `site/README.md`).
 - [ ] Rotar la contraseña de Postgres.
-- [ ] Activar `pg_cron`.
+- [ ] Activar `pg_cron` (cierra los hilos inactivos).
+- [ ] Revisar a diario `tool/moderation.sql` una vez haya usuarios.
 
 ### Por construir
 
-- Edge Function que envía push por FCM al llegar un mensaje a un hilo.
-- Validar el token de compra de Play antes de fiarse de `profiles.is_premium`.
 - Rellenar `banned_words`. Está vacía a propósito: una lista mal elegida bloquea
   conversaciones legítimas, y el filtro real es el umbral de reportes.
+- Notificaciones en tiempo real de Play (Pub/Sub) para enterarse de un
+  reembolso al momento; hoy se detecta en el siguiente arranque de la app.

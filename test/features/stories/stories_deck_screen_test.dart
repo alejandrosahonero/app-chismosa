@@ -7,6 +7,7 @@ import 'package:chismosa/core/routing/app_router.dart';
 import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/theme/app_theme.dart';
 import 'package:chismosa/features/stories/data/story_repository.dart';
+import 'package:chismosa/features/stories/data/story_share_service.dart';
 import 'package:chismosa/features/stories/domain/feed_query.dart';
 import 'package:chismosa/features/stories/domain/story.dart';
 import 'package:chismosa/features/stories/presentation/providers/stories_providers.dart';
@@ -197,9 +198,30 @@ class _Threads implements ThreadRepository {
   Future<void> reportMessage(String messageId, {String? reason}) async {}
 }
 
+/// Records instead of rendering: the real one needs path_provider and the
+/// share sheet.
+class _Sharer extends StoryShareService {
+  final List<String> shared = <String>[];
+
+  @override
+  Future<bool> share({
+    required String storyId,
+    required String body,
+    required String cta,
+    required String link,
+    required String message,
+    String? tag,
+  }) async {
+    shared.add(storyId);
+    return true;
+  }
+}
+
 void main() {
   late _Repository repository;
   late _Threads threads;
+  late _Sharer sharer;
+  late ProviderContainer container;
 
   Future<void> pump(WidgetTester tester, List<Story> catalogue) async {
     // Pinned to Spanish: the default test locale is `en`, and an unpinned one
@@ -211,13 +233,15 @@ void main() {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     repository = _Repository(catalogue);
     threads = _Threads();
+    sharer = _Sharer();
 
-    final ProviderContainer container = ProviderContainer(
+    container = ProviderContainer(
       overrides: [
         sharedPreferencesProvider.overrideWithValue(prefs),
         premiumControllerProvider.overrideWith(_AlwaysPremium.new),
         storyRepositoryProvider.overrideWithValue(repository),
         threadRepositoryProvider.overrideWithValue(threads),
+        storyShareServiceProvider.overrideWithValue(sharer),
       ],
     );
     addTearDown(container.dispose);
@@ -262,16 +286,15 @@ void main() {
     expect(find.text(_story('a').body), findsNothing);
   });
 
-  testWidgets('a downward swipe is a second way to pass', (
+  testWidgets('a downward swipe shares the story and keeps the card', (
     WidgetTester tester,
   ) async {
-    // Two directions for the same action on purpose: a reader going fast
-    // should not have to aim.
     await pump(tester, <Story>[_story('a'), _story('b')]);
     await swipe(tester, const Offset(0, 400));
 
+    expect(sharer.shared, <String>['a']);
     expect(repository.liked, isEmpty);
-    expect(find.text(_story('a').body), findsNothing);
+    expect(find.text(_story('a').body), findsOneWidget);
   });
 
   testWidgets('an upward swipe joins the thread and keeps the card', (
@@ -299,14 +322,31 @@ void main() {
     expect(repository.liked, <String>['a']);
   });
 
-  testWidgets('running out offers writing before re-reading', (
+  testWidgets('running out of the own country offers the whole world first', (
     WidgetTester tester,
   ) async {
     await pump(tester, <Story>[_story('a')]);
+    // The deck starts on the phone's country.
+    expect(container.read(feedQueryProvider).countryCode, isNotNull);
     await swipe(tester, const Offset(-400, 0));
 
-    expect(find.text('Por ahora no hay más chismes'), findsOneWidget);
-    expect(find.text('Contar el mío'), findsOneWidget);
-    expect(find.text('Volver a empezar'), findsOneWidget);
+    expect(find.text('Ya no quedan chismes de tu país'), findsOneWidget);
+    await tester.tap(find.text('Ampliar a todo el mundo'));
+    await tester.pumpAndSettle();
+    expect(container.read(feedQueryProvider).countryCode, isNull);
   });
+
+  testWidgets(
+    'running out of the whole world offers writing, then re-reading',
+    (WidgetTester tester) async {
+      await pump(tester, <Story>[_story('a')]);
+      container.read(feedQueryProvider.notifier).selectCountry(null);
+      await tester.pumpAndSettle();
+      await swipe(tester, const Offset(-400, 0));
+
+      expect(find.text('Por ahora no hay más chismes'), findsOneWidget);
+      expect(find.text('Contar el mío'), findsOneWidget);
+      expect(find.text('Volver a empezar'), findsOneWidget);
+    },
+  );
 }

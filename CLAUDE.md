@@ -122,7 +122,7 @@ supabase/
 |---|---|
 | **Derecha** | Me gusta. La carta se va. |
 | **Izquierda** | Pasar. |
-| **Abajo** | Pasar también: quien va rápido no tiene que apuntar. |
+| **Abajo** | **Compartir** la historia como imagen 1080x1920 (`StoryShareImage`) con enlace https a su hilo. La carta se queda. Exige recorrido: nunca por un pulgar que resbala. Las historias de un grupo no se comparten fuera. |
 | **Arriba** | **Entrar al hilo.** La carta se queda; la hoja del hilo sube siguiendo al dedo. |
 | **⋮ en la carta de arriba** | Reportar / bloquear a quien lo escribió. En un menú y no en un gesto: reportar no puede pasar porque se escape el pulgar. |
 
@@ -134,13 +134,14 @@ Los botones inferiores repiten los gestos y **no son decorativos**: una interfaz
 - **Ranking «hot»**: likes por hora con decaimiento (estilo Hacker News), calculado en `feed()`. Alternativa «nuevas».
 - **Cada carta se reparte una vez.** Las vistas se guardan en el dispositivo (`SeenStoriesStore`) y la cola se envía como pista al servidor; no hay tabla de vistas en Postgres (usuarios × historias se comería los 500 MB del plan gratis).
 - **El mazo nunca muestra al autor sus propias historias.**
-- Filtros en una fila de chips: **qué mazo** (mundo o grupo), orden, mi país, categoría. Categorías genéricas más «cualquiera». Idiomas del mazo en Ajustes; el país sale del dispositivo, nunca de GPS.
+- **El mazo arranca en el país del móvil.** Cuando se acaba, la pantalla de fin ofrece primero «Ampliar a todo el mundo». Lanzamiento en España, México y Bolivia: mejor cuarenta historias del propio país que las mismas cuarenta repartidas en tres.
+- Filtros en una fila de chips: **qué mazo** (mundo o grupo), «Me gustaron» (el único modo que vuelve a repartir cartas ya vistas; ignora país, categoría e idioma), orden, mi país, categoría. Categorías genéricas más «cualquiera». Idiomas del mazo en Ajustes; el país sale del dispositivo, nunca de GPS.
 - **No reintroducir un indicador de «cuánto queda».** El anillo del objetivo cuenta hacia arriba y no dice nada del mazo.
 
 ### 3.1 Escribir
 
 - 20–600 caracteres, solo texto, una categoría.
-- **Una historia al día.** Más con un anuncio recompensado (§5) o sin límite con premium. La pantalla dice cuántas quedan (`publish_status()`).
+- **Tres historias al día** (`cfg('stories_per_day')`). Más con un anuncio recompensado (§5) o sin límite con premium. La pantalla dice cuántas quedan (`publish_status()`).
 - Se publica **en el mazo en el que estabas**: desde un grupo, solo lo ve el grupo, y la pantalla lo avisa.
 - Normas de la comunidad en `/rules`, enlazadas desde escribir y desde Ajustes.
 
@@ -152,7 +153,7 @@ Los botones inferiores repiten los gestos y **no son decorativos**: una interfaz
 
 **Grupos (`features/groups`).** Un grupo es otro mazo, privado. Se entra con un código de invitación (12 hex) que caduca a los 7 días y que el creador puede **renovar** para matar un enlace filtrado. Sin límite de miembros; todas las demás protecciones aplican. El creador no puede salir, solo borrar (siempre hay alguien que puede renovar). Salir de un grupo quita también el acceso a sus hilos. `join_thread`/`story_detail` comprueban la pertenencia: una historia de grupo no se abre con su id desde fuera. **Un enlace de invitación nunca une a nadie sin un toque.**
 
-**Moderación: mínima a propósito.** Reportar y bloquear. Un número de reportes oculta el contenido solo; demasiado contenido oculto banea la cuenta. Nadie revisa colas. Reportar y bloquear siempre piden confirmación.
+**Moderación: mínima a propósito.** Reportar (con motivo) y bloquear. Tres reportes ocultan el contenido solo; tres contenidos ocultos banean la cuenta. **Excepción: «Señala a alguien»** oculta al instante (máximo 5 usos por persona y día), avisa al autor por push de que está en revisión, y **requiere una revisión humana diaria** con `tool/moderation.sql` (`review_content`). Si nadie revisa, el aviso al autor es mentira.
 
 **Push (`services/push` + `functions/thread-push`).** Un trigger manda el id de cada mensaje por `pg_net` a la Edge Function, que decide a quién avisar: no al autor, no a quien silenció el hilo, nada entre personas bloqueadas, y **un aviso por hilo hasta que se abre**. La app solo registra el token (`register_device`, que mueve el token a la cuenta que usa el móvil ahora), abre el hilo al tocar, y en primer plano enseña un snackbar salvo que ya estés en ese hilo.
 
@@ -176,9 +177,12 @@ Los botones inferiores repiten los gestos y **no son decorativos**: una interfaz
 
 - **Tarjeta de anuncio dentro del mazo** = formato principal (`adCardEveryNCards` = 6, nunca menos de 5; el mazo no termina en un anuncio). El `AdWidget` se monta **solo en `depth == 0`**; la petición sale una carta antes. Etiqueta «Publicidad» siempre visible.
 - **Banner en línea arriba del mazo, nunca abajo**: abajo está el gesto y sería el clic accidental de manual.
-- **Interstitial** cada 9 acciones **y** mínimo 3 min entre dos.
+- **Interstitial apagado en el lanzamiento** (`AppConfig.interstitialsEnabled = false`): un anuncio a pantalla completa en mitad de una confesión espanta. Reactivar solo con la retención D7 medida; el pacing (9 acciones y 3 min) sigue en el código.
 - **Rewarded solo para publicar una historia más.** El crédito lo concede el servidor (`functions/admob-ssv`, verificación SSV con firma ECDSA de Google, idempotente por `transaction_id`). La app nunca concede nada; espera al crédito consultando `publish_status()`. La unidad de prueba de Google no llama a la URL: en debug el crédito no llega.
-- **Premium (`premium_remove_ads`, pago único)**: sin anuncios y sin límite de publicación. El entitlement se refleja en `profiles.is_premium` (bootstrap). **Pendiente:** validar el token de compra en servidor; hoy el servidor se fía del cliente.
+- **Premium (`premium_remove_ads`, pago único)**: sin anuncios y sin límite de publicación. **Lo decide Google a través del servidor**: cada compra y cada restauración pasan por `functions/verify-purchase` (API de Play Developer), que es lo único que puede escribir `profiles.is_premium`. Si el servidor no responde al comprar, premium provisional; el token cacheado se reverifica en cada arranque, que es como un reembolso acaba quitándolo. Reglas y tests en `premium_controller.dart` / `premium_controller_test.dart`. Protocolo de prueba obligatorio antes de lanzar en `supabase/README.md`.
+- **Historias «de la casa»** (`profiles.is_house`, `tool/seed_house_stories.sql`): diez en el lanzamiento, con la píldora «De la casa». Nunca inventar historias y hacerlas pasar por usuarios.
+- **Enlaces https** (`LinksConfig`, `site/`): `/s/<id>` y `/g/<código>` en `chismosa.pages.dev`, verificados con App Links. `chismosa://` queda solo como respaldo interno: no se puede tocar en WhatsApp.
+- **Usuarios**: `tool/stats.sql` (cuentas, activos 24 h / 7 d / 30 d por `last_seen_at`, por país).
 - IDs de prueba en debug, producción en release (`AppConfig.useProductionAds == kReleaseMode`). Un ID vacío desactiva el formato. **Nunca IDs de producción en debug.**
 - UMP antes del primer anuncio; «Opciones de privacidad» en Ajustes cuando UMP lo exige. «Restaurar compras» visible en Ajustes y en el paywall. `completePurchase()` siempre.
 
@@ -193,7 +197,7 @@ Los botones inferiores repiten los gestos y **no son decorativos**: una interfaz
 ## 8. Navegación y arranque
 
 - Rutas en `core/routing`, **nunca un path literal en una pantalla**. `rootNavigatorKey` para código fuera del árbol (push, anuncios, compras).
-- Antes de `runApp`: solo `ensureInitialized` y `SharedPreferences`. **Primer frame < 2 s en gama media.**
+- Antes de `runApp`: solo `ensureInitialized`, `SharedPreferences` y el registro (perezoso) de las licencias OFL de las fuentes. **Primer frame < 2 s en gama media.**
 - Después del primer frame, cada paso con su `try/catch`: backend + sesión + locale → push → premium (y su espejo en el perfil) → anuncios.
 - `main.dart` no contiene lógica.
 
@@ -203,6 +207,7 @@ Los botones inferiores repiten los gestos y **no son decorativos**: una interfaz
 
 - `in_app_review` con guardas (5 acciones de valor, 3 días de instalación, 120 días entre peticiones). Se pide **solo al entrar a un hilo**.
 - **Marca:** paleta propia en `core/theme/app_colors.dart` (Tinta, Papel, Arena, Picante, Lavanda, Lima), esquemas claro y oscuro construidos a mano. **Sin color dinámico** (Material You): una marca que cambia con el fondo de pantalla no es una marca. La tarjeta es papel (`semanticColors.paper`) con la comilla de apertura en Picante. El logo es «la burbuja cómplice»; maestro en `brand/logo.svg`, icono adaptativo vectorial en `res/drawable`. Guía completa de marca en el artifact «Chismosa Brand Book».
+- **Tipografía:** Onest (todo lo que se lee) y Bricolage Grotesque (títulos, bienvenida, imagen de compartir), empaquetadas en `assets/fonts` con sus licencias OFL. `AppFonts` en `app_theme.dart`. Nunca `google_fonts` en tiempo de ejecución: el primer frame no espera a la red.
 - `tool/screenshots/screenshots_test.dart` pinta las pantallas principales con fuentes reales (`flutter test tool/screenshots/screenshots_test.dart --update-goldens`). Mirarlas tras cualquier cambio visual: así se encontró el FAB tapando el botón de «Me gusta».
 - `AppSpacing`/`AppRadius`, nada de paddings a pelo. Toda pantalla sobre `BaseScreen`.
 - `compileSdk = 37`, `minSdk = 24`, R8 + shrink en release. Firma desde `key.properties` (git-ignored). Sin flavors ni `--dart-define`.

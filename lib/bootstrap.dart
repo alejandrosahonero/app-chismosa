@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:chismosa/app.dart';
+import 'package:chismosa/core/routing/app_router.dart';
+import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/utils/app_logger.dart';
 import 'package:chismosa/l10n/generated/app_localizations.dart';
 import 'package:chismosa/services/ads/ads_providers.dart';
@@ -13,6 +15,7 @@ import 'package:chismosa/services/review/review_providers.dart';
 import 'package:chismosa/services/storage/storage_providers.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -32,6 +35,19 @@ Future<void> bootstrap() async {
   await runZonedGuarded<Future<void>>(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
+
+      // The OFL requires the licence to travel with the fonts. Lazy: the files
+      // are only read if somebody opens the licence page.
+      LicenseRegistry.addLicense(() async* {
+        for (final (String family, String file) in <(String, String)>[
+          ('Bricolage Grotesque', 'OFL-BricolageGrotesque.txt'),
+          ('Onest', 'OFL-Onest.txt'),
+        ]) {
+          yield LicenseEntryWithLineBreaks(<String>[
+            family,
+          ], await rootBundle.loadString('assets/fonts/$file'));
+        }
+      });
 
       FlutterError.onError = (FlutterErrorDetails details) {
         AppLogger.error(
@@ -162,6 +178,8 @@ Future<void> _initializePush(ProviderContainer container) async {
   await push.initialize(
     channelName: l10n.pushChannelName,
     onOpenThread: (String storyId) => openThreadFromPush(container, storyId),
+    onOpenMyStories: () =>
+        container.read(routerProvider).pushNamed(AppRoutes.myStoriesName),
     onForeground: (ThreadPush message) =>
         showForegroundPush(container, message),
   );

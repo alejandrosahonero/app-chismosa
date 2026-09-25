@@ -2,6 +2,7 @@ import 'package:chismosa/core/extensions/build_context_x.dart';
 import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/theme/app_colors.dart';
 import 'package:chismosa/core/theme/app_spacing.dart';
+import 'package:chismosa/core/theme/app_theme.dart';
 import 'package:chismosa/l10n/generated/app_localizations.dart';
 import 'package:chismosa/services/storage/key_value_store.dart';
 import 'package:chismosa/services/storage/storage_providers.dart';
@@ -27,7 +28,10 @@ const String welcomeDoneKey = 'welcome_done';
 /// Its own feature folder and nothing else touches it: a first-run flow is the
 /// kind of thing that gets redesigned wholesale, and it should be deletable.
 class WelcomeScreen extends ConsumerStatefulWidget {
-  const WelcomeScreen({super.key});
+  const WelcomeScreen({super.key, this.from});
+
+  /// Where a deep link was heading when it was stopped here.
+  final String? from;
 
   @override
   ConsumerState<WelcomeScreen> createState() => _WelcomeScreenState();
@@ -86,6 +90,7 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
                     alpha: 0.4,
                   ),
                   textStyle: const TextStyle(
+                    fontFamily: AppFonts.body,
                     fontWeight: FontWeight.w800,
                     fontSize: 16,
                   ),
@@ -108,7 +113,15 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
   Future<void> _finish() async {
     final KeyValueStore store = ref.read(keyValueStoreProvider);
     await store.setBool(welcomeDoneKey, value: true);
-    if (mounted) context.goNamed(AppRoutes.homeName);
+    if (!mounted) return;
+    final String? from = widget.from;
+    // Only paths of this app: a query parameter is not to be trusted with a
+    // full URL.
+    if (from != null && from.startsWith('/') && !from.startsWith('//')) {
+      context.go(from);
+    } else {
+      context.goNamed(AppRoutes.homeName);
+    }
   }
 }
 
@@ -191,6 +204,11 @@ class _Gestures extends StatelessWidget {
             icon: Icons.arrow_back_rounded,
             color: AppColors.paper,
             text: l10n.welcomeGestureLeft,
+          ),
+          _GestureRow(
+            icon: Icons.arrow_downward_rounded,
+            color: AppColors.lime,
+            text: l10n.welcomeGestureDown,
           ),
           _GestureRow(
             icon: Icons.edit_outlined,

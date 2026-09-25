@@ -77,6 +77,7 @@ class Story {
     this.chapter = 1,
     this.parentId,
     this.nextId,
+    this.isHouse = false,
   });
 
   /// Parses one row of `feed()` or `story_detail()`.
@@ -101,6 +102,7 @@ class Story {
     chapter: (row['chapter'] as num?)?.toInt() ?? 1,
     parentId: row['parent_id'] as String?,
     nextId: row['next_id'] as String?,
+    isHouse: (row['is_house'] as bool?) ?? false,
   );
 
   final String id;
@@ -143,6 +145,11 @@ class Story {
   /// knows it; the deck leaves it null.
   final String? nextId;
 
+  /// Written by the Chismosa team, and labelled as such on the card. Never
+  /// passed off as a user's: an app that sells authenticity cannot be caught
+  /// inventing it.
+  final bool isHouse;
+
   bool get isClosed => closedAt != null;
 
   /// Optimistic local echo of a like, so the card reacts to the swipe on the
@@ -176,6 +183,7 @@ class Story {
     chapter: chapter,
     parentId: parentId,
     nextId: nextId,
+    isHouse: isHouse,
   );
 
   @override
@@ -237,6 +245,7 @@ class OwnStory {
     required this.chapter,
     required this.hasNext,
     this.groupId,
+    this.underReview = false,
   });
 
   factory OwnStory.fromRow(Map<String, dynamic> row) => OwnStory(
@@ -251,6 +260,7 @@ class OwnStory {
     chapter: (row['chapter'] as num?)?.toInt() ?? 1,
     hasNext: (row['has_next'] as bool?) ?? false,
     groupId: row['group_id'] as String?,
+    underReview: row['review_status'] == 'pending',
   );
 
   final String id;
@@ -271,6 +281,11 @@ class OwnStory {
 
   /// The group it was posted in, so its continuation lands in the same place.
   final String? groupId;
+
+  /// Hidden by a "names someone" report and waiting for a person to look at
+  /// it. Said differently on screen from a story hidden by the report count:
+  /// this one may well come back.
+  final bool underReview;
 
   bool get canContinue => !hidden && !hasNext && chapter < 20;
 }

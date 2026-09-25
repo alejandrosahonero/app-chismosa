@@ -156,16 +156,21 @@ class SupabaseStoryRepository implements StoryRepository {
             excludeIds.length - BackendConfig.seenIdsSentWithFeed,
           );
 
-    final List<Map<String, dynamic>> rows =
-        await _rpcRows('feed', <String, dynamic>{
-          'p_group': query.groupId,
-          'p_category': query.categoryParam,
-          'p_langs': query.languagesParam,
-          'p_country': query.countryCode,
-          'p_sort': query.sort.id,
-          'p_exclude': exclude,
-          'p_limit': limit,
-        });
+    final List<Map<String, dynamic>> rows = await _rpcRows(
+      'feed',
+      <String, dynamic>{
+        'p_group': query.groupId,
+        // "Me gustaron" is everything the reader liked, wherever it came
+        // from: the deck's country and category filters do not apply.
+        'p_category': query.liked ? null : query.categoryParam,
+        'p_langs': query.liked ? null : query.languagesParam,
+        'p_country': query.liked ? null : query.countryCode,
+        'p_sort': query.sort.id,
+        'p_exclude': exclude,
+        'p_limit': limit,
+        'p_liked': query.liked,
+      },
+    );
 
     return rows.map(Story.fromRow).toList(growable: false);
   }

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:chismosa/core/config/links_config.dart';
 import 'package:chismosa/core/extensions/build_context_x.dart';
 import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/theme/app_spacing.dart';
@@ -245,9 +246,9 @@ class _GroupsScreenState extends ConsumerState<GroupsScreen> {
   }
 }
 
-/// The invite link. The host is a placeholder: go_router only sees the path,
-/// and a custom scheme with the code as its host would lose it.
-String inviteLink(String code) => 'chismosa://app/join/$code';
+/// The invite link: https, so it is tappable in WhatsApp and everywhere else
+/// (see [LinksConfig]).
+String inviteLink(String code) => LinksConfig.invite(code);
 
 String groupFailureMessage(AppLocalizations l10n, GroupFailure failure) =>
     switch (failure) {

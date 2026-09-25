@@ -16,6 +16,7 @@ import 'package:chismosa/core/routing/app_router.dart';
 import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/theme/app_theme.dart';
 import 'package:chismosa/features/stories/data/story_repository.dart';
+import 'package:chismosa/features/stories/data/story_share_image.dart';
 import 'package:chismosa/features/stories/domain/feed_query.dart';
 import 'package:chismosa/features/stories/domain/story.dart';
 import 'package:chismosa/features/stories/presentation/providers/stories_providers.dart';
@@ -140,20 +141,30 @@ Future<void> _loadFonts() async {
     at = at.parent;
   }
   final String dir = '${at.path}/material_fonts';
-  final FontLoader roboto = FontLoader('Roboto');
-  for (final String file in <String>[
-    'roboto-regular.ttf',
-    'roboto-medium.ttf',
-    'roboto-bold.ttf',
-    'roboto-black.ttf',
-  ]) {
-    roboto.addFont(
-      Future<ByteData>.value(
-        ByteData.sublistView(File('$dir/$file').readAsBytesSync()),
-      ),
-    );
+  // The brand faces, straight from assets/fonts.
+  Future<void> family(String name, List<String> files) async {
+    final FontLoader loader = FontLoader(name);
+    for (final String file in files) {
+      loader.addFont(
+        Future<ByteData>.value(
+          ByteData.sublistView(File('assets/fonts/$file').readAsBytesSync()),
+        ),
+      );
+    }
+    await loader.load();
   }
-  await roboto.load();
+
+  await family('Onest', <String>[
+    'Onest-Regular.ttf',
+    'Onest-Medium.ttf',
+    'Onest-SemiBold.ttf',
+    'Onest-Bold.ttf',
+    'Onest-ExtraBold.ttf',
+  ]);
+  await family('Bricolage Grotesque', <String>[
+    'BricolageGrotesque-Bold.ttf',
+    'BricolageGrotesque-ExtraBold.ttf',
+  ]);
   final FontLoader icons = FontLoader('MaterialIcons')
     ..addFont(
       Future<ByteData>.value(
@@ -248,6 +259,19 @@ void main() {
 
   testWidgets('deck dark', (WidgetTester tester) async {
     await shoot(tester, '4_deck_dark', const StoriesDeckScreen(), dark: true);
+  });
+
+  testWidgets('share image', (WidgetTester tester) async {
+    // The canvas render goes through the engine, which hangs under the fake
+    // clock of testWidgets: runAsync.
+    await tester.runAsync(() async {
+      final List<int> png = await StoryShareImage.render(
+        body: _stories.first.body,
+        cta: '¿Y tú qué opinas?',
+        link: 'chismosa.pages.dev/s/a',
+      );
+      File('tool/screenshots/goldens/6_share_image.png').writeAsBytesSync(png);
+    });
   });
 
   testWidgets('my stories', (WidgetTester tester) async {

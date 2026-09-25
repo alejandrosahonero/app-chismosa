@@ -224,9 +224,9 @@ class ThreadController extends AsyncNotifier<ThreadState?> {
   /// Whatever the server decides, somebody who has just reported a line should
   /// not have to keep looking at it while three other people make up their
   /// minds.
-  Future<void> report(String messageId) async {
+  Future<void> report(String messageId, {String? reason}) async {
     _remove(messageId);
-    await _swallow(() => _repository!.reportMessage(messageId));
+    await _swallow(() => _repository!.reportMessage(messageId, reason: reason));
   }
 
   /// Blocks whoever wrote [messageId] and clears their lines from the screen.

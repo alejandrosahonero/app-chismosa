@@ -295,13 +295,11 @@ language sql stable security definer set search_path = public as $fn$
     and (p_category is null or p_category = 'cualquiera' or s.category = p_category)
     and (p_langs is null or s.lang = any (p_langs))
     and (p_country is null or s.country_code = p_country)
-    -- "Me gustaron" re-reads stories on purpose, so the seen list does not
-    -- apply to it.
-    and (
-      (coalesce(p_liked, false) and l.user_id is not null)
-      or (not coalesce(p_liked, false)
-          and s.id <> all (coalesce(p_exclude, '{}'::uuid[])))
-    )
+    -- "Me gustaron": only liked stories. The app sends the seen list as the
+    -- exclusion in the normal deck and the cards already in the pile in this
+    -- one, so p_exclude pages both.
+    and (not coalesce(p_liked, false) or l.user_id is not null)
+    and s.id <> all (coalesce(p_exclude, '{}'::uuid[]))
     and not exists (
       select 1 from public.blocks b
       where b.blocker_id = auth.uid() and b.blocked_id = s.author_id

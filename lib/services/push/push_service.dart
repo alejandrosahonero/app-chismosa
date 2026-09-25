@@ -56,6 +56,7 @@ class PushService {
   Future<void> initialize({
     required String channelName,
     required ValueChanged<String> onOpenThread,
+    required VoidCallback onOpenMyStories,
     required ValueChanged<ThreadPush> onForeground,
   }) async {
     if (_ready) return;
@@ -80,14 +81,13 @@ class PushService {
       _subscriptions
         ..add(
           FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-            final String? id = _storyIdOf(message);
-            if (id != null) onOpenThread(id);
+            _open(message, onOpenThread, onOpenMyStories);
           }),
         )
         ..add(
           FirebaseMessaging.onMessage.listen((RemoteMessage message) {
             final String? id = _storyIdOf(message);
-            if (id == null) return;
+            if (id == null || _isReview(message)) return;
             onForeground(
               ThreadPush(
                 storyId: id,
@@ -101,8 +101,7 @@ class PushService {
       _ready = true;
 
       final RemoteMessage? launch = await messaging.getInitialMessage();
-      final String? launchId = launch == null ? null : _storyIdOf(launch);
-      if (launchId != null) onOpenThread(launchId);
+      if (launch != null) _open(launch, onOpenThread, onOpenMyStories);
     } on Object catch (error, stackTrace) {
       AppLogger.error('Push init failed', error: error, stackTrace: stackTrace);
     }
@@ -167,6 +166,25 @@ class PushService {
 
   /// The token this device registered, for tests and diagnostics.
   String? get token => _token;
+
+  /// A notice about the reader's own story being hidden for review or
+  /// restored lands on "Mis historias", where its state is shown — not in a
+  /// thread they may no longer be able to open.
+  static bool _isReview(RemoteMessage message) =>
+      message.data['kind'] == 'hidden' || message.data['kind'] == 'restored';
+
+  static void _open(
+    RemoteMessage message,
+    ValueChanged<String> onOpenThread,
+    VoidCallback onOpenMyStories,
+  ) {
+    if (_isReview(message)) {
+      onOpenMyStories();
+      return;
+    }
+    final String? id = _storyIdOf(message);
+    if (id != null) onOpenThread(id);
+  }
 
   static String? _storyIdOf(RemoteMessage message) {
     final Object? id = message.data['story_id'];

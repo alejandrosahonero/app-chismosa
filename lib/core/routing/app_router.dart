@@ -42,7 +42,17 @@ final Provider<GoRouter> routerProvider = Provider<GoRouter>((Ref ref) {
     redirect: (BuildContext context, GoRouterState state) {
       final bool done = ref.read(keyValueStoreProvider).getBool(welcomeDoneKey);
       final bool atWelcome = state.matchedLocation == AppRoutes.welcomePath;
-      if (!done && !atWelcome) return AppRoutes.welcomePath;
+      if (!done && !atWelcome) {
+        // Keep where the reader was going — a shared story, an invite — so
+        // accepting the rules lands them there instead of on the deck.
+        final String from = state.uri.toString();
+        return from == AppRoutes.homePath
+            ? AppRoutes.welcomePath
+            : Uri(
+                path: AppRoutes.welcomePath,
+                queryParameters: <String, String>{'from': from},
+              ).toString();
+      }
       if (done && atWelcome) return AppRoutes.homePath;
       return null;
     },
@@ -51,7 +61,7 @@ final Provider<GoRouter> routerProvider = Provider<GoRouter>((Ref ref) {
         path: AppRoutes.welcomePath,
         name: AppRoutes.welcomeName,
         builder: (BuildContext context, GoRouterState state) =>
-            const WelcomeScreen(),
+            WelcomeScreen(from: state.uri.queryParameters['from']),
       ),
       GoRoute(
         path: AppRoutes.homePath,
@@ -106,6 +116,18 @@ final Provider<GoRouter> routerProvider = Provider<GoRouter>((Ref ref) {
             name: AppRoutes.groupsName,
             builder: (BuildContext context, GoRouterState state) =>
                 const GroupsScreen(),
+          ),
+          // https links (LinksConfig): /s/<story> opens the story's thread,
+          // /g/<code> the join dialog.
+          GoRoute(
+            path: 's/:id',
+            builder: (BuildContext context, GoRouterState state) =>
+                ThreadScreen(storyId: state.pathParameters['id']!),
+          ),
+          GoRoute(
+            path: 'g/:code',
+            builder: (BuildContext context, GoRouterState state) =>
+                GroupsScreen(inviteCode: state.pathParameters['code']),
           ),
           GoRoute(
             path: 'join/:code',

@@ -115,7 +115,9 @@ class _OwnStoryTile extends StatelessWidget {
                   const Spacer(),
                   if (story.hidden)
                     Text(
-                      l10n.myStoriesHidden,
+                      story.underReview
+                          ? l10n.myStoriesUnderReview
+                          : l10n.myStoriesHidden,
                       style: meta?.copyWith(color: context.colors.error),
                     ),
                 ],

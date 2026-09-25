@@ -464,9 +464,38 @@
   "welcomeGesturesTitle": "Así se usa",
   "welcomeGestureUp": "Arriba: entras al hilo y opinas con un alias secreto",
   "welcomeGestureRight": "Derecha: te gusta",
-  "welcomeGestureLeft": "Izquierda o abajo: la siguiente",
+  "welcomeGestureLeft": "Izquierda: la siguiente",
   "welcomeGestureWrite": "El lápiz: cuenta la tuya",
   "welcomeRulesTitle": "Tres normas",
   "welcomeAge": "Tengo 16 años o más",
-  "welcomeAccept": "Acepto las normas de la comunidad"
+  "welcomeAccept": "Acepto las normas de la comunidad",
+  "storiesHouse": "De la casa",
+  "myStoriesUnderReview": "En revisión",
+  "storiesLikedFilter": "Me gustaron",
+  "storiesLikedEmptyTitle": "Aquí estarán las que te gusten",
+  "storiesLikedEmptyBody": "Desliza una historia a la derecha y la tendrás aquí para releerla cuando quieras.",
+  "storiesLikedBack": "Volver al mazo",
+  "storiesCountryEmptyTitle": "Ya no quedan chismes de tu país",
+  "storiesCountryEmptyBody": "Has leído todo lo que se ha contado aquí por ahora. Amplía la búsqueda y sigue con historias de todo el mundo.",
+  "storiesWidenSearch": "Ampliar a todo el mundo",
+  "storiesShare": "Compartir",
+  "shareGroupBlocked": "Las historias de un grupo no salen del grupo.",
+  "shareCta": "¿Y tú qué opinas?",
+  "shareMessage": "Léelo entero y opina en Chismosa: {link}",
+  "shareError": "No se ha podido compartir. Inténtalo otra vez.",
+  "reportWhy": "¿Por qué la reportas?",
+  "reportNamesSomeone": "Señala a alguien",
+  "reportNamesSomeoneBody": "Se puede saber quién es la persona. Se oculta ahora mismo hasta que la revisemos.",
+  "reportHarassment": "Odio, amenazas o acoso",
+  "reportSexualOrIllegal": "Sexual con menores o ilegal",
+  "reportOther": "Otro motivo",
+  "reportNamesSomeoneDone": "Oculta para todos mientras la revisamos. Gracias.",
+  "welcomeGestureDown": "Abajo: compártela en tus redes",
+  "@shareMessage": {
+    "placeholders": {
+      "link": {
+        "type": "String"
+      }
+    }
+  }
 }

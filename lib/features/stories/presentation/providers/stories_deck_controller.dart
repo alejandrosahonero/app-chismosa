@@ -116,7 +116,10 @@ class StoriesDeckController extends AsyncNotifier<StoriesDeckState> {
       limit: BackendConfig.feedPageSize,
     );
 
-    final List<Story> fresh = _withoutSeen(page, seenIds.toSet());
+    // "Me gustaron" is the one mode that re-deals seen cards.
+    final List<Story> fresh = query.liked
+        ? page
+        : _withoutSeen(page, seenIds.toSet());
 
     return StoriesDeckState(
       items: buildStoryDeck(fresh, withAds: !isPremium),
@@ -255,15 +258,23 @@ class StoriesDeckController extends AsyncNotifier<StoriesDeckState> {
     state = AsyncData<StoriesDeckState>(current.copyWith(loadingMore: true));
 
     try {
+      final FeedQuery query = ref.read(feedQueryProvider);
       final List<Story> page = await repository.fetchFeed(
-        ref.read(feedQueryProvider),
-        excludeIds: current.seenIds,
+        query,
+        // The liked list is paged by what is already in the pile, not by the
+        // seen list — every card in it has been seen.
+        excludeIds: query.liked
+            ? current.items
+                  .whereType<StoryCard>()
+                  .map((StoryCard c) => c.story.id)
+                  .toList(growable: false)
+            : current.seenIds,
         limit: BackendConfig.feedPageSize,
       );
 
       final StoriesDeckState now = state.value ?? current;
       final Set<String> known = <String>{
-        ...now.seenIds,
+        if (!query.liked) ...now.seenIds,
         ...now.items.whereType<StoryCard>().map((StoryCard c) => c.story.id),
       };
 

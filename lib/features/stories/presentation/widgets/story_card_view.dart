@@ -122,6 +122,14 @@ class _Header extends StatelessWidget {
           background: colors.secondaryContainer,
           foreground: colors.onSecondaryContainer,
         ),
+        if (story.isHouse) ...<Widget>[
+          const SizedBox(width: AppSpacing.xs),
+          _Pill(
+            label: context.l10n.storiesHouse,
+            background: colors.primaryContainer,
+            foreground: colors.onPrimaryContainer,
+          ),
+        ],
         if (story.chapter > 1) ...<Widget>[
           const SizedBox(width: AppSpacing.xs),
           _Pill(

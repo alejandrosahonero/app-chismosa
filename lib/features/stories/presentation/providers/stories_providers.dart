@@ -1,5 +1,6 @@
 import 'package:chismosa/features/stories/data/seen_stories_store.dart';
 import 'package:chismosa/features/stories/data/story_repository.dart';
+import 'package:chismosa/features/stories/data/story_share_service.dart';
 import 'package:chismosa/features/stories/domain/feed_query.dart';
 import 'package:chismosa/features/stories/domain/story.dart';
 import 'package:chismosa/services/backend/backend_providers.dart';
@@ -38,10 +39,12 @@ class FeedQueryController extends Notifier<FeedQuery> {
   @override
   FeedQuery build() {
     final LocaleSettings locale = ref.watch(localeSettingsProvider);
-    // The languages come from preferences and the country does not: the deck is
-    // worldwide by default, because "stories from everywhere" is the product.
-    // Filtering by country is something the reader turns on.
-    return FeedQuery(languages: locale.languages);
+    // Starts on the phone's own country (see [FeedQuery.countryCode]); the
+    // reader widens it from the chip or from the "nothing left" screen.
+    return FeedQuery(
+      languages: locale.languages,
+      countryCode: locale.countryCode,
+    );
   }
 
   void selectCategory(StoryCategory? category) =>
@@ -52,6 +55,9 @@ class FeedQueryController extends Notifier<FeedQuery> {
   /// null goes back to the worldwide deck.
   void selectCountry(String? countryCode) =>
       state = state.copyWith(countryCode: countryCode);
+
+  /// "Me gustaron" on or off.
+  void showLiked({required bool liked}) => state = state.copyWith(liked: liked);
 
   /// null goes back to the worldwide deck; an id restricts it to one group.
   void selectGroup(String? groupId) => state = state.copyWith(groupId: groupId);
@@ -76,3 +82,7 @@ final FutureProvider<List<OwnStory>> myStoriesProvider =
       if (repository == null) return const <OwnStory>[];
       return repository.myStories();
     }, isAutoDispose: true);
+
+/// Kept alive: it holds the guard against two share sheets at once.
+final Provider<StoryShareService> storyShareServiceProvider =
+    Provider<StoryShareService>((Ref ref) => StoryShareService());
