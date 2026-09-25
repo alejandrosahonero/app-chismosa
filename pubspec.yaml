@@ -53,19 +53,12 @@ dependencies:
   # La versión la fija flutter_localizations del SDK de Flutter (pinning).
   intl: ^0.20.2
   cupertino_icons: ^1.0.8
-  # Cliente HTTP oficial de dart.dev. Se usa solo para las aportaciones de los
-  # usuarios: una petición POST a un endpoint, sin SDK propietario. Se elige
-  # frente a dart:io porque acepta un `http.Client` inyectado, y eso es lo que
-  # permite testear el envío sin red.
-  http: ^1.6.0
+  # Solo para crear el canal de Android de los push de hilos antes del primer
+  # aviso (FCM no lo crea). Ya no programa nada en local.
   flutter_local_notifications: ^22.3.0
-  timezone: ^0.11.1
-  flutter_timezone: ^5.1.0
-  # Directorio de soporte de la app, para cachear en disco el catálogo remoto.
-  # No va en shared_preferences a propósito: las prefs se cargan enteras en
-  # memoria al arrancar, y medio mega de JSON ahí es coste en cada arranque.
+  # Directorio de soporte de la app, donde se guarda el secreto de la cuenta
+  # anónima (`FileSecretStore`): ahí lo recoge Auto Backup al reinstalar.
   path_provider: ^2.1.6
-  url_launcher: ^6.3.2
 
   # --- Backend --------------------------------------------------------------
   # Supabase: auth anónima + Postgres + Realtime en UNA dependencia. Chismosa
@@ -103,8 +96,4 @@ flutter:
   uses-material-design: true
   # Activa la generación de AppLocalizations a partir de lib/l10n/*.arb.
   generate: true
-  assets:
-    # Catálogo de datos empaquetado. Sin backend en el MVP: se parsea una vez
-    # fuera del isolate principal y se cachea en memoria.
-    - assets/data/
 

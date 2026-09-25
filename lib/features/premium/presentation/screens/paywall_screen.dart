@@ -79,8 +79,8 @@ class _PaywallBody extends ConsumerWidget {
         const SizedBox(height: AppSpacing.lg),
         const _Benefit(icon: Icons.block, textKey: _BenefitKey.noAds),
         const _Benefit(
-          icon: Icons.bookmark_outline,
-          textKey: _BenefitKey.favorites,
+          icon: Icons.all_inclusive,
+          textKey: _BenefitKey.unlimited,
         ),
         const _Benefit(
           icon: Icons.favorite_outline,
@@ -134,7 +134,7 @@ class _PaywallBody extends ConsumerWidget {
   }
 }
 
-enum _BenefitKey { noAds, favorites, support, oneTime }
+enum _BenefitKey { noAds, unlimited, support, oneTime }
 
 class _Benefit extends StatelessWidget {
   const _Benefit({required this.icon, required this.textKey});
@@ -146,7 +146,7 @@ class _Benefit extends StatelessWidget {
   Widget build(BuildContext context) {
     final String text = switch (textKey) {
       _BenefitKey.noAds => context.l10n.paywallBenefitNoAds,
-      _BenefitKey.favorites => context.l10n.paywallBenefitFavorites,
+      _BenefitKey.unlimited => context.l10n.paywallBenefitUnlimited,
       _BenefitKey.support => context.l10n.paywallBenefitSupport,
       _BenefitKey.oneTime => context.l10n.paywallBenefitOneTime,
     };

@@ -154,6 +154,17 @@ class PushService {
     }
   }
 
+  /// Asks for the permission now, from the row in Settings.
+  Future<void> requestPermission() async {
+    if (!_ready) return;
+    await _store.setBool(_askedKey, value: true);
+    try {
+      await FirebaseMessaging.instance.requestPermission();
+    } on Object catch (error) {
+      AppLogger.debug('Permission request failed: $error', name: 'push');
+    }
+  }
+
   /// The token this device registered, for tests and diagnostics.
   String? get token => _token;
 

@@ -5,7 +5,7 @@
 /// week — early enough to show the user the system works — and the last one out
 /// past a hundred completed days, which is where a top rank belongs.
 ///
-/// Flutter-free on purpose, like `FactCategory`: the name and the icon are a
+/// Flutter-free on purpose, like `StoryCategory`: the name and the icon are a
 /// presentation concern and live in `rank_style.dart`.
 enum Rank {
   curious(0),

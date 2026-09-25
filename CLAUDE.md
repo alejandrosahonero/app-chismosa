@@ -1,40 +1,57 @@
 # CLAUDE.md — Guía del proyecto para agentes de IA
 
-> **Contexto obligatorio.** Este repositorio es **Chismosa**, una app Android de historias anónimas en formato mazo deslizable estilo Tinder: cada carta es un chisme corto que alguien del mundo ha subido, y deslizar hacia abajo te mete en el hilo de conversación de esa historia. Monetización freemium (AdMob + IAP "quitar anuncios").
+> **Contexto obligatorio.** Este repositorio es **Chismosa**, una app Android de historias anónimas en formato mazo deslizable estilo Tinder: cada carta es un chisme corto que alguien del mundo ha subido; deslizar hacia arriba te mete en el hilo de conversación de esa historia. Freemium: AdMob + un pago único premium.
 >
-> ⚠️ **Repo en transición.** El proyecto nació como *Ajá: Datos Curiosos Raros* y se ha reutilizado como base para Chismosa. La **identidad** (paquete, `applicationId`, `android:label`, deep link, textos de marca) ya es la de Chismosa; el **código de features** todavía es el del mazo de datos curiosos (`features/facts`, `features/goals`, catálogo de `facts.json`, aportaciones) y se irá sustituyendo. Todo lo que este documento describe de `features/` hay que leerlo como "lo que hay heredado", no como "lo que Chismosa quiere ser".
+> El proyecto nació como *Ajá: Datos Curiosos Raros*. De aquello quedan el motor del mazo (`core/widgets/deck`), la monetización y el sistema de objetivos y rangos, reciclado. El catálogo de datos, los favoritos y la pregunta del día se borraron.
 >
-> La fuente de verdad arquitectónica es `GUIA_ESTANDAR_FLUTTER_ANDROID.md` (documento del usuario, fuera del repo). Este archivo explica **qué** hay implementado, **cómo** funciona y **por qué** se decidió así. Ante cualquier duda o conflicto, manda la guía estándar.
+> La fuente de verdad arquitectónica es `GUIA_ESTANDAR_FLUTTER_ANDROID.md` (documento del usuario, fuera del repo). Este archivo explica **qué** hay, **cómo** funciona y **por qué**. Ante un conflicto, manda la guía estándar. El backend está documentado en `supabase/README.md`.
 
 ---
 
 ## 0. Reglas no negociables
 
 1. **Stack fijo:** Flutter stable, Dart 3.x, target **Android**. iOS no se implementa salvo orden explícita.
-2. **Nunca fijar versiones de paquetes de memoria.** Usar `flutter pub add <paquete>` para que pub resuelva la última estable compatible.
+2. **Nunca fijar versiones de paquetes de memoria.** `flutter pub add <paquete>`.
 3. **Ninguna dependencia nueva sin justificación** de peso e impacto en el arranque, escrita en el `pubspec.yaml`.
-4. **Idioma:** código y comentarios en **inglés**; UI en **español + inglés** (archivos `.arb`). El **contenido** (preguntas y respuestas) no vive en los `.arb`, sino en `assets/data/facts.json`, con los dos idiomas dentro de cada entrada.
-5. **Antes de cerrar cualquier tarea**, en este orden:
+4. **Herramientas totalmente gratuitas.** Nada que exija tarjeta o plan de pago (por eso Supabase free y no Firebase Blaze; FCM sí, que es gratis).
+5. **Idioma:** código y comentarios en **inglés**; UI en **español + inglés** (`.arb`).
+6. **Antes de cerrar cualquier tarea:**
    ```bash
    dart format lib test && flutter analyze && flutter test
    ```
    `flutter analyze` debe terminar con *No issues found!*.
-6. **Prohibido:** `print`, `setState` en widgets con lógica no trivial, `FutureBuilder` anidado, JSON pesado en el isolate principal, imágenes sin `cacheWidth`/`cacheHeight`, `ListView(children: [...])` con colecciones dinámicas.
-7. **`const` siempre que sea posible.**
+7. **Prohibido:** `print`, `setState` en widgets con lógica no trivial, `FutureBuilder` anidado, `ListView(children: [...])` con colecciones dinámicas.
+8. **`const` siempre que sea posible.**
 
-### 0.1 Identidad — inmutable tras publicar
+### 0.1 Anonimato — la regla que manda sobre todas
+
+**El id global de una cuenta (`auth.uid()`, `author_id`, `user_id`, `owner_id`) no llega nunca a un cliente que no sea su dueño.** Ni en una carta, ni en un mensaje, ni en un grupo. Todo lo que el cliente lee de otros pasa por funciones `security definer` que eligen columnas a mano, y las tablas con ids ajenos están cerradas a `anon`/`authenticated`.
+
+Consecuencias que parecen raras y son a propósito:
+
+- Un mensaje de Realtime trae `member_id`, no una cuenta; el alias se resuelve con `thread_aliases()`.
+- El alias es **distinto en cada hilo**. El mismo alias en dos hilos permite seguir a una persona.
+- **Bloquear** se hace nombrando una historia o un mensaje (`block_story_author`, `block_message_author`); el servidor resuelve la cuenta. Por eso no hay lista de bloqueados, solo un número y «desbloquear a todos».
+- Un grupo muestra **cuántos** miembros tiene, nunca quiénes.
+
+Si una feature nueva necesita saber quién es quién en el cliente, la feature está mal planteada.
+
+### 0.2 Secretos
+
+- En la app solo va la **publishable key** de Supabase (`core/config/backend_config.dart`).
+- La `service_role` key, la cuenta de servicio de Firebase y `PUSH_SECRET` viven **solo** como secretos de las Edge Functions. Nunca en el repo, nunca en la app.
+- La cadena de conexión directa a Postgres no se escribe en ningún fichero.
+
+### 0.3 Identidad — inmutable tras publicar
 
 | Cosa | Valor |
 |---|---|
-| Paquete Dart (`pubspec.yaml`) | `chismosa` |
-| `applicationId` / `namespace` | `com.alejandrosahonero.chismosa` |
-| Paquete Kotlin | `com.alejandrosahonero.chismosa` |
+| Paquete Dart | `chismosa` |
+| `applicationId` / `namespace` / paquete Kotlin | `com.alejandrosahonero.chismosa` |
 | `android:label` | `Chismosa` |
-| Deep link | `chismosa://` |
+| Deep link | `chismosa://app/...` (el host es relleno: go_router solo ve el path) |
 | Producto IAP | `premium_remove_ads` |
 | Seed color | `0xFFC026D3` |
-
-`applicationId` y el ID del producto IAP **no se pueden cambiar** después de la primera publicación sin perder las compras existentes.
 
 ---
 
@@ -44,510 +61,182 @@
 
 ```
 lib/
-├── main.dart                 # solo llama a bootstrap(); sin lógica
-├── bootstrap.dart            # init asíncrono dentro de runZonedGuarded
-├── app.dart                  # MaterialApp.router (tema + rutas + l10n)
+├── main.dart / bootstrap.dart / app.dart
 ├── core/
-│   ├── config/               # AppConfig, AdConfig, BillingConfig
-│   ├── theme/                # colores, spacing, ThemeData, ThemeModeController
-│   ├── routing/              # go_router: rutas y navigator key
-│   ├── errors/               # AppException sellada
-│   ├── extensions/           # BuildContextX (theme, l10n, snackbars)
-│   ├── utils/                # AppLogger
-│   └── widgets/              # BaseScreen, AdaptiveBannerAd, SectionCard,
-│                             # EmptyState, ErrorView, AppLoader
+│   ├── config/        # AppConfig, AdConfig, BillingConfig, BackendConfig
+│   ├── routing/       # go_router: rutas, nombres, navigator key
+│   ├── theme/ extensions/ utils/ errors/
+│   └── widgets/
+│       ├── deck/      # SwipeDeck genérico (DeckCard, umbrales, progreso, tarjeta de anuncio)
+│       └── ...        # BaseScreen, ConfirmDialog, EmptyState, ErrorView...
 ├── features/
-│   ├── facts/                # ← la app entera (mazo + favoritos)
-│   │   ├── data/             # FactRepository (asset + overlay remoto),
-│   │   │                     # RemoteCatalogService, FactShareService
-│   │   ├── domain/           # Fact, FactCategory, DeckItem, buildDeck()
-│   │   └── presentation/     # providers / screens / widgets
-│   ├── goals/                # objetivo diario + rangos
-│   │   ├── domain/           # DailyGoal, Rank, GoalsState, GoalEvent
-│   │   └── presentation/     # GoalsController, anillo, pantalla, diálogo
-│   ├── settings/presentation/
-│   └── premium/presentation/ # paywall + diálogo de función bloqueada
+│   ├── stories/       # el mazo, escribir, normas
+│   ├── threads/       # hilos en vivo (hoja sobre el mazo + historial)
+│   ├── groups/        # mazos privados por invitación
+│   ├── goals/         # objetivo diario + rangos (cuenta hilos)
+│   ├── settings/      # ajustes, cuenta y código de recuperación, idiomas
+│   └── premium/       # paywall
 ├── services/
-│   ├── ads/                  # AdsService + ConsentService (UMP) + providers
-│   ├── billing/              # PremiumService + PremiumController + estado
-│   ├── notifications/        # DailyQuestionService (pregunta del día) + providers
-│   ├── review/               # ReviewService + providers
-│   └── storage/              # KeyValueStore (prefs) + SecureStore + providers
-└── l10n/                     # app_es.arb (plantilla) + app_en.arb
+│   ├── backend/       # cliente Supabase + sessionEpoch
+│   ├── identity/      # cuenta anónima + código de recuperación
+│   ├── moderation/    # bloquear
+│   ├── push/          # FCM
+│   ├── locale/        # país del dispositivo + idiomas del mazo
+│   ├── ads/ billing/ review/ storage/
+└── l10n/
+supabase/
+├── migrations/        # 0001…0006, se ejecutan en orden en el SQL Editor
+└── functions/         # admob-ssv, thread-push (Deno)
 ```
 
-**Regla de dependencia:** `presentation` → `domain` → `data`. `domain` no conoce a nadie.
-`facts/` y `goals/` son las únicas features con `domain/`, porque son las únicas con lógica de negocio real (composición del mazo y progreso; derivación del objetivo del día y umbrales de rango). `settings/` y `premium/` son triviales y solo tienen `presentation/`. **No crear carpetas vacías.**
+**Regla de dependencia:** `presentation` → `domain` → `data`. Cada feature es autocontenida y borrable. **No crear carpetas vacías.**
 
-**Cada feature es autocontenida y borrable.** Si un helper solo lo usa una feature, vive dentro de esa feature, nunca en `core/utils/`.
+**Las reglas viven en Postgres, no en la app.** Límite diario, filtro de palabras, baneo, ocultar por reportes, pertenencia a grupos, cierre de hilos inactivos: todo son triggers y funciones. El cliente repite algún límite solo para avisar antes; un límite que solo aplica el cliente es un límite que no existe. Los errores llegan como texto (`raise exception 'daily_limit_reached'`) y cada repositorio los traduce a un enum (`StoryFailure`, `GroupFailure`).
 
 ---
 
-## 2. Gestión de estado — Riverpod
+## 2. Gestión de estado — Riverpod 3
 
-Estándar único: **Riverpod 3** (`flutter_riverpod`).
-
-| Necesidad | Provider a usar |
+| Necesidad | Provider |
 |---|---|
 | Servicio / dependencia | `Provider` |
 | Estado síncrono mutable | `NotifierProvider` |
 | Estado asíncrono mutable | `AsyncNotifierProvider` |
-| Lectura asíncrona de solo lectura | `FutureProvider` (con `isAutoDispose: true`) |
+| Lectura asíncrona de solo lectura | `FutureProvider(..., isAutoDispose: true)` |
 
-Convenciones aplicadas en el repo:
-
-- **Estados de UI con `sealed class`**, nunca booleanos sueltos. Ver `services/billing/premium_state.dart` (`PurchaseFlow`) y `features/facts/domain/deck_item.dart` (`DeckItem` → `FactItem` / `AdItem`). La dimensión carga/error la aporta `AsyncValue`.
-- **`ref.read` dentro de callbacks; `ref.watch` solo en `build`.** Ejemplo: `AdsService` recibe `isPremium: () => ref.read(isPremiumProvider)`.
-- **`select` para observar solo lo que se pinta.**
-- **`autoDispose`**: en Riverpod 3 se activa con `isAutoDispose: true`. Los providers de servicios (`adsServiceProvider`, `premiumControllerProvider`, `routerProvider`, `factRepositoryProvider`) son **keepAlive a propósito** y cada uno lleva el comentario que lo justifica (anuncios precargados, suscripción al `purchaseStream`, pila de navegación, catálogo parseado).
-
-### ⚠️ Desviación conocida: sin `riverpod_generator` / `riverpod_lint`
-
-La guía pide codegen con `build_runner`. **No se pudo instalar**: `riverpod_generator` y `riverpod_lint` exigen versiones de `analyzer` incompatibles con las que `flutter_test` fija (`matcher` / `test_api`), y `pub` no resuelve.
-
-Por eso **los providers están escritos a mano** con la API declarativa de Riverpod 3, que es equivalente y totalmente soportada. Cuando el ecosistema se actualice:
-
-```bash
-flutter pub add dev:build_runner dev:riverpod_generator dev:riverpod_lint dev:custom_lint
-```
-
-y migrar los providers a `@riverpod`. Añadir entonces `custom_lint` al `analysis_options.yaml`.
+- **Escritos a mano, sin `riverpod_generator`**: sus versiones de `analyzer` chocan con las de `flutter_test` y `pub` no resuelve. Cuando se pueda, migrar a `@riverpod`.
+- **Sin families.** Lo que depende de un parámetro va en un notifier con estado (`feedQueryProvider`, `threadControllerProvider`).
+- **Los repositorios son `null` mientras no hay cliente** (el backend arranca después del primer frame) y todas las pantallas lo toleran.
+- **`sessionEpochProvider`**: todos los repositorios lo observan. Al restaurar otra cuenta con su código se incrementa, y todo lo construido sobre la cuenta anterior se tira y se reconstruye.
+- `ref.read` en callbacks, `ref.watch` solo en `build`, `select` para observar solo lo que se pinta.
 
 ---
 
-## 3. El mazo (feature `facts`)
-
-### 3.1 Interacción
-
-Una pila de tarjetas, una detrás de otra. Solo la de arriba responde al dedo.
+## 3. El mazo (`features/stories` + `core/widgets/deck`)
 
 | Gesto | Efecto |
 |---|---|
-| **Deslizar a la derecha** | La tarjeta **se voltea** y enseña la respuesta. Vuelve al centro, no se descarta. |
-| **Deslizar a la izquierda** | La tarjeta **sale volando** y sube la siguiente. |
-| **Deslizar hacia arriba** | **Guarda la tarjeta** en favoritos (premium, ver §3.7). También vuelve al centro: guardar no es motivo para dejar de leerla. |
-| **Deslizar hacia abajo** | **Comparte la pregunta** como imagen 1080x1920 (§3.4). Gratis para todos. También vuelve al centro. |
-| **Tocar la tarjeta** | Igual que deslizar a la derecha (voltear). |
-| **Botones inferiores** | "Siguiente", "Compartir la pregunta", "Guardar" y "Ver respuesta". **No son decorativos**: una interfaz solo-arrastre es inutilizable con lector de pantalla y la penaliza el escaneo de accesibilidad de Play. No borrarlos. |
+| **Derecha** | Me gusta. La carta se va. |
+| **Izquierda** | Pasar. |
+| **Abajo** | Pasar también: quien va rápido no tiene que apuntar. |
+| **Arriba** | **Entrar al hilo.** La carta se queda; la hoja del hilo sube siguiendo al dedo. |
+| **⋮ en la carta de arriba** | Reportar / bloquear a quien lo escribió. En un menú y no en un gesto: reportar no puede pasar porque se escape el pulgar. |
 
-El eje dominante decide la acción: un arrastre de 200 px hacia arriba y 60 px a la izquierda es un guardado, no un descarte.
+Los botones inferiores repiten los gestos y **no son decorativos**: una interfaz solo de arrastre es inutilizable con lector de pantalla.
 
-**Filtro de categoría: fila de chips** (`_CategoryChips`), arriba del todo y por encima del banner. Sustituye al `PopupMenuButton` que vivía en la barra superior: los chips cuestan alto que era de la tarjeta, pero enseñan las categorías sin abrir nada y cambiar de una es un toque en vez de tres. Siguen visibles en la pantalla de "te has quedado sin preguntas", que es justo donde cambiar de categoría es lo más útil que puede hacer el usuario. Volver a tocar el chip ya seleccionado **no** limpia el filtro: en una fila de filtros un toque significa "enséñame este".
+- `SwipeDeck` es genérico (`DeckCard`), **solo posee el gesto** y notifica hacia arriba. `dismissOn` dice qué direcciones consumen la carta; `DeckThresholds` cuánto hay que recorrer. El estado del mazo vive en `StoriesDeckController` y se testea sin animaciones.
+- `DeckSwipeProgress` (un `ValueNotifier`, no `setState`: cambia cada frame) alimenta los botones que crecen, las insignias y el asomo de la hoja del hilo.
+- **La hoja del hilo es un solo movimiento continuo**: mientras se arrastra, el arrastre escribe directamente en el `AnimationController` (asoma hasta el 45 %); al confirmar, `animateTo(1)` sigue desde donde lo dejó el dedo.
+- **Ranking «hot»**: likes por hora con decaimiento (estilo Hacker News), calculado en `feed()`. Alternativa «nuevas».
+- **Cada carta se reparte una vez.** Las vistas se guardan en el dispositivo (`SeenStoriesStore`) y la cola se envía como pista al servidor; no hay tabla de vistas en Postgres (usuarios × historias se comería los 500 MB del plan gratis).
+- **El mazo nunca muestra al autor sus propias historias.**
+- Filtros en una fila de chips: **qué mazo** (mundo o grupo), orden, mi país, categoría. Categorías genéricas más «cualquiera». Idiomas del mazo en Ajustes; el país sale del dispositivo, nunca de GPS.
+- **No reintroducir un indicador de «cuánto queda».** El anillo del objetivo cuenta hacia arriba y no dice nada del mazo.
 
-`SwipeDeck` (`features/facts/presentation/widgets/swipe_deck.dart`) **solo posee el gesto**. Notifica hacia arriba y repinta a partir de `items`/`index`. El estado del mazo — posición, volteo — vive en `DeckController`, y por eso se puede testear sin animaciones.
+### 3.1 Escribir
 
-Umbrales en `AppConfig`: `deckSwipeThreshold` (28 % del ancho), `deckSwipeUpThreshold` (16 % del alto) y `deckSwipeDownThreshold` (26 % del alto). `deckSwipeVelocity` (700 px/s) confirma el gesto sin recorrer la distancia — **salvo hacia abajo**, que además exige haber viajado: comparte eje con guardar y abre una hoja modal encima de la app.
-
-**Feedback en vivo del arrastre.** `SwipeDeck` publica un `DeckSwipeProgress` (dirección + 0→1) en un `ValueNotifier`. Lo leen dos cosas, y por eso no pueden contradecirse:
-
-- El **botón** correspondiente crece hasta 1,4x, se rellena con su tinte y sube de elevación. Solo uno a la vez: manda el eje dominante.
-- Una **insignia** sobre la tarjeta, en el borde **opuesto** al gesto — skip a la derecha, voltear a la izquierda, guardar abajo, compartir arriba. El borde hacia el que se va la tarjeta se sale de pantalla y escondería el icono justo cuando confirma la acción.
-
-La misma función decide qué se ilumina y qué se dispara al soltar. Durante el rebote la dirección se congela: `Curves.easeOutBack` se pasa del centro y el signo del arrastre se invierte unos frames, lo que sin eso haría parpadear el botón contrario al final de cada gesto.
-
-Un `ValueNotifier` y no `setState` a propósito: cambia en cada frame de cada arrastre y solo deben repintarse los cuatro botones, no la pantalla.
-
-El volteo es un `rotateY` con perspectiva (`setEntry(3, 2, 0.0012)`); a mitad de la animación se cambia la cara y se des-espeja la trasera con otro `rotateY(pi)`. Va dentro de un `RepaintBoundary` para no repintar las tarjetas de debajo.
-
-### 3.2 Contenido
-
-`assets/data/facts.json`: una entrada por tarjeta con `question` / `answer` / `detail` en `es` y `en`, más `category` y `source`.
-
-- **Cada dato lleva fuente, y la fuente es un enlace que se abrió.** Las 85 entradas se verificaron una a una contra una página real: `sourceUrl` es ese enlace permanente y la app lo pinta como enlace clicable bajo la respuesta (`FactSourceLink`). Un "dato curioso" falso viral se convierte en reseñas de 1 estrella y en burla pública, así que la regla es dura: **una entrada sin URL comprobada no entra**, y hay un test (`fact_repository_test.dart`) que lo impide.
-- **La cita de texto plano no vale como verificación.** El catálogo se escribió con ayuda de IA y varias de aquellas citas resultaron ser inventadas o no decir lo que se afirmaba: existía el organismo, existía la revista, pero la página no hablaba del tema. Si añades contenido con IA, la cita que produzca es una **pista**, no una fuente: hay que abrir la página.
-- El contenido está localizado **en el asset**, no en los `.arb`, porque traducir o ampliar el catálogo no debe exigir una versión nueva — y porque ese mismo JSON vendrá luego de Firebase Remote Config o Firestore.
-- `FactCategory` es un enum cerrado: una categoría desconocida en el JSON **revienta al parsear**, no pinta un chip vacío en producción.
-- El parseo corre en un isolate aparte (`compute`) y se cachea en `FactRepository` durante toda la vida del proceso.
-- **El orden del fichero es el orden que ve el usuario**: no hay barajado en ninguna parte. Por eso el catálogo va **intercalado por categoría** (cuerpo, ciencia, historia, lenguaje, y vuelta a empezar) en vez de agrupado: con el filtro en «Todas», un bloque de veinte tarjetas seguidas de la misma categoría se lee como si la app se hubiera quedado atascada. Al añadir contenido, mantener el intercalado.
-
-### 3.3 Composición del mazo
-
-`buildDeck(facts, withAds:)` intercala las tarjetas de anuncio:
-
-- Un `AdItem` cada `AppConfig.adCardEveryNCards` (6) tarjetas de contenido. **Nunca bajar de 5.**
-- **El mazo jamás termina en un anuncio**: cerrar la sesión con una tarjeta de publicidad se lee como un muro de pago.
-- `withAds: false` si el usuario es premium → el mazo no reserva ni un hueco.
-
-El progreso se persiste como **el conjunto de ids ya leídos** (`deck_seen_ids`), uno solo para toda la app, y el mazo contiene **únicamente cartas sin leer**: la de arriba es siempre el índice 0.
-
-Guardar ids y no un índice resuelve dos cosas a la vez. Los huecos de anuncio se desplazan al comprar premium, y un índice guardado apuntaría a otra tarjeta. Y sobre todo: **los chips son cuatro vistas de un mismo catálogo, no cuatro mazos**. Un contador solo significa algo contra un orden concreto, así que con uno por filtro (`deck_facts_seen_<categoría>`, como estaba antes) terminarte «Ciencia» y pasar a «Todas» te repartía esas mismas cartas otra vez. Repartir una carta que el usuario acaba de leer es lo único que este mazo no puede hacer.
-
-La lista viaja en `shared_preferences`, que se carga entera al arrancar (§10): con 533 entradas son unos diez kilobytes. Los ids de datos que un catálogo remoto haya retirado dejan de coincidir con nada y son inofensivos.
-
-**«Reiniciar deck» solo revive las cartas del filtro activo.** Pulsarlo bajo el chip de «Ciencia» es pedir más ciencia, no ofrecerse a releer la historia que se terminó la semana pasada.
-
-**La pantalla de fin de mazo** (`DeckExhaustedView`) es la única sin nada que deslizar, y ofrece tres salidas en orden decreciente de lo que devuelven:
-
-1. **«Reiniciar deck»** — rebaraja y vuelve a empezar. Rebarajar y no rebobinar: quien llega al final y pulsa reiniciar está pidiendo más, y darle las mismas 85 cartas en el mismo orden es responderle que no. La semilla se persiste (`deck_shuffle_seed_<categoría>`) para que el orden nuevo sobreviva a cerrar la app y para que comprar premium a mitad de mazo no rebaraje las cartas bajo el usuario. La **primera** vuelta a una categoría siempre es el orden curado del fichero (semilla 0): barajar la primera sesión tira el único control editorial que hay sobre qué pregunta se encuentra primero.
-2. **«Aportar»** — formulario de pregunta + respuesta + fuente opcional (§3.5).
-3. **«Pedir más»** — ráfaga de corazones estilo Instagram y un contador. Es el único botón que no hace nada verificable para el usuario, y por eso justamente tenía que ser el que mejor sienta pulsar.
-
-**El avance dentro del mazo no se enseña.** No hay barra ni contador «7/23»: la promesa del producto es un mazo que no se acaba, y un indicador que va vaciándose convierte la sesión en una tarea con final. El progreso se guarda para saber por dónde retomar, nada más. **No reintroducir un indicador de cuánto queda.**
-
-> El anillo del objetivo diario (§3.8) **no es esto**, y conviene no confundirlos al leer código ajeno. Aquel cuenta hacia **arriba**, hacia un número que se reinicia mañana, y no dice absolutamente nada sobre cuántas cartas quedan en el catálogo. Lo que está prohibido es la cuenta atrás, no la idea de mostrar un número.
-
-### 3.4 Compartir — imagen para historias
-
-Deslizar hacia abajo (o el botón) renderiza la pregunta como PNG de **1080x1920** y la entrega a la hoja del sistema (`share_plus`). Es el tamaño nativo de una historia de Instagram, un Reel y un TikTok: se publica sin recorte ni recodificación.
-
-- **Solo va la pregunta, nunca la respuesta.** La respuesta es el motivo para instalar la app; un post que la regala es un post que nadie tiene por qué seguir.
-- **Gratis para todos**, a diferencia de favoritos. Una tarjeta compartida es la instalación más barata que va a tener esta app: ponerla tras el muro de pago sería cobrar por el marketing.
-- Se pinta sobre un `Canvas` (`FactStoryImage`), **no** rasterizando un widget: tiene que medir 1080x1920 exactos sea cual sea el tamaño, la densidad y el tema del móvil, y un `RepaintBoundary` te da los píxeles del dispositivo.
-- Todo lo legible vive dentro del **área segura**: las tres superficies pintan su propia interfaz sobre las franjas superior e inferior del lienzo.
-- La tarjeta es de **tamaño fijo y la pregunta se encoge** para caber, no al revés: el marco constante es lo que hace que un feed de estas se lea como una serie. Pasado el mínimo (34 pt) corta la cola en vez de desbordar.
-- La paleta sale de `AppColors.seed` y está **fijada al esquema claro**: rebrandear la app rebrandea lo compartido, y un post cuyo fondo cambia con el tema del lector parece de dos cuentas distintas.
-- Un guardia impide que dos deslizamientos seguidos encolen dos hojas.
-
-> **Al escribir tests:** el render pasa por el motor gráfico, así que **se cuelga bajo el reloj falso de `testWidgets`**. Hace falta un `test` normal o envolverlo en `tester.runAsync`.
-
-### 3.5 Aportaciones de usuarios y «pedir más»
-
-**Dónde van los datos: un web app de Google Apps Script que escribe en una hoja de cálculo.** La app no tiene backend y no va a criar uno por un buzón de sugerencias. Frente a Firestore (que significa `firebase_core` + `cloud_firestore`, un `google-services.json`, varios MB de AAB y trabajo en cada arranque en frío) esto es **una petición POST y cero SDK**; es gratis y ya está en la cuenta de Google del desarrollador; y la bandeja de entrada es una hoja de cálculo, que es justo la herramienta para ordenar, filtrar y marcar una sugerencia como «ya publicada». Si algún día entra Firestore para el catálogo (está en la hoja de ruta), mover esto es un fichero y un servicio.
-
-Las instrucciones de montaje y el código del script están en `core/config/contribution_config.dart`.
-
-- **Nada se pierde por no haber red.** Todo se escribe en disco *antes* de intentar enviarse: la red es una optimización, nunca lo que decide si la acción del usuario contó. Con `ContributionConfig.endpoint` vacío la app sigue funcionando igual y va acumulando en la bandeja local; la primera build con URL real vacía el atraso.
-- **Los toques de «pedir más» se cuentan en local y viajan agregados.** El botón está para machacarlo: veinte toques son una petición con un número, no veinte peticiones.
-- **La carga no lleva ningún identificador.** Ni ad id, ni install id, ni modelo de móvil. Es una decisión de producto: mantiene la declaración del Data Safety en «contenido de usuario, opcional, no vinculado a la identidad».
-- **El endpoint es público y sin autenticar**, que está bien para un buzón de sugerencias y mal para cualquier otra cosa. Hay límite de longitud y un mínimo de 30 s entre envíos, pero **cada fila es texto no fiable**: no pegar nunca una aportación en el catálogo sin leerla.
-
-> **Antes de publicar:** activar esto obliga a declarar contenido de usuario en el formulario de Data Safety y a mencionarlo en la política de privacidad.
-
-### 3.6 Catálogo remoto — añadir preguntas sin publicar versión
-
-**Un JSON estático en GitHub Pages, no Firebase.** El problema es estrecho: publicar más preguntas sin pasar por revisión. Remote Config y Firestore lo resuelven, y los dos cuestan `firebase_core` más un segundo SDK, un `google-services.json`, varios MB de AAB y trabajo en cada arranque en frío. Un fichero en un CDN cuesta **una petición GET y cero dependencias**, y como vive en un repo de git cada publicación de contenido es un commit con su diff y su historial — que es justo lo que quiere un catálogo curado a mano.
-
-**Tres capas, y la red solo puede sumar:**
-
-1. `assets/data/facts.json` dentro del APK. Es el suelo: instantáneo, offline, no puede fallar.
-2. La última descarga buena, cacheada en disco (`getApplicationSupportDirectory`, no en prefs: las prefs se cargan enteras al arrancar).
-3. La descarga de fondo, después del primer frame.
-
-`mergeCatalogues` funde 1 y 2 al arrancar: **mismo id reemplaza en su sitio**, los ids de `removed` desaparecen, los ids nuevos se añaden al final.
-
-**Que se pueda borrar un dato en remoto es la razón de tener esto desde el día uno**: el catálogo está verificado (§3.2), pero una fuente puede caerse, corregirse o resultar peor de lo que parecía, y entonces hay que poder matar la entrada hoy, no en la siguiente release.
-
-**La descarga nunca se espera desde la UI y se aplica en el arranque siguiente.** Cambiar el catálogo a mitad de sesión movería las cartas que el usuario está leyendo. Se descarga, se valida, se escribe en disco, y la próxima vez que abra la app está.
-
-**Ningún fallo de red puede dejar al usuario con menos preguntas de las que trae el APK.** Sin conexión, 404, cuerpo truncado o JSON corrupto acaban todos igual: se usa lo que ya había. El parser remoto es **tolerante a propósito**, al revés que el del asset: una categoría desconocida en el asset es un bug de compilación y debe reventar, pero el mismo error servido por red reventaría todas las copias instaladas a la vez, así que la entrada mala se descarta, se cuenta y el resto se conserva. Un remoto que dejara el catálogo vacío se ignora entero.
-
-`If-None-Match` con el ETag guardado: un catálogo que no ha cambiado cuesta un 304 y cero parseo. Y una versión menor que la cacheada se rechaza, para que una copia rancia del CDN no haga rollback del contenido.
-
-Configuración y pasos de publicación en `core/config/remote_catalog_config.dart`. El fichero se valida con `python3 tool/build_remote_catalog.py --check` **antes** de subirlo: comprueba las mismas reglas que aplica el parser de Dart, así que un error se ve ahí y no en cien mil móviles.
-
-### 3.7 Favoritos — función de pago
-
-Guardar tarjetas está detrás del **mismo pago único `premium_remove_ads`**. No hay un segundo producto: añadir SKUs multiplica el soporte y las combinaciones de entitlement que hay que probar.
-
-- `favoritesProvider` guarda **ids**, no copias de las tarjetas: si un dato se reescribe en una actualización de contenido, el favorito sigue siendo correcto. Los ids que ya no existen en el catálogo se descartan en silencio.
-- `canUseFavoritesProvider` está separado de `isPremiumProvider` aunque hoy devuelva lo mismo, para que desacoplarlo más adelante sea una línea.
-- **La comprobación del entitlement vive en la UI**, no en `FavoritesController`. La rama del "no" tiene que abrir el paywall y eso necesita un `BuildContext`; duplicar la comprobación en el controller solo haría que las dos copias se separaran.
-- Un usuario sin premium **sí puede hacer el gesto**: es así como descubre que la función existe. Sale un diálogo que explica qué desbloquea, con un "Ahora no" a un toque. **No saltar directamente al paywall**: secuestrar la pantalla tras un deslizamiento que pudo ser accidental se lee como una trampa.
-- Los ids guardados **no se borran nunca** al perder el entitlement. Un reembolso o una reinstalación no deben destruir la lista; la pantalla se bloquea, los datos siguen ahí.
-
-> **Ojo en Play Console:** la ficha del producto `premium_remove_ads` tiene que mencionar los favoritos. Vender "quitar anuncios" y usarlo además para desbloquear una función es motivo de reembolso y de reseña negativa si el usuario no lo sabía al pagar.
-
-### 3.8 Objetivo diario y rangos
-
-Dos sistemas encadenados: **cada día pide un número de datos**, y **cumplirlo da puntos que suben de rango**. Es lo único de la app que da una razón para volver mañana en concreto, en vez de "algún día".
-
-**«Aprender» un dato es voltear la tarjeta y leer la respuesta.** No descartarla. Contar descartes llenaría el objetivo con todo lo que un usuario impaciente pasó sin mirar, y el anillo le diría que ha aprendido quince cosas que no ha leído. Es el mismo momento del que cuelga la petición de reseña (§7), por la misma razón: es lo único que el usuario viene a hacer aquí.
-
-**El mismo dato solo cuenta una vez al día.** Voltear una tarjeta adelante y atrás no rellena nada. Pero un dato que vuelve a salir mañana **sí** cuenta otra vez: si no, un usuario veterano que ha rebarajado el mazo se quedaría con un objetivo imposible.
-
-**El objetivo es función de la fecha y de nada más** (`DailyGoal.targetFor`). No hay servidor, así que lo único que impide re-tirar el dado de un objetivo incómodo es que cerrar y abrir la app no pueda cambiar la respuesta. De ahí que no se guarde: se recalcula.
-
-- Los tamaños salen de `DailyGoal.sizes` (8, 10, 12, 15) y se reparten **en bloques de cuatro días barajados**, así que cada tamaño sale exactamente una vez cada cuatro días en lugar de "a menudo". Dos días seguidos nunca repiten número, y eso se garantiza mirando solo el bloque anterior — el arreglo intercambia las posiciones 0 y 1 y **nunca toca la última**, que es lo que impide que resolver un bloque exija resolver toda la historia hacia atrás.
-- El **día de la instalación siempre es el más corto**. Una primera sesión que acaba en objetivo cumplido es lo que vende el sistema entero; abrir una instalación recién hecha con un 15 es jugarse a cara o cruz que eso ocurra.
-- `epochDayOf` convierte la fecha **local** a UTC antes de numerarla. Usar la marca de tiempo local directamente hace que el índice avance algo distinto de uno al cambiar la hora en una zona UTC±0, y eso reparte el mismo día dos veces o se salta uno.
-
-**El día paga lo que pidió**: cumplir un objetivo de 15 son 15 puntos; uno de 8, ocho. Es justo sin necesidad de inventarse una constante. Y **paga una sola vez**: seguir leyendo después suma datos al contador pero no más puntos.
-
-**Rangos** (`Rank`): Curioso · Preguntón · Sabelotodo · Erudito · Enciclopedia · Oráculo, en 0 / 60 / 180 / 400 / 800 / 1400 puntos. Con una media de ~11 puntos por día perfecto, el segundo cae dentro de la primera semana — pronto para demostrar que el sistema funciona — y el último más allá de cien días cumplidos, que es donde debe estar un rango final. La barra de la pantalla de progreso mide **desde el suelo del rango actual**, no desde cero: una barra única para toda la escalera se pasaría semanas sin moverse.
-
-**Dónde se ve.** Un anillo en la **barra superior** del mazo, con el icono del rango dentro. Ahí y no sobre las tarjetas: el mazo ya cede alto a los chips y al banner, y esto sería lo tercero en pedirle una franja. Al tocarlo se abre `/progress`, que es donde vive la explicación completa, la escalera entera y el estado del día.
-
-**El aviso está graduado por lo que vale interrumpir:**
-
-| Qué pasa | Qué sale |
-|---|---|
-| Se cumple el objetivo | Un `SnackBar`. Pasa todos los días y un modal acabaría siendo lo que el usuario aprende a cerrar. |
-| Se sube de rango | Un diálogo. Pasa seis veces en la vida de la app, y es el único premio que tienen los puntos. |
-
-**El día se cierra desde el reloj, no desde memoria.** `registerLearned` relee el día guardado en cada escritura, así que una app abierta desde antes de medianoche se pone al día con la primera tarjeta que se voltee; `refresh()` existe para el caso de volver del segundo plano sin haber tocado nada todavía. Los contadores de ayer no se borran hasta la siguiente escritura, pero **nunca se leen**: la comparación con el reloj los enmascara, y por eso un `awarded` viejo no puede pagar el objetivo de hoy.
-
-**Es gratis y no toca la monetización.** Ni el objetivo ni los rangos miran `isPremiumProvider`. Poner detrás del muro de pago la única mecánica de retención que tiene la app sería cobrar por el motivo de volver.
-
-> Lo obvio que falta y que **no** está implementado: la **racha** (días consecutivos cumpliendo). Es la pieza que multiplicaría esto y la notificación diaria, y encaja sin tocar nada de lo de arriba — un contador más y una condición en `registerLearned`. No se ha metido porque no se pidió.
+- 20–600 caracteres, solo texto, una categoría.
+- **Una historia al día.** Más con un anuncio recompensado (§5) o sin límite con premium. La pantalla dice cuántas quedan (`publish_status()`).
+- Se publica **en el mazo en el que estabas**: desde un grupo, solo lo ve el grupo, y la pantalla lo avisa.
+- Normas de la comunidad en `/rules`, enlazadas desde escribir y desde Ajustes.
 
 ---
 
-## 4. Monetización
+## 4. Hilos, grupos, moderación, push
 
-### 4.1 Modelo económico
+**Hilos (`features/threads`).** Entrar es unirse: no hay botón «unirse». Alias asignado por el servidor, único dentro del hilo, distinto en cada hilo. Realtime con **un canal por hilo abierto** (el plan gratis da 200 conexiones simultáneas; no abrir canales para hilos que no están en pantalla). Envío optimista: el mensaje se pinta como pendiente y se quita si falla. Los hilos inactivos se cierran solos. `/threads` es el único sitio donde una historia se puede volver a encontrar.
 
-- Núcleo gratuito completo y usable (apps de "funcionalidad mínima" se retiran).
-- **Tarjeta de anuncio dentro del mazo = formato principal.** Se desliza igual que el contenido.
-- **Interstitial = secundario**, cada ~9 tarjetas y nunca antes de 3 min desde el anterior.
-- **Rewarded solo para una cosa: publicar una historia más** el día que ya se gastó la gratuita. El crédito lo concede el servidor (Edge Function `admob-ssv`, verificación SSV de AdMob), nunca la app. Nada más en la app está bloqueado, así que nada más puede pedir un vídeo.
-- **IAP no consumible "quitar anuncios"** = conversión principal. Desbloquea además los favoritos (§3.7), así que tiene dos puntos de venta: la tarjeta de anuncio sin relleno y el intento de guardar una tarjeta.
+**Grupos (`features/groups`).** Un grupo es otro mazo, privado. Se entra con un código de invitación (12 hex) que caduca a los 7 días y que el creador puede **renovar** para matar un enlace filtrado. Sin límite de miembros; todas las demás protecciones aplican. El creador no puede salir, solo borrar (siempre hay alguien que puede renovar). Salir de un grupo quita también el acceso a sus hilos. `join_thread`/`story_detail` comprueban la pertenencia: una historia de grupo no se abre con su id desde fuera. **Un enlace de invitación nunca une a nadie sin un toque.**
 
-### 4.2 AdMob (`google_mobile_ads`)
+**Moderación: mínima a propósito.** Reportar y bloquear. Un número de reportes oculta el contenido solo; demasiado contenido oculto banea la cuenta. Nadie revisa colas. Reportar y bloquear siempre piden confirmación.
 
-**IDs.** `core/config/ad_config.dart` mantiene dos juegos: los **IDs oficiales de prueba de Google** y los de producción (vacíos hasta que existan). La selección es automática:
+**Push (`services/push` + `functions/thread-push`).** Un trigger manda el id de cada mensaje por `pg_net` a la Edge Function, que decide a quién avisar: no al autor, no a quien silenció el hilo, nada entre personas bloqueadas, y **un aviso por hilo hasta que se abre**. La app solo registra el token (`register_device`, que mueve el token a la cuenta que usa el móvil ahora), abre el hilo al tocar, y en primer plano enseña un snackbar salvo que ya estés en ese hilo.
 
-```dart
-AppConfig.useProductionAds  // == kReleaseMode
-```
-
-Un ID vacío **desactiva** ese formato en vez de romper. **Nunca** usar IDs de producción en debug: es causa directa de baneo por tráfico inválido.
-
-Hay **una sola unidad de banner** y sirve tanto al banner adaptativo anclado como al rectángulo 300x250 de la tarjeta de anuncio: una unidad de banner sirve cualquier tamaño de banner, y una segunda solo partiría los informes en dos.
-
-El App ID de prueba también está declarado en `android/app/src/main/AndroidManifest.xml`
-(`ca-app-pub-3940256099942544~3347511713`).
-
-**`AdsService` (`services/ads/ads_service.dart`)** — punto único de entrada:
-
-| Regla | Dónde |
-|---|---|
-| Premium nunca ve anuncios | `adsEnabled` (getter del servicio, **no** en cada pantalla) |
-| Consentimiento antes del primer anuncio | `initialize()` llama a `ConsentService.gatherConsent()` |
-| Interstitial cada N acciones **y** con intervalo mínimo | `registerActionAndMaybeShowInterstitial()` |
-| Caducidad ~1 h de anuncios full screen | `_isExpired()` + `AppConfig.fullScreenAdTtl` |
-| Reintentos con backoff exponencial (4s, 8s, 16s, 32s, máx. 4) | `_scheduleRetry()` |
-| Nunca bloquear al usuario por falta de inventario | devuelve `AdShowResult.notReady`; la UI degrada |
-
-**Pacing del interstitial:** deben cumplirse **las dos** condiciones —
-`AppConfig.interstitialEveryNActions` (9) **y** `AppConfig.minIntervalBetweenInterstitials` (3 min).
-Una "acción de valor" aquí es **una tarjeta descartada**. Como las tarjetas se consumen rápido, el que manda en la práctica es el suelo de 3 minutos. No añadir atajos que salten el pacing.
-
-**Tarjeta de anuncio (`AdDeckCard`).** Dos reglas que no se relajan:
-
-1. **Pedir el creativo y pintarlo son dos cosas distintas, y solo la segunda es una impresión.** El `AdWidget` se monta **únicamente en `depth == 0`**: las tarjetas que esperan detrás están tapadas al 95 %, y pintar un anuncio que nadie puede ver es justo lo que AdMob cuenta como impresión inválida. Esta regla no se relaja.
-2. **La petición sale una tarjeta antes** (`AppConfig.deckAdPreloadDepth`, hoy 1). Pedirla solo al llegar arriba es lo que hacía que el anuncio apareciera tarde, después de un parpadeo del argumento de "quitar anuncios". Precargando, llegar arriba es un repintado y no una ida y vuelta a la red. Subir esa profundidad es pedir creativos que quizá nadie vea, así que se queda en 1.
-3. Mientras la petición está en vuelo la tarjeta **reserva el hueco vacío**, no enseña el argumento de pago. Ese argumento significa "no entró nada" —sin consentimiento, sin inventario, sin unidad configurada— y sacarlo durante una carga que va a funcionar es como la tarjeta acaba cambiando de opinión delante del usuario.
-4. La etiqueta **"Publicidad" siempre visible**. Un anuncio mimetizado sin etiqueta es un rechazo por *deceptive ads*.
-
-`SwipeDeck` pasa al `builder` la **profundidad** de cada tarjeta, no un booleano "es la de arriba": una tarjeta puede necesitar empezar a trabajar antes de ser alcanzable, y eso no cabe en un `bool`.
-
-Si no entra ningún creativo (sin consentimiento, sin inventario, sin unidad configurada) la tarjeta cae a un argumento discreto de "quitar anuncios" en vez de un rectángulo en blanco: mantiene el ritmo del mazo y coloca el paywall justo detrás de un momento de valor.
-
-> **Pendiente:** el plan original pedía un *native ad* real. Requiere una `NativeAdFactory` en Kotlin más su layout XML. Lo que hay ahora es un 300x250 dentro del mismo `DeckCardShell` que el contenido — cero código nativo y misma sensación. Migrar solo si el eCPM lo justifica.
-
-**Banner.** `AdaptiveBannerAd` es el único sitio donde vive la política de colocación. Tiene dos modos:
-
-- `anchored: true` (por defecto): lo coloca `BaseScreen` **debajo** del contenido, nunca superpuesto. Hoy no lo activa ninguna pantalla — `SettingsScreen`, `PaywallScreen` y `FavoritesScreen` van con `showBanner: false`.
-- `anchored: false`: **en línea, dentro del layout**. Es el que usa el mazo, entre los chips de categoría y las tarjetas.
-
-**El banner del mazo va arriba, nunca abajo.** El mazo es una superficie que se arrastra en cuatro direcciones, y un banner anclado al borde inferior bajo ese gesto es el ejemplo de manual del clic accidental. Colocado sobre las tarjetas el dedo no lo pisa nunca al salir de un deslizamiento. **No moverlo abajo.**
-
-Si no entra creativo, o el usuario es premium, el widget no ocupa nada (`SizedBox.shrink`): la tarjeta recupera el espacio en vez de dejar una franja gris. En pantallas pequeñas el banner y los chips comen alto que era de la tarjeta; el mazo va en un `Expanded` y cede, pero conviene revisarlo con `textScaleFactor` alto (§14).
-
-**Consentimiento (UMP).** `services/ads/consent_service.dart` usa el UMP SDK que ya incluye `google_mobile_ads` (sin dependencia extra):
-`requestConsentInfoUpdate` → `loadAndShowConsentFormIfRequired` → `canRequestAds()`.
-En Ajustes hay una fila **"Opciones de privacidad"** que reabre el formulario, visible solo cuando `getPrivacyOptionsRequirementStatus() == required`.
-
-**Mediación:** no activarla en el lanzamiento. A partir de ~10k usuarios activos, 2–3 redes.
-
-### 4.3 IAP (`in_app_purchase`)
-
-- Producto **gestionado no consumible**: `premium_remove_ads` (`core/config/billing_config.dart`). Debe existir y estar **activo** en Play Console y requiere una versión subida a un canal de pruebas.
-- `PremiumService` = plomería del store; `PremiumController` (`AsyncNotifier`) = estado.
-- **`purchaseStream` se escucha desde el arranque**, no desde el paywall: una compra puede completarse fuera de la sesión.
-- **`completePurchase()` siempre**, incluso en compras rechazadas o con error: si no, Google reembolsa automáticamente a los 3 días.
-- Entitlement cacheado en `flutter_secure_storage` + `restorePurchases()` al arrancar para verificar contra el store. Nunca confiar solo en un flag de `shared_preferences`.
-- **Botón "Restaurar compras" obligatorio y visible** en Ajustes (y también en el paywall). Su ausencia es motivo de rechazo.
-- Verificación local del token (app sin backend). Con servidor: validar contra la Google Play Developer API en `PremiumService.isValidPurchase`.
-- **Paywall tras un momento de valor**, nunca en el primer arranque. Puntos de entrada: el intento de guardar una tarjeta, la pantalla de guardadas bloqueada, la tarjeta de anuncio sin relleno, fila en Ajustes, deep link `chismosa://premium`.
-
-### 4.4 Política
-
-- **Data Safety form** debe declarar exactamente lo que recogen AdMob y los SDKs (ID de publicidad, datos de uso). Declaración incompleta = rechazo.
-- El permiso `com.google.android.gms.permission.AD_ID` está declarado explícitamente en el manifiesto para que no se olvide en el formulario.
-- Si la app se dirige a menores: poner `AdConfig.isChildDirected = true` y aplicar Families Policy. **Ojo**: parte del contenido es de cuerpo humano; revisar el content rating antes de marcar público infantil.
+**`POST_NOTIFICATIONS` se pide una sola vez, justo después del primer mensaje del usuario en un hilo**, o desde la fila de Ajustes. Nunca al arrancar: Android enseña ese diálogo una vez y recuerda el «no».
 
 ---
 
-## 5. Permisos
+## 5. Cuenta anónima
 
-La app pide **uno solo en tiempo de ejecución**: `POST_NOTIFICATIONS`, para la pregunta del día (§6). El resto del manifiesto son permisos de instalación: `INTERNET`, `ACCESS_NETWORK_STATE`, `AD_ID` y `RECEIVE_BOOT_COMPLETED`.
-
-**Push de hilos (Chismosa):** el permiso se pide **una vez**, justo después del primer mensaje que el usuario escribe en un hilo (`PushService.askPermissionOnce`). Es el momento en que «avísame cuando me respondan» significa algo. El servidor decide a quién avisar (`supabase/functions/thread-push`); la app solo registra su token (`register_device`) y abre el hilo al tocar la notificación.
-
-**`POST_NOTIFICATIONS` para la pregunta del día (heredada) se pide desde el interruptor de Ajustes y desde ningún otro sitio.** Android enseña ese diálogo **una vez** y recuerda la negativa para siempre: gastarlo al arrancar, antes de que el usuario sepa siquiera qué hace la app, es como se mata una función de retención antes de publicarla. El interruptor *es* el consentimiento — al tocarlo ya ha dicho que la quiere.
-
-**`RECEIVE_BOOT_COMPLETED`** existe porque Android tira todas las alarmas pendientes al reiniciar y al actualizar la app. Sin él, la cola de dos semanas se pierde en el primer reinicio.
-
-**Deliberadamente NO se declaran `SCHEDULE_EXACT_ALARM` ni `USE_EXACT_ALARM`.** Las notificaciones se programan inexactas (`AndroidScheduleMode.inexactAllowWhileIdle`), que es todo lo que necesita un recordatorio diario. Las alarmas exactas las revisa Play caso por caso y habría que justificarlas; un recordatorio que llega cinco minutos tarde sigue siendo un recordatorio. **No cambiar a exactas** sin una razón de producto nueva.
-
-`permission_handler` **sigue sin estar** y no hace falta: `flutter_local_notifications` trae su propio `requestNotificationsPermission()`. Una dependencia menos.
-
-`flutter_local_notifications` inyecta además `VIBRATE` en el manifiesto fusionado. Revisar el fusionado tras cada cambio de dependencias.
+- Auth anónima de Supabase. Sin email ni contraseña.
+- Una cuenta por persona. El secreto se deriva de un **código de recuperación** (`CHM-XXXX-…`, 120 bits) guardado en el directorio de soporte, que Auto Backup restaura al reinstalar.
+- El código solo se enseña en Ajustes, detrás de un toque. Restaurar otra cuenta incrementa `sessionEpoch` y re-registra el token de push.
 
 ---
 
-## 6. Pregunta del día (notificación diaria)
+## 6. Monetización
 
-El motor de retención: sin ella, una app de datos curiosos es una app de una sola sesión.
-
-**Notificaciones locales, no push.** No hay backend y esto no justifica criar uno. Cada notificación se encola en el dispositivo con su pregunta ya elegida, así que funciona sin red y no cuesta nada mantener. El precio, y hay que saberlo: la cola solo llega a `AppConfig.dailyQuestionDaysAhead` (14) días y se rellena **cada vez que se abre la app**. Un usuario que no la abra en dos semanas deja de recibir recordatorios hasta que vuelva. Es un intercambio aceptable a cambio de cero servidores; si algún día entra FCM, esto se sustituye sin tocar la UI.
-
-La pregunta se elige **al azar** entre todo el catálogo, barajado sin semilla: dos semanas seguidas no deben repartir las mismas catorce preguntas.
-
-Hora fija a las **20:00 locales** (`AppConfig.dailyQuestionHour`). Es contenido de curiosidad ociosa: por la mañana compite con el trabajo y después de cenar no compite con nada. La zona horaria se resuelve con `flutter_timezone`; sin eso todo se programaría en UTC y «las 20:00» caerían a la hora que tocase según el desfase del usuario.
-
-### Al tocar la notificación: la carta se traslada, no se salta
-
-`DeckController._hoist` es la pieza importante y la única con lógica real aquí. Saltar el índice hasta donde esté esa carta **se saltaría en silencio todo lo que hay entre la posición actual y ella**. En vez de eso, la carta se **saca** del mazo y se **suelta en la posición de lectura**, y las cartas entre las que estaba cierran el hueco. Lo que iba a salir después sigue saliendo después, un puesto más tarde.
-
-Tres casos que el código cubre y que conviene no romper:
-
-- **Carta ya leída:** no está en el mazo, porque el mazo solo lleva cartas sin leer. Se saca del catálogo filtrado y se pone arriba para esta sesión; descartarla vuelve a marcarla leída, que no cambia nada.
-- **Mazo ya agotado:** la carta aterriza arriba y el mazo vuelve a estar agotado justo después. Un recordatorio que toca alguien que ya se lo ha leído todo tiene que funcionar igual.
-- **Id desconocido o filtrado por los chips:** el mazo se deja exactamente como estaba, sin adivinar qué quería el usuario. Por eso `openFactFromNotification` **limpia el filtro de categoría** antes de fijar la carta: la pregunta del día sale de todo el catálogo, y un usuario parado en «Historia» tocaría una de ciencia y no vería nada.
-
-El «pin» vive en `pinnedFactProvider` y **no se persiste**: pertenece a una sesión. Uno que sobreviviera a un reinicio seguiría tirando de la misma carta días después.
+- **Tarjeta de anuncio dentro del mazo** = formato principal (`adCardEveryNCards` = 6, nunca menos de 5; el mazo no termina en un anuncio). El `AdWidget` se monta **solo en `depth == 0`**; la petición sale una carta antes. Etiqueta «Publicidad» siempre visible.
+- **Banner en línea arriba del mazo, nunca abajo**: abajo está el gesto y sería el clic accidental de manual.
+- **Interstitial** cada 9 acciones **y** mínimo 3 min entre dos.
+- **Rewarded solo para publicar una historia más.** El crédito lo concede el servidor (`functions/admob-ssv`, verificación SSV con firma ECDSA de Google, idempotente por `transaction_id`). La app nunca concede nada; espera al crédito consultando `publish_status()`. La unidad de prueba de Google no llama a la URL: en debug el crédito no llega.
+- **Premium (`premium_remove_ads`, pago único)**: sin anuncios y sin límite de publicación. El entitlement se refleja en `profiles.is_premium` (bootstrap). **Pendiente:** validar el token de compra en servidor; hoy el servidor se fía del cliente.
+- IDs de prueba en debug, producción en release (`AppConfig.useProductionAds == kReleaseMode`). Un ID vacío desactiva el formato. **Nunca IDs de producción en debug.**
+- UMP antes del primer anuncio; «Opciones de privacidad» en Ajustes cuando UMP lo exige. «Restaurar compras» visible en Ajustes y en el paywall. `completePurchase()` siempre.
 
 ---
 
-## 7. Reseñas in-app (`in_app_review`)
+## 7. Objetivo diario y rangos (`features/goals`)
 
-`services/review/review_service.dart`. Google limita el diálogo silenciosamente: si se gasta la cuota en un mal momento, el usuario no lo vuelve a ver en meses. Por eso hay tres guardas (`AppConfig`):
-
-- `reviewMinSuccessfulActions` = 5 acciones de valor completadas.
-- `reviewMinAppAge` = 3 días desde la instalación.
-- `reviewMinInterval` = 120 días entre solicitudes.
-
-En Chismosa el **momento de valor es voltear una tarjeta para leer la respuesta**: es lo único que el usuario viene a hacer. `requestReviewAfterSuccess()` se llama solo desde ahí (`DeckScreen._reveal`), nunca al arrancar, nunca tras un error, nunca desde Ajustes.
-Para el botón explícito "Valorar la aplicación" de Ajustes se usa `openStoreListing()`, que no consume la cuota del diálogo nativo.
+**La unidad de progreso es entrar al hilo de una historia**, no dar like ni pasar cartas. El mismo hilo cuenta una vez al día. El objetivo del día (8/10/12/15) se deriva solo de la fecha; el día de instalación es el más corto. Cumplirlo da tantos puntos como pedía y suben de rango: Oyente · Curiosa · Cotilla · Chismosa · Correveidile · Radio Patio (0/60/180/400/800/1400). Objetivo cumplido → snackbar; subir de rango → diálogo. Gratis, no mira premium. Es también el momento de pedir reseña (§9).
 
 ---
 
-## 8. Tema y diseño (Material 3)
+## 8. Navegación y arranque
 
-- Un **único seed color** (`AppColors.seed = 0xFFC026D3`) genera los esquemas claro y oscuro con `ColorScheme.fromSeed`.
-- `AppTheme.light([scheme])` / `AppTheme.dark([scheme])` aceptan un `ColorScheme` externo: si algún día se quiere Material You, se inyecta ahí sin tocar el resto del tema.
-- Colores semánticos (success/warning) vía `ThemeExtension<AppSemanticColors>`, accesibles con `context.semanticColors`.
-- **Tokens de espaciado y radios** en `AppSpacing` / `AppRadius`. Prohibido escribir paddings a pelo.
-- `ThemeModeController` persiste claro/oscuro/sistema en `shared_preferences` de forma **síncrona** (las prefs ya están cargadas en `bootstrap`), así el primer frame no parpadea con el brillo equivocado.
-- Widgets base: `BaseScreen`, `SectionCard`, `AppLoader`, `EmptyState`, `ErrorView`, `AdaptiveBannerAd`.
-- Todas las tarjetas del mazo — contenido y anuncio — comparten `DeckCardShell`. Ahí es donde se cambia la forma de una tarjeta, no en cada widget.
-
-**Toda pantalla nueva debe construirse sobre `BaseScreen`**, no sobre un `Scaffold` pelado.
+- Rutas en `core/routing`, **nunca un path literal en una pantalla**. `rootNavigatorKey` para código fuera del árbol (push, anuncios, compras).
+- Antes de `runApp`: solo `ensureInitialized` y `SharedPreferences`. **Primer frame < 2 s en gama media.**
+- Después del primer frame, cada paso con su `try/catch`: backend + sesión + locale → push → premium (y su espejo en el perfil) → anuncios.
+- `main.dart` no contiene lógica.
 
 ---
 
-## 9. Navegación (`go_router`)
+## 9. Reseñas, tema, Android
 
-- Rutas declarativas en `core/routing/app_router.dart`, constantes en `app_routes.dart`. **Nunca escribir un path literal en una pantalla.**
-- Navegación por nombre: `context.goNamed(AppRoutes.settingsName)`.
-- `rootNavigatorKey` disponible para código fuera del árbol (callbacks de anuncios, stream de compras) en vez de guardar un `BuildContext` obsoleto.
-- Deep links activos desde el día 1: esquema `chismosa://` en el manifiesto + `flutter_deeplinking_enabled`. App Links (`https`, `autoVerify`) están comentados: activarlos requiere publicar `assetlinks.json` en el dominio.
-- `errorBuilder` → `RouteErrorScreen`, para que un deep link de campaña obsoleto no crashee.
-
----
-
-## 10. Arranque (`bootstrap.dart`)
-
-Objetivo: **primer frame < 2 s en gama media**.
-
-Antes de `runApp` solo se permite:
-1. `WidgetsFlutterBinding.ensureInitialized()`
-2. cargar `SharedPreferences` (unos ms, y evita parpadeos de tema/contadores)
-
-El catálogo **no** se carga aquí: `factsProvider` lo pide desde la pantalla y el mazo enseña `AppLoader` mientras tanto.
-
-Todo lo demás arranca **después del primer frame** (`addPostFrameCallback`), en este orden y con `try/catch` individual:
-1. `premiumControllerProvider` — el entitlement debe conocerse **antes** de pedir anuncios.
-2. `AdsService.initialize()` (RequestConfiguration → consentimiento → `MobileAds.initialize()` → precarga).
-3. `adsInitializedProvider.markInitialized()`.
-4. `DailyQuestionService.initialize()` — engancha los toques, atiende la notificación que pueda haber arrancado la app y rellena la cola de 14 días. **No pide permiso ninguno**: eso es exclusivo del interruptor de Ajustes (§5).
-
-Todo va dentro de `runZonedGuarded`, con `FlutterError.onError` y `PlatformDispatcher.instance.onError` enrutados a `AppLogger`.
-
-`main.dart` no contiene lógica. **No añadir nada ahí.**
+- `in_app_review` con guardas (5 acciones de valor, 3 días de instalación, 120 días entre peticiones). Se pide **solo al entrar a un hilo**.
+- Material 3 desde un único seed color; `AppSpacing`/`AppRadius`, nada de paddings a pelo. Toda pantalla sobre `BaseScreen`.
+- `compileSdk = 37`, `minSdk = 24`, R8 + shrink en release. Firma desde `key.properties` (git-ignored). Sin flavors ni `--dart-define`.
+- `google-services.json` está en el repo: solo lleva identificadores públicos del proyecto Firebase, no secretos.
+- Revisar el manifiesto fusionado tras cada cambio de dependencias.
 
 ---
 
-## 11. Configuración Android
-
-`android/app/build.gradle.kts`:
-
-- `compileSdk = 37` — lo exige `flutter_secure_storage 11`. No bajarlo.
-- `minSdk = 24`, `targetSdk = flutter.targetSdkVersion`.
-- `applicationId = com.alejandrosahonero.chismosa` — **no se puede cambiar nunca** tras publicar.
-- Release: `isMinifyEnabled = true`, `isShrinkResources = true`, `proguard-rules.pro`.
-- **Firma:** lee `android/key.properties` (git-ignored). Si no existe, cae a la firma de debug para no romper builds locales. Antes de publicar, verificar que `key.properties` existe y que el AAB **no** va firmado con debug.
-- **Sin product flavors ni entornos.** `flutter run` y `flutter build` funcionan sin `--flavor` ni `--dart-define`. No reintroducirlos.
-- El nombre visible se declara directamente en `AndroidManifest.xml` (`android:label`), no como `resValue`: AGP 9 desactiva la build feature `resValues` por defecto.
-
----
-
-## 12. Comandos
+## 10. Comandos
 
 ```bash
-# Desarrollo
 flutter run
-
-# Calidad (obligatorio antes de cerrar una tarea)
 dart format lib test && flutter analyze && flutter test
-
-# Release para Play (AAB, ofuscado, símbolos archivados por versión)
-flutter clean && flutter pub get
-flutter build appbundle --release \
-  --obfuscate --split-debug-info=build/symbols/1.0.0
-
-# Auditoría de tamaño (objetivo: AAB < 15 MB)
-flutter build appbundle --release --analyze-size
+flutter build appbundle --release --obfuscate --split-debug-info=build/symbols/1.0.0
 ```
 
-**Guardar `build/symbols/<versión>` fuera del repo.** Sin esos símbolos los crashes son ilegibles.
+Guardar `build/symbols/<versión>` fuera del repo.
 
 ---
 
-## 13. Pendiente antes de publicar
+## 11. Pendiente
 
-1. ~~Verificar a mano las entradas de `assets/data/facts.json` y rellenar `sourceUrl`.~~ **Hecho.** Las 87 se comprobaron una a una contra una página abierta; se retiraron 2 (una refutada, otra sin fuente aceptable) y se corrigió la redacción de 12 que decían más de lo que su fuente sostenía. Quedan **85**, todas con enlace. Lo que sí queda pendiente: repasar las que se apoyan en fuentes de segunda fila (Wikipedia, `historic-uk.com`, `ck12.org`) y subirlas a una primaria si aparece.
-2. `core/config/ad_config.dart`: rellenar `_prodBanner` y `_prodInterstitial`.
-3. `AndroidManifest.xml`: sustituir el App ID de prueba de AdMob por el de producción.
-4. Iconos adaptativos (`flutter_launcher_icons`) y splash nativo (`flutter_native_splash`) — necesitan assets reales.
-5. Crash reporting (Crashlytics o Sentry) — **obligatorio desde la v1**. Enganchar en `AppLogger.error` y en `bootstrap`.
-6. Política de privacidad publicada en una URL accesible (obligatoria por usar AdMob).
-7. Data Safety form, content rating (IARC), público objetivo, declaración "contiene anuncios".
-8. Testing interno → closed testing (**12 testers / 14 días** para cuentas personales creadas después de nov-2023) → producción con rollout escalonado 10–20 %.
-9. Vigilar Android Vitals: crash rate > 1,09 % o ANR > 0,47 % penalizan la visibilidad → parar el rollout.
+**Pasos a mano en el backend**: lista en `supabase/README.md` → «Pendiente».
 
-### Features del plan original todavía sin implementar
+**Antes de publicar:**
+1. IDs de producción de AdMob (`ad_config.dart`, App ID en el manifiesto, unidad recompensada con SSV).
+2. Validar el token de compra de Play en servidor antes de fiarse de `is_premium`.
+3. Iconos adaptativos y splash nativo.
+4. Crash reporting (Crashlytics o Sentry), obligatorio desde la v1.
+5. Política de privacidad pública. Data Safety: **contenido generado por usuarios**, ID de publicidad, token de push; clasificación de contenido con UGC y moderación declarada.
+6. App Links `https` (necesita un dominio con `assetlinks.json`; GitHub Pages sirve y es gratis) para que las invitaciones a grupos sean enlaces pulsables en WhatsApp.
+7. Testing cerrado (12 testers / 14 días) → producción con rollout escalonado.
 
-- **Widget de pantalla de inicio** con la pregunta del día.
-
----
-
-## 14. Definición de "hecho" para cada release
-
-- [ ] `flutter analyze` sin issues y `dart format` aplicado.
-- [ ] Tests pasando.
-- [ ] Probado en dispositivo físico de gama baja en **modo release** (R8 rompe cosas que en debug funcionan).
-- [ ] El gesto del mazo probado con `textScaleFactor` alto y en pantalla pequeña.
-- [ ] Objetivo diario probado **cruzando la medianoche** con la app abierta: el contador se reinicia con la primera tarjeta del día nuevo y los puntos de ayer siguen ahí.
-- [ ] Pregunta del día probada **en dispositivo físico**: permiso concedido y denegado, notificación tocada con la app cerrada y con la app abierta, y la carta apareciendo arriba sin saltarse ninguna. Comprobar también que sobrevive a un reinicio.
-- [ ] Sin IDs de prueba de AdMob ni logs de debug en el build de producción.
-- [ ] `versionCode` incrementado.
-- [ ] Símbolos de ofuscación archivados y subidos al crash reporting.
-- [ ] Tamaño del AAB verificado, sin regresión.
-- [ ] Compra premium y restauración probadas con cuenta de tester licenciado, comprobando que los favoritos se desbloquean con la compra y que la lista sobrevive a una reinstalación.
-- [ ] Notas de la versión en todas las localizaciones.
+**Producto:** capítulos (historias en varias partes), al final.
 
 ---
 
-## 15. Rendimiento — recordatorios al escribir código
+## 12. Definición de «hecho» para una release
 
-- Listas: `ListView.builder` / `SliverList` siempre.
-- El mazo monta como mucho `AppConfig.deckVisibleCards` (3) tarjetas; el resto no existe. No subirlo "por si acaso".
-- Extraer widgets propios en vez de métodos `_buildX()`, para acotar rebuilds.
-- `RepaintBoundary` en animaciones y elementos que se repintan solos (ya lo lleva `FactCard`).
-- Imágenes: WebP para bitmaps, SVG para iconografía, `cacheWidth`/`cacheHeight` obligatorios.
-- Liberar recursos en `dispose()`: controllers, streams, timers (`AdsService.disposeAds`, `AdaptiveBannerAd`, `AdDeckCard` y los `AnimationController` del mazo ya lo hacen).
-- Trabajo pesado fuera del isolate principal (`compute()` / `Isolate.run()`) — el catálogo ya lo hace.
-- Perfilar en **modo profile en dispositivo físico**, nunca en debug ni emulador.
+- [ ] `flutter analyze` limpio, `dart format` aplicado, tests pasando.
+- [ ] Probado en dispositivo físico de gama baja en **release** (R8).
+- [ ] Gestos del mazo con `textScaleFactor` alto y pantalla pequeña.
+- [ ] Hilo con dos móviles: mensajes en vivo, push con la app cerrada y abierta, silenciar, bloquear.
+- [ ] Grupo: crear, invitar, unirse por código y por enlace, renovar, salir, borrar.
+- [ ] Límite diario, anuncio recompensado con la unidad real, premium y restaurar.
+- [ ] Reinstalar y comprobar que la cuenta vuelve; restaurar con el código en otro móvil.
+- [ ] Sin IDs de prueba de AdMob ni logs de debug en producción; `versionCode` incrementado; símbolos archivados.

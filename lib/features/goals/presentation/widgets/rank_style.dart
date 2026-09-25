@@ -3,7 +3,7 @@ import 'package:chismosa/features/goals/domain/rank.dart';
 import 'package:flutter/material.dart';
 
 /// Name and icon for each rank, kept out of the domain the same way
-/// `FactCategory`'s label is: the enum is a threshold table, not a widget.
+/// `StoryCategory`'s label is: the enum is a threshold table, not a widget.
 extension RankStyle on Rank {
   String label(BuildContext context) => switch (this) {
     Rank.curious => context.l10n.rankCurious,

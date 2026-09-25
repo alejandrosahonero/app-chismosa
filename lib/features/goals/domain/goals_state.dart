@@ -16,10 +16,10 @@ class GoalsState {
   /// write so a session left open across midnight rolls over by itself.
   final int epochDay;
 
-  /// Facts today asks for.
+  /// Threads today asks for.
   final int target;
 
-  /// Facts learned today. Can exceed [target] — reading past the goal is not
+  /// Threads entered today. Can exceed [target] — reading past the goal is not
   /// punished, it just stops paying.
   final int learned;
 
@@ -35,7 +35,7 @@ class GoalsState {
 
   bool get isComplete => learned >= target;
 
-  /// Facts left, floored at zero.
+  /// Threads left, floored at zero.
   int get remaining => (target - learned).clamp(0, target);
 
   /// 0→1 for the ring. Clamped, so an over-achieved day shows a full circle
@@ -43,7 +43,7 @@ class GoalsState {
   double get progress => target <= 0 ? 1 : (learned / target).clamp(0.0, 1.0);
 }
 
-/// What registering a fact turned out to be worth.
+/// What registering a thread turned out to be worth.
 ///
 /// A sealed result rather than a bool: the caller has three different things to
 /// say — nothing, "goal met", "goal met and you moved up" — and the third one

@@ -1,6 +1,5 @@
 import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/widgets/error_view.dart';
-import 'package:chismosa/features/facts/presentation/screens/favorites_screen.dart';
 import 'package:chismosa/features/goals/presentation/screens/progress_screen.dart';
 import 'package:chismosa/features/groups/presentation/screens/groups_screen.dart';
 import 'package:chismosa/features/premium/presentation/screens/paywall_screen.dart';
@@ -45,12 +44,6 @@ final Provider<GoRouter> routerProvider = Provider<GoRouter>((Ref ref) {
             name: AppRoutes.settingsName,
             builder: (BuildContext context, GoRouterState state) =>
                 const SettingsScreen(),
-          ),
-          GoRoute(
-            path: 'favorites',
-            name: AppRoutes.favoritesName,
-            builder: (BuildContext context, GoRouterState state) =>
-                const FavoritesScreen(),
           ),
           GoRoute(
             path: 'progress',

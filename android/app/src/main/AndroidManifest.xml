@@ -17,21 +17,10 @@
          forgotten in the Data Safety form, where it MUST be reported. -->
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
 
-    <!-- Question of the day. Requested at runtime from the switch in Settings
-         and nowhere else: Android shows that dialog once and remembers a
-         refusal, so spending it at startup kills the feature before it ships. -->
+    <!-- Thread pushes. Requested once, right after the user's first message
+         in a thread (PushService.askPermissionOnce), or from Settings. Never
+         at startup: Android shows that dialog once and remembers a refusal. -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
-    <!-- The reminders are scheduled locally, a fortnight at a time. Without
-         this the whole queue is lost on the first reboot and the user simply
-         stops hearing from the app until they open it again. -->
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
-    <!-- Deliberately NOT declared: SCHEDULE_EXACT_ALARM / USE_EXACT_ALARM.
-         The reminders are scheduled inexact (see DailyQuestionService), which
-         is all a daily nudge needs. Exact alarms are reviewed case by case by
-         Play and would have to be justified; a reminder that lands a few
-         minutes late is still a reminder. -->
 
     <!-- Reminder: a plugin may inject a permission you do not use. Check the
          merged manifest (build/app/intermediates/merged_manifest/...) after
@@ -110,9 +99,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <!-- Custom scheme deep links: chismosa://premium, chismosa://card/<id>
-                 Wired from day one — campaigns, shared cards and the daily
-                 notification all land through here. -->
+            <!-- Custom scheme deep links: chismosa://app/premium and the group
+                 invites, chismosa://app/join/<code>. go_router only sees the
+                 path, so the host is a placeholder. -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -135,26 +124,6 @@
             android:name="flutterEmbedding"
             android:value="2" />
 
-        <!-- ==============================================================
-             SCHEDULED NOTIFICATIONS
-             Android drops every pending alarm on reboot and on app update.
-             These two receivers, from flutter_local_notifications, put the
-             queued questions back.
-             ============================================================== -->
-        <receiver
-            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver"
-            android:exported="false" />
-
-        <receiver
-            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
-                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
-                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
-            </intent-filter>
-        </receiver>
     </application>
 
     <queries>

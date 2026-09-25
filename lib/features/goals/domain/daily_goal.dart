@@ -1,4 +1,4 @@
-/// How many facts today asks for, and what "today" even means.
+/// How many threads today asks for, and what "today" even means.
 ///
 /// Pure functions with no storage and no clock of their own: the goal is a
 /// function of the date, so it can be tested by passing a day number and — the

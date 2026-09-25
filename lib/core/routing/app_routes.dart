@@ -11,11 +11,6 @@ abstract final class AppRoutes {
   static const String settingsPath = '/settings';
   static const String settingsName = 'settings';
 
-  /// Saved cards. Premium only, but the route itself is not guarded: the screen
-  /// sells the upgrade instead of pretending it does not exist.
-  static const String favoritesPath = '/favorites';
-  static const String favoritesName = 'favorites';
-
   /// Daily goal, points and ranks. Reached from the ring in the deck's app bar
   /// and from a row in Settings.
   static const String progressPath = '/progress';

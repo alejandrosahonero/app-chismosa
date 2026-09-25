@@ -1,17 +1,13 @@
-import 'dart:async';
-
 import 'package:chismosa/core/config/app_config.dart';
 import 'package:chismosa/core/extensions/build_context_x.dart';
 import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/theme/app_spacing.dart';
 import 'package:chismosa/core/theme/theme_controller.dart';
 import 'package:chismosa/core/widgets/base_screen.dart';
-import 'package:chismosa/features/facts/presentation/providers/facts_providers.dart';
 import 'package:chismosa/features/settings/presentation/widgets/account_section.dart';
 import 'package:chismosa/services/ads/ads_providers.dart';
 import 'package:chismosa/services/billing/premium_controller.dart';
-import 'package:chismosa/services/notifications/daily_question_service.dart';
-import 'package:chismosa/services/notifications/notification_providers.dart';
+import 'package:chismosa/services/push/push_providers.dart';
 import 'package:chismosa/services/review/review_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -77,12 +73,6 @@ class SettingsScreen extends ConsumerWidget {
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.bookmarks_outlined),
-            title: Text(context.l10n.favoritesTitle),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () => context.goNamed(AppRoutes.favoritesName),
-          ),
-          ListTile(
             leading: const Icon(Icons.military_tech_outlined),
             title: Text(context.l10n.goalsTitle),
             trailing: const Icon(Icons.chevron_right),
@@ -109,7 +99,16 @@ class SettingsScreen extends ConsumerWidget {
           ),
           const Divider(),
           _SectionHeader(title: context.l10n.settingsNotifications),
-          const _DailyQuestionSwitch(),
+          // A second door to the permission, for whoever said no the first
+          // time or never wrote in a thread. Android only shows its dialog
+          // until it has been refused; after that this opens nothing, and the
+          // system settings are the way.
+          ListTile(
+            leading: const Icon(Icons.notifications_active_outlined),
+            title: Text(context.l10n.settingsThreadPush),
+            subtitle: Text(context.l10n.settingsThreadPushBody),
+            onTap: () => ref.read(pushServiceProvider).requestPermission(),
+          ),
           const Divider(),
           _SectionHeader(title: context.l10n.settingsMonetization),
           if (isPremium)
@@ -158,70 +157,6 @@ class SettingsScreen extends ConsumerWidget {
     await ref.read(premiumControllerProvider.notifier).restorePurchases();
     if (!context.mounted) return;
     context.showSnack(context.l10n.settingsRestoreDone);
-  }
-}
-
-/// The only place in the app allowed to ask for the notification permission.
-///
-/// Android shows that dialog once and remembers a refusal, so spending it at
-/// startup — before the user knows what the app even does — is how a retention
-/// feature dies before it ships. Here the switch *is* the consent: the user has
-/// already said what they want by touching it.
-class _DailyQuestionSwitch extends ConsumerStatefulWidget {
-  const _DailyQuestionSwitch();
-
-  @override
-  ConsumerState<_DailyQuestionSwitch> createState() =>
-      _DailyQuestionSwitchState();
-}
-
-class _DailyQuestionSwitchState extends ConsumerState<_DailyQuestionSwitch> {
-  late bool _enabled = ref.read(dailyQuestionServiceProvider).isEnabled;
-  bool _busy = false;
-
-  Future<void> _toggle(bool value) async {
-    if (_busy) return;
-    setState(() => _busy = true);
-
-    final DailyQuestionService service = ref.read(dailyQuestionServiceProvider);
-
-    if (!value) {
-      await service.disable();
-      if (mounted) setState(() => _enabled = false);
-      return;
-    }
-
-    final String language = Localizations.localeOf(context).languageCode;
-    final String title = context.l10n.dailyQuestionNotificationTitle;
-    final String denied = context.l10n.settingsDailyQuestionDenied;
-
-    final bool granted = await service.enable(
-      facts: await ref.read(factsProvider.future),
-      language: language,
-      title: title,
-    );
-
-    if (!mounted) return;
-
-    // The switch follows the OS, not the tap: leaving it on after a refusal
-    // would promise a notification that is never coming.
-    setState(() {
-      _enabled = granted;
-      _busy = false;
-    });
-
-    if (!granted) context.showSnack(denied);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SwitchListTile(
-      secondary: const Icon(Icons.notifications_active_outlined),
-      title: Text(context.l10n.settingsDailyQuestion),
-      subtitle: Text(context.l10n.settingsDailyQuestionBody),
-      value: _enabled,
-      onChanged: _busy ? null : (bool value) => unawaited(_toggle(value)),
-    );
   }
 }
 

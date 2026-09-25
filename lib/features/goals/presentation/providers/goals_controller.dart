@@ -23,11 +23,11 @@ final NotifierProvider<GoalsController, GoalsState> goalsControllerProvider =
 /// Synchronous: preferences are already loaded by the time the tree is built,
 /// so the ring never flashes an empty state on the first frame.
 ///
-/// **Learning a fact means flipping the card and reading the answer.** Not
-/// swiping past it — the deck would count as "learned" everything a fast
-/// scroller skipped, and a goal that fills itself is not a goal. It is the same
-/// moment the review prompt hangs off, for the same reason: it is the only
-/// thing the user actually came here to do.
+/// **Progress means entering a story's thread** (the upward swipe). Not
+/// liking or passing a card — the deck would count everything a fast thumb
+/// skipped, and a goal that fills itself is not a goal. It is the same moment
+/// the review prompt hangs off, for the same reason: the conversation is what
+/// the user actually came here for.
 class GoalsController extends Notifier<GoalsState> {
   static const String _dayKey = 'goals_day';
   static const String _learnedKey = 'goals_learned_today';
@@ -86,10 +86,10 @@ class GoalsController extends Notifier<GoalsState> {
   /// the first thing that happens on the new day, so it is where the rollover
   /// has to be caught.
   ///
-  /// The same fact only counts once a day. Flipping a card back and forth, or
-  /// re-reading a favourite, must not fill the ring — but a card met again
-  /// tomorrow does count, otherwise restarting the deck would leave a long-time
-  /// user with a goal they can no longer reach.
+  /// The same thread only counts once a day. Going in and out of one must not
+  /// fill the ring — but coming back to it tomorrow does count, otherwise a
+  /// long-time user with a few favourite threads would have a goal they can no
+  /// longer reach.
   Future<GoalEvent> registerProgress(String id) async {
     final KeyValueStore store = _store;
     final int today = _today;
@@ -110,8 +110,8 @@ class GoalsController extends Notifier<GoalsState> {
     GoalEvent event = const GoalUnchanged();
 
     if (!awarded && learned.length >= target) {
-      // The day pays what it asked for: a 15-fact day is worth more than an
-      // 8-fact one, which needs no invented constant to be fair.
+      // The day pays what it asked for: a 15-thread day is worth more than
+      // an 8-thread one, which needs no invented constant to be fair.
       points += target;
       awarded = true;
 

@@ -5,97 +5,10 @@
     "description": "Nombre visible de la aplicación"
   },
   "commonCancel": "Cancelar",
-  "commonContinue": "Continuar",
-  "commonNotNow": "Ahora no",
-  "commonRetry": "Reintentar",
   "commonClose": "Cerrar",
   "commonErrorGeneric": "Algo ha salido mal. Inténtalo de nuevo.",
-  "deckHintReveal": "Desliza a la derecha para ver la respuesta",
-  "@deckHintReveal": {
-    "description": "Pista en el frente de la tarjeta"
-  },
   "deckHintNext": "Desliza a la izquierda para pasar a la siguiente",
-  "deckAnswerLabel": "La respuesta",
-  "deckSource": "Fuente: {source}",
-  "@deckSource": {
-    "placeholders": {
-      "source": {
-        "type": "String"
-      }
-    }
-  },
-  "deckSourceOpenError": "No hemos podido abrir la fuente.",
-  "@deckSourceOpenError": {
-    "description": "Aviso cuando el enlace de la fuente no abre ningún navegador"
-  },
-  "deckShowAnswer": "Ver respuesta",
-  "deckHideAnswer": "Ocultar",
-  "deckNext": "Siguiente",
-  "deckFinishedTitle": "Te has quedado sin preguntas",
-  "deckFinishedBody": "Has visto todas las de esta categoría. Rebarájalas, propón una tuya o pide más.",
-  "deckRestart": "Reiniciar deck",
-  "deckContribute": "Aportar",
-  "@deckContribute": {
-    "description": "Botón que abre el formulario para proponer una pregunta"
-  },
-  "deckAskForMore": "Pedir más",
-  "@deckAskForMore": {
-    "description": "Botón de corazones: el usuario pide más contenido"
-  },
-  "contributeTitle": "Aporta una pregunta",
-  "contributeIntro": "Si se te ocurre un dato raro que merezca estar aquí, escríbelo. Lo revisamos a mano antes de publicarlo.",
-  "contributeQuestionLabel": "La pregunta",
-  "contributeQuestionHint": "¿Por qué…?",
-  "contributeAnswerLabel": "La respuesta",
-  "contributeAnswerHint": "Porque…",
-  "contributeSourceLabel": "Fuente (opcional)",
-  "contributeSourceHint": "Dónde lo has leído",
-  "contributeSend": "Enviar",
-  "contributeRequired": "Escribe un poco más.",
-  "contributeThanks": "¡Gracias! La leeremos antes de publicarla.",
-  "contributeTooSoon": "Espera un momento antes de enviar otra.",
-  "contributeInvalid": "Repasa la pregunta y la respuesta.",
-  "deckLoadError": "No hemos podido cargar las preguntas.",
-  "deckShare": "Compartir la pregunta",
-  "@deckShare": {
-    "description": "Botón y gesto para compartir la tarjeta"
-  },
-  "deckShareCta": "¿Sabes la respuesta?",
-  "@deckShareCta": {
-    "description": "Gancho impreso bajo la pregunta en la imagen compartida"
-  },
-  "deckShareTagline": "Datos curiosos raros",
-  "@deckShareTagline": {
-    "description": "Subtítulo de marca al pie de la imagen compartida"
-  },
-  "deckShareMessage": "{question}\n\n¿Sabes la respuesta? La tienes en Chismosa.",
-  "@deckShareMessage": {
-    "description": "Texto que acompaña a la imagen en la hoja de compartir",
-    "placeholders": {
-      "question": {
-        "type": "String"
-      }
-    }
-  },
-  "deckShareError": "No hemos podido preparar la imagen para compartir.",
-  "deckCategoryAll": "Todas",
-  "categoryBody": "Cuerpo humano",
-  "categoryLanguage": "Lenguaje",
-  "categoryHistory": "Historia",
-  "categoryScience": "Ciencia cotidiana",
   "adLabel": "Publicidad",
-  "favoritesTitle": "Guardadas",
-  "favoritesAdd": "Guardar esta tarjeta",
-  "@favoritesAdd": {
-    "description": "Tooltip del botón de guardar; el gesto equivalente es deslizar hacia arriba"
-  },
-  "favoritesRemove": "Quitar de guardadas",
-  "favoritesSaved": "Tarjeta guardada",
-  "favoritesEmptyTitle": "Todavía no has guardado nada",
-  "favoritesEmptyBody": "Desliza una tarjeta hacia arriba para guardarla aquí.",
-  "premiumFeatureTitle": "Función premium",
-  "premiumFeatureBody": "Guardar tarjetas forma parte de «Quitar anuncios»: un único pago, sin suscripción.",
-  "premiumFeatureCta": "Ver qué incluye",
   "goalsTitle": "Progreso",
   "@goalsTitle": {
     "description": "Título de la pantalla de objetivos y rangos"
@@ -189,34 +102,26 @@
     }
   },
   "goalsSeeProgress": "Ver progreso",
-  "rankCurious": "Curioso",
+  "rankCurious": "Oyente",
   "@rankCurious": {
     "description": "Rango 1 de 6"
   },
-  "rankInquisitive": "Preguntón",
-  "rankKnowItAll": "Sabelotodo",
-  "rankScholar": "Erudito",
-  "rankEncyclopedia": "Enciclopedia",
-  "rankOracle": "Oráculo",
+  "rankInquisitive": "Curiosa",
+  "rankKnowItAll": "Cotilla",
+  "rankScholar": "Chismosa",
+  "rankEncyclopedia": "Correveidile",
+  "rankOracle": "Radio Patio",
   "settingsNotifications": "Recordatorios",
   "@settingsNotifications": {
     "description": "Cabecera de la sección de notificaciones en Ajustes"
   },
-  "settingsDailyQuestion": "Pregunta del día",
-  "settingsDailyQuestionBody": "Una pregunta curiosa cada tarde. Al tocarla, se pone la primera del mazo.",
-  "settingsDailyQuestionDenied": "Actívalas en los ajustes del sistema para recibir la pregunta del día.",
-  "dailyQuestionNotificationTitle": "Pregunta del día",
-  "@dailyQuestionNotificationTitle": {
-    "description": "Título de la notificación diaria"
-  },
   "settingsTitle": "Ajustes",
   "settingsAppearance": "Apariencia",
-  "settingsThemeMode": "Tema",
   "settingsThemeSystem": "Sistema",
   "settingsThemeLight": "Claro",
   "settingsThemeDark": "Oscuro",
   "settingsMonetization": "Suscripción y anuncios",
-  "settingsRemoveAds": "Quitar anuncios",
+  "settingsRemoveAds": "Chismosa Premium",
   "settingsRestorePurchases": "Restaurar compras",
   "settingsRestoreDone": "Compras restauradas",
   "settingsPrivacyOptions": "Opciones de privacidad",
@@ -231,11 +136,10 @@
     }
   },
   "premiumActive": "Premium activo. Sin anuncios.",
-  "paywallTitle": "Quitar anuncios",
-  "paywallHeadline": "Lee sin interrupciones",
+  "paywallTitle": "Chismosa Premium",
+  "paywallHeadline": "Sin anuncios y sin límite",
   "paywallBenefitNoAds": "Ni tarjetas de publicidad ni anuncios a pantalla completa",
-  "paywallBenefitFavorites": "Guardas las tarjetas que quieras y las relees cuando quieras",
-  "paywallBenefitSupport": "Apoyas la investigación y la redacción de cada dato",
+  "paywallBenefitSupport": "Ayudas a mantener los servidores que guardan cada historia y cada hilo",
   "paywallBenefitOneTime": "Pago único, sin suscripción",
   "paywallBuy": "Comprar por {price}",
   "@paywallBuy": {
@@ -256,7 +160,6 @@
   "storiesEmptyBody": "Has visto todo lo que hay con estos filtros. Cuenta el tuyo, cambia de categoría o vuelve a empezar.",
   "storiesEmptyRestart": "Volver a empezar",
   "storiesEmptyWrite": "Contar el mío",
-  "storiesOfflineTitle": "Sin conexión",
   "storiesOfflineBody": "No hemos podido traer historias. Comprueba tu conexión.",
   "storiesLike": "Me gusta",
   "storiesPass": "Pasar",
@@ -268,14 +171,6 @@
   "storiesReportConfirmBody": "La revisaremos y dejarás de verla ahora mismo.",
   "storiesMessages": "{count, plural, =0{Sin mensajes} =1{1 mensaje} other{{count} mensajes}}",
   "@storiesMessages": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "storiesLikes": "{count, plural, =0{Sin me gusta} =1{1 me gusta} other{{count} me gusta}}",
-  "@storiesLikes": {
     "placeholders": {
       "count": {
         "type": "int"
@@ -364,24 +259,13 @@
   "threadClosedNotice": "Este hilo se cerró por inactividad. Puedes leerlo, pero ya no admite mensajes.",
   "threadMute": "Silenciar",
   "threadUnmute": "Activar avisos",
-  "threadMuted": "Hilo silenciado",
-  "threadUnmuted": "Volverás a recibir avisos",
   "threadReportMessage": "Reportar mensaje",
   "threadMessageReported": "Gracias. No volverás a ver ese mensaje.",
   "threadSendError": "No se ha podido enviar. Comprueba tu conexión.",
   "threadTooFast": "Vas muy rápido. Espera un momento.",
-  "threadOpenHint": "Desliza hacia arriba para entrar al hilo",
   "threadsTitle": "Mis hilos",
   "threadsEmptyTitle": "Todavía no has entrado a ningún hilo",
   "threadsEmptyBody": "Desliza una historia hacia arriba y la conversación se guarda aquí.",
-  "threadsUnread": "{count, plural, =1{1 sin leer} other{{count} sin leer}}",
-  "@threadsUnread": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "moderationMore": "Más opciones",
   "moderationBlockAuthor": "Bloquear a quien lo escribió",
   "moderationBlockMessageAuthor": "Bloquear a esta persona",
@@ -505,5 +389,8 @@
   },
   "pushChannelName": "Mensajes en tus hilos",
   "pushNewMessage": "Nuevo mensaje en uno de tus hilos",
-  "pushOpen": "Ver"
+  "pushOpen": "Ver",
+  "settingsThreadPush": "Avisos de tus hilos",
+  "settingsThreadPushBody": "Te avisamos cuando alguien escribe en un hilo en el que estás",
+  "paywallBenefitUnlimited": "Publica todas las historias que quieras, sin esperar a mañana ni ver vídeos"
 }
