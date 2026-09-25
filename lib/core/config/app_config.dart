@@ -15,6 +15,14 @@ abstract final class AppConfig {
 
   // --- Ad pacing ----------------------------------------------------------
 
+  /// Full-screen interstitials, off for launch.
+  ///
+  /// A full-screen ad in the middle of somebody's confession reads as an
+  /// intrusion, and at launch retention is worth more than eCPM. The ad card
+  /// in the deck and the rewarded video stay. Flip this back on once D7
+  /// retention has been measured without it; the pacing below still applies.
+  static const bool interstitialsEnabled = false;
+
   /// Number of "value actions" between two interstitials. In Chismosa a value action
   /// is one card swiped away, so this is "an interstitial every 9 cards".
   ///

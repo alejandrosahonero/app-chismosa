@@ -84,10 +84,9 @@ class PremiumService {
     return _iap.completePurchase(purchase);
   }
 
-  /// Local validation for an app without a backend: we keep the purchase token
-  /// and only trust it while the store keeps re-emitting the purchase on
-  /// startup (`restorePurchases`). With a server, swap this for a call to the
-  /// Google Play Developer API.
+  /// Cheap local pre-check: right product, right status, has a token. It is
+  /// **not** the verification — that is the server's, through
+  /// `PurchaseVerifier` — it only keeps obvious junk from reaching it.
   bool isValidPurchase(PurchaseDetails purchase) {
     if (purchase.productID != BillingConfig.removeAdsProductId) return false;
     if (purchase.status != PurchaseStatus.purchased &&
@@ -98,11 +97,15 @@ class PremiumService {
   }
 
   Future<bool> readCachedEntitlement() async {
-    final String? token = await _secureStore.read(
-      BillingConfig.entitlementStorageKey,
-    );
+    final String? token = await readCachedToken();
     return token != null && token.isNotEmpty;
   }
+
+  /// The purchase token behind the cached entitlement, so it can be checked
+  /// with the server again on every start — which is how a refund, which Play
+  /// never re-emits, eventually takes premium away.
+  Future<String?> readCachedToken() =>
+      _secureStore.read(BillingConfig.entitlementStorageKey);
 
   Future<void> persistEntitlement(PurchaseDetails purchase) {
     return _secureStore.write(

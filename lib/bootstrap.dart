@@ -92,6 +92,11 @@ Future<void> _initializeAfterFirstFrame(ProviderContainer container) async {
       // the server. It swallows its own failures: the deck sends its filters
       // with every request, so nothing on screen depends on this landing.
       await container.read(localeSettingsProvider.notifier).syncToProfile();
+      // One row touched per app open: this is what active users are counted
+      // from (tool/stats.sql). Best effort, like the line above.
+      unawaited(
+        client.rpc<void>('touch_session').then((_) {}, onError: (Object _) {}),
+      );
     }
   } on Object catch (error, stackTrace) {
     AppLogger.error(
@@ -116,15 +121,10 @@ Future<void> _initializeAfterFirstFrame(ProviderContainer container) async {
     // Entitlement next: `AdsService` must know whether the user is premium
     // before it requests the first ad.
     await container.read(premiumControllerProvider.future);
-    // The server lifts the daily posting limit for premium accounts, so the
-    // entitlement has to reach the profile row — now, and on every purchase,
-    // restore or refund after this.
-    await _syncPremiumToProfile(container, container.read(isPremiumProvider));
-    container.listen<bool>(
-      isPremiumProvider,
-      (bool? previous, bool next) =>
-          unawaited(_syncPremiumToProfile(container, next)),
-    );
+    // The cached purchase is checked with Google again on every start: a
+    // refund never reaches the purchase stream, so this is the only way it
+    // takes premium away. Not awaited — the ads below only need the cache.
+    unawaited(container.read(premiumControllerProvider.notifier).reverify());
   } on Object catch (error, stackTrace) {
     AppLogger.error(
       'Billing initialization failed',
@@ -167,27 +167,4 @@ Future<void> _initializePush(ProviderContainer container) async {
   );
   final SupabaseClient? client = container.read(supabaseClientProvider);
   if (client != null) await push.attach(client);
-}
-
-/// Mirrors the store entitlement onto `profiles.is_premium`.
-///
-/// Trusted as the client reports it, which is a known gap: until the purchase
-/// token is validated server side (see supabase/README.md, "Pendiente"), a
-/// modified app could flip this flag. The worst it buys is unlimited posting,
-/// which still goes through every other trigger.
-Future<void> _syncPremiumToProfile(
-  ProviderContainer container,
-  bool isPremium,
-) async {
-  final SupabaseClient? client = container.read(supabaseClientProvider);
-  final String? userId = client?.auth.currentUser?.id;
-  if (client == null || userId == null) return;
-  try {
-    await client
-        .from('profiles')
-        .update(<String, dynamic>{'is_premium': isPremium})
-        .eq('id', userId);
-  } on Object catch (error) {
-    AppLogger.debug('Could not sync premium: $error', name: 'billing');
-  }
 }

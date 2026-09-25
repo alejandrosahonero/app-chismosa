@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:chismosa/core/utils/app_logger.dart';
+import 'package:chismosa/services/backend/backend_providers.dart';
 import 'package:chismosa/services/billing/premium_service.dart';
 import 'package:chismosa/services/billing/premium_state.dart';
+import 'package:chismosa/services/billing/purchase_verifier.dart';
 import 'package:chismosa/services/storage/storage_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
@@ -12,7 +14,24 @@ final Provider<PremiumService> premiumServiceProvider =
       (Ref ref) => PremiumService(ref.watch(secureStoreProvider)),
     );
 
+final Provider<PurchaseVerifier> purchaseVerifierProvider =
+    Provider<PurchaseVerifier>(
+      (Ref ref) =>
+          SupabasePurchaseVerifier(() => ref.read(supabaseClientProvider)),
+    );
+
 /// Owns the premium entitlement for the whole app lifetime.
+///
+/// **Google decides, through the server.** Every purchase and every restore
+/// is checked by `verify-purchase` against the Play Developer API, and the
+/// server is the only thing that can set `profiles.is_premium` — which is what
+/// lifts the posting limit. The rules for each answer:
+///
+/// | Server says | What happens |
+/// |---|---|
+/// | granted | Premium, cached on the device. |
+/// | denied | No premium, cache wiped. A refund lands here. |
+/// | unavailable | Nothing changes. A fresh purchase counts provisionally — the user paid, and a server hiccup must not take that away — and is checked again on the next start. |
 ///
 /// keepAlive (Riverpod's default for a non `autoDispose` provider) is
 /// deliberate here: the purchase stream must stay subscribed from boot, because
@@ -38,6 +57,7 @@ final Provider<bool> isPremiumProvider = Provider<bool>((Ref ref) {
 
 class PremiumController extends AsyncNotifier<PremiumStatus> {
   late final PremiumService _service = ref.read(premiumServiceProvider);
+  PurchaseVerifier get _verifier => ref.read(purchaseVerifierProvider);
   StreamSubscription<List<PurchaseDetails>>? _subscription;
 
   @override
@@ -100,6 +120,25 @@ class PremiumController extends AsyncNotifier<PremiumStatus> {
 
   Future<void> restorePurchases() => _service.restorePurchases();
 
+  /// Checks the cached purchase with the server again.
+  ///
+  /// Called once the backend is up on every start. Play re-emits owned
+  /// purchases through `restorePurchases`, but a refunded one simply stops
+  /// appearing — so without this, a refund would leave premium on forever.
+  Future<void> reverify() async {
+    final String? token = await _service.readCachedToken();
+    if (token == null || token.isEmpty) return;
+    switch (await _verifier.verify(token)) {
+      case VerifyOutcome.granted:
+        _setPremium(isPremium: true);
+      case VerifyOutcome.denied:
+        await _service.clearEntitlement();
+        _setPremium(isPremium: false);
+      case VerifyOutcome.unavailable:
+        break;
+    }
+  }
+
   void _handlePurchases(List<PurchaseDetails> purchases) {
     for (final PurchaseDetails purchase in purchases) {
       unawaited(_handleSinglePurchase(purchase));
@@ -123,14 +162,27 @@ class PremiumController extends AsyncNotifier<PremiumStatus> {
 
       case PurchaseStatus.purchased:
       case PurchaseStatus.restored:
-        if (_service.isValidPurchase(purchase)) {
-          await _service.persistEntitlement(purchase);
-          _grantEntitlement();
-        } else {
+        if (!_service.isValidPurchase(purchase)) {
           AppLogger.error(
             'Rejected purchase for ${purchase.productID}',
             name: 'billing',
           );
+          break;
+        }
+        final String token = purchase.verificationData.serverVerificationData;
+        switch (await _verifier.verify(token)) {
+          case VerifyOutcome.granted:
+          case VerifyOutcome.unavailable:
+            // Unavailable counts too, provisionally: see the class comment.
+            // The token is cached, so the next start asks again.
+            await _service.persistEntitlement(purchase);
+            _setPremium(isPremium: true);
+          case VerifyOutcome.denied:
+            await _service.clearEntitlement();
+            _setPremium(isPremium: false);
+            if (purchase.status == PurchaseStatus.purchased) {
+              _updateFlow(const PurchaseFailed('purchase-failed'));
+            }
         }
     }
 
@@ -139,13 +191,16 @@ class PremiumController extends AsyncNotifier<PremiumStatus> {
     await _service.completePurchase(purchase);
   }
 
-  void _grantEntitlement() {
+  void _setPremium({required bool isPremium}) {
     if (!ref.mounted) return;
     final PremiumStatus current =
         state.value ??
         const PremiumStatus(isPremium: false, storeAvailable: true);
     state = AsyncData<PremiumStatus>(
-      current.copyWith(isPremium: true, flow: const PurchaseIdle()),
+      current.copyWith(
+        isPremium: isPremium,
+        flow: isPremium ? const PurchaseIdle() : current.flow,
+      ),
     );
   }
 

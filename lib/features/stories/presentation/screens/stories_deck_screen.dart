@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:chismosa/core/config/app_config.dart';
 import 'package:chismosa/core/extensions/build_context_x.dart';
 import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/theme/app_spacing.dart';
@@ -376,6 +377,7 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
   /// The service decides whether anything actually shows: both the action count
   /// and the three minute floor have to be satisfied.
   void _countCardForAds() {
+    if (!AppConfig.interstitialsEnabled) return;
     if (!ref.read(adsInitializedProvider)) return;
     unawaited(
       ref.read(adsServiceProvider).registerActionAndMaybeShowInterstitial(),

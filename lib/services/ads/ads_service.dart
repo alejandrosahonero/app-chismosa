@@ -119,7 +119,9 @@ class AdsService {
   /// Warms up the interstitial. Cheap to call repeatedly: the loader no-ops
   /// while a request is in flight or a valid creative is cached.
   void preload() {
-    if (!adsEnabled) return;
+    // Not even requested while interstitials are off: a creative fetched and
+    // never shown is wasted inventory and a worse fill rate later.
+    if (!adsEnabled || !AppConfig.interstitialsEnabled) return;
     _loadInterstitial();
   }
 

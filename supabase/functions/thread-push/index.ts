@@ -4,7 +4,10 @@
 //   - `messages_after_insert_push` (0006) with `{ "message_id": "<uuid>" }`;
 //   - `stories_after_insert_push` (0007) with `{ "continuation_id": "<uuid>" }`
 //     when an author publishes the next part of a story: everyone who entered
-//     the previous part's thread is told.
+//     the previous part's thread, or liked it, is told;
+//   - `reports_names_someone` / `review_content()` (0008) with
+//     `{ "hidden_story_id" }` or `{ "restored_story_id" }`: the author is told
+//     their story was hidden pending review, and again if it comes back.
 // Works out who should hear about it and sends through FCM HTTP v1.
 //
 // Deploy (free plan, no card):
@@ -28,86 +31,11 @@
 // identifies an account — there is nothing of that in a thread to begin with.
 
 import { createClient } from "npm:@supabase/supabase-js@2";
+import { accessToken, type ServiceAccount } from "../_shared/google_auth.ts";
+
+const FCM_SCOPE = "https://www.googleapis.com/auth/firebase.messaging";
 
 const CHANNEL_ID = "thread_messages"; // PushService.channelId in the app.
-
-interface ServiceAccount {
-  project_id: string;
-  client_email: string;
-  private_key: string;
-}
-
-let cachedToken: { value: string; expiresAt: number } | null = null;
-
-function base64url(input: Uint8Array | string): string {
-  const raw = typeof input === "string"
-    ? new TextEncoder().encode(input)
-    : input;
-  let binary = "";
-  for (const byte of raw) binary += String.fromCharCode(byte);
-  return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(
-    /=+$/,
-    "",
-  );
-}
-
-async function importPrivateKey(pem: string): Promise<CryptoKey> {
-  const body = pem
-    .replace(/-----BEGIN PRIVATE KEY-----/, "")
-    .replace(/-----END PRIVATE KEY-----/, "")
-    .replace(/\s+/g, "");
-  const der = Uint8Array.from(atob(body), (c) => c.charCodeAt(0));
-  return await crypto.subtle.importKey(
-    "pkcs8",
-    der,
-    { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
-    false,
-    ["sign"],
-  );
-}
-
-// An OAuth access token for FCM, from a JWT signed with the service account.
-// Tokens last an hour; one is reused until five minutes before it expires.
-async function accessToken(account: ServiceAccount): Promise<string> {
-  const now = Math.floor(Date.now() / 1000);
-  if (cachedToken && cachedToken.expiresAt - 300 > now) {
-    return cachedToken.value;
-  }
-
-  const header = base64url(JSON.stringify({ alg: "RS256", typ: "JWT" }));
-  const claims = base64url(JSON.stringify({
-    iss: account.client_email,
-    scope: "https://www.googleapis.com/auth/firebase.messaging",
-    aud: "https://oauth2.googleapis.com/token",
-    iat: now,
-    exp: now + 3600,
-  }));
-  const key = await importPrivateKey(account.private_key);
-  const signature = new Uint8Array(
-    await crypto.subtle.sign(
-      "RSASSA-PKCS1-v1_5",
-      key,
-      new TextEncoder().encode(`${header}.${claims}`),
-    ),
-  );
-  const jwt = `${header}.${claims}.${base64url(signature)}`;
-
-  const response = await fetch("https://oauth2.googleapis.com/token", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({
-      grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
-      assertion: jwt,
-    }),
-  });
-  if (!response.ok) throw new Error(`oauth: HTTP ${response.status}`);
-  const json = (await response.json()) as {
-    access_token: string;
-    expires_in: number;
-  };
-  cachedToken = { value: json.access_token, expiresAt: now + json.expires_in };
-  return json.access_token;
-}
 
 function clip(text: string, max: number): string {
   const flat = text.replace(/\s+/g, " ").trim();
@@ -120,7 +48,12 @@ Deno.serve(async (request) => {
     return new Response("forbidden", { status: 403 });
   }
 
-  let payload: { message_id?: string; continuation_id?: string };
+  let payload: {
+    message_id?: string;
+    continuation_id?: string;
+    hidden_story_id?: string;
+    restored_story_id?: string;
+  };
   try {
     payload = await request.json();
   } catch {
@@ -135,6 +68,12 @@ Deno.serve(async (request) => {
 
   if (payload.continuation_id) {
     return await notifyContinuation(supabase, payload.continuation_id);
+  }
+  if (payload.hidden_story_id) {
+    return await notifyAuthor(supabase, payload.hidden_story_id, "hidden");
+  }
+  if (payload.restored_story_id) {
+    return await notifyAuthor(supabase, payload.restored_story_id, "restored");
   }
   const messageId = payload.message_id;
   if (!messageId) return new Response("bad request", { status: 400 });
@@ -188,8 +127,8 @@ Deno.serve(async (request) => {
 // deno-lint-ignore no-explicit-any
 type Client = any;
 
-// The next part of a story: everyone in the previous part's thread who has not
-// muted it hears about it once. No "once until read" rule here — a new part is
+// The next part of a story: everyone who followed the previous part hears
+// about it once. No "once until read" rule here — a new part is
 // an event, not chatter.
 async function notifyContinuation(
   supabase: Client,
@@ -202,13 +141,23 @@ async function notifyContinuation(
     .maybeSingle();
   if (!story || story.hidden || !story.parent_id) return new Response("skip");
 
-  const { data: members } = await supabase
-    .from("thread_members")
-    .select("id, user_id")
-    .eq("story_id", story.parent_id)
-    .eq("muted", false)
-    .neq("user_id", story.author_id);
-  const recipients = await withoutBlocks(supabase, story.author_id, members ?? []);
+  // Everyone "following" the previous part: whoever entered its thread (and
+  // did not mute it) and whoever liked it.
+  const [{ data: members }, { data: likers }] = await Promise.all([
+    supabase.from("thread_members").select("user_id")
+      .eq("story_id", story.parent_id).eq("muted", false),
+    supabase.from("story_likes").select("user_id")
+      .eq("story_id", story.parent_id),
+  ]);
+  const followers = [
+    ...new Set<string>([
+      ...(members ?? []).map((m: { user_id: string }) => m.user_id),
+      ...(likers ?? []).map((l: { user_id: string }) => l.user_id),
+    ]),
+  ]
+    .filter((id) => id !== story.author_id)
+    .map((user_id) => ({ user_id }));
+  const recipients = await withoutBlocks(supabase, story.author_id, followers);
   if (recipients.length === 0) return new Response("nobody");
 
   await send(supabase, recipients.map((m) => m.user_id), {
@@ -217,6 +166,44 @@ async function notifyContinuation(
     title: `#${story.chapter} · ${clip(story.body, 50)}`,
     body: clip(story.body, 160),
     storyId: story.id,
+  });
+  return new Response("ok");
+}
+
+// The author's own story was hidden by a "names someone" report, or came back
+// after review. In the author's first language: this one is about them.
+async function notifyAuthor(
+  supabase: Client,
+  storyId: string,
+  kind: "hidden" | "restored",
+): Promise<Response> {
+  const { data: story } = await supabase
+    .from("stories")
+    .select("id, body, author_id")
+    .eq("id", storyId)
+    .maybeSingle();
+  if (!story) return new Response("skip");
+  const { data: profile } = await supabase
+    .from("profiles").select("languages").eq("id", story.author_id)
+    .maybeSingle();
+  const en = (profile?.languages ?? [])[0] === "en";
+
+  const title = kind === "hidden"
+    ? (en ? "Your story is hidden for now" : "Tu historia está oculta por ahora")
+    : (en ? "Your story is back" : "Tu historia vuelve a estar visible");
+  const body = kind === "hidden"
+    ? (en
+      ? "Someone reported that it points at a real person. We will review it and let you know."
+      : "Alguien ha indicado que señala a una persona real. La revisaremos y te avisaremos.")
+    : (en
+      ? "We reviewed it and it follows the rules."
+      : "La hemos revisado y cumple las normas.");
+
+  await send(supabase, [story.author_id], {
+    title,
+    body: `${body} «${clip(story.body, 60)}»`,
+    storyId: story.id,
+    kind,
   });
   return new Response("ok");
 }
@@ -247,7 +234,7 @@ async function withoutBlocks<T extends { user_id: string }>(
 async function send(
   supabase: Client,
   userIds: string[],
-  content: { title: string; body: string; storyId: string },
+  content: { title: string; body: string; storyId: string; kind?: string },
 ): Promise<void> {
   const { data: devices } = await supabase
     .from("devices")
@@ -258,7 +245,7 @@ async function send(
   const account = JSON.parse(
     Deno.env.get("FCM_SERVICE_ACCOUNT")!,
   ) as ServiceAccount;
-  const token = await accessToken(account);
+  const token = await accessToken(account, FCM_SCOPE);
   const endpoint =
     `https://fcm.googleapis.com/v1/projects/${account.project_id}/messages:send`;
   const stale: string[] = [];
@@ -274,7 +261,9 @@ async function send(
         message: {
           token: device.fcm_token,
           notification: { title: content.title, body: content.body },
-          data: { story_id: content.storyId },
+          // `kind` tells the app where a tap lands: a review notice opens
+          // "Mis historias", everything else the thread.
+          data: { story_id: content.storyId, kind: content.kind ?? "thread" },
           android: {
             // One notification per thread in the tray: a newer message
             // replaces the older one instead of stacking.
