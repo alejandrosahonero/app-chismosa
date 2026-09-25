@@ -31,6 +31,7 @@ normales.
    - `migrations/0004_moderation.sql`
    - `migrations/0005_groups.sql`
    - `migrations/0006_push.sql`
+   - `migrations/0007_safety_and_chapters.sql`
 5. Settings → API → copiar *Project URL* y la clave *publishable* en
    `lib/core/config/backend_config.dart`.
 
@@ -118,7 +119,8 @@ después de tu primer mensaje en un hilo.
 
 ### Pasos a mano todavía sin hacer
 
-- [ ] Ejecutar `0004_moderation.sql`, `0005_groups.sql` y `0006_push.sql` en el SQL Editor.
+- [ ] Ejecutar `0004_moderation.sql`, `0005_groups.sql`, `0006_push.sql` y `0007_safety_and_chapters.sql` en el SQL Editor.
+- [ ] Volver a desplegar `thread-push` después de la 0007 (ahora también avisa de las continuaciones).
 - [ ] Desplegar la Edge Function `admob-ssv` (`npx supabase login`,
       `npx supabase link --project-ref sbeyvzhtvmzcalflqajv`,
       `npx supabase functions deploy admob-ssv --no-verify-jwt`).

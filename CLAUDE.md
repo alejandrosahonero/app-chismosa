@@ -36,13 +36,17 @@ Consecuencias que parecen raras y son a propósito:
 
 Si una feature nueva necesita saber quién es quién en el cliente, la feature está mal planteada.
 
-### 0.2 Secretos
+### 0.2 Nadie localizable
+
+Además de no revelar cuentas, **no se deja publicar lo que convierte una historia en acoso a una persona real**: teléfonos, emails, @usuarios y enlaces se rechazan en servidor (`contains_personal_data`, 0007) en historias, mensajes y nombres de grupo. Los nombres propios no se pueden filtrar con una expresión regular; para eso están las normas, los reportes y la bienvenida. Todas las apps anónimas que cerraron (Secret, Yik Yak, Whisper) cerraron por esto. No relajar el filtro sin sustituirlo por algo mejor.
+
+### 0.3 Secretos
 
 - En la app solo va la **publishable key** de Supabase (`core/config/backend_config.dart`).
 - La `service_role` key, la cuenta de servicio de Firebase y `PUSH_SECRET` viven **solo** como secretos de las Edge Functions. Nunca en el repo, nunca en la app.
 - La cadena de conexión directa a Postgres no se escribe en ningún fichero.
 
-### 0.3 Identidad — inmutable tras publicar
+### 0.4 Identidad — inmutable tras publicar
 
 | Cosa | Valor |
 |---|---|
@@ -154,6 +158,10 @@ Los botones inferiores repiten los gestos y **no son decorativos**: una interfaz
 
 **`POST_NOTIFICATIONS` se pide una sola vez, justo después del primer mensaje del usuario en un hilo**, o desde la fila de Ajustes. Nunca al arrancar: Android enseña ese diálogo una vez y recuerda el «no».
 
+**Capítulos.** Una historia se puede continuar desde «Mis historias» (una continuación por historia: una saga es una línea). La parte nueva va al mismo grupo que la anterior, lleva la píldora «Parte N» y avisa por push a quien entró en el hilo de la parte anterior. En el hilo hay enlaces a la parte anterior y a la siguiente.
+
+**Bienvenida (`features/welcome`).** Qué es, los gestos, las normas, 16+ y aceptación explícita. El router redirige ahí mientras `welcome_done` sea falso: no se llega a nada sin haber aceptado, tampoco por deep link.
+
 ---
 
 ## 5. Cuenta anónima
@@ -194,7 +202,9 @@ Los botones inferiores repiten los gestos y **no son decorativos**: una interfaz
 ## 9. Reseñas, tema, Android
 
 - `in_app_review` con guardas (5 acciones de valor, 3 días de instalación, 120 días entre peticiones). Se pide **solo al entrar a un hilo**.
-- Material 3 desde un único seed color; `AppSpacing`/`AppRadius`, nada de paddings a pelo. Toda pantalla sobre `BaseScreen`.
+- **Marca:** paleta propia en `core/theme/app_colors.dart` (Tinta, Papel, Arena, Picante, Lavanda, Lima), esquemas claro y oscuro construidos a mano. **Sin color dinámico** (Material You): una marca que cambia con el fondo de pantalla no es una marca. La tarjeta es papel (`semanticColors.paper`) con la comilla de apertura en Picante. El logo es «la burbuja cómplice»; maestro en `brand/logo.svg`, icono adaptativo vectorial en `res/drawable`. Guía completa de marca en el artifact «Chismosa Brand Book».
+- `tool/screenshots/screenshots_test.dart` pinta las pantallas principales con fuentes reales (`flutter test tool/screenshots/screenshots_test.dart --update-goldens`). Mirarlas tras cualquier cambio visual: así se encontró el FAB tapando el botón de «Me gusta».
+- `AppSpacing`/`AppRadius`, nada de paddings a pelo. Toda pantalla sobre `BaseScreen`.
 - `compileSdk = 37`, `minSdk = 24`, R8 + shrink en release. Firma desde `key.properties` (git-ignored). Sin flavors ni `--dart-define`.
 - `google-services.json` está en el repo: solo lleva identificadores públicos del proyecto Firebase, no secretos.
 - Revisar el manifiesto fusionado tras cada cambio de dependencias.
