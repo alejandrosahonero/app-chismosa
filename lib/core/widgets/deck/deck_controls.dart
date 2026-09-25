@@ -13,8 +13,8 @@ extension DeckDirectionColor on DeckSwipeDirection {
   Color color(BuildContext context) => switch (this) {
     DeckSwipeDirection.left => context.colors.onSurfaceVariant,
     DeckSwipeDirection.right => context.colors.primary,
-    DeckSwipeDirection.up => context.colors.tertiary,
-    DeckSwipeDirection.down => context.colors.secondary,
+    DeckSwipeDirection.up => context.colors.secondary,
+    DeckSwipeDirection.down => context.colors.onSurfaceVariant,
     DeckSwipeDirection.none => context.colors.outline,
   };
 }

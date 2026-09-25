@@ -1,3 +1,4 @@
+import 'package:chismosa/core/extensions/build_context_x.dart';
 import 'package:chismosa/core/theme/app_spacing.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class DeckCardShell extends StatelessWidget {
     required this.child,
     super.key,
     this.color,
-    this.elevation = 6,
+    this.elevation = 3,
   });
 
   final Widget child;
@@ -23,11 +24,17 @@ class DeckCardShell extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
 
+    // Paper, with a hairline edge and a soft warm shadow: a note on a table,
+    // not a slab floating over the screen.
     return Material(
-      color: color ?? theme.colorScheme.surfaceContainerHigh,
+      color: color ?? context.semanticColors.paper,
       elevation: elevation,
-      surfaceTintColor: theme.colorScheme.primary,
-      borderRadius: BorderRadius.circular(AppRadius.lg),
+      shadowColor: theme.colorScheme.shadow.withValues(alpha: 0.18),
+      surfaceTintColor: Colors.transparent,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppRadius.xl),
+        side: BorderSide(color: theme.colorScheme.outlineVariant),
+      ),
       clipBehavior: Clip.antiAlias,
       child: Padding(
         padding: const EdgeInsets.all(AppSpacing.lg),

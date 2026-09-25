@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:chismosa/core/extensions/build_context_x.dart';
+import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/theme/app_spacing.dart';
 import 'package:chismosa/core/widgets/app_loader.dart';
 import 'package:chismosa/core/widgets/confirm_dialog.dart';
@@ -11,6 +12,7 @@ import 'package:chismosa/l10n/generated/app_localizations.dart';
 import 'package:chismosa/services/push/push_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 /// The conversation itself, without deciding how it got on screen.
 ///
@@ -123,6 +125,8 @@ class _ThreadPanelState extends ConsumerState<ThreadPanel> {
       context.showSnack(
         error.toString().contains('too_fast')
             ? context.l10n.threadTooFast
+            : error.toString().contains('personal_data')
+            ? context.l10n.composeErrorPersonalData
             : context.l10n.threadSendError,
       );
     } finally {
@@ -236,7 +240,43 @@ class _StoryHeader extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         const SizedBox(height: AppSpacing.sm),
+        if (state.story.chapter > 1)
+          Text(
+            l10n.storiesChapter(state.story.chapter),
+            style: context.texts.labelLarge?.copyWith(
+              color: context.colors.tertiary,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
         Text(state.story.body, style: context.texts.bodyLarge),
+        // A saga is walked from inside its threads: back to the part before,
+        // on to the part after.
+        if (state.story.parentId != null || state.story.nextId != null)
+          Wrap(
+            spacing: AppSpacing.sm,
+            children: <Widget>[
+              if (state.story.parentId != null)
+                TextButton.icon(
+                  onPressed: () => context.pushNamed(
+                    AppRoutes.threadName,
+                    pathParameters: <String, String>{
+                      'id': state.story.parentId!,
+                    },
+                  ),
+                  icon: const Icon(Icons.arrow_back, size: 18),
+                  label: Text(l10n.storiesChapter(state.story.chapter - 1)),
+                ),
+              if (state.story.nextId != null)
+                TextButton.icon(
+                  onPressed: () => context.pushNamed(
+                    AppRoutes.threadName,
+                    pathParameters: <String, String>{'id': state.story.nextId!},
+                  ),
+                  icon: const Icon(Icons.arrow_forward, size: 18),
+                  label: Text(l10n.storiesChapter(state.story.chapter + 1)),
+                ),
+            ],
+          ),
         const SizedBox(height: AppSpacing.md),
         Row(
           children: <Widget>[

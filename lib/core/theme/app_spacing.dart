@@ -15,5 +15,9 @@ abstract final class AppRadius {
   static const double sm = 8;
   static const double md = 12;
   static const double lg = 20;
+
+  /// The story card. Rounder than anything else on screen: it is the object
+  /// the whole app is about.
+  static const double xl = 28;
   static const double pill = 999;
 }

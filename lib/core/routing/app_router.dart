@@ -5,11 +5,15 @@ import 'package:chismosa/features/groups/presentation/screens/groups_screen.dart
 import 'package:chismosa/features/premium/presentation/screens/paywall_screen.dart';
 import 'package:chismosa/features/settings/presentation/screens/language_preferences_screen.dart';
 import 'package:chismosa/features/settings/presentation/screens/settings_screen.dart';
+import 'package:chismosa/features/stories/domain/story.dart';
 import 'package:chismosa/features/stories/presentation/screens/compose_story_screen.dart';
+import 'package:chismosa/features/stories/presentation/screens/my_stories_screen.dart';
 import 'package:chismosa/features/stories/presentation/screens/rules_screen.dart';
 import 'package:chismosa/features/stories/presentation/screens/stories_deck_screen.dart';
 import 'package:chismosa/features/threads/presentation/screens/thread_screen.dart';
 import 'package:chismosa/features/threads/presentation/screens/threads_history_screen.dart';
+import 'package:chismosa/features/welcome/welcome_screen.dart';
+import 'package:chismosa/services/storage/storage_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -32,7 +36,23 @@ final Provider<GoRouter> routerProvider = Provider<GoRouter>((Ref ref) {
     navigatorKey: rootNavigatorKey,
     initialLocation: AppRoutes.homePath,
     debugLogDiagnostics: false,
+    // Nothing is reachable before the rules are accepted — deep links and
+    // notification taps included. Read on every navigation rather than cached,
+    // so finishing the welcome needs no router rebuild.
+    redirect: (BuildContext context, GoRouterState state) {
+      final bool done = ref.read(keyValueStoreProvider).getBool(welcomeDoneKey);
+      final bool atWelcome = state.matchedLocation == AppRoutes.welcomePath;
+      if (!done && !atWelcome) return AppRoutes.welcomePath;
+      if (done && atWelcome) return AppRoutes.homePath;
+      return null;
+    },
     routes: <RouteBase>[
+      GoRoute(
+        path: AppRoutes.welcomePath,
+        name: AppRoutes.welcomeName,
+        builder: (BuildContext context, GoRouterState state) =>
+            const WelcomeScreen(),
+      ),
       GoRoute(
         path: AppRoutes.homePath,
         name: AppRoutes.homeName,
@@ -55,7 +75,13 @@ final Provider<GoRouter> routerProvider = Provider<GoRouter>((Ref ref) {
             path: 'compose',
             name: AppRoutes.composeName,
             builder: (BuildContext context, GoRouterState state) =>
-                const ComposeStoryScreen(),
+                ComposeStoryScreen(continues: state.extra as OwnStory?),
+          ),
+          GoRoute(
+            path: 'mine',
+            name: AppRoutes.myStoriesName,
+            builder: (BuildContext context, GoRouterState state) =>
+                const MyStoriesScreen(),
           ),
           GoRoute(
             path: 'threads',

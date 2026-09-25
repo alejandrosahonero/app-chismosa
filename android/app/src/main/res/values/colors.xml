@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Brand colours for the native side (icon, splash, notifications). The Dart
+     side has its own copy in lib/core/theme/app_colors.dart; keep them equal. -->
+<resources>
+    <color name="brand_ink">#221029</color>
+    <color name="brand_spice">#FF4B2B</color>
+</resources>

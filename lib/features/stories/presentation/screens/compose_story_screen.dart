@@ -30,7 +30,11 @@ import 'package:go_router/go_router.dart';
 /// the ban, the word filter — is a trigger, because a limit the client enforces
 /// is a limit that does not exist.
 class ComposeStoryScreen extends ConsumerStatefulWidget {
-  const ComposeStoryScreen({super.key});
+  const ComposeStoryScreen({super.key, this.continues});
+
+  /// The story this one continues, from "Mis historias". It decides the group
+  /// too: part 2 lands wherever part 1 was, whatever deck is open now.
+  final OwnStory? continues;
 
   /// Matches the `char_length(body) between 20 and 600` check on `stories`.
   static const int minLength = 20;
@@ -69,14 +73,22 @@ class _ComposeStoryScreenState extends ConsumerState<ComposeStoryScreen> {
         length >= ComposeStoryScreen.minLength &&
         length <= ComposeStoryScreen.maxLength;
 
+    final OwnStory? parent = widget.continues;
+
     return BaseScreen(
-      title: l10n.composeTitle,
+      title: parent == null
+          ? l10n.composeTitle
+          : l10n.composeContinueTitle(parent.chapter + 1),
       // No banner: an ad next to the send button of a form is exactly the
       // accidental click AdMob suspends accounts over.
       showBanner: false,
       padding: const EdgeInsets.all(AppSpacing.md),
       body: ListView(
         children: <Widget>[
+          if (parent != null) ...<Widget>[
+            _ContinuesCard(parent: parent),
+            const SizedBox(height: AppSpacing.md),
+          ],
           Text(
             l10n.composeHint,
             style: context.texts.bodyMedium?.copyWith(
@@ -119,7 +131,7 @@ class _ComposeStoryScreenState extends ConsumerState<ComposeStoryScreen> {
           ),
           const SizedBox(height: AppSpacing.lg),
           _AnonymityNote(onRules: () => context.pushNamed(AppRoutes.rulesName)),
-          const _GroupLine(),
+          if (parent == null) const _GroupLine(),
           const SizedBox(height: AppSpacing.lg),
           const _QuotaLine(),
           const SizedBox(height: AppSpacing.sm),
@@ -158,14 +170,19 @@ class _ComposeStoryScreenState extends ConsumerState<ComposeStoryScreen> {
         // Into whichever deck the reader came from. Writing from inside a
         // group and landing in front of the whole world would be the worst
         // surprise this app could spring.
-        groupId: ref.read(feedQueryProvider).groupId,
+        groupId: widget.continues == null
+            ? ref.read(feedQueryProvider).groupId
+            : widget.continues!.groupId,
+        parentId: widget.continues?.id,
       );
       if (!mounted) return;
 
       // The deck excludes the reader's own stories, so it does not gain a card
       // — but the quota did change, and the next "nothing left" screen should
       // reflect a feed that was asked for again.
-      ref.invalidate(storiesDeckControllerProvider);
+      ref
+        ..invalidate(storiesDeckControllerProvider)
+        ..invalidate(myStoriesProvider);
       context.showSnack(l10n.composePublished);
       context.pop();
     } on StoryException catch (error) {
@@ -298,6 +315,8 @@ class _ComposeStoryScreenState extends ConsumerState<ComposeStoryScreen> {
         StoryFailure.dailyLimitReached => l10n.composeErrorDailyLimit,
         StoryFailure.accountBanned => l10n.composeErrorBanned,
         StoryFailure.blockedContent => l10n.composeErrorBlocked,
+        StoryFailure.personalData => l10n.composeErrorPersonalData,
+        StoryFailure.cannotContinue => l10n.composeErrorCannotContinue,
         _ => l10n.composeErrorOffline,
       };
 }
@@ -323,6 +342,46 @@ class _QuotaLine extends ConsumerWidget {
       textAlign: TextAlign.center,
       style: context.texts.labelMedium?.copyWith(
         color: context.colors.onSurfaceVariant,
+      ),
+    );
+  }
+}
+
+/// The part being continued, so the author writes the next one looking at
+/// where the last one stopped.
+class _ContinuesCard extends StatelessWidget {
+  const _ContinuesCard({required this.parent});
+
+  final OwnStory parent;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: BoxDecoration(
+        color: context.colors.tertiaryContainer,
+        borderRadius: BorderRadius.circular(AppRadius.md),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            context.l10n.composeContinuesFrom(parent.chapter),
+            style: context.texts.labelLarge?.copyWith(
+              color: context.colors.onTertiaryContainer,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          const SizedBox(height: AppSpacing.xs),
+          Text(
+            parent.body,
+            maxLines: 4,
+            overflow: TextOverflow.ellipsis,
+            style: context.texts.bodyMedium?.copyWith(
+              color: context.colors.onTertiaryContainer,
+            ),
+          ),
+        ],
       ),
     );
   }

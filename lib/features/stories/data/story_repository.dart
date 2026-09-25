@@ -19,6 +19,14 @@ enum StoryFailure {
   /// The text tripped the word filter.
   blockedContent,
 
+  /// Phone numbers, e-mails, @handles or links: the step that turns a story
+  /// into harassment of a findable person.
+  personalData,
+
+  /// The story being continued already has a next part, or is not the
+  /// author's.
+  cannotContinue,
+
   /// Publishing into a group the user is not in.
   notAGroupMember,
 
@@ -43,6 +51,10 @@ enum StoryFailure {
     'account_banned' => StoryFailure.accountBanned,
     'blocked_content' => StoryFailure.blockedContent,
     'not_a_group_member' => StoryFailure.notAGroupMember,
+    'personal_data' => StoryFailure.personalData,
+    'invalid_parent' ||
+    'already_continued' ||
+    'too_many_chapters' => StoryFailure.cannotContinue,
     'story_unavailable' => StoryFailure.storyUnavailable,
     'thread_closed' => StoryFailure.threadClosed,
     'too_fast' => StoryFailure.tooFast,
@@ -103,7 +115,11 @@ abstract interface class StoryRepository {
     required String lang,
     String? countryCode,
     String? groupId,
+    String? parentId,
   });
+
+  /// The reader's own stories, newest first.
+  Future<List<OwnStory>> myStories();
 
   Future<void> report(String storyId, {String? reason});
 }
@@ -203,6 +219,7 @@ class SupabaseStoryRepository implements StoryRepository {
     required String lang,
     String? countryCode,
     String? groupId,
+    String? parentId,
   }) async {
     final Map<String, dynamic> row = await _guard(
       () => _client
@@ -214,11 +231,21 @@ class SupabaseStoryRepository implements StoryRepository {
             'lang': lang,
             'country_code': countryCode,
             'group_id': groupId,
+            'parent_id': parentId,
           })
           .select('id')
           .single(),
     );
     return row['id']! as String;
+  }
+
+  @override
+  Future<List<OwnStory>> myStories() async {
+    final List<Map<String, dynamic>> rows = await _rpcRows(
+      'my_stories',
+      <String, dynamic>{},
+    );
+    return rows.map(OwnStory.fromRow).toList(growable: false);
   }
 
   @override

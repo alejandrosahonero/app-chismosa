@@ -1,8 +1,11 @@
 // Push notification for a new thread message.
 //
-// Called by the `messages_after_insert_push` trigger (0006_push.sql) with
-// `{ "message_id": "<uuid>" }`. Works out who should hear about it and sends
-// through FCM HTTP v1.
+// Called through pg_net by two triggers:
+//   - `messages_after_insert_push` (0006) with `{ "message_id": "<uuid>" }`;
+//   - `stories_after_insert_push` (0007) with `{ "continuation_id": "<uuid>" }`
+//     when an author publishes the next part of a story: everyone who entered
+//     the previous part's thread is told.
+// Works out who should hear about it and sends through FCM HTTP v1.
 //
 // Deploy (free plan, no card):
 //   supabase secrets set PUSH_SECRET=<same string as the vault's push_secret>
@@ -117,19 +120,24 @@ Deno.serve(async (request) => {
     return new Response("forbidden", { status: 403 });
   }
 
-  let messageId: string | undefined;
+  let payload: { message_id?: string; continuation_id?: string };
   try {
-    messageId = ((await request.json()) as { message_id?: string }).message_id;
+    payload = await request.json();
   } catch {
     return new Response("bad request", { status: 400 });
   }
-  if (!messageId) return new Response("bad request", { status: 400 });
 
   const supabase = createClient(
     Deno.env.get("SUPABASE_URL")!,
     Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
     { auth: { persistSession: false } },
   );
+
+  if (payload.continuation_id) {
+    return await notifyContinuation(supabase, payload.continuation_id);
+  }
+  const messageId = payload.message_id;
+  if (!messageId) return new Response("bad request", { status: 400 });
 
   const { data: message } = await supabase
     .from("messages")
@@ -161,46 +169,101 @@ Deno.serve(async (request) => {
   );
   if (due.length === 0) return new Response("nobody");
 
-  // Blocks either way round: a blocked person's messages never reach the
-  // blocker, and the blocker should not be summoned into their thread by them.
-  const userIds = due.map((m) => m.user_id);
-  const [{ data: blockedBy }, { data: blocking }] = await Promise.all([
-    supabase.from("blocks").select("blocker_id")
-      .eq("blocked_id", sender.user_id).in("blocker_id", userIds),
-    supabase.from("blocks").select("blocked_id")
-      .eq("blocker_id", sender.user_id).in("blocked_id", userIds),
-  ]);
-  const excluded = new Set<string>([
-    ...(blockedBy ?? []).map((b) => b.blocker_id),
-    ...(blocking ?? []).map((b) => b.blocked_id),
-  ]);
-  const recipients = due.filter((m) => !excluded.has(m.user_id));
+  const recipients = await withoutBlocks(supabase, sender.user_id, due);
   if (recipients.length === 0) return new Response("nobody");
 
+  await send(supabase, recipients.map((m) => m.user_id), {
+    title: clip(story.body, 60),
+    body: clip(`${sender.alias}: ${message.body}`, 160),
+    storyId: story.id,
+  });
+
+  await supabase.from("thread_members")
+    .update({ last_notified_at: new Date().toISOString() })
+    .in("id", recipients.map((m) => m.id));
+
+  return new Response("ok");
+});
+
+// deno-lint-ignore no-explicit-any
+type Client = any;
+
+// The next part of a story: everyone in the previous part's thread who has not
+// muted it hears about it once. No "once until read" rule here — a new part is
+// an event, not chatter.
+async function notifyContinuation(
+  supabase: Client,
+  storyId: string,
+): Promise<Response> {
+  const { data: story } = await supabase
+    .from("stories")
+    .select("id, body, parent_id, author_id, chapter, hidden")
+    .eq("id", storyId)
+    .maybeSingle();
+  if (!story || story.hidden || !story.parent_id) return new Response("skip");
+
+  const { data: members } = await supabase
+    .from("thread_members")
+    .select("id, user_id")
+    .eq("story_id", story.parent_id)
+    .eq("muted", false)
+    .neq("user_id", story.author_id);
+  const recipients = await withoutBlocks(supabase, story.author_id, members ?? []);
+  if (recipients.length === 0) return new Response("nobody");
+
+  await send(supabase, recipients.map((m) => m.user_id), {
+    // The app shows the story, not a translated label: a push is built once
+    // for readers of every language, and the part number reads the same in all.
+    title: `#${story.chapter} · ${clip(story.body, 50)}`,
+    body: clip(story.body, 160),
+    storyId: story.id,
+  });
+  return new Response("ok");
+}
+
+// Drops anyone on either side of a block with [writer].
+async function withoutBlocks<T extends { user_id: string }>(
+  supabase: Client,
+  writer: string,
+  members: T[],
+): Promise<T[]> {
+  if (members.length === 0) return members;
+  const userIds = members.map((m) => m.user_id);
+  const [{ data: blockedBy }, { data: blocking }] = await Promise.all([
+    supabase.from("blocks").select("blocker_id")
+      .eq("blocked_id", writer).in("blocker_id", userIds),
+    supabase.from("blocks").select("blocked_id")
+      .eq("blocker_id", writer).in("blocked_id", userIds),
+  ]);
+  const excluded = new Set<string>([
+    ...(blockedBy ?? []).map((b: { blocker_id: string }) => b.blocker_id),
+    ...(blocking ?? []).map((b: { blocked_id: string }) => b.blocked_id),
+  ]);
+  return members.filter((m) => !excluded.has(m.user_id));
+}
+
+// Sends one notification to every device of [userIds] and forgets the tokens
+// FCM says are dead.
+async function send(
+  supabase: Client,
+  userIds: string[],
+  content: { title: string; body: string; storyId: string },
+): Promise<void> {
   const { data: devices } = await supabase
     .from("devices")
     .select("fcm_token")
-    .in("user_id", recipients.map((m) => m.user_id));
-  if (!devices || devices.length === 0) return new Response("no devices");
+    .in("user_id", userIds);
+  if (!devices || devices.length === 0) return;
 
   const account = JSON.parse(
     Deno.env.get("FCM_SERVICE_ACCOUNT")!,
   ) as ServiceAccount;
-  let token: string;
-  try {
-    token = await accessToken(account);
-  } catch (error) {
-    console.error(error);
-    return new Response("oauth failed", { status: 500 });
-  }
-
+  const token = await accessToken(account);
   const endpoint =
     `https://fcm.googleapis.com/v1/projects/${account.project_id}/messages:send`;
-  const title = clip(story.body, 60);
-  const body = clip(`${sender.alias}: ${message.body}`, 160);
   const stale: string[] = [];
 
-  await Promise.all(devices.map(async (device) => {
+  await Promise.all(devices.map(async (device: { fcm_token: string }) => {
     const response = await fetch(endpoint, {
       method: "POST",
       headers: {
@@ -210,13 +273,19 @@ Deno.serve(async (request) => {
       body: JSON.stringify({
         message: {
           token: device.fcm_token,
-          notification: { title, body },
-          data: { story_id: story.id },
+          notification: { title: content.title, body: content.body },
+          data: { story_id: content.storyId },
           android: {
             // One notification per thread in the tray: a newer message
             // replaces the older one instead of stacking.
-            collapse_key: story.id,
-            notification: { channel_id: CHANNEL_ID, tag: story.id },
+            collapse_key: content.storyId,
+            notification: {
+              channel_id: CHANNEL_ID,
+              tag: content.storyId,
+              // A gossip app's notifications are exactly what should not be
+              // readable on a locked screen by whoever picks the phone up.
+              visibility: "PRIVATE",
+            },
           },
         },
       }),
@@ -230,14 +299,7 @@ Deno.serve(async (request) => {
     }
   }));
 
-  await Promise.all([
-    stale.length > 0
-      ? supabase.from("devices").delete().in("fcm_token", stale)
-      : Promise.resolve(),
-    supabase.from("thread_members")
-      .update({ last_notified_at: new Date().toISOString() })
-      .in("id", recipients.map((m) => m.id)),
-  ]);
-
-  return new Response("ok");
-});
+  if (stale.length > 0) {
+    await supabase.from("devices").delete().in("fcm_token", stale);
+  }
+}

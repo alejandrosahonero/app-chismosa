@@ -168,7 +168,7 @@
   "storiesReport": "Reportar",
   "storiesReportDone": "Gracias. No volverás a ver esta historia.",
   "storiesReportConfirmTitle": "¿Reportar esta historia?",
-  "storiesReportConfirmBody": "La revisaremos y dejarás de verla ahora mismo.",
+  "storiesReportConfirmBody": "Dejarás de verla ahora mismo. Si más gente la reporta, desaparece para todos.",
   "storiesMessages": "{count, plural, =0{Sin mensajes} =1{1 mensaje} other{{count} mensajes}}",
   "@storiesMessages": {
     "placeholders": {
@@ -180,7 +180,7 @@
   "storiesThreadClosed": "Hilo cerrado",
   "storiesSortHot": "Populares",
   "storiesSortNew": "Nuevos",
-  "storiesCountryAll": "Todo el mundo",
+  "storiesCountryAll": "Cualquier país",
   "storiesCountryMine": "Mi país",
   "storiesCategoryAll": "Todas",
   "storiesCategoryAnything": "Cualquiera",
@@ -188,7 +188,7 @@
   "storiesCategoryFamily": "Familia",
   "storiesCategoryWork": "Trabajo",
   "storiesCategoryFriendship": "Amistad",
-  "storiesCategorySchool": "Escuela",
+  "storiesCategorySchool": "Estudios",
   "storiesCategoryNeighbours": "Vecinos",
   "storiesCategoryMoney": "Dinero",
   "composeTitle": "Cuenta tu chisme",
@@ -223,7 +223,7 @@
   "composeAnonymousNote": "Nadie verá quién eres. Ni nosotros guardamos con qué cuenta se publicó.",
   "rulesTitle": "Normas",
   "rulesIntro": "Esto funciona porque nadie sabe quién eres. Por eso hay tres reglas y son cortas:",
-  "rulesNoNames": "Sin nombres, teléfonos, direcciones ni nada que identifique a alguien.",
+  "rulesNoNames": "Sin nombres, teléfonos, direcciones, @usuarios ni enlaces: nada que permita encontrar a alguien.",
   "rulesNoHate": "Sin odio, amenazas ni acoso.",
   "rulesNoMinors": "Nada sexual con menores, y nada ilegal.",
   "rulesConsequence": "Tres reportes ocultan una historia. Tres historias ocultas cierran la cuenta.",
@@ -392,5 +392,81 @@
   "pushOpen": "Ver",
   "settingsThreadPush": "Avisos de tus hilos",
   "settingsThreadPushBody": "Te avisamos cuando alguien escribe en un hilo en el que estás",
-  "paywallBenefitUnlimited": "Publica todas las historias que quieras, sin esperar a mañana ni ver vídeos"
+  "paywallBenefitUnlimited": "Publica todas las historias que quieras, sin esperar a mañana ni ver vídeos",
+  "storiesChapter": "Parte {n}",
+  "@storiesChapter": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "storiesAgeNow": "ahora",
+  "storiesAgeMinutes": "{n} min",
+  "@storiesAgeMinutes": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "storiesAgeHours": "{n} h",
+  "@storiesAgeHours": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "storiesAgeDays": "{n} d",
+  "@storiesAgeDays": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "composeContinueTitle": "Parte {n}",
+  "@composeContinueTitle": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "composeContinuesFrom": "Continúa la parte {n}",
+  "@composeContinuesFrom": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "composeErrorPersonalData": "Sin teléfonos, emails, @usuarios ni enlaces: aquí nadie puede ser localizable.",
+  "composeErrorCannotContinue": "Esa historia ya tiene continuación.",
+  "myStoriesTitle": "Mis historias",
+  "myStoriesEmptyTitle": "Aún no has contado nada",
+  "myStoriesEmptyBody": "Lo que publiques aparecerá aquí, con cuánta gente lo ha leído y comentado. Nadie más sabrá que es tuyo.",
+  "myStoriesHidden": "Oculta por reportes",
+  "myStoriesContinue": "Parte {n}",
+  "@myStoriesContinue": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "threadsYourStory": "TU HISTORIA",
+  "welcomeHeadline": "Todo el mundo tiene un chisme.",
+  "welcomeBody": "Historias reales, contadas en anónimo por gente de todo el mundo. Léelas, opina y cuenta la tuya: nadie sabrá que fuiste tú.",
+  "welcomeNext": "Siguiente",
+  "welcomeStart": "Empezar",
+  "welcomeGesturesTitle": "Así se usa",
+  "welcomeGestureUp": "Arriba: entras al hilo y opinas con un alias secreto",
+  "welcomeGestureRight": "Derecha: te gusta",
+  "welcomeGestureLeft": "Izquierda o abajo: la siguiente",
+  "welcomeGestureWrite": "El lápiz: cuenta la tuya",
+  "welcomeRulesTitle": "Tres normas",
+  "welcomeAge": "Tengo 16 años o más",
+  "welcomeAccept": "Acepto las normas de la comunidad"
 }

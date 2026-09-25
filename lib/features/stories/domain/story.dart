@@ -74,6 +74,9 @@ class Story {
     this.closedAt,
     this.liked = false,
     this.joined = false,
+    this.chapter = 1,
+    this.parentId,
+    this.nextId,
   });
 
   /// Parses one row of `feed()` or `story_detail()`.
@@ -95,6 +98,9 @@ class Story {
     closedAt: DateTime.tryParse((row['closed_at'] as String?) ?? '')?.toUtc(),
     liked: (row['liked'] as bool?) ?? false,
     joined: (row['joined'] as bool?) ?? false,
+    chapter: (row['chapter'] as num?)?.toInt() ?? 1,
+    parentId: row['parent_id'] as String?,
+    nextId: row['next_id'] as String?,
   );
 
   final String id;
@@ -127,6 +133,16 @@ class Story {
   /// Whether this reader is already in the thread.
   final bool joined;
 
+  /// Which part of a saga this is. 1 for a story that stands on its own.
+  final int chapter;
+
+  /// The previous part, when this one continues it.
+  final String? parentId;
+
+  /// The next part, when the author has written one. Only `story_detail()`
+  /// knows it; the deck leaves it null.
+  final String? nextId;
+
   bool get isClosed => closedAt != null;
 
   /// Optimistic local echo of a like, so the card reacts to the swipe on the
@@ -157,6 +173,9 @@ class Story {
     closedAt: closedAt ?? this.closedAt,
     liked: liked ?? this.liked,
     joined: joined ?? this.joined,
+    chapter: chapter,
+    parentId: parentId,
+    nextId: nextId,
   );
 
   @override
@@ -203,4 +222,55 @@ class PublishStatus {
       : (dailyLimit - postedToday).clamp(0, dailyLimit) + credits;
 
   bool get canPublish => remaining == null || remaining! > 0;
+}
+
+/// One of the reader's own stories, with how it is doing.
+@immutable
+class OwnStory {
+  const OwnStory({
+    required this.id,
+    required this.body,
+    required this.createdAt,
+    required this.likesCount,
+    required this.messagesCount,
+    required this.hidden,
+    required this.chapter,
+    required this.hasNext,
+    this.groupId,
+  });
+
+  factory OwnStory.fromRow(Map<String, dynamic> row) => OwnStory(
+    id: row['id']! as String,
+    body: (row['body'] as String?) ?? '',
+    createdAt:
+        DateTime.tryParse((row['created_at'] as String?) ?? '')?.toUtc() ??
+        DateTime.now().toUtc(),
+    likesCount: (row['likes_count'] as num?)?.toInt() ?? 0,
+    messagesCount: (row['messages_count'] as num?)?.toInt() ?? 0,
+    hidden: (row['hidden'] as bool?) ?? false,
+    chapter: (row['chapter'] as num?)?.toInt() ?? 1,
+    hasNext: (row['has_next'] as bool?) ?? false,
+    groupId: row['group_id'] as String?,
+  );
+
+  final String id;
+  final String body;
+  final DateTime createdAt;
+  final int likesCount;
+  final int messagesCount;
+
+  /// Hidden by reports. Still listed: an author whose story vanished without a
+  /// word would assume the app is broken.
+  final bool hidden;
+
+  final int chapter;
+
+  /// A story can be continued once. After that the saga goes on from the
+  /// newest part.
+  final bool hasNext;
+
+  /// The group it was posted in, so its continuation lands in the same place.
+  final String? groupId;
+
+  bool get canContinue => !hidden && !hasNext && chapter < 20;
 }

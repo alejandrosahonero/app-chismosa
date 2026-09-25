@@ -31,6 +31,13 @@ class ThreadsHistoryScreen extends ConsumerWidget {
     return BaseScreen(
       title: l10n.threadsTitle,
       showBanner: false,
+      actions: <Widget>[
+        IconButton(
+          onPressed: () => context.pushNamed(AppRoutes.myStoriesName),
+          icon: const Icon(Icons.edit_note),
+          tooltip: l10n.myStoriesTitle,
+        ),
+      ],
       body: threads.when(
         loading: () => const AppLoader(),
         error: (Object error, StackTrace _) => ErrorView(
@@ -78,6 +85,16 @@ class _Row extends StatelessWidget {
         padding: const EdgeInsets.only(top: AppSpacing.xs),
         child: Row(
           children: <Widget>[
+            if (summary.isMine) ...<Widget>[
+              Text(
+                l10n.threadsYourStory,
+                style: context.texts.labelSmall?.copyWith(
+                  color: context.colors.tertiary,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              const SizedBox(width: AppSpacing.sm),
+            ],
             // The alias first: it is how the reader recognises which of their
             // selves was in this conversation.
             Text(

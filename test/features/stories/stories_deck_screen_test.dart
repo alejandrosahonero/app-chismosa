@@ -71,6 +71,9 @@ class _Repository implements StoryRepository {
   Future<void> unlike(String storyId) async => liked.remove(storyId);
 
   @override
+  Future<List<OwnStory>> myStories() async => const <OwnStory>[];
+
+  @override
   Future<void> report(String storyId, {String? reason}) async {}
 
   @override
@@ -80,6 +83,7 @@ class _Repository implements StoryRepository {
     required String lang,
     String? countryCode,
     String? groupId,
+    String? parentId,
   }) async => 'new';
 }
 

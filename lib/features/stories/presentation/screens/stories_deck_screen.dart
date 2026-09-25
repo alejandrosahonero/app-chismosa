@@ -129,6 +129,18 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
         // The ring counts up, towards a number that resets tomorrow. It is the
         // only reason the app gives to come back on a particular day.
         const GoalRingButton(),
+        // Writing lives in the bar, not in a floating button: over the deck a
+        // FAB sits exactly on top of the like button, the one control a
+        // reader taps most.
+        IconButton.filled(
+          style: IconButton.styleFrom(
+            backgroundColor: context.colors.primary,
+            foregroundColor: context.colors.onPrimary,
+          ),
+          onPressed: () => context.goNamed(AppRoutes.composeName),
+          icon: const Icon(Icons.edit_outlined),
+          tooltip: context.l10n.composeTitle,
+        ),
         IconButton(
           onPressed: () => context.goNamed(AppRoutes.threadsName),
           icon: const Icon(Icons.forum_outlined),
@@ -140,16 +152,6 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
           tooltip: context.l10n.settingsTitle,
         ),
       ],
-      floatingActionButton: AnimatedBuilder(
-        animation: _sheet,
-        builder: (BuildContext context, Widget? child) =>
-            _sheet.value > 0.02 ? const SizedBox.shrink() : child!,
-        child: FloatingActionButton(
-          onPressed: () => context.goNamed(AppRoutes.composeName),
-          tooltip: context.l10n.composeTitle,
-          child: const Icon(Icons.edit_outlined),
-        ),
-      ),
       body: PopScope(
         // Back closes the conversation before it leaves the deck. Anything else
         // would drop the reader out of the app from inside a thread.

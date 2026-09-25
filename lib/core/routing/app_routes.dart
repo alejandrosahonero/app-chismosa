@@ -22,6 +22,14 @@ abstract final class AppRoutes {
   static const String composePath = '/compose';
   static const String composeName = 'compose';
 
+  /// The reader's own stories, with their numbers and a way to continue them.
+  static const String myStoriesPath = '/mine';
+  static const String myStoriesName = 'mine';
+
+  /// First run: what this is, the four gestures, the rules and the age check.
+  static const String welcomePath = '/welcome';
+  static const String welcomeName = 'welcome';
+
   /// The community rules. Linked from the compose screen and from Settings —
   /// the moment the rules matter is the moment somebody is about to publish.
   static const String rulesPath = '/rules';

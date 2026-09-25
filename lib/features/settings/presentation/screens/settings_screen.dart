@@ -79,6 +79,12 @@ class SettingsScreen extends ConsumerWidget {
             onTap: () => context.goNamed(AppRoutes.progressName),
           ),
           ListTile(
+            leading: const Icon(Icons.edit_note),
+            title: Text(context.l10n.myStoriesTitle),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => context.goNamed(AppRoutes.myStoriesName),
+          ),
+          ListTile(
             leading: const Icon(Icons.forum_outlined),
             title: Text(context.l10n.threadsTitle),
             trailing: const Icon(Icons.chevron_right),

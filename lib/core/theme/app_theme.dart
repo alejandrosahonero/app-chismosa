@@ -2,29 +2,21 @@ import 'package:chismosa/core/theme/app_colors.dart';
 import 'package:chismosa/core/theme/app_spacing.dart';
 import 'package:flutter/material.dart';
 
-/// Material 3 themes for the app.
+/// Material 3 themes for the app, built on the hand-made palette in
+/// [AppColors].
 ///
-/// Both themes are generated from a single seed colour ([AppColors.seed]), so a
-/// new app only needs to change that constant. If you later want Android 12+
-/// wallpaper colours, pass the dynamic scheme through [light]/[dark] instead of
-/// the seeded fallback — the rest of the theme is already scheme-driven.
+/// Dynamic colour (Material You) is deliberately **not** used: on most phones
+/// it would repaint Chismosa in the wallpaper's colours, and a brand that
+/// changes with the wallpaper is not a brand.
 abstract final class AppTheme {
-  static ThemeData light([ColorScheme? dynamicScheme]) => _build(
-    dynamicScheme ?? ColorScheme.fromSeed(seedColor: AppColors.seed),
-    AppSemanticColors.light,
-  );
+  static ThemeData light() => _build(AppColors.light, AppSemanticColors.light);
 
-  static ThemeData dark([ColorScheme? dynamicScheme]) => _build(
-    dynamicScheme ??
-        ColorScheme.fromSeed(
-          seedColor: AppColors.darkSeed,
-          brightness: Brightness.dark,
-        ),
-    AppSemanticColors.dark,
-  );
+  static ThemeData dark() => _build(AppColors.dark, AppSemanticColors.dark);
 
   static ThemeData _build(ColorScheme scheme, AppSemanticColors semantic) {
-    final ThemeData base = ThemeData(colorScheme: scheme);
+    // Roboto named explicitly: it is Android's default anyway, and naming it
+    // makes the screenshot tool render every widget with the real font.
+    final ThemeData base = ThemeData(colorScheme: scheme, fontFamily: 'Roboto');
 
     return base.copyWith(
       scaffoldBackgroundColor: scheme.surface,
@@ -61,6 +53,37 @@ abstract final class AppTheme {
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(AppRadius.md)),
           ),
+        ),
+      ),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: scheme.primary,
+        foregroundColor: scheme.onPrimary,
+        shape: const StadiumBorder(),
+      ),
+      chipTheme: ChipThemeData(
+        shape: const StadiumBorder(),
+        side: BorderSide(color: scheme.outlineVariant),
+        selectedColor: scheme.inverseSurface,
+        secondarySelectedColor: scheme.inverseSurface,
+        checkmarkColor: scheme.onInverseSurface,
+        labelStyle: base.textTheme.labelLarge?.copyWith(
+          color: scheme.onSurface,
+        ),
+        secondaryLabelStyle: base.textTheme.labelLarge?.copyWith(
+          color: scheme.onInverseSurface,
+        ),
+        showCheckmark: false,
+      ),
+      textTheme: base.textTheme.copyWith(
+        // Tighter and heavier than Material's defaults: the story is the
+        // interface, and it should read like a voice, not like a form.
+        headlineSmall: base.textTheme.headlineSmall?.copyWith(
+          fontWeight: FontWeight.w600,
+          letterSpacing: -0.2,
+        ),
+        titleLarge: base.textTheme.titleLarge?.copyWith(
+          fontWeight: FontWeight.w800,
+          letterSpacing: -0.4,
         ),
       ),
       snackBarTheme: const SnackBarThemeData(

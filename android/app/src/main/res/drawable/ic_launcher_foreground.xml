@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- "La burbuja cómplice": a speech bubble that winks. The bubble is the
+     conversation; the wink is the secret. Master copy in brand/logo.svg. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#FF4B2B"
+        android:pathData="M46,32 L62,32 A18,18 0 0 1 80,50 L80,54 A18,18 0 0 1 62,72 L50,72 L35,83 L38.5,69.6 A18,18 0 0 1 28,54 L28,50 A18,18 0 0 1 46,32 Z" />
+    <!-- Closed, winking eye. -->
+    <path
+        android:strokeColor="#221029"
+        android:strokeWidth="3.6"
+        android:strokeLineCap="round"
+        android:pathData="M40.5,51.5 Q45.5,45.5 50.5,51.5" />
+    <!-- Open eye. -->
+    <path
+        android:fillColor="#221029"
+        android:pathData="M63,49.5 m-4,0 a4,4 0 1 0 8,0 a4,4 0 1 0 -8,0" />
+    <!-- Half smile. -->
+    <path
+        android:strokeColor="#221029"
+        android:strokeWidth="3.6"
+        android:strokeLineCap="round"
+        android:pathData="M45,60 Q54,66.5 63,59.5" />
+</vector>

@@ -147,7 +147,7 @@ class _Chip extends StatelessWidget {
               icon,
               size: 16,
               color: selected
-                  ? context.colors.onSecondaryContainer
+                  ? context.colors.onInverseSurface
                   : context.colors.onSurfaceVariant,
             ),
       selected: selected,

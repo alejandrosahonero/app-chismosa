@@ -68,3 +68,11 @@ final FutureProvider<PublishStatus?> publishStatusProvider =
       if (repository == null) return null;
       return repository.publishStatus();
     }, isAutoDispose: true);
+
+/// The reader's own stories, for "Mis historias".
+final FutureProvider<List<OwnStory>> myStoriesProvider =
+    FutureProvider<List<OwnStory>>((Ref ref) async {
+      final StoryRepository? repository = ref.watch(storyRepositoryProvider);
+      if (repository == null) return const <OwnStory>[];
+      return repository.myStories();
+    }, isAutoDispose: true);

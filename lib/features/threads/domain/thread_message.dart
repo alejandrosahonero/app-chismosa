@@ -120,6 +120,7 @@ class ThreadSummary {
     required this.messagesCount,
     required this.unreadCount,
     this.lastMessageAt,
+    this.isMine = false,
   });
 
   factory ThreadSummary.fromRow(Map<String, dynamic> row) => ThreadSummary(
@@ -132,9 +133,13 @@ class ThreadSummary {
     lastMessageAt: DateTime.tryParse(
       (row['last_message_at'] as String?) ?? '',
     )?.toUtc(),
+    isMine: (row['is_mine'] as bool?) ?? false,
   );
 
   final String storyId;
+
+  /// The thread under the reader's own story.
+  final bool isMine;
 
   /// The story the conversation hangs off, so the row is recognisable without
   /// opening it.

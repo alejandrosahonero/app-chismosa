@@ -14,14 +14,15 @@ extension RankStyle on Rank {
     Rank.oracle => context.l10n.rankOracle,
   };
 
-  /// Reads as a climb even with the labels covered: a single idea, then a
-  /// question, then a mind, then study, then a library, then the thing itself.
+  /// Reads as a climb even with the labels covered: an ear, then eyes, then
+  /// a word, then a conversation, then a megaphone, then the whole block's
+  /// radio — from listening to being the one everybody listens to.
   IconData get icon => switch (this) {
-    Rank.curious => Icons.emoji_objects_outlined,
-    Rank.inquisitive => Icons.psychology_alt_outlined,
-    Rank.knowItAll => Icons.psychology_outlined,
-    Rank.scholar => Icons.school_outlined,
-    Rank.encyclopedia => Icons.auto_stories_outlined,
-    Rank.oracle => Icons.auto_awesome,
+    Rank.curious => Icons.hearing,
+    Rank.inquisitive => Icons.visibility_outlined,
+    Rank.knowItAll => Icons.chat_bubble_outline,
+    Rank.scholar => Icons.forum_outlined,
+    Rank.encyclopedia => Icons.campaign_outlined,
+    Rank.oracle => Icons.radio,
   };
 }
