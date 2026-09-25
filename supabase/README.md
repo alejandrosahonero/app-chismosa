@@ -29,6 +29,7 @@ normales.
    - `migrations/0002_logic.sql`
    - `migrations/0003_rls.sql`
    - `migrations/0004_moderation.sql`
+   - `migrations/0005_groups.sql`
 5. Settings → API → copiar *Project URL* y la clave *publishable* en
    `lib/core/config/backend_config.dart`.
 
@@ -82,6 +83,21 @@ El crédito lo escribe la Edge Function `functions/admob-ssv` cuando Google la l
 La unidad de prueba de Google no tiene callback, así que en debug el vídeo se ve pero **no llega crédito**. Para probar el circuito entero: la unidad real con tu móvil en `AdConfig.testDeviceIds`.
 
 ## Pendiente
+
+### Pasos a mano todavía sin hacer
+
+- [ ] Ejecutar `0004_moderation.sql` y `0005_groups.sql` en el SQL Editor.
+- [ ] Desplegar la Edge Function `admob-ssv` (`npx supabase login`,
+      `npx supabase link --project-ref sbeyvzhtvmzcalflqajv`,
+      `npx supabase functions deploy admob-ssv --no-verify-jwt`).
+- [ ] Crear la unidad recompensada en AdMob con SSV apuntando a
+      `https://sbeyvzhtvmzcalflqajv.supabase.co/functions/v1/admob-ssv` y poner
+      su id en `_prodRewarded` (`lib/core/config/ad_config.dart`).
+- [ ] Borrar la historia basura `90f59fbc-8423-4e0d-b84d-b82e5d641de8`.
+- [ ] Rotar la contraseña de Postgres.
+- [ ] Activar `pg_cron`.
+
+### Por construir
 
 - Edge Function que envía push por FCM al llegar un mensaje a un hilo.
 - Validar el token de compra de Play antes de fiarse de `profiles.is_premium`.

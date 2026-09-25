@@ -1,15 +1,12 @@
 {
   "@@locale": "en",
-
   "appTitle": "Chismosa",
-
   "commonCancel": "Cancel",
   "commonContinue": "Continue",
   "commonNotNow": "Not now",
   "commonRetry": "Retry",
   "commonClose": "Close",
   "commonErrorGeneric": "Something went wrong. Please try again.",
-
   "deckHintReveal": "Swipe right to see the answer",
   "deckHintNext": "Swipe left for the next one",
   "deckAnswerLabel": "The answer",
@@ -21,7 +18,6 @@
   "deckFinishedTitle": "You ran out of questions",
   "deckFinishedBody": "You've seen every one in this category. Reshuffle them, suggest your own, or ask for more.",
   "deckRestart": "Restart deck",
-
   "deckContribute": "Contribute",
   "deckAskForMore": "Ask for more",
   "contributeTitle": "Contribute a question",
@@ -38,7 +34,6 @@
   "contributeTooSoon": "Give it a moment before sending another.",
   "contributeInvalid": "Check the question and the answer.",
   "deckLoadError": "We could not load the questions.",
-
   "deckShare": "Share the question",
   "@deckShare": {
     "description": "Button and gesture that shares the card"
@@ -62,26 +57,20 @@
   },
   "deckShareError": "We could not prepare the image to share.",
   "deckCategoryAll": "All",
-
   "categoryBody": "Human body",
   "categoryLanguage": "Language",
   "categoryHistory": "History",
   "categoryScience": "Everyday science",
-
   "adLabel": "Ad",
-
   "favoritesTitle": "Saved",
   "favoritesAdd": "Save this card",
   "favoritesRemove": "Remove from saved",
   "favoritesSaved": "Saved card",
   "favoritesEmptyTitle": "Nothing saved yet",
   "favoritesEmptyBody": "Swipe a card up to keep it here.",
-
   "premiumFeatureTitle": "Premium feature",
   "premiumFeatureBody": "Saving cards is part of \"Remove ads\": one payment, no subscription.",
   "premiumFeatureCta": "See what's included",
-
-
   "goalsTitle": "Progress",
   "goalsRingTooltip": "Today's goal: {learned} of {target}",
   "goalsTodayTitle": "Today's goal",
@@ -98,14 +87,12 @@
   "goalsRankUpTitle": "New rank",
   "goalsRankUpBody": "You met today's goal (+{points} points) and moved up a rank.",
   "goalsSeeProgress": "See progress",
-
   "rankCurious": "Curious",
   "rankInquisitive": "Inquisitive",
   "rankKnowItAll": "Know-it-all",
   "rankScholar": "Scholar",
   "rankEncyclopedia": "Encyclopedia",
   "rankOracle": "Oracle",
-
   "settingsNotifications": "Reminders",
   "settingsDailyQuestion": "Question of the day",
   "settingsDailyQuestionBody": "One curious question every evening. Tap it and it goes to the top of your deck.",
@@ -125,7 +112,6 @@
   "settingsRateApp": "Rate this app",
   "settingsAbout": "About",
   "settingsVersion": "Version {version}",
-
   "premiumActive": "Premium active. No ads.",
   "paywallTitle": "Remove ads",
   "paywallHeadline": "Read without interruptions",
@@ -137,9 +123,7 @@
   "paywallRestore": "I already bought it",
   "paywallUnavailable": "The store is not available right now.",
   "paywallPending": "Processing the purchase…",
-  "paywallError": "The purchase could not be completed."
-,
-
+  "paywallError": "The purchase could not be completed.",
   "storiesEmptyTitle": "No more gossip for now",
   "storiesEmptyBody": "You have seen everything these filters have. Tell yours, change category, or start over.",
   "storiesEmptyRestart": "Start over",
@@ -170,7 +154,6 @@
   "storiesCategorySchool": "School",
   "storiesCategoryNeighbours": "Neighbours",
   "storiesCategoryMoney": "Money",
-
   "composeTitle": "Tell your gossip",
   "composeHint": "Write it the way you would tell someone who does not know you.",
   "composeField": "Your story",
@@ -184,7 +167,6 @@
   "composeErrorBlocked": "That text cannot be published.",
   "composeErrorOffline": "We could not publish it. Check your connection.",
   "composeAnonymousNote": "Nobody sees who you are. We do not even keep which account published it.",
-
   "rulesTitle": "Rules",
   "rulesIntro": "This works because nobody knows who you are. Hence three rules, and they are short:",
   "rulesNoNames": "No names, phone numbers, addresses, or anything that identifies somebody.",
@@ -192,7 +174,6 @@
   "rulesNoMinors": "Nothing sexual involving minors, and nothing illegal.",
   "rulesConsequence": "Three reports hide a story. Three hidden stories close the account.",
   "rulesAccept": "Got it",
-
   "languagesTitle": "Languages",
   "languagesSubtitle": "You will only see stories written in the languages you pick.",
   "languageEs": "Spanish",
@@ -200,9 +181,7 @@
   "languagePt": "Portuguese",
   "languageFr": "French",
   "languageIt": "Italian",
-  "languageDe": "German"
-,
-
+  "languageDe": "German",
   "threadTitle": "The thread",
   "threadYouAre": "Here you are {alias}",
   "threadAliasNote": "Your name changes in every thread. Nobody can follow you from one story to the next.",
@@ -222,13 +201,10 @@
   "threadSendError": "Could not send it. Check your connection.",
   "threadTooFast": "Too fast. Wait a moment.",
   "threadOpenHint": "Swipe up to open the thread",
-
   "threadsTitle": "My threads",
   "threadsEmptyTitle": "You have not opened any thread yet",
   "threadsEmptyBody": "Swipe a story up and the conversation is kept here.",
-  "threadsUnread": "{count, plural, =1{1 unread} other{{count} unread}}"
-,
-
+  "threadsUnread": "{count, plural, =1{1 unread} other{{count} unread}}",
   "moderationMore": "More options",
   "moderationBlockAuthor": "Block whoever wrote it",
   "moderationBlockMessageAuthor": "Block this person",
@@ -237,7 +213,6 @@
   "moderationBlock": "Block",
   "moderationBlocked": "Blocked. You will not see anything of theirs again.",
   "moderationError": "That did not go through. Check your connection.",
-
   "composeRemaining": "{count, plural, =0{No stories left today} =1{1 story left today} other{{count} stories left today}}",
   "composeUnlimited": "Unlimited stories with premium",
   "composeWatchAd": "Watch an ad to publish another",
@@ -247,7 +222,6 @@
   "composeCreditPending": "Confirming the video…",
   "composeCreditTimeout": "The video has not been confirmed yet. Your story is still here; try publishing in a moment.",
   "composeRemoveLimit": "Remove the limit",
-
   "accountSection": "Your account",
   "accountCodeTitle": "Recovery code",
   "accountCodeBody": "It is the only way to get your threads back on another phone, or after reinstalling without a backup. Keep it where nobody sees it: whoever has it gets in as you.",
@@ -265,5 +239,36 @@
   "accountBlockedCount": "{count, plural, =0{You have not blocked anyone} =1{1 person blocked} other{{count} people blocked}}",
   "accountUnblockAll": "Unblock everyone",
   "accountUnblockAllBody": "Nobody can be unblocked on their own, because nobody knows who is who. Only everyone at once.",
-  "accountUnblocked": "You unblocked everyone"
+  "accountUnblocked": "You unblocked everyone",
+  "groupsTitle": "Groups",
+  "groupsWorldwide": "The whole world",
+  "groupsWorldwideBody": "Stories from people anywhere",
+  "groupsCreate": "Create a group",
+  "groupsCreateBody": "A private deck: what is posted here is only seen by its members. It is still anonymous, among you too.",
+  "groupsNameField": "Group name",
+  "groupsCreateConfirm": "Create",
+  "groupsJoin": "Join with a code",
+  "groupsJoinBody": "Paste the code or the whole invite message.",
+  "groupsCodeField": "Invite code",
+  "groupsJoinConfirm": "Join",
+  "groupsJoined": "You are in",
+  "groupsMine": "Your groups",
+  "groupsEmpty": "You are not in any group yet",
+  "groupsMembers": "{count, plural, =1{1 member} other{{count} members}}",
+  "groupsInviteExpired": "invite expired",
+  "groupsOptions": "Group options",
+  "groupsInvite": "Invite",
+  "groupsInviteMessage": "Join “{name}” on Chismosa. It is anonymous: nobody will know who tells what.\nCode: {code}\n{link}",
+  "groupsRotate": "Renew the invite",
+  "groupsRotateBody": "The current code will stop working for good, even if someone leaked it. Whoever is already in stays in.",
+  "groupsLeave": "Leave the group",
+  "groupsLeaveBody": "You will stop seeing the stories and threads of “{name}”. Coming back takes a new invite.",
+  "groupsDelete": "Delete the group",
+  "groupsDeleteBody": "“{name}”, all its stories and all its threads will be deleted for every member. This cannot be undone.",
+  "groupsErrorName": "The name must be between 2 and 40 characters.",
+  "groupsErrorTooMany": "You have created too many groups.",
+  "groupsErrorInvalidCode": "That code does not exist.",
+  "groupsErrorExpiredCode": "That invite has expired. Ask for a new one.",
+  "groupsErrorOwnerLeave": "You created this group: you cannot leave it, only delete it.",
+  "composeInGroup": "Only the group “{name}” will see it."
 }

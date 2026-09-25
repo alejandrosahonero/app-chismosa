@@ -5,6 +5,8 @@ import 'package:chismosa/core/extensions/build_context_x.dart';
 import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/theme/app_spacing.dart';
 import 'package:chismosa/core/widgets/base_screen.dart';
+import 'package:chismosa/features/groups/domain/story_group.dart';
+import 'package:chismosa/features/groups/presentation/providers/groups_providers.dart';
 import 'package:chismosa/features/stories/data/story_repository.dart';
 import 'package:chismosa/features/stories/domain/story.dart';
 import 'package:chismosa/features/stories/presentation/providers/stories_deck_controller.dart';
@@ -117,6 +119,7 @@ class _ComposeStoryScreenState extends ConsumerState<ComposeStoryScreen> {
           ),
           const SizedBox(height: AppSpacing.lg),
           _AnonymityNote(onRules: () => context.pushNamed(AppRoutes.rulesName)),
+          const _GroupLine(),
           const SizedBox(height: AppSpacing.lg),
           const _QuotaLine(),
           const SizedBox(height: AppSpacing.sm),
@@ -152,6 +155,10 @@ class _ComposeStoryScreenState extends ConsumerState<ComposeStoryScreen> {
         category: _category,
         lang: locale.writingLanguage,
         countryCode: locale.countryCode,
+        // Into whichever deck the reader came from. Writing from inside a
+        // group and landing in front of the whole world would be the worst
+        // surprise this app could spring.
+        groupId: ref.read(feedQueryProvider).groupId,
       );
       if (!mounted) return;
 
@@ -316,6 +323,46 @@ class _QuotaLine extends ConsumerWidget {
       textAlign: TextAlign.center,
       style: context.texts.labelMedium?.copyWith(
         color: context.colors.onSurfaceVariant,
+      ),
+    );
+  }
+}
+
+/// Says where the story is going when that is not the whole world.
+class _GroupLine extends ConsumerWidget {
+  const _GroupLine();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final String? groupId = ref.watch(
+      feedQueryProvider.select((query) => query.groupId),
+    );
+    if (groupId == null) return const SizedBox.shrink();
+
+    final List<StoryGroup> groups =
+        ref.watch(myGroupsProvider).value ?? const <StoryGroup>[];
+    final String name =
+        groups
+            .where((StoryGroup group) => group.id == groupId)
+            .map((StoryGroup group) => group.name)
+            .firstOrNull ??
+        '…';
+
+    return Padding(
+      padding: const EdgeInsets.only(top: AppSpacing.md),
+      child: Row(
+        children: <Widget>[
+          Icon(Icons.groups_outlined, size: 18, color: context.colors.primary),
+          const SizedBox(width: AppSpacing.sm),
+          Expanded(
+            child: Text(
+              context.l10n.composeInGroup(name),
+              style: context.texts.bodySmall?.copyWith(
+                color: context.colors.primary,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

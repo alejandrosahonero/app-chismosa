@@ -43,6 +43,17 @@ abstract final class AppRoutes {
   static const String threadPath = '/thread/:id';
   static const String threadName = 'thread';
 
+  /// Private decks: create, join with a code, switch between them and the
+  /// worldwide one.
+  static const String groupsPath = '/groups';
+  static const String groupsName = 'groups';
+
+  /// Invite link, `chismosa://join/<code>`: opens the groups screen with the
+  /// join dialog already filled in. Joining still takes a tap — a link must
+  /// never add anyone to anything on its own.
+  static const String joinGroupPath = '/join/:code';
+  static const String joinGroupName = 'joinGroup';
+
   /// Languages the deck deals in.
   static const String languagesPath = '/languages';
   static const String languagesName = 'languages';

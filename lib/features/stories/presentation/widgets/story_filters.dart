@@ -1,5 +1,8 @@
 import 'package:chismosa/core/extensions/build_context_x.dart';
+import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/theme/app_spacing.dart';
+import 'package:chismosa/features/groups/domain/story_group.dart';
+import 'package:chismosa/features/groups/presentation/providers/groups_providers.dart';
 import 'package:chismosa/features/stories/domain/feed_query.dart';
 import 'package:chismosa/features/stories/domain/story.dart';
 import 'package:chismosa/features/stories/presentation/providers/stories_providers.dart';
@@ -9,6 +12,7 @@ import 'package:chismosa/services/locale/locale_providers.dart';
 import 'package:chismosa/services/locale/locale_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 /// One scrollable row holding every filter the deck has.
 ///
@@ -43,6 +47,16 @@ class StoryFilters extends ConsumerWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: <Widget>[
+          // Which deck this is, before how it is filtered: a group is a
+          // different deck, not a narrower one. Tapping opens the groups
+          // screen, which is where switching back to the world lives too.
+          _Chip(
+            label: _deckName(ref, query.groupId) ?? l10n.groupsWorldwide,
+            icon: query.groupId == null ? Icons.public : Icons.groups_outlined,
+            selected: query.groupId != null,
+            onTap: () => context.pushNamed(AppRoutes.groupsName),
+          ),
+          const SizedBox(width: AppSpacing.md),
           // Sort first: it changes what the deck *is*, while a category only
           // narrows it.
           _Chip(
@@ -95,6 +109,19 @@ class StoryFilters extends ConsumerWidget {
       ),
     );
   }
+}
+
+/// The selected group's name, or null for the worldwide deck. Also null for a
+/// group the list has not loaded yet, which shows as the generic label for a
+/// moment rather than as an empty chip.
+String? _deckName(WidgetRef ref, String? groupId) {
+  if (groupId == null) return null;
+  final List<StoryGroup> groups =
+      ref.watch(myGroupsProvider).value ?? const <StoryGroup>[];
+  for (final StoryGroup group in groups) {
+    if (group.id == groupId) return group.name;
+  }
+  return null;
 }
 
 class _Chip extends StatelessWidget {

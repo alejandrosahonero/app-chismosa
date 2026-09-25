@@ -1,18 +1,15 @@
 {
   "@@locale": "es",
-
   "appTitle": "Chismosa",
   "@appTitle": {
     "description": "Nombre visible de la aplicación"
   },
-
   "commonCancel": "Cancelar",
   "commonContinue": "Continuar",
   "commonNotNow": "Ahora no",
   "commonRetry": "Reintentar",
   "commonClose": "Cerrar",
   "commonErrorGeneric": "Algo ha salido mal. Inténtalo de nuevo.",
-
   "deckHintReveal": "Desliza a la derecha para ver la respuesta",
   "@deckHintReveal": {
     "description": "Pista en el frente de la tarjeta"
@@ -37,7 +34,6 @@
   "deckFinishedTitle": "Te has quedado sin preguntas",
   "deckFinishedBody": "Has visto todas las de esta categoría. Rebarájalas, propón una tuya o pide más.",
   "deckRestart": "Reiniciar deck",
-
   "deckContribute": "Aportar",
   "@deckContribute": {
     "description": "Botón que abre el formulario para proponer una pregunta"
@@ -60,7 +56,6 @@
   "contributeTooSoon": "Espera un momento antes de enviar otra.",
   "contributeInvalid": "Repasa la pregunta y la respuesta.",
   "deckLoadError": "No hemos podido cargar las preguntas.",
-
   "deckShare": "Compartir la pregunta",
   "@deckShare": {
     "description": "Botón y gesto para compartir la tarjeta"
@@ -84,14 +79,11 @@
   },
   "deckShareError": "No hemos podido preparar la imagen para compartir.",
   "deckCategoryAll": "Todas",
-
   "categoryBody": "Cuerpo humano",
   "categoryLanguage": "Lenguaje",
   "categoryHistory": "Historia",
   "categoryScience": "Ciencia cotidiana",
-
   "adLabel": "Publicidad",
-
   "favoritesTitle": "Guardadas",
   "favoritesAdd": "Guardar esta tarjeta",
   "@favoritesAdd": {
@@ -101,12 +93,9 @@
   "favoritesSaved": "Tarjeta guardada",
   "favoritesEmptyTitle": "Todavía no has guardado nada",
   "favoritesEmptyBody": "Desliza una tarjeta hacia arriba para guardarla aquí.",
-
   "premiumFeatureTitle": "Función premium",
   "premiumFeatureBody": "Guardar tarjetas forma parte de «Quitar anuncios»: un único pago, sin suscripción.",
   "premiumFeatureCta": "Ver qué incluye",
-
-
   "goalsTitle": "Progreso",
   "@goalsTitle": {
     "description": "Título de la pantalla de objetivos y rangos"
@@ -115,42 +104,60 @@
   "@goalsRingTooltip": {
     "description": "Tooltip del anillo de la barra superior; es lo que lee el lector de pantalla",
     "placeholders": {
-      "learned": { "type": "int" },
-      "target": { "type": "int" }
+      "learned": {
+        "type": "int"
+      },
+      "target": {
+        "type": "int"
+      }
     }
   },
   "goalsTodayTitle": "Objetivo de hoy",
   "goalsTodayProgress": "{learned} de {target} hilos",
   "@goalsTodayProgress": {
     "placeholders": {
-      "learned": { "type": "int" },
-      "target": { "type": "int" }
+      "learned": {
+        "type": "int"
+      },
+      "target": {
+        "type": "int"
+      }
     }
   },
   "goalsTodayDone": "Objetivo cumplido: +{points} puntos",
   "@goalsTodayDone": {
     "placeholders": {
-      "points": { "type": "int" }
+      "points": {
+        "type": "int"
+      }
     }
   },
   "goalsTodayPending": "{remaining, plural, =1{Te falta 1} other{Te faltan {remaining}}}",
   "@goalsTodayPending": {
     "placeholders": {
-      "remaining": { "type": "num" }
+      "remaining": {
+        "type": "num"
+      }
     }
   },
   "goalsPoints": "{points, plural, =1{1 punto} other{{points} puntos}}",
   "@goalsPoints": {
     "placeholders": {
-      "points": { "type": "num" }
+      "points": {
+        "type": "num"
+      }
     }
   },
   "goalsNextRank": "{points, plural, =1{1 punto para {rank}} other{{points} puntos para {rank}}}",
   "@goalsNextRank": {
     "description": "Cuánto falta para el siguiente rango",
     "placeholders": {
-      "points": { "type": "num" },
-      "rank": { "type": "String" }
+      "points": {
+        "type": "num"
+      },
+      "rank": {
+        "type": "String"
+      }
     }
   },
   "goalsMaxRank": "Has llegado al último rango. A partir de aquí solo queda mantenerlo.",
@@ -158,25 +165,30 @@
   "goalsRankPointsShort": "{points} pts",
   "@goalsRankPointsShort": {
     "placeholders": {
-      "points": { "type": "int" }
+      "points": {
+        "type": "int"
+      }
     }
   },
   "goalsHowItWorks": "Cada día trae un objetivo distinto. Cuenta entrar al hilo de una historia, y el mismo hilo solo cuenta una vez al día. Al cumplir el objetivo sumas tantos puntos como hilos pedía ese día, y los puntos son los que suben de rango.",
   "goalsReachedSnack": "¡Objetivo del día cumplido! +{points} puntos",
   "@goalsReachedSnack": {
     "placeholders": {
-      "points": { "type": "int" }
+      "points": {
+        "type": "int"
+      }
     }
   },
   "goalsRankUpTitle": "Rango nuevo",
   "goalsRankUpBody": "Has cumplido el objetivo del día (+{points} puntos) y con eso subes de rango.",
   "@goalsRankUpBody": {
     "placeholders": {
-      "points": { "type": "int" }
+      "points": {
+        "type": "int"
+      }
     }
   },
   "goalsSeeProgress": "Ver progreso",
-
   "rankCurious": "Curioso",
   "@rankCurious": {
     "description": "Rango 1 de 6"
@@ -186,7 +198,6 @@
   "rankScholar": "Erudito",
   "rankEncyclopedia": "Enciclopedia",
   "rankOracle": "Oráculo",
-
   "settingsNotifications": "Recordatorios",
   "@settingsNotifications": {
     "description": "Cabecera de la sección de notificaciones en Ajustes"
@@ -219,7 +230,6 @@
       }
     }
   },
-
   "premiumActive": "Premium activo. Sin anuncios.",
   "paywallTitle": "Quitar anuncios",
   "paywallHeadline": "Lee sin interrupciones",
@@ -238,9 +248,7 @@
   "paywallRestore": "Ya lo compré",
   "paywallUnavailable": "La tienda no está disponible ahora mismo.",
   "paywallPending": "Procesando la compra…",
-  "paywallError": "No se ha podido completar la compra."
-,
-
+  "paywallError": "No se ha podido completar la compra.",
   "storiesEmptyTitle": "Por ahora no hay más chismes",
   "@storiesEmptyTitle": {
     "description": "Título de la pantalla cuando el mazo se queda sin historias"
@@ -288,7 +296,6 @@
   "storiesCategorySchool": "Escuela",
   "storiesCategoryNeighbours": "Vecinos",
   "storiesCategoryMoney": "Dinero",
-
   "composeTitle": "Cuenta tu chisme",
   "composeHint": "Escríbelo como se lo contarías a alguien que no te conoce.",
   "composeField": "Tu historia",
@@ -319,7 +326,6 @@
   "composeErrorBlocked": "Ese texto no se puede publicar.",
   "composeErrorOffline": "No hemos podido publicarlo. Comprueba tu conexión.",
   "composeAnonymousNote": "Nadie verá quién eres. Ni nosotros guardamos con qué cuenta se publicó.",
-
   "rulesTitle": "Normas",
   "rulesIntro": "Esto funciona porque nadie sabe quién eres. Por eso hay tres reglas y son cortas:",
   "rulesNoNames": "Sin nombres, teléfonos, direcciones ni nada que identifique a alguien.",
@@ -327,7 +333,6 @@
   "rulesNoMinors": "Nada sexual con menores, y nada ilegal.",
   "rulesConsequence": "Tres reportes ocultan una historia. Tres historias ocultas cierran la cuenta.",
   "rulesAccept": "Entendido",
-
   "languagesTitle": "Idiomas",
   "languagesSubtitle": "Solo verás historias escritas en los idiomas que elijas.",
   "languageEs": "Español",
@@ -335,9 +340,7 @@
   "languagePt": "Portugués",
   "languageFr": "Francés",
   "languageIt": "Italiano",
-  "languageDe": "Alemán"
-,
-
+  "languageDe": "Alemán",
   "threadTitle": "El hilo",
   "@threadTitle": {
     "description": "Título de la conversación de una historia"
@@ -368,7 +371,6 @@
   "threadSendError": "No se ha podido enviar. Comprueba tu conexión.",
   "threadTooFast": "Vas muy rápido. Espera un momento.",
   "threadOpenHint": "Desliza hacia arriba para entrar al hilo",
-
   "threadsTitle": "Mis hilos",
   "threadsEmptyTitle": "Todavía no has entrado a ningún hilo",
   "threadsEmptyBody": "Desliza una historia hacia arriba y la conversación se guarda aquí.",
@@ -379,9 +381,7 @@
         "type": "int"
       }
     }
-  }
-,
-
+  },
   "moderationMore": "Más opciones",
   "moderationBlockAuthor": "Bloquear a quien lo escribió",
   "moderationBlockMessageAuthor": "Bloquear a esta persona",
@@ -390,7 +390,6 @@
   "moderationBlock": "Bloquear",
   "moderationBlocked": "Bloqueado. No volverás a ver nada suyo.",
   "moderationError": "No se ha podido completar. Comprueba tu conexión.",
-
   "composeRemaining": "{count, plural, =0{Hoy ya no te quedan publicaciones} =1{Hoy te queda 1 publicación} other{Hoy te quedan {count} publicaciones}}",
   "@composeRemaining": {
     "placeholders": {
@@ -407,7 +406,6 @@
   "composeCreditPending": "Confirmando el vídeo…",
   "composeCreditTimeout": "El vídeo aún no se ha confirmado. Tu historia está guardada aquí; prueba a publicar en un momento.",
   "composeRemoveLimit": "Quitar el límite",
-
   "accountSection": "Tu cuenta",
   "accountCodeTitle": "Código de recuperación",
   "accountCodeBody": "Es la única forma de recuperar tus hilos en otro móvil o si reinstalas sin copia de seguridad. Guárdalo donde no lo vea nadie: quien lo tenga, entra como tú.",
@@ -432,5 +430,77 @@
   },
   "accountUnblockAll": "Desbloquear a todos",
   "accountUnblockAllBody": "No se puede desbloquear a una persona concreta, porque nadie sabe quién es quién. Solo a todas a la vez.",
-  "accountUnblocked": "Has desbloqueado a todos"
+  "accountUnblocked": "Has desbloqueado a todos",
+  "groupsTitle": "Grupos",
+  "groupsWorldwide": "Todo el mundo",
+  "groupsWorldwideBody": "Historias de gente de cualquier parte",
+  "groupsCreate": "Crear un grupo",
+  "groupsCreateBody": "Un mazo privado: lo que se publique aquí solo lo ven sus miembros. Sigue siendo anónimo, también entre vosotros.",
+  "groupsNameField": "Nombre del grupo",
+  "groupsCreateConfirm": "Crear",
+  "groupsJoin": "Unirme con un código",
+  "groupsJoinBody": "Pega el código o el mensaje de invitación entero.",
+  "groupsCodeField": "Código de invitación",
+  "groupsJoinConfirm": "Unirme",
+  "groupsJoined": "Ya estás dentro",
+  "groupsMine": "Tus grupos",
+  "groupsEmpty": "Todavía no estás en ningún grupo",
+  "groupsMembers": "{count, plural, =1{1 miembro} other{{count} miembros}}",
+  "@groupsMembers": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "groupsInviteExpired": "invitación caducada",
+  "groupsOptions": "Opciones del grupo",
+  "groupsInvite": "Invitar",
+  "groupsInviteMessage": "Únete a «{name}» en Chismosa. Es anónimo: nadie sabrá quién cuenta qué.\nCódigo: {code}\n{link}",
+  "@groupsInviteMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "code": {
+        "type": "String"
+      },
+      "link": {
+        "type": "String"
+      }
+    }
+  },
+  "groupsRotate": "Renovar la invitación",
+  "groupsRotateBody": "El código actual dejará de funcionar para siempre, también si alguien lo ha filtrado. Quien ya está dentro sigue dentro.",
+  "groupsLeave": "Salir del grupo",
+  "groupsLeaveBody": "Dejarás de ver las historias y los hilos de «{name}». Para volver necesitarás otra invitación.",
+  "@groupsLeaveBody": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "groupsDelete": "Borrar el grupo",
+  "groupsDeleteBody": "Se borrarán «{name}», todas sus historias y todos sus hilos, para todos los miembros. No se puede deshacer.",
+  "@groupsDeleteBody": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "groupsErrorName": "El nombre tiene que tener entre 2 y 40 caracteres.",
+  "groupsErrorTooMany": "Ya has creado demasiados grupos.",
+  "groupsErrorInvalidCode": "Ese código no existe.",
+  "groupsErrorExpiredCode": "Esa invitación ha caducado. Pide una nueva.",
+  "groupsErrorOwnerLeave": "Has creado este grupo: no puedes salir, solo borrarlo.",
+  "composeInGroup": "Solo lo verá el grupo «{name}».",
+  "@composeInGroup": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  }
 }
