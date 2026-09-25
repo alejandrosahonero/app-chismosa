@@ -10,6 +10,8 @@ import 'package:chismosa/services/billing/premium_controller.dart';
 import 'package:chismosa/services/locale/locale_providers.dart';
 import 'package:chismosa/services/notifications/daily_question_service.dart';
 import 'package:chismosa/services/notifications/notification_providers.dart';
+import 'package:chismosa/services/push/push_providers.dart';
+import 'package:chismosa/services/push/push_service.dart';
 import 'package:chismosa/services/review/review_providers.dart';
 import 'package:chismosa/services/storage/storage_providers.dart';
 import 'package:flutter/foundation.dart';
@@ -103,6 +105,17 @@ Future<void> _initializeAfterFirstFrame(ProviderContainer container) async {
   }
 
   try {
+    // After sign-in, because the token is registered against the account.
+    await _initializePush(container);
+  } on Object catch (error, stackTrace) {
+    AppLogger.error(
+      'Push initialization failed',
+      error: error,
+      stackTrace: stackTrace,
+    );
+  }
+
+  try {
     // Entitlement next: `AdsService` must know whether the user is premium
     // before it requests the first ad.
     await container.read(premiumControllerProvider.future);
@@ -139,6 +152,30 @@ Future<void> _initializeAfterFirstFrame(ProviderContainer container) async {
   // disk and read on the next launch, so that new questions do not appear
   // underneath somebody who is mid-deck.
   unawaited(container.read(remoteCatalogServiceProvider).refresh());
+}
+
+/// Starts FCM, registers this phone's token, and routes taps to threads.
+///
+/// Like the daily question, this asks for **no permission**: that happens
+/// after the reader's first message in a thread (`PushService.askPermissionOnce`).
+Future<void> _initializePush(ProviderContainer container) async {
+  final PushService push = container.read(pushServiceProvider);
+  final Locale locale = WidgetsBinding.instance.platformDispatcher.locale;
+  final AppLocalizations l10n = lookupAppLocalizations(
+    AppLocalizations.supportedLocales.any(
+          (Locale l) => l.languageCode == locale.languageCode,
+        )
+        ? Locale(locale.languageCode)
+        : const Locale('es'),
+  );
+  await push.initialize(
+    channelName: l10n.pushChannelName,
+    onOpenThread: (String storyId) => openThreadFromPush(container, storyId),
+    onForeground: (ThreadPush message) =>
+        showForegroundPush(container, message),
+  );
+  final SupabaseClient? client = container.read(supabaseClientProvider);
+  if (client != null) await push.attach(client);
 }
 
 /// Wires up the question of the day.

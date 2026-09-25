@@ -270,5 +270,8 @@
   "groupsErrorInvalidCode": "That code does not exist.",
   "groupsErrorExpiredCode": "That invite has expired. Ask for a new one.",
   "groupsErrorOwnerLeave": "You created this group: you cannot leave it, only delete it.",
-  "composeInGroup": "Only the group “{name}” will see it."
+  "composeInGroup": "Only the group “{name}” will see it.",
+  "pushChannelName": "Messages in your threads",
+  "pushNewMessage": "New message in one of your threads",
+  "pushOpen": "Open"
 }

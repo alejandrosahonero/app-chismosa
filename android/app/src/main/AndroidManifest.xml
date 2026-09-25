@@ -77,6 +77,13 @@
             android:name="com.google.android.gms.ads.flag.OPTIMIZE_AD_LOADING"
             android:value="true" />
 
+        <!-- Thread pushes that arrive with the app in the background land in
+             this channel. PushService creates it on start; the id must match
+             `android_channel_id` in supabase/functions/thread-push. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="thread_messages" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

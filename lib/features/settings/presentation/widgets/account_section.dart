@@ -7,9 +7,11 @@ import 'package:chismosa/l10n/generated/app_localizations.dart';
 import 'package:chismosa/services/backend/backend_providers.dart';
 import 'package:chismosa/services/identity/anonymous_identity_service.dart';
 import 'package:chismosa/services/moderation/moderation_service.dart';
+import 'package:chismosa/services/push/push_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 /// The recovery code, restoring another account, and blocked people.
 ///
@@ -89,6 +91,11 @@ class _AccountSectionState extends ConsumerState<AccountSection> {
       // Everything built on the previous account — the deck, the history, the
       // block count — is rebuilt against the restored one.
       ref.read(sessionEpochProvider.notifier).bump();
+      // This phone's notifications follow the account now using it.
+      final SupabaseClient? client = ref.read(supabaseClientProvider);
+      if (client != null) {
+        unawaited(ref.read(pushServiceProvider).attach(client));
+      }
       if (!mounted) return;
       setState(() => _revealed = false);
       context.showSnack(l10n.accountRestored);

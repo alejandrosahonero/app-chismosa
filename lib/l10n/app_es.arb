@@ -502,5 +502,8 @@
         "type": "String"
       }
     }
-  }
+  },
+  "pushChannelName": "Mensajes en tus hilos",
+  "pushNewMessage": "Nuevo mensaje en uno de tus hilos",
+  "pushOpen": "Ver"
 }

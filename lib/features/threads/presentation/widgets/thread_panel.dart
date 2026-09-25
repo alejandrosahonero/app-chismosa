@@ -8,6 +8,7 @@ import 'package:chismosa/core/widgets/error_view.dart';
 import 'package:chismosa/features/threads/domain/thread_message.dart';
 import 'package:chismosa/features/threads/presentation/providers/thread_controller.dart';
 import 'package:chismosa/l10n/generated/app_localizations.dart';
+import 'package:chismosa/services/push/push_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -112,6 +113,9 @@ class _ThreadPanelState extends ConsumerState<ThreadPanel> {
 
     try {
       await ref.read(threadControllerProvider.notifier).send(text);
+      // The first message is when "tell me when someone answers" starts to
+      // mean something, so it is when the permission is asked — once, ever.
+      unawaited(ref.read(pushServiceProvider).askPermissionOnce());
     } on Object catch (error) {
       if (!mounted) return;
       // Put the text back so it is not lost to a dropped connection.

@@ -30,6 +30,7 @@ normales.
    - `migrations/0003_rls.sql`
    - `migrations/0004_moderation.sql`
    - `migrations/0005_groups.sql`
+   - `migrations/0006_push.sql`
 5. Settings → API → copiar *Project URL* y la clave *publishable* en
    `lib/core/config/backend_config.dart`.
 
@@ -82,17 +83,50 @@ El crédito lo escribe la Edge Function `functions/admob-ssv` cuando Google la l
 
 La unidad de prueba de Google no tiene callback, así que en debug el vídeo se ve pero **no llega crédito**. Para probar el circuito entero: la unidad real con tu móvil en `AdConfig.testDeviceIds`.
 
+## Notificaciones push (mensajes nuevos en tus hilos)
+
+Un trigger manda el id de cada mensaje nuevo a la Edge Function `thread-push`
+(por `pg_net`), y la función decide a quién avisar y envía por FCM. Gratis: FCM
+no cobra y la función cabe de sobra en el plan free.
+
+1. Firebase Console → Configuración del proyecto → Cuentas de servicio →
+   **Generar nueva clave privada**. Descarga un JSON. **No lo metas en el repo.**
+2. Inventa un secreto largo (por ejemplo `openssl rand -hex 32`).
+3. SQL Editor:
+   ```sql
+   select vault.create_secret('https://sbeyvzhtvmzcalflqajv.supabase.co/functions/v1/thread-push', 'push_function_url');
+   select vault.create_secret('<el secreto>', 'push_secret');
+   ```
+4. Terminal (fuera del repo, con el JSON en una sola línea dentro de un fichero
+   `.env` temporal: `FCM_SERVICE_ACCOUNT=<json>`):
+   ```
+   npx supabase secrets set PUSH_SECRET=<el secreto>
+   npx supabase secrets set --env-file ruta/al/.env
+   npx supabase functions deploy thread-push --no-verify-jwt
+   ```
+   Borra el `.env` después.
+
+Sin los dos secretos del Vault el trigger no hace nada y los mensajes siguen
+funcionando igual.
+
+Reglas: un aviso por hilo hasta que lo abras (no cuarenta en una noche), nunca
+a quien escribió, nunca a quien lo tiene silenciado, y nada entre personas que
+se han bloqueado. El permiso de notificaciones se pide una sola vez, justo
+después de tu primer mensaje en un hilo.
+
 ## Pendiente
 
 ### Pasos a mano todavía sin hacer
 
-- [ ] Ejecutar `0004_moderation.sql` y `0005_groups.sql` en el SQL Editor.
+- [ ] Ejecutar `0004_moderation.sql`, `0005_groups.sql` y `0006_push.sql` en el SQL Editor.
 - [ ] Desplegar la Edge Function `admob-ssv` (`npx supabase login`,
       `npx supabase link --project-ref sbeyvzhtvmzcalflqajv`,
       `npx supabase functions deploy admob-ssv --no-verify-jwt`).
 - [ ] Crear la unidad recompensada en AdMob con SSV apuntando a
       `https://sbeyvzhtvmzcalflqajv.supabase.co/functions/v1/admob-ssv` y poner
       su id en `_prodRewarded` (`lib/core/config/ad_config.dart`).
+- [ ] Notificaciones push (sección de abajo): secretos en Vault, secretos de
+      la función y desplegar `thread-push`.
 - [ ] Borrar la historia basura `90f59fbc-8423-4e0d-b84d-b82e5d641de8`.
 - [ ] Rotar la contraseña de Postgres.
 - [ ] Activar `pg_cron`.

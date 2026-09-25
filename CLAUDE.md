@@ -373,7 +373,9 @@ En Ajustes hay una fila **"Opciones de privacidad"** que reabre el formulario, v
 
 La app pide **uno solo en tiempo de ejecución**: `POST_NOTIFICATIONS`, para la pregunta del día (§6). El resto del manifiesto son permisos de instalación: `INTERNET`, `ACCESS_NETWORK_STATE`, `AD_ID` y `RECEIVE_BOOT_COMPLETED`.
 
-**`POST_NOTIFICATIONS` se pide desde el interruptor de Ajustes y desde ningún otro sitio.** Android enseña ese diálogo **una vez** y recuerda la negativa para siempre: gastarlo al arrancar, antes de que el usuario sepa siquiera qué hace la app, es como se mata una función de retención antes de publicarla. El interruptor *es* el consentimiento — al tocarlo ya ha dicho que la quiere.
+**Push de hilos (Chismosa):** el permiso se pide **una vez**, justo después del primer mensaje que el usuario escribe en un hilo (`PushService.askPermissionOnce`). Es el momento en que «avísame cuando me respondan» significa algo. El servidor decide a quién avisar (`supabase/functions/thread-push`); la app solo registra su token (`register_device`) y abre el hilo al tocar la notificación.
+
+**`POST_NOTIFICATIONS` para la pregunta del día (heredada) se pide desde el interruptor de Ajustes y desde ningún otro sitio.** Android enseña ese diálogo **una vez** y recuerda la negativa para siempre: gastarlo al arrancar, antes de que el usuario sepa siquiera qué hace la app, es como se mata una función de retención antes de publicarla. El interruptor *es* el consentimiento — al tocarlo ya ha dicho que la quiere.
 
 **`RECEIVE_BOOT_COMPLETED`** existe porque Android tira todas las alarmas pendientes al reiniciar y al actualizar la app. Sin él, la cola de dos semanas se pierde en el primer reinicio.
 

@@ -87,6 +87,8 @@ dependencies:
   # recuperación (`RecoveryCode`). Paquete de dart.dev, sin transitivas propias;
   # ya venía de rebote con supabase_flutter, se declara para no depender de eso.
   crypto: ^3.0.7
+  firebase_core: ^4.15.0
+  firebase_messaging: ^16.7.0
 
 dev_dependencies:
   flutter_test:
