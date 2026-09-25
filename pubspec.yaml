@@ -87,6 +87,10 @@ dependencies:
   # recuperación (`RecoveryCode`). Paquete de dart.dev, sin transitivas propias;
   # ya venía de rebote con supabase_flutter, se declara para no depender de eso.
   crypto: ^3.0.7
+  # Push de mensajes nuevos en hilos. FCM es la única vía gratuita de despertar
+  # un Android con la app cerrada. Coste: ~1-2 MB de AAB y un Firebase.initializeApp
+  # que corre después del primer frame, nunca antes. Solo Messaging: nada de
+  # Analytics ni Firestore.
   firebase_core: ^4.15.0
   firebase_messaging: ^16.7.0
 
