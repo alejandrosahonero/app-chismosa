@@ -39,3 +39,13 @@
 # usable once symbols are uploaded to the crash reporting tool.
 -keepattributes SourceFile,LineNumberTable
 -renamesourcefileattribute SourceFile
+
+# --- WorkManager / Room (pulled in by firebase_messaging and ads) ---------
+# Room builds its databases by reflection from the generated `_Impl` class.
+# R8 cannot see that, strips the constructor, and the app dies at startup in
+# androidx.startup ("Failed to create an instance of WorkDatabase") before a
+# single Flutter frame. Debug builds never show it.
+-keep class * extends androidx.room.RoomDatabase { <init>(); }
+-keep class androidx.work.impl.WorkDatabase_Impl { *; }
+-keep class androidx.work.** { *; }
+-dontwarn androidx.work.**
