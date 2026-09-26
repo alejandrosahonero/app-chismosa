@@ -7,21 +7,21 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
     <path
-        android:fillColor="#FF4B2B"
+        android:fillColor="#F4EFEA"
         android:pathData="M46,32 L62,32 A18,18 0 0 1 80,50 L80,54 A18,18 0 0 1 62,72 L50,72 L35,83 L38.5,69.6 A18,18 0 0 1 28,54 L28,50 A18,18 0 0 1 46,32 Z" />
     <!-- Closed, winking eye. -->
     <path
-        android:strokeColor="#221029"
+        android:strokeColor="#4A0000"
         android:strokeWidth="3.6"
         android:strokeLineCap="round"
         android:pathData="M40.5,51.5 Q45.5,45.5 50.5,51.5" />
     <!-- Open eye. -->
     <path
-        android:fillColor="#221029"
+        android:fillColor="#4A0000"
         android:pathData="M63,49.5 m-4,0 a4,4 0 1 0 8,0 a4,4 0 1 0 -8,0" />
     <!-- Half smile. -->
     <path
-        android:strokeColor="#221029"
+        android:strokeColor="#4A0000"
         android:strokeWidth="3.6"
         android:strokeLineCap="round"
         android:pathData="M45,60 Q54,66.5 63,59.5" />

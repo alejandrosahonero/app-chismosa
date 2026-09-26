@@ -60,7 +60,7 @@ abstract final class StoryShareImage {
   }) {
     canvas.drawRect(
       const Rect.fromLTWH(0, 0, width, height),
-      Paint()..color = AppColors.ink,
+      Paint()..color = AppColors.maroon,
     );
 
     // Header: the mark and the wordmark.
@@ -105,7 +105,7 @@ abstract final class StoryShareImage {
       );
       canvas.drawRRect(
         RRect.fromRectAndRadius(pillRect, const Radius.circular(40)),
-        Paint()..color = AppColors.lime,
+        Paint()..color = AppColors.dust,
       );
       pill.paint(canvas, Offset(pillRect.left + 24, pillRect.top + 10));
       top = pillRect.bottom + 24;
@@ -120,7 +120,7 @@ abstract final class StoryShareImage {
         fontWeight: FontWeight.w800,
         fontSize: 220,
         height: 1,
-        color: AppColors.spice,
+        color: AppColors.blood,
       ),
     );
 
@@ -150,7 +150,7 @@ abstract final class StoryShareImage {
         fontFamily: AppFonts.body,
         fontWeight: FontWeight.w600,
         fontSize: 38,
-        color: AppColors.lavender,
+        color: AppColors.dust,
       ),
       maxWidth: 936,
       align: TextAlign.center,
@@ -230,10 +230,10 @@ abstract final class StoryShareImage {
       ..lineTo(p(28, 50).dx, p(28, 50).dy)
       ..arcToPoint(p(46, 32), radius: Radius.circular(18 * k))
       ..close();
-    canvas.drawPath(bubble, Paint()..color = AppColors.spice);
+    canvas.drawPath(bubble, Paint()..color = AppColors.bone);
 
     final Paint stroke = Paint()
-      ..color = AppColors.ink
+      ..color = AppColors.maroon
       ..style = PaintingStyle.stroke
       ..strokeWidth = 3.6 * k
       ..strokeCap = StrokeCap.round;
@@ -249,7 +249,7 @@ abstract final class StoryShareImage {
           ),
         stroke,
       )
-      ..drawCircle(p(63, 49.5), 4 * k, Paint()..color = AppColors.ink)
+      ..drawCircle(p(63, 49.5), 4 * k, Paint()..color = AppColors.maroon)
       ..drawPath(
         Path()
           ..moveTo(p(45, 60).dx, p(45, 60).dy)

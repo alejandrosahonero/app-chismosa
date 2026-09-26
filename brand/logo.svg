@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="18 18 72 72" width="512" height="512">
   <title>Chismosa — la burbuja cómplice</title>
-  <rect x="18" y="18" width="72" height="72" rx="16" fill="#221029"/>
-  <path fill="#FF4B2B" d="M46,32 L62,32 A18,18 0 0 1 80,50 L80,54 A18,18 0 0 1 62,72 L50,72 L35,83 L38.5,69.6 A18,18 0 0 1 28,54 L28,50 A18,18 0 0 1 46,32 Z"/>
-  <path fill="none" stroke="#221029" stroke-width="3.6" stroke-linecap="round" d="M40.5,51.5 Q45.5,45.5 50.5,51.5"/>
-  <circle cx="63" cy="49.5" r="4" fill="#221029"/>
-  <path fill="none" stroke="#221029" stroke-width="3.6" stroke-linecap="round" d="M45,60 Q54,66.5 63,59.5"/>
+  <rect x="18" y="18" width="72" height="72" rx="16" fill="#4A0000"/>
+  <path fill="#F4EFEA" d="M46,32 L62,32 A18,18 0 0 1 80,50 L80,54 A18,18 0 0 1 62,72 L50,72 L35,83 L38.5,69.6 A18,18 0 0 1 28,54 L28,50 A18,18 0 0 1 46,32 Z"/>
+  <path fill="none" stroke="#4A0000" stroke-width="3.6" stroke-linecap="round" d="M40.5,51.5 Q45.5,45.5 50.5,51.5"/>
+  <circle cx="63" cy="49.5" r="4" fill="#4A0000"/>
+  <path fill="none" stroke="#4A0000" stroke-width="3.6" stroke-linecap="round" d="M45,60 Q54,66.5 63,59.5"/>
 </svg>

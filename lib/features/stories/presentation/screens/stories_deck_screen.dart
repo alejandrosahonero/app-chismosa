@@ -4,6 +4,7 @@ import 'package:chismosa/core/config/app_config.dart';
 import 'package:chismosa/core/config/links_config.dart';
 import 'package:chismosa/core/extensions/build_context_x.dart';
 import 'package:chismosa/core/routing/app_routes.dart';
+import 'package:chismosa/core/theme/app_colors.dart';
 import 'package:chismosa/core/theme/app_spacing.dart';
 import 'package:chismosa/core/widgets/adaptive_banner_ad.dart';
 import 'package:chismosa/core/widgets/app_loader.dart';
@@ -143,8 +144,9 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
         // reader taps most.
         IconButton.filled(
           style: IconButton.styleFrom(
-            backgroundColor: context.colors.primary,
-            foregroundColor: context.colors.onPrimary,
+            // A white disc on the Granate header, pencil in Sangre.
+            backgroundColor: Colors.white,
+            foregroundColor: AppColors.blood,
           ),
           onPressed: () => context.goNamed(AppRoutes.composeName),
           icon: const Icon(Icons.edit_outlined),

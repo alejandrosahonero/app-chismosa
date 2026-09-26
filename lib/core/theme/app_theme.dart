@@ -1,6 +1,7 @@
 import 'package:chismosa/core/theme/app_colors.dart';
 import 'package:chismosa/core/theme/app_spacing.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 /// Material 3 themes for the app, built on the hand-made palette in
 /// [AppColors].
@@ -33,11 +34,13 @@ abstract final class AppTheme {
     return base.copyWith(
       scaffoldBackgroundColor: scheme.surface,
       extensions: <ThemeExtension<dynamic>>[semantic],
-      appBarTheme: AppBarTheme(
-        backgroundColor: scheme.surface,
-        foregroundColor: scheme.onSurface,
+      // The header is Granate in both themes: it is the brand's frame.
+      appBarTheme: const AppBarTheme(
+        backgroundColor: AppColors.maroon,
+        foregroundColor: Colors.white,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
         elevation: 0,
-        scrolledUnderElevation: 3,
+        scrolledUnderElevation: 0,
         centerTitle: false,
       ),
       cardTheme: CardThemeData(
@@ -75,14 +78,14 @@ abstract final class AppTheme {
       chipTheme: ChipThemeData(
         shape: const StadiumBorder(),
         side: BorderSide(color: scheme.outlineVariant),
-        selectedColor: scheme.inverseSurface,
-        secondarySelectedColor: scheme.inverseSurface,
-        checkmarkColor: scheme.onInverseSurface,
+        selectedColor: scheme.primary,
+        secondarySelectedColor: scheme.primary,
+        checkmarkColor: scheme.onPrimary,
         labelStyle: base.textTheme.labelLarge?.copyWith(
           color: scheme.onSurface,
         ),
         secondaryLabelStyle: base.textTheme.labelLarge?.copyWith(
-          color: scheme.onInverseSurface,
+          color: scheme.onPrimary,
         ),
         showCheckmark: false,
       ),

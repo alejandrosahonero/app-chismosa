@@ -55,7 +55,7 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
     final bool last = _page == 2;
 
     return Scaffold(
-      backgroundColor: AppColors.ink,
+      backgroundColor: AppColors.maroon,
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -81,8 +81,8 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
               padding: const EdgeInsets.all(AppSpacing.lg),
               child: FilledButton(
                 style: FilledButton.styleFrom(
-                  backgroundColor: AppColors.spice,
-                  foregroundColor: AppColors.ink,
+                  backgroundColor: AppColors.bone,
+                  foregroundColor: AppColors.maroon,
                   disabledBackgroundColor: AppColors.paper.withValues(
                     alpha: 0.12,
                   ),
@@ -143,7 +143,7 @@ class _Hero extends StatelessWidget {
               fontSize: 120,
               height: 0.8,
               fontWeight: FontWeight.w900,
-              color: AppColors.spice,
+              color: AppColors.dust,
             ),
           ),
           Text(
@@ -191,13 +191,13 @@ class _Gestures extends StatelessWidget {
           const SizedBox(height: AppSpacing.xl),
           _GestureRow(
             icon: Icons.arrow_upward_rounded,
-            color: AppColors.lavender,
+            color: AppColors.bone,
             text: l10n.welcomeGestureUp,
             emphasis: true,
           ),
           _GestureRow(
             icon: Icons.arrow_forward_rounded,
-            color: AppColors.spice,
+            color: AppColors.dust,
             text: l10n.welcomeGestureRight,
           ),
           _GestureRow(
@@ -207,12 +207,12 @@ class _Gestures extends StatelessWidget {
           ),
           _GestureRow(
             icon: Icons.arrow_downward_rounded,
-            color: AppColors.lime,
+            color: AppColors.dust,
             text: l10n.welcomeGestureDown,
           ),
           _GestureRow(
             icon: Icons.edit_outlined,
-            color: AppColors.lime,
+            color: AppColors.dust,
             text: l10n.welcomeGestureWrite,
           ),
         ],
@@ -312,7 +312,7 @@ class _Rules extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                const Icon(Icons.close_rounded, color: AppColors.spice),
+                const Icon(Icons.close_rounded, color: AppColors.dust),
                 const SizedBox(width: AppSpacing.sm),
                 Expanded(child: Text(text, style: rule)),
               ],
@@ -348,8 +348,8 @@ class _Check extends StatelessWidget {
       onChanged: (bool? next) => onChanged(next ?? false),
       contentPadding: EdgeInsets.zero,
       controlAffinity: ListTileControlAffinity.leading,
-      activeColor: AppColors.spice,
-      checkColor: AppColors.ink,
+      activeColor: AppColors.bone,
+      checkColor: AppColors.maroon,
       side: const BorderSide(color: AppColors.paper, width: 1.5),
       title: Text(
         label,
@@ -377,7 +377,7 @@ class _Dots extends StatelessWidget {
             height: 8,
             decoration: BoxDecoration(
               color: i == page
-                  ? AppColors.spice
+                  ? AppColors.bone
                   : AppColors.paper.withValues(alpha: 0.3),
               borderRadius: BorderRadius.circular(AppRadius.pill),
             ),

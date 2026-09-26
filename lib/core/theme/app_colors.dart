@@ -1,111 +1,109 @@
 import 'package:flutter/material.dart';
 
-/// The Chismosa palette.
+/// The Chismosa palette: "Rojo sangre".
 ///
-/// Hand-built, not seeded. A single seed through `ColorScheme.fromSeed` gives
-/// the same pastel lilac every template app on the store has; this app is
-/// meant to look like nothing else on the phone.
-///
-/// The idea behind it: **a note passed in secret**. Warm paper cards on sand,
-/// written in plum ink, with a single hot colour for the thing that matters.
+/// Hand-built, not seeded, and chosen by the owner over several rounds of
+/// mockups: a love letter and a scandal. Blood red on bone, a deep maroon
+/// header, near-black red ink.
 ///
 /// | Name | Hex | Role |
 /// |---|---|---|
-/// | Tinta | `#221029` | Text, dark background — plum, never pure black |
-/// | Papel | `#FFF8F0` | The card: a note, not a panel |
-/// | Arena | `#FBF1E6` | Light background |
-/// | Picante | `#FF4B2B` | The brand colour: logo, like, dark primary |
-/// | Picante hondo | `#D2301A` | Light primary: Picante darkened to pass 4.5:1 as text |
-/// | Lavanda | `#B7A4FF` | Conversation: threads, aliases |
-/// | Lima | `#D8F34A` | Rewards: chapters, goals, "new" |
+/// | Granate | `#4A0000` | The header, the welcome, the share image, the icon ground |
+/// | Sangre | `#880808` | The brand colour: primary, like, quote mark, pills |
+/// | Tinta | `#1E0B0B` | Text — red-black, never pure black |
+/// | Hueso | `#F4EFEA` | Light background |
+/// | Papel | `#FFFFFF` | The card |
+/// | Polvo | `#C9A9A0` | Quiet accents: chapter pill, links on maroon |
 ///
-/// Contrast is checked, not guessed: Tinta on Papel ~17:1, white on Picante
-/// hondo 5.0:1, Tinta on Picante 5.4:1, Picante on dark Tinta 5.4:1.
+/// Contrast: Tinta on Papel ~19:1, white on Sangre 9.3:1, white on Granate
+/// 14:1, Sangre on Hueso 8.2:1. Sangre is too dark to read on the dark theme's
+/// background, so dark mode uses a lifted red (#FF6B63) as primary.
 abstract final class AppColors {
-  static const Color ink = Color(0xFF221029);
-  static const Color paper = Color(0xFFFFF8F0);
-  static const Color sand = Color(0xFFFBF1E6);
-  static const Color spice = Color(0xFFFF4B2B);
-  static const Color spiceDeep = Color(0xFFD2301A);
-  static const Color lavender = Color(0xFFB7A4FF);
-  static const Color lime = Color(0xFFD8F34A);
+  static const Color maroon = Color(0xFF4A0000);
+  static const Color blood = Color(0xFF880808);
+  static const Color ink = Color(0xFF1E0B0B);
+  static const Color bone = Color(0xFFF4EFEA);
+  static const Color paper = Color(0xFFFFFFFF);
+  static const Color dust = Color(0xFFC9A9A0);
 
-  /// Kept for anything that still wants "the" brand colour in one constant:
-  /// the splash, the notification accent, the share sheet.
-  static const Color seed = spice;
+  /// Primary on the dark theme: Sangre lifted until it reads on near-black.
+  static const Color bloodLight = Color(0xFFFF6B63);
+
+  /// "The" brand colour in one constant: splash, notification accent.
+  static const Color seed = blood;
 
   static const Color success = Color(0xFF2E7D32);
   static const Color warning = Color(0xFFB26A00);
 
   static const ColorScheme light = ColorScheme(
     brightness: Brightness.light,
-    primary: spiceDeep,
+    primary: blood,
     onPrimary: Colors.white,
-    primaryContainer: Color(0xFFFFDAD1),
-    onPrimaryContainer: Color(0xFF3D0A02),
-    secondary: Color(0xFF5B45BD),
+    primaryContainer: Color(0xFFF6DAD7),
+    onPrimaryContainer: maroon,
+    secondary: blood,
     onSecondary: Colors.white,
-    secondaryContainer: Color(0xFFE8E0FF),
-    onSecondaryContainer: Color(0xFF1D0A5C),
-    tertiary: Color(0xFF4A5A00),
+    secondaryContainer: blood,
+    onSecondaryContainer: Colors.white,
+    tertiary: Color(0xFF6E4A43),
     onTertiary: Colors.white,
-    tertiaryContainer: lime,
-    onTertiaryContainer: Color(0xFF1B2200),
+    tertiaryContainer: dust,
+    onTertiaryContainer: ink,
     error: Color(0xFFBA1A1A),
     onError: Colors.white,
     errorContainer: Color(0xFFFFDAD6),
     onErrorContainer: Color(0xFF410002),
-    surface: sand,
+    surface: bone,
     onSurface: ink,
-    onSurfaceVariant: Color(0xFF6E5C72),
+    onSurfaceVariant: Color(0xFF7A5F5B),
     surfaceContainerLowest: Colors.white,
-    surfaceContainerLow: Color(0xFFF7EBDD),
-    surfaceContainer: Color(0xFFF2E4D4),
-    surfaceContainerHigh: Color(0xFFEDDDCB),
-    surfaceContainerHighest: Color(0xFFE7D6C3),
-    outline: Color(0xFFA8949F),
-    outlineVariant: Color(0xFFE3D2C3),
-    shadow: Color(0xFF3B1F2B),
+    surfaceContainerLow: Color(0xFFEFE8E2),
+    surfaceContainer: Color(0xFFE9E0D9),
+    surfaceContainerHigh: Color(0xFFE3D8D0),
+    surfaceContainerHighest: Color(0xFFDCCFC6),
+    outline: Color(0xFFA88C86),
+    outlineVariant: Color(0xFFE2D6CF),
+    shadow: Color(0xFF2A0A0A),
     scrim: Colors.black,
     inverseSurface: ink,
-    onInverseSurface: paper,
-    inversePrimary: spice,
+    onInverseSurface: bone,
+    inversePrimary: bloodLight,
     surfaceTint: Colors.transparent,
   );
 
   static const ColorScheme dark = ColorScheme(
     brightness: Brightness.dark,
-    primary: spice,
-    onPrimary: ink,
-    primaryContainer: Color(0xFF7A1A0B),
-    onPrimaryContainer: Color(0xFFFFDAD1),
-    secondary: lavender,
-    onSecondary: Color(0xFF24135C),
-    secondaryContainer: Color(0xFF3F2C8A),
-    onSecondaryContainer: Color(0xFFE8E0FF),
-    tertiary: lime,
-    onTertiary: Color(0xFF1B2200),
-    tertiaryContainer: Color(0xFF384500),
-    onTertiaryContainer: lime,
+    primary: bloodLight,
+    onPrimary: Color(0xFF2A0000),
+    primaryContainer: blood,
+    onPrimaryContainer: Color(0xFFFFDAD6),
+    secondary: bloodLight,
+    onSecondary: Color(0xFF2A0000),
+    secondaryContainer: blood,
+    onSecondaryContainer: Colors.white,
+    tertiary: dust,
+    onTertiary: ink,
+    tertiaryContainer: Color(0xFF5A403B),
+    onTertiaryContainer: Color(0xFFF4E0DA),
     error: Color(0xFFFFB4AB),
     onError: Color(0xFF690005),
     errorContainer: Color(0xFF93000A),
     onErrorContainer: Color(0xFFFFDAD6),
-    surface: Color(0xFF1A0C20),
-    onSurface: Color(0xFFFFF1E6),
-    onSurfaceVariant: Color(0xFFC9B6CB),
-    surfaceContainerLowest: Color(0xFF14081A),
-    surfaceContainerLow: Color(0xFF22122A),
-    surfaceContainer: Color(0xFF2A1833),
-    surfaceContainerHigh: Color(0xFF33203D),
-    surfaceContainerHighest: Color(0xFF3D2948),
-    outline: Color(0xFF8C7690),
-    outlineVariant: Color(0xFF4A3553),
+    surface: Color(0xFF140707),
+    onSurface: bone,
+    onSurfaceVariant: Color(0xFFCDB6B0),
+    surfaceContainerLowest: Color(0xFF0E0404),
+    surfaceContainerLow: Color(0xFF1C0C0B),
+    surfaceContainer: Color(0xFF231110),
+    surfaceContainerHigh: Color(0xFF2C1715),
+    surfaceContainerHighest: Color(0xFF361E1B),
+    outline: Color(0xFF8E726C),
+    outlineVariant: Color(0xFF4A2F2B),
     shadow: Colors.black,
     scrim: Colors.black,
-    inverseSurface: paper,
+    inverseSurface: bone,
     onInverseSurface: ink,
-    inversePrimary: spiceDeep,
+    inversePrimary: blood,
     surfaceTint: Colors.transparent,
   );
 }
@@ -126,7 +124,7 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
   final Color warning;
 
   /// The story card. Lighter than the background in light mode — paper on a
-  /// table — and a warm plum in dark mode.
+  /// table — and a deep red-brown in dark mode.
   final Color paper;
   final Color onPaper;
 
@@ -138,15 +136,15 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
     warning: AppColors.warning,
     paper: AppColors.paper,
     onPaper: AppColors.ink,
-    quote: AppColors.spice,
+    quote: AppColors.blood,
   );
 
   static const AppSemanticColors dark = AppSemanticColors(
     success: Color(0xFF8BD88F),
     warning: Color(0xFFFFB95C),
-    paper: Color(0xFF2E1B38),
-    onPaper: Color(0xFFFFF1E6),
-    quote: AppColors.spice,
+    paper: Color(0xFF231110),
+    onPaper: AppColors.bone,
+    quote: AppColors.bloodLight,
   );
 
   @override
