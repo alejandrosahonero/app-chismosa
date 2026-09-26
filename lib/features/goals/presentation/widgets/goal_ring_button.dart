@@ -27,9 +27,12 @@ class GoalRingButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final GoalsState goals = ref.watch(goalsControllerProvider);
+    // It lives on the Granate header in both themes, so it is drawn in the
+    // header's own colours: white progress on a faint white track, and a
+    // light green once the day is done.
     final Color color = goals.isComplete
-        ? context.semanticColors.success
-        : context.colors.primary;
+        ? const Color(0xFF8BD88F)
+        : Colors.white;
 
     return IconButton(
       onPressed: () => context.goNamed(AppRoutes.progressName),
@@ -46,7 +49,7 @@ class GoalRingButton extends ConsumerWidget {
               value: goals.progress,
               strokeWidth: 3,
               strokeCap: StrokeCap.round,
-              backgroundColor: context.colors.surfaceContainerHighest,
+              backgroundColor: Colors.white.withValues(alpha: 0.22),
               valueColor: AlwaysStoppedAnimation<Color>(color),
             ),
             Icon(
