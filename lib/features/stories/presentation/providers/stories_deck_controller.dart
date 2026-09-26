@@ -110,11 +110,16 @@ class StoriesDeckController extends AsyncNotifier<StoriesDeckState> {
       );
     }
 
-    final List<Story> page = await repository.fetchFeed(
-      query,
-      excludeIds: seenIds,
-      limit: BackendConfig.feedPageSize,
-    );
+    // Bounded: an unreachable server (no DNS, a paused project, a captive
+    // portal) otherwise leaves the deck on its spinner forever. Timing out
+    // turns it into the offline screen, which has a retry button.
+    final List<Story> page = await repository
+        .fetchFeed(
+          query,
+          excludeIds: seenIds,
+          limit: BackendConfig.feedPageSize,
+        )
+        .timeout(BackendConfig.requestTimeout);
 
     // "Me gustaron" is the one mode that re-deals seen cards.
     final List<Story> fresh = query.liked

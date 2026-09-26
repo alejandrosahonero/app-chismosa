@@ -51,6 +51,9 @@ abstract final class BackendConfig {
   /// big enough that the user rarely reaches the end of one mid-session.
   static const int feedPageSize = 30;
 
+  /// How long the deck waits for a page before showing the offline screen.
+  static const Duration requestTimeout = Duration(seconds: 15);
+
   /// Newest ids from the device's seen list that travel with a feed request.
   ///
   /// The full list lives on the device (same as the inherited deck did): one

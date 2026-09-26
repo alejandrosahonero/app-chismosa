@@ -70,6 +70,11 @@ Future<void> bootstrap() async {
         // `Override` is not exported by flutter_riverpod; the literal's type is
         // inferred from the element.
         overrides: [sharedPreferencesProvider.overrideWithValue(preferences)],
+        // No automatic retries. Riverpod 3 retries failed providers by
+        // default and reports them as loading meanwhile, so an unreachable
+        // server looked like a spinner that never ends. Every screen has
+        // its own retry button; failures must reach it.
+        retry: (int retryCount, Object error) => null,
       );
 
       unawaited(container.read(reviewServiceProvider).registerAppStart());
