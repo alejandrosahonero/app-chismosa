@@ -41,8 +41,10 @@ $fn$;
 create or replace function public.before_insert_personal_data()
 returns trigger language plpgsql security definer set search_path = public as $fn$
 begin
+  -- Through jsonb: PL/pgSQL resolves every new.<field> in a CASE, so naming
+  -- new.name on a stories row fails even when that branch is never taken.
   if public.contains_personal_data(
-       case tg_table_name when 'groups' then new.name else new.body end
+       to_jsonb(new) ->> case tg_table_name when 'groups' then 'name' else 'body' end
      ) then
     raise exception 'personal_data' using errcode = 'P0001';
   end if;
