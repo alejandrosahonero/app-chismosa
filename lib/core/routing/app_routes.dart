@@ -26,6 +26,10 @@ abstract final class AppRoutes {
   static const String myStoriesPath = '/mine';
   static const String myStoriesName = 'mine';
 
+  /// This account is in use on another phone (not premium).
+  static const String movedPath = '/moved';
+  static const String movedName = 'moved';
+
   /// First run: what this is, the four gestures, the rules and the age check.
   static const String welcomePath = '/welcome';
   static const String welcomeName = 'welcome';

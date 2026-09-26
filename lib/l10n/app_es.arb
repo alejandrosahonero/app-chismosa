@@ -497,5 +497,10 @@
         "type": "String"
       }
     }
-  }
+  },
+  "movedTitle": "Tu cuenta está abierta en otro móvil",
+  "movedBody": "Sin Premium, una cuenta se usa en un solo móvil a la vez. Puedes traerla a este (el otro dejará de poder usarla) o hacerte Premium para usarla en los dos.",
+  "movedTakeHere": "Usarla en este móvil",
+  "movedGoPremium": "Usarla en los dos con Premium",
+  "paywallBenefitDevices": "Usa tu cuenta en varios móviles a la vez"
 }

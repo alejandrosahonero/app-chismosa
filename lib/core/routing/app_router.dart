@@ -3,6 +3,7 @@ import 'package:chismosa/core/widgets/error_view.dart';
 import 'package:chismosa/features/goals/presentation/screens/progress_screen.dart';
 import 'package:chismosa/features/groups/presentation/screens/groups_screen.dart';
 import 'package:chismosa/features/premium/presentation/screens/paywall_screen.dart';
+import 'package:chismosa/features/settings/presentation/screens/account_moved_screen.dart';
 import 'package:chismosa/features/settings/presentation/screens/language_preferences_screen.dart';
 import 'package:chismosa/features/settings/presentation/screens/settings_screen.dart';
 import 'package:chismosa/features/stories/domain/story.dart';
@@ -13,6 +14,7 @@ import 'package:chismosa/features/stories/presentation/screens/stories_deck_scre
 import 'package:chismosa/features/threads/presentation/screens/thread_screen.dart';
 import 'package:chismosa/features/threads/presentation/screens/threads_history_screen.dart';
 import 'package:chismosa/features/welcome/welcome_screen.dart';
+import 'package:chismosa/services/identity/install_claim.dart';
 import 'package:chismosa/services/storage/storage_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -54,9 +56,24 @@ final Provider<GoRouter> routerProvider = Provider<GoRouter>((Ref ref) {
               ).toString();
       }
       if (done && atWelcome) return AppRoutes.homePath;
+
+      // Another phone holds this account: nothing but the explanation and
+      // the paywall (premium is one of the two ways out).
+      final bool moved = ref.read(accountMovedProvider);
+      final String at = state.matchedLocation;
+      if (moved && at != AppRoutes.movedPath && at != AppRoutes.paywallPath) {
+        return AppRoutes.movedPath;
+      }
+      if (!moved && at == AppRoutes.movedPath) return AppRoutes.homePath;
       return null;
     },
     routes: <RouteBase>[
+      GoRoute(
+        path: AppRoutes.movedPath,
+        name: AppRoutes.movedName,
+        builder: (BuildContext context, GoRouterState state) =>
+            const AccountMovedScreen(),
+      ),
       GoRoute(
         path: AppRoutes.welcomePath,
         name: AppRoutes.welcomeName,

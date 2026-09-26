@@ -83,6 +83,10 @@ class _PaywallBody extends ConsumerWidget {
           textKey: _BenefitKey.unlimited,
         ),
         const _Benefit(
+          icon: Icons.devices_outlined,
+          textKey: _BenefitKey.devices,
+        ),
+        const _Benefit(
           icon: Icons.favorite_outline,
           textKey: _BenefitKey.support,
         ),
@@ -134,7 +138,7 @@ class _PaywallBody extends ConsumerWidget {
   }
 }
 
-enum _BenefitKey { noAds, unlimited, support, oneTime }
+enum _BenefitKey { noAds, unlimited, devices, support, oneTime }
 
 class _Benefit extends StatelessWidget {
   const _Benefit({required this.icon, required this.textKey});
@@ -147,6 +151,7 @@ class _Benefit extends StatelessWidget {
     final String text = switch (textKey) {
       _BenefitKey.noAds => context.l10n.paywallBenefitNoAds,
       _BenefitKey.unlimited => context.l10n.paywallBenefitUnlimited,
+      _BenefitKey.devices => context.l10n.paywallBenefitDevices,
       _BenefitKey.support => context.l10n.paywallBenefitSupport,
       _BenefitKey.oneTime => context.l10n.paywallBenefitOneTime,
     };

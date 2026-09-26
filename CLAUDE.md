@@ -169,6 +169,7 @@ Los botones inferiores repiten los gestos y **no son decorativos**: una interfaz
 
 - Auth anónima de Supabase. Sin email ni contraseña.
 - Una cuenta por persona. El secreto se deriva de un **código de recuperación** (`CHM-XXXX-…`, 120 bits) guardado en el directorio de soporte, que Auto Backup restaura al reinstalar.
+- **Un móvil a la vez; varios con Premium** (`0009`, `InstallClaim`). Cada instalación tiene un id aleatorio en preferencias. Al arrancar, al volver al primer plano y al recuperar una cuenta, `claim_install` dice si este móvil puede usarla; si otro la tiene y no es premium, el router lleva a `/moved`, que ofrece **traerla aquí (gratis, el otro móvil la pierde)** o Premium para usarla en los dos. Mover la cuenta nunca se cobra: un móvil perdido no puede dejar a nadie sin su cuenta. Si no se puede preguntar al servidor, se deja pasar.
 - El código solo se enseña en Ajustes, detrás de un toque. Restaurar otra cuenta incrementa `sessionEpoch` y re-registra el token de push.
 
 ---

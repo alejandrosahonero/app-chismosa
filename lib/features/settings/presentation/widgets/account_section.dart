@@ -1,16 +1,19 @@
 import 'dart:async';
 
 import 'package:chismosa/core/extensions/build_context_x.dart';
+import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/theme/app_spacing.dart';
 import 'package:chismosa/core/widgets/confirm_dialog.dart';
 import 'package:chismosa/l10n/generated/app_localizations.dart';
 import 'package:chismosa/services/backend/backend_providers.dart';
 import 'package:chismosa/services/identity/anonymous_identity_service.dart';
+import 'package:chismosa/services/identity/install_claim.dart';
 import 'package:chismosa/services/moderation/moderation_service.dart';
 import 'package:chismosa/services/push/push_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 /// The recovery code, restoring another account, and blocked people.
@@ -99,6 +102,13 @@ class _AccountSectionState extends ConsumerState<AccountSection> {
       if (!mounted) return;
       setState(() => _revealed = false);
       context.showSnack(l10n.accountRestored);
+      // Restoring onto this phone while another still uses the account: the
+      // moved screen offers to bring it here (free) or keep both (premium).
+      final ClaimResult claim = await ref.read(installClaimProvider).claim();
+      if (claim == ClaimResult.moved && mounted) {
+        ref.read(accountMovedProvider.notifier).set(moved: true);
+        context.goNamed(AppRoutes.movedName);
+      }
     } on Object {
       if (mounted) context.showSnack(l10n.accountRestoreInvalid);
     }
@@ -165,7 +175,10 @@ class _RestoreDialogState extends State<_RestoreDialog> {
   Widget build(BuildContext context) {
     final AppLocalizations l10n = context.l10n;
 
+    // Scrollable: with the keyboard up the dialog is shorter than its
+    // content ("bottom overflowed" on small phones).
     return AlertDialog(
+      scrollable: true,
       title: Text(l10n.accountRestoreTitle),
       content: Column(
         mainAxisSize: MainAxisSize.min,

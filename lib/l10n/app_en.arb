@@ -248,5 +248,10 @@
   "reportSexualOrIllegal": "Sexual content involving minors, or illegal",
   "reportOther": "Something else",
   "reportNamesSomeoneDone": "Hidden for everyone while we review it. Thank you.",
-  "welcomeGestureDown": "Down: share it on your socials"
+  "welcomeGestureDown": "Down: share it on your socials",
+  "movedTitle": "Your account is open on another phone",
+  "movedBody": "Without Premium an account is used on one phone at a time. Bring it to this one (the other stops being able to use it) or go Premium to use it on both.",
+  "movedTakeHere": "Use it on this phone",
+  "movedGoPremium": "Use it on both with Premium",
+  "paywallBenefitDevices": "Use your account on several phones at once"
 }

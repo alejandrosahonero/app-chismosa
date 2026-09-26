@@ -8,6 +8,7 @@ import 'package:chismosa/l10n/generated/app_localizations.dart';
 import 'package:chismosa/services/ads/ads_providers.dart';
 import 'package:chismosa/services/backend/backend_providers.dart';
 import 'package:chismosa/services/billing/premium_controller.dart';
+import 'package:chismosa/services/identity/install_claim.dart';
 import 'package:chismosa/services/locale/locale_providers.dart';
 import 'package:chismosa/services/push/push_providers.dart';
 import 'package:chismosa/services/push/push_service.dart';
@@ -108,6 +109,12 @@ Future<void> _initializeAfterFirstFrame(ProviderContainer container) async {
     if (client != null) {
       container.read(supabaseClientProvider.notifier).attach(client);
       await container.read(identityServiceProvider)?.ensureSignedIn();
+      await checkInstallClaim(container);
+      // A phone that was left in the background while the account moved to
+      // another one finds out the moment it comes back.
+      AppLifecycleListener(
+        onResume: () => unawaited(checkInstallClaim(container)),
+      );
       // The profile row exists by now (a trigger creates it on sign-up), so
       // this is where the country and languages the device reports first reach
       // the server. It swallows its own failures: the deck sends its filters
@@ -190,4 +197,16 @@ Future<void> _initializePush(ProviderContainer container) async {
   );
   final SupabaseClient? client = container.read(supabaseClientProvider);
   if (client != null) await push.attach(client);
+}
+
+/// Asks the server whether this phone may use the signed-in account and, if
+/// not, sends the app to the "on another phone" screen.
+Future<void> checkInstallClaim(ProviderContainer container) async {
+  final ClaimResult result = await container.read(installClaimProvider).claim();
+  final bool moved = result == ClaimResult.moved;
+  if (container.read(accountMovedProvider) == moved) return;
+  container.read(accountMovedProvider.notifier).set(moved: moved);
+  container
+      .read(routerProvider)
+      .goNamed(moved ? AppRoutes.movedName : AppRoutes.homeName);
 }
