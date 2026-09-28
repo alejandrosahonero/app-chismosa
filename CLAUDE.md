@@ -235,7 +235,7 @@ Guardar `build/symbols/<versión>` fuera del repo.
 **Pasos a mano en el backend**: lista en `supabase/README.md` → «Pendiente».
 
 **Antes de publicar:**
-1. IDs de producción de AdMob (`ad_config.dart`, App ID en el manifiesto, unidad recompensada con SSV).
+1. ~~IDs de AdMob~~: app «Chismosa» (`ca-app-pub-4073049276319773~8299493462`) con banner, intersticial y recompensada (SSV verificada contra `admob-ssv`); `site/app-ads.txt` publicado. Falta vincular la app de AdMob a la ficha de Play cuando esté publicada.
 2. Validar el token de compra de Play en servidor antes de fiarse de `is_premium`.
 3. Iconos adaptativos y splash nativo.
 4. ~~Crash reporting~~: **Sentry** integrado con su DSN (`core/config/crash_config.dart`, reenviado desde `AppLogger.error`, solo en release). Nunca Crashlytics.

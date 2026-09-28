@@ -48,14 +48,15 @@
         android:enableOnBackInvokedCallback="true">
 
         <!-- ==============================================================
-             AdMob App ID — OFFICIAL GOOGLE TEST ID.
-             Replace it with the production App ID only when you ship.
-             Shipping a production App ID in a debug build is a direct cause
-             of an AdMob ban for invalid traffic.
+             AdMob App ID of the "Chismosa" app (AdConfig.appId).
+             The real App ID is fine in debug: Google's own setup pairs it
+             with test *unit* ids, and AdConfig only hands out production
+             units in release. Real ads in debug are what gets accounts
+             banned, not the App ID.
              ============================================================== -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
+            android:value="ca-app-pub-4073049276319773~8299493462" />
 
         <!-- Delays ad SDK initialization until MobileAds.initialize() is
              called, so nothing competes with the first frame. -->

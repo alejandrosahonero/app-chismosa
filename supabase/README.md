@@ -157,7 +157,7 @@ licencia» en Play Console, que compra sin pagar):
       `npx supabase functions deploy <nombre>` por cada una; `admob-ssv` y
       `thread-push` con `--no-verify-jwt`).
 - [ ] Secretos: los de push (sección de arriba) y `PLAY_SERVICE_ACCOUNT`.
-- [ ] Crear la unidad recompensada en AdMob con SSV apuntando a
+- [x] Crear la unidad recompensada en AdMob con SSV apuntando a
       `https://sbeyvzhtvmzcalflqajv.supabase.co/functions/v1/admob-ssv` y poner
       su id en `_prodRewarded` (`lib/core/config/ad_config.dart`).
 - [ ] Publicar `site/` en GitHub Pages como `chismosa-app.github.io` y añadir
