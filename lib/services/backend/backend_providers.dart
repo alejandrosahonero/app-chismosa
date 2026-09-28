@@ -42,7 +42,7 @@ final Provider<AnonymousIdentityService?> identityServiceProvider =
       final SupabaseClient? client = ref.watch(supabaseClientProvider);
       if (client == null) return null;
       return AnonymousIdentityService(
-        backend: SupabaseIdentityBackend(client.auth),
+        backend: SupabaseIdentityBackend(client),
         store: FileSecretStore(),
       );
     });

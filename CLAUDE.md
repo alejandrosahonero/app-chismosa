@@ -89,7 +89,7 @@ lib/
 │   ├── ads/ billing/ review/ storage/
 └── l10n/
 supabase/
-├── migrations/        # 0001…0006, se ejecutan en orden en el SQL Editor
+├── migrations/        # 0001…0010, se ejecutan en orden en el SQL Editor
 └── functions/         # admob-ssv, thread-push (Deno)
 ```
 
@@ -170,6 +170,7 @@ Los botones inferiores repiten los gestos y **no son decorativos**: una interfaz
 - Auth anónima de Supabase. Sin email ni contraseña.
 - Una cuenta por persona. El secreto se deriva de un **código de recuperación** (`CHM-XXXX-…`, 120 bits) guardado en el directorio de soporte, que Auto Backup restaura al reinstalar.
 - **Un móvil a la vez; varios con Premium** (`0009`, `InstallClaim`). Cada instalación tiene un id aleatorio en preferencias. Al arrancar, al volver al primer plano y al recuperar una cuenta, `claim_install` dice si este móvil puede usarla; si otro la tiene y no es premium, el router lleva a `/moved`, que ofrece **traerla aquí (gratis, el otro móvil la pierde)** o Premium para usarla en los dos. Mover la cuenta nunca se cobra: un móvil perdido no puede dejar a nadie sin su cuenta. Si no se puede preguntar al servidor, se deja pasar.
+- **Borrar mi cuenta** (Ajustes, lo exige Google Play): `delete_my_account()` borra la fila de `auth.users` y todo cae en cascada; el móvil sigue con una cuenta nueva y vacía (la app no tiene estado «sin sesión»). El secreto local solo se borra si el servidor confirmó.
 - El código solo se enseña en Ajustes, detrás de un toque. Restaurar otra cuenta incrementa `sessionEpoch` y re-registra el token de push.
 
 ---
@@ -238,7 +239,7 @@ Guardar `build/symbols/<versión>` fuera del repo.
 2. Validar el token de compra de Play en servidor antes de fiarse de `is_premium`.
 3. Iconos adaptativos y splash nativo.
 4. ~~Crash reporting~~: **Sentry** integrado con su DSN (`core/config/crash_config.dart`, reenviado desde `AppLogger.error`, solo en release). Nunca Crashlytics.
-5. Política de privacidad: `site/privacidad.html` → `https://chismosa-app.github.io/privacidad.html`. Borrar la cuenta hoy es por email; Play puede exigir un botón «Borrar mi cuenta» en la app. Data Safety: **contenido generado por usuarios**, ID de publicidad, token de push; clasificación de contenido con UGC y moderación declarada.
+5. Política de privacidad: `site/privacidad.html` → `https://chismosa-app.github.io/privacidad.html`. Contacto: `chismosa.app@gmail.com`. Borrar la cuenta: Ajustes → «Borrar mi cuenta» (`delete_my_account`, 0010; todo cae en cascada desde `auth.users`) o por email. Data Safety: **contenido generado por usuarios**, ID de publicidad, token de push; clasificación de contenido con UGC y moderación declarada.
 6. App Links `https` en GitHub Pages (`chismosa-app.github.io`, `site/README.md`): falta publicar y añadir la huella de Play App Signing a `assetlinks.json`.
 7. Testing cerrado (12 testers / 14 días) → producción con rollout escalonado.
 8. Firma: `android/upload-keystore.jks` + `android/key.properties` (git-ignored). **Copia de seguridad de los dos** fuera del ordenador: sin ellos no se pueden subir actualizaciones sin pasar por el soporte de Google.

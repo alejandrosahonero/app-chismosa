@@ -34,6 +34,8 @@ class _FakeBackend implements IdentityBackend {
   int anonymousSignIns = 0;
   int credentialSignIns = 0;
   String? attachedEmail;
+  int deletions = 0;
+  bool failDelete = false;
 
   @override
   String? get currentUserId => currentId;
@@ -68,6 +70,14 @@ class _FakeBackend implements IdentityBackend {
     }
     upgraded = true;
     return currentId = 'restored';
+  }
+
+  @override
+  Future<void> deleteAccount() async {
+    if (failDelete) throw StateError('offline');
+    deletions++;
+    currentId = null;
+    upgraded = false;
   }
 }
 
@@ -285,5 +295,41 @@ void main() {
         expect(store.value, 'previous-secret');
       },
     );
+
+    test('deleting the account starts a new one with a new code', () async {
+      final _FakeBackend backend = _FakeBackend();
+      final _MemoryStore store = _MemoryStore();
+      final AnonymousIdentityService service = AnonymousIdentityService(
+        backend: backend,
+        store: store,
+      );
+      final AnonymousIdentity before = await service.ensureSignedIn();
+
+      final AnonymousIdentity after = await service.deleteAccount();
+
+      expect(backend.deletions, 1);
+      expect(after.userId, isNot(before.userId));
+      expect(after.code, isNot(before.code));
+      // The old code must not survive: it points at an account that is gone.
+      expect(store.value, after.code.encodeForStorage());
+      expect(service.identity, same(after));
+    });
+
+    test('a failed deletion keeps the account and its code', () async {
+      final _FakeBackend backend = _FakeBackend();
+      final _MemoryStore store = _MemoryStore();
+      final AnonymousIdentityService service = AnonymousIdentityService(
+        backend: backend,
+        store: store,
+      );
+      final AnonymousIdentity before = await service.ensureSignedIn();
+      backend.failDelete = true;
+
+      await expectLater(service.deleteAccount(), throwsA(isA<StateError>()));
+
+      expect(store.value, before.code.encodeForStorage());
+      expect(service.identity, same(before));
+      expect(backend.anonymousSignIns, 1);
+    });
   });
 }

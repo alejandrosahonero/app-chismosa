@@ -1,6 +1,6 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-/// The four auth operations `AnonymousIdentityService` needs.
+/// The auth operations `AnonymousIdentityService` needs.
 ///
 /// Narrow on purpose: the flow around it (when to create, when to restore, what
 /// to do when a restore fails) is the part with decisions in it, and it has to
@@ -26,12 +26,18 @@ abstract interface class IdentityBackend {
     required String email,
     required String password,
   });
+
+  /// Deletes the signed-in account and everything it wrote, on the server,
+  /// and drops the local session.
+  Future<void> deleteAccount();
 }
 
 class SupabaseIdentityBackend implements IdentityBackend {
-  SupabaseIdentityBackend(this._auth);
+  SupabaseIdentityBackend(this._client);
 
-  final GoTrueClient _auth;
+  final SupabaseClient _client;
+
+  GoTrueClient get _auth => _client.auth;
 
   @override
   String? get currentUserId => _auth.currentUser?.id;
@@ -71,5 +77,17 @@ class SupabaseIdentityBackend implements IdentityBackend {
       throw const AuthException('Sign-in returned no user');
     }
     return id;
+  }
+
+  @override
+  Future<void> deleteAccount() async {
+    // delete_my_account() (0010) removes auth.users; everything else cascades.
+    await _client.rpc<void>('delete_my_account');
+    try {
+      await _auth.signOut(scope: SignOutScope.local);
+    } on Object {
+      // The session belonged to an account that no longer exists: the server
+      // may refuse to sign it out. Locally it is gone either way.
+    }
   }
 }

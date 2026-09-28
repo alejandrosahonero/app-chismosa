@@ -16,7 +16,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-/// The recovery code, restoring another account, and blocked people.
+/// The recovery code, restoring another account, blocked people, and
+/// deleting the account.
 ///
 /// This is the only place the code is ever shown. The account has no e-mail
 /// and no password anybody knows; Auto Backup brings it back after most
@@ -33,6 +34,8 @@ class AccountSection extends ConsumerStatefulWidget {
 class _AccountSectionState extends ConsumerState<AccountSection> {
   /// Revealed for this visit only. Leaving Settings hides it again.
   bool _revealed = false;
+
+  bool _deleting = false;
 
   @override
   Widget build(BuildContext context) {
@@ -77,8 +80,51 @@ class _AccountSectionState extends ConsumerState<AccountSection> {
           onTap: () => unawaited(_restore(identity!)),
         ),
         const _BlockedTile(),
+        ListTile(
+          leading: Icon(Icons.delete_forever, color: context.colors.error),
+          title: Text(
+            l10n.accountDeleteTitle,
+            style: TextStyle(color: context.colors.error),
+          ),
+          subtitle: Text(l10n.accountDeleteSubtitle),
+          enabled: identity != null && !_deleting,
+          onTap: () => unawaited(_delete(identity!)),
+        ),
       ],
     );
+  }
+
+  /// Google Play requires in-app deletion for apps that create accounts. The
+  /// phone carries on with a brand-new empty account afterwards: the app has
+  /// no signed-out state to fall back to.
+  Future<void> _delete(AnonymousIdentityService identity) async {
+    final AppLocalizations l10n = context.l10n;
+    final bool ok = await showConfirmDialog(
+      context,
+      title: l10n.accountDeleteTitle,
+      body: l10n.accountDeleteBody,
+      confirmLabel: l10n.accountDeleteConfirm,
+    );
+    if (!ok || !mounted) return;
+
+    setState(() => _deleting = true);
+    try {
+      await identity.deleteAccount();
+      ref.read(sessionEpochProvider.notifier).bump();
+      // The device row went with the old account; register it on the new one.
+      final SupabaseClient? client = ref.read(supabaseClientProvider);
+      if (client != null) {
+        unawaited(ref.read(pushServiceProvider).attach(client));
+      }
+      unawaited(ref.read(installClaimProvider).claim());
+      if (!mounted) return;
+      setState(() => _revealed = false);
+      context.showSnack(l10n.accountDeleted);
+    } on Object {
+      if (mounted) context.showSnack(l10n.accountDeleteError);
+    } finally {
+      if (mounted) setState(() => _deleting = false);
+    }
   }
 
   Future<void> _restore(AnonymousIdentityService identity) async {

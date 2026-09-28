@@ -101,6 +101,18 @@ class AnonymousIdentityService {
     return _remember(id, code);
   }
 
+  /// Deletes the account on the server and starts a new, empty one here.
+  ///
+  /// The local secret is cleared only after the server confirmed the deletion:
+  /// a failed attempt keeps the account and its code exactly as they were.
+  Future<AnonymousIdentity> deleteAccount() async {
+    await backend.deleteAccount();
+    await store.clear();
+    _identity = null;
+    final String id = await backend.signInAnonymously();
+    return _attach(id, RecoveryCode.generate());
+  }
+
   Future<AnonymousIdentity> _attach(String userId, RecoveryCode code) async {
     await backend.attachCredentials(email: code.email, password: code.password);
     await store.write(code.encodeForStorage());

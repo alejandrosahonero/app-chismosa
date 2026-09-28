@@ -502,5 +502,11 @@
   "movedBody": "Sin Premium, una cuenta se usa en un solo móvil a la vez. Puedes traerla a este (el otro dejará de poder usarla) o hacerte Premium para usarla en los dos.",
   "movedTakeHere": "Usarla en este móvil",
   "movedGoPremium": "Usarla en los dos con Premium",
-  "paywallBenefitDevices": "Usa tu cuenta en varios móviles a la vez"
+  "paywallBenefitDevices": "Usa tu cuenta en varios móviles a la vez",
+  "accountDeleteTitle": "Borrar mi cuenta",
+  "accountDeleteSubtitle": "Borra tus historias, mensajes y grupos para siempre",
+  "accountDeleteBody": "Se borrarán para siempre tu cuenta, tus historias (con sus hilos), tus mensajes, tus me gusta y los grupos que creaste. No se puede deshacer y tu código de recuperación dejará de servir.\n\nSi compraste Premium, podrás recuperarlo con «Restaurar compras».",
+  "accountDeleteConfirm": "Borrar para siempre",
+  "accountDeleted": "Cuenta borrada. Empiezas de cero.",
+  "accountDeleteError": "No se pudo borrar la cuenta. Comprueba tu conexión e inténtalo de nuevo."
 }
