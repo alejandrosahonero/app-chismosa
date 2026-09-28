@@ -1,6 +1,9 @@
+import 'dart:async';
 import 'dart:developer' as developer;
 
+import 'package:chismosa/core/config/crash_config.dart';
 import 'package:flutter/foundation.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// Minimal logging facade.
 ///
@@ -8,8 +11,8 @@ import 'package:flutter/foundation.dart';
 /// down the platform channel. Everything goes through `dart:developer`, which
 /// is stripped in release mode by [kDebugMode] guards.
 ///
-/// When crash reporting is added (Crashlytics / Sentry), forward [error] from
-/// here instead of sprinkling the SDK across the codebase.
+/// [error] forwards to Sentry (release only, see [CrashConfig]): the SDK is
+/// used here and in `bootstrap.dart`, nowhere else.
 abstract final class AppLogger {
   static void debug(String message, {String name = 'app'}) {
     if (!kDebugMode) return;
@@ -29,6 +32,14 @@ abstract final class AppLogger {
       error: error,
       stackTrace: stackTrace,
     );
-    // TODO(crash-reporting): forward to Crashlytics/Sentry before v1 release.
+    if (CrashConfig.enabled && error != null) {
+      unawaited(
+        Sentry.captureException(
+          error,
+          stackTrace: stackTrace,
+          hint: Hint.withMap(<String, Object>{'message': message}),
+        ),
+      );
+    }
   }
 }

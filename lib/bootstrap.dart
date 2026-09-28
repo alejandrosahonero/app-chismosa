@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:chismosa/app.dart';
+import 'package:chismosa/core/config/crash_config.dart';
 import 'package:chismosa/core/routing/app_router.dart';
 import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/utils/app_logger.dart';
@@ -18,6 +19,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -49,6 +51,17 @@ Future<void> bootstrap() async {
           ], await rootBundle.loadString('assets/fonts/$file'));
         }
       });
+
+      // Before anything that can crash, so startup crashes are reported. The
+      // handlers below replace Sentry's and forward through AppLogger.
+      if (CrashConfig.enabled) {
+        await SentryFlutter.init((SentryFlutterOptions options) {
+          options
+            ..dsn = CrashConfig.sentryDsn
+            ..tracesSampleRate = 0
+            ..sendDefaultPii = false;
+        });
+      }
 
       FlutterError.onError = (FlutterErrorDetails details) {
         AppLogger.error(

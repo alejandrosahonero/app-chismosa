@@ -86,6 +86,9 @@ dependencies:
   # Analytics ni Firestore.
   firebase_core: ^4.15.0
   firebase_messaging: ^16.7.0
+  # Crash reporting (obligatorio desde la v1). Sentry y no Crashlytics: un
+  # paquete y un DSN, sin plugins de Gradle. Solo activo en release con DSN.
+  sentry_flutter: 9.30.0
 
 dev_dependencies:
   flutter_test:

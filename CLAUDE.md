@@ -237,7 +237,7 @@ Guardar `build/symbols/<versión>` fuera del repo.
 1. IDs de producción de AdMob (`ad_config.dart`, App ID en el manifiesto, unidad recompensada con SSV).
 2. Validar el token de compra de Play en servidor antes de fiarse de `is_premium`.
 3. Iconos adaptativos y splash nativo.
-4. Crash reporting (Crashlytics o Sentry), obligatorio desde la v1.
+4. Crash reporting: **Sentry** ya integrado (`core/config/crash_config.dart`, reenviado desde `AppLogger.error`). Falta pegar el DSN. Nunca Crashlytics.
 5. Política de privacidad pública. Data Safety: **contenido generado por usuarios**, ID de publicidad, token de push; clasificación de contenido con UGC y moderación declarada.
 6. App Links `https` (necesita un dominio con `assetlinks.json`; GitHub Pages sirve y es gratis) para que las invitaciones a grupos sean enlaces pulsables en WhatsApp.
 7. Testing cerrado (12 testers / 14 días) → producción con rollout escalonado.
