@@ -182,7 +182,7 @@ Los botones inferiores repiten los gestos y **no son decorativos**: una interfaz
 - **Rewarded solo para publicar una historia más.** El crédito lo concede el servidor (`functions/admob-ssv`, verificación SSV con firma ECDSA de Google, idempotente por `transaction_id`). La app nunca concede nada; espera al crédito consultando `publish_status()`. La unidad de prueba de Google no llama a la URL: en debug el crédito no llega.
 - **Premium (`premium_remove_ads`, pago único)**: sin anuncios y sin límite de publicación. **Lo decide Google a través del servidor**: cada compra y cada restauración pasan por `functions/verify-purchase` (API de Play Developer), que es lo único que puede escribir `profiles.is_premium`. Si el servidor no responde al comprar, premium provisional; el token cacheado se reverifica en cada arranque, que es como un reembolso acaba quitándolo. Reglas y tests en `premium_controller.dart` / `premium_controller_test.dart`. Protocolo de prueba obligatorio antes de lanzar en `supabase/README.md`.
 - **Historias «de la casa»** (`profiles.is_house`, `tool/seed_house_stories.sql`): diez en el lanzamiento, con la píldora «De la casa». Nunca inventar historias y hacerlas pasar por usuarios.
-- **Enlaces https** (`LinksConfig`, `site/`): `/s/<id>` y `/g/<código>` en `chismosa.pages.dev`, verificados con App Links. `chismosa://` queda solo como respaldo interno: no se puede tocar en WhatsApp.
+- **Enlaces https** (`LinksConfig`, `site/`): `/s/<id>` y `/g/<código>` en `chismosa-app.github.io`, verificados con App Links. `chismosa://` queda solo como respaldo interno: no se puede tocar en WhatsApp.
 - **Usuarios**: `tool/stats.sql` (cuentas, activos 24 h / 7 d / 30 d por `last_seen_at`, por país).
 - IDs de prueba en debug, producción en release (`AppConfig.useProductionAds == kReleaseMode`). Un ID vacío desactiva el formato. **Nunca IDs de producción en debug.**
 - UMP antes del primer anuncio; «Opciones de privacidad» en Ajustes cuando UMP lo exige. «Restaurar compras» visible en Ajustes y en el paywall. `completePurchase()` siempre.
@@ -237,10 +237,11 @@ Guardar `build/symbols/<versión>` fuera del repo.
 1. IDs de producción de AdMob (`ad_config.dart`, App ID en el manifiesto, unidad recompensada con SSV).
 2. Validar el token de compra de Play en servidor antes de fiarse de `is_premium`.
 3. Iconos adaptativos y splash nativo.
-4. Crash reporting: **Sentry** ya integrado (`core/config/crash_config.dart`, reenviado desde `AppLogger.error`). Falta pegar el DSN. Nunca Crashlytics.
-5. Política de privacidad pública. Data Safety: **contenido generado por usuarios**, ID de publicidad, token de push; clasificación de contenido con UGC y moderación declarada.
-6. App Links `https` (necesita un dominio con `assetlinks.json`; GitHub Pages sirve y es gratis) para que las invitaciones a grupos sean enlaces pulsables en WhatsApp.
+4. ~~Crash reporting~~: **Sentry** integrado con su DSN (`core/config/crash_config.dart`, reenviado desde `AppLogger.error`, solo en release). Nunca Crashlytics.
+5. Política de privacidad: `site/privacidad.html` → `https://chismosa-app.github.io/privacidad.html`. Borrar la cuenta hoy es por email; Play puede exigir un botón «Borrar mi cuenta» en la app. Data Safety: **contenido generado por usuarios**, ID de publicidad, token de push; clasificación de contenido con UGC y moderación declarada.
+6. App Links `https` en GitHub Pages (`chismosa-app.github.io`, `site/README.md`): falta publicar y añadir la huella de Play App Signing a `assetlinks.json`.
 7. Testing cerrado (12 testers / 14 días) → producción con rollout escalonado.
+8. Firma: `android/upload-keystore.jks` + `android/key.properties` (git-ignored). **Copia de seguridad de los dos** fuera del ordenador: sin ellos no se pueden subir actualizaciones sin pasar por el soporte de Google.
 
 **Producto:** capítulos (historias en varias partes), al final.
 

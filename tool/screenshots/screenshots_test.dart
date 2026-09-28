@@ -268,7 +268,7 @@ void main() {
       final List<int> png = await StoryShareImage.render(
         body: _stories.first.body,
         cta: '¿Y tú qué opinas?',
-        link: 'chismosa.pages.dev/s/a',
+        link: 'chismosa-app.github.io/s/a',
       );
       File('tool/screenshots/goldens/6_share_image.png').writeAsBytesSync(png);
     });

@@ -1,12 +1,14 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.alejandrosahonero.chismosa",
       "sha256_cert_fingerprints": [
         "3B:C8:18:27:2A:56:5C:F4:1C:DD:6F:17:81:E5:1F:83:DB:41:92:46:5D:BE:F1:19:05:BB:9B:DC:A7:67:D3:C0",
-        "REEMPLAZAR_CON_SHA256_DE_PLAY_APP_SIGNING"
+        "1A:BC:C9:66:EC:B4:4C:A4:32:C5:84:03:BE:0A:77:BE:FC:C8:6E:EA:C8:A7:0C:89:47:22:EE:3E:8A:C1:B1:38"
       ]
     }
   }

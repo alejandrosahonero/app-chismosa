@@ -160,8 +160,8 @@ licencia» en Play Console, que compra sin pagar):
 - [ ] Crear la unidad recompensada en AdMob con SSV apuntando a
       `https://sbeyvzhtvmzcalflqajv.supabase.co/functions/v1/admob-ssv` y poner
       su id en `_prodRewarded` (`lib/core/config/ad_config.dart`).
-- [ ] Publicar `site/` en Cloudflare Pages como `chismosa.pages.dev` y poner
-      la huella de Play App Signing en `assetlinks.json` (ver `site/README.md`).
+- [ ] Publicar `site/` en GitHub Pages como `chismosa-app.github.io` y añadir
+      la huella de Play App Signing a `assetlinks.json` (ver `site/README.md`).
 - [ ] Rotar la contraseña de Postgres.
 - [ ] Activar `pg_cron` (cierra los hilos inactivos).
 - [ ] Revisar a diario `tool/moderation.sql` una vez haya usuarios.

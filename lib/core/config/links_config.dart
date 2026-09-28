@@ -10,7 +10,7 @@
 /// the intent filter in `AndroidManifest.xml`, the site deployed from `site/`
 /// (with `.well-known/assetlinks.json`), and this constant.
 abstract final class LinksConfig {
-  static const String host = 'chismosa.pages.dev';
+  static const String host = 'chismosa-app.github.io';
 
   static String story(String storyId) => 'https://$host/s/$storyId';
 

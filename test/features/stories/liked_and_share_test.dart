@@ -29,7 +29,7 @@ void main() {
         final Uint8List png = await StoryShareImage.render(
           body: body,
           cta: '¿Y tú qué opinas?',
-          link: 'chismosa.pages.dev/s/x',
+          link: 'chismosa-app.github.io/s/x',
           tag: 'Parte 2',
         );
         final ui.Codec codec = await ui.instantiateImageCodec(png);

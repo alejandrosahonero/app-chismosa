@@ -7,7 +7,9 @@
 <meta name="description" content="Historias reales, contadas en anónimo. Léelas y opina en Chismosa.">
 <meta property="og:title" content="Chismosa: historias anónimas">
 <meta property="og:description" content="Todo el mundo tiene un chisme. Léelo entero y opina en la app.">
+<meta property="og:image" content="https://chismosa-app.github.io/og.png">
 <meta name="theme-color" content="#4A0000">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
 <style>
   :root { --ink:#4A0000; --paper:#FFF8F0; --spice:#F4EFEA; --lav:#C9A9A0; --muted:#E0CBC6; }
   * { box-sizing: border-box; }
@@ -46,13 +48,16 @@
      href="https://play.google.com/store/apps/details?id=com.alejandrosahonero.chismosa">Descargar en Google Play</a>
 </main>
 <script>
-  // Reached only when the app is not installed (or App Links are not verified
-  // yet): with the app, Android opens it directly and this page never loads.
+  // GitHub Pages serves this page for every path it does not have, which is
+  // how /s/<id> and /g/<code> land here. Reached only when the app is not
+  // installed (or App Links are not verified yet): with the app, Android opens
+  // it directly and this page never loads. Anything else goes home.
   (function () {
     var PKG = 'com.alejandrosahonero.chismosa';
     var STORE = 'https://play.google.com/store/apps/details?id=' + PKG;
     var parts = location.pathname.split('/').filter(Boolean); // ['s', id] | ['g', code]
     var kind = parts[0], value = (parts[1] || '').replace(/[^A-Za-z0-9-]/g, '');
+    if (!((kind === 's' || kind === 'g') && value)) { location.replace('/'); return; }
     if (kind === 'g' && value) {
       document.getElementById('title').textContent = 'Te han invitado a un grupo';
       document.getElementById('body').textContent =
