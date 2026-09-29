@@ -134,7 +134,7 @@ Los botones inferiores repiten los gestos y **no son decorativos**: una interfaz
 - **Cada carta se reparte una vez.** Las vistas se guardan en el dispositivo (`SeenStoriesStore`) y la cola se envía como pista al servidor; no hay tabla de vistas en Postgres (usuarios × historias se comería los 500 MB del plan gratis).
 - **El mazo nunca muestra al autor sus propias historias.**
 - **El mazo arranca en el país del móvil.** Cuando se acaba, la pantalla de fin ofrece primero «Ampliar a todo el mundo». Lanzamiento en España, México y Bolivia: mejor cuarenta historias del propio país que las mismas cuarenta repartidas en tres.
-- Filtros en una fila de chips: **qué mazo** (mundo o grupo), «Me gustaron» (el único modo que vuelve a repartir cartas ya vistas; ignora país, categoría e idioma), orden, mi país, categoría. Categorías genéricas más «cualquiera». Idiomas del mazo en Ajustes; el país sale del dispositivo, nunca de GPS.
+- Filtros en una hoja (icono de la app bar): orden, mi país, categoría. Categorías genéricas más «cualquiera». Idiomas del mazo en Ajustes; el país sale del dispositivo, nunca de GPS.
 - **No reintroducir un indicador de «cuánto queda».**
 
 ### 3.1 Escribir
@@ -192,7 +192,7 @@ Los botones inferiores repiten los gestos y **no son decorativos**: una interfaz
 
 ## 7. Pantalla principal
 
-**Mínima a propósito** (feedback de testers: «saturada de botones»). App bar: menú hamburguesa (`core/widgets/app_drawer.dart`: escribir, mis historias, mis hilos, grupos, premium, normas, ajustes) y el nombre. Encima del mazo, como mucho tres chips: el grupo abierto (con ✕ para volver al mundo), «Me gustaron» y «Filtros» (hoja con orden, país y categoría; el chip cuenta los activos). Debajo, tres botones: pasar, hilo, me gusta. Compartir está en el gesto hacia abajo y en el ⋮ de la carta. **Agitar** el móvil devuelve la última carta pasada (`ShakeDetector`). Las historias largas se cortan con «Ver más», que abre el hilo: nada se desplaza dentro de la carta.
+**Mínima a propósito** (feedback de testers: «saturada de botones»). App bar: menú hamburguesa (`core/widgets/app_drawer.dart`: escribir, mis historias, mis hilos, grupos, premium, normas, ajustes) y el nombre. A la derecha, dos iconos: ♥ abre «Mis me gusta» (lista; tocar abre el hilo) y filtros (hoja con orden, país y categoría; un globito cuenta los activos). Dentro de un grupo, el título es el nombre del grupo. Sin fila de chips encima del mazo. Debajo, tres botones: pasar, hilo, me gusta. Compartir está en el gesto hacia abajo y en el ⋮ de la carta. **Agitar** el móvil devuelve la última carta pasada (`ShakeDetector`). Las historias largas se cortan con «Ver más», que abre el hilo: nada se desplaza dentro de la carta.
 
 ---
 

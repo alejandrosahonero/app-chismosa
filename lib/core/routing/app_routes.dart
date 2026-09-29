@@ -39,6 +39,10 @@ abstract final class AppRoutes {
   static const String threadsPath = '/threads';
   static const String threadsName = 'threads';
 
+  /// Stories the reader liked, as a list. A tap opens the thread.
+  static const String likedPath = '/liked';
+  static const String likedName = 'liked';
+
   /// One conversation, reached from the history. The deck raises the same
   /// panel as a sheet instead of navigating, because there the card is still
   /// underneath.

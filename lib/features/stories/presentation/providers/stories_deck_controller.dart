@@ -156,6 +156,7 @@ class StoriesDeckController extends AsyncNotifier<StoriesDeckState> {
     if (top.story.liked) return;
     try {
       await ref.read(storyRepositoryProvider)?.like(top.story.id);
+      ref.invalidate(likedStoriesProvider);
     } on Object catch (error) {
       AppLogger.debug('Like failed: $error', name: 'stories');
     }

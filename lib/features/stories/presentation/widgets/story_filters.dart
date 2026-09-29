@@ -1,5 +1,4 @@
 import 'package:chismosa/core/extensions/build_context_x.dart';
-import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/theme/app_spacing.dart';
 import 'package:chismosa/features/groups/domain/story_group.dart';
 import 'package:chismosa/features/groups/presentation/providers/groups_providers.dart';
@@ -12,25 +11,17 @@ import 'package:chismosa/services/locale/locale_providers.dart';
 import 'package:chismosa/services/locale/locale_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
-/// The row over the deck: at most three chips.
+/// The filters button in the deck's app bar.
 ///
-/// It used to hold every filter at once — sort, country, eight categories —
-/// and read as a wall of buttons. Now it keeps only what changes *which* deck
-/// this is ("Me gustaron", and the group while one is open); how the deck is
-/// narrowed lives behind "Filtros", which says how many are on.
-class StoryFilters extends ConsumerWidget {
-  const StoryFilters({super.key});
-
-  /// Comfortably over the 48dp touch target once the chip's own tap padding is
-  /// counted, and small enough that the card keeps the screen.
-  static const double height = 40;
+/// An icon, not a row of chips: the row cost the card vertical space and read
+/// as a wall of buttons. A dot on the icon says some filter is on.
+class StoryFiltersButton extends ConsumerWidget {
+  const StoryFiltersButton({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final FeedQuery query = ref.watch(feedQueryProvider);
-    final AppLocalizations l10n = context.l10n;
     final String? myCountry = ref.watch(
       localeSettingsProvider.select(
         (LocaleSettings value) => value.countryCode,
@@ -43,53 +34,17 @@ class StoryFilters extends ConsumerWidget {
       myCountry != null && query.countryCode == null,
     ].where((bool on) => on).length;
 
-    return SizedBox(
-      height: height,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          // Only while a group is open: it says which deck this is, and its
-          // cross goes back to the world.
-          if (query.groupId != null) ...<Widget>[
-            InputChip(
-              avatar: const Icon(Icons.groups_outlined, size: 16),
-              label: Text(_deckName(ref, query.groupId) ?? l10n.groupsTitle),
-              selected: true,
-              showCheckmark: false,
-              onPressed: () => context.pushNamed(AppRoutes.groupsName),
-              onDeleted: () =>
-                  ref.read(feedQueryProvider.notifier).selectGroup(null),
-              deleteButtonTooltipMessage: l10n.groupsWorldwide,
-              visualDensity: VisualDensity.compact,
-            ),
-            const SizedBox(width: AppSpacing.sm),
-          ],
-          _Chip(
-            label: l10n.storiesLikedFilter,
-            icon: query.liked ? Icons.favorite : Icons.favorite_border,
-            selected: query.liked,
-            onTap: () => ref
-                .read(feedQueryProvider.notifier)
-                .showLiked(liked: !query.liked),
-          ),
-          // "Me gustaron" ignores sort, country and category, so the filters
-          // would do nothing while it is on.
-          if (!query.liked) ...<Widget>[
-            const SizedBox(width: AppSpacing.sm),
-            _Chip(
-              label: active == 0
-                  ? l10n.storiesFilters
-                  : '${l10n.storiesFilters} · $active',
-              icon: Icons.tune,
-              selected: active > 0,
-              onTap: () => showModalBottomSheet<void>(
-                context: context,
-                showDragHandle: true,
-                builder: (BuildContext context) => const _FilterSheet(),
-              ),
-            ),
-          ],
-        ],
+    return IconButton(
+      tooltip: context.l10n.storiesFilters,
+      onPressed: () => showModalBottomSheet<void>(
+        context: context,
+        showDragHandle: true,
+        builder: (BuildContext context) => const _FilterSheet(),
+      ),
+      icon: Badge(
+        isLabelVisible: active > 0,
+        label: Text('$active'),
+        child: const Icon(Icons.tune),
       ),
     );
   }
@@ -192,7 +147,7 @@ class _FilterSheet extends ConsumerWidget {
 /// The selected group's name, or null for the worldwide deck. Also null for a
 /// group the list has not loaded yet, which shows as the generic label for a
 /// moment rather than as an empty chip.
-String? _deckName(WidgetRef ref, String? groupId) {
+String? deckName(WidgetRef ref, String? groupId) {
   if (groupId == null) return null;
   final List<StoryGroup> groups =
       ref.watch(myGroupsProvider).value ?? const <StoryGroup>[];

@@ -369,10 +369,8 @@
   "welcomeAccept": "Acepto las normas de la comunidad",
   "storiesHouse": "De la casa",
   "myStoriesUnderReview": "En revisión",
-  "storiesLikedFilter": "Me gustaron",
   "storiesLikedEmptyTitle": "Aquí estarán las que te gusten",
   "storiesLikedEmptyBody": "Desliza una historia a la derecha y la tendrás aquí para releerla cuando quieras.",
-  "storiesLikedBack": "Volver al mazo",
   "storiesCountryEmptyTitle": "Ya no quedan chismes de tu país",
   "storiesCountryEmptyBody": "Has leído todo lo que se ha contado aquí por ahora. Amplía la búsqueda y sigue con historias de todo el mundo.",
   "storiesWidenSearch": "Ampliar a todo el mundo",
@@ -415,5 +413,6 @@
   "storiesFilterCategory": "Categoría",
   "accountRestorePremiumTag": "Premium",
   "accountRestorePremiumBody": "Llevar tu cuenta a otro móvil con su código es una función de Chismosa Premium.\n\nSi ya lo compraste en tu otro móvil, entra en Premium y toca «Ya lo compré» con la misma cuenta de Google.",
-  "accountRestorePremiumCta": "Ver Premium"
+  "accountRestorePremiumCta": "Ver Premium",
+  "likedTitle": "Mis me gusta"
 }

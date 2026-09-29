@@ -207,10 +207,8 @@
   "welcomeAccept": "I accept the community rules",
   "storiesHouse": "From us",
   "myStoriesUnderReview": "Under review",
-  "storiesLikedFilter": "Liked",
   "storiesLikedEmptyTitle": "The ones you like will be here",
   "storiesLikedEmptyBody": "Swipe a story right and it will be here to read again whenever you want.",
-  "storiesLikedBack": "Back to the deck",
   "storiesCountryEmptyTitle": "No more stories from your country",
   "storiesCountryEmptyBody": "You have read everything told here for now. Widen the search and keep going with stories from all over the world.",
   "storiesWidenSearch": "Widen to the whole world",
@@ -246,5 +244,6 @@
   "storiesFilterCategory": "Category",
   "accountRestorePremiumTag": "Premium",
   "accountRestorePremiumBody": "Taking your account to another phone with its code is a Chismosa Premium feature.\n\nIf you already bought it on your other phone, open Premium and tap \"I already bought it\" with the same Google account.",
-  "accountRestorePremiumCta": "See Premium"
+  "accountRestorePremiumCta": "See Premium",
+  "likedTitle": "My likes"
 }

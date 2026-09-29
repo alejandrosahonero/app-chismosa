@@ -150,8 +150,24 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
       storiesDeckControllerProvider,
     );
 
+    // Inside a group the title says so: the filter row that used to name the
+    // deck is gone, and the groups screen is how to leave.
+    final String? groupId = ref.watch(
+      feedQueryProvider.select((FeedQuery q) => q.groupId),
+    );
+
     return BaseScreen(
-      title: context.l10n.appTitle,
+      title: groupId == null
+          ? context.l10n.appTitle
+          : deckName(ref, groupId) ?? context.l10n.groupsTitle,
+      actions: <Widget>[
+        IconButton(
+          onPressed: () => context.pushNamed(AppRoutes.likedName),
+          icon: const Icon(Icons.favorite_border),
+          tooltip: context.l10n.likedTitle,
+        ),
+        const StoryFiltersButton(),
+      ],
       // The banner is placed by hand inside the layout, above the cards. See
       // [_body].
       showBanner: false,
@@ -188,10 +204,6 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
   Widget _body(StoriesDeckState state) {
     return Column(
       children: <Widget>[
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
-          child: StoryFilters(),
-        ),
         // Above the cards, never below them. The deck is dragged in four
         // directions, and a banner pinned to the bottom edge under that gesture
         // is the textbook accidental click. Up here the finger never lands on
@@ -457,18 +469,6 @@ class _Exhausted extends ConsumerWidget {
     final AppLocalizations l10n = context.l10n;
     final FeedQuery query = ref.watch(feedQueryProvider);
     final FeedQueryController filters = ref.read(feedQueryProvider.notifier);
-
-    if (query.liked) {
-      return EmptyState(
-        icon: Icons.favorite_border,
-        title: l10n.storiesLikedEmptyTitle,
-        message: l10n.storiesLikedEmptyBody,
-        action: FilledButton(
-          onPressed: () => filters.showLiked(liked: false),
-          child: Text(l10n.storiesLikedBack),
-        ),
-      );
-    }
 
     // Out of stories in the reader's own country: the obvious next step is
     // the rest of the world, one tap away, before anything else.
