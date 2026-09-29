@@ -87,16 +87,35 @@ class AnonymousIdentityService {
   ///
   /// Overwrites the local secret on success only: a failed attempt must not
   /// cost the user the account they already had on this device.
-  Future<AnonymousIdentity> restoreFromCode(String input) async {
+  Future<AnonymousIdentity> restoreFromCode(
+    String input, {
+    Future<bool> Function()? admit,
+  }) async {
     final RecoveryCode? code = RecoveryCode.tryParse(input);
     if (code == null) {
       throw const InvalidRecoveryCodeException();
     }
 
+    final AnonymousIdentity? previous = _identity;
     final String id = await backend.signInWithCredentials(
       email: code.email,
       password: code.password,
     );
+
+    // [admit] runs signed in as the restored account (only it can read its own
+    // profile) and before its secret is stored. A refusal signs back into the
+    // previous account, so nothing on this device changes. The web uses it to
+    // let in Premium accounts only.
+    if (admit != null && !await admit()) {
+      if (previous != null) {
+        await backend.signInWithCredentials(
+          email: previous.code.email,
+          password: previous.code.password,
+        );
+      }
+      throw const RestoreNotAdmittedException();
+    }
+
     await store.write(code.encodeForStorage());
     return _remember(id, code);
   }
@@ -125,4 +144,10 @@ class AnonymousIdentityService {
 
 class InvalidRecoveryCodeException implements Exception {
   const InvalidRecoveryCodeException();
+}
+
+/// The code was valid but the `admit` check of [AnonymousIdentityService
+/// .restoreFromCode] refused the account (on the web: not Premium).
+class RestoreNotAdmittedException implements Exception {
+  const RestoreNotAdmittedException();
 }

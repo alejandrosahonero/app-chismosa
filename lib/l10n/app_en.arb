@@ -260,5 +260,9 @@
   "storiesLookForNew": "Look for new stories",
   "storiesNothingNew": "Nothing new yet. Come back in a while.",
   "storiesUndoHintWeb": "Skipped it by mistake? Press Backspace to bring it back.",
-  "paywallWebUnavailable": "Premium is bought in the Android app. If your account is already Premium, restore it here with your code and it will be recognised."
+  "paywallWebUnavailable": "Premium is bought in the Android app. If your account is already Premium, restore it here with your code and it will be recognised.",
+  "webGetAppBody": "Chismosa is better in the app.",
+  "webGetAppCta": "Get it",
+  "webGetAppDrawer": "Get the app",
+  "accountRestoreWebPremiumBody": "On the web you can only use your phone's account if it is Premium.\n\nBuy Premium in the Android app and enter the code here again. Meanwhile you keep this web account."
 }

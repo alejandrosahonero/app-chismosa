@@ -2,6 +2,7 @@ import 'package:chismosa/core/extensions/build_context_x.dart';
 import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/theme/app_colors.dart';
 import 'package:chismosa/core/theme/app_spacing.dart';
+import 'package:chismosa/core/widgets/get_app_banner.dart';
 import 'package:chismosa/l10n/generated/app_localizations.dart';
 import 'package:chismosa/services/billing/premium_controller.dart';
 import 'package:flutter/material.dart';
@@ -64,6 +65,15 @@ class AppDrawer extends ConsumerWidget {
           onTap: () => open(AppRoutes.groupsName),
         ),
         const Divider(indent: AppSpacing.lg, endIndent: AppSpacing.lg),
+        if (isAndroidBrowser)
+          _Item(
+            icon: Icons.shop_outlined,
+            label: l10n.webGetAppDrawer,
+            onTap: () {
+              Navigator.of(context).pop();
+              openPlayStore();
+            },
+          ),
         if (!isPremium)
           _Item(
             icon: Icons.workspace_premium_outlined,

@@ -19,6 +19,7 @@ import 'package:chismosa/core/widgets/deck/deck_thresholds.dart';
 import 'package:chismosa/core/widgets/deck/swipe_deck.dart';
 import 'package:chismosa/core/widgets/empty_state.dart';
 import 'package:chismosa/core/widgets/error_view.dart';
+import 'package:chismosa/core/widgets/get_app_banner.dart';
 import 'package:chismosa/core/widgets/report_reason_sheet.dart';
 import 'package:chismosa/features/stories/domain/feed_query.dart';
 import 'package:chismosa/features/stories/domain/story.dart';
@@ -241,6 +242,8 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
         // directions, and a banner pinned to the bottom edge under that gesture
         // is the textbook accidental click. Up here the finger never lands on
         // it coming out of a swipe.
+        // Web in an Android browser only: the way to the Play Store.
+        const GetAppBanner(),
         const AdaptiveBannerAd(anchored: false),
         const SizedBox(height: AppSpacing.sm),
         Expanded(

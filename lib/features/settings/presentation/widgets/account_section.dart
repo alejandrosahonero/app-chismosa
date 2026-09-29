@@ -11,6 +11,7 @@ import 'package:chismosa/services/identity/anonymous_identity_service.dart';
 import 'package:chismosa/services/identity/install_claim.dart';
 import 'package:chismosa/services/moderation/moderation_service.dart';
 import 'package:chismosa/services/push/push_providers.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -137,7 +138,11 @@ class _AccountSectionState extends ConsumerState<AccountSection> {
     // Taking an account to another phone is a Premium feature. A new phone
     // starts on a fresh account; "Ya lo compré" on the paywall brings the
     // purchase over (same Google account), and then the code works.
-    if (!ref.read(isPremiumProvider)) {
+    //
+    // The web is always a separate account and cannot buy anything, so there
+    // the gate moves to the other side: the code is accepted only when the
+    // account it opens is Premium (checked in `admit` below).
+    if (!kIsWeb && !ref.read(isPremiumProvider)) {
       final bool goPremium = await showConfirmDialog(
         context,
         title: l10n.accountRestoreTitle,
@@ -156,7 +161,10 @@ class _AccountSectionState extends ConsumerState<AccountSection> {
     if (input == null || input.trim().isEmpty || !mounted) return;
 
     try {
-      await identity.restoreFromCode(input);
+      await identity.restoreFromCode(
+        input,
+        admit: kIsWeb ? _isPremiumAccount : null,
+      );
       // Everything built on the previous account — the deck, the history, the
       // block count — is rebuilt against the restored one.
       ref.read(sessionEpochProvider.notifier).bump();
@@ -175,9 +183,38 @@ class _AccountSectionState extends ConsumerState<AccountSection> {
         ref.read(accountMovedProvider.notifier).set(moved: true);
         context.goNamed(AppRoutes.movedName);
       }
+    } on RestoreNotAdmittedException {
+      if (!mounted) return;
+      await showDialog<void>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: Text(l10n.accountRestoreTitle),
+          content: Text(l10n.accountRestoreWebPremiumBody),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text(l10n.commonClose),
+            ),
+          ],
+        ),
+      );
     } on Object {
       if (mounted) context.showSnack(l10n.accountRestoreInvalid);
     }
+  }
+
+  /// Web only: whether the account just signed into is Premium. Read straight
+  /// from its profile (only the owner can), which `verify-purchase` writes.
+  Future<bool> _isPremiumAccount() async {
+    final SupabaseClient? client = ref.read(supabaseClientProvider);
+    final String? userId = client?.auth.currentUser?.id;
+    if (client == null || userId == null) return false;
+    final Map<String, dynamic>? row = await client
+        .from('profiles')
+        .select('is_premium')
+        .eq('id', userId)
+        .maybeSingle();
+    return row?['is_premium'] == true;
   }
 }
 

@@ -429,5 +429,9 @@
   "storiesLookForNew": "Buscar historias nuevas",
   "storiesNothingNew": "Nada nuevo todavía. Vuelve en un rato.",
   "storiesUndoHintWeb": "¿Te la saltaste sin querer? Pulsa Retroceso y vuelve.",
-  "paywallWebUnavailable": "Premium se compra en la app de Android. Si tu cuenta ya es Premium, recupérala aquí con tu código y se reconocerá."
+  "paywallWebUnavailable": "Premium se compra en la app de Android. Si tu cuenta ya es Premium, recupérala aquí con tu código y se reconocerá.",
+  "webGetAppBody": "Chismosa va mejor en la app.",
+  "webGetAppCta": "Descargar",
+  "webGetAppDrawer": "Descargar la app",
+  "accountRestoreWebPremiumBody": "En la web solo puedes usar la cuenta de tu móvil si es Premium.\n\nCompra Premium en la app de Android y vuelve a introducir el código aquí. Mientras tanto, sigues con esta cuenta de la web."
 }

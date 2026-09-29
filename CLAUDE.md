@@ -277,3 +277,5 @@ GitHub Pages en `chismosa-app.github.io/app/` con `tool/build_web.sh` (ver
 | Reseña, push, restaurar compras | Omitidos (push en web = fase 3). |
 | Agitar | Desactivado; el mazo responde a ← → ↑ ↓ y Retroceso deshace. |
 | Compartir | `XFile.fromData`: hoja del navegador o descarga de la imagen. |
+| Descargar la app | Solo en navegador Android (`isAndroidBrowser`): tira cerrable sobre el mazo (`GetAppBanner`) y fila en el menú. En iPhone/ordenador no se ofrece: solo hay Play. |
+| Cuenta | La web es **siempre una cuenta aparte**. Usar la del móvil con su código exige que **esa** cuenta sea Premium: `restoreFromCode(admit:)` lo comprueba con la sesión nueva y, si no, vuelve a la cuenta web sin guardar nada. |

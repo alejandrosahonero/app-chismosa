@@ -296,6 +296,51 @@ void main() {
       },
     );
 
+    test(
+      'a refused restore signs back into the previous account and keeps it',
+      () async {
+        final RecoveryCode other = RecoveryCode.generate(_seeded());
+        final Map<String, String> accounts = <String, String>{
+          other.email: other.password,
+        };
+        final _FakeBackend backend = _FakeBackend(existingAccounts: accounts);
+        final _MemoryStore store = _MemoryStore();
+        final AnonymousIdentityService service = AnonymousIdentityService(
+          backend: backend,
+          store: store,
+        );
+        final AnonymousIdentity mine = await service.ensureSignedIn();
+        accounts[mine.code.email] = mine.code.password;
+        final String? mySecret = store.value;
+
+        await expectLater(
+          service.restoreFromCode(other.formatted, admit: () async => false),
+          throwsA(isA<RestoreNotAdmittedException>()),
+        );
+
+        expect(store.value, mySecret);
+        expect(service.identity?.code.email, mine.code.email);
+        // One sign-in into the other account, one back into this one.
+        expect(backend.credentialSignIns, 2);
+      },
+    );
+
+    test('an admitted restore adopts the account', () async {
+      final RecoveryCode code = RecoveryCode.generate(_seeded());
+      final _FakeBackend backend = _FakeBackend(
+        existingAccounts: <String, String>{code.email: code.password},
+      );
+      final _MemoryStore store = _MemoryStore();
+
+      final AnonymousIdentity identity = await AnonymousIdentityService(
+        backend: backend,
+        store: store,
+      ).restoreFromCode(code.formatted, admit: () async => true);
+
+      expect(identity.userId, 'restored');
+      expect(store.value, code.encodeForStorage());
+    });
+
     test('deleting the account starts a new one with a new code', () async {
       final _FakeBackend backend = _FakeBackend();
       final _MemoryStore store = _MemoryStore();
