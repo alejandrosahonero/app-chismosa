@@ -88,7 +88,7 @@ lib/
 │   ├── ads/ billing/ review/ storage/
 └── l10n/
 supabase/
-├── migrations/        # 0001…0011, se ejecutan en orden en el SQL Editor
+├── migrations/        # 0001…0012, se ejecutan en orden en el SQL Editor
 └── functions/         # admob-ssv, thread-push (Deno)
 ```
 
