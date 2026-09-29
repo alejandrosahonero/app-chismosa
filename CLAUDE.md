@@ -135,7 +135,7 @@ Los botones inferiores repiten los gestos y **no son decorativos**: una interfaz
 - **El mazo nunca muestra al autor sus propias historias.**
 - **El mazo arranca en el país del móvil.** Cuando se acaba, la pantalla de fin ofrece primero «Ampliar a todo el mundo». Lanzamiento en España, México y Bolivia: mejor cuarenta historias del propio país que las mismas cuarenta repartidas en tres.
 - Filtros en una fila de chips: **qué mazo** (mundo o grupo), «Me gustaron» (el único modo que vuelve a repartir cartas ya vistas; ignora país, categoría e idioma), orden, mi país, categoría. Categorías genéricas más «cualquiera». Idiomas del mazo en Ajustes; el país sale del dispositivo, nunca de GPS.
-- **No reintroducir un indicador de «cuánto queda».** El anillo del objetivo cuenta hacia arriba y no dice nada del mazo.
+- **No reintroducir un indicador de «cuánto queda».**
 
 ### 3.1 Escribir
 
