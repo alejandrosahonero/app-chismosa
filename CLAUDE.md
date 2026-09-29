@@ -38,7 +38,7 @@ Si una feature nueva necesita saber quién es quién en el cliente, la feature e
 
 ### 0.2 Nadie localizable
 
-Además de no revelar cuentas, **no se deja publicar lo que convierte una historia en acoso a una persona real**: teléfonos, emails, @usuarios y enlaces se rechazan en servidor (`contains_personal_data`, 0007) en historias, mensajes y nombres de grupo. Los nombres propios no se pueden filtrar con una expresión regular; para eso están las normas, los reportes y la bienvenida. Todas las apps anónimas que cerraron (Secret, Yik Yak, Whisper) cerraron por esto. No relajar el filtro sin sustituirlo por algo mejor.
+Además de no revelar cuentas, **no se deja publicar lo que convierte una historia en acoso a una persona real**: teléfonos, emails, @usuarios y enlaces se rechazan en servidor (`contains_personal_data`, 0007) en historias, mensajes y nombres de grupo. Los nombres no se rechazan (una regex no distingue un nombre de una palabra), pero **una historia con un nombre de pila común se publica oculta y pendiente de revisión** (`contains_person_name` + `person_names`, 0011, `review_reason = 'auto_name'`), y se revisa con `tool/moderation.sql` como «Señala a alguien». Los nombres ambiguos (Rosa, Luz, Leo, Simón…) no están en la lista a propósito. En los mensajes de los hilos no se aplica: ahí quedan los reportes. Todas las apps anónimas que cerraron (Secret, Yik Yak, Whisper) cerraron por esto. No relajar el filtro sin sustituirlo por algo mejor.
 
 ### 0.3 Secretos
 
@@ -88,7 +88,7 @@ lib/
 │   ├── ads/ billing/ review/ storage/
 └── l10n/
 supabase/
-├── migrations/        # 0001…0010, se ejecutan en orden en el SQL Editor
+├── migrations/        # 0001…0011, se ejecutan en orden en el SQL Editor
 └── functions/         # admob-ssv, thread-push (Deno)
 ```
 
@@ -121,7 +121,7 @@ supabase/
 |---|---|
 | **Derecha** | Me gusta. La carta se va. |
 | **Izquierda** | Pasar. |
-| **Abajo** | **Compartir** la historia como imagen 1080x1920 (`StoryShareImage`) con enlace https a su hilo. La carta se queda. Exige recorrido: nunca por un pulgar que resbala. Las historias de un grupo no se comparten fuera. |
+| **Abajo** | **Compartir** la historia como imagen 1080x1920 (`StoryShareImage`) con enlace https a su hilo. La carta se queda. Exige recorrido: nunca por un pulgar que resbala. Las de un grupo también se comparten (como imagen; el enlace solo abre para sus miembros). |
 | **Arriba** | **Entrar al hilo.** La carta se queda; la hoja del hilo sube siguiendo al dedo. |
 | **⋮ en la carta de arriba** | Reportar / bloquear a quien lo escribió. En un menú y no en un gesto: reportar no puede pasar porque se escape el pulgar. |
 
@@ -150,7 +150,7 @@ Los botones inferiores repiten los gestos y **no son decorativos**: una interfaz
 
 **Hilos (`features/threads`).** Entrar es unirse: no hay botón «unirse». Alias asignado por el servidor, único dentro del hilo, distinto en cada hilo. Realtime con **un canal por hilo abierto** (el plan gratis da 200 conexiones simultáneas; no abrir canales para hilos que no están en pantalla). Envío optimista: el mensaje se pinta como pendiente y se quita si falla. Los hilos inactivos se cierran solos. `/threads` es el único sitio donde una historia se puede volver a encontrar.
 
-**Grupos (`features/groups`).** Un grupo es otro mazo, privado. Se entra con un código de invitación (12 hex) que caduca a los 7 días y que el creador puede **renovar** para matar un enlace filtrado. Sin límite de miembros; todas las demás protecciones aplican. El creador no puede salir, solo borrar (siempre hay alguien que puede renovar). Salir de un grupo quita también el acceso a sus hilos. `join_thread`/`story_detail` comprueban la pertenencia: una historia de grupo no se abre con su id desde fuera. **Un enlace de invitación nunca une a nadie sin un toque.**
+**Grupos (`features/groups`).** Un grupo es otro mazo, privado. Se entra con un código de invitación (12 hex) que caduca a los 7 días y que el creador puede **renovar** para matar un enlace filtrado. Sin límite de miembros. **Reglas del grupo** (0011): al crearlo, el creador puede quitar dos, «no nombrar a personas» y el filtro de palabrotas (`allow_names`, `allow_swearing`); después solo puede volver a activarlas (`tighten_group_rules`). Quien se une ve las reglas quitadas antes de confirmar (`invite_preview`). Datos personales, reportes, bloqueos y todo lo ilegal aplican siempre; el mazo mundial nunca relaja nada. El creador no puede salir, solo borrar (siempre hay alguien que puede renovar). Salir de un grupo quita también el acceso a sus hilos. `join_thread`/`story_detail` comprueban la pertenencia: una historia de grupo no se abre con su id desde fuera. **Un enlace de invitación nunca une a nadie sin un toque.**
 
 **Moderación: mínima a propósito.** Reportar (con motivo) y bloquear. Tres reportes ocultan el contenido solo; tres contenidos ocultos banean la cuenta. **Excepción: «Señala a alguien»** oculta al instante (máximo 5 usos por persona y día), avisa al autor por push de que está en revisión, y **requiere una revisión humana diaria** con `tool/moderation.sql` (`review_content`). Si nadie revisa, el aviso al autor es mentira.
 

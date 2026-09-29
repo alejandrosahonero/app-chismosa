@@ -7,6 +7,10 @@
 -- hace, el aviso que recibió el autor sería mentira.
 -- =============================================================================
 
+-- review_reason = 'auto_name': historias que el servidor retuvo solas porque
+-- contienen un nombre de pila común (0011). Si el nombre no es de una persona
+-- real o no le hace daño, restaurar; si señala a alguien, dejarla oculta.
+
 -- 1. Qué está esperando decisión, lo más antiguo primero.
 select * from public.pending_reviews;
 

@@ -277,8 +277,8 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
   /// Down: the story as a 1080x1920 image for TikTok, Instagram or WhatsApp,
   /// with a link back to its thread. The growth loop of the whole app.
   ///
-  /// Group stories never leave the group: sharing one outside would break the
-  /// only promise a private deck makes.
+  /// Group stories can be shared too, as an image: the link inside only opens
+  /// for the group's members (story_detail checks membership).
   Future<void> _share() async {
     final StoryDeckItem? top = ref
         .read(storiesDeckControllerProvider)
@@ -286,10 +286,6 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
         ?.current;
     if (top is! StoryCard) return;
     final AppLocalizations l10n = context.l10n;
-    if (ref.read(feedQueryProvider).groupId != null) {
-      context.showSnack(l10n.shareGroupBlocked);
-      return;
-    }
 
     final Story story = top.story;
     final String link = LinksConfig.story(story.id);

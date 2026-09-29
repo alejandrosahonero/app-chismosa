@@ -162,7 +162,7 @@ class _ComposeStoryScreenState extends ConsumerState<ComposeStoryScreen> {
     final LocaleSettings locale = ref.read(localeSettingsProvider);
 
     try {
-      await repository.publish(
+      final String id = await repository.publish(
         body: _body.text.trim(),
         category: _category,
         lang: locale.writingLanguage,
@@ -180,10 +180,22 @@ class _ComposeStoryScreenState extends ConsumerState<ComposeStoryScreen> {
       // The deck excludes the reader's own stories, so it does not gain a card
       // — but the quota did change, and the next "nothing left" screen should
       // reflect a feed that was asked for again.
+      // A story that names someone is published hidden, pending review
+      // (0011). The author has to hear that now, not find it later.
+      final bool underReview = await repository
+          .myStories()
+          .then(
+            (List<OwnStory> own) =>
+                own.any((OwnStory s) => s.id == id && s.underReview),
+          )
+          .catchError((Object _) => false);
+      if (!mounted) return;
       ref
         ..invalidate(storiesDeckControllerProvider)
         ..invalidate(myStoriesProvider);
-      context.showSnack(l10n.composePublished);
+      context.showSnack(
+        underReview ? l10n.composeUnderReview : l10n.composePublished,
+      );
       context.pop();
     } on StoryException catch (error) {
       if (!mounted) return;

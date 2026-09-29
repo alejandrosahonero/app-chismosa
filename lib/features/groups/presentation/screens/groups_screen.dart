@@ -123,21 +123,18 @@ class _GroupsScreenState extends ConsumerState<GroupsScreen> {
   }
 
   Future<void> _create() async {
-    final AppLocalizations l10n = context.l10n;
-    final String? name = await showDialog<String>(
-      context: context,
-      builder: (BuildContext context) => _TextPrompt(
-        title: l10n.groupsCreate,
-        body: l10n.groupsCreateBody,
-        hint: l10n.groupsNameField,
-        confirmLabel: l10n.groupsCreateConfirm,
-        maxLength: 40,
-      ),
-    );
-    if (name == null || name.trim().length < 2 || !mounted) return;
+    final ({String name, GroupRules rules})? result =
+        await showDialog<({String name, GroupRules rules})>(
+          context: context,
+          builder: (BuildContext context) => const _CreateDialog(),
+        );
+    if (result == null || result.name.trim().length < 2 || !mounted) return;
 
     await _run((GroupRepository repository) async {
-      final String id = await repository.create(name);
+      final String id = await repository.create(
+        result.name,
+        rules: result.rules,
+      );
       ref.invalidate(myGroupsProvider);
       if (mounted) _open(id);
     });
@@ -158,6 +155,17 @@ class _GroupsScreenState extends ConsumerState<GroupsScreen> {
     if (code == null || code.trim().isEmpty || !mounted) return;
 
     await _run((GroupRepository repository) async {
+      // What the group is, and which rules it turned off, before joining: a
+      // group where people can be named is something to agree to.
+      final InvitePreview preview = await repository.previewInvite(code);
+      if (!mounted) return;
+      final bool ok = await showConfirmDialog(
+        context,
+        title: preview.name,
+        body: _joinBody(l10n, preview),
+        confirmLabel: l10n.groupsJoinConfirm,
+      );
+      if (!ok) return;
       final String id = await repository.joinByCode(code);
       ref.invalidate(myGroupsProvider);
       if (!mounted) return;
@@ -171,6 +179,17 @@ class _GroupsScreenState extends ConsumerState<GroupsScreen> {
     switch (action) {
       case _GroupAction.invite:
         await _share(group.name, group.inviteCode);
+      case _GroupAction.rules:
+        final GroupRules? rules = await showDialog<GroupRules>(
+          context: context,
+          builder: (BuildContext context) =>
+              _TightenDialog(current: group.rules),
+        );
+        if (rules == null || rules == group.rules) return;
+        await _run((GroupRepository repository) async {
+          await repository.tightenRules(group.id, rules);
+          ref.invalidate(myGroupsProvider);
+        });
       case _GroupAction.rotate:
         final bool ok = await showConfirmDialog(
           context,
@@ -262,7 +281,17 @@ String groupFailureMessage(AppLocalizations l10n, GroupFailure failure) =>
       GroupFailure.unknown => l10n.composeErrorOffline,
     };
 
-enum _GroupAction { invite, rotate, leave, delete }
+enum _GroupAction { invite, rules, rotate, leave, delete }
+
+/// The join confirmation: members, and the rules this group turned off.
+String _joinBody(AppLocalizations l10n, InvitePreview preview) {
+  final List<String> lines = <String>[
+    l10n.groupsMembers(preview.memberCount),
+    if (preview.rules.allowNames) l10n.groupsAllowsNames,
+    if (preview.rules.allowSwearing) l10n.groupsAllowsSwearing,
+  ];
+  return lines.join('\n\n');
+}
 
 class _GroupTile extends StatelessWidget {
   const _GroupTile({
@@ -286,10 +315,11 @@ class _GroupTile extends StatelessWidget {
       leading: const Icon(Icons.groups_outlined),
       title: Text(group.name, maxLines: 1, overflow: TextOverflow.ellipsis),
       subtitle: Text(
-        expired
-            ? '${l10n.groupsMembers(group.memberCount)} · '
-                  '${l10n.groupsInviteExpired}'
-            : l10n.groupsMembers(group.memberCount),
+        <String>[
+          l10n.groupsMembers(group.memberCount),
+          if (group.rules.isRelaxed) l10n.groupsRelaxedTag,
+          if (expired) l10n.groupsInviteExpired,
+        ].join(' · '),
       ),
       selected: selected,
       onTap: onOpen,
@@ -303,6 +333,11 @@ class _GroupTile extends StatelessWidget {
             PopupMenuItem<_GroupAction>(
               value: _GroupAction.invite,
               child: Text(l10n.groupsInvite),
+            ),
+          if (group.isOwner && group.rules.isRelaxed)
+            PopupMenuItem<_GroupAction>(
+              value: _GroupAction.rules,
+              child: Text(l10n.groupsRulesTitle),
             ),
           if (group.isOwner)
             PopupMenuItem<_GroupAction>(
@@ -332,7 +367,6 @@ class _TextPrompt extends StatefulWidget {
     required this.hint,
     required this.confirmLabel,
     this.initial,
-    this.maxLength,
   });
 
   final String title;
@@ -340,7 +374,6 @@ class _TextPrompt extends StatefulWidget {
   final String hint;
   final String confirmLabel;
   final String? initial;
-  final int? maxLength;
 
   @override
   State<_TextPrompt> createState() => _TextPromptState();
@@ -370,7 +403,6 @@ class _TextPromptState extends State<_TextPrompt> {
           TextField(
             controller: _input,
             autofocus: true,
-            maxLength: widget.maxLength,
             decoration: InputDecoration(
               hintText: widget.hint,
               border: const OutlineInputBorder(),
@@ -386,6 +418,171 @@ class _TextPromptState extends State<_TextPrompt> {
         FilledButton(
           onPressed: () => Navigator.of(context).pop(_input.text),
           child: Text(widget.confirmLabel),
+        ),
+      ],
+    );
+  }
+}
+
+/// The two rules a private group can turn off, as checkboxes that read as
+/// "this rule is on". Used when creating a group (both editable) and by the
+/// owner later (only switching a rule back on: a rule that is on stays on).
+class _RulesChecklist extends StatelessWidget {
+  const _RulesChecklist({
+    required this.rules,
+    required this.onChanged,
+    this.editable = GroupRules.relaxed,
+  });
+
+  final GroupRules rules;
+  final ValueChanged<GroupRules> onChanged;
+
+  /// A rule can be ticked or unticked only where this is relaxed: while
+  /// creating, both; for the owner later, only the rules still off.
+  final GroupRules editable;
+
+  @override
+  Widget build(BuildContext context) {
+    final AppLocalizations l10n = context.l10n;
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        CheckboxListTile(
+          contentPadding: EdgeInsets.zero,
+          value: !rules.allowNames,
+          title: Text(l10n.groupsRuleNames),
+          subtitle: Text(l10n.groupsRuleNamesBody),
+          onChanged: !editable.allowNames
+              ? null
+              : (bool? on) =>
+                    onChanged(rules.copyWith(allowNames: !(on ?? true))),
+        ),
+        CheckboxListTile(
+          contentPadding: EdgeInsets.zero,
+          value: !rules.allowSwearing,
+          title: Text(l10n.groupsRuleSwearing),
+          subtitle: Text(l10n.groupsRuleSwearingBody),
+          onChanged: !editable.allowSwearing
+              ? null
+              : (bool? on) =>
+                    onChanged(rules.copyWith(allowSwearing: !(on ?? true))),
+        ),
+        const SizedBox(height: AppSpacing.sm),
+        Text(
+          l10n.groupsRulesAlways,
+          style: context.texts.bodySmall?.copyWith(
+            color: context.colors.onSurfaceVariant,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// Name and rules of a new group.
+class _CreateDialog extends StatefulWidget {
+  const _CreateDialog();
+
+  @override
+  State<_CreateDialog> createState() => _CreateDialogState();
+}
+
+class _CreateDialogState extends State<_CreateDialog> {
+  final TextEditingController _name = TextEditingController();
+  GroupRules _rules = GroupRules.strict;
+
+  @override
+  void dispose() {
+    _name.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final AppLocalizations l10n = context.l10n;
+    return AlertDialog(
+      scrollable: true,
+      title: Text(l10n.groupsCreate),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(l10n.groupsCreateBody),
+          const SizedBox(height: AppSpacing.md),
+          TextField(
+            controller: _name,
+            autofocus: true,
+            maxLength: 40,
+            decoration: InputDecoration(
+              hintText: l10n.groupsNameField,
+              border: const OutlineInputBorder(),
+            ),
+          ),
+          Text(l10n.groupsRulesTitle, style: context.texts.titleSmall),
+          _RulesChecklist(
+            rules: _rules,
+            // Everything is editable while creating.
+            editable: GroupRules.relaxed,
+            onChanged: (GroupRules rules) => setState(() => _rules = rules),
+          ),
+        ],
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text(l10n.commonCancel),
+        ),
+        FilledButton(
+          onPressed: () =>
+              Navigator.of(context).pop((name: _name.text, rules: _rules)),
+          child: Text(l10n.groupsCreateConfirm),
+        ),
+      ],
+    );
+  }
+}
+
+/// The owner switching relaxed rules back on. Never off again.
+class _TightenDialog extends StatefulWidget {
+  const _TightenDialog({required this.current});
+
+  final GroupRules current;
+
+  @override
+  State<_TightenDialog> createState() => _TightenDialogState();
+}
+
+class _TightenDialogState extends State<_TightenDialog> {
+  late GroupRules _rules = widget.current;
+
+  @override
+  Widget build(BuildContext context) {
+    final AppLocalizations l10n = context.l10n;
+    return AlertDialog(
+      scrollable: true,
+      title: Text(l10n.groupsRulesTitle),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(l10n.groupsRulesTightenBody),
+          _RulesChecklist(
+            rules: _rules,
+            // A rule that is on now cannot be unticked.
+            editable: widget.current,
+            onChanged: (GroupRules rules) => setState(() => _rules = rules),
+          ),
+        ],
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text(l10n.commonCancel),
+        ),
+        FilledButton(
+          onPressed: () => Navigator.of(context).pop(_rules),
+          child: Text(l10n.groupsRulesSave),
         ),
       ],
     );

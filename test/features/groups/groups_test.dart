@@ -35,10 +35,28 @@ class _Groups implements GroupRepository {
   Future<List<StoryGroup>> myGroups() async => groups;
 
   @override
-  Future<String> create(String name) async {
+  Future<String> create(
+    String name, {
+    GroupRules rules = GroupRules.strict,
+  }) async {
     groups.insert(0, _group('new', name, owner: true));
     return 'new';
   }
+
+  @override
+  Future<InvitePreview> previewInvite(String code) async {
+    if (normalizeInviteCode(code) != 'a1b2c3d4e5f6') {
+      throw const GroupException(GroupFailure.invalidInvite);
+    }
+    return const InvitePreview(
+      name: 'Primos',
+      memberCount: 3,
+      rules: GroupRules.strict,
+    );
+  }
+
+  @override
+  Future<void> tightenRules(String groupId, GroupRules rules) async {}
 
   @override
   Future<String> joinByCode(String code) async {
@@ -161,6 +179,17 @@ void main() {
       expect(find.text('a1b2c3d4e5f6'), findsOneWidget);
       expect(repository.joinedCodes, isEmpty);
 
+      await tester.tap(find.text('Unirme'));
+      await tester.pumpAndSettle();
+      // Then the group and its rules, and a second tap to actually join.
+      expect(
+        find.descendant(
+          of: find.byType(AlertDialog),
+          matching: find.text('Primos'),
+        ),
+        findsOneWidget,
+      );
+      expect(repository.joinedCodes, isEmpty);
       await tester.tap(find.text('Unirme'));
       await tester.pumpAndSettle();
       expect(repository.joinedCodes, <String>['a1b2c3d4e5f6']);

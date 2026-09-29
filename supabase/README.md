@@ -148,7 +148,7 @@ licencia» en Play Console, que compra sin pagar):
 
 - [ ] Ejecutar en el SQL Editor, en orden: `0004_moderation.sql`,
       `0005_groups.sql`, `0006_push.sql`, `0007_safety_and_chapters.sql`,
-      `0008_launch.sql`, `0009_devices_premium.sql`, `0010_delete_account.sql`.
+      `0008_launch.sql`, `0009_devices_premium.sql`, `0010_delete_account.sql`, `0011_names_and_group_rules.sql`.
 - [ ] Después, `tool/seed_house_stories.sql` (borra las demo y la historia
       basura, publica las 10 de la casa).
 - [ ] Desplegar las Edge Functions: `admob-ssv`, `thread-push` y

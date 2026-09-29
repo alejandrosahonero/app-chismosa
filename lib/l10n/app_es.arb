@@ -375,7 +375,6 @@
   "storiesCountryEmptyBody": "Has leído todo lo que se ha contado aquí por ahora. Amplía la búsqueda y sigue con historias de todo el mundo.",
   "storiesWidenSearch": "Ampliar a todo el mundo",
   "storiesShare": "Compartir",
-  "shareGroupBlocked": "Las historias de un grupo no salen del grupo.",
   "shareCta": "¿Y tú qué opinas?",
   "shareMessage": "Léelo entero y opina en Chismosa: {link}",
   "shareError": "No se ha podido compartir. Inténtalo otra vez.",
@@ -414,5 +413,17 @@
   "accountRestorePremiumTag": "Premium",
   "accountRestorePremiumBody": "Llevar tu cuenta a otro móvil con su código es una función de Chismosa Premium.\n\nSi ya lo compraste en tu otro móvil, entra en Premium y toca «Ya lo compré» con la misma cuenta de Google.",
   "accountRestorePremiumCta": "Ver Premium",
-  "likedTitle": "Mis me gusta"
+  "likedTitle": "Mis me gusta",
+  "groupsRulesTitle": "Reglas del grupo",
+  "groupsRuleNames": "No nombrar a personas",
+  "groupsRuleNamesBody": "Si una historia nombra a alguien, queda oculta hasta que la revisemos.",
+  "groupsRuleSwearing": "Filtro de palabrotas",
+  "groupsRuleSwearingBody": "No deja publicar insultos ni palabras malsonantes.",
+  "groupsRulesAlways": "Siempre activas: nada de teléfonos, emails, @usuarios ni enlaces, nada ilegal ni con menores, y se puede reportar y bloquear.",
+  "groupsRulesTightenBody": "Puedes volver a activar una regla, pero una vez activada no se puede quitar.",
+  "groupsRulesSave": "Guardar",
+  "groupsRelaxedTag": "reglas relajadas",
+  "groupsAllowsNames": "⚠️ En este grupo se puede nombrar a personas.",
+  "groupsAllowsSwearing": "⚠️ En este grupo no hay filtro de palabrotas.",
+  "composeUnderReview": "Publicada, pero parece que nombra a alguien: la revisaremos antes de que salga en el mazo."
 }

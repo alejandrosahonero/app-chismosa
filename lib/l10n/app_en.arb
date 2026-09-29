@@ -213,7 +213,6 @@
   "storiesCountryEmptyBody": "You have read everything told here for now. Widen the search and keep going with stories from all over the world.",
   "storiesWidenSearch": "Widen to the whole world",
   "storiesShare": "Share",
-  "shareGroupBlocked": "A group's stories stay in the group.",
   "shareCta": "What do you think?",
   "shareMessage": "Read it all and weigh in on Chismosa: {link}",
   "shareError": "Could not share. Try again.",
@@ -245,5 +244,17 @@
   "accountRestorePremiumTag": "Premium",
   "accountRestorePremiumBody": "Taking your account to another phone with its code is a Chismosa Premium feature.\n\nIf you already bought it on your other phone, open Premium and tap \"I already bought it\" with the same Google account.",
   "accountRestorePremiumCta": "See Premium",
-  "likedTitle": "My likes"
+  "likedTitle": "My likes",
+  "groupsRulesTitle": "Group rules",
+  "groupsRuleNames": "No naming people",
+  "groupsRuleNamesBody": "A story that names someone is hidden until we review it.",
+  "groupsRuleSwearing": "Swearing filter",
+  "groupsRuleSwearingBody": "Insults and swear words cannot be posted.",
+  "groupsRulesAlways": "Always on: no phone numbers, e-mails, @handles or links, nothing illegal or involving minors, and anyone can report and block.",
+  "groupsRulesTightenBody": "You can switch a rule back on, but once on it cannot be turned off.",
+  "groupsRulesSave": "Save",
+  "groupsRelaxedTag": "relaxed rules",
+  "groupsAllowsNames": "⚠️ People can be named in this group.",
+  "groupsAllowsSwearing": "⚠️ This group has no swearing filter.",
+  "composeUnderReview": "Posted, but it seems to name someone: we'll review it before it shows up in the deck."
 }

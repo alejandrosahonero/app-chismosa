@@ -41,10 +41,16 @@ abstract interface class GroupRepository {
   Future<List<StoryGroup>> myGroups();
 
   /// Returns the new group's id. The creator is its first member.
-  Future<String> create(String name);
+  Future<String> create(String name, {GroupRules rules = GroupRules.strict});
+
+  /// The group an invite leads to, without joining it.
+  Future<InvitePreview> previewInvite(String code);
 
   /// Returns the id of the group joined. Joining twice is not an error.
   Future<String> joinByCode(String code);
+
+  /// Owner only. Switches relaxed rules back on; the server never relaxes one.
+  Future<void> tightenRules(String groupId, GroupRules rules);
 
   Future<void> leave(String groupId);
 
@@ -71,15 +77,48 @@ class SupabaseGroupRepository implements GroupRepository {
   }
 
   @override
-  Future<String> create(String name) async {
+  Future<String> create(
+    String name, {
+    GroupRules rules = GroupRules.strict,
+  }) async {
     final dynamic id = await _guard(
       () => _client.rpc<dynamic>(
         'create_group',
-        params: <String, dynamic>{'p_name': name.trim()},
+        params: <String, dynamic>{
+          'p_name': name.trim(),
+          'p_allow_names': rules.allowNames,
+          'p_allow_swearing': rules.allowSwearing,
+        },
       ),
     );
     return id as String;
   }
+
+  @override
+  Future<InvitePreview> previewInvite(String code) async {
+    final dynamic rows = await _guard(
+      () => _client.rpc<dynamic>(
+        'invite_preview',
+        params: <String, dynamic>{'p_code': normalizeInviteCode(code)},
+      ),
+    );
+    if (rows is List && rows.isNotEmpty) {
+      return InvitePreview.fromRow(rows.first as Map<String, dynamic>);
+    }
+    throw const GroupException(GroupFailure.invalidInvite);
+  }
+
+  @override
+  Future<void> tightenRules(String groupId, GroupRules rules) => _guard(
+    () => _client.rpc<void>(
+      'tighten_group_rules',
+      params: <String, dynamic>{
+        'p_group': groupId,
+        'p_allow_names': rules.allowNames,
+        'p_allow_swearing': rules.allowSwearing,
+      },
+    ),
+  );
 
   @override
   Future<String> joinByCode(String code) async {
