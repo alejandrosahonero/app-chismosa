@@ -6,6 +6,7 @@ import 'package:chismosa/core/theme/app_spacing.dart';
 import 'package:chismosa/core/widgets/confirm_dialog.dart';
 import 'package:chismosa/l10n/generated/app_localizations.dart';
 import 'package:chismosa/services/backend/backend_providers.dart';
+import 'package:chismosa/services/billing/premium_controller.dart';
 import 'package:chismosa/services/identity/anonymous_identity_service.dart';
 import 'package:chismosa/services/identity/install_claim.dart';
 import 'package:chismosa/services/moderation/moderation_service.dart';
@@ -75,6 +76,9 @@ class _AccountSectionState extends ConsumerState<AccountSection> {
         ListTile(
           leading: const Icon(Icons.restore),
           title: Text(l10n.accountRestoreTitle),
+          subtitle: ref.watch(isPremiumProvider)
+              ? null
+              : Text(l10n.accountRestorePremiumTag),
           trailing: const Icon(Icons.chevron_right),
           enabled: identity != null,
           onTap: () => unawaited(_restore(identity!)),
@@ -129,6 +133,22 @@ class _AccountSectionState extends ConsumerState<AccountSection> {
 
   Future<void> _restore(AnonymousIdentityService identity) async {
     final AppLocalizations l10n = context.l10n;
+
+    // Taking an account to another phone is a Premium feature. A new phone
+    // starts on a fresh account; "Ya lo compré" on the paywall brings the
+    // purchase over (same Google account), and then the code works.
+    if (!ref.read(isPremiumProvider)) {
+      final bool goPremium = await showConfirmDialog(
+        context,
+        title: l10n.accountRestoreTitle,
+        body: l10n.accountRestorePremiumBody,
+        confirmLabel: l10n.accountRestorePremiumCta,
+      );
+      if (goPremium && mounted) {
+        unawaited(context.pushNamed(AppRoutes.paywallName));
+      }
+      return;
+    }
     final String? input = await showDialog<String>(
       context: context,
       builder: (BuildContext context) => const _RestoreDialog(),

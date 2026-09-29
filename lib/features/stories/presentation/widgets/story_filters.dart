@@ -14,17 +14,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-/// One scrollable row holding every filter the deck has.
+/// The row over the deck: at most three chips.
 ///
-/// A row and not a menu: these chips cost vertical space the card would
-/// otherwise have, but they show what the deck can be filtered by without
-/// opening anything, and changing one is a single tap instead of three. It is
-/// also the one control that stays useful on the "nothing left" screen, which
-/// is exactly where changing a filter is the most helpful thing a reader can
-/// do.
-///
-/// Tapping the selected chip again does **not** clear it: in a row of filters a
-/// tap means "show me this one".
+/// It used to hold every filter at once — sort, country, eight categories —
+/// and read as a wall of buttons. Now it keeps only what changes *which* deck
+/// this is ("Me gustaron", and the group while one is open); how the deck is
+/// narrowed lives behind "Filtros", which says how many are on.
 class StoryFilters extends ConsumerWidget {
   const StoryFilters({super.key});
 
@@ -41,22 +36,34 @@ class StoryFilters extends ConsumerWidget {
         (LocaleSettings value) => value.countryCode,
       ),
     );
+    final int active = <bool>[
+      query.sort != StorySort.hot,
+      query.category != null,
+      // The deck starts on the reader's country; widening it is the change.
+      myCountry != null && query.countryCode == null,
+    ].where((bool on) => on).length;
 
     return SizedBox(
       height: height,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: <Widget>[
-          // Which deck this is, before how it is filtered: a group is a
-          // different deck, not a narrower one. Tapping opens the groups
-          // screen, which is where switching back to the world lives too.
-          _Chip(
-            label: _deckName(ref, query.groupId) ?? l10n.groupsWorldwide,
-            icon: query.groupId == null ? Icons.public : Icons.groups_outlined,
-            selected: query.groupId != null,
-            onTap: () => context.pushNamed(AppRoutes.groupsName),
-          ),
-          const SizedBox(width: AppSpacing.sm),
+          // Only while a group is open: it says which deck this is, and its
+          // cross goes back to the world.
+          if (query.groupId != null) ...<Widget>[
+            InputChip(
+              avatar: const Icon(Icons.groups_outlined, size: 16),
+              label: Text(_deckName(ref, query.groupId) ?? l10n.groupsTitle),
+              selected: true,
+              showCheckmark: false,
+              onPressed: () => context.pushNamed(AppRoutes.groupsName),
+              onDeleted: () =>
+                  ref.read(feedQueryProvider.notifier).selectGroup(null),
+              deleteButtonTooltipMessage: l10n.groupsWorldwide,
+              visualDensity: VisualDensity.compact,
+            ),
+            const SizedBox(width: AppSpacing.sm),
+          ],
           _Chip(
             label: l10n.storiesLikedFilter,
             icon: query.liked ? Icons.favorite : Icons.favorite_border,
@@ -65,56 +72,118 @@ class StoryFilters extends ConsumerWidget {
                 .read(feedQueryProvider.notifier)
                 .showLiked(liked: !query.liked),
           ),
-          const SizedBox(width: AppSpacing.md),
-          // Sort first: it changes what the deck *is*, while a category only
-          // narrows it.
-          _Chip(
-            label: query.sort == StorySort.hot
-                ? l10n.storiesSortHot
-                : l10n.storiesSortNew,
-            icon: query.sort == StorySort.hot
-                ? Icons.local_fire_department_outlined
-                : Icons.schedule,
-            selected: true,
-            onTap: () => ref
-                .read(feedQueryProvider.notifier)
-                .selectSort(
-                  query.sort == StorySort.hot
-                      ? StorySort.newest
-                      : StorySort.hot,
-                ),
-          ),
-          if (myCountry != null) ...<Widget>[
+          // "Me gustaron" ignores sort, country and category, so the filters
+          // would do nothing while it is on.
+          if (!query.liked) ...<Widget>[
             const SizedBox(width: AppSpacing.sm),
             _Chip(
-              label: query.countryCode == null
-                  ? l10n.storiesCountryAll
-                  : l10n.storiesCountryMine,
-              icon: Icons.public,
-              selected: query.countryCode != null,
-              onTap: () => ref
-                  .read(feedQueryProvider.notifier)
-                  .selectCountry(query.countryCode == null ? myCountry : null),
-            ),
-          ],
-          const SizedBox(width: AppSpacing.md),
-          _Chip(
-            label: l10n.storiesCategoryAll,
-            selected: query.category == null,
-            onTap: () =>
-                ref.read(feedQueryProvider.notifier).selectCategory(null),
-          ),
-          for (final StoryCategory category
-              in StoryCategory.filters) ...<Widget>[
-            const SizedBox(width: AppSpacing.sm),
-            _Chip(
-              label: categoryLabel(l10n, category),
-              selected: query.category == category,
-              onTap: () =>
-                  ref.read(feedQueryProvider.notifier).selectCategory(category),
+              label: active == 0
+                  ? l10n.storiesFilters
+                  : '${l10n.storiesFilters} · $active',
+              icon: Icons.tune,
+              selected: active > 0,
+              onTap: () => showModalBottomSheet<void>(
+                context: context,
+                showDragHandle: true,
+                builder: (BuildContext context) => const _FilterSheet(),
+              ),
             ),
           ],
         ],
+      ),
+    );
+  }
+}
+
+/// Sort, country and category, one tap each. Changes apply as they are made:
+/// the deck behind the sheet is already reshuffling when it closes.
+class _FilterSheet extends ConsumerWidget {
+  const _FilterSheet();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final FeedQuery query = ref.watch(feedQueryProvider);
+    final FeedQueryController filters = ref.read(feedQueryProvider.notifier);
+    final AppLocalizations l10n = context.l10n;
+    final String? myCountry = ref.watch(
+      localeSettingsProvider.select(
+        (LocaleSettings value) => value.countryCode,
+      ),
+    );
+
+    Widget title(String text) => Padding(
+      padding: const EdgeInsets.only(top: AppSpacing.md, bottom: AppSpacing.sm),
+      child: Text(text, style: context.texts.titleSmall),
+    );
+
+    return SafeArea(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.fromLTRB(
+          AppSpacing.md,
+          0,
+          AppSpacing.md,
+          AppSpacing.md,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            title(l10n.storiesFilterSort),
+            Wrap(
+              spacing: AppSpacing.sm,
+              children: <Widget>[
+                _Chip(
+                  label: l10n.storiesSortHot,
+                  icon: Icons.local_fire_department_outlined,
+                  selected: query.sort == StorySort.hot,
+                  onTap: () => filters.selectSort(StorySort.hot),
+                ),
+                _Chip(
+                  label: l10n.storiesSortNew,
+                  icon: Icons.schedule,
+                  selected: query.sort == StorySort.newest,
+                  onTap: () => filters.selectSort(StorySort.newest),
+                ),
+              ],
+            ),
+            if (myCountry != null) ...<Widget>[
+              title(l10n.storiesFilterWhere),
+              Wrap(
+                spacing: AppSpacing.sm,
+                children: <Widget>[
+                  _Chip(
+                    label: l10n.storiesCountryMine,
+                    selected: query.countryCode != null,
+                    onTap: () => filters.selectCountry(myCountry),
+                  ),
+                  _Chip(
+                    label: l10n.storiesCountryAll,
+                    icon: Icons.public,
+                    selected: query.countryCode == null,
+                    onTap: () => filters.selectCountry(null),
+                  ),
+                ],
+              ),
+            ],
+            title(l10n.storiesFilterCategory),
+            Wrap(
+              spacing: AppSpacing.sm,
+              runSpacing: AppSpacing.sm,
+              children: <Widget>[
+                _Chip(
+                  label: l10n.storiesCategoryAll,
+                  selected: query.category == null,
+                  onTap: () => filters.selectCategory(null),
+                ),
+                for (final StoryCategory category in StoryCategory.filters)
+                  _Chip(
+                    label: categoryLabel(l10n, category),
+                    selected: query.category == category,
+                    onTap: () => filters.selectCategory(category),
+                  ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

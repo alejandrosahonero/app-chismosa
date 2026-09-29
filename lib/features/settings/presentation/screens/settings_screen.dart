@@ -73,30 +73,6 @@ class SettingsScreen extends ConsumerWidget {
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.military_tech_outlined),
-            title: Text(context.l10n.goalsTitle),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () => context.goNamed(AppRoutes.progressName),
-          ),
-          ListTile(
-            leading: const Icon(Icons.edit_note),
-            title: Text(context.l10n.myStoriesTitle),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () => context.goNamed(AppRoutes.myStoriesName),
-          ),
-          ListTile(
-            leading: const Icon(Icons.forum_outlined),
-            title: Text(context.l10n.threadsTitle),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () => context.goNamed(AppRoutes.threadsName),
-          ),
-          ListTile(
-            leading: const Icon(Icons.favorite_border),
-            title: Text(context.l10n.likedTitle),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () => context.goNamed(AppRoutes.likedName),
-          ),
-          ListTile(
             leading: const Icon(Icons.translate),
             title: Text(context.l10n.languagesTitle),
             subtitle: Text(context.l10n.languagesSubtitle),

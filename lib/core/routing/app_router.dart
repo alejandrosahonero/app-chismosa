@@ -1,6 +1,5 @@
 import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/widgets/error_view.dart';
-import 'package:chismosa/features/goals/presentation/screens/progress_screen.dart';
 import 'package:chismosa/features/groups/presentation/screens/groups_screen.dart';
 import 'package:chismosa/features/premium/presentation/screens/paywall_screen.dart';
 import 'package:chismosa/features/settings/presentation/screens/account_moved_screen.dart';
@@ -8,7 +7,6 @@ import 'package:chismosa/features/settings/presentation/screens/language_prefere
 import 'package:chismosa/features/settings/presentation/screens/settings_screen.dart';
 import 'package:chismosa/features/stories/domain/story.dart';
 import 'package:chismosa/features/stories/presentation/screens/compose_story_screen.dart';
-import 'package:chismosa/features/stories/presentation/screens/liked_stories_screen.dart';
 import 'package:chismosa/features/stories/presentation/screens/my_stories_screen.dart';
 import 'package:chismosa/features/stories/presentation/screens/rules_screen.dart';
 import 'package:chismosa/features/stories/presentation/screens/stories_deck_screen.dart';
@@ -94,12 +92,6 @@ final Provider<GoRouter> routerProvider = Provider<GoRouter>((Ref ref) {
                 const SettingsScreen(),
           ),
           GoRoute(
-            path: 'progress',
-            name: AppRoutes.progressName,
-            builder: (BuildContext context, GoRouterState state) =>
-                const ProgressScreen(),
-          ),
-          GoRoute(
             path: 'compose',
             name: AppRoutes.composeName,
             builder: (BuildContext context, GoRouterState state) =>
@@ -116,12 +108,6 @@ final Provider<GoRouter> routerProvider = Provider<GoRouter>((Ref ref) {
             name: AppRoutes.threadsName,
             builder: (BuildContext context, GoRouterState state) =>
                 const ThreadsHistoryScreen(),
-          ),
-          GoRoute(
-            path: 'liked',
-            name: AppRoutes.likedName,
-            builder: (BuildContext context, GoRouterState state) =>
-                const LikedStoriesScreen(),
           ),
           GoRoute(
             path: 'thread/:id',

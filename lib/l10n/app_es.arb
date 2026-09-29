@@ -9,108 +9,6 @@
   "commonErrorGeneric": "Algo ha salido mal. Inténtalo de nuevo.",
   "deckHintNext": "Desliza a la izquierda para pasar a la siguiente",
   "adLabel": "Publicidad",
-  "goalsTitle": "Progreso",
-  "@goalsTitle": {
-    "description": "Título de la pantalla de objetivos y rangos"
-  },
-  "goalsRingTooltip": "Objetivo de hoy: {learned} de {target}",
-  "@goalsRingTooltip": {
-    "description": "Tooltip del anillo de la barra superior; es lo que lee el lector de pantalla",
-    "placeholders": {
-      "learned": {
-        "type": "int"
-      },
-      "target": {
-        "type": "int"
-      }
-    }
-  },
-  "goalsTodayTitle": "Objetivo de hoy",
-  "goalsTodayProgress": "{learned} de {target} hilos",
-  "@goalsTodayProgress": {
-    "placeholders": {
-      "learned": {
-        "type": "int"
-      },
-      "target": {
-        "type": "int"
-      }
-    }
-  },
-  "goalsTodayDone": "Objetivo cumplido: +{points} puntos",
-  "@goalsTodayDone": {
-    "placeholders": {
-      "points": {
-        "type": "int"
-      }
-    }
-  },
-  "goalsTodayPending": "{remaining, plural, =1{Te falta 1} other{Te faltan {remaining}}}",
-  "@goalsTodayPending": {
-    "placeholders": {
-      "remaining": {
-        "type": "num"
-      }
-    }
-  },
-  "goalsPoints": "{points, plural, =1{1 punto} other{{points} puntos}}",
-  "@goalsPoints": {
-    "placeholders": {
-      "points": {
-        "type": "num"
-      }
-    }
-  },
-  "goalsNextRank": "{points, plural, =1{1 punto para {rank}} other{{points} puntos para {rank}}}",
-  "@goalsNextRank": {
-    "description": "Cuánto falta para el siguiente rango",
-    "placeholders": {
-      "points": {
-        "type": "num"
-      },
-      "rank": {
-        "type": "String"
-      }
-    }
-  },
-  "goalsMaxRank": "Has llegado al último rango. A partir de aquí solo queda mantenerlo.",
-  "goalsRankLadder": "Rangos",
-  "goalsRankPointsShort": "{points} pts",
-  "@goalsRankPointsShort": {
-    "placeholders": {
-      "points": {
-        "type": "int"
-      }
-    }
-  },
-  "goalsHowItWorks": "Cada día trae un objetivo distinto. Cuenta entrar al hilo de una historia, y el mismo hilo solo cuenta una vez al día. Al cumplir el objetivo sumas tantos puntos como hilos pedía ese día, y los puntos son los que suben de rango.",
-  "goalsReachedSnack": "¡Objetivo del día cumplido! +{points} puntos",
-  "@goalsReachedSnack": {
-    "placeholders": {
-      "points": {
-        "type": "int"
-      }
-    }
-  },
-  "goalsRankUpTitle": "Rango nuevo",
-  "goalsRankUpBody": "Has cumplido el objetivo del día (+{points} puntos) y con eso subes de rango.",
-  "@goalsRankUpBody": {
-    "placeholders": {
-      "points": {
-        "type": "int"
-      }
-    }
-  },
-  "goalsSeeProgress": "Ver progreso",
-  "rankCurious": "Oyente",
-  "@rankCurious": {
-    "description": "Rango 1 de 6"
-  },
-  "rankInquisitive": "Curiosa",
-  "rankKnowItAll": "Cotilla",
-  "rankScholar": "Chismosa",
-  "rankEncyclopedia": "Correveidile",
-  "rankOracle": "Radio Patio",
   "settingsNotifications": "Recordatorios",
   "@settingsNotifications": {
     "description": "Cabecera de la sección de notificaciones en Ajustes"
@@ -292,12 +190,12 @@
   "composeRemoveLimit": "Quitar el límite",
   "accountSection": "Tu cuenta",
   "accountCodeTitle": "Código de recuperación",
-  "accountCodeBody": "Es la única forma de recuperar tus hilos en otro móvil o si reinstalas sin copia de seguridad. Guárdalo donde no lo vea nadie: quien lo tenga, entra como tú.",
+  "accountCodeBody": "Guárdalo donde no lo vea nadie: quien lo tenga, entra como tú. Con Premium, sirve para llevarte tu cuenta a otro móvil.",
   "accountCodeShow": "Mostrar código",
   "accountCodeCopy": "Copiar",
   "accountCodeCopied": "Código copiado",
   "accountCodeUnavailable": "Tu cuenta aún se está creando. Vuelve en un momento.",
-  "accountRestoreTitle": "Recuperar otra cuenta",
+  "accountRestoreTitle": "Recuperar cuenta",
   "accountRestoreBody": "Escribe el código de la cuenta que quieres recuperar. La de este móvil se dejará de usar aquí; si no has guardado su código, se perderá.",
   "accountRestoreField": "CHM-XXXX-XXXX-…",
   "accountRestore": "Recuperar",
@@ -502,14 +400,20 @@
   "movedBody": "Sin Premium, una cuenta se usa en un solo móvil a la vez. Puedes traerla a este (el otro dejará de poder usarla) o hacerte Premium para usarla en los dos.",
   "movedTakeHere": "Usarla en este móvil",
   "movedGoPremium": "Usarla en los dos con Premium",
-  "paywallBenefitDevices": "Usa tu cuenta en varios móviles a la vez",
+  "paywallBenefitDevices": "Llévate tu cuenta a otro móvil, o úsala en varios a la vez",
   "accountDeleteTitle": "Borrar mi cuenta",
   "accountDeleteSubtitle": "Borra tus historias, mensajes y grupos para siempre",
   "accountDeleteBody": "Se borrarán para siempre tu cuenta, tus historias (con sus hilos), tus mensajes, tus me gusta y los grupos que creaste. No se puede deshacer y tu código de recuperación dejará de servir.\n\nSi compraste Premium, podrás recuperarlo con «Restaurar compras».",
   "accountDeleteConfirm": "Borrar para siempre",
   "accountDeleted": "Cuenta borrada. Empiezas de cero.",
   "accountDeleteError": "No se pudo borrar la cuenta. Comprueba tu conexión e inténtalo de nuevo.",
-  "likedTitle": "Me gusta",
   "storiesReadMore": "Ver más",
-  "storiesUndoHint": "¿Te la saltaste sin querer? Agita el móvil y vuelve."
+  "storiesUndoHint": "¿Te la saltaste sin querer? Agita el móvil y vuelve.",
+  "storiesFilters": "Filtros",
+  "storiesFilterSort": "Orden",
+  "storiesFilterWhere": "De dónde",
+  "storiesFilterCategory": "Categoría",
+  "accountRestorePremiumTag": "Premium",
+  "accountRestorePremiumBody": "Llevar tu cuenta a otro móvil con su código es una función de Chismosa Premium.\n\nSi ya lo compraste en tu otro móvil, entra en Premium y toca «Ya lo compré» con la misma cuenta de Google.",
+  "accountRestorePremiumCta": "Ver Premium"
 }

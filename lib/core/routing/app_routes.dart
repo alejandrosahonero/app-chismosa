@@ -11,11 +11,6 @@ abstract final class AppRoutes {
   static const String settingsPath = '/settings';
   static const String settingsName = 'settings';
 
-  /// Daily goal, points and ranks. Reached from the ring in the deck's app bar
-  /// and from a row in Settings.
-  static const String progressPath = '/progress';
-  static const String progressName = 'progress';
-
   /// Where a story is written. A screen and not a bottom sheet: 600 characters
   /// with the keyboard up needs the whole height, and a sheet that covers
   /// itself is how a half-written story gets lost.
@@ -43,11 +38,6 @@ abstract final class AppRoutes {
   /// found again: the deck deals a card once and never brings it back.
   static const String threadsPath = '/threads';
   static const String threadsName = 'threads';
-
-  /// Stories the reader liked. The other way back to a card the deck already
-  /// dealt.
-  static const String likedPath = '/liked';
-  static const String likedName = 'liked';
 
   /// One conversation, reached from the history. The deck raises the same
   /// panel as a sheet instead of navigating, because there the card is still

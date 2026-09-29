@@ -2,7 +2,7 @@
 
 > **Contexto obligatorio.** Este repositorio es **Chismosa**, una app Android de historias anónimas en formato mazo deslizable estilo Tinder: cada carta es un chisme corto que alguien del mundo ha subido; deslizar hacia arriba te mete en el hilo de conversación de esa historia. Freemium: AdMob + un pago único premium.
 >
-> El proyecto nació como *Ajá: Datos Curiosos Raros*. De aquello quedan el motor del mazo (`core/widgets/deck`), la monetización y el sistema de objetivos y rangos, reciclado. El catálogo de datos, los favoritos y la pregunta del día se borraron.
+> El proyecto nació como *Ajá: Datos Curiosos Raros*. De aquello quedan el motor del mazo (`core/widgets/deck`) y la monetización. Los objetivos y rangos se borraron: en una app de historias no aportaban nada. El catálogo de datos, los favoritos y la pregunta del día se borraron.
 >
 > La fuente de verdad arquitectónica es `GUIA_ESTANDAR_FLUTTER_ANDROID.md` (documento del usuario, fuera del repo). Este archivo explica **qué** hay, **cómo** funciona y **por qué**. Ante un conflicto, manda la guía estándar. El backend está documentado en `supabase/README.md`.
 
@@ -77,7 +77,6 @@ lib/
 │   ├── stories/       # el mazo, escribir, normas
 │   ├── threads/       # hilos en vivo (hoja sobre el mazo + historial)
 │   ├── groups/        # mazos privados por invitación
-│   ├── goals/         # objetivo diario + rangos (cuenta hilos)
 │   ├── settings/      # ajustes, cuenta y código de recuperación, idiomas
 │   └── premium/       # paywall
 ├── services/
@@ -171,6 +170,7 @@ Los botones inferiores repiten los gestos y **no son decorativos**: una interfaz
 - Una cuenta por persona. El secreto se deriva de un **código de recuperación** (`CHM-XXXX-…`, 120 bits) guardado en el directorio de soporte, que Auto Backup restaura al reinstalar.
 - **Un móvil a la vez; varios con Premium** (`0009`, `InstallClaim`). Cada instalación tiene un id aleatorio en preferencias. Al arrancar, al volver al primer plano y al recuperar una cuenta, `claim_install` dice si este móvil puede usarla; si otro la tiene y no es premium, el router lleva a `/moved`, que ofrece **traerla aquí (gratis, el otro móvil la pierde)** o Premium para usarla en los dos. Mover la cuenta nunca se cobra: un móvil perdido no puede dejar a nadie sin su cuenta. Si no se puede preguntar al servidor, se deja pasar.
 - **Borrar mi cuenta** (Ajustes, lo exige Google Play): `delete_my_account()` borra la fila de `auth.users` y todo cae en cascada; el móvil sigue con una cuenta nueva y vacía (la app no tiene estado «sin sesión»). El secreto local solo se borra si el servidor confirmó.
+- **Recuperar una cuenta con su código es Premium.** Sin Premium, el diálogo lleva al paywall («Ya lo compré» trae la compra al móvil nuevo con la misma cuenta de Google). La pantalla `/moved` (otro móvil tiene la cuenta) sigue siendo gratis.
 - El código solo se enseña en Ajustes, detrás de un toque. Restaurar otra cuenta incrementa `sessionEpoch` y re-registra el token de push.
 
 ---
@@ -190,9 +190,9 @@ Los botones inferiores repiten los gestos y **no son decorativos**: una interfaz
 
 ---
 
-## 7. Objetivo diario y rangos (`features/goals`)
+## 7. Pantalla principal
 
-**La unidad de progreso es entrar al hilo de una historia**, no dar like ni pasar cartas. El mismo hilo cuenta una vez al día. El objetivo del día (8/10/12/15) se deriva solo de la fecha; el día de instalación es el más corto. Cumplirlo da tantos puntos como pedía y suben de rango: Oyente · Curiosa · Cotilla · Chismosa · Correveidile · Radio Patio (0/60/180/400/800/1400). Objetivo cumplido → snackbar; subir de rango → diálogo. Gratis, no mira premium. Es también el momento de pedir reseña (§9).
+**Mínima a propósito** (feedback de testers: «saturada de botones»). App bar: menú hamburguesa (`core/widgets/app_drawer.dart`: escribir, mis historias, mis hilos, grupos, premium, normas, ajustes) y el nombre. Encima del mazo, como mucho tres chips: el grupo abierto (con ✕ para volver al mundo), «Me gustaron» y «Filtros» (hoja con orden, país y categoría; el chip cuenta los activos). Debajo, tres botones: pasar, hilo, me gusta. Compartir está en el gesto hacia abajo y en el ⋮ de la carta. **Agitar** el móvil devuelve la última carta pasada (`ShakeDetector`). Las historias largas se cortan con «Ver más», que abre el hilo: nada se desplaza dentro de la carta.
 
 ---
 

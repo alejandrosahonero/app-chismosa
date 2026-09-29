@@ -4,10 +4,10 @@ import 'package:chismosa/core/config/app_config.dart';
 import 'package:chismosa/core/config/links_config.dart';
 import 'package:chismosa/core/extensions/build_context_x.dart';
 import 'package:chismosa/core/routing/app_routes.dart';
-import 'package:chismosa/core/theme/app_colors.dart';
 import 'package:chismosa/core/theme/app_spacing.dart';
 import 'package:chismosa/core/utils/shake_detector.dart';
 import 'package:chismosa/core/widgets/adaptive_banner_ad.dart';
+import 'package:chismosa/core/widgets/app_drawer.dart';
 import 'package:chismosa/core/widgets/app_loader.dart';
 import 'package:chismosa/core/widgets/base_screen.dart';
 import 'package:chismosa/core/widgets/confirm_dialog.dart';
@@ -20,10 +20,6 @@ import 'package:chismosa/core/widgets/deck/swipe_deck.dart';
 import 'package:chismosa/core/widgets/empty_state.dart';
 import 'package:chismosa/core/widgets/error_view.dart';
 import 'package:chismosa/core/widgets/report_reason_sheet.dart';
-import 'package:chismosa/features/goals/domain/goals_state.dart';
-import 'package:chismosa/features/goals/presentation/providers/goals_controller.dart';
-import 'package:chismosa/features/goals/presentation/widgets/goal_celebration.dart';
-import 'package:chismosa/features/goals/presentation/widgets/goal_ring_button.dart';
 import 'package:chismosa/features/stories/domain/feed_query.dart';
 import 'package:chismosa/features/stories/domain/story.dart';
 import 'package:chismosa/features/stories/domain/story_deck.dart';
@@ -159,34 +155,9 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
       // The banner is placed by hand inside the layout, above the cards. See
       // [_body].
       showBanner: false,
-      actions: <Widget>[
-        // The ring counts up, towards a number that resets tomorrow. It is the
-        // only reason the app gives to come back on a particular day.
-        const GoalRingButton(),
-        // Writing lives in the bar, not in a floating button: over the deck a
-        // FAB sits exactly on top of the like button, the one control a
-        // reader taps most.
-        IconButton.filled(
-          style: IconButton.styleFrom(
-            // A white disc on the Granate header, pencil in Sangre.
-            backgroundColor: Colors.white,
-            foregroundColor: AppColors.blood,
-          ),
-          onPressed: () => context.goNamed(AppRoutes.composeName),
-          icon: const Icon(Icons.edit_outlined),
-          tooltip: context.l10n.composeTitle,
-        ),
-        IconButton(
-          onPressed: () => context.goNamed(AppRoutes.threadsName),
-          icon: const Icon(Icons.forum_outlined),
-          tooltip: context.l10n.threadsTitle,
-        ),
-        IconButton(
-          onPressed: () => context.goNamed(AppRoutes.settingsName),
-          icon: const Icon(Icons.settings_outlined),
-          tooltip: context.l10n.settingsTitle,
-        ),
-      ],
+      // Everything that is not the deck lives in the menu: the screen is the
+      // card and the three buttons under it, nothing else competing with them.
+      drawer: const AppDrawer(),
       body: PopScope(
         // Back closes the conversation before it leaves the deck. Anything else
         // would drop the reader out of the app from inside a thread.
@@ -377,17 +348,9 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
     unawaited(_sheet.animateTo(1, curve: Curves.easeOutCubic));
     await ref.read(threadControllerProvider.notifier).open(story);
 
-    // Entering a thread is the day's unit of progress, and the moment the app
-    // is worth asking for a review. Both hang off this and nothing else: cards
-    // passed by a fast thumb are not what anybody came here for.
+    // Entering a thread is the moment the app is worth asking for a review.
+    // Cards passed by a fast thumb are not what anybody came here for.
     unawaited(ref.read(reviewServiceProvider).requestReviewAfterSuccess());
-
-    final GoalEvent event = await ref
-        .read(goalsControllerProvider.notifier)
-        .registerProgress(story.id);
-
-    if (!mounted) return;
-    await showGoalEvent(context, event);
   }
 
   Future<void> _closeThread() async {
@@ -412,6 +375,12 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
+            // Sharing is also the down swipe; here it can be found.
+            ListTile(
+              leading: const Icon(Icons.ios_share),
+              title: Text(l10n.storiesShare),
+              onTap: () => Navigator.of(context).pop(_StoryAction.share),
+            ),
             ListTile(
               leading: const Icon(Icons.flag_outlined),
               title: Text(l10n.storiesReport),
@@ -433,6 +402,8 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
     );
 
     switch (action) {
+      case _StoryAction.share:
+        await _share();
       case _StoryAction.report:
         final ReportReason? reason = await pickReportReason(context);
         if (reason == null) return;
@@ -614,17 +585,6 @@ class _Controls extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        // Small, like the thread button: the two gestures that open something
-        // rather than decide something.
-        DeckActionButton(
-          icon: Icons.ios_share,
-          direction: DeckSwipeDirection.down,
-          progress: progress,
-          tooltip: l10n.storiesShare,
-          onPressed: isStory ? () => onAction(DeckSwipeDirection.down) : null,
-          diameter: DeckActionButton.small,
-        ),
-        const SizedBox(width: AppSpacing.md),
         DeckActionButton(
           icon: Icons.close_rounded,
           direction: DeckSwipeDirection.left,
@@ -657,7 +617,7 @@ class _Controls extends StatelessWidget {
   }
 }
 
-enum _StoryAction { report, block }
+enum _StoryAction { share, report, block }
 
 /// The conversation, rising out of the bottom of the deck.
 ///

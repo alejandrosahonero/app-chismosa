@@ -26,7 +26,11 @@ class BaseScreen extends StatelessWidget {
     this.padding = EdgeInsets.zero,
     this.leading,
     this.resizeToAvoidBottomInset = true,
+    this.drawer,
   });
+
+  /// Side menu. The app bar shows the burger icon for it on its own.
+  final Widget? drawer;
 
   final Widget body;
   final String? title;
@@ -49,6 +53,7 @@ class BaseScreen extends StatelessWidget {
           ? null
           : AppBar(title: Text(title!), actions: actions, leading: leading),
       floatingActionButton: floatingActionButton,
+      drawer: drawer,
       // The bottom inset is kept unless a navigation bar already sits there:
       // edge-to-edge (Android 15+) draws the app behind the three-button bar,
       // and the deck's buttons ended up under it.

@@ -86,21 +86,3 @@ final FutureProvider<List<OwnStory>> myStoriesProvider =
 /// Kept alive: it holds the guard against two share sheets at once.
 final Provider<StoryShareService> storyShareServiceProvider =
     Provider<StoryShareService>((Ref ref) => StoryShareService());
-
-/// Everything the reader liked, newest like first, for the "Me gusta" history.
-///
-/// The same `feed(p_liked)` the deck's chip uses, as a list: a deck is for
-/// reading once, a history is for finding one again.
-final FutureProvider<List<Story>> likedStoriesProvider =
-    FutureProvider<List<Story>>((Ref ref) async {
-      final StoryRepository? repository = ref.watch(storyRepositoryProvider);
-      if (repository == null) return const <Story>[];
-      return repository.fetchFeed(
-        const FeedQuery(liked: true),
-        limit: likedHistoryLimit,
-      );
-    }, isAutoDispose: true);
-
-/// How many liked stories the history shows. One page, no paging: past a
-/// couple of hundred, nobody is scrolling to find one.
-const int likedHistoryLimit = 200;
