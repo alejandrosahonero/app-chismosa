@@ -29,9 +29,18 @@ String categoryLabel(AppLocalizations l10n, StoryCategory category) =>
 /// Wrapped in a [RepaintBoundary] because the cards underneath must not repaint
 /// while this one is being dragged.
 class StoryCardView extends StatelessWidget {
-  const StoryCardView({required this.story, super.key, this.onMore});
+  const StoryCardView({
+    required this.story,
+    super.key,
+    this.onMore,
+    this.onReadMore,
+  });
 
   final Story story;
+
+  /// "Ver más": opens the thread, where the whole story sits at the top. Only
+  /// the top card gets one, like [onMore].
+  final VoidCallback? onReadMore;
 
   /// Opens report / block. Only the top card gets one: the cards behind are
   /// covered and cannot be tapped anyway.
@@ -63,37 +72,11 @@ class StoryCardView extends StatelessWidget {
             _Header(story: story, onMore: onMore),
             const SizedBox(height: AppSpacing.md),
             Expanded(
-              // Centred while it fits, scrolling once it does not: a short
-              // story sits in the middle of the card like something said out
-              // loud, and a 600-character one still never shrinks its type.
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: SingleChildScrollView(
-                  physics: const ClampingScrollPhysics(),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      // The opening quote is the brand's signature on every
-                      // card: this is somebody's voice, reported — which is
-                      // what gossip is.
-                      ExcludeSemantics(
-                        child: SizedBox(
-                          height: 44,
-                          child: Text(
-                            '“',
-                            style: TextStyle(
-                              fontSize: 72,
-                              height: 0.9,
-                              fontWeight: FontWeight.w900,
-                              color: brand.quote,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Text(story.body, style: bodyStyle),
-                    ],
-                  ),
-                ),
+              child: _Body(
+                body: story.body,
+                style: bodyStyle,
+                quoteColor: brand.quote,
+                onReadMore: onReadMore,
               ),
             ),
             const SizedBox(height: AppSpacing.md),
@@ -101,6 +84,105 @@ class StoryCardView extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// The story, centred while it fits and cut with "Ver más" once it does not.
+///
+/// Never a scroll view: a vertical drag inside the card fought the deck's own
+/// up and down gestures, and testers kept scrolling when they meant to swipe.
+/// The full text lives in the thread, one tap away.
+class _Body extends StatelessWidget {
+  const _Body({
+    required this.body,
+    required this.style,
+    required this.quoteColor,
+    this.onReadMore,
+  });
+
+  static const double _quoteHeight = 44;
+  static const double _moreHeight = 40;
+
+  final String body;
+  final TextStyle? style;
+  final Color quoteColor;
+  final VoidCallback? onReadMore;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        final TextPainter painter = TextPainter(
+          text: TextSpan(text: body, style: style),
+          textDirection: Directionality.of(context),
+          textScaler: MediaQuery.textScalerOf(context),
+        )..layout(maxWidth: constraints.maxWidth);
+        final List<LineMetrics> lines = painter.computeLineMetrics();
+        final double height = painter.height;
+        painter.dispose();
+
+        final double room = constraints.maxHeight - _quoteHeight;
+        final bool fits = height <= room;
+        int maxLines = lines.length;
+        if (!fits) {
+          double used = 0;
+          maxLines = 0;
+          for (final LineMetrics line in lines) {
+            if (used + line.height > room - _moreHeight) break;
+            used += line.height;
+            maxLines++;
+          }
+        }
+
+        return Align(
+          alignment: Alignment.centerLeft,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              // The opening quote is the brand's signature on every card: this
+              // is somebody's voice, reported — which is what gossip is.
+              ExcludeSemantics(
+                child: SizedBox(
+                  height: _quoteHeight,
+                  child: Text(
+                    '“',
+                    style: TextStyle(
+                      fontSize: 72,
+                      height: 0.9,
+                      fontWeight: FontWeight.w900,
+                      color: quoteColor,
+                    ),
+                  ),
+                ),
+              ),
+              if (fits)
+                Text(body, style: style)
+              else ...<Widget>[
+                Text(
+                  body,
+                  style: style,
+                  maxLines: maxLines < 1 ? 1 : maxLines,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                SizedBox(
+                  height: _moreHeight,
+                  child: TextButton.icon(
+                    onPressed: onReadMore,
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                      visualDensity: VisualDensity.compact,
+                    ),
+                    icon: const Icon(Icons.forum_outlined, size: 18),
+                    label: Text(context.l10n.storiesReadMore),
+                  ),
+                ),
+              ],
+            ],
+          ),
+        );
+      },
     );
   }
 }

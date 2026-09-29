@@ -148,11 +148,15 @@ class StoriesDeckController extends AsyncNotifier<StoriesDeckState> {
     final StoryDeckItem? top = current?.current;
     if (current == null || top is! StoryCard) return;
 
+    // Marked liked before it leaves, so a shake brings it back with the heart
+    // filled in and "Me gustaron" already knows about it.
+    _replaceTop(top.story.withLike(liked: true));
     await _consumeTop();
 
     if (top.story.liked) return;
     try {
       await ref.read(storyRepositoryProvider)?.like(top.story.id);
+      ref.invalidate(likedStoriesProvider);
     } on Object catch (error) {
       AppLogger.debug('Like failed: $error', name: 'stories');
     }
@@ -211,6 +215,27 @@ class StoriesDeckController extends AsyncNotifier<StoriesDeckState> {
     await moderation.blockStoryAuthor(top.story.id);
     await ref.read(seenStoriesStoreProvider).add(<String>[top.story.id]);
     ref.invalidateSelf();
+  }
+
+  /// Shake: puts the last story the reader swiped away back on top.
+  ///
+  /// Ad slots on the way back are skipped — nobody shakes the phone to see an
+  /// ad again. The card stays in the seen list: it has been dealt, and undoing
+  /// is about this pile, not about the next session's. A like already sent is
+  /// kept; the card comes back showing it.
+  ///
+  /// Returns whether there was anything to bring back.
+  bool undo() {
+    final StoriesDeckState? current = state.value;
+    if (current == null) return false;
+
+    for (int i = current.index - 1; i >= 0; i--) {
+      if (current.items[i] is StoryCard) {
+        state = AsyncData<StoriesDeckState>(current.copyWith(index: i));
+        return true;
+      }
+    }
+    return false;
   }
 
   /// Forgets every card this device has been dealt and starts over.

@@ -33,6 +33,11 @@ class ThreadsHistoryScreen extends ConsumerWidget {
       showBanner: false,
       actions: <Widget>[
         IconButton(
+          onPressed: () => context.pushNamed(AppRoutes.likedName),
+          icon: const Icon(Icons.favorite_border),
+          tooltip: l10n.likedTitle,
+        ),
+        IconButton(
           onPressed: () => context.pushNamed(AppRoutes.myStoriesName),
           icon: const Icon(Icons.edit_note),
           tooltip: l10n.myStoriesTitle,

@@ -91,6 +91,12 @@ class SettingsScreen extends ConsumerWidget {
             onTap: () => context.goNamed(AppRoutes.threadsName),
           ),
           ListTile(
+            leading: const Icon(Icons.favorite_border),
+            title: Text(context.l10n.likedTitle),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => context.goNamed(AppRoutes.likedName),
+          ),
+          ListTile(
             leading: const Icon(Icons.translate),
             title: Text(context.l10n.languagesTitle),
             subtitle: Text(context.l10n.languagesSubtitle),

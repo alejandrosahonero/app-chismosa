@@ -8,6 +8,7 @@ import 'package:chismosa/features/settings/presentation/screens/language_prefere
 import 'package:chismosa/features/settings/presentation/screens/settings_screen.dart';
 import 'package:chismosa/features/stories/domain/story.dart';
 import 'package:chismosa/features/stories/presentation/screens/compose_story_screen.dart';
+import 'package:chismosa/features/stories/presentation/screens/liked_stories_screen.dart';
 import 'package:chismosa/features/stories/presentation/screens/my_stories_screen.dart';
 import 'package:chismosa/features/stories/presentation/screens/rules_screen.dart';
 import 'package:chismosa/features/stories/presentation/screens/stories_deck_screen.dart';
@@ -115,6 +116,12 @@ final Provider<GoRouter> routerProvider = Provider<GoRouter>((Ref ref) {
             name: AppRoutes.threadsName,
             builder: (BuildContext context, GoRouterState state) =>
                 const ThreadsHistoryScreen(),
+          ),
+          GoRoute(
+            path: 'liked',
+            name: AppRoutes.likedName,
+            builder: (BuildContext context, GoRouterState state) =>
+                const LikedStoriesScreen(),
           ),
           GoRoute(
             path: 'thread/:id',

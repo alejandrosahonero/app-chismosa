@@ -6,6 +6,7 @@ import 'package:chismosa/core/extensions/build_context_x.dart';
 import 'package:chismosa/core/routing/app_routes.dart';
 import 'package:chismosa/core/theme/app_colors.dart';
 import 'package:chismosa/core/theme/app_spacing.dart';
+import 'package:chismosa/core/utils/shake_detector.dart';
 import 'package:chismosa/core/widgets/adaptive_banner_ad.dart';
 import 'package:chismosa/core/widgets/app_loader.dart';
 import 'package:chismosa/core/widgets/base_screen.dart';
@@ -35,7 +36,10 @@ import 'package:chismosa/features/threads/presentation/widgets/thread_panel.dart
 import 'package:chismosa/l10n/generated/app_localizations.dart';
 import 'package:chismosa/services/ads/ads_providers.dart';
 import 'package:chismosa/services/review/review_providers.dart';
+import 'package:chismosa/services/storage/key_value_store.dart';
+import 'package:chismosa/services/storage/storage_providers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -66,7 +70,10 @@ class StoriesDeckScreen extends ConsumerStatefulWidget {
 }
 
 class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, WidgetsBindingObserver {
+  /// Set once the reader has been told a shake brings a card back.
+  static const String _undoHintKey = 'deck_undo_hint_shown';
+
   /// Fraction of the sheet an upward drag alone can reveal.
   ///
   /// Enough that the conversation behind the gesture is recognisable while
@@ -100,14 +107,31 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
   /// the screen.
   bool _threadOpen = false;
 
+  /// Shake to bring back the last card swiped away. Only listens while the app
+  /// is in the foreground.
+  late final ShakeDetector _shake = ShakeDetector(onShake: _undo);
+
   @override
   void initState() {
     super.initState();
     _progress.addListener(_followDrag);
+    WidgetsBinding.instance.addObserver(this);
+    _shake.start();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      _shake.start();
+    } else {
+      _shake.stop();
+    }
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _shake.stop();
     _progress.removeListener(_followDrag);
     _progress.dispose();
     _sheet.dispose();
@@ -240,6 +264,7 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
             StoryCard(:final Story story) => StoryCardView(
               story: story,
               onMore: depth == 0 ? () => unawaited(_moderate()) : null,
+              onReadMore: depth == 0 ? () => unawaited(_openThread()) : null,
             ),
             // Depth and not "is this the top one": the ad slot fetches its
             // creative one place early so it is not still loading when it
@@ -304,11 +329,32 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
   Future<void> _pass() async {
     await ref.read(storiesDeckControllerProvider.notifier).pass();
     _countCardForAds();
+    _maybeShowUndoHint();
   }
 
   Future<void> _like() async {
     await ref.read(storiesDeckControllerProvider.notifier).like();
     _countCardForAds();
+  }
+
+  /// Shake: the last story swiped away comes back on top.
+  ///
+  /// Only while the deck is what the reader is looking at: not under a thread,
+  /// not under another screen pushed on top.
+  void _undo() {
+    if (!mounted || _threadOpen) return;
+    if (ModalRoute.of(context)?.isCurrent != true) return;
+    final bool undone = ref.read(storiesDeckControllerProvider.notifier).undo();
+    if (undone) unawaited(HapticFeedback.mediumImpact());
+  }
+
+  /// The first pass tells the reader a shake undoes it. Once ever: a gesture
+  /// nobody can see has to be said out loud at least one time.
+  void _maybeShowUndoHint() {
+    final KeyValueStore store = ref.read(keyValueStoreProvider);
+    if (store.getBool(_undoHintKey) || !mounted) return;
+    unawaited(store.setBool(_undoHintKey, value: true));
+    context.showSnack(context.l10n.storiesUndoHint);
   }
 
   /// Up swipe: the conversation takes over, carrying on from where the drag

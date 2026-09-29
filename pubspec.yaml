@@ -5,7 +5,7 @@ publish_to: "none"
 
 # versionName + versionCode. Incrementar SIEMPRE el build number (+N) en cada
 # subida a Google Play; el versionCode no puede repetirse ni retroceder.
-version: 1.0.0+2
+version: 1.0.1+3
 
 environment:
   sdk: ^3.12.2
@@ -89,6 +89,9 @@ dependencies:
   # Crash reporting (obligatorio desde la v1). Sentry y no Crashlytics: un
   # paquete y un DSN, sin plugins de Gradle. Solo activo en release con DSN.
   sentry_flutter: 9.30.0
+  # Acelerómetro para «agitar y volver a la carta anterior» (petición de los
+  # testers). Solo escucha con la app en primer plano; no toca el arranque.
+  sensors_plus: ^7.1.0
 
 dev_dependencies:
   flutter_test:

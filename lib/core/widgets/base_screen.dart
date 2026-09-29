@@ -49,8 +49,11 @@ class BaseScreen extends StatelessWidget {
           ? null
           : AppBar(title: Text(title!), actions: actions, leading: leading),
       floatingActionButton: floatingActionButton,
+      // The bottom inset is kept unless a navigation bar already sits there:
+      // edge-to-edge (Android 15+) draws the app behind the three-button bar,
+      // and the deck's buttons ended up under it.
       body: SafeArea(
-        bottom: false,
+        bottom: bottomBar == null,
         child: Column(
           children: <Widget>[
             Expanded(

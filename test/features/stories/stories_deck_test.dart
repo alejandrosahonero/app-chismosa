@@ -312,6 +312,27 @@ void main() {
       expect(deck().seenIds, contains('a'));
     });
 
+    test('a shake brings the last card back on top', () async {
+      await boot(<Story>[_story('a'), _story('b')]);
+      await controller().pass();
+      expect(controller().undo(), isTrue);
+      expect(deck().index, 0);
+      expect(deck().current, isA<StoryCard>());
+    });
+
+    test('an undone like comes back with the heart filled in', () async {
+      await boot(<Story>[_story('a'), _story('b')]);
+      await controller().like();
+      controller().undo();
+      expect((deck().current! as StoryCard).story.liked, isTrue);
+    });
+
+    test('nothing to undo on the first card', () async {
+      await boot(<Story>[_story('a')]);
+      expect(controller().undo(), isFalse);
+      expect(deck().index, 0);
+    });
+
     test('a like that fails still advances the deck', () async {
       // The card is off screen by the time the request lands. Rolling back
       // would mean a counter that jumps, which is worse than a lost like.

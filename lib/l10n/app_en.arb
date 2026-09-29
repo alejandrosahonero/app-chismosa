@@ -259,5 +259,8 @@
   "accountDeleteBody": "Your account, your stories (with their threads), your messages, your likes and the groups you created will be deleted forever. This cannot be undone and your recovery code will stop working.\n\nIf you bought Premium, you can get it back with “Restore purchases”.",
   "accountDeleteConfirm": "Delete forever",
   "accountDeleted": "Account deleted. You are starting fresh.",
-  "accountDeleteError": "Could not delete the account. Check your connection and try again."
+  "accountDeleteError": "Could not delete the account. Check your connection and try again.",
+  "likedTitle": "Liked",
+  "storiesReadMore": "Read more",
+  "storiesUndoHint": "Skipped it by mistake? Shake your phone to bring it back."
 }

@@ -508,5 +508,8 @@
   "accountDeleteBody": "Se borrarán para siempre tu cuenta, tus historias (con sus hilos), tus mensajes, tus me gusta y los grupos que creaste. No se puede deshacer y tu código de recuperación dejará de servir.\n\nSi compraste Premium, podrás recuperarlo con «Restaurar compras».",
   "accountDeleteConfirm": "Borrar para siempre",
   "accountDeleted": "Cuenta borrada. Empiezas de cero.",
-  "accountDeleteError": "No se pudo borrar la cuenta. Comprueba tu conexión e inténtalo de nuevo."
+  "accountDeleteError": "No se pudo borrar la cuenta. Comprueba tu conexión e inténtalo de nuevo.",
+  "likedTitle": "Me gusta",
+  "storiesReadMore": "Ver más",
+  "storiesUndoHint": "¿Te la saltaste sin querer? Agita el móvil y vuelve."
 }
