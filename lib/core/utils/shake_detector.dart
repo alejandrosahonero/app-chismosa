@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:math' as math;
 
+import 'package:flutter/foundation.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 
 /// Calls [onShake] when the phone is shaken on purpose.
@@ -28,6 +29,9 @@ class ShakeDetector {
 
   /// Starts listening. Safe to call twice.
   void start() {
+    // No shaking a laptop: on the web the deck answers the arrow keys instead.
+    // Checked first because `Platform` itself throws in a browser.
+    if (kIsWeb) return;
     // Widget tests have no sensor channel, and a missing plugin fails them.
     if (Platform.environment.containsKey('FLUTTER_TEST')) return;
     _subscription ??=

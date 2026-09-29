@@ -3,6 +3,8 @@ import 'package:chismosa/core/utils/app_logger.dart';
 import 'package:chismosa/services/identity/anonymous_identity_service.dart';
 import 'package:chismosa/services/identity/identity_backend.dart';
 import 'package:chismosa/services/identity/secret_store.dart';
+import 'package:chismosa/services/storage/storage_providers.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -43,7 +45,10 @@ final Provider<AnonymousIdentityService?> identityServiceProvider =
       if (client == null) return null;
       return AnonymousIdentityService(
         backend: SupabaseIdentityBackend(client),
-        store: FileSecretStore(),
+        // A browser has no files; the secret lives in its storage instead.
+        store: kIsWeb
+            ? KeyValueSecretStore(ref.read(keyValueStoreProvider))
+            : FileSecretStore(),
       );
     });
 

@@ -127,7 +127,7 @@ class StoriesDeckController extends AsyncNotifier<StoriesDeckState> {
         : _withoutSeen(page, seenIds.toSet());
 
     return StoriesDeckState(
-      items: buildStoryDeck(fresh, withAds: !isPremium),
+      items: buildStoryDeck(fresh, withAds: !isPremium && !kIsWeb),
       index: 0,
       seenIds: seenIds,
       drained: page.length < BackendConfig.feedPageSize,
@@ -334,7 +334,7 @@ class StoriesDeckController extends AsyncNotifier<StoriesDeckState> {
             ...now.items,
             ...buildStoryDeck(
               fresh,
-              withAds: !ref.read(isPremiumProvider),
+              withAds: !ref.read(isPremiumProvider) && !kIsWeb,
               startSlot: slots,
             ),
           ],

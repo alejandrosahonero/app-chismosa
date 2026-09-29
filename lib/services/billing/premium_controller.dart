@@ -6,8 +6,10 @@ import 'package:chismosa/services/billing/premium_service.dart';
 import 'package:chismosa/services/billing/premium_state.dart';
 import 'package:chismosa/services/billing/purchase_verifier.dart';
 import 'package:chismosa/services/storage/storage_providers.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 final Provider<PremiumService> premiumServiceProvider =
     Provider<PremiumService>(
@@ -62,6 +64,8 @@ class PremiumController extends AsyncNotifier<PremiumStatus> {
 
   @override
   Future<PremiumStatus> build() async {
+    if (kIsWeb) return _buildForWeb();
+
     _subscription = _service.purchaseStream.listen(
       _handlePurchases,
       onError: (Object error, StackTrace stackTrace) => AppLogger.error(
@@ -95,6 +99,33 @@ class PremiumController extends AsyncNotifier<PremiumStatus> {
     );
   }
 
+  /// The web has no Play store: premium is bought on Android and read here
+  /// from the account (`profiles.is_premium`, written by `verify-purchase`),
+  /// so restoring a premium account with its recovery code carries it over.
+  Future<PremiumStatus> _buildForWeb() async {
+    // Rebuilt when the account changes (sign-in, restore from a code).
+    ref.watch(sessionEpochProvider);
+    final SupabaseClient? client = ref.watch(supabaseClientProvider);
+    final String? userId = client?.auth.currentUser?.id;
+    if (client == null || userId == null) {
+      return const PremiumStatus(isPremium: false, storeAvailable: false);
+    }
+    try {
+      final Map<String, dynamic>? row = await client
+          .from('profiles')
+          .select('is_premium')
+          .eq('id', userId)
+          .maybeSingle();
+      return PremiumStatus(
+        isPremium: row?['is_premium'] == true,
+        storeAvailable: false,
+      );
+    } on Object catch (error) {
+      AppLogger.debug('Premium lookup failed: $error', name: 'billing');
+      return const PremiumStatus(isPremium: false, storeAvailable: false);
+    }
+  }
+
   /// Starts the Play purchase sheet. The result arrives through the stream.
   Future<void> buyRemoveAds() async {
     final PremiumStatus? current = state.value;
@@ -118,7 +149,10 @@ class PremiumController extends AsyncNotifier<PremiumStatus> {
     }
   }
 
-  Future<void> restorePurchases() => _service.restorePurchases();
+  Future<void> restorePurchases() async {
+    if (kIsWeb) return;
+    await _service.restorePurchases();
+  }
 
   /// Checks the cached purchase with the server again.
   ///
@@ -126,6 +160,7 @@ class PremiumController extends AsyncNotifier<PremiumStatus> {
   /// purchases through `restorePurchases`, but a refunded one simply stops
   /// appearing — so without this, a refund would leave premium on forever.
   Future<void> reverify() async {
+    if (kIsWeb) return;
     final String? token = await _service.readCachedToken();
     if (token == null || token.isEmpty) return;
     switch (await _verifier.verify(token)) {

@@ -18,6 +18,7 @@ import 'package:chismosa/services/ads/ads_service.dart';
 import 'package:chismosa/services/backend/backend_providers.dart';
 import 'package:chismosa/services/locale/locale_providers.dart';
 import 'package:chismosa/services/locale/locale_settings.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -204,7 +205,12 @@ class _ComposeStoryScreenState extends ConsumerState<ComposeStoryScreen> {
       if (error.failure == StoryFailure.dailyLimitReached) {
         // Not a dead end: the story is written, and the reader is one video
         // away from publishing it. Offering that here, at the moment of
-        // refusal, is the only time the offer makes sense.
+        // refusal, is the only time the offer makes sense. The web has no
+        // videos to offer.
+        if (kIsWeb) {
+          context.showSnack(l10n.composeErrorDailyLimit);
+          return;
+        }
         await _offerRewardedCredit();
         return;
       }

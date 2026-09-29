@@ -1,6 +1,7 @@
 import 'package:chismosa/core/config/app_config.dart';
 import 'package:chismosa/core/utils/app_logger.dart';
 import 'package:chismosa/services/storage/key_value_store.dart';
+import 'package:flutter/foundation.dart';
 import 'package:in_app_review/in_app_review.dart';
 
 /// In-app review prompt (Google Play native dialog).
@@ -35,6 +36,7 @@ class ReviewService {
   /// Counts a "value moment" and shows the review dialog when every guard
   /// passes. Returns true when the dialog was actually requested.
   Future<bool> requestReviewAfterSuccess() async {
+    if (kIsWeb) return false;
     final int successes = _store.getInt(_successCountKey) + 1;
     await _store.setInt(_successCountKey, successes);
 

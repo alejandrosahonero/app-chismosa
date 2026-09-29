@@ -34,6 +34,7 @@ import 'package:chismosa/services/ads/ads_providers.dart';
 import 'package:chismosa/services/review/review_providers.dart';
 import 'package:chismosa/services/storage/key_value_store.dart';
 import 'package:chismosa/services/storage/storage_providers.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -193,21 +194,41 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
         onPopInvokedWithResult: (bool didPop, Object? _) {
           if (!didPop) unawaited(_closeThread());
         },
-        child: Stack(
-          children: <Widget>[
-            deck.when(
-              loading: () => const AppLoader(),
-              error: (Object error, StackTrace stack) => ErrorView(
-                message: context.l10n.storiesOfflineBody,
-                onRetry: () => ref.invalidate(storiesDeckControllerProvider),
-              ),
-              data: _body,
+        // Arrow keys mirror the four swipes, Backspace undoes (the shake of a
+        // keyboard). This is what makes the deck usable on the web with a
+        // mouse and a keyboard; on a phone it simply never fires.
+        child: CallbackShortcuts(
+          bindings: <ShortcutActivator, VoidCallback>{
+            const SingleActivator(LogicalKeyboardKey.arrowLeft): () =>
+                _key(DeckSwipeDirection.left),
+            const SingleActivator(LogicalKeyboardKey.arrowRight): () =>
+                _key(DeckSwipeDirection.right),
+            const SingleActivator(LogicalKeyboardKey.arrowUp): () =>
+                _key(DeckSwipeDirection.up),
+            const SingleActivator(LogicalKeyboardKey.arrowDown): () =>
+                _key(DeckSwipeDirection.down),
+            const SingleActivator(LogicalKeyboardKey.backspace): _undo,
+          },
+          child: Focus(
+            autofocus: true,
+            child: Stack(
+              children: <Widget>[
+                deck.when(
+                  loading: () => const AppLoader(),
+                  error: (Object error, StackTrace stack) => ErrorView(
+                    message: context.l10n.storiesOfflineBody,
+                    onRetry: () =>
+                        ref.invalidate(storiesDeckControllerProvider),
+                  ),
+                  data: _body,
+                ),
+                _ThreadSheet(
+                  animation: _sheet,
+                  onClose: () => unawaited(_closeThread()),
+                ),
+              ],
             ),
-            _ThreadSheet(
-              animation: _sheet,
-              onClose: () => unawaited(_closeThread()),
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -332,6 +353,16 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
   ///
   /// Only while the deck is what the reader is looking at: not under a thread,
   /// not under another screen pushed on top.
+  /// A key press is a swipe, but only on a card that is there to be swiped.
+  void _key(DeckSwipeDirection direction) {
+    if (_threadOpen || ModalRoute.of(context)?.isCurrent != true) return;
+    final StoriesDeckState? state = ref
+        .read(storiesDeckControllerProvider)
+        .value;
+    if (state == null || state.isExhausted || state.isWaiting) return;
+    _run(direction);
+  }
+
   void _undo() {
     if (!mounted || _threadOpen) return;
     if (ModalRoute.of(context)?.isCurrent != true) return;
@@ -345,7 +376,9 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
     final KeyValueStore store = ref.read(keyValueStoreProvider);
     if (store.getBool(_undoHintKey) || !mounted) return;
     unawaited(store.setBool(_undoHintKey, value: true));
-    context.showSnack(context.l10n.storiesUndoHint);
+    context.showSnack(
+      kIsWeb ? context.l10n.storiesUndoHintWeb : context.l10n.storiesUndoHint,
+    );
   }
 
   /// Up swipe: the conversation takes over, carrying on from where the drag

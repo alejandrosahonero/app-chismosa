@@ -259,3 +259,21 @@ Guardar `build/symbols/<versión>` fuera del repo.
 - [ ] Límite diario, anuncio recompensado con la unidad real, premium y restaurar.
 - [ ] Reinstalar y comprobar que la cuenta vuelve; restaurar con el código en otro móvil.
 - [ ] Sin IDs de prueba de AdMob ni logs de debug en producción; `versionCode` incrementado; símbolos archivados.
+
+---
+
+## Web (`/app/`)
+
+La misma app compila para web (`flutter build web`, carpeta `web/`). Se publica en
+GitHub Pages en `chismosa-app.github.io/app/` con `tool/build_web.sh` (ver
+`site/README.md`). Las diferencias se deciden con `kIsWeb`, nunca con `dart:io`
+(`Platform` lanza en el navegador):
+
+| Pieza | En web |
+|---|---|
+| Secreto de identidad | `KeyValueSecretStore` (almacenamiento del navegador) en vez de `FileSecretStore`. |
+| AdMob | `AdsService.initialize()` no hace nada → `adsEnabled` falso; el mazo sin tarjetas de anuncio; sin vídeo por crédito. |
+| Premium | Sin Play: `PremiumController` lee `profiles.is_premium` de la cuenta. Se compra solo en Android. |
+| Reseña, push, restaurar compras | Omitidos (push en web = fase 3). |
+| Agitar | Desactivado; el mazo responde a ← → ↑ ↓ y Retroceso deshace. |
+| Compartir | `XFile.fromData`: hoja del navegador o descarga de la imagen. |

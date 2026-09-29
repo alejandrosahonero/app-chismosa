@@ -9,6 +9,7 @@ import 'package:chismosa/services/ads/ads_providers.dart';
 import 'package:chismosa/services/billing/premium_controller.dart';
 import 'package:chismosa/services/push/push_providers.dart';
 import 'package:chismosa/services/review/review_providers.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -85,18 +86,21 @@ class SettingsScreen extends ConsumerWidget {
             trailing: const Icon(Icons.chevron_right),
             onTap: () => context.goNamed(AppRoutes.rulesName),
           ),
-          const Divider(),
-          _SectionHeader(title: context.l10n.settingsNotifications),
-          // A second door to the permission, for whoever said no the first
-          // time or never wrote in a thread. Android only shows its dialog
-          // until it has been refused; after that this opens nothing, and the
-          // system settings are the way.
-          ListTile(
-            leading: const Icon(Icons.notifications_active_outlined),
-            title: Text(context.l10n.settingsThreadPush),
-            subtitle: Text(context.l10n.settingsThreadPushBody),
-            onTap: () => ref.read(pushServiceProvider).requestPermission(),
-          ),
+          // Push on the web is phase 3 (service worker + VAPID key).
+          if (!kIsWeb) ...<Widget>[
+            const Divider(),
+            _SectionHeader(title: context.l10n.settingsNotifications),
+            // A second door to the permission, for whoever said no the first
+            // time or never wrote in a thread. Android only shows its dialog
+            // until it has been refused; after that this opens nothing, and the
+            // system settings are the way.
+            ListTile(
+              leading: const Icon(Icons.notifications_active_outlined),
+              title: Text(context.l10n.settingsThreadPush),
+              subtitle: Text(context.l10n.settingsThreadPushBody),
+              onTap: () => ref.read(pushServiceProvider).requestPermission(),
+            ),
+          ],
           const Divider(),
           _SectionHeader(title: context.l10n.settingsMonetization),
           if (isPremium)
@@ -111,11 +115,13 @@ class SettingsScreen extends ConsumerWidget {
               trailing: const Icon(Icons.chevron_right),
               onTap: () => context.goNamed(AppRoutes.paywallName),
             ),
-          ListTile(
-            leading: const Icon(Icons.restore),
-            title: Text(context.l10n.settingsRestorePurchases),
-            onTap: () => _restore(context, ref),
-          ),
+          // Google Play purchases can only be restored inside the Android app.
+          if (!kIsWeb)
+            ListTile(
+              leading: const Icon(Icons.restore),
+              title: Text(context.l10n.settingsRestorePurchases),
+              onTap: () => _restore(context, ref),
+            ),
           // Only rendered when UMP reports the entry point is required.
           if (privacyRequired.value ?? false)
             ListTile(
@@ -126,11 +132,12 @@ class SettingsScreen extends ConsumerWidget {
             ),
           const Divider(),
           _SectionHeader(title: context.l10n.settingsAbout),
-          ListTile(
-            leading: const Icon(Icons.star_outline),
-            title: Text(context.l10n.settingsRateApp),
-            onTap: () => ref.read(reviewServiceProvider).openStoreListing(),
-          ),
+          if (!kIsWeb)
+            ListTile(
+              leading: const Icon(Icons.star_outline),
+              title: Text(context.l10n.settingsRateApp),
+              onTap: () => ref.read(reviewServiceProvider).openStoreListing(),
+            ),
           ListTile(
             leading: const Icon(Icons.info_outline),
             title: Text(context.l10n.settingsVersion(AppConfig.versionName)),

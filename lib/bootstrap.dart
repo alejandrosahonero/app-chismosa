@@ -122,6 +122,8 @@ Future<void> _initializeAfterFirstFrame(ProviderContainer container) async {
     if (client != null) {
       container.read(supabaseClientProvider.notifier).attach(client);
       await container.read(identityServiceProvider)?.ensureSignedIn();
+      // On the web premium is read from the account, which only exists now.
+      if (kIsWeb) container.invalidate(premiumControllerProvider);
       await checkInstallClaim(container);
       // A phone that was left in the background while the account moved to
       // another one finds out the moment it comes back.
@@ -149,7 +151,8 @@ Future<void> _initializeAfterFirstFrame(ProviderContainer container) async {
 
   try {
     // After sign-in, because the token is registered against the account.
-    await _initializePush(container);
+    // Not on the web yet: FCM there needs a service worker and a VAPID key.
+    if (!kIsWeb) await _initializePush(container);
   } on Object catch (error, stackTrace) {
     AppLogger.error(
       'Push initialization failed',

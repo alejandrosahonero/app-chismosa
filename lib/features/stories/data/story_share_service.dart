@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:chismosa/features/stories/data/story_share_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -30,12 +31,26 @@ class StoryShareService {
         link: link.replaceFirst('https://', ''),
         tag: tag,
       );
-      final Directory dir = await getTemporaryDirectory();
-      final File file = File('${dir.path}/chismosa_$storyId.png');
-      await file.writeAsBytes(png, flush: true);
+      final String name = 'chismosa_$storyId.png';
+      final XFile image;
+      if (kIsWeb) {
+        // No temp directory in a browser. share_plus hands the bytes to the
+        // browser's share sheet, or downloads the image where there is none.
+        image = XFile.fromData(
+          Uint8List.fromList(png),
+          name: name,
+          mimeType: 'image/png',
+        );
+      } else {
+        final Directory dir = await getTemporaryDirectory();
+        final File file = File('${dir.path}/$name');
+        await file.writeAsBytes(png, flush: true);
+        image = XFile(file.path, mimeType: 'image/png');
+      }
       await SharePlus.instance.share(
         ShareParams(
-          files: <XFile>[XFile(file.path, mimeType: 'image/png')],
+          files: <XFile>[image],
+          fileNameOverrides: <String>[name],
           text: message,
         ),
       );

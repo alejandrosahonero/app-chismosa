@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:chismosa/services/storage/key_value_store.dart';
 import 'package:path_provider/path_provider.dart';
 
 /// Where the recovery secret is kept between runs.
@@ -67,4 +68,29 @@ class FileSecretStore implements SecretStore {
       await file.delete();
     }
   }
+}
+
+/// The browser's storage (localStorage, through `shared_preferences`).
+///
+/// Web only: a browser has no files. Same trade as [FileSecretStore], plus one:
+/// clearing the site data loses the secret, exactly like uninstalling without
+/// the recovery code.
+class KeyValueSecretStore implements SecretStore {
+  KeyValueSecretStore(this._store);
+
+  static const String _key = 'identity_key';
+
+  final KeyValueStore _store;
+
+  @override
+  Future<String?> read() async {
+    final String? value = _store.getString(_key)?.trim();
+    return value == null || value.isEmpty ? null : value;
+  }
+
+  @override
+  Future<void> write(String value) => _store.setString(_key, value);
+
+  @override
+  Future<void> clear() => _store.remove(_key);
 }

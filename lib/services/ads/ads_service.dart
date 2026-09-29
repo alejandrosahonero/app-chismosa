@@ -5,6 +5,7 @@ import 'package:chismosa/core/config/ad_config.dart';
 import 'package:chismosa/core/config/app_config.dart';
 import 'package:chismosa/core/utils/app_logger.dart';
 import 'package:chismosa/services/ads/consent_service.dart';
+import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 /// Result of an attempt to show a full screen ad.
@@ -92,7 +93,9 @@ class AdsService {
   /// Call it AFTER the first frame (see `bootstrap.dart`): none of this may
   /// delay the first paint.
   Future<void> initialize() async {
-    if (_initialized) return;
+    // AdMob has no web SDK. Never initialized means `adsEnabled` stays false,
+    // so every format degrades to "no ad" through the usual path.
+    if (_initialized || kIsWeb) return;
 
     await MobileAds.instance.updateRequestConfiguration(
       RequestConfiguration(

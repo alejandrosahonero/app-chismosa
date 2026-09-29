@@ -5,6 +5,7 @@ import 'package:chismosa/core/widgets/base_screen.dart';
 import 'package:chismosa/core/widgets/error_view.dart';
 import 'package:chismosa/services/billing/premium_controller.dart';
 import 'package:chismosa/services/billing/premium_state.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -109,7 +110,9 @@ class _PaywallBody extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: AppSpacing.sm),
             child: Text(
-              context.l10n.paywallUnavailable,
+              kIsWeb
+                  ? context.l10n.paywallWebUnavailable
+                  : context.l10n.paywallUnavailable,
               style: context.texts.bodyMedium,
             ),
           ),

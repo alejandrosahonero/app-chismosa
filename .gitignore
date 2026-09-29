@@ -54,3 +54,6 @@ app.*.map.json
 
 # --- Obfuscation symbols: archive them out of band, per released version ---
 /build/symbols/
+
+# Web build output, copied into site/ by tool/build_web.sh
+/site/app/
