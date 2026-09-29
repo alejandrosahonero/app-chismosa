@@ -55,8 +55,8 @@
   "@storiesEmptyTitle": {
     "description": "Título de la pantalla cuando el mazo se queda sin historias"
   },
-  "storiesEmptyBody": "Has visto todo lo que hay con estos filtros. Cuenta el tuyo, cambia de categoría o vuelve a empezar.",
-  "storiesEmptyRestart": "Volver a empezar",
+  "storiesEmptyBody": "Has visto todo lo que hay con estos filtros. Cuenta el tuyo, cambia de filtros o desliza hacia abajo para buscar nuevas.",
+  "storiesEmptyRestart": "Ver otra vez las que ya pasé",
   "storiesEmptyWrite": "Contar el mío",
   "storiesOfflineBody": "No hemos podido traer historias. Comprueba tu conexión.",
   "storiesLike": "Me gusta",
@@ -425,5 +425,7 @@
   "groupsRelaxedTag": "reglas relajadas",
   "groupsAllowsNames": "⚠️ En este grupo se puede nombrar a personas.",
   "groupsAllowsSwearing": "⚠️ En este grupo no hay filtro de palabrotas.",
-  "composeUnderReview": "Publicada, pero parece que nombra a alguien: la revisaremos antes de que salga en el mazo."
+  "composeUnderReview": "Publicada, pero parece que nombra a alguien: la revisaremos antes de que salga en el mazo.",
+  "storiesLookForNew": "Buscar historias nuevas",
+  "storiesNothingNew": "Nada nuevo todavía. Vuelve en un rato."
 }

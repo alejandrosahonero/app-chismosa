@@ -32,8 +32,8 @@
   "paywallPending": "Processing the purchase…",
   "paywallError": "The purchase could not be completed.",
   "storiesEmptyTitle": "No more gossip for now",
-  "storiesEmptyBody": "You have seen everything these filters have. Tell yours, change category, or start over.",
-  "storiesEmptyRestart": "Start over",
+  "storiesEmptyBody": "You've seen everything with these filters. Tell yours, change the filters or pull down to look for new ones.",
+  "storiesEmptyRestart": "See the ones I passed again",
   "storiesEmptyWrite": "Tell mine",
   "storiesOfflineBody": "We could not fetch any stories. Check your connection.",
   "storiesLike": "Like",
@@ -256,5 +256,7 @@
   "groupsRelaxedTag": "relaxed rules",
   "groupsAllowsNames": "⚠️ People can be named in this group.",
   "groupsAllowsSwearing": "⚠️ This group has no swearing filter.",
-  "composeUnderReview": "Posted, but it seems to name someone: we'll review it before it shows up in the deck."
+  "composeUnderReview": "Posted, but it seems to name someone: we'll review it before it shows up in the deck.",
+  "storiesLookForNew": "Look for new stories",
+  "storiesNothingNew": "Nothing new yet. Come back in a while."
 }

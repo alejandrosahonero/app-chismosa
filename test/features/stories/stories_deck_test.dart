@@ -327,6 +327,24 @@ void main() {
       expect((deck().current! as StoryCard).story.liked, isTrue);
     });
 
+    test('refreshing appends stories written since, top card kept', () async {
+      await boot(<Story>[_story('a')]);
+      await controller().pass();
+      expect(deck().isExhausted, isTrue);
+
+      repository.catalogue.add(_story('b'));
+      expect(await controller().refresh(), 1);
+      expect(deck().isExhausted, isFalse);
+      expect((deck().current! as StoryCard).story.id, 'b');
+    });
+
+    test('refreshing with nothing new adds nothing', () async {
+      await boot(<Story>[_story('a')]);
+      await controller().pass();
+      expect(await controller().refresh(), 0);
+      expect(deck().isExhausted, isTrue);
+    });
+
     test('nothing to undo on the first card', () async {
       await boot(<Story>[_story('a')]);
       expect(controller().undo(), isFalse);

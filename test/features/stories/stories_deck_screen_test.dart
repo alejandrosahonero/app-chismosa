@@ -346,7 +346,8 @@ void main() {
 
       expect(find.text('Por ahora no hay más chismes'), findsOneWidget);
       expect(find.text('Contar el mío'), findsOneWidget);
-      expect(find.text('Volver a empezar'), findsOneWidget);
+      expect(find.text('Buscar historias nuevas'), findsOneWidget);
+      expect(find.text('Ver otra vez las que ya pasé'), findsOneWidget);
     },
   );
 }

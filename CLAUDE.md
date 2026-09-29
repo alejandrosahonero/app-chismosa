@@ -135,6 +135,7 @@ Los botones inferiores repiten los gestos y **no son decorativos**: una interfaz
 - **El mazo nunca muestra al autor sus propias historias.**
 - **El mazo arranca en el país del móvil.** Cuando se acaba, la pantalla de fin ofrece primero «Ampliar a todo el mundo». Lanzamiento en España, México y Bolivia: mejor cuarenta historias del propio país que las mismas cuarenta repartidas en tres.
 - Filtros en una hoja (icono de la app bar): orden, mi país, categoría. Categorías genéricas más «cualquiera». Idiomas del mazo en Ajustes; el país sale del dispositivo, nunca de GPS.
+- **Refrescar** (`refresh()`): pide historias no vistas y las **añade al final** sin mover la carta de arriba. Desde la pantalla de fin («Buscar historias nuevas», debajo de «Contar el mío», y deslizando hacia abajo: ahí no hay carta con la que chocar) y solo al volver a la app tras más de 15 min fuera. Nunca deslizar-para-refrescar sobre el mazo.
 - **No reintroducir un indicador de «cuánto queda».**
 
 ### 3.1 Escribir

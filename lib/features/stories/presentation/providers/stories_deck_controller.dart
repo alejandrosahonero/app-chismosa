@@ -238,6 +238,20 @@ class StoriesDeckController extends AsyncNotifier<StoriesDeckState> {
     return false;
   }
 
+  /// Asks the server for stories this device has not seen yet and adds them to
+  /// the end of the pile. Returns how many arrived.
+  ///
+  /// Appended, never a rebuild: the card on top stays where it is, and a
+  /// shake still brings back the one before it. Used by "Buscar historias
+  /// nuevas", by the pull-down on the "nothing left" screen, and when the app
+  /// comes back after a while (the deck screen decides when).
+  Future<int> refresh() async {
+    final int before = state.value?.items.length ?? 0;
+    await _topUp(force: true);
+    final int after = state.value?.items.length ?? 0;
+    return after - before;
+  }
+
   /// Forgets every card this device has been dealt and starts over.
   ///
   /// The only honest answer to a reader who has genuinely read everything: the
@@ -273,12 +287,15 @@ class StoriesDeckController extends AsyncNotifier<StoriesDeckState> {
   /// the reader has not reached stay exactly where they were, and the ad slot
   /// numbering carries on from where the last page left it so two slots never
   /// share a widget key.
-  Future<void> _topUp() async {
+  ///
+  /// [force] asks even when the server said it was drained or the pile is still
+  /// long: new stories may have been written since.
+  Future<void> _topUp({bool force = false}) async {
     final StoriesDeckState? current = state.value;
-    if (current == null ||
-        current.loadingMore ||
-        current.drained ||
-        current.remaining > AppConfig.deckPrefetchThreshold) {
+    if (current == null || current.loadingMore) return;
+    if (!force &&
+        (current.drained ||
+            current.remaining > AppConfig.deckPrefetchThreshold)) {
       return;
     }
 

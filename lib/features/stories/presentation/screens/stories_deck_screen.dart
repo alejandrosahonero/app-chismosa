@@ -115,12 +115,24 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
     _shake.start();
   }
 
+  /// Away this long and the deck looks for new stories on its own when the
+  /// app comes back. Short absences are not worth a request.
+  static const Duration _refreshAfter = Duration(minutes: 15);
+
+  DateTime? _leftAt;
+
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
       _shake.start();
+      final DateTime? leftAt = _leftAt;
+      _leftAt = null;
+      if (leftAt != null && DateTime.now().difference(leftAt) > _refreshAfter) {
+        unawaited(ref.read(storiesDeckControllerProvider.notifier).refresh());
+      }
     } else {
       _shake.stop();
+      if (state == AppLifecycleState.paused) _leftAt ??= DateTime.now();
     }
   }
 
@@ -214,7 +226,7 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
             child: state.isExhausted
-                ? _Exhausted(onRestart: _restart)
+                ? _Exhausted(onRestart: _restart, onRefresh: _refresh)
                 : state.isWaiting
                 ? const AppLoader()
                 : _deck(state),
@@ -442,6 +454,20 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
   Future<void> _restart() =>
       ref.read(storiesDeckControllerProvider.notifier).restart();
 
+  /// "Buscar historias nuevas" and the pull-down on the "nothing left"
+  /// screen. Says so when nothing new has been written yet.
+  Future<void> _refresh() async {
+    final AppLocalizations l10n = context.l10n;
+    try {
+      final int added = await ref
+          .read(storiesDeckControllerProvider.notifier)
+          .refresh();
+      if (added == 0 && mounted) context.showSnack(l10n.storiesNothingNew);
+    } on Object {
+      if (mounted) context.showSnack(l10n.storiesOfflineBody);
+    }
+  }
+
   /// One consumed card is one "value action" for the interstitial pacing.
   ///
   /// The service decides whether anything actually shows: both the action count
@@ -456,9 +482,10 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
 }
 
 class _Exhausted extends ConsumerWidget {
-  const _Exhausted({required this.onRestart});
+  const _Exhausted({required this.onRestart, required this.onRefresh});
 
   final Future<void> Function() onRestart;
+  final Future<void> Function() onRefresh;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -466,51 +493,74 @@ class _Exhausted extends ConsumerWidget {
     final FeedQuery query = ref.watch(feedQueryProvider);
     final FeedQueryController filters = ref.read(feedQueryProvider.notifier);
 
+    final Widget write = TextButton(
+      onPressed: () => context.goNamed(AppRoutes.composeName),
+      child: Text(l10n.storiesEmptyWrite),
+    );
+    final Widget lookAgain = TextButton.icon(
+      onPressed: () => unawaited(onRefresh()),
+      icon: const Icon(Icons.refresh),
+      label: Text(l10n.storiesLookForNew),
+    );
+
     // Out of stories in the reader's own country: the obvious next step is
     // the rest of the world, one tap away, before anything else.
-    if (query.countryCode != null) {
-      return EmptyState(
-        icon: Icons.travel_explore,
-        title: l10n.storiesCountryEmptyTitle,
-        message: l10n.storiesCountryEmptyBody,
-        action: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            FilledButton.icon(
-              onPressed: () => filters.selectCountry(null),
-              icon: const Icon(Icons.public),
-              label: Text(l10n.storiesWidenSearch),
+    final Widget content = query.countryCode != null
+        ? EmptyState(
+            icon: Icons.travel_explore,
+            title: l10n.storiesCountryEmptyTitle,
+            message: l10n.storiesCountryEmptyBody,
+            action: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                FilledButton.icon(
+                  onPressed: () => filters.selectCountry(null),
+                  icon: const Icon(Icons.public),
+                  label: Text(l10n.storiesWidenSearch),
+                ),
+                const SizedBox(height: AppSpacing.sm),
+                write,
+                lookAgain,
+              ],
             ),
-            const SizedBox(height: AppSpacing.sm),
-            TextButton(
-              onPressed: () => context.goNamed(AppRoutes.composeName),
-              child: Text(l10n.storiesEmptyWrite),
+          )
+        : EmptyState(
+            icon: Icons.forum_outlined,
+            title: l10n.storiesEmptyTitle,
+            message: l10n.storiesEmptyBody,
+            action: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                // Writing beats re-reading: a reader who has run out is the
+                // reader most likely to have something of their own to say.
+                FilledButton.icon(
+                  onPressed: () => context.goNamed(AppRoutes.composeName),
+                  icon: const Icon(Icons.edit_outlined),
+                  label: Text(l10n.storiesEmptyWrite),
+                ),
+                const SizedBox(height: AppSpacing.sm),
+                lookAgain,
+                TextButton(
+                  onPressed: () => unawaited(onRestart()),
+                  child: Text(l10n.storiesEmptyRestart),
+                ),
+              ],
             ),
-          ],
-        ),
-      );
-    }
+          );
 
-    return EmptyState(
-      icon: Icons.forum_outlined,
-      title: l10n.storiesEmptyTitle,
-      message: l10n.storiesEmptyBody,
-      action: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          // Writing beats re-reading: a reader who has run out is the reader
-          // most likely to have something of their own to say.
-          FilledButton.icon(
-            onPressed: () => context.goNamed(AppRoutes.composeName),
-            icon: const Icon(Icons.edit_outlined),
-            label: Text(l10n.storiesEmptyWrite),
-          ),
-          const SizedBox(height: AppSpacing.sm),
-          TextButton(
-            onPressed: () => unawaited(onRestart()),
-            child: Text(l10n.storiesEmptyRestart),
-          ),
-        ],
+    // Pulling down works here and only here: there is no card on this screen,
+    // so it cannot collide with the deck's own downward swipe.
+    return RefreshIndicator(
+      onRefresh: onRefresh,
+      child: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) =>
+            SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                child: Center(child: content),
+              ),
+            ),
       ),
     );
   }
