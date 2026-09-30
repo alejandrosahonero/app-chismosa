@@ -5,7 +5,7 @@ publish_to: "none"
 
 # versionName + versionCode. Incrementar SIEMPRE el build number (+N) en cada
 # subida a Google Play; el versionCode no puede repetirse ni retroceder.
-version: 1.1.0+4
+version: 1.1.1+5
 
 environment:
   sdk: ^3.12.2
@@ -92,6 +92,11 @@ dependencies:
   # Acelerómetro para «agitar y volver a la carta anterior» (petición de los
   # testers). Solo escucha con la app en primer plano; no toca el arranque.
   sensors_plus: ^7.1.0
+  # Cloudflare Turnstile on Android: the invisible CAPTCHA that makes creating
+  # an account cost a real device instead of one curl (anti-bot, see
+  # services/identity/captcha). Official plugin; loaded only when an account is
+  # created or restored, never at startup.
+  webview_flutter: ^4.14.1
 
 dev_dependencies:
   flutter_test:

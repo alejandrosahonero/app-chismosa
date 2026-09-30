@@ -1,6 +1,7 @@
 import 'package:chismosa/core/config/backend_config.dart';
 import 'package:chismosa/core/utils/app_logger.dart';
 import 'package:chismosa/services/identity/anonymous_identity_service.dart';
+import 'package:chismosa/services/identity/captcha/turnstile.dart';
 import 'package:chismosa/services/identity/identity_backend.dart';
 import 'package:chismosa/services/identity/secret_store.dart';
 import 'package:chismosa/services/storage/storage_providers.dart';
@@ -44,7 +45,10 @@ final Provider<AnonymousIdentityService?> identityServiceProvider =
       final SupabaseClient? client = ref.watch(supabaseClientProvider);
       if (client == null) return null;
       return AnonymousIdentityService(
-        backend: SupabaseIdentityBackend(client),
+        backend: SupabaseIdentityBackend(
+          client,
+          captcha: turnstileTokenSource(),
+        ),
         // A browser has no files; the secret lives in its storage instead.
         store: kIsWeb
             ? KeyValueSecretStore(ref.read(keyValueStoreProvider))

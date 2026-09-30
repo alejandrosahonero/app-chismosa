@@ -1,3 +1,4 @@
+import 'package:chismosa/services/identity/captcha/turnstile.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 /// The auth operations `AnonymousIdentityService` needs.
@@ -33,9 +34,13 @@ abstract interface class IdentityBackend {
 }
 
 class SupabaseIdentityBackend implements IdentityBackend {
-  SupabaseIdentityBackend(this._client);
+  SupabaseIdentityBackend(this._client, {this.captcha});
 
   final SupabaseClient _client;
+
+  /// Null while CAPTCHA is not configured (see `turnstile.dart`). When set,
+  /// every call that can create or open an account carries a fresh token.
+  final CaptchaTokenSource? captcha;
 
   GoTrueClient get _auth => _client.auth;
 
@@ -47,7 +52,9 @@ class SupabaseIdentityBackend implements IdentityBackend {
 
   @override
   Future<String> signInAnonymously() async {
-    final AuthResponse response = await _auth.signInAnonymously();
+    final AuthResponse response = await _auth.signInAnonymously(
+      captchaToken: await captcha?.call(),
+    );
     final String? id = response.user?.id;
     if (id == null) {
       throw const AuthException('Anonymous sign-in returned no user');
@@ -71,6 +78,7 @@ class SupabaseIdentityBackend implements IdentityBackend {
     final AuthResponse response = await _auth.signInWithPassword(
       email: email,
       password: password,
+      captchaToken: await captcha?.call(),
     );
     final String? id = response.user?.id;
     if (id == null) {

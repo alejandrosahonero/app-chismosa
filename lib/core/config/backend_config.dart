@@ -49,6 +49,15 @@ abstract final class BackendConfig {
 
   /// A page of the deck. Small enough to feel instant on a slow connection,
   /// big enough that the user rarely reaches the end of one mid-session.
+  /// Cloudflare Turnstile site key (public by design, like the publishable
+  /// key). Empty = no CAPTCHA is requested. Must be set **before** turning on
+  /// "Enable CAPTCHA protection" in Supabase, or no new account can be created.
+  static const String turnstileSiteKey = '';
+
+  /// The host the Turnstile widget is registered for; Android loads the widget
+  /// under this origin.
+  static const String turnstileHost = 'https://chismosa-app.github.io';
+
   static const int feedPageSize = 30;
 
   /// How long the deck waits for a page before showing the offline screen.
