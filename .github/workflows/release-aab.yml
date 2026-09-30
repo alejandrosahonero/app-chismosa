@@ -1,0 +1,160 @@
+# Builds the signed release AAB on every push to `main` (and only `main`).
+#
+# - Fails before building when the versionCode (`+N` in pubspec.yaml) is not
+#   higher than every build already made: Play Console rejects a repeated one.
+#   Each successful build is tagged `v<name>+<code>`, and those tags are what
+#   "already made" means, so a failed build does not burn its number.
+# - Signs with the upload key from the repository secrets. Never falls back to
+#   the debug key (build.gradle.kts would, silently, without key.properties).
+# - Leaves the AAB and the obfuscation symbols as downloadable artifacts in
+#   the run's page (Actions tab).
+#
+# Secrets (Settings -> Secrets and variables -> Actions):
+#   UPLOAD_KEYSTORE_BASE64  the .jks, base64-encoded
+#   KEYSTORE_PASSWORD       storePassword from key.properties
+#   KEY_PASSWORD            keyPassword from key.properties
+#   KEY_ALIAS               keyAlias from key.properties (usually "upload")
+name: Release AAB
+
+on:
+  push:
+    branches: [main]
+
+# Two quick pushes to main: the second waits, both builds finish.
+concurrency:
+  group: release-aab
+  cancel-in-progress: false
+
+permissions:
+  contents: write # to push the version tag
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # tags are needed for the version check
+
+      - name: Read version from pubspec.yaml
+        id: version
+        run: |
+          full=$(grep -E '^version:' pubspec.yaml | head -1 | awk '{print $2}')
+          name=${full%%+*}
+          code=${full##*+}
+          if [ -z "$name" ] || [ "$name" = "$full" ] || ! [[ "$code" =~ ^[0-9]+$ ]]; then
+            echo "::error file=pubspec.yaml::version must look like 1.2.3+45, got '$full'"
+            exit 1
+          fi
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          echo "Version $name ($code)"
+
+      - name: Check the versionCode was bumped
+        env:
+          CODE: ${{ steps.version.outputs.code }}
+        run: |
+          # Highest versionCode among existing build tags (v<name>+<code>).
+          last=$(git tag -l 'v*+*' | sed -E 's/.*\+([0-9]+)$/\1/' | grep -E '^[0-9]+$' | sort -n | tail -1)
+          last=${last:-0}
+          if [ "$CODE" -le "$last" ]; then
+            echo "::error file=pubspec.yaml::versionCode $CODE is not higher than the last build ($last). Bump the +N in pubspec.yaml: Play Console rejects a repeated versionCode."
+            exit 1
+          fi
+          echo "versionCode $CODE > last build $last"
+
+      - name: Check signing secrets
+        env:
+          KS: ${{ secrets.UPLOAD_KEYSTORE_BASE64 }}
+          SP: ${{ secrets.KEYSTORE_PASSWORD }}
+          KP: ${{ secrets.KEY_PASSWORD }}
+          KA: ${{ secrets.KEY_ALIAS }}
+        run: |
+          missing=""
+          [ -n "$KS" ] || missing="$missing UPLOAD_KEYSTORE_BASE64"
+          [ -n "$SP" ] || missing="$missing KEYSTORE_PASSWORD"
+          [ -n "$KP" ] || missing="$missing KEY_PASSWORD"
+          [ -n "$KA" ] || missing="$missing KEY_ALIAS"
+          if [ -n "$missing" ]; then
+            echo "::error::Missing repository secrets:$missing"
+            exit 1
+          fi
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.44.9
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze and test
+        run: |
+          flutter analyze
+          flutter test
+
+      - name: Write the upload keystore
+        env:
+          KS: ${{ secrets.UPLOAD_KEYSTORE_BASE64 }}
+          SP: ${{ secrets.KEYSTORE_PASSWORD }}
+          KP: ${{ secrets.KEY_PASSWORD }}
+          KA: ${{ secrets.KEY_ALIAS }}
+        run: |
+          echo "$KS" | base64 --decode > android/upload-keystore.jks
+          {
+            echo "storePassword=$SP"
+            echo "keyPassword=$KP"
+            echo "keyAlias=$KA"
+            echo "storeFile=../upload-keystore.jks"
+          } > android/key.properties
+
+      - name: Build the AAB
+        env:
+          NAME: ${{ steps.version.outputs.name }}
+        run: |
+          flutter build appbundle --release \
+            --obfuscate --split-debug-info="build/symbols/$NAME"
+
+      - name: Make sure it is not signed with the debug key
+        run: |
+          aab=build/app/outputs/bundle/release/app-release.aab
+          signer=$(keytool -printcert -jarfile "$aab")
+          if echo "$signer" | grep -q "CN=Android Debug"; then
+            echo "::error::The AAB is signed with the debug key. Check the secrets."
+            exit 1
+          fi
+          echo "$signer" | grep -E "Owner:|SHA1:" || true
+
+      - name: Remove the keystore from the runner
+        if: always()
+        run: rm -f android/upload-keystore.jks android/key.properties
+
+      - name: Upload the AAB
+        uses: actions/upload-artifact@v4
+        with:
+          name: chismosa-${{ steps.version.outputs.name }}+${{ steps.version.outputs.code }}-aab
+          path: build/app/outputs/bundle/release/app-release.aab
+          retention-days: 14
+          if-no-files-found: error
+
+      - name: Upload the obfuscation symbols
+        uses: actions/upload-artifact@v4
+        with:
+          name: chismosa-${{ steps.version.outputs.name }}+${{ steps.version.outputs.code }}-symbols
+          path: build/symbols/${{ steps.version.outputs.name }}
+          retention-days: 90
+          if-no-files-found: error
+
+      - name: Tag the build
+        env:
+          TAG: v${{ steps.version.outputs.name }}+${{ steps.version.outputs.code }}
+        run: |
+          git tag "$TAG"
+          git push origin "$TAG"

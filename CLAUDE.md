@@ -229,6 +229,8 @@ flutter build appbundle --release --obfuscate --split-debug-info=build/symbols/1
 
 Guardar `build/symbols/<versión>` fuera del repo.
 
+**AAB automático (`.github/workflows/release-aab.yml`):** cada push a `main` (solo `main`) compila el AAB firmado con la clave de subida guardada en los Secrets del repo (`UPLOAD_KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_PASSWORD`, `KEY_ALIAS`) y lo deja, junto a los símbolos, como artefacto descargable en Actions. **Falla antes de compilar si el `+N` de `pubspec.yaml` no es mayor que el de la última build** (cada build buena se etiqueta `v<nombre>+<código>`), y nunca firma con la clave de debug. Subir a `main` = subir el `+N`.
+
 ---
 
 ## 11. Pendiente
