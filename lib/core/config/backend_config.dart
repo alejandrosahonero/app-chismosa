@@ -52,7 +52,7 @@ abstract final class BackendConfig {
   /// Cloudflare Turnstile site key (public by design, like the publishable
   /// key). Empty = no CAPTCHA is requested. Must be set **before** turning on
   /// "Enable CAPTCHA protection" in Supabase, or no new account can be created.
-  static const String turnstileSiteKey = '';
+  static const String turnstileSiteKey = '0x4AAAAAAFJ_NvA9Qwev7xf_';
 
   /// The host the Turnstile widget is registered for; Android loads the widget
   /// under this origin.
