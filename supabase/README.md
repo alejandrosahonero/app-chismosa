@@ -165,6 +165,18 @@ licencia» en Play Console, que compra sin pagar):
 - [ ] Rotar la contraseña de Postgres.
 - [ ] Activar `pg_cron` (cierra los hilos inactivos).
 - [ ] Revisar a diario `tool/moderation.sql` una vez haya usuarios.
+- [x] `0013_inactive_accounts.sql` aplicada (cron `expire-inactive-accounts`,
+      04:30 UTC): 30 días sin entrar → desactivada (fuera del mazo; vuelve al
+      abrir la app); 90 días más → borrada. Premium y la casa nunca se borran.
+- [ ] **CAPTCHA (Cloudflare Turnstile)**, en este orden:
+      1. Crear el widget en Cloudflare (modo **Invisible**, hostname
+         `chismosa-app.github.io`) y poner su *site key* en
+         `BackendConfig.turnstileSiteKey`.
+      2. Publicar esa versión (Play y web) y esperar a que casi todos
+         actualicen: una versión sin token no podrá crear cuentas.
+      3. Supabase → Authentication → Attack Protection → CAPTCHA →
+         Turnstile + *secret key*.
+      4. Authentication → Rate Limits → «Anonymous sign-ins» a ~10/hora/IP.
 
 ### Por construir
 

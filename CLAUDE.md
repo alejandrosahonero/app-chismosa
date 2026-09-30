@@ -168,6 +168,8 @@ Los botones inferiores repiten los gestos y **no son decorativos**: una interfaz
 ## 5. Cuenta anónima
 
 - Auth anónima de Supabase. Sin email ni contraseña.
+- **CAPTCHA invisible (Cloudflare Turnstile)** en el alta anónima y en entrar con un código (`services/identity/captcha`): Android lo resuelve en un WebView de 1x1 (`webview_flutter`), la web con `window.chismosaTurnstile` de `web/index.html`. Sin *site key* (`BackendConfig.turnstileSiteKey` vacía) no se pide nada. Activar la protección en Supabase **solo después** de publicar una versión con la clave: si no, nadie puede crear cuenta.
+- **Inactividad** (`0013`, cron nocturno): 30 días sin abrir la app → cuenta desactivada (`disabled_at`, sus historias salen del mazo); volver la reactiva (`touch_session`). 90 días más → borrada en cascada. Premium y la casa nunca se borran.
 - Una cuenta por persona. El secreto se deriva de un **código de recuperación** (`CHM-XXXX-…`, 120 bits) guardado en el directorio de soporte, que Auto Backup restaura al reinstalar.
 - **Un móvil a la vez; varios con Premium** (`0009`, `InstallClaim`). Cada instalación tiene un id aleatorio en preferencias. Al arrancar, al volver al primer plano y al recuperar una cuenta, `claim_install` dice si este móvil puede usarla; si otro la tiene y no es premium, el router lleva a `/moved`, que ofrece **traerla aquí (gratis, el otro móvil la pierde)** o Premium para usarla en los dos. Mover la cuenta nunca se cobra: un móvil perdido no puede dejar a nadie sin su cuenta. Si no se puede preguntar al servidor, se deja pasar.
 - **Borrar mi cuenta** (Ajustes, lo exige Google Play): `delete_my_account()` borra la fila de `auth.users` y todo cae en cascada; el móvil sigue con una cuenta nueva y vacía (la app no tiene estado «sin sesión»). El secreto local solo se borra si el servidor confirmó.
@@ -228,6 +230,8 @@ flutter build appbundle --release --obfuscate --split-debug-info=build/symbols/1
 ```
 
 Guardar `build/symbols/<versión>` fuera del repo.
+
+**AAB automático (`.github/workflows/release-aab.yml`):** cada push a `main` (solo `main`) compila el AAB firmado con la clave de subida guardada en los Secrets del repo (`UPLOAD_KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_PASSWORD`, `KEY_ALIAS`) y lo deja, junto a los símbolos, como artefacto descargable en Actions. **Falla antes de compilar si el `+N` de `pubspec.yaml` no es mayor que el de la última build** (cada build buena se etiqueta `v<nombre>+<código>`), y nunca firma con la clave de debug. Subir a `main` = subir el `+N`.
 
 ---
 

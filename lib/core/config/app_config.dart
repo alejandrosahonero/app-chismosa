@@ -11,7 +11,7 @@ abstract final class AppConfig {
   static bool get useProductionAds => kReleaseMode;
 
   /// Shown in Settings. Keep in sync with `version:` in pubspec.yaml.
-  static const String versionName = '1.1.0';
+  static const String versionName = '1.1.1';
 
   // --- Ad pacing ----------------------------------------------------------
 
