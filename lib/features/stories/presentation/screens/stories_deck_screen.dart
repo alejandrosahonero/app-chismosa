@@ -32,6 +32,7 @@ import 'package:chismosa/features/threads/presentation/providers/thread_controll
 import 'package:chismosa/features/threads/presentation/widgets/thread_panel.dart';
 import 'package:chismosa/l10n/generated/app_localizations.dart';
 import 'package:chismosa/services/ads/ads_providers.dart';
+import 'package:chismosa/services/identity/session_guard.dart';
 import 'package:chismosa/services/review/review_providers.dart';
 import 'package:chismosa/services/storage/key_value_store.dart';
 import 'package:chismosa/services/storage/storage_providers.dart';
@@ -218,8 +219,12 @@ class _StoriesDeckScreenState extends ConsumerState<StoriesDeckScreen>
                   loading: () => const AppLoader(),
                   error: (Object error, StackTrace stack) => ErrorView(
                     message: context.l10n.storiesOfflineBody,
-                    onRetry: () =>
-                        ref.invalidate(storiesDeckControllerProvider),
+                    // A dead session (deleted account) is replaced first:
+                    // retrying with it could never work.
+                    onRetry: () async {
+                      await ref.read(sessionGuardProvider).ensureAlive();
+                      ref.invalidate(storiesDeckControllerProvider);
+                    },
                   ),
                   data: _body,
                 ),

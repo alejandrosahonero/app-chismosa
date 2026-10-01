@@ -9,6 +9,7 @@ import 'package:chismosa/features/stories/domain/story.dart';
 import 'package:chismosa/features/stories/presentation/providers/stories_providers.dart';
 import 'package:chismosa/features/threads/presentation/providers/thread_controller.dart';
 import 'package:chismosa/features/threads/presentation/widgets/thread_panel.dart';
+import 'package:chismosa/services/identity/session_guard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -71,9 +72,10 @@ class _ThreadScreenState extends ConsumerState<ThreadScreen> {
       body: _error != null
           ? ErrorView(
               message: context.l10n.storiesOfflineBody,
-              onRetry: () {
+              onRetry: () async {
                 setState(() => _error = null);
-                unawaited(_open());
+                await ref.read(sessionGuardProvider).ensureAlive();
+                if (mounted) unawaited(_open());
               },
             )
           : ref.watch(threadControllerProvider).value == null

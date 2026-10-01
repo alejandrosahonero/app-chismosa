@@ -8,6 +8,7 @@ import 'package:chismosa/core/widgets/error_view.dart';
 import 'package:chismosa/features/threads/domain/thread_message.dart';
 import 'package:chismosa/features/threads/presentation/providers/threads_providers.dart';
 import 'package:chismosa/l10n/generated/app_localizations.dart';
+import 'package:chismosa/services/identity/session_guard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -42,7 +43,10 @@ class ThreadsHistoryScreen extends ConsumerWidget {
         loading: () => const AppLoader(),
         error: (Object error, StackTrace _) => ErrorView(
           message: l10n.storiesOfflineBody,
-          onRetry: () => ref.invalidate(myThreadsProvider),
+          onRetry: () async {
+            await ref.read(sessionGuardProvider).ensureAlive();
+            ref.invalidate(myThreadsProvider);
+          },
         ),
         data: (List<ThreadSummary> rows) => rows.isEmpty
             ? EmptyState(

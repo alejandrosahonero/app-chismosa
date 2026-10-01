@@ -13,6 +13,7 @@ import 'package:chismosa/features/groups/domain/story_group.dart';
 import 'package:chismosa/features/groups/presentation/providers/groups_providers.dart';
 import 'package:chismosa/features/stories/presentation/providers/stories_providers.dart';
 import 'package:chismosa/l10n/generated/app_localizations.dart';
+import 'package:chismosa/services/identity/session_guard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -59,7 +60,10 @@ class _GroupsScreenState extends ConsumerState<GroupsScreen> {
         loading: () => const AppLoader(),
         error: (Object error, StackTrace _) => ErrorView(
           message: l10n.storiesOfflineBody,
-          onRetry: () => ref.invalidate(myGroupsProvider),
+          onRetry: () async {
+            await ref.read(sessionGuardProvider).ensureAlive();
+            ref.invalidate(myGroupsProvider);
+          },
         ),
         data: (List<StoryGroup> rows) => ListView.builder(
           padding: const EdgeInsets.only(bottom: AppSpacing.xl),

@@ -5,7 +5,7 @@ publish_to: "none"
 
 # versionName + versionCode. Incrementar SIEMPRE el build number (+N) en cada
 # subida a Google Play; el versionCode no puede repetirse ni retroceder.
-version: 1.1.1+5
+version: 1.1.2+6
 
 environment:
   sdk: ^3.12.2
