@@ -9,6 +9,7 @@ import 'package:chismosa/features/stories/domain/story.dart';
 import 'package:chismosa/features/stories/presentation/providers/stories_providers.dart';
 import 'package:chismosa/features/stories/presentation/widgets/story_card_view.dart';
 import 'package:chismosa/l10n/generated/app_localizations.dart';
+import 'package:chismosa/services/identity/session_guard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -33,7 +34,10 @@ class MyStoriesScreen extends ConsumerWidget {
         loading: () => const AppLoader(),
         error: (Object error, StackTrace _) => ErrorView(
           message: l10n.storiesOfflineBody,
-          onRetry: () => ref.invalidate(myStoriesProvider),
+          onRetry: () async {
+            await ref.read(sessionGuardProvider).ensureAlive();
+            ref.invalidate(myStoriesProvider);
+          },
         ),
         data: (List<OwnStory> rows) => rows.isEmpty
             ? EmptyState(

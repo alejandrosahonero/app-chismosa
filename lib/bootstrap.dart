@@ -10,6 +10,7 @@ import 'package:chismosa/services/ads/ads_providers.dart';
 import 'package:chismosa/services/backend/backend_providers.dart';
 import 'package:chismosa/services/billing/premium_controller.dart';
 import 'package:chismosa/services/identity/install_claim.dart';
+import 'package:chismosa/services/identity/session_guard.dart';
 import 'package:chismosa/services/locale/locale_providers.dart';
 import 'package:chismosa/services/push/push_providers.dart';
 import 'package:chismosa/services/push/push_service.dart';
@@ -121,7 +122,17 @@ Future<void> _initializeAfterFirstFrame(ProviderContainer container) async {
     final SupabaseClient? client = await initializeBackend();
     if (client != null) {
       container.read(supabaseClientProvider.notifier).attach(client);
-      await container.read(identityServiceProvider)?.ensureSignedIn();
+      // Signs in, and replaces a session whose account no longer exists (see
+      // SessionGuard) before anything else uses it.
+      await container.read(sessionGuardProvider).ensureAlive();
+      // The SDK drops the session by itself when the server rejects its
+      // refresh token (account deleted while the app was open). Start over
+      // right away instead of failing every request until a restart.
+      client.auth.onAuthStateChange.listen((AuthState state) {
+        if (state.event == AuthChangeEvent.signedOut) {
+          unawaited(container.read(sessionGuardProvider).ensureAlive());
+        }
+      });
       // On the web premium is read from the account, which only exists now.
       if (kIsWeb) container.invalidate(premiumControllerProvider);
       await checkInstallClaim(container);

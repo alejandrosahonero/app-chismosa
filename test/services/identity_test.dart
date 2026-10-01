@@ -37,6 +37,14 @@ class _FakeBackend implements IdentityBackend {
   int deletions = 0;
   bool failDelete = false;
 
+  /// What the server says about the session: true alive, false gone, null
+  /// unreachable.
+  bool? sessionAlive = true;
+
+  /// Thrown by signInWithCredentials instead of checking the accounts, to
+  /// simulate a network failure.
+  Object? credentialError;
+
   @override
   String? get currentUserId => currentId;
 
@@ -47,6 +55,7 @@ class _FakeBackend implements IdentityBackend {
   Future<String> signInAnonymously() async {
     anonymousSignIns++;
     upgraded = false;
+    sessionAlive = true; // a session just issued is alive
     return currentId = 'user-$anonymousSignIns';
   }
 
@@ -65,12 +74,30 @@ class _FakeBackend implements IdentityBackend {
     required String password,
   }) async {
     credentialSignIns++;
+    final Object? failure = credentialError;
+    if (failure != null) throw failure;
     if (existingAccounts[email] != password) {
       throw StateError('no such account');
     }
     upgraded = true;
+    sessionAlive = true;
     return currentId = 'restored';
   }
+
+  @override
+  Future<bool?> checkSession() async =>
+      currentId == null ? false : sessionAlive;
+
+  @override
+  Future<void> signOutLocally() async {
+    currentId = null;
+    upgraded = false;
+  }
+
+  /// StateError is this fake's "no such account"; anything else is a network
+  /// failure.
+  @override
+  bool isAccountGone(Object error) => error is StateError;
 
   @override
   Future<void> deleteAccount() async {
@@ -339,6 +366,114 @@ void main() {
 
       expect(identity.userId, 'restored');
       expect(store.value, code.encodeForStorage());
+    });
+
+    test(
+      'a stored session whose account was deleted is replaced at startup',
+      () async {
+        final RecoveryCode code = RecoveryCode.generate(_seeded());
+        // The device still has a session and the secret, but the account is
+        // gone from the server (nightly clean-up).
+        final _FakeBackend backend = _FakeBackend()
+          ..currentId = 'deleted-user'
+          ..upgraded = true
+          ..sessionAlive = false;
+        final _MemoryStore store = _MemoryStore()
+          ..value = code.encodeForStorage();
+
+        final AnonymousIdentity identity = await AnonymousIdentityService(
+          backend: backend,
+          store: store,
+        ).ensureSignedIn();
+
+        expect(identity.userId, isNot('deleted-user'));
+        expect(backend.anonymousSignIns, 1);
+        // The new account's secret replaced the dead one.
+        expect(store.value, identity.code.encodeForStorage());
+      },
+    );
+
+    test(
+      'an unreachable server never replaces the account on this device',
+      () async {
+        final RecoveryCode code = RecoveryCode.generate(_seeded());
+        final _FakeBackend backend = _FakeBackend()
+          ..currentId = 'me'
+          ..upgraded = true
+          ..sessionAlive = null;
+        final _MemoryStore store = _MemoryStore()
+          ..value = code.encodeForStorage();
+
+        final AnonymousIdentity identity = await AnonymousIdentityService(
+          backend: backend,
+          store: store,
+        ).ensureSignedIn();
+
+        expect(identity.userId, 'me');
+        expect(backend.anonymousSignIns, 0);
+      },
+    );
+
+    test(
+      'a network error with the stored secret does not start a new account',
+      () async {
+        final RecoveryCode code = RecoveryCode.generate(_seeded());
+        final _FakeBackend backend = _FakeBackend()
+          ..credentialError = Exception('offline');
+        final _MemoryStore store = _MemoryStore()
+          ..value = code.encodeForStorage();
+
+        await expectLater(
+          AnonymousIdentityService(
+            backend: backend,
+            store: store,
+          ).ensureSignedIn(),
+          throwsA(isA<Exception>()),
+        );
+        // Starting over here would have abandoned the real account.
+        expect(backend.anonymousSignIns, 0);
+        expect(store.value, code.encodeForStorage());
+      },
+    );
+
+    test(
+      'ensureLiveAccount replaces an account deleted while the app runs',
+      () async {
+        final _FakeBackend backend = _FakeBackend();
+        final _MemoryStore store = _MemoryStore();
+        final AnonymousIdentityService service = AnonymousIdentityService(
+          backend: backend,
+          store: store,
+        );
+        final AnonymousIdentity first = await service.ensureSignedIn();
+
+        expect(await service.ensureLiveAccount(), isFalse);
+
+        backend.sessionAlive = false;
+        expect(await service.ensureLiveAccount(), isTrue);
+        expect(service.identity?.userId, isNot(first.userId));
+        expect(backend.anonymousSignIns, 2);
+      },
+    );
+
+    test('concurrent recoveries create a single new account', () async {
+      final _FakeBackend backend = _FakeBackend();
+      final AnonymousIdentityService service = AnonymousIdentityService(
+        backend: backend,
+        store: _MemoryStore(),
+      );
+      await service.ensureSignedIn();
+      backend.sessionAlive = false;
+
+      final List<bool> results = await Future.wait(<Future<bool>>[
+        service.ensureLiveAccount(),
+        service.ensureLiveAccount(),
+        service.ensureLiveAccount(),
+      ]);
+      // The first replaced the dead account; the others found the new one
+      // alive. One account created, not three.
+      expect(results.where((bool changed) => changed), hasLength(1));
+      expect(backend.anonymousSignIns, 2);
     });
 
     test('deleting the account starts a new one with a new code', () async {

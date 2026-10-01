@@ -31,6 +31,19 @@ abstract interface class IdentityBackend {
   /// Deletes the signed-in account and everything it wrote, on the server,
   /// and drops the local session.
   Future<void> deleteAccount();
+
+  /// Asks the server whether the session on this device still belongs to an
+  /// existing account. True: alive. False: definitely gone (deleted account,
+  /// revoked or missing session). Null: could not tell (offline, server
+  /// error) — callers must then leave everything as it is.
+  Future<bool?> checkSession();
+
+  /// Forgets the session on this device without asking the server.
+  Future<void> signOutLocally();
+
+  /// Whether [error], thrown by a sign-in, means the account does not exist
+  /// (as opposed to a network or server failure).
+  bool isAccountGone(Object error);
 }
 
 class SupabaseIdentityBackend implements IdentityBackend {
@@ -85,6 +98,41 @@ class SupabaseIdentityBackend implements IdentityBackend {
       throw const AuthException('Sign-in returned no user');
     }
     return id;
+  }
+
+  @override
+  Future<bool?> checkSession() async {
+    if (_auth.currentSession == null) return false;
+    try {
+      // getUser() goes to the auth server, unlike currentUser, which is only
+      // the copy stored on the device.
+      final UserResponse response = await _auth.getUser();
+      return response.user != null;
+    } on Object catch (error) {
+      return isAccountGone(error) ? false : null;
+    }
+  }
+
+  @override
+  Future<void> signOutLocally() async {
+    try {
+      await _auth.signOut(scope: SignOutScope.local);
+    } on Object {
+      // Nothing to undo: the point is that this device forgets the session.
+    }
+  }
+
+  @override
+  bool isAccountGone(Object error) {
+    if (error is AuthSessionMissingException) return true;
+    if (error is AuthApiException) {
+      final int status = int.tryParse(error.statusCode ?? '') ?? 0;
+      // 4xx is the server saying no (bad credentials, user or session not
+      // found, bad JWT). 429 is only "slow down", and says nothing about the
+      // account.
+      return status >= 400 && status < 500 && status != 429;
+    }
+    return false;
   }
 
   @override
